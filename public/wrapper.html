@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: #2b2b2b;">
+    <head>
+        <title>Portfolio Home</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="common.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="common.js"></script>
+    </head>
+    <body class="w3-display-container">
+        <header class="commandBar w3-row" style="top: 0px;">
+            <button id="fileButton" class="menuItem lightText w3-button w3-col">File</button>
+            <button id="editButton" class="menuItem lightText w3-button w3-col">Edit</button>
+            <button id="helpButton" class="menuItem lightText w3-button w3-col">Help</button>
+        </header>
+        <div class="w3-display-container w3-row">
+            <div id="menuDropHolder">
+                <div id="fileDropdown" class="menuDropdown w3-col"><button class="w3-button lightText menuDropItem">Option1</button></div>
+            </div>
+            <div id="sidebar" class="w3-col">
+                <button id="collapseSidebar" class="w3-button">&#60;</button>
+                <div id="sidebarContent" class="w3-display-container w3-row">
+                    <p class="sidebarItem lightText" style="border-style: none;">Explorer</p>
+                    <div class="sidebarItem sidebarFolder w3-row"><img><button id="publicFolder" class="w3-button lightText">public/</button>
+                        <div id="publicContent" class="w3-row sidebarContent">
+                            <div class="sidebarItem w3-row" style="margin-left: 10px;"><img><button id="homeFile" class="w3-button lightText">home.html</button></div>
+                            <div class="sidebarItem sidebarFolder w3-row" style="margin-left: 10px;"><img><button id="personalFolder" class="w3-button lightText">personal/</button>
+                                <div id="personalContent" class="w3-row sidebarContent">
+                                    <div class="sidebarItem w3-row" style="margin-left: 15px;"><img><button id="simplexFile" class="w3-button lightText">simplex.html</button></div>
+                                </div>
+                            </div>
+                            <div class="sidebarItem w3-row" style="margin-left: 10px;"><img><button id="bioFile" class="w3-button lightText">bio.html</button></div>
+                            <div class="sidebarItem w3-row" style="margin-left: 10px;"><img><button id="helpFile" class="w3-button lightText">help.html</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="fileContent" class="container w3-rest">
+                <!--CONTENT-->
+            </div>
+        </div>
+        <footer class="commandBar w3-row" style="bottom: 0px;">
+            <div class="menuItem lightText w3-col" style="float: right;">Command</div>
+            <div class="menuItem lightText w3-col" style="float: right;">Command</div>
+            <div class="menuItem lightText w3-col" style="float: right;">Command</div>
+        </footer>
+    </body>
+</html>
