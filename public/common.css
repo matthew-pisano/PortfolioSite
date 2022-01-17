@@ -28,13 +28,19 @@
   float: right;
   width: 80%;
 }
+.menuBar {
+  position: fixed; 
+  width: 100%; 
+  background-color: #33383f;  
+  z-index: 2;
+}
 .commandBar {
   position: fixed; 
   width: 100%; 
   background-color: #3b71bb;  
   z-index: 2;
 }
-.menuItem {
+.menuItem, .commandItem {
   width: auto;
   padding: 2px 5px;
 }
@@ -54,18 +60,23 @@
 }
 .menuDropItem {
   width: 200px;
-  padding: 5px 0px;
+  padding: 2px 3px;
   margin: 0px;
+  text-align: left;
 }
-.menuItem:hover, .menuDropItem:hover {
+.commandItem:hover, .menuDropItem:hover {
   background-color: #77a6e9 !important;
+}
+.menuItem:hover {
+  background-color: #4a5058 !important;
+  color: azure !important;
 }
 .inner {
   grid-area: inner-div;
 }
-#fileContent {
+#fileContent, #fileEditor {
   margin-left: 160px;
-  margin-top: 35px;
+  margin-top: 25px;
   background-color: #1e1e1e;
   margin-bottom: 30px;
 }
@@ -137,7 +148,7 @@
 .gitLink{
   width: 200px;
   padding: 2px 5px;
-  margin: 0px 5px;
+  margin: 3px 5px;
   background-color: #313131;
   border-radius: 10px;
   color: azure;
@@ -152,17 +163,20 @@
   margin-right: 5px;
   content:url("github.png");
 }
-.personalTag img{
-  content:url("github.png");
-}
 body {
   font-family: Consolas,monaco,monospace; 
 }
 
+#editorLines {
+  width: 20px;
+}
+#editorContent {
+  width: 90%;
+}
 .tag{
   width: 150px;
   padding: 2px 5px;
-  margin: 0px 5px;
+  margin: 3px 5px;
   background-color: #414141;
   border-radius: 10px;
   color: azure;
@@ -175,4 +189,48 @@ body {
 .tag span{
   float: right;
   width: 80%;
+}
+
+/*Tags*/
+.personalTag img{
+  content:url("github.png");
+}
+.personalTag span::after{
+  content: "Personal";
+}
+.academicTag img{
+  content:url("github.png");
+}
+.academicTag span::after{
+  content: "Acedemic";
+}
+.javaTag img{
+  content:url("github.png");
+}
+.javaTag span::after{
+  content: "Java";
+}
+.androidTag img{
+  content:url("github.png");
+}
+.androidTag span::after{
+  content: "Android";
+}
+.pythonTag img{
+  content:url("github.png");
+}
+.pythonTag span::after{
+  content: "Python";
+}
+.assemblyTag img{
+  content:url("github.png");
+}
+.assemblyTag span::after{
+  content: "Assembly";
+}
+
+@media (max-width: 600px) {
+  #editorContent {
+    width: 80%;
+  }
 }

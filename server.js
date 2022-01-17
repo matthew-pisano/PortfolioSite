@@ -20,6 +20,10 @@ app.get('/simplex', async function(req, res){
 	res.write(await splice("simplex"));
 	res.end();
 });
+/*app.get('/custom', async function(req, res){
+	res.write(await splice("custom", req.query.custom));
+	res.end();
+})*/
 //Error handling
 app.use((req, res, next) => {
     res.send("404 :(");
@@ -50,8 +54,14 @@ server.listen(8080, function(){
     console.log("server running");
 });
 
-async function splice(stub){
-	let stubData = await readFile('./public/'+stub+'.html', 'utf-8');
-	let wrapperData = await readFile('./public/wrapper.html', 'utf-8');
-	return wrapperData.replace("<!--CONTENT-->", stubData);
+async function splice(stub, customText){
+	let text = stub === "custom" ? customText : await readFile('./public/'+stub+'.html', 'utf-8');
+	let spliced = (await readFile('./public/wrapper.html', 'utf-8')).replace("<!--CONTENT-->", text);
+	/*spliced = spliced.replace("let pageInfo = {};", "let pageInfo = " + JSON.stringify({
+		"length": spliced.length,
+		"lang": "HTML",
+		"encoding": "UTF-8"
+	}) + ";")*/
+	spliced = spliced.replace("<!--PAGE_LENGTH-->", (spliced.match(new RegExp("\n", "g")) || []).length).replace("<!--PAGE_ENC-->", "UTF-8").replace("<!--PAGE_LANG-->", "HTML");
+	return spliced;
 }

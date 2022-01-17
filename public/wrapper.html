@@ -7,16 +7,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="common.js"></script>
+        <!--<script>
+            let pageInfo = {};
+        </script>-->
     </head>
     <body class="w3-display-container">
-        <header class="commandBar w3-row" style="top: 0px;">
+        <header class="menuBar w3-row" style="top: 0px;">
             <button id="fileButton" class="menuItem lightText w3-button w3-col">File</button>
             <button id="editButton" class="menuItem lightText w3-button w3-col">Edit</button>
             <button id="helpButton" class="menuItem lightText w3-button w3-col">Help</button>
         </header>
         <div class="w3-display-container w3-row">
             <div id="menuDropHolder">
-                <div id="fileDropdown" class="menuDropdown w3-col"><button class="w3-button lightText menuDropItem">Option1</button></div>
+                <div id="fileDropdown" class="menuDropdown w3-col"><button id="newAction" class="w3-button lightText menuDropItem">New</button></div>
             </div>
             <div id="sidebar" class="w3-col">
                 <button id="collapseSidebar" class="w3-button">&#60;</button>
@@ -36,14 +39,18 @@
                     </div>
                 </div>
             </div>
-            <div id="fileContent" class="container w3-rest">
+            <div id="fileContent" class="container w3-rest lightText">
                 <!--CONTENT-->
+            </div>
+            <div id="fileEditor" class="container w3-rest lightText w3-row" style="display: none;">
+                <div id="editorLines" class="w3-col">1</div>
+                <div id="editorContent" class="w3-col"contentEditable="true"></div>
             </div>
         </div>
         <footer class="commandBar w3-row" style="bottom: 0px;">
-            <div class="menuItem lightText w3-col" style="float: right;">Command</div>
-            <div class="menuItem lightText w3-col" style="float: right;">Command</div>
-            <div class="menuItem lightText w3-col" style="float: right;">Command</div>
+            <div class="commandItem lightText w3-col" style="float: right;"><!--PAGE_LANG--></div>
+            <div class="commandItem lightText w3-col" style="float: right;"><!--PAGE_ENC--></div>
+            <div class="commandItem lightText w3-col" style="float: right;"><!--PAGE_LENGTH--> Lines</div>
         </footer>
     </body>
 </html>

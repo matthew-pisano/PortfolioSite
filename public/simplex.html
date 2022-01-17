@@ -1,53 +1,71 @@
 <div class="inner" style="position: fixed; height: 300px; top: 50px">
-    <h1 class="lightText" style="margin: auto; width: auto; text-align: center;"><b>Simplex</b><br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
+    <h1 class="" style="margin: auto; width: auto; text-align: center;"><b>Simplex</b><br>
+        An math-oriented interpreted scripting language built in Java</h1>
 </div>
 <div id="tileHolder" class="inner w3-display-container" style="background-color: #824ab6; border-radius: 10px;">
     <div class="w3-row">
-        <div class="w3-col tag personalTag w3-mobile"><img class="w3-col"><span class="w3-col">Java</span></div>
+        <div class="gitLink w3-row w3-mobile w3-col"><img class="w3-col"><a class="w3-col" href="https://github.com/ReactorDevelopment/SimplexIDE">Simplex</a></div>
+        <div class="w3-col tag personalTag w3-mobile"><img class="w3-col"><span class="w3-col"></span></div>
+        <div class="w3-col tag javaTag w3-mobile"><img class="w3-col"><span class="w3-col"></span></div>
+        <div class="w3-col tag androidTag w3-mobile"><img class="w3-col"><span class="w3-col"></span></div>
     </div>
     <div id="tile1" class="displayTile w3-container w3-row">
-        <h2 class="lightText w3-row">Overview</h2>
-        <div class="lightText w3-rest">
-            <p><b>General Kenobi</b></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="w3-rest" style="width: 100%;">
+            <h2><b>Overview</b></h2>
+            <p>Simplex's focus is on mathematic and scientific calculations
+                as it offers built-in matrix operations (multiplication, determinates, etc.) as well as several scientific and fundamental constants.
+                <br>It is strictly typed like languages such C or Java, but has a similar syntax to python with type hinting.</p>
         </div>
     </div>
     <div id="tile2" class="displayTile w3-container w3-row">
         <img class="w3-col w3-mobile" src="github.png">
-        <div class="lightText w3-col w3-mobile">
-            <p><b>General Kenobi</b></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="w3-col w3-mobile">
+            <p><b>Companion Android App</b></p>
+            <p>The goal of the Simplex Android IDE is to both allow easy mobile programming and serve as an educational tool.
+                When a user of the app is ready to build their program, they have the option to peer into the inner structure of the language.
+                They are able to see each of the three stages, Lexing, Parsing, and Interpreting, and how the code is structured within each,
+                from being split into tokens, to parsed into a tree, to the context given during interpretation.  With this tool, the hope is
+                that any users new to programming would gain a deeper understanding of what goes on behind the scenes.
+            </p>
         </div>
     </div>
     <div id="tile3" class="displayTile w3-container w3-row">
         <img class="w3-col w3-mobile" src="github.png">
-        <div class="lightText w3-col w3-mobile">
-            <p><b>General Kenobi</b></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="w3-col w3-mobile">
+            <p><b>Processing Its Source</b></p>
+            <p>When source code is given to the Simplex interpreter, it first encounters the lexer.  These operations split the code
+                into tokens seperated into groups like 'numbers' or 'keywords'.  Once the code has been parsed into tokens, each line
+                of the program is fed into the parser which creates the core data structure of the program, a list of binary trees.  Once
+                the structure of the program is formed, the list if given to the interpreter.  The interpreter is the code that gives context
+                the nodes of the tree, reserved words are given their exact classifications and variable ids are given their proper types,
+                among other things.  After this step, the program is ready for execution.
+            </p>
         </div>
     </div>
     <div id="tile4" class="displayTile w3-container w3-row">
         <img class="w3-col w3-mobile" src="github.png">
-        <div class="lightText w3-col w3-mobile">
-            <p><b>General Kenobi</b></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="w3-col w3-mobile">
+            <p><b>Execution</b></p>
+            <p>After a program has been built into its data structure, it is ready for execution.  By the time of execution, all variables and
+                functions have been loaded into memory with their initial values, so executuion begins at the begining and goes line by line.
+            </p>
+            <p>As each line is hit, any expressions in that line are resolved to their real values, reading the index of an array for example,
+                and functions have the real values or their arguments given to them for their execution.
+            </p>
+        </div>
+    </div>
+    <div id="tile5" class="displayTile w3-container w3-row">
+        <img class="w3-col w3-mobile" src="github.png">
+        <div class="w3-col w3-mobile">
+            <p><b>Scientific Focus</b></p>
+            <p>One of the other notable features of Simplex is its concentration on making some physics or mathematical operations easier.  
+                The language comes with a wide array of built-in mathematical and physical constants and functions.  
+                These include constants like <i>PI</i> or the speed of light (<i>c</i>), or functions like sine.  
+                Additionally, Simplex options for array manipulation that are not present in many other languages.  
+                This comes from the fact that each array is treated as a matrix.  This allows for adding any N-Dimensional arrays together, 
+                which sum just as arrays would in linear algebra.  Integer of Double arrays can also be multiplied together to get the dot or 
+                cross product of the two matrices.  This becomes even more useful when used with the built-in determinate and inverse functions 
+                that can be used on the arrays.</p>
         </div>
     </div>
 </div>

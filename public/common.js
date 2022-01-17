@@ -6,7 +6,8 @@ let menuBindings = {
     "editButton": "editDropdown",
     "helpButton": "helpDropdown"
 };
-
+let activeEditor = undefined;
+let customNames = {};
 jQuery.fn.visible = function() {
     return this.css('visibility', 'visible');
 };
@@ -22,16 +23,56 @@ function toggleSidebar(){
         $("#sidebar").animate({"width": "60px"});
         $("#sidebarContent").animate({"width": "0px"});
         $("#fileContent").animate({"margin-left": "60px"});
+        $("#fileEditor").animate({"margin-left": "60px"});
         sidebarOpen = false;
     }
     else{
         collapseSidebar.innerText = "<";
         $("#fileContent").animate({"margin-left": sidebarMax});
+        $("#fileEditor").animate({"margin-left": sidebarMax});
         $("#sidebarContent").animate({"width": "100%"});
         $("#sidebar").animate({"width": sidebarMax});
         $(".sidebarItem").visible();
         sidebarOpen = true;
     }
+}
+function setActiveEditor(active){
+    activeEditor = active;
+    document.getElementById("fileContent").style.display = !activeEditor ? "block" : "none";
+    document.getElementById("fileEditor").style.display = !activeEditor ? "none" : "block";
+    if(!activeEditor) {
+        document.getElementById("editorLines").innerHTML = "1";
+        document.getElementById("editorContent").innerHTML = "";
+    }
+}
+function newFile(){
+    let div = document.createElement("DIV");
+    div.className = "sidebarItem w3-row";
+    div.style.marginLeft = "10px";
+    div.appendChild(document.createElement("IMG"));
+    let button = document.createElement("BUTTON");
+    button.className = "w3-button lightText";
+    let count = "";
+    while(customNames["new"+count+".html"] !== undefined){
+        if(count === "") count = 1;
+        else count ++;
+    }
+    let fileName = "new"+count+".html";
+    customNames[fileName] = "";
+    button.innerText = fileName;
+    button.onclick = () => {
+        document.getElementById("fileContent").innerHTML = customNames[fileName];
+        setActiveEditor();
+    };
+    div.appendChild(button);
+    let editImg = document.createElement("IMG");
+    editImg.src = "github.png";
+    editImg.onclick = () => {
+        document.getElementById("editorContent").innerText = customNames[fileName];
+        setActiveEditor(fileName);
+    };
+    div.appendChild(editImg);
+    document.getElementById("publicContent").appendChild(div);
 }
 window.onload = () => {
     let collapseSidebar = document.getElementById("collapseSidebar");
@@ -56,6 +97,20 @@ window.onload = () => {
     document.getElementById("helpFile").onclick = () => {
         window.location.replace("/help");
     };
+    document.getElementById("newAction").onclick = () => {
+        $("#fileDropdown").fadeToggle();
+        newFile();
+    };
+    let editorContent = document.getElementById("editorContent");
+    editorContent.addEventListener('input', (event) => {
+        customNames[activeEditor] = editorContent.innerText//.replace("\n", "");
+        let lineNum = editorContent.children.length;
+        if(lineNum === 0) lineNum = 1;
+        let editorLines = document.getElementById("editorLines");
+        editorLines.innerHTML = "";
+        for(let i=1; i<=lineNum; i++)
+            editorLines.innerHTML += i+"<br>";
+    });
 }
 window.onscroll = (e) => {
     if(tilePositions === null)
