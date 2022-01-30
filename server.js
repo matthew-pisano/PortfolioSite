@@ -1,16 +1,19 @@
-const https = require('https');
-const http = require('http');
-const fs = require('fs');
-const {promises: {readFile}} = require('fs');
-const mysql = require('mysql');
-const express = require('express');
+import https from 'https';
+import { createServer } from 'http';
+import _fs from 'fs';
+const { promises: { readFile } } = _fs;
+import express from 'express';
+import bodyParser from 'body-parser';
+import path from 'path';
 const app = express();
-app.use(require('body-parser').urlencoded({ extended: false }));
+const port = process.env.PORT || 5000;
+app.use(bodyParser.urlencoded({ extended: false }));
 console.log("Server.js is running...");
-app.use(express.static('./public'));
+app.use(express.static('./client/build'));
 app.set('trust proxy', true);
 app.get('/', function(req, res){
-    res.redirect("/home");
+	res.sendFile(path.resolve('./client/build', 'index.html'));
+    //res.redirect("/home");
 });
 app.get('/home', async function(req, res){
     res.write(await splice("home"));
@@ -49,8 +52,8 @@ let options = {};
     key: fs.readFileSync('cert/private.key')
 };*/
 //Launch server using credentials
-let server = http.createServer(options, app);
-server.listen(8080, function(){
+let server = createServer(options, app);
+server.listen(port, function(){
     console.log("server running");
 });
 

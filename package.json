@@ -1,0 +1,25 @@
+{
+  "name": "mattserver",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "cd client && npm run build && cd .. && node server.js",
+    "start": "node server.js",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReactorDevelopment/PortfolioSite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReactorDevelopment/PortfolioSite/issues"
+  },
+  "homepage": "https://github.com/ReactorDevelopment/PortfolioSite#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
