@@ -15,14 +15,14 @@ app.get('/', function(req, res){
 	res.sendFile(path.resolve('./client/build', 'index.html'));
     //res.redirect("/home");
 });
-app.get('/home', async function(req, res){
+/*app.get('/home', async function(req, res){
     res.write(await splice("home"));
 	res.end();
 });
 app.get('/simplex', async function(req, res){
 	res.write(await splice("simplex"));
 	res.end();
-});
+});*/
 /*app.get('/custom', async function(req, res){
 	res.write(await splice("custom", req.query.custom));
 	res.end();

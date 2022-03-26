@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Custom from './Custom';
 import Home from './Home';
+import Imperium from './Imperium';
 import Simplex from './Simplex';
 
 class Wrapper extends Component {
@@ -15,7 +16,12 @@ class Wrapper extends Component {
                 </header>
                 <div className="w3-display-container w3-row">
                     <div id="menuDropHolder">
-                        <div id="fileDropdown" className="menuDropdown w3-col"><button id="newAction" className="w3-button lightText menuDropItem">New</button></div>
+                        <div id="fileDropdown" className="menuDropdown w3-col">
+                            <button id="newAction" className="w3-button lightText menuDropItem">New</button>
+                        </div>
+                        <div id="editDropdown" className="menuDropdown w3-col">
+                            <button id="renameAction" className="w3-button lightText menuDropItem">Rename</button>
+                        </div>
                     </div>
                     <div id="sidebar" className="w3-col">
                         <button id="collapseSidebar" className="w3-button">&#60;</button>
@@ -27,6 +33,7 @@ class Wrapper extends Component {
                                     <div className="sidebarItem sidebarFolder w3-row" style={{marginLeft: '10px'}}><img/><button id="personalFolder" className="w3-button lightText">personal/</button>
                                         <div id="personalContent" className="w3-row sidebarContent">
                                             <div className="sidebarItem w3-row" style={{marginLeft: '15px'}}><img/><button id="simplexFile" className="w3-button lightText">simplex.html</button></div>
+                                            <div className="sidebarItem w3-row" style={{marginLeft: '15px'}}><img/><button id="imperiumFile" className="w3-button lightText">imperium.html</button></div>
                                         </div>
                                     </div>
                                     <div className="sidebarItem w3-row" style={{marginLeft: '10px'}}><img/><button id="bioFile" className="w3-button lightText">bio.html</button></div>
@@ -37,6 +44,7 @@ class Wrapper extends Component {
                     </div>
                     <Home/>
                     <Simplex/>
+                    <Imperium/>
                     <Custom/>
                     <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                         <div id="editorLines" className="w3-col">1</div>

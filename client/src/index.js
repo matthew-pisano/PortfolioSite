@@ -5,7 +5,9 @@ import './common.css';
 import $ from 'jquery';
 import Wrapper from './Wrapper';
 import reportWebVitals from './reportWebVitals';
+import {v4} from "uuid";
 const jQuery = $;
+
 let tilePositions = null;
 let sidebarOpen = false;
 let sidebarMax = "200px";
@@ -15,6 +17,7 @@ let menuBindings = {
     "helpButton": "helpDropdown"
 };
 let activeEditor = undefined;
+let selectedFile = undefined;
 let customNames = {};
 let collapseSidebar;
 jQuery.fn.visible = function() {
@@ -86,28 +89,70 @@ function newFile(){
   let button = document.createElement("BUTTON");
   button.className = "w3-button lightText";
   let count = "";
-  while(customNames["new"+count+".html"] !== undefined){
+  let takenNames = [];
+  for(let id in customNames){
+    console.log("Id: "+id);
+    takenNames.push(customNames[id].name);
+  }
+  while(takenNames.includes("new"+count+".html")){
       if(count === "") count = 1;
       else count ++;
   }
   let fileName = "new"+count+".html";
-  customNames[fileName] = "";
+  let fileId = v4();
+  div.id = fileId+"-customContainer";
+  customNames[""+fileId] = {name: fileName, content: ""};
   button.innerText = fileName;
   button.onclick = () => {
+    console.log("selecetd file: "+fileId);
+    selectedFile = fileId;
     showPage("customPage");
-    document.getElementById("customPage").innerHTML = customNames[fileName];
+    if(customNames[fileId].content.length > 0)
+      document.getElementById("customPage").innerHTML = customNames[fileId].content;
+    else
+      document.getElementById("customPage").innerHTML = '<p style="margin: auto; background-color: #de3a3d">This page is Empty! Edit its content to fill the void!</p>';
     setActiveEditor();
   };
   div.appendChild(button);
   let editImg = document.createElement("IMG");
   editImg.src = "github.png";
   editImg.onclick = () => {
-      document.getElementById("editorContent").innerText = customNames[fileName];
+      document.getElementById("editorContent").innerText = customNames[fileId].content;
       refreshLineNums();
-      setActiveEditor(fileName);
+      setActiveEditor(fileId);
   };
   div.appendChild(editImg);
   document.getElementById("publicContent").appendChild(div);
+  button.onclick();
+}
+function renameActive(){
+  console.log("renaming: "+selectedFile);
+  let activeContainer = document.getElementById(selectedFile+"-customContainer");
+  let customFileIcon = activeContainer.children[0];
+  let customFile = activeContainer.children[1];
+  let customEdit = activeContainer.children[2];
+  activeContainer.innerHTML = '';
+  let customRename = document.createElement("INPUT");
+  customRename.id = "customRename";
+  customRename.className = "w3-input";
+  customRename.style.backgroundColor = "#2a2b2c";
+  customRename.style.height = "25px";
+  customRename.style.color = "azure";
+  customRename.onkeyup = (evt) => {
+    console.log("Key: "+evt.key)
+    if(""+evt.key === "Enter"){
+      console.log("New Name: "+customRename.value);
+      customNames[selectedFile].name = customRename.value;
+      customFile.innerText = customRename.value+".html";
+      
+      activeContainer.innerHTML = '';
+      activeContainer.appendChild(customFileIcon);
+      activeContainer.appendChild(customFile);
+      activeContainer.appendChild(customEdit);
+    }
+  }
+  activeContainer.appendChild(customRename);
+  customRename.focus();
 }
 window.onload = () => {
   collapseSidebar = document.getElementById("collapseSidebar");
@@ -127,6 +172,9 @@ window.onload = () => {
   document.getElementById("simplexFile").onclick = () => {
     showPage("simplexPage");
   };
+  document.getElementById("imperiumFile").onclick = () => {
+    showPage("imperiumPage");
+  };
   document.getElementById("bioFile").onclick = () => {
   };
   document.getElementById("helpFile").onclick = () => {
@@ -135,13 +183,17 @@ window.onload = () => {
     $("#fileDropdown").fadeToggle();
     newFile();
   };
+  document.getElementById("renameAction").onclick = () => {
+    $("#editDropdown").fadeToggle();
+    renameActive();
+  };
   let editorContent = document.getElementById("editorContent");
   editorContent.addEventListener('input', (event) => {
-      customNames[activeEditor] = editorContent.innerText.replace("\t", "    ");
+      customNames[activeEditor].content = editorContent.innerText.replace("\t", "    ");
       refreshLineNums();
   });
 }
-window.onscroll = (e) => {
+window.onscroll = (event) => {
   if(document.getElementById("tileHolder") === null) return;
   if(tilePositions === null)
       tilePositions = {};

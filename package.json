@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ReactorDevelopment/PortfolioSite#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "uuid": "^8.3.2"
   }
 }
