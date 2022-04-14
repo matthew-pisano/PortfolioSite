@@ -1,3 +1,4 @@
+import * as index from './index.js';
 let tilePositions = null;
 let sidebarOpen = false;
 let sidebarMax = "200px";
@@ -8,17 +9,18 @@ let menuBindings = {
 };
 let activeEditor = undefined;
 let customNames = {};
-jQuery.fn.visible = function() {
+let $ = index.$;
+$.fn.visible = function() {
     return this.css('visibility', 'visible');
 };
 
-jQuery.fn.invisible = function() {
+$.fn.invisible = function() {
     return this.css('visibility', 'hidden');
 };
 
 function toggleSidebar(){
     if(sidebarOpen){
-        collapseSidebar.innerText = ">";
+        index.collapseSidebar.innerText = ">";
         $(".sidebarItem").invisible();
         $("#sidebar").animate({"width": "60px"});
         $("#sidebarContent").animate({"width": "0px"});
@@ -27,7 +29,7 @@ function toggleSidebar(){
         sidebarOpen = false;
     }
     else{
-        collapseSidebar.innerText = "<";
+        index.collapseSidebar.innerText = "<";
         $("#fileContent").animate({"margin-left": sidebarMax});
         $("#fileEditor").animate({"margin-left": sidebarMax});
         $("#sidebarContent").animate({"width": "100%"});
@@ -36,7 +38,7 @@ function toggleSidebar(){
         sidebarOpen = true;
     }
 }
-function setActiveEditor(active){
+/*function setActiveEditor(active){
     activeEditor = active;
     document.getElementById("fileContent").style.display = !activeEditor ? "block" : "none";
     document.getElementById("fileEditor").style.display = !activeEditor ? "none" : "block";
@@ -44,16 +46,8 @@ function setActiveEditor(active){
         document.getElementById("editorLines").innerHTML = "1";
         document.getElementById("editorContent").innerHTML = "";
     }
-}
-function refreshLineNums(){
-    let lineNum = document.getElementById("editorContent").children.length;
-    if(lineNum === 0) lineNum = 1;
-    let editorLines = document.getElementById("editorLines");
-    editorLines.innerHTML = "";
-    for(let i=1; i<=lineNum; i++)
-        editorLines.innerHTML += i+"<br>";
-}
-function newFile(){
+}*/
+/*function newFile(){
     let div = document.createElement("DIV");
     div.className = "sidebarItem w3-row";
     div.style.marginLeft = "10px";
@@ -74,7 +68,7 @@ function newFile(){
     };
     div.appendChild(button);
     let editImg = document.createElement("IMG");
-    editImg.src = "github.png";
+    editImg.className = "htmlIcon";
     editImg.onclick = () => {
         document.getElementById("editorContent").innerText = customNames[fileName];
         refreshLineNums();
@@ -82,7 +76,7 @@ function newFile(){
     };
     div.appendChild(editImg);
     document.getElementById("publicContent").appendChild(div);
-}
+}*/
 window.onload = () => {
     let collapseSidebar = document.getElementById("collapseSidebar");
     collapseSidebar.onclick = toggleSidebar;
@@ -108,14 +102,14 @@ window.onload = () => {
     };
     document.getElementById("newAction").onclick = () => {
         $("#fileDropdown").fadeToggle();
-        newFile();
+        index.newFile();
     };
     let editorContent = document.getElementById("editorContent");
     editorContent.addEventListener('input', (event) => {
         customNames[activeEditor] = editorContent.innerText.replace("\t", "    ");
-        refreshLineNums();
+        index.refreshLineNums();
     });
-}
+};
 window.onscroll = (e) => {
     if(document.getElementById("tileHolder") === null) return;
     if(tilePositions === null)
@@ -142,4 +136,4 @@ window.onscroll = (e) => {
         }
     }
     console.log(aboveBottom);
-}
+};

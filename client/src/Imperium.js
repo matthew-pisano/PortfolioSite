@@ -11,10 +11,10 @@ class Imperium extends Component {
                 </div>
                 <div id="tileHolder" className="inner w3-display-container" style={{backgroundColor: "#824ab6", borderRadius: "10px"}}>
                     <div className="w3-row">
-                        <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col"/><a className="w3-col" href="https://github.com/ReactorDevelopment/Imperium">Imperium</a></div>
-                        <div className="w3-col tag personalTag w3-mobile"><img className="w3-col"/><span className="w3-col"></span></div>
-                        <div className="w3-col tag javaTag w3-mobile"><img className="w3-col"/><span className="w3-col"></span></div>
-                        <div className="w3-col tag androidTag w3-mobile"><img className="w3-col"/><span className="w3-col"></span></div>
+                        <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col" alt='gitLink'/><a className="w3-col" href="https://github.com/ReactorDevelopment/Imperium">Imperium</a></div>
+                        <div className="w3-col tag personalTag w3-mobile"><img className="w3-col" alt='personal'/><span className="w3-col"></span></div>
+                        <div className="w3-col tag javaTag w3-mobile"><img className="w3-col" alt='java'/><span className="w3-col"></span></div>
+                        <div className="w3-col tag androidTag w3-mobile"><img className="w3-col" alt='android'/><span className="w3-col"></span></div>
                     </div>
                     <div id="tile1" className="displayTile w3-container w3-row">
                         <div className="w3-rest" style={{width: "100%"}}>
@@ -26,7 +26,7 @@ class Imperium extends Component {
                         </div>
                     </div>
                     <div id="tile2" className="displayTile w3-container w3-row">
-                        <img className="w3-col w3-mobile" src="github.png"/>
+                        <img className="w3-col w3-mobile" src="assets/github.png" alt='gitLogo'/>
                         <div className="w3-col w3-mobile">
                             <p><b>Development</b></p>
                             <p>Starting as a side-project, <i>Imperium</i> soon became a learning excercise in Android and Java development.
@@ -36,7 +36,7 @@ class Imperium extends Component {
                         </div>
                     </div>
                     <div id="tile3" className="displayTile w3-container w3-row">
-                        <img className="w3-col w3-mobile" src="github.png"/>
+                        <img className="w3-col w3-mobile" src="assets/github.png" alt='gitLogo'/>
                         <div className="w3-col w3-mobile">
                             <p><b>Publishing and Best Practices</b></p>
                             <p>Published to the Google Play store in early 2020, <i>Imperium</i> has ammased several thousand downloads.  Adherence to
@@ -46,7 +46,7 @@ class Imperium extends Component {
                         </div>
                     </div>
                     <div id="tile4" className="displayTile w3-container w3-row">
-                        <img className="w3-col w3-mobile" src="github.png"/>
+                        <img className="w3-col w3-mobile" src="assets/github.png" alt='gitLogo'/>
                         <div className="w3-col w3-mobile">
                             <p><b>Features and Gameplay</b></p>
                             <p><i>Imperium</i> implements many features present in the grand strategy games it emulates.  Users can save and
@@ -54,7 +54,7 @@ class Imperium extends Component {
                             maps and three modes of gameplay.  In a game, a user can zoom and pan around a large image composed of many, smaller
                             bitmaps representing capturable provinces, engaging enemy units until they own every province on the map.  The modes
                             increase in complexity, starting from the basic rules of RISK with davastation of provinces and attrition added next,
-                             up to diplomacy and historical scenarios at its most complex.  Statistics of a player's game are recorded and saved 
+                             up to diplomacy and historical scenarios at its most complex.  Statistics of a player&apos;s game are recorded and saved 
                              for access by the player ingame.
                             </p>
                         </div>

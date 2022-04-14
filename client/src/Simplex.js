@@ -11,21 +11,21 @@ class Simplex extends Component {
                 </div>
                 <div id="tileHolder" className="inner w3-display-container" style={{backgroundColor: "#824ab6", borderRadius: "10px"}}>
                     <div className="w3-row">
-                        <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col"/><a className="w3-col" href="https://github.com/ReactorDevelopment/SimplexIDE">Simplex</a></div>
-                        <div className="w3-col tag personalTag w3-mobile"><img className="w3-col"/><span className="w3-col"></span></div>
-                        <div className="w3-col tag javaTag w3-mobile"><img className="w3-col"/><span className="w3-col"></span></div>
-                        <div className="w3-col tag androidTag w3-mobile"><img className="w3-col"/><span className="w3-col"></span></div>
+                        <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col" alt='gitLink'/><a className="w3-col" href="https://github.com/ReactorDevelopment/SimplexIDE">Simplex</a></div>
+                        <div className="w3-col tag personalTag w3-mobile"><img className="w3-col" alt='personal'/><span className="w3-col"></span></div>
+                        <div className="w3-col tag javaTag w3-mobile"><img className="w3-col" alt='java'/><span className="w3-col"></span></div>
+                        <div className="w3-col tag androidTag w3-mobile"><img className="w3-col" alt='android'/><span className="w3-col"></span></div>
                     </div>
                     <div id="tile1" className="displayTile w3-container w3-row">
                         <div className="w3-rest" style={{width: "100%"}}>
                             <h2><b>Overview</b></h2>
-                            <p>Simplex's focus is on mathematic and scientific calculations
+                            <p>Simplex&apos;s focus is on mathematic and scientific calculations
                                 as it offers built-in matrix operations (multiplication, determinates, etc.) as well as several scientific and fundamental constants.
                                 <br/>It is strictly typed like languages such C or Java, but has a similar syntax to python with type hinting.</p>
                         </div>
                     </div>
                     <div id="tile2" className="displayTile w3-container w3-row">
-                        <img className="w3-col w3-mobile" src="github.png"/>
+                        <img className="w3-col w3-mobile" src="assets/github.png" alt='gitLogo'/>
                         <div className="w3-col w3-mobile">
                             <p><b>Companion Android App</b></p>
                             <p>The goal of the Simplex Android IDE is to both allow easy mobile programming and serve as an educational tool.
@@ -37,11 +37,11 @@ class Simplex extends Component {
                         </div>
                     </div>
                     <div id="tile3" className="displayTile w3-container w3-row">
-                        <img className="w3-col w3-mobile" src="github.png"/>
+                        <img className="w3-col w3-mobile" src="assets/github.png" alt='gitLogo'/>
                         <div className="w3-col w3-mobile">
                             <p><b>Processing Its Source</b></p>
                             <p>When source code is given to the Simplex interpreter, it first encounters the lexer.  These operations split the code
-                                into tokens seperated into groups like 'numbers' or 'keywords'.  Once the code has been parsed into tokens, each line
+                                into tokens seperated into groups like &apos;numbers&apos; or &apos;keywords&apos;.  Once the code has been parsed into tokens, each line
                                 of the program is fed into the parser which creates the core data structure of the program, a list of binary trees.  Once
                                 the structure of the program is formed, the list if given to the interpreter.  The interpreter is the code that gives context
                                 the nodes of the tree, reserved words are given their exact classNameifications and variable ids are given their proper types,
@@ -50,7 +50,7 @@ class Simplex extends Component {
                         </div>
                     </div>
                     <div id="tile4" className="displayTile w3-container w3-row">
-                        <img className="w3-col w3-mobile" src="github.png"/>
+                        <img className="w3-col w3-mobile" src="assets/github.png" alt='gitLogo'/>
                         <div className="w3-col w3-mobile">
                             <p><b>Execution</b></p>
                             <p>After a program has been built into its data structure, it is ready for execution.  By the time of execution, all variables and
@@ -62,7 +62,7 @@ class Simplex extends Component {
                         </div>
                     </div>
                     <div id="tile5" className="displayTile w3-container w3-row">
-                        <img className="w3-col w3-mobile" src="github.png"/>
+                        <img className="w3-col w3-mobile" src="assets/github.png" alt='gitLogo'/>
                         <div className="w3-col w3-mobile">
                             <p><b>Scientific Focus</b></p>
                             <p>One of the other notable features of Simplex is its concentration on making some physics or mathematical operations easier.  

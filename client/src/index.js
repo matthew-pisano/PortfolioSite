@@ -6,7 +6,6 @@ import $ from 'jquery';
 import Wrapper from './Wrapper';
 import reportWebVitals from './reportWebVitals';
 import {v4} from "uuid";
-const jQuery = $;
 
 let tilePositions = null;
 let sidebarOpen = false;
@@ -18,13 +17,31 @@ let menuBindings = {
 };
 let activeEditor = undefined;
 let selectedFile = undefined;
-let customNames = {};
+let customPages = {};
+let pageInfo = {
+  homePage: {
+    pageLen: 404,
+    pageType: "html"
+  },
+  imperiumPage: {
+    pageLen: 404,
+    pageType: "html"
+  },
+  simplexPage: {
+    pageLen: 404,
+    pageType: "html"
+  },
+  mipsCmdPage: {
+    pageLen: 404,
+    pageType: "html"
+  }
+};
 let collapseSidebar;
-jQuery.fn.visible = function() {
+$.fn.visible = function() {
     return this.css('visibility', 'visible');
 };
 
-jQuery.fn.invisible = function() {
+$.fn.invisible = function() {
     return this.css('visibility', 'hidden');
 };
 function toggleSidebar(){
@@ -50,21 +67,24 @@ function toggleSidebar(){
   }
 }
 function showPage(page){
-    const elements = document.querySelectorAll('.page');
-    Array.from(elements).forEach((element, index) => {
-        element.style.display = "none";
-    });
-    if(page)
-        document.getElementById(page).style.display = "block";
+  console.log("Showing page "+page);
+  const elements = document.querySelectorAll('.page');
+  Array.from(elements).forEach((element, index) => {
+    element.style.display = "none";
+  });
+  if(page){
+    document.getElementById(page).style.display = "block";
+    document.getElementById("fileEditor").style.display = "none";
+  }
 }
 function setActiveEditor(active){
   activeEditor = active;
+  console.log("Setting active editor to "+activeEditor);
   const elements = document.querySelectorAll('.activePage');
-    Array.from(elements).forEach((element, index) => {
-        element.style.display = !activeEditor ? "block" : "none";
-    });
-
-  document.getElementById("fileEditor").style.display = !activeEditor ? "none" : "block";
+  Array.from(elements).forEach((element, index) => {
+      element.style.display = !activeEditor ? "block" : "none";
+  });
+  document.getElementById("fileEditor").style.display = activeEditor ? "block" : "none";
   if(!activeEditor) {
       document.getElementById("editorLines").innerHTML = "1";
       document.getElementById("editorContent").innerHTML = "";
@@ -82,17 +102,23 @@ function refreshLineNums(){
       editorLines.innerHTML += i+"<br>";
 }
 function newFile(){
-  let div = document.createElement("DIV");
-  div.className = "sidebarItem w3-row";
-  div.style.marginLeft = "10px";
-  div.appendChild(document.createElement("IMG"));
+  let customFileDiv = document.createElement("DIV");
+  customFileDiv.className = "page container w3-rest lightText";
+  customFileDiv.style.display = "none";
+  customFileDiv.style.marginTop = "35px";
+  let explorerDiv = document.createElement("DIV");
+  explorerDiv.className = "sidebarItem w3-row";
+  explorerDiv.style.marginLeft = "10px";
+  let icon = document.createElement("IMG");
+  icon.className = "htmlIcon";
+  explorerDiv.appendChild(icon);
   let button = document.createElement("BUTTON");
   button.className = "w3-button lightText";
   let count = "";
   let takenNames = [];
-  for(let id in customNames){
+  for(let id in customPages){
     console.log("Id: "+id);
-    takenNames.push(customNames[id].name);
+    takenNames.push(customPages[id].name);
   }
   while(takenNames.includes("new"+count+".html")){
       if(count === "") count = 1;
@@ -100,29 +126,32 @@ function newFile(){
   }
   let fileName = "new"+count+".html";
   let fileId = v4();
-  div.id = fileId+"-customContainer";
-  customNames[""+fileId] = {name: fileName, content: ""};
+  explorerDiv.id = fileId+"-customContainer";
+  customPages[fileId] = {name: fileName, content: ""};
   button.innerText = fileName;
   button.onclick = () => {
     console.log("selecetd file: "+fileId);
     selectedFile = fileId;
     showPage("customPage");
-    if(customNames[fileId].content.length > 0)
-      document.getElementById("customPage").innerHTML = customNames[fileId].content;
+    if(customPages[fileId].content.length > 0)
+      document.getElementById("customPage").innerHTML = customPages[fileId].content;
     else
       document.getElementById("customPage").innerHTML = '<p style="margin: auto; background-color: #de3a3d">This page is Empty! Edit its content to fill the void!</p>';
+    document.getElementById("linesStatus").innerText = (customPages[fileId].content.split(/\r\n|\r|\n/).length-1)+" lines";
+    document.getElementById("sizeStatus").innerText = customPages[fileId].content.length+"B";
     setActiveEditor();
   };
-  div.appendChild(button);
+  explorerDiv.appendChild(button);
   let editImg = document.createElement("IMG");
-  editImg.src = "github.png";
+  editImg.className = "editButton";
   editImg.onclick = () => {
-      document.getElementById("editorContent").innerText = customNames[fileId].content;
-      refreshLineNums();
-      setActiveEditor(fileId);
+    document.getElementById("editorContent").innerText = customPages[fileId].content;
+    refreshLineNums();
+    setActiveEditor(fileId);
   };
-  div.appendChild(editImg);
-  document.getElementById("publicContent").appendChild(div);
+  explorerDiv.appendChild(editImg);
+  document.getElementById("publicContent").appendChild(explorerDiv);
+  document.getElementById("wrapperContent").appendChild(customFileDiv);
   button.onclick();
 }
 function renameActive(){
@@ -139,10 +168,10 @@ function renameActive(){
   customRename.style.height = "25px";
   customRename.style.color = "azure";
   customRename.onkeyup = (evt) => {
-    console.log("Key: "+evt.key)
+    console.log("Key: "+evt.key);
     if(""+evt.key === "Enter"){
       console.log("New Name: "+customRename.value);
-      customNames[selectedFile].name = customRename.value;
+      customPages[selectedFile].name = customRename.value;
       customFile.innerText = customRename.value+".html";
       
       activeContainer.innerHTML = '';
@@ -150,7 +179,7 @@ function renameActive(){
       activeContainer.appendChild(customFile);
       activeContainer.appendChild(customEdit);
     }
-  }
+  };
   activeContainer.appendChild(customRename);
   customRename.focus();
 }
@@ -189,10 +218,11 @@ window.onload = () => {
   };
   let editorContent = document.getElementById("editorContent");
   editorContent.addEventListener('input', (event) => {
-      customNames[activeEditor].content = editorContent.innerText.replace("\t", "    ");
-      refreshLineNums();
+    document.getElementById(activeEditor).innerHTML = editorContent.innerText.replace("\t", "    ");
+    customPages[activeEditor].content = editorContent.innerText.replace("\t", "    ");
+    refreshLineNums();
   });
-}
+};
 window.onscroll = (event) => {
   if(document.getElementById("tileHolder") === null) return;
   if(tilePositions === null)
@@ -219,7 +249,7 @@ window.onscroll = (event) => {
       }
   }
   console.log(aboveBottom);
-}
+};
 
 ReactDOM.render(
   <React.StrictMode>
@@ -232,3 +262,7 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+export {
+  collapseSidebar, $, newFile, refreshLineNums
+};

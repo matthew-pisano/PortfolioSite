@@ -14,7 +14,7 @@ class Wrapper extends Component {
                     <button id="editButton" className="menuItem lightText w3-button w3-col">Edit</button>
                     <button id="helpButton" className="menuItem lightText w3-button w3-col">Help</button>
                 </header>
-                <div className="w3-display-container w3-row">
+                <div id="wrapperContent" className="w3-display-container w3-row">
                     <div id="menuDropHolder">
                         <div id="fileDropdown" className="menuDropdown w3-col">
                             <button id="newAction" className="w3-button lightText menuDropItem">New</button>
@@ -27,17 +27,17 @@ class Wrapper extends Component {
                         <button id="collapseSidebar" className="w3-button">&#60;</button>
                         <div id="sidebarContent" className="w3-display-container w3-row">
                             <p className="sidebarItem lightText" style={{borderStyle: 'none'}}>Explorer</p>
-                            <div className="sidebarItem sidebarFolder w3-row"><img/><button id="publicFolder" className="w3-button lightText">public/</button>
+                            <div className="sidebarItem sidebarFolder w3-row"><img className='folderIcon' alt='folder'/><button id="publicFolder" className="w3-button lightText">public/</button>
                                 <div id="publicContent" className="w3-row sidebarContent">
-                                    <div className="sidebarItem w3-row" style={{marginLeft: '10px'}}><img/><button id="homeFile" className="w3-button lightText">home.html</button></div>
-                                    <div className="sidebarItem sidebarFolder w3-row" style={{marginLeft: '10px'}}><img/><button id="personalFolder" className="w3-button lightText">personal/</button>
+                                    <div className="sidebarItem w3-row" style={{marginLeft: '10px'}}><img className='htmlIcon' alt='html'/><button id="homeFile" className="w3-button lightText">home.html</button></div>
+                                    <div className="sidebarItem sidebarFolder w3-row" style={{marginLeft: '10px'}}><img className='folderIcon' alt='folder'/><button id="personalFolder" className="w3-button lightText">personal/</button>
                                         <div id="personalContent" className="w3-row sidebarContent">
-                                            <div className="sidebarItem w3-row" style={{marginLeft: '15px'}}><img/><button id="simplexFile" className="w3-button lightText">simplex.html</button></div>
-                                            <div className="sidebarItem w3-row" style={{marginLeft: '15px'}}><img/><button id="imperiumFile" className="w3-button lightText">imperium.html</button></div>
+                                            <div className="sidebarItem w3-row" style={{marginLeft: '15px'}}><img className='htmlIcon' alt='html'/><button id="simplexFile" className="w3-button lightText">simplex.html</button></div>
+                                            <div className="sidebarItem w3-row" style={{marginLeft: '15px'}}><img className='htmlIcon' alt='html'/><button id="imperiumFile" className="w3-button lightText">imperium.html</button></div>
                                         </div>
                                     </div>
-                                    <div className="sidebarItem w3-row" style={{marginLeft: '10px'}}><img/><button id="bioFile" className="w3-button lightText">bio.html</button></div>
-                                    <div className="sidebarItem w3-row" style={{marginLeft: '10px'}}><img/><button id="helpFile" className="w3-button lightText">help.html</button></div>
+                                    <div className="sidebarItem w3-row" style={{marginLeft: '10px'}}><img className='htmlIcon' alt='html'/><button id="bioFile" className="w3-button lightText">bio.html</button></div>
+                                    <div className="sidebarItem w3-row" style={{marginLeft: '10px'}}><img className='htmlIcon' alt='html'/><button id="helpFile" className="w3-button lightText">help.html</button></div>
                                 </div>
                             </div>
                         </div>
@@ -52,9 +52,10 @@ class Wrapper extends Component {
                     </div>
                 </div>
                 <footer className="commandBar w3-row" style={{bottom: '0px'}}>
-                    <div className="commandItem lightText w3-col" style={{float: 'right'}}>{/*PAGE_LANG*/}</div>
-                    <div className="commandItem lightText w3-col" style={{float: 'right'}}>{/*PAGE_ENC*/}</div>
-                    <div className="commandItem lightText w3-col" style={{float: 'right'}}>{/*PAGE_LENGTH*/} Lines</div>
+                    <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>
+                    <div id="encodingStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>
+                    <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}></div>
+                    <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}></div>
                 </footer>
             </body>
         );
