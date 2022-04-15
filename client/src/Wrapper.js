@@ -45,7 +45,7 @@ class Wrapper extends Component {
                     <Home/>
                     <Simplex/>
                     <Imperium/>
-                    <Custom/>
+                    {/*<Custom/>*/}
                     <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                         <div id="editorLines" className="w3-col">1</div>
                         <div id="editorContent" className="w3-col"contentEditable="true"></div>

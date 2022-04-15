@@ -1,4 +1,4 @@
-import * as index from './index.js';
+//import * as index from './index.js';
 let tilePositions = null;
 let sidebarOpen = false;
 let sidebarMax = "200px";
@@ -18,68 +18,9 @@ $.fn.invisible = function() {
     return this.css('visibility', 'hidden');
 };
 
-function toggleSidebar(){
-    if(sidebarOpen){
-        index.collapseSidebar.innerText = ">";
-        $(".sidebarItem").invisible();
-        $("#sidebar").animate({"width": "60px"});
-        $("#sidebarContent").animate({"width": "0px"});
-        $("#fileContent").animate({"margin-left": "60px"});
-        $("#fileEditor").animate({"margin-left": "60px"});
-        sidebarOpen = false;
-    }
-    else{
-        index.collapseSidebar.innerText = "<";
-        $("#fileContent").animate({"margin-left": sidebarMax});
-        $("#fileEditor").animate({"margin-left": sidebarMax});
-        $("#sidebarContent").animate({"width": "100%"});
-        $("#sidebar").animate({"width": sidebarMax});
-        $(".sidebarItem").visible();
-        sidebarOpen = true;
-    }
-}
-/*function setActiveEditor(active){
-    activeEditor = active;
-    document.getElementById("fileContent").style.display = !activeEditor ? "block" : "none";
-    document.getElementById("fileEditor").style.display = !activeEditor ? "none" : "block";
-    if(!activeEditor) {
-        document.getElementById("editorLines").innerHTML = "1";
-        document.getElementById("editorContent").innerHTML = "";
-    }
-}*/
-/*function newFile(){
-    let div = document.createElement("DIV");
-    div.className = "sidebarItem w3-row";
-    div.style.marginLeft = "10px";
-    div.appendChild(document.createElement("IMG"));
-    let button = document.createElement("BUTTON");
-    button.className = "w3-button lightText";
-    let count = "";
-    while(customNames["new"+count+".html"] !== undefined){
-        if(count === "") count = 1;
-        else count ++;
-    }
-    let fileName = "new"+count+".html";
-    customNames[fileName] = "";
-    button.innerText = fileName;
-    button.onclick = () => {
-        document.getElementById("fileContent").innerHTML = customNames[fileName];
-        setActiveEditor();
-    };
-    div.appendChild(button);
-    let editImg = document.createElement("IMG");
-    editImg.className = "htmlIcon";
-    editImg.onclick = () => {
-        document.getElementById("editorContent").innerText = customNames[fileName];
-        refreshLineNums();
-        setActiveEditor(fileName);
-    };
-    div.appendChild(editImg);
-    document.getElementById("publicContent").appendChild(div);
-}*/
 window.onload = () => {
     let collapseSidebar = document.getElementById("collapseSidebar");
-    collapseSidebar.onclick = toggleSidebar;
+    collapseSidebar.onclick = index.toggleSidebar;
 
     let menuItems = document.getElementsByClassName("menuItem");
     for(let menuItem of menuItems){
@@ -87,7 +28,7 @@ window.onload = () => {
             $("#"+menuBindings[menuItem.id]).fadeToggle();
         };
     }
-    toggleSidebar();
+    index.toggleSidebar();
     document.getElementById("homeFile").onclick = () => {
         window.location.replace("/home");
     };
@@ -109,6 +50,7 @@ window.onload = () => {
         customNames[activeEditor] = editorContent.innerText.replace("\t", "    ");
         index.refreshLineNums();
     });
+    index.showPage("home");
 };
 window.onscroll = (e) => {
     if(document.getElementById("tileHolder") === null) return;
@@ -135,5 +77,5 @@ window.onscroll = (e) => {
             tilePositions[tileElement.id].initial = false;
         }
     }
-    console.log(aboveBottom);
+    //console.log(aboveBottom);
 };

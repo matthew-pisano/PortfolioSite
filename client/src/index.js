@@ -10,6 +10,7 @@ import {v4} from "uuid";
 let tilePositions = null;
 let sidebarOpen = false;
 let sidebarMax = "200px";
+let sidebarMin = "60px";
 let menuBindings = {
     "fileButton": "fileDropdown",
     "editButton": "editDropdown",
@@ -18,24 +19,6 @@ let menuBindings = {
 let activeEditor = undefined;
 let selectedFile = undefined;
 let customPages = {};
-let pageInfo = {
-  homePage: {
-    pageLen: 404,
-    pageType: "html"
-  },
-  imperiumPage: {
-    pageLen: 404,
-    pageType: "html"
-  },
-  simplexPage: {
-    pageLen: 404,
-    pageType: "html"
-  },
-  mipsCmdPage: {
-    pageLen: 404,
-    pageType: "html"
-  }
-};
 let collapseSidebar;
 $.fn.visible = function() {
     return this.css('visibility', 'visible');
@@ -48,11 +31,11 @@ function toggleSidebar(){
   if(sidebarOpen){
       collapseSidebar.innerText = ">";
       $(".sidebarItem").invisible();
-      $("#sidebar").animate({"width": "60px"});
+      $("#sidebar").animate({"width": sidebarMin});
       $("#sidebarContent").animate({"width": "0px"});
-      $(".page").animate({"margin-left": "60px"});
-      $(".titleCard").animate({"margin-left": "60px"});
-      $("#fileEditor").animate({"margin-left": "60px"});
+      $(".page").animate({"margin-left": sidebarMin});
+      $(".titleCard").animate({"margin-left": sidebarMin});
+      $("#fileEditor").animate({"margin-left": sidebarMin});
       sidebarOpen = false;
   }
   else{
@@ -73,8 +56,12 @@ function showPage(page){
     element.style.display = "none";
   });
   if(page){
-    document.getElementById(page).style.display = "block";
+    let pageElem = document.getElementById(page+"Page");
+    pageElem.style.display = "block";
     document.getElementById("fileEditor").style.display = "none";
+    let lineNum = pageElem.innerHTML.split(/\r\n|\r|\n/).length;
+    document.getElementById("linesStatus").innerText = (lineNum > 1 ? lineNum-1 : 1)+" Lines";
+    document.getElementById("sizeStatus").innerText = pageElem.innerHTML.length+"B";
   }
 }
 function setActiveEditor(active){
@@ -127,18 +114,17 @@ function newFile(){
   let fileName = "new"+count+".html";
   let fileId = v4();
   explorerDiv.id = fileId+"-customContainer";
+  customFileDiv.id = fileId+"Page";
+  if(sidebarOpen)
+    customFileDiv.style.marginLeft = sidebarMax;
+  else
+    customFileDiv.style.marginLeft = sidebarMax;
   customPages[fileId] = {name: fileName, content: ""};
   button.innerText = fileName;
   button.onclick = () => {
     console.log("selecetd file: "+fileId);
     selectedFile = fileId;
-    showPage("customPage");
-    if(customPages[fileId].content.length > 0)
-      document.getElementById("customPage").innerHTML = customPages[fileId].content;
-    else
-      document.getElementById("customPage").innerHTML = '<p style="margin: auto; background-color: #de3a3d">This page is Empty! Edit its content to fill the void!</p>';
-    document.getElementById("linesStatus").innerText = (customPages[fileId].content.split(/\r\n|\r|\n/).length-1)+" lines";
-    document.getElementById("sizeStatus").innerText = customPages[fileId].content.length+"B";
+    showPage(fileId);
     setActiveEditor();
   };
   explorerDiv.appendChild(button);
@@ -196,13 +182,13 @@ window.onload = () => {
   toggleSidebar();
 
   document.getElementById("homeFile").onclick = () => {
-    showPage("homePage");
+    showPage("home");
   };
   document.getElementById("simplexFile").onclick = () => {
-    showPage("simplexPage");
+    showPage("simplex");
   };
   document.getElementById("imperiumFile").onclick = () => {
-    showPage("imperiumPage");
+    showPage("imperium");
   };
   document.getElementById("bioFile").onclick = () => {
   };
@@ -218,8 +204,17 @@ window.onload = () => {
   };
   let editorContent = document.getElementById("editorContent");
   editorContent.addEventListener('input', (event) => {
-    document.getElementById(activeEditor).innerHTML = editorContent.innerText.replace("\t", "    ");
     customPages[activeEditor].content = editorContent.innerText.replace("\t", "    ");
+    if(editorContent.innerText.length > 0){
+      document.getElementById(activeEditor+"Page").innerHTML = customPages[activeEditor].content;
+      let pageElem = document.getElementById(activeEditor+"Page");
+      let lineNum = pageElem.innerHTML.split(/\r\n|\r|\n/).length;
+      document.getElementById("linesStatus").innerText = (lineNum > 1 ? lineNum-1 : 1)+" Lines";
+      document.getElementById("sizeStatus").innerText = pageElem.innerHTML.length+"B";
+    }
+    else
+      document.getElementById(activeEditor+"Page").innerHTML = '<p style="margin: auto; background-color: #de3a3d">This page is Empty! Edit its content to fill the void!</p>';
+    //console.log("Setting content of "+activeEditor+"Page to: "+customPages[activeEditor].content);
     refreshLineNums();
   });
 };
@@ -264,5 +259,5 @@ ReactDOM.render(
 reportWebVitals();
 
 export {
-  collapseSidebar, $, newFile, refreshLineNums
+  collapseSidebar, $, newFile, refreshLineNums, showPage, toggleSidebar
 };
