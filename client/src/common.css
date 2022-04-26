@@ -1,247 +1,247 @@
 .lightText {
-  color: azure;
+    color: azure;
 }
 .container {
-  height: auto;
-  display: grid;
-  place-items: center;
-  overflow-y: auto; 
-  z-index: 1;
-  grid-template-areas: "inner-div";
+    height: auto;
+    display: grid;
+    place-items: center;
+    overflow-y: auto; 
+    z-index: 1;
+    grid-template-areas: "inner-div";
 }
 .displayTile {
-  border-style: none solid none none;
-  border-color: azure;
-  border-width: 5px;
-  background-color: #313131;
-  border-radius: 10px;
-  margin: 50px 20px 20px 5%;
-  padding: 10px;
+    border-style: none solid none none;
+    border-color: azure;
+    border-width: 5px;
+    background-color: #313131;
+    border-radius: 10px;
+    margin: 50px 20px 20px 5%;
+    padding: 10px;
 }
 .displayTile img {
-  width: 10%;
-  min-width: 50px;
-  max-width: 150px;
-  margin-right: 5px;
+    width: 10%;
+    min-width: 50px;
+    max-width: 150px;
+    margin-right: 5px;
 }
 .displayTile > div {
-  float: right;
-  width: 80%;
+    float: right;
+    width: 80%;
 }
 .menuBar {
-  position: fixed; 
-  width: 100%; 
-  background-color: #33383f;  
-  z-index: 2;
+    position: fixed; 
+    width: 100%; 
+    background-color: #33383f;  
+    z-index: 2;
 }
 .commandBar {
-  position: fixed; 
-  width: 100%;
-  background-color: #3b71bb;  
-  z-index: 2;
-  height: 30px;
+    position: fixed; 
+    width: 100%;
+    background-color: #3b71bb;  
+    z-index: 2;
+    height: 30px;
 }
 .menuItem, .commandItem {
-  width: auto;
-  padding: 2px 5px;
+    width: auto;
+    padding: 2px 5px;
 }
 #menuDropHolder {
-  display: table; 
-  position: fixed;
-  top: 40px;
-  z-index: 3;
+    display: table; 
+    position: fixed;
+    top: 40px;
+    z-index: 3;
 }
 .menuDropdown {
-  background-color: #2a2b2c;
-  border-style: solid;
-  border-color: rgb(219, 224, 224);
-  border-width: 1px;
-  padding-top: 5px;
-  display: none;
+    background-color: #2a2b2c;
+    border-style: solid;
+    border-color: rgb(219, 224, 224);
+    border-width: 1px;
+    padding-top: 5px;
+    display: none;
 }
 .menuDropItem {
-  width: 200px;
-  padding: 2px 3px;
-  margin: 0px;
-  text-align: left;
+    width: 200px;
+    padding: 2px 3px;
+    margin: 0px;
+    text-align: left;
 }
 .commandItem:hover, .menuDropItem:hover {
-  background-color: #77a6e9 !important;
+    background-color: #77a6e9 !important;
 }
 
 #wrapperContent{
-  margin-bottom: 30px;
-  background-color: #1e1e1e;
+    margin-bottom: 30px;
+    background-color: #1e1e1e;
 }
 .menuItem:hover {
-  background-color: #4a5058 !important;
-  color: azure !important;
+    background-color: #4a5058 !important;
+    color: azure !important;
 }
 .inner {
-  grid-area: inner-div;
+    grid-area: inner-div;
 }
 #fileContent, #fileEditor {
-  margin-left: 160px;
-  margin-top: 25px;
-  margin-bottom: 30px;
+    margin-left: 160px;
+    margin-top: 25px;
+    margin-bottom: 30px;
 }
 #tileHolder {
-  width: 100%; 
-  background-color: #2b40a1; 
-  margin-top: 300px; 
-  min-height: 500px; 
-  padding-top: 50px; 
-  border-radius: 25px;
+    width: 100%; 
+    background-color: #2b40a1; 
+    margin-top: 300px; 
+    min-height: 500px; 
+    padding-top: 50px; 
+    border-radius: 25px;
 }
 #sidebar {
-  width: 100px;
-  height: 100%;
-  margin-top: 35px;
-  position: fixed; 
-  z-index: 2;
-  background-color: #313131;
+    width: 100px;
+    height: 100%;
+    margin-top: 35px;
+    position: fixed; 
+    z-index: 2;
+    background-color: #313131;
 }
 #sidebarContent {
-  width: 100%;
-  height: 500px;
+    width: 100%;
+    height: 500px;
 }
 .sidebarItem {
-  margin: 5px;
-  border-style: none none none solid;
-  border-color: azure;
-  border-width: 2px;
+    margin: 5px;
+    border-style: none none none solid;
+    border-color: azure;
+    border-width: 2px;
 }
 .sidebarFolder{
-  border-style: none;
+    border-style: none;
 }
 .folderIcon{
-  content:url("assets/folder.png");
+    content:url("assets/folder.png");
 }
 .htmlIcon{
-  content:url("assets/html.png");
+    content:url("assets/html.png");
 }
 .sidebarContent{
-  border-style: none none none solid;
-  border-color: azure;
-  border-width: 1px;
+    border-style: none none none solid;
+    border-color: azure;
+    border-width: 1px;
 }
 .sidebarItem img{
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 .sidebarItem button{
-  padding: 0px;
+    padding: 0px;
 }
 .sidebarItem button:hover{
-  background-color: #3e4146 !important;
-  color: azure !important;
+    background-color: #3e4146 !important;
+    color: azure !important;
 }
 #collapseSidebar {
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  padding: 1px;
-  color: azure;
-  background-color: #313131;
-  border-style: none none none solid;
-  border-color: azure;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    padding: 1px;
+    color: azure;
+    background-color: #313131;
+    border-style: none none none solid;
+    border-color: azure;
 }
 #collapseSidebar:hover {
-  background-color: #3e4146 !important;
-  color: azure !important;
+    background-color: #3e4146 !important;
+    color: azure !important;
 }
 .gitLink{
-  width: 200px;
-  padding: 2px 5px;
-  margin: 3px 5px;
-  background-color: #313131;
-  border-radius: 10px;
-  color: azure;
+    width: 200px;
+    padding: 2px 5px;
+    margin: 3px 5px;
+    background-color: #313131;
+    border-radius: 10px;
+    color: azure;
 }
 .gitLink a{
-  float: right;
-  width: 80%;
+    float: right;
+    width: 80%;
 }
 .gitLink img{
-  width: 10%;
-  min-width: 20px;
-  margin-right: 5px;
-  content:url("assets/github.png");
+    width: 10%;
+    min-width: 20px;
+    margin-right: 5px;
+    content:url("assets/github.png");
 }
 body {
-  font-family: Consolas,monaco,monospace; 
+    font-family: Consolas,monaco,monospace; 
 }
 
 #editorLines {
-  width: 20px;
-  background-color: #313131;
+    width: 20px;
+    background-color: #313131;
 }
 #editorContent {
-  width: 90%;
-  overflow-x: auto;
+    width: 90%;
+    overflow-x: auto;
 }
 .tag{
-  width: 150px;
-  padding: 2px 5px;
-  margin: 3px 5px;
-  background-color: #414141;
-  border-radius: 10px;
-  color: azure;
+    width: 150px;
+    padding: 2px 5px;
+    margin: 3px 5px;
+    background-color: #414141;
+    border-radius: 10px;
+    color: azure;
 }
 .tag img{
-  width: 10%;
-  min-width: 20px;
-  margin-right: 5px;
+    width: 10%;
+    min-width: 20px;
+    margin-right: 5px;
 }
 .tag span{
-  float: right;
-  width: 80%;
+    float: right;
+    width: 80%;
 }
 .editButton{
-  content:url("assets/edit.png");
-  cursor: pointer;
+    content:url("assets/edit.png");
+    cursor: pointer;
 }
 /*Tags*/
 .personalTag img{
-  content:url("assets/personal.png");
+    content:url("assets/personal.png");
 }
 .personalTag span::after{
-  content: "Personal";
+    content: "Personal";
 }
 .academicTag img{
-  content:url("assets/academic.png");
+    content:url("assets/academic.png");
 }
 .academicTag span::after{
-  content: "Acedemic";
+    content: "Acedemic";
 }
 .javaTag img{
-  content:url("assets/java.png");
+    content:url("assets/java.png");
 }
 .javaTag span::after{
-  content: "Java";
+    content: "Java";
 }
 .androidTag img{
-  content:url("assets/android.png");
+    content:url("assets/android.png");
 }
 .androidTag span::after{
-  content: "Android";
+    content: "Android";
 }
 .pythonTag img{
-  content:url("assets/python.png");
+    content:url("assets/python.png");
 }
 .pythonTag span::after{
-  content: "Python";
+    content: "Python";
 }
 .assemblyTag img{
-  content:url("assets/assembly.png");
+    content:url("assets/assembly.png");
 }
 .assemblyTag span::after{
-  content: "Assembly";
+    content: "Assembly";
 }
 
 @media (max-width: 600px) {
-  #editorContent {
-    width: 80%;
-  }
+    #editorContent {
+        width: 80%;
+    }
 }
