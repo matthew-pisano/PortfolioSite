@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "test": "cd client && npm run build && cd .. && node server.js",
-    "start": "node server.js",
+    "start": "cd client && npm start",
     "build": "cd client && npm run build"
   },
   "repository": {
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/ReactorDevelopment/PortfolioSite#readme",
   "dependencies": {
     "express": "^4.17.2",
+    "react-router-dom": "^6.3.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
