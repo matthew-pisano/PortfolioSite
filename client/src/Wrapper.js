@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './Home';
 import Imperium from './Imperium';
 import Simplex from './Simplex';
+import MipsCmd from './MipsCmd';
 import * as common from './common';
 
 class Wrapper extends Component {
@@ -15,18 +16,33 @@ class Wrapper extends Component {
                     subTree: [
                         {name: "simplex.html"},
                         {name: "imperium.html"},
-                    ]
-                },
-                {
-                    name: "school/",
-                    subTree: [
-
+                        {name: "inception.html"},
                     ]
                 },
                 {
                     name: "research/",
                     subTree: [
-
+                        {name: "neural.html"},
+                        {name: "chipFiring.html"},
+                    ]
+                },
+                {
+                    name: "school/",
+                    subTree: [
+                        {name: "videntium.html"},
+                        {name: "mipsCmd.html"},
+                    ]
+                },
+                {
+                    name: "hackathons/",
+                    subTree: [
+                        {name: "anonHires.html"},
+                    ]
+                },
+                {
+                    name: "custom/",
+                    subTree: [
+                        {name: "start.html"},
                     ]
                 }
             ]
@@ -39,15 +55,13 @@ class Wrapper extends Component {
                             document.getElementById("langStatus").innerText = "";
                             document.getElementById("encodingStatus").innerText = "";
                             document.getElementById("linesStatus").innerText = "";
-                            document.getElementById("sizeStatus").innerText = tree.subTree.length+" Files";
+                            document.getElementById("sizeStatus").innerText = tree.subTree.length+" Children";
                             document.getElementById("itemStatus").innerText = tree.name;
                         }
                     }>{tree.name}</button>
                     <div id={tree.name.substring(0, tree.name.length-1)+"Content"} className="w3-row sidebarContent">
                         {
-                            tree.subTree.map(child => {
-                                return recurse(child);
-                            })
+                            tree.subTree.map(child => recurse(child))
                         }
                     </div>
                 </div>;
@@ -85,6 +99,7 @@ class Wrapper extends Component {
                     <Home/>
                     <Simplex/>
                     <Imperium/>
+                    <MipsCmd/>
                     <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                         <div id="editorLines" className="w3-col">1</div>
                         <div id="editorContent" className="w3-col"contentEditable="true"></div>

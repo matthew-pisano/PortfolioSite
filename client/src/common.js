@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import React from 'react';
 import {v4} from "uuid";
 $.fn.visible = function() {
     return this.css('visibility', 'visible');
@@ -22,7 +23,13 @@ let pages = {
     home: {name: "home.html"},
     imperium: {name: "imperium.html"},
     simplex: {name: "simplex.html"},
-    mipsCmd: {name: "mipsCmd.html"}
+    mipsCmd: {name: "mipsCmd.html"},
+    inception: {name: "inception.html"},
+    neural: {name: "neural.html"},
+    chipFiring: {name: "chipFiring.html"},
+    videntium: {name: "videntium.html"},
+    anonHires: {name: "anonHires.html"},
+    start: {name: "start.html"},
 };
 let collapseSidebar;
 function toggleSidebar(){
@@ -47,6 +54,44 @@ function toggleSidebar(){
         sidebarOpen = true;
     }
 }
+function build(pageInfo, tiles){
+    return <div id="tileHolder" className="inner w3-display-container" style={pageInfo.holderStyle}>
+            {pageInfo.title ? 
+                <h1 className="" style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1> :
+                <div className="w3-row">
+                    {pageInfo.gitLink ?
+                        <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col" alt='gitLink'/><a className="w3-col" href={pageInfo.gitLink}>{pageInfo.gitTitle ? pageInfo.gitTitle : pageInfo.title}</a></div> : <span></span>
+                    }
+                    {pageInfo.tags.map((tag, i) => 
+                        <div className={"w3-col tag "+tag+"Tag w3-mobile"} key={tag}><img className="w3-col" alt={tag}/><span className="w3-col"></span></div>)
+                    }
+                </div>
+            }
+            {
+                tiles.map((tile, i) =>{
+                    console.log("Mapping tile "+i);
+                    if(!tile.tags) tile.tags = [];
+                    let tileStyle = tile.thumbnail ? {} : {width: "100%"};
+                    return <div id={"tile"+i} className="displayTile w3-container w3-row" key={"tile"+i}>
+                        {tile.thumbnail ? <img className="w3-col w3-mobile" src={tile.thumbnail} alt='gitLogo'/> : <span></span>}
+                        <div className="w3-col w3-mobile w3-row" style={tileStyle}>
+                            {tile.title.startsWith("#") ? <h2><b>{tile.title.replace("#", "")}</b></h2> : <p><b>{tile.title}</b></p> }
+                            {/*<p>{
+                                contentList.map((section, i) => <span key={"section"+i}>{section.replace("\n")}<br/></span>)
+                            }</p>*/}
+                            <p dangerouslySetInnerHTML={{__html: tile.content}}></p>
+                            {tile.gitLink ?
+                                <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col" alt='gitLink'/><a className="w3-col" href={tile.gitLink}>{tile.gitTitle ? tile.gitTitle : tile.title}</a></div> : <span></span>
+                            }
+                            {tile.tags.map((tag, i) => 
+                                <div className={"w3-col tag "+tag+"Tag w3-mobile"} key={tag}><img className="w3-col" alt={tag}/><span className="w3-col"></span></div>)
+                            }
+                        </div>
+                    </div>;
+                })
+            }
+    </div>;
+}
 function showPage(page){
     console.log("Showing page "+page);
     const elements = document.querySelectorAll('.page');
@@ -56,7 +101,14 @@ function showPage(page){
     if(page){
         document.getElementById("pageTitle").innerText = pages[page].name;
         let pageElem = document.getElementById(page+"Page");
-        if(!pageElem) return;
+        if(!pageElem){
+            document.getElementById("linesStatus").innerText = "0 Lines";
+            document.getElementById("sizeStatus").innerText = "0B";
+            document.getElementById("itemStatus").innerText = pages[page].name;
+            document.getElementById("langStatus").innerText = "HTML";
+            document.getElementById("encodingStatus").innerText = "UTF-8";
+            return;
+        }
         pageElem.style.display = "block";
         document.getElementById("fileEditor").style.display = "none";
         let lineNum = pageElem.innerHTML.split(/\r\n|\r|\n/).length;
@@ -234,4 +286,4 @@ window.onscroll = (event) => {
     }
     console.log(aboveBottom);
 };
-export {$, showPage};
+export {$, showPage, build};
