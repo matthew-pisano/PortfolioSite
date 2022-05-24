@@ -36,7 +36,7 @@ class Home extends Component {
             },
             {
                 title: "Inception Collage",
-                content: `Java program that assembles one image from many smaller image.<br>
+                content: `Java program that assembles one image mosaic from many smaller images.<br>
                     This can be used to create very large images with hundreds of smaller images composing it, making wonderful art. 
                     The program takes the average color over any given area of the larger canvas and displays whichever smaller image matches 
                     that color best in that spot.`,
@@ -49,9 +49,6 @@ class Home extends Component {
         let pageInfo = {
             title: "Projects",
             holderStyle: {borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/InceptionCollage",
-            gitTitle: "Inception",
-            tags: ["personal", "java"]
         };
         return (
             <div id="homePage" className="page container w3-rest lightText">

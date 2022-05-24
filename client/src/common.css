@@ -118,7 +118,7 @@
     content:url("assets/folder.png");
 }
 .htmlIcon{
-    content:url("assets/html.png");
+    content:url("assets/htmlFile.png");
 }
 .sidebarContent{
     border-style: none none none solid;
@@ -238,6 +238,24 @@ body {
 }
 .assemblyTag span::after{
     content: "Assembly";
+}
+.phpTag img{
+    content:url("assets/php.png");
+}
+.phpTag span::after{
+    content: "PHP";
+}
+.htmlTag img{
+    content:url("assets/html.png");
+}
+.htmlTag span::after{
+    content: "HTML";
+}
+.jsTag img{
+    content:url("assets/js.png");
+}
+.jsTag span::after{
+    content: "JavaScript";
 }
 
 @media (max-width: 600px) {

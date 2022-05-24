@@ -1,36 +1,35 @@
 import React, { Component } from 'react';
 import * as common from './common';
-class MipsCmd extends Component {
+class Inception extends Component {
 
     render() {
         let tiles = [
             {
                 title: "#Overview",
-                content: `The MIPS command processor processes commands and displays their outputs using the 
-                <a href='https://courses.missouristate.edu/kenvollmar/mars/download.htm'>Mars simulator</a>.
-                Developed as part of a college assembly course, the command processor leverages the low-level
-                properties of assembly to carry out its functions using very lightweight code.`
+                content: `Inception Collage uses Java's built in graphics libraries, AWT and Swing, to allow users to
+                    create picture mosaics using a GUI`
             },
             {
-                title: "Features",
-                content: `This command processor in input from the <i>Mars</i> console emulator, and outputs to that
-                    same interface.  It has the ability to preform mathematical operations, bi-directional decimal and hexadecimal
-                    conversions, produce audio output, and display sections of its memory to the user.  It also has the ability
-                    to draw using one of <i>Mars</i>'s virtual screens.`,
+                title: "Features and Function",
+                content: `The GUI allows the user to select one image file as the basis of the mosaic, this is the
+                    image that the smaller images will compose.  The user then selects any number of other images.  These
+                    will be overlayed on top of the background image based on their color and composition.  With enough of these
+                    images, the illusion of the original image appears.  When zooming in on the new, large image, however,
+                    all of its constituent images are revealed.`,
                 thumbnail: ""
             },
         ];
         let pageInfo = {
-            holderStyle: {backgroundColor: "#824ab6", borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/MIPS-Command-Processor",
-            gitTitle: "MIPS Cmd",
-            tags: ["academic", "assembly"]
+            holderStyle: {backgroundColor: "#919ba8", borderRadius: "10px"},
+            gitLink: "https://github.com/ReactorDevelopment/InceptionCollage",
+            gitTitle: "Inception",
+            tags: ["personal", "java"]
         };
         return (
-            <div id="mipsCmdPage" className="page container w3-rest lightText" style={{display: "none"}}>
+            <div id="inceptionPage" className="page container w3-rest lightText" style={{display: "none"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>MIPS Command Processor</b><br/>
-                        A simple command processor written in the MPIS assembly language.</h1>
+                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Inception Collage</b><br/>
+                        Java program that assembles one image mosaic from many smaller images</h1>
                 </div>
                 {common.build(pageInfo, tiles)}
             </div>
@@ -38,4 +37,4 @@ class MipsCmd extends Component {
     }
 }
 
-export default MipsCmd;
+export default Inception;

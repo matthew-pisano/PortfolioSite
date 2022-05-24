@@ -3,6 +3,8 @@ import Home from './Home';
 import Imperium from './Imperium';
 import Simplex from './Simplex';
 import MipsCmd from './MipsCmd';
+import Inception from './Inception';
+import Videntium from './Videntium';
 import * as common from './common';
 
 class Wrapper extends Component {
@@ -100,6 +102,8 @@ class Wrapper extends Component {
                     <Simplex/>
                     <Imperium/>
                     <MipsCmd/>
+                    <Inception/>
+                    <Videntium/>
                     <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                         <div id="editorLines" className="w3-col">1</div>
                         <div id="editorContent" className="w3-col"contentEditable="true"></div>

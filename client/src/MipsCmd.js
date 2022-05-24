@@ -7,12 +7,12 @@ class MipsCmd extends Component {
             {
                 title: "#Overview",
                 content: `The MIPS command processor processes commands and displays their outputs using the 
-                <a href='https://courses.missouristate.edu/kenvollmar/mars/download.htm'>Mars simulator</a>.
+                <a href='https://courses.missouristate.edu/kenvollmar/mars/download.htm' target='_blank'>Mars simulator</a>.
                 Developed as part of a college assembly course, the command processor leverages the low-level
                 properties of assembly to carry out its functions using very lightweight code.`
             },
             {
-                title: "Features",
+                title: "Features and Function",
                 content: `This command processor in input from the <i>Mars</i> console emulator, and outputs to that
                     same interface.  It has the ability to preform mathematical operations, bi-directional decimal and hexadecimal
                     conversions, produce audio output, and display sections of its memory to the user.  It also has the ability
@@ -21,7 +21,7 @@ class MipsCmd extends Component {
             },
         ];
         let pageInfo = {
-            holderStyle: {backgroundColor: "#824ab6", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#bf564d", borderRadius: "10px"},
             gitLink: "https://github.com/ReactorDevelopment/MIPS-Command-Processor",
             gitTitle: "MIPS Cmd",
             tags: ["academic", "assembly"]
