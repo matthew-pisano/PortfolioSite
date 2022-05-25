@@ -5,7 +5,9 @@ import Simplex from './Simplex';
 import MipsCmd from './MipsCmd';
 import Inception from './Inception';
 import Videntium from './Videntium';
+import AnonHires from './AnonHires';
 import * as common from './common';
+import Neural from './Neural';
 
 class Wrapper extends Component {
     render() {
@@ -43,9 +45,7 @@ class Wrapper extends Component {
                 },
                 {
                     name: "custom/",
-                    subTree: [
-                        {name: "start.html"},
-                    ]
+                    subTree: []
                 }
             ]
         };
@@ -104,6 +104,8 @@ class Wrapper extends Component {
                     <MipsCmd/>
                     <Inception/>
                     <Videntium/>
+                    <AnonHires/>
+                    <Neural/>
                     <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                         <div id="editorLines" className="w3-col">1</div>
                         <div id="editorContent" className="w3-col"contentEditable="true"></div>

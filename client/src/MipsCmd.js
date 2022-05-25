@@ -7,9 +7,9 @@ class MipsCmd extends Component {
             {
                 title: "#Overview",
                 content: `The MIPS command processor processes commands and displays their outputs using the 
-                <a href='https://courses.missouristate.edu/kenvollmar/mars/download.htm' target='_blank'>Mars simulator</a>.
-                Developed as part of a college assembly course, the command processor leverages the low-level
-                properties of assembly to carry out its functions using very lightweight code.`
+                    <a href='https://courses.missouristate.edu/kenvollmar/mars/download.htm' target='_blank'>Mars simulator</a>.
+                    Developed as part of a college assembly course, the command processor leverages the low-level
+                    properties of assembly to carry out its functions using very lightweight code.`
             },
             {
                 title: "Features and Function",

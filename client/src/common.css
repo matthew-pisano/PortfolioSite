@@ -62,7 +62,7 @@
 .menuDropItem {
     width: 200px;
     padding: 2px 3px;
-    margin: 0px;
+    margin-left: 5px;
     text-align: left;
 }
 .commandItem:hover, .menuDropItem:hover {
@@ -126,8 +126,8 @@
     border-width: 1px;
 }
 .sidebarItem img{
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     margin-right: 5px;
 }
 .sidebarItem button{
@@ -151,7 +151,7 @@
     background-color: #3e4146 !important;
     color: azure !important;
 }
-.gitLink{
+.gitLink, .paperLink{
     width: 200px;
     padding: 2px 5px;
     margin: 3px 5px;
@@ -159,11 +159,11 @@
     border-radius: 10px;
     color: azure;
 }
-.gitLink a{
+.gitLink a, .paperLink a{
     float: right;
     width: 80%;
 }
-.gitLink img{
+.gitLink img, .paperLink img{
     width: 10%;
     min-width: 20px;
     margin-right: 5px;
@@ -201,6 +201,12 @@ body {
 .editButton{
     content:url("assets/edit.png");
     cursor: pointer;
+    margin-left: 5px;
+}
+.tab{
+    text-indent:40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 /*Tags*/
 .personalTag img{
@@ -256,6 +262,30 @@ body {
 }
 .jsTag span::after{
     content: "JavaScript";
+}
+.collabTag img{
+    content:url("assets/collab.png");
+}
+.collabTag span::after{
+    content: "Collaboration";
+}
+.hackTag img{
+    content:url("assets/hackathon.png");
+}
+.hackTag span::after{
+    content: "Hackathon";
+}
+.researchTag img{
+    content:url("assets/research.png");
+}
+.researchTag span::after{
+    content: "Research";
+}
+.aiTag img{
+    content:url("assets/ai.png");
+}
+.aiTag span::after{
+    content: "AI";
 }
 
 @media (max-width: 600px) {
