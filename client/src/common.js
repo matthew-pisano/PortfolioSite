@@ -84,7 +84,7 @@ function build(pageInfo, tiles){
         }
         {
             tiles.map((tile, i) =>{
-                console.log("Mapping tile "+i);
+                //console.log("Mapping tile "+i);
                 if(!tile.tags) tile.tags = [];
                 let contentStyle = tile.thumbnail && !(tile.type === "gallery") ? {} : {width: "100%"};
                 let imgStyle = tile.thumbnail && !(tile.type === "gallery") ? {} : {display: "block", margin: "auto"};
@@ -135,6 +135,8 @@ function showPage(page){
 }
 function setActiveEditor(active){
     let editorContent = document.getElementById("editorContent");
+    if(activeEditor)
+        eval(scriptParse(pages[activeEditor].content).scripts);
     /*if(activeEditor)
         setFileContent(activeEditor, editorContent.innerText.replace("\t", "    "));*/
     activeEditor = active;
@@ -214,27 +216,26 @@ function newFile(fileName){
 }
 function setFileContent(fileId, content){
     pages[fileId].content = content;
-    document.getElementById(fileId+"Page").innerHTML = pages[fileId].content.replace("<body", "<div").replace("</body>", "</div>");
-    let scriptText = document.getElementById("evalScript").innerHTML;
-    console.log(scriptText);
-    eval(scriptText);
+    document.getElementById(fileId+"Page").innerHTML = scriptParse(pages[fileId].content.replace("<body", "<div").replace("</body>", "</div>")).content;
 }
 function scriptParse(content){
     let cutContent = content;
     let scripts = "";
+    //console.log("Parsing script: "+content);
     while(cutContent.includes("<script")){
         let scriptStart = cutContent.indexOf(">", cutContent.indexOf("<script"))+1;
-        if(scriptStart === 0) continue;
+        if(scriptStart === 0) {
+            cutContent = cutContent.replace("<script", "");
+            continue;
+        }
         let scriptEnd = cutContent.indexOf("</script>", scriptStart);
         scripts += cutContent.substring(scriptStart, scriptEnd);
         if(!scripts.endsWith(";")) scripts += ";";
         //Remove script from html
-        cutContent = cutContent.slice(cutContent.indexOf("<script"), scriptEnd+9);
+        cutContent = cutContent.slice(0, cutContent.indexOf("<script")) + cutContent.slice(scriptEnd+9);
     }
-    return [cutContent, scripts];
-}
-function exports(){
-    console.log("exports");
+    //console.log(cutContent, scripts);
+    return {content: cutContent, scripts: scripts};
 }
 function renameActive(){
     console.log("renaming: "+selectedFile);

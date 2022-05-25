@@ -13,7 +13,7 @@ let contentHtml = `
     <h1 class="centered">Welcome</h1><br>
     <h3 class="centered">to the HTML editor!</h3>
 
-    <ul id="lister" class="w3-ul w3-card-4" style="margin: 30px" onclick="tester()">
+    <ul id="lister" class="w3-ul w3-card-4" style="margin: 30px">
         <li><h3>About</h3>
             <p>As a programmer and a student, I am passionate about teaching others what I already know.
             I enjoy showing others how my projects work and how all of its components come together.</p>
@@ -33,13 +33,14 @@ let contentHtml = `
         </li>
     </ul>
 </body>
-<script id=evalScript>
+<script>
     console.log("helloe");
+    let strong = "doodee";
     function tester(){
         document.getElementById("lister").innerHTML = "Hello JavaScript!";
     }
     console.log(tester);
-    exports()
+    document.getElementById("lister").onclick = tester;
 </script>
 `;
 
