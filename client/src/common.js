@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import React from 'react';
-import {v4} from "uuid";
+import {v4} from 'uuid';
+import startStr from './Start';
 $.fn.visible = function() {
     return this.css('visibility', 'visible');
 };
@@ -30,6 +31,13 @@ let pages = {
     videntium: {name: "videntium.html"},
     anonHires: {name: "anonHires.html"},
     start: {name: "start.html"},
+};
+let customStasis = {
+    activeContainer: null, 
+    customRename: null, 
+    customFileIcon: null, 
+    customFile: null, 
+    customEdit: null
 };
 let collapseSidebar;
 function toggleSidebar(){
@@ -62,6 +70,11 @@ function build(pageInfo, tiles){
                 {pageInfo.gitLink ?
                     <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col" alt='gitLink'/>
                         <a className="w3-col" href={pageInfo.gitLink} target="_blank" rel="noreferrer">{pageInfo.gitTitle ? pageInfo.gitTitle : pageInfo.title}</a>
+                    </div> : <span></span>
+                }
+                {pageInfo.paperLink ?
+                    <div className="paperLink w3-row w3-mobile w3-col"><img className="w3-col" alt='paperLink'/>
+                        <a className="w3-col" href={pageInfo.paperLink} target="_blank" rel="noreferrer">{pageInfo.paperTitle ? pageInfo.paperTitle : pageInfo.title}</a>
                     </div> : <span></span>
                 }
                 {pageInfo.tags.map((tag, i) => 
@@ -121,6 +134,9 @@ function showPage(page){
     }
 }
 function setActiveEditor(active){
+    let editorContent = document.getElementById("editorContent");
+    /*if(activeEditor)
+        setFileContent(activeEditor, editorContent.innerText.replace("\t", "    "));*/
     activeEditor = active;
     console.log("Setting active editor to "+activeEditor);
     const elements = document.querySelectorAll('.activePage');
@@ -129,8 +145,8 @@ function setActiveEditor(active){
     });
     document.getElementById("fileEditor").style.display = activeEditor ? "block" : "none";
     if(!activeEditor) {
-        document.getElementById("editorLines").innerHTML = "1";
-        document.getElementById("editorContent").innerHTML = "";
+        editorContent.innerHTML = "1";
+        editorContent.innerHTML = "";
     }
     else
         showPage();
@@ -143,7 +159,7 @@ function refreshLineNums(){
     for(let i=1; i<=lineNum; i++)
         editorLines.innerHTML += i+"<br>";
 }
-function newFile(){
+function newFile(fileName){
     let customFileDiv = document.createElement("DIV");
     customFileDiv.className = "page container w3-rest lightText";
     customFileDiv.style.display = "none";
@@ -166,7 +182,7 @@ function newFile(){
         if(count === "") count = 1;
         else count ++;
     }
-    let fileName = "new"+count+".html";
+    if(!fileName) fileName = "new"+count+".html";
     let fileId = v4();
     explorerDiv.id = fileId+"-customContainer";
     customFileDiv.id = fileId+"Page";
@@ -194,14 +210,39 @@ function newFile(){
     document.getElementById("customContent").appendChild(explorerDiv);
     document.getElementById("wrapperContent").appendChild(customFileDiv);
     button.onclick();
+    return fileId;
+}
+function setFileContent(fileId, content){
+    pages[fileId].content = content;
+    document.getElementById(fileId+"Page").innerHTML = pages[fileId].content.replace("<body", "<div").replace("</body>", "</div>");
+    let scriptText = document.getElementById("evalScript").innerHTML;
+    console.log(scriptText);
+    eval(scriptText);
+}
+function scriptParse(content){
+    let cutContent = content;
+    let scripts = "";
+    while(cutContent.includes("<script")){
+        let scriptStart = cutContent.indexOf(">", cutContent.indexOf("<script"))+1;
+        if(scriptStart === 0) continue;
+        let scriptEnd = cutContent.indexOf("</script>", scriptStart);
+        scripts += cutContent.substring(scriptStart, scriptEnd);
+        if(!scripts.endsWith(";")) scripts += ";";
+        //Remove script from html
+        cutContent = cutContent.slice(cutContent.indexOf("<script"), scriptEnd+9);
+    }
+    return [cutContent, scripts];
+}
+function exports(){
+    console.log("exports");
 }
 function renameActive(){
     console.log("renaming: "+selectedFile);
-    let activeContainer = document.getElementById(selectedFile+"-customContainer");
-    let customFileIcon = activeContainer.children[0];
-    let customFile = activeContainer.children[1];
-    let customEdit = activeContainer.children[2];
-    activeContainer.innerHTML = '';
+    customStasis.activeContainer = document.getElementById(selectedFile+"-customContainer");
+    customStasis.customFileIcon = customStasis.activeContainer.children[0];
+    customStasis.customFile = customStasis.activeContainer.children[1];
+    customStasis.customEdit = customStasis.activeContainer.children[2];
+    customStasis.activeContainer.innerHTML = '';
     let customRename = document.createElement("INPUT");
     customRename.id = "customRename";
     customRename.className = "w3-input";
@@ -209,21 +250,25 @@ function renameActive(){
     customRename.style.height = "25px";
     customRename.style.color = "azure";
     customRename.onkeyup = (evt) => {
-        console.log("Key: "+evt.key);
-        if(""+evt.key === "Enter"){
-            console.log("New Name: "+customRename.value);
-            pages[selectedFile].name = customRename.value.endsWith(".html") ? customRename.value : customRename.value+".html";
-            document.getElementById("pageTitle").innerText = pages[selectedFile].name;
-            customFile.innerText = customRename.value;
-            
-            activeContainer.innerHTML = '';
-            activeContainer.appendChild(customFileIcon);
-            activeContainer.appendChild(customFile);
-            activeContainer.appendChild(customEdit);
-        }
+        //console.log("Key: "+evt.key);
+        if(""+evt.key === "Enter")
+            finishRenaming(customRename);
     };
-    activeContainer.appendChild(customRename);
+    customStasis.activeContainer.appendChild(customRename);
     customRename.focus();
+}
+function finishRenaming(customRename){
+    if(customStasis.activeContainer === null) return;
+    if(customRename.value === "") customRename.value = pages[selectedFile].name;
+    console.log("New Name of "+selectedFile+": "+customRename.value);
+    pages[selectedFile].name = customRename.value.endsWith(".html") ? customRename.value : customRename.value+".html";
+    document.getElementById("pageTitle").innerText = pages[selectedFile].name;
+    customStasis.customFile.innerText = customRename.value;
+    
+    customStasis.activeContainer.innerHTML = '';
+    customStasis.activeContainer.appendChild(customStasis.customFileIcon);
+    customStasis.activeContainer.appendChild(customStasis.customFile);
+    customStasis.activeContainer.appendChild(customStasis.customEdit);
 }
 window.onload = () => {
     collapseSidebar = document.getElementById("collapseSidebar");
@@ -236,6 +281,8 @@ window.onload = () => {
         };
     }
     toggleSidebar();
+    let startId = newFile("start.html");
+    setFileContent(startId, startStr);
     showPage("home");
     document.getElementById("newAction").onclick = () => {
         $("#fileDropdown").fadeToggle();
@@ -245,11 +292,19 @@ window.onload = () => {
         $("#editDropdown").fadeToggle();
         renameActive();
     };
+    document.body.addEventListener('click', (evt) => {
+        $("#fileDropdown").fadeOut();
+        $("#editDropdown").fadeOut();
+        if(evt.target.id !== "customRename")
+            finishRenaming(document.getElementById("customRename"));
+    }, true); 
     let editorContent = document.getElementById("editorContent");
     editorContent.addEventListener('input', (event) => {
-        pages[activeEditor].content = editorContent.innerText.replace("\t", "    ");
+        let editorContent = document.getElementById("editorContent");
+        setFileContent(activeEditor, editorContent.innerText.replace("\t", "    "));
+        //pages[activeEditor].content = editorContent.innerText.replace("\t", "    ");
         if(editorContent.innerText.length > 0){
-            document.getElementById(activeEditor+"Page").innerHTML = pages[activeEditor].content;
+            //document.getElementById(activeEditor+"Page").innerHTML = pages[activeEditor].content;
             let pageElem = document.getElementById(activeEditor+"Page");
             let lineNum = pageElem.innerHTML.split(/\r\n|\r|\n/).length;
             document.getElementById("linesStatus").innerText = (lineNum > 1 ? lineNum-1 : 1)+" Lines";
