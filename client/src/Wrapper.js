@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Home from './Home';
 import Imperium from './Imperium';
 import Simplex from './Simplex';
@@ -75,6 +75,7 @@ class Wrapper extends Component {
                     }>{tree.name}</button>
                 </div>;
         }
+
         return (
             <body className="w3-display-container">
                 <header className="menuBar w3-row" style={{top: '0px'}}>
@@ -98,14 +99,14 @@ class Wrapper extends Component {
                             {recurse(hierarchy)}
                         </div>
                     </div>
-                    <Home/>
+                    {/*<Home/>
                     <Simplex/>
                     <Imperium/>
                     <MipsCmd/>
                     <Inception/>
                     <Videntium/>
                     <AnonHires/>
-                    <Neural/>
+                    <Neural/>*/}
                     <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                         <div id="editorLines" className="w3-col">1</div>
                         <div id="editorContent" className="w3-col"contentEditable="true"></div>

@@ -135,8 +135,11 @@ function showPage(page){
 }
 function setActiveEditor(active){
     let editorContent = document.getElementById("editorContent");
-    if(activeEditor)
-        eval(scriptParse(pages[activeEditor].content).scripts);
+    if(activeEditor){
+        let parsed = scriptParse(pages[activeEditor].content, true);
+        document.getElementById(activeEditor+"Page").innerHTML = parsed.content;
+        eval(parsed.scripts);
+    }
     /*if(activeEditor)
         setFileContent(activeEditor, editorContent.innerText.replace("\t", "    "));*/
     activeEditor = active;
@@ -216,12 +219,14 @@ function newFile(fileName){
 }
 function setFileContent(fileId, content){
     pages[fileId].content = content;
-    document.getElementById(fileId+"Page").innerHTML = scriptParse(pages[fileId].content.replace("<body", "<div").replace("</body>", "</div>")).content;
+    document.getElementById(fileId+"Page").innerHTML = scriptParse(pages[fileId].content).content;
 }
-function scriptParse(content){
+function scriptParse(content, prepareScripts){
     let cutContent = content;
     let scripts = "";
     //console.log("Parsing script: "+content);
+    let styleString = cutContent.substring(cutContent.indexOf("<style")+6, cutContent.indexOf("</style>"));
+    cutContent = cutContent.replace(styleString, styleString.replace("body{", "#_bodyDiv_{"));
     while(cutContent.includes("<script")){
         let scriptStart = cutContent.indexOf(">", cutContent.indexOf("<script"))+1;
         if(scriptStart === 0) {
@@ -230,12 +235,27 @@ function scriptParse(content){
         }
         let scriptEnd = cutContent.indexOf("</script>", scriptStart);
         scripts += cutContent.substring(scriptStart, scriptEnd);
-        if(!scripts.endsWith(";")) scripts += ";";
+        if(!scripts.trimEnd().endsWith(";")) scripts += ";";
+
         //Remove script from html
         cutContent = cutContent.slice(0, cutContent.indexOf("<script")) + cutContent.slice(scriptEnd+9);
     }
+    cutContent = cutContent.replace('<body', '<div id="_bodyDiv_"').replace("</body>", "</div>");
+    if(prepareScripts){
+        console.log(cutContent);
+        while(cutContent.includes('onclick="')){
+            let onclick = cutContent.substring(cutContent.indexOf('onclick="')+9, cutContent.indexOf('"', cutContent.indexOf('onclick="')+9));
+            console.log("Got onclick: "+onclick);
+            let clickId = v4();
+            cutContent = cutContent.replace('onclick="'+onclick+'"', 'clicktag="'+clickId+'"');
+            console.log(`'[clicktag="`+clickId+`"]'`);
+            scripts += `console.log(document.querySelectorAll('ul'), document.querySelectorAll('[clicktag="`+clickId+`"]'));`;
+            scripts += `document.querySelectorAll('[clicktag="`+clickId+`"]')[0].onclick = () => {`+onclick+`};`;
+        }
+        return {content: cutContent, scripts: scripts};
+    }
     //console.log(cutContent, scripts);
-    return {content: cutContent, scripts: scripts};
+    return {content: cutContent, scripts: null};
 }
 function renameActive(){
     console.log("renaming: "+selectedFile);
@@ -284,6 +304,9 @@ window.onload = () => {
     toggleSidebar();
     let startId = newFile("start.html");
     setFileContent(startId, startStr);
+    let parsed = scriptParse(pages[startId].content, true);
+    document.getElementById(startId+"Page").innerHTML = parsed.content;
+    eval(parsed.scripts);
     showPage("home");
     document.getElementById("newAction").onclick = () => {
         $("#fileDropdown").fadeToggle();
@@ -303,9 +326,7 @@ window.onload = () => {
     editorContent.addEventListener('input', (event) => {
         let editorContent = document.getElementById("editorContent");
         setFileContent(activeEditor, editorContent.innerText.replace("\t", "    "));
-        //pages[activeEditor].content = editorContent.innerText.replace("\t", "    ");
         if(editorContent.innerText.length > 0){
-            //document.getElementById(activeEditor+"Page").innerHTML = pages[activeEditor].content;
             let pageElem = document.getElementById(activeEditor+"Page");
             let lineNum = pageElem.innerHTML.split(/\r\n|\r|\n/).length;
             document.getElementById("linesStatus").innerText = (lineNum > 1 ? lineNum-1 : 1)+" Lines";
