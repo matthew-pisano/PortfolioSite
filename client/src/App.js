@@ -1,23 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-import {
-    BrowserRouter as Router,
-    Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Wrapper from './Wrapper';
-import { Routes } from 'react-router-dom';
 
-class App extends Component {
-    render() {
-        console.log("routing");
-        return (
-            <Router>
-                <Routes>
-                    <Route path={"/"} element={<Wrapper/>}/>
-                </Routes>
-            </Router>
-        );
-    }
-}
+const App = () => {
+    console.log("routing");
+    return (
+        <Wrapper/>
+    );
+};
 
 export default App;

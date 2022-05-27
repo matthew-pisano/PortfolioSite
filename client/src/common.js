@@ -40,6 +40,44 @@ let customStasis = {
     customEdit: null
 };
 let collapseSidebar;
+let hierarchy = {
+    name: "public/",
+    subTree: [
+        {name: "home.html"},
+        {
+            name: "personal/",
+            subTree: [
+                {name: "simplex.html"},
+                {name: "imperium.html"},
+                {name: "inception.html"},
+            ]
+        },
+        {
+            name: "research/",
+            subTree: [
+                {name: "neural.html"},
+                {name: "chipFiring.html"},
+            ]
+        },
+        {
+            name: "school/",
+            subTree: [
+                {name: "videntium.html"},
+                {name: "mipsCmd.html"},
+            ]
+        },
+        {
+            name: "hackathons/",
+            subTree: [
+                {name: "anonHires.html"},
+            ]
+        },
+        {
+            name: "custom/",
+            subTree: []
+        }
+    ]
+};
 function toggleSidebar(){
     if(sidebarOpen){
         collapseSidebar.innerText = ">";
@@ -47,6 +85,7 @@ function toggleSidebar(){
         $("#sidebar").animate({"width": sidebarMin});
         $("#sidebarContent").animate({"width": "0px"});
         $(".page").animate({"margin-left": sidebarMin});
+        $("#terminalHolder").animate({"margin-left": sidebarMin});
         $(".titleCard").animate({"margin-left": sidebarMin});
         $("#fileEditor").animate({"margin-left": sidebarMin});
         sidebarOpen = false;
@@ -58,6 +97,7 @@ function toggleSidebar(){
         $("#fileEditor").animate({"margin-left": sidebarMax});
         $("#sidebarContent").animate({"width": "100%"});
         $("#sidebar").animate({"width": sidebarMax});
+        $("#terminalHolder").animate({"margin-left": sidebarMax});
         $(".sidebarItem").visible();
         sidebarOpen = true;
     }
@@ -242,7 +282,7 @@ function scriptParse(content, prepareScripts){
     }
     cutContent = cutContent.replace('<body', '<div id="_bodyDiv_"').replace("</body>", "</div>");
     if(prepareScripts){
-        console.log(cutContent);
+        //console.log(cutContent);
         while(cutContent.includes('onclick="')){
             let onclick = cutContent.substring(cutContent.indexOf('onclick="')+9, cutContent.indexOf('"', cutContent.indexOf('onclick="')+9));
             console.log("Got onclick: "+onclick);
@@ -364,4 +404,4 @@ window.onscroll = (event) => {
     }
     console.log(aboveBottom);
 };
-export {$, showPage, build};
+export {$, showPage, build, hierarchy};

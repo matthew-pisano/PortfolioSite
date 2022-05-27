@@ -1,3 +1,46 @@
+#terminalHolder{
+    background-color: #1e1e1e;
+    color: azure;
+    position: fixed;
+    bottom: 30px;
+    width: 100%; 
+}
+#terminalOutput{
+    position: fixed;
+    bottom: 70px;
+    height: 130px;
+    width: 100%;
+    overflow: scroll;
+}
+#terminalPrompt{
+    position: fixed;
+    bottom: 30px;
+    height: 40px;
+    width: auto;
+}
+#terminalInput{
+    position: fixed;
+    bottom: 30px;
+    height: 40px;
+    width: 100%;
+    margin-left: 120px;
+}
+#terminalInput:focus-visible{
+    outline: none;
+}
+#terminal{
+    border: 1px solid black; 
+    height: 200px;
+}
+#terminalThumb{
+    background: #838383;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    cursor: row-resize;
+    height: 10px;
+}
+
 .lightText {
     color: azure;
 }
