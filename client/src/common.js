@@ -41,43 +41,78 @@ let customStasis = {
 };
 let collapseSidebar;
 let hierarchy = {
-    name: "public/",
-    subTree: [
-        {name: "home.html"},
-        {
-            name: "personal/",
-            subTree: [
-                {name: "simplex.html"},
-                {name: "imperium.html"},
-                {name: "inception.html"},
-            ]
-        },
-        {
-            name: "research/",
-            subTree: [
-                {name: "neural.html"},
-                {name: "chipFiring.html"},
-            ]
-        },
-        {
-            name: "school/",
-            subTree: [
-                {name: "videntium.html"},
-                {name: "mipsCmd.html"},
-            ]
-        },
-        {
-            name: "hackathons/",
-            subTree: [
-                {name: "anonHires.html"},
-            ]
-        },
-        {
-            name: "custom/",
-            subTree: []
-        }
-    ]
+    name: "/",
+    subTree: [{
+        name: "home/",
+        subTree: [
+            {name: "user/",
+                subTree: [
+                    {name: "public/",
+                    subTree: [
+                        {name: "home.html"},
+                        {
+                            name: "personal/",
+                            subTree: [
+                                {name: "simplex.html"},
+                                {name: "imperium.html"},
+                                {name: "inception.html"},
+                            ]
+                        },
+                        {
+                            name: "research/",
+                            subTree: [
+                                {name: "neural.html"},
+                                {name: "chipFiring.html"},
+                            ]
+                        },
+                        {
+                            name: "school/",
+                            subTree: [
+                                {name: "videntium.html"},
+                                {name: "mipsCmd.html"},
+                            ]
+                        },
+                        {
+                            name: "hackathons/",
+                            subTree: [
+                                {name: "anonHires.html"},
+                            ]
+                        },
+                        {
+                            name: "custom/",
+                            subTree: []
+                        }
+                    ]}
+                ]
+            }]
+        }]
 };
+function navHierarchy(path){
+    let tokens = path.split("/");
+    if(tokens[tokens.length-1] === "") tokens.pop();
+    let current = hierarchy;
+    console.log("Nav tokens: "+tokens);
+    while(tokens.length > 0){
+        let foundPath = false;
+        console.log("Current token: "+tokens[0], current);
+        if(tokens.length === 1 && tokens[0] === current.name.replace("/", "")) {
+            console.log("File at path: "+current.name);
+            return current;
+        }
+        for(let i=0; i<current.subTree.length; i++){
+            console.log(current.subTree[i].name, tokens[1]+"/", tokens);
+            if(current.subTree[i].name === tokens[1]+"/"){
+                console.log("Found: "+current.subTree[i].name);
+                current = current.subTree[i];
+                tokens.shift();
+                foundPath = true;
+            }
+        }
+        if(!foundPath) return null;
+    }
+    console.log("File at path: "+current.name);
+    return current;
+}
 function toggleSidebar(){
     if(sidebarOpen){
         collapseSidebar.innerText = ">";
@@ -254,6 +289,7 @@ function newFile(fileName){
     explorerDiv.appendChild(editImg);
     document.getElementById("customContent").appendChild(explorerDiv);
     document.getElementById("wrapperContent").appendChild(customFileDiv);
+    navHierarchy("/home/user/public/custom").subTree.push({name: fileName});
     button.onclick();
     return fileId;
 }
@@ -320,11 +356,21 @@ function renameActive(){
 }
 function finishRenaming(customRename){
     if(customStasis.activeContainer === null) return;
+    let newName = customRename.value.endsWith(".html") ? customRename.value : customRename.value+".html";
     if(customRename.value === "") customRename.value = pages[selectedFile].name;
+    else{
+        let customList = navHierarchy("/home/user/public/custom").subTree;
+        for(let i=0; i<customList.length; i++){
+            if(customList[i].name === pages[selectedFile].name){
+                customList[i].name = newName;
+                break;
+            }
+        }
+    }
     console.log("New Name of "+selectedFile+": "+customRename.value);
-    pages[selectedFile].name = customRename.value.endsWith(".html") ? customRename.value : customRename.value+".html";
+    pages[selectedFile].name = newName;
     document.getElementById("pageTitle").innerText = pages[selectedFile].name;
-    customStasis.customFile.innerText = customRename.value;
+    customStasis.customFile.innerText = newName;
     
     customStasis.activeContainer.innerHTML = '';
     customStasis.activeContainer.appendChild(customStasis.customFileIcon);
@@ -349,16 +395,18 @@ window.onload = () => {
     eval(parsed.scripts);
     showPage("home");
     document.getElementById("newAction").onclick = () => {
-        $("#fileDropdown").fadeToggle();
+        $("#fileDropdown").fadeOut();
         newFile();
     };
     document.getElementById("renameAction").onclick = () => {
-        $("#editDropdown").fadeToggle();
+        $("#editDropdown").fadeOut();
         renameActive();
     };
     document.body.addEventListener('click', (evt) => {
-        $("#fileDropdown").fadeOut();
-        $("#editDropdown").fadeOut();
+        if(evt.target.id !== "fileButton")
+            $("#fileDropdown").fadeOut();
+        if(evt.target.id !== "editButton")
+            $("#editDropdown").fadeOut();
         if(evt.target.id !== "customRename")
             finishRenaming(document.getElementById("customRename"));
     }, true); 
@@ -404,4 +452,4 @@ window.onscroll = (event) => {
     }
     console.log(aboveBottom);
 };
-export {$, showPage, build, hierarchy};
+export {$, showPage, build, hierarchy, navHierarchy};

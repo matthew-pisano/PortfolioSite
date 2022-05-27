@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import * as common from './common';
 
 const TerminalDiv = () => {
-    
+    const homeDir = "/home/user/";
     const [initialPos,   setInitialPos] = useState(null);
     const [initialSize, setInitialSize] = useState(null);
     const [terminalClosed, setTerminalClosed] = useState(false);
-    const [cwd, protoSetCwd] = useState("/home/user");
+    const [cwd, protoSetCwd] = useState(homeDir);
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
     const [commandIndex, setCommandIndex] = useState(-1);
@@ -14,6 +15,7 @@ const TerminalDiv = () => {
         return "["+(newCwd ? newCwd : cwd)+"]$ ";
     };
     const setCwd = (newCwd) => {
+        if(newCwd[newCwd.length-1] !== "/") newCwd += "/";
         protoSetCwd(newCwd);
         document.getElementById('terminalPrompt').innerText = genPrompt();
         document.getElementById('terminalInput').style.marginLeft = (9*genPrompt(newCwd).length+5)+"px";
@@ -66,12 +68,42 @@ const TerminalDiv = () => {
     const parseCommand = (command) => {
         let tokens = command.split(" ");
         console.log(tokens);
+        let targetPath = false;
+        let absPath = "";
+        let outStr = "";
+        for(let i=0; i<tokens.length; i++){
+            if(tokens[i] === ".") tokens[i] = cwd;
+            else if(tokens[i] === "..") tokens[i] = cwd.substring(0, cwd.substring(0, cwd.length-1).lastIndexOf("/"));
+            else if(tokens[i] === "~") tokens[i] = homeDir;
+        }
+        console.log(tokens);
         switch (tokens[0]) {
             case 'help':
                 return genPrompt()+command+"\n"+helpMsg;
             case 'cd':
-                setCwd(tokens[1]);
+                absPath = tokens[1];
+                if(tokens[1][0] === "/") targetPath = common.navHierarchy(tokens[1]);
+                else {
+                    targetPath = common.navHierarchy(cwd+tokens[1]);
+                    absPath = cwd+absPath;
+                }
+                if(targetPath) setCwd(absPath);
+                else return genPrompt()+command+"\nCould not find path: '"+absPath+"'";
                 return genPrompt()+command;
+            case 'ls':
+                absPath = tokens.length > 1 ? tokens[1] : cwd;
+                if(tokens.length > 1 && tokens[1][0] === "/") targetPath = common.navHierarchy(tokens[1]);
+                else if(tokens.length > 1){
+                    targetPath = common.navHierarchy(cwd+tokens[1]);
+                    absPath = cwd+absPath;
+                }
+                else targetPath = common.navHierarchy(cwd);
+                if(targetPath){
+                    for(let i=0; i<targetPath.subTree.length; i++)
+                        outStr += "\n"+targetPath.subTree[i].name;
+                }
+                else return genPrompt()+command+"\nCould not find path: '"+absPath+"'";
+                return genPrompt()+command+outStr;
             default:
                 return genPrompt()+command+"\nUnknown command: '"+command+"'";
         }

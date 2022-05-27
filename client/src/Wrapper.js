@@ -58,7 +58,7 @@ const Wrapper = () => {
                     <button id="collapseSidebar" className="w3-button">&#60;</button>
                     <div id="sidebarContent" className="w3-display-container w3-row">
                         <p className="sidebarItem lightText" style={{borderStyle: 'none'}}>Explorer</p>
-                        {recurse(common.hierarchy)}
+                        {recurse(common.navHierarchy("/home/user/public/"))}
                     </div>
                 </div>
                 <Home/>
