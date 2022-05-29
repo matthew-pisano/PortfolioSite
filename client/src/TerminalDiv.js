@@ -5,7 +5,7 @@ const TerminalDiv = () => {
     const homeDir = "/home/user/";
     const [initialPos,   setInitialPos] = useState(null);
     const [initialSize, setInitialSize] = useState(null);
-    const [terminalClosed, setTerminalClosed] = useState(false);
+    const [terminalClosed, setTerminalClosed] = useState(true);
     const [cwd, protoSetCwd] = useState(homeDir);
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
@@ -60,54 +60,112 @@ const TerminalDiv = () => {
             document.getElementById('terminalInput').innerText = "";
             if(prevCommands[prevCommands.length-1] !== command) prevCommands.push(command);
             setDraftCommand("");
-            terminalOutput.innerText += "\n"+parseCommand(command);
+            let commandOut = parseCommand(command);
+            terminalOutput.innerText += "\n"+commandOut;
         }
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
     };
     
-    const parseCommand = (command) => {
+    function parseCommand(command){
         let tokens = command.split(" ");
-        console.log(tokens);
+        //console.log(tokens);
         let targetPath = false;
+        let outStr = genPrompt()+command;
         let absPath = "";
-        let outStr = "";
         for(let i=0; i<tokens.length; i++){
             if(tokens[i] === ".") tokens[i] = cwd;
             else if(tokens[i] === "..") tokens[i] = cwd.substring(0, cwd.substring(0, cwd.length-1).lastIndexOf("/"));
             else if(tokens[i] === "~") tokens[i] = homeDir;
         }
-        console.log(tokens);
+        //console.log(tokens);
+        function resolvePath(path){
+            absPath = path ? path : cwd;
+            if(tokens.length > 1 && path[0] === "/") targetPath = common.navHierarchy(path);
+            else if(tokens.length > 1){
+                targetPath = common.navHierarchy(cwd+path);
+                absPath = cwd+absPath;
+            }
+        }
         switch (tokens[0]) {
+            case '':
+                return outStr;
+            case 'echo':
+                for(let i=1; i<tokens.length; i++) outStr += "\n"+tokens[i];
+                return outStr;
+            case 'touch':
+                if(tokens.length > 1){
+                    let newName = tokens[1].endsWith(".html") ? tokens[1] : tokens[1]+".html";
+                    for(let pageId in common.pages)
+                        if(common.pages[pageId].name === newName)
+                            return outStr+"\n File '"+newName+"' already exists";
+                        
+                    common.newFile(newName);
+                    return outStr+"\nCreated file '"+newName+"'";
+                }
+                return outStr+"\touch command requires an argument";
+            case 'ren':
+                if(tokens.length > 2){
+                    let oldName = tokens[1].replace(".html", "");
+                    let newName = tokens[2].endsWith(".html") ? tokens[2] : tokens[2]+".html";
+                    let oldId = null;
+                    console.log(oldName, common.pages);
+                    for(let pageId in common.pages)
+                        if(common.pages[pageId].name.replace(".html", "") === oldName){
+                            oldId = pageId;
+                            break;
+                        }
+                    if(!oldId) return outStr+"\nFile: '"+oldName+"' does not exist";
+                    common.finishRenaming(oldId, newName);
+                    return outStr+"\nRenamed file '"+oldName+"' to '"+newName+"'";
+                }
+                return outStr+"\touch command requires an argument";
+            case 'cls':
+            case 'clear':
+                document.getElementById("terminalOutput").innerText = "";
+                return outStr;
             case 'help':
-                return genPrompt()+command+"\n"+helpMsg;
+                return outStr+"\n"+helpMsg;
             case 'cd':
-                absPath = tokens[1];
-                if(tokens[1][0] === "/") targetPath = common.navHierarchy(tokens[1]);
-                else {
-                    targetPath = common.navHierarchy(cwd+tokens[1]);
-                    absPath = cwd+absPath;
+                if(tokens.length === 1){
+                    setCwd(homeDir);
+                    return outStr;
                 }
+                resolvePath(tokens[1]);
+                targetPath = common.navHierarchy(absPath);
                 if(targetPath) setCwd(absPath);
-                else return genPrompt()+command+"\nCould not find path: '"+absPath+"'";
-                return genPrompt()+command;
+                else return outStr+"\nCould not find path: '"+absPath+"'";
+                return outStr;
             case 'ls':
-                absPath = tokens.length > 1 ? tokens[1] : cwd;
-                if(tokens.length > 1 && tokens[1][0] === "/") targetPath = common.navHierarchy(tokens[1]);
-                else if(tokens.length > 1){
-                    targetPath = common.navHierarchy(cwd+tokens[1]);
-                    absPath = cwd+absPath;
-                }
-                else targetPath = common.navHierarchy(cwd);
+                resolvePath(tokens[1]);
+                targetPath = common.navHierarchy(tokens.length < 2 ? cwd : absPath);
                 if(targetPath){
                     for(let i=0; i<targetPath.subTree.length; i++)
                         outStr += "\n"+targetPath.subTree[i].name;
                 }
-                else return genPrompt()+command+"\nCould not find path: '"+absPath+"'";
-                return genPrompt()+command+outStr;
+                else return outStr+"\nCould not find path: '"+absPath+"'";
+                return outStr;
+            case 'cat':
+                if(tokens.length < 2) return outStr+"\ncat command requires an argument";
+                resolvePath(tokens[1]);
+                targetPath = common.navHierarchy(absPath);
+                if(!targetPath) return outStr+"\nCould not find path: '"+absPath+"'";
+                if(!targetPath.subTree){
+                    for(let i=0; i<Object.keys(common.pages).length; i++){
+                        let key = Object.keys(common.pages)[i];
+                        console.log("Checking ", targetPath.name, common.pages[key].name);
+                        if(targetPath.name === common.pages[key].name){
+                            let pageContent = common.pages[key].content;
+                            if(!pageContent) pageContent = document.getElementById(key+"Page").innerHTML;
+                            return outStr+"\n"+pageContent;
+                        }
+                    }
+                    return outStr+"\nFile: '"+targetPath.name+"' does not exist";
+                }
+                else return outStr+"\nPath: '"+absPath+"' must be a file";
             default:
-                return genPrompt()+command+"\nUnknown command: '"+command+"'";
+                return outStr+"\nUnknown command: '"+command+"'";
         }
-    };
+    }
     
     const onKeyDown = (e) => {
         let newI = commandIndex;
@@ -134,10 +192,10 @@ const TerminalDiv = () => {
                 onDragStart = {initial} 
                 onDragEnd = {resize}
             />
-            <div id='terminal'>
+            <div id='terminal' onClick={() => document.getElementById("terminalInput").focus()}>
                 <span>Terminal</span>
                 <div id="terminalOutput"></div>
-                <div id="terminalBottom">
+                <div id="terminalBottom" style={{visibility: "hidden"}}>
                     <div id="terminalPrompt">{genPrompt()}</div>
                     <div id="terminalInput" contentEditable="true" onInput={onInput} onKeyDown={onKeyDown}></div>
                 </div>

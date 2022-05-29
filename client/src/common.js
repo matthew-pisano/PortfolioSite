@@ -19,7 +19,7 @@ let menuBindings = {
     "helpButton": "helpDropdown"
 };
 let activeEditor = undefined;
-let selectedFile = undefined;
+let selectedFileId = undefined;
 let pages = {
     home: {name: "home.html"},
     imperium: {name: "imperium.html"},
@@ -32,13 +32,7 @@ let pages = {
     anonHires: {name: "anonHires.html"},
     start: {name: "start.html"},
 };
-let customStasis = {
-    activeContainer: null, 
-    customRename: null, 
-    customFileIcon: null, 
-    customFile: null, 
-    customEdit: null
-};
+let stasis = {container: null};
 let collapseSidebar;
 let hierarchy = {
     name: "/",
@@ -100,12 +94,13 @@ function navHierarchy(path){
             return current;
         }
         for(let i=0; i<current.subTree.length; i++){
-            console.log(current.subTree[i].name, tokens[1]+"/", tokens);
-            if(current.subTree[i].name === tokens[1]+"/"){
+            console.log(current.subTree[i].name.replace("/", ""), tokens[1], tokens);
+            if(current.subTree[i].name.replace("/", "") === tokens[1]){
                 console.log("Found: "+current.subTree[i].name);
                 current = current.subTree[i];
                 tokens.shift();
                 foundPath = true;
+                break;
             }
         }
         if(!foundPath) return null;
@@ -274,7 +269,7 @@ function newFile(fileName){
     button.innerText = fileName;
     button.onclick = () => {
         console.log("selecetd file: "+fileId);
-        selectedFile = fileId;
+        selectedFileId = fileId;
         showPage(fileId);
         setActiveEditor();
     };
@@ -333,13 +328,14 @@ function scriptParse(content, prepareScripts){
     //console.log(cutContent, scripts);
     return {content: cutContent, scripts: null};
 }
-function renameActive(){
-    console.log("renaming: "+selectedFile);
-    customStasis.activeContainer = document.getElementById(selectedFile+"-customContainer");
-    customStasis.customFileIcon = customStasis.activeContainer.children[0];
-    customStasis.customFile = customStasis.activeContainer.children[1];
-    customStasis.customEdit = customStasis.activeContainer.children[2];
-    customStasis.activeContainer.innerHTML = '';
+function renameActive(fileId){
+    if(!fileId) fileId = selectedFileId;
+    console.log("renaming: "+fileId);
+    stasis.container = document.getElementById(fileId+"-customContainer");
+    stasis.icon = stasis.container.children[0];
+    stasis.expFile = stasis.container.children[1];
+    stasis.edit = stasis.container.children[2];
+    stasis.container.innerHTML = '';
     let customRename = document.createElement("INPUT");
     customRename.id = "customRename";
     customRename.className = "w3-input";
@@ -349,33 +345,42 @@ function renameActive(){
     customRename.onkeyup = (evt) => {
         //console.log("Key: "+evt.key);
         if(""+evt.key === "Enter")
-            finishRenaming(customRename);
+            finishRenaming(selectedFileId, customRename.value);
     };
-    customStasis.activeContainer.appendChild(customRename);
+    stasis.container.appendChild(customRename);
     customRename.focus();
 }
-function finishRenaming(customRename){
-    if(customStasis.activeContainer === null) return;
-    let newName = customRename.value.endsWith(".html") ? customRename.value : customRename.value+".html";
-    if(customRename.value === "") customRename.value = pages[selectedFile].name;
-    else{
+function finishRenaming(fileId, newName){
+    if(!fileId) fileId = selectedFileId;
+    if(newName) {
+        newName = newName.endsWith(".html") ? newName : newName+".html";
         let customList = navHierarchy("/home/user/public/custom").subTree;
         for(let i=0; i<customList.length; i++){
-            if(customList[i].name === pages[selectedFile].name){
+            if(customList[i].name === pages[fileId].name){
                 customList[i].name = newName;
                 break;
             }
         }
     }
-    console.log("New Name of "+selectedFile+": "+customRename.value);
-    pages[selectedFile].name = newName;
-    document.getElementById("pageTitle").innerText = pages[selectedFile].name;
-    customStasis.customFile.innerText = newName;
-    
-    customStasis.activeContainer.innerHTML = '';
-    customStasis.activeContainer.appendChild(customStasis.customFileIcon);
-    customStasis.activeContainer.appendChild(customStasis.customFile);
-    customStasis.activeContainer.appendChild(customStasis.customEdit);
+    else newName = pages[fileId].name;
+    console.log("New Name of "+fileId+": "+newName, pages);
+    pages[fileId].name = newName;
+    document.getElementById("pageTitle").innerText = pages[fileId].name;
+    if(!stasis.container) 
+        stasis.container = document.getElementById(fileId+"-customContainer");
+    console.log(stasis.container);
+    console.log(navHierarchy("/home/user/public/custom").subTree);
+    if(stasis.container.children.length >= 3){
+        stasis.icon = stasis.container.children[0];
+        stasis.expFile = stasis.container.children[1];
+        stasis.edit = stasis.container.children[2];
+    }
+    stasis.container.innerHTML = '';
+    stasis.container.appendChild(stasis.icon);
+    stasis.container.appendChild(stasis.expFile);
+    stasis.container.appendChild(stasis.edit);
+    stasis.container.children[1].innerText = newName;
+    stasis = {container: null};
 }
 window.onload = () => {
     collapseSidebar = document.getElementById("collapseSidebar");
@@ -407,8 +412,8 @@ window.onload = () => {
             $("#fileDropdown").fadeOut();
         if(evt.target.id !== "editButton")
             $("#editDropdown").fadeOut();
-        if(evt.target.id !== "customRename")
-            finishRenaming(document.getElementById("customRename"));
+        if(evt.target.id !== "customRename" && document.getElementById("customRename"))
+            finishRenaming(selectedFileId, document.getElementById("customRename").value);
     }, true); 
     let editorContent = document.getElementById("editorContent");
     editorContent.addEventListener('input', (event) => {
@@ -452,4 +457,4 @@ window.onscroll = (event) => {
     }
     console.log(aboveBottom);
 };
-export {$, showPage, build, hierarchy, navHierarchy};
+export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming};

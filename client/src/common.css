@@ -8,7 +8,7 @@
 #terminalOutput{
     position: fixed;
     bottom: 70px;
-    height: 130px;
+    height: 0px;
     width: 100%;
     overflow: scroll;
 }
@@ -30,7 +30,7 @@
 }
 #terminal{
     border: 1px solid black; 
-    height: 200px;
+    height: 30px;
 }
 #terminalThumb{
     background: #838383;
