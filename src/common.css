@@ -159,9 +159,11 @@
 }
 .folderIcon{
     content:url("assets/folder.png");
+    width: 15px;
 }
 .htmlIcon{
     content:url("assets/htmlFile.png");
+    width: 15px;
 }
 .sidebarContent{
     border-style: none none none solid;

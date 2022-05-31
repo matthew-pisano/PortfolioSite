@@ -39,7 +39,7 @@ const Wrapper = () => {
     }
 
     return (
-        <body className="w3-display-container">
+        <div className="w3-display-container">
             <header className="menuBar w3-row" style={{top: '0px'}}>
                 <button id="fileButton" className="menuItem lightText w3-button w3-col">File</button>
                 <button id="editButton" className="menuItem lightText w3-button w3-col">Edit</button>
@@ -82,7 +82,7 @@ const Wrapper = () => {
                 <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}></div>
                 <div id="itemStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>home.html</div>
             </footer>
-        </body>
+        </div>
     );
 };
 
