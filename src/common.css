@@ -1,3 +1,6 @@
+.openSidebar{
+    width: 200px;
+}
 #terminalHolder{
     background-color: #1e1e1e;
     color: azure;
@@ -86,7 +89,7 @@
 }
 .menuItem, .commandItem {
     width: auto;
-    padding: 2px 5px;
+    padding: 2px 8px;
 }
 #menuDropHolder {
     display: table; 
@@ -103,9 +106,10 @@
     display: none;
 }
 .menuDropItem {
-    width: 200px;
+    min-width: 200px;
     padding: 2px 3px;
     margin-left: 5px;
+    margin-right: 5px;
     text-align: left;
 }
 .commandItem:hover, .menuDropItem:hover {
@@ -137,7 +141,6 @@
     border-radius: 25px;
 }
 #sidebar {
-    width: 100px;
     height: 100%;
     margin-top: 35px;
     position: fixed; 
@@ -156,6 +159,9 @@
 }
 .sidebarFolder{
     border-style: none;
+}
+.sidebarFolder > button{
+    cursor: default;
 }
 .folderIcon{
     content:url("assets/folder.png");
@@ -188,7 +194,7 @@
     font-size: 20px;
     padding: 1px;
     color: azure;
-    background-color: #313131;
+    background-color: #414141;
     border-style: none none none solid;
     border-color: azure;
 }
@@ -336,5 +342,12 @@ body {
 @media (max-width: 600px) {
     #editorContent {
         width: 80%;
+    }
+    .openSidebar{
+        width: 100%;
+    }
+
+    #terminalHolder{
+        display: none;
     }
 }

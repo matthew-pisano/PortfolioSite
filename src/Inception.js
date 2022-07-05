@@ -28,8 +28,8 @@ class Inception extends Component {
         return (
             <div id="inceptionPage" className="page container w3-rest lightText" style={{display: "none"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Inception Collage</b><br/>
-                        Java program that assembles one image mosaic from many smaller images</h1>
+                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Inception Collage</b></h1><br/>
+                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Java program that assembles one image mosaic from many smaller images</h3>
                 </div>
                 {common.build(pageInfo, tiles)}
             </div>

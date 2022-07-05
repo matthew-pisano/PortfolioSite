@@ -45,8 +45,8 @@ class Videntium extends Component {
         return (
             <div id="videntiumPage" className="page container w3-rest lightText" style={{display: "none"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Videntium</b><br/>
-                        Online map viewer for Imperium written in PHP</h1>
+                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Videntium</b></h1><br/>
+                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Online map viewer for Imperium written in PHP</h3>
                 </div>
                 {common.build(pageInfo, tiles)}
             </div>

@@ -44,6 +44,7 @@ const Wrapper = () => {
                 <button id="fileButton" className="menuItem lightText w3-button w3-col">File</button>
                 <button id="editButton" className="menuItem lightText w3-button w3-col">Edit</button>
                 <button id="helpButton" className="menuItem lightText w3-button w3-col">Help</button>
+                <button id="contactButton" className="menuItem lightText w3-button w3-col">Contact Info</button>
             </header>
             <div id="wrapperContent" className="w3-display-container w3-row">
                 <div id="menuDropHolder">
@@ -53,11 +54,19 @@ const Wrapper = () => {
                     <div id="editDropdown" className="menuDropdown w3-col">
                         <button id="renameAction" className="w3-button lightText menuDropItem">Rename</button>
                     </div>
+                    <div id="contactDropdown" className="menuDropdown w3-col">
+                        <p className="lightText menuDropItem">+1 (845)-706-0677</p>
+                        <p className="lightText menuDropItem">matthewplisano14@gmail.com</p>
+                        <a className="lightText menuDropItem" style={{display: "block"}} href='https://www.linkedin.com/in/matthew-pisano-395827192' 
+                            target={"_blank"} rel="noreferrer">LinkedIn</a>
+                    </div>
                 </div>
-                <div id="sidebar" className="w3-col">
-                    <button id="collapseSidebar" className="w3-button">&#60;</button>
+                <div id="sidebar" className="w3-col" style={{width: "0px"}}>
+                    <div className="w3-cell-row">
+                        <button id="collapseSidebar" className="w3-button w3-cell">&#60;</button>
+                        <h4 id="explorerTitle" className="sidebarItem lightText w3-cell" style={{borderStyle: 'none', textAlign: 'center', verticalAlign: 'middle'}}>Explorer</h4>
+                    </div>
                     <div id="sidebarContent" className="w3-display-container w3-row">
-                        <p className="sidebarItem lightText" style={{borderStyle: 'none'}}>Explorer</p>
                         {recurse(common.navHierarchy("/home/user/public/"))}
                     </div>
                 </div>

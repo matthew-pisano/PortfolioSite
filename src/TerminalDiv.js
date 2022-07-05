@@ -29,7 +29,7 @@ const TerminalDiv = () => {
     
     const resize = (e) => {
         let height = initialSize + initialPos - e.clientY + 50;
-        console.log(height, terminalClosed);
+        //console.log(height, terminalClosed);
         if(height > 200){
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
@@ -56,7 +56,7 @@ const TerminalDiv = () => {
         let terminalOutput = document.getElementById('terminalOutput');
         if(e.nativeEvent.inputType === "insertParagraph"){
             let command = document.getElementById('terminalInput').innerText.trim();
-            console.log("Got command: "+command);
+            //console.log("Got command: "+command);
             document.getElementById('terminalInput').innerText = "";
             if(prevCommands[prevCommands.length-1] !== command) prevCommands.push(command);
             setDraftCommand("");

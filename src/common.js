@@ -10,13 +10,15 @@ $.fn.invisible = function() {
     return this.css('visibility', 'hidden');
 };
 let tilePositions = null;
-let sidebarOpen = false;
-let sidebarMax = "200px";
-let sidebarMin = "50px";
+let sidebarOpen = true;
+let initialOpen = true;
+let sidebarMax = 200;
+let sidebarMin = 50;
 let menuBindings = {
     "fileButton": "fileDropdown",
     "editButton": "editDropdown",
-    "helpButton": "helpDropdown"
+    "helpButton": "helpDropdown",
+    "contactButton": "contactDropdown",
 };
 let activeEditor = undefined;
 let selectedFileId = undefined;
@@ -30,6 +32,8 @@ let pages = {
     chipFiring: {name: "chipFiring.html"},
     videntium: {name: "videntium.html"},
     anonHires: {name: "anonHires.html"},
+    resume: {name: "resume.html"},
+    about: {name: "about.html"},
     start: {name: "start.html"},
 };
 let stasis = {container: null};
@@ -73,6 +77,13 @@ let hierarchy = {
                             ]
                         },
                         {
+                            name: "about/",
+                            subTree: [
+                                {name: "about.html"},
+                                {name: "resume.html"},
+                            ]
+                        },
+                        {
                             name: "custom/",
                             subTree: []
                         }
@@ -88,15 +99,15 @@ function navHierarchy(path){
     console.log("Nav tokens: "+tokens);
     while(tokens.length > 0){
         let foundPath = false;
-        console.log("Current token: "+tokens[0], current);
+        //console.log("Current token: "+tokens[0], current);
         if(tokens.length === 1 && tokens[0] === current.name.replace("/", "")) {
-            console.log("File at path: "+current.name);
+            //console.log("File at path: "+current.name);
             return current;
         }
         for(let i=0; i<current.subTree.length; i++){
-            console.log(current.subTree[i].name.replace("/", ""), tokens[1], tokens);
+            //console.log(current.subTree[i].name.replace("/", ""), tokens[1], tokens);
             if(current.subTree[i].name.replace("/", "") === tokens[1]){
-                console.log("Found: "+current.subTree[i].name);
+                //console.log("Found: "+current.subTree[i].name);
                 current = current.subTree[i];
                 tokens.shift();
                 foundPath = true;
@@ -105,29 +116,33 @@ function navHierarchy(path){
         }
         if(!foundPath) return null;
     }
-    console.log("File at path: "+current.name);
+    //console.log("File at path: "+current.name);
     return current;
 }
 function toggleSidebar(){
     if(sidebarOpen){
         collapseSidebar.innerText = ">";
         $(".sidebarItem").invisible();
-        $("#sidebar").animate({"width": sidebarMin});
+        //$("#sidebar").animate({"width": sidebarMin});
         $("#sidebarContent").animate({"width": "0px"});
-        $(".page").animate({"margin-left": sidebarMin});
-        $("#terminalHolder").animate({"margin-left": sidebarMin});
-        $(".titleCard").animate({"margin-left": sidebarMin});
-        $("#fileEditor").animate({"margin-left": sidebarMin});
+        document.getElementById("sidebar").classList.remove("openSidebar");
+        document.getElementById("sidebar").style.width = sidebarMin+"px";
+        $(".page").animate({"margin-left": sidebarMin+"px"});
+        $("#terminalHolder").animate({"margin-left": sidebarMin+"px"});
+        $(".titleCard").animate({"margin-left": sidebarMin+"px"});
+        $("#fileEditor").animate({"margin-left": sidebarMin+"px"});
         sidebarOpen = false;
     }
     else{
         collapseSidebar.innerText = "<";
-        $(".page").animate({"margin-left": sidebarMax});
-        $(".titleCard").animate({"margin-left": sidebarMax});
-        $("#fileEditor").animate({"margin-left": sidebarMax});
+        $(".page").animate({"margin-left": sidebarMax+"px"});
+        $(".titleCard").animate({"margin-left": sidebarMax+"px"});
+        $("#fileEditor").animate({"margin-left": sidebarMax+"px"});
         $("#sidebarContent").animate({"width": "100%"});
-        $("#sidebar").animate({"width": sidebarMax});
-        $("#terminalHolder").animate({"margin-left": sidebarMax});
+        //$("#sidebar").animate({"width": sidebarMax});
+        document.getElementById("sidebar").style.width = "";
+        document.getElementById("sidebar").classList.add("openSidebar");
+        $("#terminalHolder").animate({"margin-left": sidebarMax+"px"});
         $(".sidebarItem").visible();
         sidebarOpen = true;
     }
@@ -201,6 +216,10 @@ function showPage(page){
         document.getElementById("itemStatus").innerText = pages[page].name;
         document.getElementById("langStatus").innerText = "HTML";
         document.getElementById("encodingStatus").innerText = "UTF-8";
+        if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !initialOpen)
+            toggleSidebar();
+        
+        initialOpen = false;
     }
 }
 function setActiveEditor(active){
@@ -262,9 +281,9 @@ function newFile(fileName){
     explorerDiv.id = fileId+"-customContainer";
     customFileDiv.id = fileId+"Page";
     if(sidebarOpen)
-        customFileDiv.style.marginLeft = sidebarMax;
+        customFileDiv.style.marginLeft = sidebarMax+"px";
     else
-        customFileDiv.style.marginLeft = sidebarMax;
+        customFileDiv.style.marginLeft = sidebarMax+"px";
     pages[fileId] = {name: fileName, content: ""};
     button.innerText = fileName;
     button.onclick = () => {
@@ -408,10 +427,10 @@ window.onload = () => {
         renameActive();
     };
     document.body.addEventListener('click', (evt) => {
-        if(evt.target.id !== "fileButton")
-            $("#fileDropdown").fadeOut();
-        if(evt.target.id !== "editButton")
-            $("#editDropdown").fadeOut();
+        for(let [buttonId, dropId] of Object.entries(menuBindings)){
+            if(evt.target.id !== buttonId)
+                $("#"+dropId).hide(0);
+        }
         if(evt.target.id !== "customRename" && document.getElementById("customRename"))
             finishRenaming(selectedFileId, document.getElementById("customRename").value);
     }, true); 

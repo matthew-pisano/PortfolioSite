@@ -52,8 +52,8 @@ class AnonHires extends Component {
         return (
             <div id="anonHiresPage" className="page container w3-rest lightText" style={{display: "none"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Anon Hires</b><br/>
-                        A Web-based hiring platform with anonymity</h1>
+                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Anon Hires</b></h1><br/>
+                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A Web-based hiring platform with anonymity</h3>
                 </div>
                 {common.build(pageInfo, tiles)}
             </div>
