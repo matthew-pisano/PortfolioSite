@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import * as common from './common';
 
+let terminalClosed = true;
+const closeTerminal = () => {
+    document.getElementById('terminal').style.height = `30px`;
+    document.getElementById('terminalOutput').style.height = `0px`;
+    document.getElementById('terminalBottom').style.visibility = "hidden";
+    terminalClosed = true;
+};
+
 const TerminalDiv = () => {
     const homeDir = "/home/user/";
     const [initialPos,   setInitialPos] = useState(null);
     const [initialSize, setInitialSize] = useState(null);
-    const [terminalClosed, setTerminalClosed] = useState(true);
+    //const [terminalClosed, setTerminalClosed] = useState(true);
     const [cwd, protoSetCwd] = useState(homeDir);
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
@@ -34,23 +42,18 @@ const TerminalDiv = () => {
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
-            setTerminalClosed(false);
+            terminalClosed = false;
         }
         else if(terminalClosed){
             document.getElementById('terminal').style.height = `200px`;
             document.getElementById('terminalOutput').style.height = `130px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
-            setTerminalClosed(false);
+            terminalClosed = false;
         }
-        else{
-            document.getElementById('terminal').style.height = `30px`;
-            document.getElementById('terminalOutput').style.height = `0px`;
-            document.getElementById('terminalBottom').style.visibility = "hidden";
-            setTerminalClosed(true);
-        }
+        else closeTerminal();
+        
         
     };
-    
     const onInput = (e) => {
         //console.log(e);
         let terminalOutput = document.getElementById('terminalOutput');
@@ -162,6 +165,10 @@ const TerminalDiv = () => {
                     return outStr+"\nFile: '"+targetPath.name+"' does not exist";
                 }
                 else return outStr+"\nPath: '"+absPath+"' must be a file";
+            case 'exit':
+                closeTerminal();
+                document.getElementById("terminalOutput").innerText = "";
+                return outStr;
             default:
                 return outStr+"\nUnknown command: '"+command+"'";
         }
@@ -206,3 +213,4 @@ const TerminalDiv = () => {
 };
 
 export default TerminalDiv;
+export {closeTerminal};

@@ -6,45 +6,68 @@ class Home extends Component {
     render() {
         let tiles = [
             {
+                title: "#Research",
+                content: ``,
+                style: {backgroundColor: "#41414155"}
+            },
+            {
+                title: "Neural",
+                titleLink: "neural",
+                content: `A research project with the goal analyzing the differences between backpropagation, a genetic algorithm method,
+                    and the decision tree optimization when training on a dataset from the Vanderbilt University Department of Biostatics.  The goal
+                    of these networks was to predict whether a patient was diagnosed with type-II diabetes based on their health attributes.`,
+                gitLink: "https://github.com/ReactorDevelopment/NuralPy",
+                tags: ["research", "academic", "ai", "python"]
+            },
+            {
+                title: "Chip Firing",
+                titleLink: "chipFiring",
+                content: `A research paper focusing on mathematical chip firing games.  The aim of the project is the analyze these structures,
+                    notice patterns, and work with algorithms that find solutions to the game.`,
+                gitLink: "https://github.com/ReactorDevelopment/NuralPy",
+                tags: ["research", "academic"]
+            },
+            {
+                title: "#Featured Projects",
+                content: ``,
+                style: {backgroundColor: "#41414155"}
+            },
+            {
                 title: "Simplex",
+                titleLink: "simplex",
                 content: `An math-oriented interpreted scripting language built in Java.<br>
                     Simplex's focus is on mathematic and scientific calculations as it offers built-in matrix operations 
                     (multiplication, determinants, etc.) as well as many scientific and fundamental constants.<br>
                     Simplex also features an IDE to both help programming and educate users on how programming languages work.`,
-                thumbnail: "",
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/simplexCode.jpg",
                 gitLink: "https://github.com/ReactorDevelopment/SimplexIDE",
                 tags: ["personal", "java", "android"]
             },
             {
                 title: "Imperium",
+                titleLink: "imperium",
                 content: `Imperium is an android grand strategy game modeled after other popular titles on the PC platform.<br>
                     The goal of this project is to provide mobile users with a fun empire simulator in either historical 
                     settings within Europe or blank maps with game play more similar to the <i>RISK</i> board game.`,
-                thumbnail: "",
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/imperiumLogo.png",
                 gitLink: "https://github.com/ReactorDevelopment/Imperium",
                 tags: ["personal", "java", "android"]
             },
             {
-                title: "MIPS Command Processor",
-                content: `A simple command processor written in the MPIS assembly language.<br>
-                    It has the ability to play sound, preform mathematical operations on decimal or 
-                    hexadecimal numbers, analyze the memory of the program, and draw on the screen.`,
-                thumbnail: "",
-                gitLink: "https://github.com/ReactorDevelopment/MIPS-Command-Processor",
-                gitTitle: "MIPS Cmd",
-                tags: ["academic", "assembly"]
+                title: "#Hackathons",
+                content: ``,
+                style: {backgroundColor: "#41414155"}
             },
             {
-                title: "Inception Collage",
-                content: `Java program that assembles one image mosaic from many smaller images.<br>
-                    This can be used to create very large images with hundreds of smaller images composing it, making wonderful art. 
-                    The program takes the average color over any given area of the larger canvas and displays whichever smaller image matches 
-                    that color best in that spot.`,
-                thumbnail: "",
-                gitLink: "https://github.com/ReactorDevelopment/InceptionCollage",
-                gitTitle: "Inception",
-                tags: ["personal", "java"]
-            }
+                title: "Anonymous Hiring",
+                titleLink: "anonHires",
+                content: `This project was part of the HvTechFest Hackathon 2021.<br>
+                    The idea is to build a web platform for employers and employees, where the employer hires employees anonymously purely based on their talent. 
+                    Through this project the team hopes of tackling racial discrimination and gender biases in the hiring process.`,
+                gitLink: "https://github.com/OpenHubHackathonGreen/Anonymous-Hires",
+                gitTitle: "Anon Hires",
+                tags: ["hack", "collab", "js", "python", "html"]
+            },
         ];
         let pageInfo = {
             title: "Projects",

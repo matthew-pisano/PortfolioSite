@@ -43,7 +43,11 @@
     cursor: row-resize;
     height: 10px;
 }
-
+#resumeHolder{
+    width: 100%;
+    height: 1100px;
+    margin-bottom: 60px;
+}
 .lightText {
     color: azure;
 }
@@ -65,14 +69,15 @@
     padding: 10px;
 }
 .displayTile img {
-    width: 10%;
+    width: 25%;
     min-width: 50px;
-    max-width: 150px;
+    max-width: 300px;
     margin-right: 5px;
+    border-radius: 10px;
 }
 .displayTile > div {
     float: right;
-    width: 80%;
+    width: 75%;
 }
 .menuBar {
     position: fixed; 
@@ -137,19 +142,21 @@
     background-color: #2b40a1; 
     margin-top: 300px; 
     min-height: 500px; 
-    padding-top: 50px; 
+    padding-top: 50px;
+    padding-bottom: 10px;
     border-radius: 25px;
+    margin-bottom: 60px;
 }
 #sidebar {
-    height: 100%;
-    margin-top: 35px;
+    bottom: 35px;
+    top: 35px;
     position: fixed; 
     z-index: 2;
+    overflow-y: auto;
     background-color: #313131;
 }
 #sidebarContent {
     width: 100%;
-    height: 500px;
 }
 .sidebarItem {
     margin: 5px;
@@ -202,7 +209,7 @@
     background-color: #3e4146 !important;
     color: azure !important;
 }
-.gitLink, .paperLink{
+.gitLink, .extraLink{
     width: 200px;
     padding: 2px 5px;
     margin: 3px 5px;
@@ -210,11 +217,11 @@
     border-radius: 10px;
     color: azure;
 }
-.gitLink a, .paperLink a{
+.gitLink a, .extraLink a{
     float: right;
     width: 80%;
 }
-.gitLink img, .paperLink img{
+.gitLink img, .extraLink img{
     width: 10%;
     min-width: 20px;
     margin-right: 5px;
@@ -346,8 +353,17 @@ body {
     .openSidebar{
         width: 100%;
     }
-
     #terminalHolder{
         display: none;
+    }
+    #resumeHolder{
+        margin-bottom: 40px;
+        height: 500px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .displayTile > div {
+        width: 70%;
     }
 }

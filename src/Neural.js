@@ -10,10 +10,19 @@ class Neural extends Component {
                     and the decision tree optimization on the training and execution of a neural network.`
             },
             {
+                title: "Research Paper",
+                content: `While the paper originally intended to only be a short presentation of the project, my classmate and I 
+                    developed the presentation much further into a research paper under the guidance of our professor.  I used this as an opportunity
+                    to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
+                    The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
+                thumbnail: "",
+                gitLink: "https://github.com/ReactorDevelopment/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"
+            },
+            {
                 title: "Backpropagation",
                 content: `The backpropagation algorithm is one of the most widely used in neural networks today, with many applicable
                     situations.  This method acted similar to a control for this project, being compared to the other two algorithms in
-                    its performance and accuracy`,
+                    its performance and accuracy.`,
                 thumbnail: ""
             },
             {
@@ -115,8 +124,8 @@ class Neural extends Component {
             holderStyle: {backgroundColor: "#3c8aab", borderRadius: "10px"},
             gitLink: "https://github.com/ReactorDevelopment/NuralPy",
             gitTitle: "Neural",
-            pageLink: "https://github.com/ReactorDevelopment/NuralPy/blob/master/Docs/latex/report.pdf",
-            pageTitle: "Paper",
+            extraLink: "https://github.com/ReactorDevelopment/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf",
+            extraTitle: "Research Paper",
             tags: ["research", "academic", "ai", "python"]
         };
         return (

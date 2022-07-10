@@ -10,8 +10,8 @@ $.fn.invisible = function() {
     return this.css('visibility', 'hidden');
 };
 let tilePositions = null;
-let sidebarOpen = true;
-let initialOpen = true;
+let sidebarOpen = false;
+let pageLoaded = false;
 let sidebarMax = 200;
 let sidebarMin = 50;
 let menuBindings = {
@@ -150,19 +150,19 @@ function toggleSidebar(){
 function build(pageInfo, tiles){
     return <div id="tileHolder" className="inner w3-display-container" style={pageInfo.holderStyle}>
         {pageInfo.title ? 
-            <h1 className="" style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1> :
+            <h1 className="pageTitle" style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1> :
             <div className="w3-row">
                 {pageInfo.gitLink ?
                     <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col" alt='gitLink'/>
                         <a className="w3-col" href={pageInfo.gitLink} target="_blank" rel="noreferrer">{pageInfo.gitTitle ? pageInfo.gitTitle : pageInfo.title}</a>
                     </div> : <span></span>
                 }
-                {pageInfo.paperLink ?
-                    <div className="paperLink w3-row w3-mobile w3-col"><img className="w3-col" alt='paperLink'/>
-                        <a className="w3-col" href={pageInfo.paperLink} target="_blank" rel="noreferrer">{pageInfo.paperTitle ? pageInfo.paperTitle : pageInfo.title}</a>
+                {pageInfo.extraLink ?
+                    <div className="extraLink w3-row w3-mobile w3-col"><img className="w3-col" alt='extraLink'/>
+                        <a className="w3-col" href={pageInfo.extraLink} target="_blank" rel="noreferrer">{pageInfo.extraTitle ? pageInfo.extraTitle : pageInfo.title}</a>
                     </div> : <span></span>
                 }
-                {pageInfo.tags.map((tag, i) => 
+                {(pageInfo.tags ? pageInfo.tags : []).map((tag, i) => 
                     <div className={"w3-col tag "+tag+"Tag w3-mobile"} key={tag}><img className="w3-col" alt={tag}/><span className="w3-col"></span></div>)
                 }
             </div>
@@ -174,10 +174,12 @@ function build(pageInfo, tiles){
                 let contentStyle = tile.thumbnail && !(tile.type === "gallery") ? {} : {width: "100%"};
                 let imgStyle = tile.thumbnail && !(tile.type === "gallery") ? {} : {display: "block", margin: "auto"};
                 let displayWidth = tile.type === "gallery" ? "row" : "col";
-                return <div id={"tile"+i} className="displayTile w3-container w3-row" key={"tile"+i}>
+                let tileStyle = tile.style ? tile.style : {};
+                let titleEl = tile.title && tile.title.startsWith("#") ? <h2><b>{tile.title.replace("#", "")}</b></h2> : tile.title ? <p><b>{tile.title}</b></p> : <span></span>;
+                return <div id={"tile"+i} className="displayTile w3-container w3-row" key={"tile"+i} style={tileStyle}>
                     {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : <span></span>}
                     <div className={`w3-${displayWidth} w3-mobile`} style={contentStyle}>
-                        {tile.title && tile.title.startsWith("#") ? <h2><b>{tile.title.replace("#", "")}</b></h2> : tile.title ? <p><b>{tile.title}</b></p> : <span></span>}
+                        {tile.titleLink ? <u style={{cursor: "pointer"}} onClick={() => showPage(tile.titleLink)}>{titleEl}</u> : titleEl}
                         <p dangerouslySetInnerHTML={{__html: tile.content}}></p>
                         {tile.gitLink ?
                             <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col" alt='gitLink'/><a className="w3-col" href={tile.gitLink} target="_blank" rel="noreferrer">{tile.gitTitle ? tile.gitTitle : tile.title}</a></div> : <span></span>
@@ -191,8 +193,10 @@ function build(pageInfo, tiles){
         }
     </div>;
 }
-function showPage(page){
+function showPage(page, isLanding){
     console.log("Showing page "+page);
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+    tilePositions = null;
     const elements = document.querySelectorAll('.page');
     Array.from(elements).forEach((element, index) => {
         element.style.display = "none";
@@ -216,12 +220,12 @@ function showPage(page){
         document.getElementById("itemStatus").innerText = pages[page].name;
         document.getElementById("langStatus").innerText = "HTML";
         document.getElementById("encodingStatus").innerText = "UTF-8";
-        if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !initialOpen)
+        if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !isLanding && pageLoaded)
             toggleSidebar();
-        
-        initialOpen = false;
     }
 }
+// Bind to window for global reference
+window.showPage = showPage;
 function setActiveEditor(active){
     let editorContent = document.getElementById("editorContent");
     if(activeEditor){
@@ -417,7 +421,7 @@ window.onload = () => {
     let parsed = scriptParse(pages[startId].content, true);
     document.getElementById(startId+"Page").innerHTML = parsed.content;
     eval(parsed.scripts);
-    showPage("home");
+    showPage("home", true);
     document.getElementById("newAction").onclick = () => {
         $("#fileDropdown").fadeOut();
         newFile();
@@ -448,6 +452,7 @@ window.onload = () => {
             document.getElementById(activeEditor+"Page").innerHTML = '<p style="margin: auto; background-color: #de3a3d">This page is Empty! Edit its content to fill the void!</p>';
         refreshLineNums();
     });
+    pageLoaded = true;
 };
 window.onscroll = (event) => {
     if(document.getElementById("tileHolder") === null) return;
@@ -462,6 +467,7 @@ window.onscroll = (event) => {
             tilePositions[tileElement.id] = {isOffset: false, default: "5%", initial: true};
         
         let viewportOffset = tile.getBoundingClientRect();
+        console.log("Rect: ", viewportOffset);
         let top = viewportOffset.top;
         if(top <= window.innerHeight && tilePositions[tileElement.id].isOffset){
             aboveBottom ++;

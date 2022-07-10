@@ -9,6 +9,8 @@ import AnonHires from './AnonHires';
 import * as common from './common';
 import Neural from './Neural';
 import TerminalDiv from './TerminalDiv';
+import Resume from './Resume';
+import About from './About';
 
 const Wrapper = () => {
     function recurse(tree){
@@ -78,6 +80,8 @@ const Wrapper = () => {
                 <Videntium/>
                 <AnonHires/>
                 <Neural/>
+                <Resume/>
+                <About/>
                 <TerminalDiv/>
                 <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                     <div id="editorLines" className="w3-col">1</div>

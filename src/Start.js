@@ -48,7 +48,6 @@ let contentHtml = `
     <button id="styleButton" class="w3-button" onclick="noCSS()">Click to remove CSS</button>
 </body>
 <script>
-    console.log("helloe");
     let styler = document.getElementById("styler");
     let baseStyle = styler.innerHTML;
     let hasCSS = true;

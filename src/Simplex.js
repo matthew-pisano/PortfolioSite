@@ -17,7 +17,7 @@ class Simplex extends Component {
                     They are able to see each of the three stages, Lexing, Parsing, and Interpreting, and how the code is structured within each,
                     from being split into tokens, to parsed into a tree, to the context given during interpretation.  With this tool, the hope is
                     that any users new to programming would gain a deeper understanding of what goes on behind the scenes.`,
-                thumbnail: ""
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/simplexCode.jpg"
             },
             {
                 title: "Processing Its Source",
@@ -27,7 +27,7 @@ class Simplex extends Component {
                     the structure of the program is formed, the list if given to the interpreter.  The interpreter is the code that gives context
                     the nodes of the tree, reserved words are given their exact class names and variable ids are given their proper types,
                     among other things.  After this step, the program is ready for execution.`,
-                thumbnail: ""
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/simplexLex.jpg"
             },
             {
                 title: "Execution",
@@ -47,7 +47,7 @@ class Simplex extends Component {
                     which sum just as arrays would in linear algebra.  Integer of Double arrays can also be multiplied together to get the dot or 
                     cross product of the two matrices.  This becomes even more useful when used with the built-in determinate and inverse functions 
                     that can be used on the arrays.`,
-                thumbnail: ""
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/simplexSci.jpg"
             }
         ];
         let pageInfo = {

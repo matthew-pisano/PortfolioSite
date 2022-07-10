@@ -16,7 +16,7 @@ class Inception extends Component {
                     will be overlayed on top of the background image based on their color and composition.  With enough of these
                     images, the illusion of the original image appears.  When zooming in on the new, large image, however,
                     all of its constituent images are revealed.`,
-                thumbnail: ""
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/inceptionDog.bmp"
             },
         ];
         let pageInfo = {
