@@ -34,7 +34,6 @@ let pages = {
     anonHires: {name: "anonHires.html"},
     resume: {name: "resume.html"},
     about: {name: "about.html"},
-    start: {name: "start.html"},
 };
 let stasis = {container: null};
 let collapseSidebar;
@@ -96,28 +95,30 @@ function navHierarchy(path){
     let tokens = path.split("/");
     if(tokens[tokens.length-1] === "") tokens.pop();
     let current = hierarchy;
+    let absPath = "/";
     console.log("Nav tokens: "+tokens);
     while(tokens.length > 0){
         let foundPath = false;
         //console.log("Current token: "+tokens[0], current);
         if(tokens.length === 1 && tokens[0] === current.name.replace("/", "")) {
             //console.log("File at path: "+current.name);
-            return current;
+            return [current, absPath];
         }
         for(let i=0; i<current.subTree.length; i++){
             //console.log(current.subTree[i].name.replace("/", ""), tokens[1], tokens);
             if(current.subTree[i].name.replace("/", "") === tokens[1]){
                 //console.log("Found: "+current.subTree[i].name);
                 current = current.subTree[i];
+                absPath += current.name;
                 tokens.shift();
                 foundPath = true;
                 break;
             }
         }
-        if(!foundPath) return null;
+        if(!foundPath) return [null, ""];
     }
     //console.log("File at path: "+current.name);
-    return current;
+    return [current, absPath];
 }
 function toggleSidebar(){
     if(sidebarOpen){
@@ -307,7 +308,7 @@ function newFile(fileName){
     explorerDiv.appendChild(editImg);
     document.getElementById("customContent").appendChild(explorerDiv);
     document.getElementById("wrapperContent").appendChild(customFileDiv);
-    navHierarchy("/home/user/public/custom").subTree.push({name: fileName});
+    navHierarchy("/home/user/public/custom")[0].subTree.push({name: fileName});
     button.onclick();
     return fileId;
 }
@@ -374,10 +375,12 @@ function renameActive(fileId){
     customRename.focus();
 }
 function finishRenaming(fileId, newName){
+    console.log("Renaming "+fileId+" as "+newName);
     if(!fileId) fileId = selectedFileId;
     if(newName) {
+        // Rename the file within the hierarchy
         newName = newName.endsWith(".html") ? newName : newName+".html";
-        let customList = navHierarchy("/home/user/public/custom").subTree;
+        let customList = navHierarchy("/home/user/public/custom")[0].subTree;
         for(let i=0; i<customList.length; i++){
             if(customList[i].name === pages[fileId].name){
                 customList[i].name = newName;
@@ -387,12 +390,13 @@ function finishRenaming(fileId, newName){
     }
     else newName = pages[fileId].name;
     console.log("New Name of "+fileId+": "+newName, pages);
+    // Rename in pages
     pages[fileId].name = newName;
     document.getElementById("pageTitle").innerText = pages[fileId].name;
     if(!stasis.container) 
         stasis.container = document.getElementById(fileId+"-customContainer");
     console.log(stasis.container);
-    console.log(navHierarchy("/home/user/public/custom").subTree);
+    console.log(navHierarchy("/home/user/public/custom")[0].subTree);
     if(stasis.container.children.length >= 3){
         stasis.icon = stasis.container.children[0];
         stasis.expFile = stasis.container.children[1];
@@ -404,6 +408,23 @@ function finishRenaming(fileId, newName){
     stasis.container.appendChild(stasis.edit);
     stasis.container.children[1].innerText = newName;
     stasis = {container: null};
+}
+function removeFile(fileId){
+    console.log("Removing "+fileId);
+    if(!fileId) fileId = selectedFileId;
+    let customList = navHierarchy("/home/user/public/custom")[0].subTree;
+    // Remove file from the hierarchy
+    for(let i=0; i<customList.length; i++){
+        if(customList[i].name === pages[fileId].name){
+            customList.splice(i, 1);
+            break;
+        }
+    }
+    // Remove from pages
+    delete pages[fileId];
+    // Remove from explorer
+    document.getElementById(fileId+"-customContainer").remove();
+    showPage("home");
 }
 window.onload = () => {
     collapseSidebar = document.getElementById("collapseSidebar");
@@ -425,6 +446,10 @@ window.onload = () => {
     document.getElementById("newAction").onclick = () => {
         $("#fileDropdown").fadeOut();
         newFile();
+    };
+    document.getElementById("removeAction").onclick = () => {
+        $("#fileDropdown").fadeOut();
+        removeFile();
     };
     document.getElementById("renameAction").onclick = () => {
         $("#editDropdown").fadeOut();
@@ -467,7 +492,7 @@ window.onscroll = (event) => {
             tilePositions[tileElement.id] = {isOffset: false, default: "5%", initial: true};
         
         let viewportOffset = tile.getBoundingClientRect();
-        console.log("Rect: ", viewportOffset);
+        //console.log("Rect: ", viewportOffset);
         let top = viewportOffset.top;
         if(top <= window.innerHeight && tilePositions[tileElement.id].isOffset){
             aboveBottom ++;
@@ -482,4 +507,4 @@ window.onscroll = (event) => {
     }
     console.log(aboveBottom);
 };
-export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming};
+export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming, removeFile};

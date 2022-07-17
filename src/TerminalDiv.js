@@ -18,7 +18,17 @@ const TerminalDiv = () => {
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
     const [commandIndex, setCommandIndex] = useState(-1);
-    const helpMsg = "Help";
+    const helpMsg = `Help Menu
+    help - print this message
+    echo *[msg] - echoes each of the arguments on a new line
+    touch [fileName] - creates a file with the name given in the argument
+    ren [oldName] [newName] - renames an existing file to the given new name
+    cls | clear - clears the output of the terminal
+    cd [path] - changes the current working directory to thr given path
+    ls [path] - gives information on the file or folder that matches the given path
+    cat [filePath] - prints our the contents of the given file
+    exit - clears the terminal and closes it
+    `;
     const genPrompt = (newCwd) => {
         return "["+(newCwd ? newCwd : cwd)+"]$ ";
     };
@@ -58,8 +68,8 @@ const TerminalDiv = () => {
         //console.log(e);
         let terminalOutput = document.getElementById('terminalOutput');
         if(e.nativeEvent.inputType === "insertParagraph"){
-            let command = document.getElementById('terminalInput').innerText.trim();
-            //console.log("Got command: "+command);
+            let command = document.getElementById('terminalInput').innerText.trim().replace(/\r?\n|\r/g, " ");
+            console.log("Got command: "+command);
             document.getElementById('terminalInput').innerText = "";
             if(prevCommands[prevCommands.length-1] !== command) prevCommands.push(command);
             setDraftCommand("");
@@ -83,9 +93,9 @@ const TerminalDiv = () => {
         //console.log(tokens);
         function resolvePath(path){
             absPath = path ? path : cwd;
-            if(tokens.length > 1 && path[0] === "/") targetPath = common.navHierarchy(path);
+            if(tokens.length > 1 && path[0] === "/") targetPath = common.navHierarchy(path)[0];
             else if(tokens.length > 1){
-                targetPath = common.navHierarchy(cwd+path);
+                targetPath = common.navHierarchy(cwd+path)[0];
                 absPath = cwd+absPath;
             }
         }
@@ -96,32 +106,62 @@ const TerminalDiv = () => {
                 for(let i=1; i<tokens.length; i++) outStr += "\n"+tokens[i];
                 return outStr;
             case 'touch':
-                if(tokens.length > 1){
-                    let newName = tokens[1].endsWith(".html") ? tokens[1] : tokens[1]+".html";
-                    for(let pageId in common.pages)
-                        if(common.pages[pageId].name === newName)
-                            return outStr+"\n File '"+newName+"' already exists";
-                        
-                    common.newFile(newName);
-                    return outStr+"\nCreated file '"+newName+"'";
+                if(tokens.length == 2){
+                    let newName = tokens[2].replace(".html", "")+".html";
+                    resolvePath(newName);
+                    let rootPath = common.navHierarchy(absPath)[1];
+                    // Remove custom from path if it exists and continue with the removal
+                    if(rootPath.includes("/home/user/public/custom")){
+                        for(let pageId in common.pages)
+                            if(newName.endsWith(common.pages[pageId].name))
+                                return outStr+"\n File '"+newName+"' already exists";
+                            
+                        common.newFile(newName);
+                        return outStr+"\nCreated file '"+newName+"'";
+                    }
+                    else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
+                    return outStr+"\nrm command only applies to files in the '/home/user/public/custom' folder";
                 }
-                return outStr+"\touch command requires an argument";
+                return outStr+"\ntouch command requires one argument";
             case 'ren':
-                if(tokens.length > 2){
-                    let oldName = tokens[1].replace(".html", "");
-                    let newName = tokens[2].endsWith(".html") ? tokens[2] : tokens[2]+".html";
-                    let oldId = null;
-                    console.log(oldName, common.pages);
-                    for(let pageId in common.pages)
-                        if(common.pages[pageId].name.replace(".html", "") === oldName){
-                            oldId = pageId;
-                            break;
-                        }
-                    if(!oldId) return outStr+"\nFile: '"+oldName+"' does not exist";
-                    common.finishRenaming(oldId, newName);
-                    return outStr+"\nRenamed file '"+oldName+"' to '"+newName+"'";
+                if(tokens.length == 3){
+                    let oldName = tokens[1].replace(".html", "")+".html";
+                    resolvePath(oldName);
+                    let newName = tokens[2].replace(".html", "")+".html";
+                    let rootPath = common.navHierarchy(absPath)[1];
+                    // Remove custom from path if it exists and continue with the removal
+                    if(rootPath.includes("/home/user/public/custom")){
+                        let oldId = null;
+                        for(let pageId in common.pages)
+                            if(oldName.endsWith(common.pages[pageId].name)){
+                                oldId = pageId;
+                                break;
+                            }
+                        common.finishRenaming(oldId, newName);
+                        return outStr+"\nRenamed file '"+oldName+".html' to '"+newName+"'";
+                    }
+                    else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
+                    return outStr+"\nrm command only applies to files in the '/home/user/public/custom' folder";
                 }
-                return outStr+"\touch command requires an argument";
+                return outStr+"\nren command requires three arguments";
+            case 'rm':
+                if(tokens.length == 2){
+                    let fileName = tokens[1].replace(".html", "")+".html";
+                    resolvePath(fileName);
+                    let rootPath = common.navHierarchy(absPath)[1];
+                    // Remove custom from path if it exists and continue with the removal
+                    if(rootPath.includes("/home/user/public/custom")){
+                        for(let pageId in common.pages)
+                            if(fileName.endsWith(common.pages[pageId].name)){
+                                common.removeFile(pageId);
+                                break;
+                            }
+                        return outStr+"\nRemoved file '"+fileName+"'";
+                    }
+                    else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
+                    return outStr+"\nrm command only applies to files in the '/home/user/public/custom' folder";
+                }
+                return outStr+"\nrm command requires one argument";
             case 'cls':
             case 'clear':
                 document.getElementById("terminalOutput").innerText = "";
@@ -134,23 +174,27 @@ const TerminalDiv = () => {
                     return outStr;
                 }
                 resolvePath(tokens[1]);
-                targetPath = common.navHierarchy(absPath);
+                targetPath = common.navHierarchy(absPath)[0];
                 if(targetPath) setCwd(absPath);
                 else return outStr+"\nCould not find path: '"+absPath+"'";
                 return outStr;
             case 'ls':
                 resolvePath(tokens[1]);
-                targetPath = common.navHierarchy(tokens.length < 2 ? cwd : absPath);
-                if(targetPath){
-                    for(let i=0; i<targetPath.subTree.length; i++)
-                        outStr += "\n"+targetPath.subTree[i].name;
-                }
+                targetPath = common.navHierarchy(tokens.length < 2 ? cwd : absPath)[0];
+                if(targetPath)
+                    if(targetPath.subTree){
+                        outStr += "\nFolder\n----\nChildren: "+targetPath.subTree.length;
+                        for(let i=0; i<targetPath.subTree.length; i++)
+                            outStr += "\n"+targetPath.subTree[i].name;
+                    }
+                    else outStr += "\nFile\n----\n"+targetPath.name;
+                
                 else return outStr+"\nCould not find path: '"+absPath+"'";
                 return outStr;
             case 'cat':
                 if(tokens.length < 2) return outStr+"\ncat command requires an argument";
                 resolvePath(tokens[1]);
-                targetPath = common.navHierarchy(absPath);
+                targetPath = common.navHierarchy(absPath)[0];
                 if(!targetPath) return outStr+"\nCould not find path: '"+absPath+"'";
                 if(!targetPath.subTree){
                     for(let i=0; i<Object.keys(common.pages).length; i++){
@@ -177,7 +221,7 @@ const TerminalDiv = () => {
     const onKeyDown = (e) => {
         let newI = commandIndex;
         if(e.code === "ArrowUp"){
-            if(commandIndex === -1) setDraftCommand(document.getElementById('terminalInput').innerText);
+            if(commandIndex === -1) setDraftCommand(document.getElementById('terminalInput').innerText.replace("\n", "").replace("\r", ""));
             if(commandIndex < prevCommands.length - 1) {
                 setCommandIndex(commandIndex + 1);
                 newI ++;

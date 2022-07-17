@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Portfolio Website of Matthew Pisano
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project serves as a showcase of the accomplishments and projects that
+I have completed during my time as a student an a developer.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+This website is modeled after Visual Studio Code, the editor that I
+write many of my projects in.  This site features many of the navigation and
+editing characteristics of VS Code.
 
-### `npm start`
+### Explorer
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The explorer sidebar, located on the left hand side allows for the
+navigation of the pages within this site.  Clicking on each of the files
+displays the page associated with that file.  For example, selecting `home.html`,
+the homepage of the website.  The names of the files as symbolic, as they are all
+built by *React.js* and JavaScript XML (JSX).  Additionally, when a file or folder
+is selected, some additional information will be displayed on the blue command bar
+at the bottom of the page, such as the file size or the number of files in a folder.
+At the top of the explorer is the collapse button, which collapses th explorer to the
+left if more room for viewing the website content is needed.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Files
 
-### `npm test`
+Each of the files in the explorer represent pages that explain the various projects,
+research papers, or events that I have worked on or participated in.  The top of the 
+page contains the title of the project and a brief description.  Below that are a 
+series of tags.  The first tag is a link to the github repository of the project,
+it leads to the source repository of the project for any who are interested.  For
+research projects, a link to the paper is included right after.  The following tags
+give information on the type of project, the language(s) used or the skills involved.
+Below those are tiles that give more detailed information on the project, possibly
+including their own tags or images.  Files can also be created by the user using 
+standard HTML, JS, and CSS.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### File Editor
 
-### `npm run build`
+All files within the `custom/` folder are editable and can be renamed or deleted.
+Selecting `File > New` on the menu bar will create a new file.  The most recently
+selected file can be renamed using the `Edit > Rename` button on the menu bar.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+These files will initially appear blank, all except for the `start.html` file,
+which offers further explanation on how to use the editor.  To add or edit the
+content of these files, click the pencil icon to the right of the file.  This will
+open the editor, whatever valid HTML, inline JS, or CSS that is typed here will
+be interpreted and shown on screen whenever you select the main file itself once again.
+This editor yields almost all of the standard features of HTML.  In fact, large portions
+of this website can be recreated by using the editor alone!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Terminal
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For browsers with larger screen sizes, a terminal emulator is available at the bottom of
+the screen.  This serves as a tool similar to the menu bar.  Files can be created, renamed
+or deleted from here, along with other standard commands.  Further information can
+be gathered by the `help` command.
 
-### `npm run eject`
+## Hosting and SaaS
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The current domain of the site can be found here, at
+[http://reactordevelopment.com/](http://reactordevelopment.com/).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The domain name provides is Google Domains and the actual server is hosted on
+an AWS Lightsail instance.  The repository I use for assets such as the images or
+documents is AWS S3.

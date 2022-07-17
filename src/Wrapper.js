@@ -52,6 +52,8 @@ const Wrapper = () => {
                 <div id="menuDropHolder">
                     <div id="fileDropdown" className="menuDropdown w3-col">
                         <button id="newAction" className="w3-button lightText menuDropItem">New</button>
+                        <br></br>
+                        <button id="removeAction" className="w3-button lightText menuDropItem">Remove</button>
                     </div>
                     <div id="editDropdown" className="menuDropdown w3-col">
                         <button id="renameAction" className="w3-button lightText menuDropItem">Rename</button>
@@ -69,7 +71,7 @@ const Wrapper = () => {
                         <h4 id="explorerTitle" className="sidebarItem lightText w3-cell" style={{borderStyle: 'none', textAlign: 'center', verticalAlign: 'middle'}}>Explorer</h4>
                     </div>
                     <div id="sidebarContent" className="w3-display-container w3-row">
-                        {recurse(common.navHierarchy("/home/user/public/"))}
+                        {recurse(common.navHierarchy("/home/user/public/")[0])}
                     </div>
                 </div>
                 <Home/>
