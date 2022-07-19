@@ -72,7 +72,7 @@ const Wrapper = () => {
                     </div>
                 </div>
                 <div id="sidebar" className="w3-col" style={{width: "0px"}}>
-                    <div className="w3-cell-row">
+                    <div id="collapseHolder" className="w3-cell-row">
                         <button id="collapseSidebar" className="w3-button w3-cell">&#60;</button>
                         <h4 id="explorerTitle" className="sidebarItem lightText w3-cell" style={{borderStyle: 'none', textAlign: 'center', verticalAlign: 'middle'}}>Explorer</h4>
                     </div>
@@ -80,18 +80,20 @@ const Wrapper = () => {
                         {recurse(common.navHierarchy("/home/user/public/")[0])}
                     </div>
                 </div>
-                <Home/>
-                <Simplex/>
-                <Imperium/>
-                <MipsCmd/>
-                <Inception/>
-                <Videntium/>
-                <AnonHires/>
-                <Neural/>
-                <Resume/>
-                <About/>
-                <TerminalDiv/>
-                <Help/>
+                <div id="pageHolder">
+                    <Home/>
+                    <Simplex/>
+                    <Imperium/>
+                    <MipsCmd/>
+                    <Inception/>
+                    <Videntium/>
+                    <AnonHires/>
+                    <Neural/>
+                    <Resume/>
+                    <About/>
+                    <TerminalDiv/>
+                    <Help/>
+                </div>
                 <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                     <div id="editorLines" className="w3-col">1</div>
                     <div id="editorContent" className="w3-col"contentEditable="true"></div>

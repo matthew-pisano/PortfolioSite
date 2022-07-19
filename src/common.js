@@ -130,6 +130,9 @@ function toggleSidebar(){
         $("#sidebarContent").animate({"width": "0px"});
         document.getElementById("sidebar").classList.remove("openSidebar");
         document.getElementById("sidebar").style.width = sidebarMin+"px";
+        document.getElementById("explorerTitle").style.display = "none";
+        document.getElementById("collapseHolder").style.width = sidebarMin+"px";
+        document.getElementById("pageHolder").classList.remove("smallInvisible");
         $(".page").animate({"margin-left": sidebarMin+"px"});
         $("#terminalHolder").animate({"margin-left": sidebarMin+"px"});
         $(".titleCard").animate({"margin-left": sidebarMin+"px"});
@@ -145,6 +148,9 @@ function toggleSidebar(){
         //$("#sidebar").animate({"width": sidebarMax});
         document.getElementById("sidebar").style.width = "";
         document.getElementById("sidebar").classList.add("openSidebar");
+        document.getElementById("pageHolder").classList.add("smallInvisible");
+        document.getElementById("explorerTitle").style.display = "inline";
+        document.getElementById("collapseHolder").style.width = sidebarMax+"px";
         $("#terminalHolder").animate({"margin-left": sidebarMax+"px"});
         $(".sidebarItem").visible();
         sidebarOpen = true;
@@ -178,7 +184,8 @@ function build(pageInfo, tiles){
                 let imgStyle = tile.thumbnail && !(tile.type === "gallery") ? {} : {display: "block", margin: "auto"};
                 let displayWidth = tile.type === "gallery" ? "row" : "col";
                 let tileStyle = tile.style ? tile.style : {};
-                let titleEl = tile.title && tile.title.startsWith("#") ? <h2><b>{tile.title.replace("#", "")}</b></h2> : tile.title ? <p><b>{tile.title}</b></p> : <span></span>;
+                let titleEl = tile.title && tile.title.startsWith("#") ? 
+                    <h2><b>{tile.title.replace("#", "")}</b></h2> : tile.title ? <p><b>{tile.title}</b></p> : <span></span>;
                 return <div id={"tile"+i} className="displayTile w3-container w3-row" key={"tile"+i} style={tileStyle}>
                     {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : <span></span>}
                     <div className={`w3-${displayWidth} w3-mobile`} style={contentStyle}>
@@ -232,7 +239,7 @@ function showPage(page, isLanding){
         document.getElementById("itemStatus").innerText = pages[page].name;
         document.getElementById("langStatus").innerText = "HTML";
         document.getElementById("encodingStatus").innerText = "UTF-8";
-        if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !isLanding && pageLoaded)
+        if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !isLanding && pageLoaded && sidebarOpen)
             toggleSidebar();
     }
 }
@@ -318,7 +325,7 @@ function newFile(fileName){
     };
     explorerDiv.appendChild(editImg);
     document.getElementById("customContent").appendChild(explorerDiv);
-    document.getElementById("wrapperContent").appendChild(customFileDiv);
+    document.getElementById("pageHolder").appendChild(customFileDiv);
     navHierarchy("/home/user/public/custom")[0].subTree.push({name: fileName});
     button.onclick();
     return fileId;
@@ -503,7 +510,7 @@ window.onscroll = (event) => {
         if(tileElement.id === "") continue;
         let tile = document.getElementById(tileElement.id);
         if(tilePositions[tileElement.id] === undefined)
-            tilePositions[tileElement.id] = {isOffset: false, default: "5%", initial: true};
+            tilePositions[tileElement.id] = {isOffset: false, default: "3%", initial: true};
         
         let viewportOffset = tile.getBoundingClientRect();
         //console.log("Rect: ", viewportOffset);
