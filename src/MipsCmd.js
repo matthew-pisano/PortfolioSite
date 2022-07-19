@@ -15,9 +15,9 @@ class MipsCmd extends Component {
                 title: "Features and Function",
                 content: `This command processor in input from the <i>Mars</i> console emulator, and outputs to that
                     same interface.  It has the ability to preform mathematical operations, bi-directional decimal and hexadecimal
-                    conversions, produce audio output, and display sections of its memory to the user.  It also has the ability
+                    conversions, produce MIDI audio output, and display sections of its memory to the user.  It also has the ability
                     to draw using one of <i>Mars</i>'s virtual screens.`,
-                thumbnail: ""
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/mipscmd.png"
             },
         ];
         let pageInfo = {

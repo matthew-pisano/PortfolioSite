@@ -16,28 +16,25 @@ class Neural extends Component {
                     to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
                     The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
                 thumbnail: "",
-                gitLink: "https://github.com/ReactorDevelopment/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"
+                extraLink: "https://github.com/ReactorDevelopment/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"
             },
             {
                 title: "Backpropagation",
                 content: `The backpropagation algorithm is one of the most widely used in neural networks today, with many applicable
                     situations.  This method acted similar to a control for this project, being compared to the other two algorithms in
-                    its performance and accuracy.`,
-                thumbnail: ""
+                    its performance and accuracy.`
             },
             {
                 title: "Decision Tree",
                 content: `For this project, a decision tree was used to decrease the number of inputs to the neural network.  
                     This was used in conjunction with backpropagation, resulting in fewer of the matrix-heavy calculations that can make
-                    backpropagation very resource intensive to train.`,
-                thumbnail: ""
+                    backpropagation very resource intensive to train.`
             },
             {
                 title: "Genetic Algorithm",
                 content: `The genetic algorithm used for this project is the most different from backpropagation.  The genome of each
                     individual in the population was composed of a section of the weights in the network.  These individuals were then bred
-                    and passed on their combined genomes to the next generation.`,
-                thumbnail: ""
+                    and passed on their combined genomes to the next generation.`
             },
             {
                 title: "Testing",
@@ -59,7 +56,7 @@ class Neural extends Component {
                     <p class="tab">The training loss curve for backpropagation follows closely to a curve of 1/x
                     This signifies a good loss curve with minimal over-fitting. The loss declines
                     sharply and the accuracy rises rapidly over successive epochs of training.</p>`,
-                thumbnail: ""
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/backproplosses.png"
             },
             {
                 title: "Decision Tree Results",
@@ -77,7 +74,7 @@ class Neural extends Component {
                     loss declines sharply and the accuracy rises rapidly over successive epochs of
                     training. Compared to raw backpropagation, this algorithm converges on an
                     optimal solution approximately twice as fast.</p>`,
-                thumbnail: ""
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/decisionlosses.png"
             },
             {
                 title: "Genetic Algorithm Results",
@@ -96,7 +93,7 @@ class Neural extends Component {
                     backpropagation with the decision tree. This algorithm settles into a local
                     minimum solution after five epochs, compared to the other two which settled
                     at forty for raw backpropagation and twenty for optimized backpropagation.</p>`,
-                thumbnail: ""
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/geneticlosses.png"
             },
             {
                 title: "Conclusions",

@@ -63,7 +63,7 @@ class Help extends Component {
         ];
         let pageInfo = {
             holderStyle: {backgroundColor: "#919ba8", borderRadius: "10px"},
-            tags: ["personal"]
+            tags: ["help"]
         };
         return (
             <div id="helpPage" className="page container w3-rest lightText" style={{display: "none"}}>

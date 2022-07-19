@@ -227,7 +227,13 @@
     width: 10%;
     min-width: 20px;
     margin-right: 5px;
+}
+.gitLink img{
     content:url("assets/github.png");
+}
+
+.extraLink img{
+    content:url("assets/paper.png");
 }
 body {
     font-family: Consolas,monaco,monospace; 
@@ -242,7 +248,7 @@ body {
     overflow-x: auto;
 }
 .tag{
-    width: 150px;
+    width: 160px;
     padding: 2px 5px;
     margin: 3px 5px;
     background-color: #414141;
@@ -346,6 +352,17 @@ body {
 }
 .aiTag span::after{
     content: "AI";
+}
+
+.helpTag img{
+    content:url("assets/help.png");
+}
+.helpTag span::after{
+    content: "Help";
+}
+
+.paperTag img{
+    content:url("assets/paper.png");
 }
 
 @media (max-width: 600px) {

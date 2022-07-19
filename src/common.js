@@ -185,7 +185,16 @@ function build(pageInfo, tiles){
                         {tile.titleLink ? <u style={{cursor: "pointer"}} onClick={() => showPage(tile.titleLink)}>{titleEl}</u> : titleEl}
                         <p dangerouslySetInnerHTML={{__html: tile.content}}></p>
                         {tile.gitLink ?
-                            <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col" alt='gitLink'/><a className="w3-col" href={tile.gitLink} target="_blank" rel="noreferrer">{tile.gitTitle ? tile.gitTitle : tile.title}</a></div> : <span></span>
+                            <div className="gitLink w3-row w3-mobile w3-col">
+                                <img className="w3-col" alt='gitLink'/>
+                                <a className="w3-col" href={tile.gitLink} target="_blank" rel="noreferrer">{tile.gitTitle ? tile.gitTitle : tile.title}</a>
+                            </div> : <span></span>
+                        }
+                        {tile.extraLink ?
+                            <div className="extraLink w3-row w3-mobile w3-col">
+                                <img className="w3-col" alt='extraLink'/>
+                                <a className="w3-col" href={tile.extraLink} target="_blank" rel="noreferrer">{tile.extraTitle ? tile.extraTitle : tile.title}</a>
+                            </div> : <span></span>
                         }
                         {tile.tags.map((tag, i) => 
                             <div className={"w3-col tag "+tag+"Tag w3-mobile"} key={tag}><img className="w3-col" alt={tag}/><span className="w3-col"></span></div>)
