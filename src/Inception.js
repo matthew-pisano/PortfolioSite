@@ -7,7 +7,7 @@ class Inception extends Component {
             {
                 title: "#Overview",
                 content: `Inception Collage uses Java's built in graphics libraries, AWT and Swing, to allow users to
-                    create picture mosaics using a GUI`
+                    create picture mosaics using a GUI.`
             },
             {
                 title: "Features and Function",

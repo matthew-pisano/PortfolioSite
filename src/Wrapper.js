@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Home from './Home';
 import Imperium from './Imperium';
 import Simplex from './Simplex';
@@ -11,6 +11,7 @@ import Neural from './Neural';
 import TerminalDiv from './TerminalDiv';
 import Resume from './Resume';
 import About from './About';
+import Help from './Help';
 
 const Wrapper = () => {
     function recurse(tree){
@@ -58,9 +59,14 @@ const Wrapper = () => {
                     <div id="editDropdown" className="menuDropdown w3-col">
                         <button id="renameAction" className="w3-button lightText menuDropItem">Rename</button>
                     </div>
+                    <div id="helpDropdown" className="menuDropdown w3-col">
+                    <button id="helpAction" className="w3-button lightText menuDropItem">help.html</button>
+                        <a className="lightText menuDropItem" style={{display: "block"}} href='https://github.com/ReactorDevelopment/PortfolioSite#readme' 
+                            target={"_blank"} rel="noreferrer">README</a>
+                    </div>
                     <div id="contactDropdown" className="menuDropdown w3-col">
-                        <p className="lightText menuDropItem">+1 (845)-706-0677</p>
-                        <p className="lightText menuDropItem">matthewplisano14@gmail.com</p>
+                        <p className="lightText menuDropItem">Phone: +1 (845)-706-0677</p>
+                        <p className="lightText menuDropItem">Email: matthewplisano14@gmail.com</p>
                         <a className="lightText menuDropItem" style={{display: "block"}} href='https://www.linkedin.com/in/matthew-pisano-395827192' 
                             target={"_blank"} rel="noreferrer">LinkedIn</a>
                     </div>
@@ -85,6 +91,7 @@ const Wrapper = () => {
                 <Resume/>
                 <About/>
                 <TerminalDiv/>
+                <Help/>
                 <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                     <div id="editorLines" className="w3-col">1</div>
                     <div id="editorContent" className="w3-col"contentEditable="true"></div>

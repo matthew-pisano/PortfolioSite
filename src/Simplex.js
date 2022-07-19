@@ -8,7 +8,8 @@ class Simplex extends Component {
                 title: "#Overview",
                 content: `Simplex's focus is on mathematic and scientific calculations
                     as it offers built-in matrix operations (multiplication, determinants, etc.) as well as several scientific and fundamental constants.<br>
-                    It is strictly typed like languages such C or Java, but has a similar syntax to python with type hinting.`
+                    It is strictly typed like languages such C or Java, but has a similar syntax to python with type hinting.  Being a hybrid interpreted
+                    language offers Simplex the ability to freeze any source code on its way to execution for viewing by the user.`
             },
             {
                 title: "Companion Android App",

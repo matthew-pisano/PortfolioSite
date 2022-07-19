@@ -6,7 +6,8 @@
     color: azure;
     position: fixed;
     bottom: 30px;
-    width: 100%; 
+    width: 100%;
+    z-index: 2;
 }
 #terminalOutput{
     position: fixed;
@@ -83,13 +84,13 @@
     position: fixed; 
     width: 100%; 
     background-color: #33383f;  
-    z-index: 2;
+    z-index: 3;
 }
 .commandBar {
     position: fixed; 
     width: 100%;
     background-color: #3b71bb;  
-    z-index: 2;
+    z-index: 3;
     height: 30px;
 }
 .menuItem, .commandItem {
@@ -361,6 +362,10 @@ body {
         margin-bottom: 40px;
         height: 500px;
     }
+    #tileHolder{
+        margin-top: 350px;
+    }
+    
 }
 
 @media (max-width: 1500px) {

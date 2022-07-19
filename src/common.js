@@ -34,6 +34,7 @@ let pages = {
     anonHires: {name: "anonHires.html"},
     resume: {name: "resume.html"},
     about: {name: "about.html"},
+    help: {name: "help.html"},
 };
 let stasis = {container: null};
 let collapseSidebar;
@@ -82,6 +83,7 @@ let hierarchy = {
                                 {name: "resume.html"},
                             ]
                         },
+                        {name: "help.html"},
                         {
                             name: "custom/",
                             subTree: []
@@ -454,6 +456,9 @@ window.onload = () => {
     document.getElementById("renameAction").onclick = () => {
         $("#editDropdown").fadeOut();
         renameActive();
+    };
+    document.getElementById("helpAction").onclick = () => {
+        showPage("help");
     };
     document.body.addEventListener('click', (evt) => {
         for(let [buttonId, dropId] of Object.entries(menuBindings)){
