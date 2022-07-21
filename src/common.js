@@ -12,8 +12,9 @@ $.fn.invisible = function() {
 let tilePositions = null;
 let sidebarOpen = false;
 let pageLoaded = false;
-let sidebarMax = 200;
+let sidebarMax = 215;
 let sidebarMin = 50;
+let folderIndent = "0px";
 let menuBindings = {
     "fileButton": "fileDropdown",
     "editButton": "editDropdown",
@@ -32,6 +33,7 @@ let pages = {
     chipFiring: {name: "chipFiring.html"},
     videntium: {name: "videntium.html"},
     anonHires: {name: "anonHires.html"},
+    scp: {name: "scp.html"},
     resume: {name: "resume.html"},
     about: {name: "about.html"},
     help: {name: "help.html"},
@@ -126,12 +128,13 @@ function toggleSidebar(){
     if(sidebarOpen){
         collapseSidebar.innerText = ">";
         $(".sidebarItem").invisible();
-        //$("#sidebar").animate({"width": sidebarMin});
         $("#sidebarContent").animate({"width": "0px"});
+        document.getElementById("sidebarContent").style.display = "none";
         document.getElementById("sidebar").classList.remove("openSidebar");
         document.getElementById("sidebar").style.width = sidebarMin+"px";
         document.getElementById("explorerTitle").style.display = "none";
         document.getElementById("collapseHolder").style.width = sidebarMin+"px";
+        document.getElementById("collapseHolder").classList.remove("openSidebar");
         document.getElementById("pageHolder").classList.remove("smallInvisible");
         $(".page").animate({"margin-left": sidebarMin+"px"});
         $("#terminalHolder").animate({"margin-left": sidebarMin+"px"});
@@ -144,20 +147,22 @@ function toggleSidebar(){
         $(".page").animate({"margin-left": sidebarMax+"px"});
         $(".titleCard").animate({"margin-left": sidebarMax+"px"});
         $("#fileEditor").animate({"margin-left": sidebarMax+"px"});
+        document.getElementById("sidebarContent").style.display = "block";
         $("#sidebarContent").animate({"width": "100%"});
         //$("#sidebar").animate({"width": sidebarMax});
         document.getElementById("sidebar").style.width = "";
         document.getElementById("sidebar").classList.add("openSidebar");
         document.getElementById("pageHolder").classList.add("smallInvisible");
         document.getElementById("explorerTitle").style.display = "inline";
-        document.getElementById("collapseHolder").style.width = sidebarMax+"px";
+        document.getElementById("collapseHolder").style.width = "";
+        document.getElementById("collapseHolder").classList.add("openSidebar");
         $("#terminalHolder").animate({"margin-left": sidebarMax+"px"});
         $(".sidebarItem").visible();
         sidebarOpen = true;
     }
 }
 function build(pageInfo, tiles){
-    return <div id="tileHolder" className="inner w3-display-container" style={pageInfo.holderStyle}>
+    return <div id={pageInfo.pageName+"TileHolder"} className="tileHolder inner w3-display-container" style={pageInfo.holderStyle}>
         {pageInfo.title ? 
             <h1 className="pageTitle" style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1> :
             <div className="w3-row">
@@ -185,7 +190,10 @@ function build(pageInfo, tiles){
                 let displayWidth = tile.type === "gallery" ? "row" : "col";
                 let tileStyle = tile.style ? tile.style : {};
                 let titleEl = tile.title && tile.title.startsWith("#") ? 
-                    <h2><b>{tile.title.replace("#", "")}</b></h2> : tile.title ? <p><b>{tile.title}</b></p> : <span></span>;
+                    <h2><b>{tile.title.replace("#", "")}</b></h2> :
+                    tile.title && tile.title.startsWith("</>") ?
+                    <p dangerouslySetInnerHTML={{__html: tile.title.replace("</>", "")}}></p> :
+                    tile.title ? <p><b>{tile.title}</b></p> : <span></span>;
                 return <div id={"tile"+i} className="displayTile w3-container w3-row" key={"tile"+i} style={tileStyle}>
                     {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : <span></span>}
                     <div className={`w3-${displayWidth} w3-mobile`} style={contentStyle}>
@@ -212,31 +220,38 @@ function build(pageInfo, tiles){
         }
     </div>;
 }
-function showPage(page, isLanding){
-    console.log("Showing page "+page);
+function showPage(pageId, isLanding){
+    console.log("Showing page "+pageId);
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     tilePositions = null;
     const elements = document.querySelectorAll('.page');
     Array.from(elements).forEach((element, index) => {
         element.style.display = "none";
     });
-    if(page){
-        document.getElementById("pageTitle").innerText = pages[page].name;
-        let pageElem = document.getElementById(page+"Page");
+    if(pageId){
+        document.getElementById("pageTitle").innerText = pages[pageId].name;
+        let pageElem = document.getElementById(pageId+"Page");
         if(!pageElem){
+            console.log("No element found for page "+pageId);
             document.getElementById("linesStatus").innerText = "0 Lines";
             document.getElementById("sizeStatus").innerText = "0B";
-            document.getElementById("itemStatus").innerText = pages[page].name;
+            document.getElementById("itemStatus").innerText = pages[pageId].name;
             document.getElementById("langStatus").innerText = "HTML";
             document.getElementById("encodingStatus").innerText = "UTF-8";
             return;
         }
         pageElem.style.display = "block";
+        let files = document.getElementsByClassName("sidebarItem");
+        for(let i=0; i<files.length; i++)
+            files[i].classList.remove("selectedSideItem");
+        let fileElem = document.getElementById(pageId+"-File");
+        if(fileElem) fileElem.classList.add("selectedSideItem");
+
         document.getElementById("fileEditor").style.display = "none";
         let lineNum = pageElem.innerHTML.split(/\r\n|\r|\n/).length;
         document.getElementById("linesStatus").innerText = (lineNum > 1 ? lineNum-1 : 1)+" Lines";
         document.getElementById("sizeStatus").innerText = pageElem.innerHTML.length+"B";
-        document.getElementById("itemStatus").innerText = pages[page].name;
+        document.getElementById("itemStatus").innerText = pages[pageId].name;
         document.getElementById("langStatus").innerText = "HTML";
         document.getElementById("encodingStatus").innerText = "UTF-8";
         if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !isLanding && pageLoaded && sidebarOpen)
@@ -283,7 +298,7 @@ function newFile(fileName){
     customFileDiv.style.marginTop = "35px";
     let explorerDiv = document.createElement("DIV");
     explorerDiv.className = "sidebarItem w3-row";
-    explorerDiv.style.marginLeft = "10px";
+    explorerDiv.style.marginLeft = folderIndent;
     let icon = document.createElement("IMG");
     icon.className = "htmlIcon";
     explorerDiv.appendChild(icon);
@@ -301,13 +316,15 @@ function newFile(fileName){
     }
     if(!fileName) fileName = "new"+count+".html";
     let fileId = v4();
-    explorerDiv.id = fileId+"-customContainer";
+    explorerDiv.id = fileId+"-File";
     customFileDiv.id = fileId+"Page";
     if(sidebarOpen)
         customFileDiv.style.marginLeft = sidebarMax+"px";
     else
         customFileDiv.style.marginLeft = sidebarMax+"px";
-    pages[fileId] = {name: fileName, content: ""};
+    pages[fileId] = {name: fileName, content: `<p style="margin: auto; background-color: #de3a3d">
+        This page is Empty! Edit its content with the '<img class="editButton" style="width: 15px; margin: 0px">' icon to fill the void!</p>`};
+    customFileDiv.innerHTML += pages[fileId].content;
     button.innerText = fileName;
     button.onclick = () => {
         console.log("selecetd file: "+fileId);
@@ -373,7 +390,7 @@ function scriptParse(content, prepareScripts){
 function renameActive(fileId){
     if(!fileId) fileId = selectedFileId;
     console.log("renaming: "+fileId);
-    stasis.container = document.getElementById(fileId+"-customContainer");
+    stasis.container = document.getElementById(fileId+"-File");
     stasis.icon = stasis.container.children[0];
     stasis.expFile = stasis.container.children[1];
     stasis.edit = stasis.container.children[2];
@@ -389,6 +406,7 @@ function renameActive(fileId){
         if(""+evt.key === "Enter")
             finishRenaming(selectedFileId, customRename.value);
     };
+    if(!sidebarOpen) toggleSidebar();
     stasis.container.appendChild(customRename);
     customRename.focus();
 }
@@ -412,7 +430,7 @@ function finishRenaming(fileId, newName){
     pages[fileId].name = newName;
     document.getElementById("pageTitle").innerText = pages[fileId].name;
     if(!stasis.container) 
-        stasis.container = document.getElementById(fileId+"-customContainer");
+        stasis.container = document.getElementById(fileId+"-File");
     console.log(stasis.container);
     console.log(navHierarchy("/home/user/public/custom")[0].subTree);
     if(stasis.container.children.length >= 3){
@@ -428,21 +446,23 @@ function finishRenaming(fileId, newName){
     stasis = {container: null};
 }
 function removeFile(fileId){
-    console.log("Removing "+fileId);
-    if(!fileId) fileId = selectedFileId;
-    let customList = navHierarchy("/home/user/public/custom")[0].subTree;
-    // Remove file from the hierarchy
-    for(let i=0; i<customList.length; i++){
-        if(customList[i].name === pages[fileId].name){
-            customList.splice(i, 1);
-            break;
+    if(fileId){
+        console.log("Removing "+fileId);
+        if(!fileId) fileId = selectedFileId;
+        let customList = navHierarchy("/home/user/public/custom")[0].subTree;
+        // Remove file from the hierarchy
+        for(let i=0; i<customList.length; i++){
+            if(customList[i].name === pages[fileId].name){
+                customList.splice(i, 1);
+                break;
+            }
         }
+        // Remove from pages
+        delete pages[fileId];
+        // Remove from explorer
+        document.getElementById(fileId+"-File").remove();
+        showPage("home");
     }
-    // Remove from pages
-    delete pages[fileId];
-    // Remove from explorer
-    document.getElementById(fileId+"-customContainer").remove();
-    showPage("home");
 }
 window.onload = () => {
     collapseSidebar = document.getElementById("collapseSidebar");
@@ -494,8 +514,6 @@ window.onload = () => {
             document.getElementById("linesStatus").innerText = (lineNum > 1 ? lineNum-1 : 1)+" Lines";
             document.getElementById("sizeStatus").innerText = pageElem.innerHTML.length+"B";
         }
-        else
-            document.getElementById(activeEditor+"Page").innerHTML = '<p style="margin: auto; background-color: #de3a3d">This page is Empty! Edit its content to fill the void!</p>';
         refreshLineNums();
     });
     pageLoaded = true;
@@ -528,4 +546,4 @@ window.onscroll = (event) => {
     }
     console.log(aboveBottom);
 };
-export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming, removeFile};
+export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming, removeFile, folderIndent};

@@ -12,12 +12,16 @@ import TerminalDiv from './TerminalDiv';
 import Resume from './Resume';
 import About from './About';
 import Help from './Help';
+import ChipFiring from './ChipFiring';
+import SCP from './SCP';
+import Babel from './Babel';
 
 const Wrapper = () => {
     function recurse(tree){
         if(tree.name.endsWith("/"))
-            return <div className="sidebarItem sidebarFolder w3-row"><img className='folderIcon' alt='folder'/>
-                <button id={tree.name.substring(0, tree.name.length-1)+"Folder"} className="w3-button lightText" onClick={
+            return <div id={tree.name.substring(0, tree.name.length-1)+"-Folder"} className="sidebarItem sidebarFolder w3-row">
+                <img className='folderIcon' alt='folder'/>
+                <button className="w3-button lightText" onClick={
                     () => {
                         document.getElementById("langStatus").innerText = "";
                         document.getElementById("encodingStatus").innerText = "";
@@ -33,9 +37,9 @@ const Wrapper = () => {
                 </div>
             </div>;
         else
-            return <div className="sidebarItem w3-row" style={{marginLeft: '10px'}}>
+            return <div id={tree.name.substring(0, tree.name.indexOf("."))+"-File"} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
                 <img className='htmlIcon' alt='html'/>
-                <button id={tree.name.substring(0, tree.name.indexOf("."))+"File"} className="w3-button lightText" onClick={
+                <button className="w3-button lightText" onClick={
                     () => common.showPage(tree.name.substring(0, tree.name.indexOf(".")))
                 }>{tree.name}</button>
             </div>;
@@ -74,7 +78,7 @@ const Wrapper = () => {
                 <div id="sidebar" className="w3-col" style={{width: "0px"}}>
                     <div id="collapseHolder" className="w3-cell-row">
                         <button id="collapseSidebar" className="w3-button w3-cell">&#60;</button>
-                        <h4 id="explorerTitle" className="sidebarItem lightText w3-cell" style={{borderStyle: 'none', textAlign: 'center', verticalAlign: 'middle'}}>Explorer</h4>
+                        <h4 id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</h4>
                     </div>
                     <div id="sidebarContent" className="w3-display-container w3-row">
                         {recurse(common.navHierarchy("/home/user/public/")[0])}
@@ -89,6 +93,9 @@ const Wrapper = () => {
                     <Videntium/>
                     <AnonHires/>
                     <Neural/>
+                    <ChipFiring/>
+                    <SCP/>
+                    <Babel/>
                     <Resume/>
                     <About/>
                     <TerminalDiv/>

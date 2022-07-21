@@ -19,6 +19,11 @@ class Neural extends Component {
                 extraLink: "https://github.com/ReactorDevelopment/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"
             },
             {
+                title: "#Training Methods",
+                content: ``,
+                style: {backgroundColor: "#41414155"}
+            },
+            {
                 title: "Backpropagation",
                 content: `The backpropagation algorithm is one of the most widely used in neural networks today, with many applicable
                     situations.  This method acted similar to a control for this project, being compared to the other two algorithms in
@@ -45,6 +50,11 @@ class Neural extends Component {
                     of correctly identified diagnoses divided by the time it took for the trial to
                     complete. The higher the score, the better the performance of the algorithm.</p>`,
                 thumbnail: ""
+            },
+            {
+                title: "#Results",
+                content: ``,
+                style: {backgroundColor: "#41414155"}
             },
             {
                 title: "Backpropagation Results",
@@ -118,6 +128,7 @@ class Neural extends Component {
             }
         ];
         let pageInfo = {
+            pageName: "neural",
             holderStyle: {backgroundColor: "#3c8aab", borderRadius: "10px"},
             gitLink: "https://github.com/ReactorDevelopment/NuralPy",
             gitTitle: "Neural",
@@ -126,7 +137,7 @@ class Neural extends Component {
             tags: ["research", "academic", "ai", "python"]
         };
         return (
-            <div id="neuralPage" className="page container w3-rest lightText" style={{display: "none"}}>
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: "none"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Neural</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A research project for comparing training neural networks</h3>

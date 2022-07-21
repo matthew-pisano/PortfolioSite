@@ -21,15 +21,16 @@ class MipsCmd extends Component {
             },
         ];
         let pageInfo = {
+            pageName: "mipsCmd",
             holderStyle: {backgroundColor: "#bf564d", borderRadius: "10px"},
             gitLink: "https://github.com/ReactorDevelopment/MIPS-Command-Processor",
             gitTitle: "MIPS Cmd",
             tags: ["academic", "assembly"]
         };
         return (
-            <div id="mipsCmdPage" className="page container w3-rest lightText" style={{display: "none"}}>
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: "none"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>MIPS Command Processor</b></h1><br/>
+                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>MIPS Terminal</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A simple command processor written in the MIPS assembly language</h3>
                 </div>
                 {common.build(pageInfo, tiles)}

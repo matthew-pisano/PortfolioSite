@@ -70,14 +70,15 @@ class Home extends Component {
             },
         ];
         let pageInfo = {
+            pageName: "home",
             title: "Projects",
             holderStyle: {borderRadius: "10px"},
         };
         return (
-            <div id="homePage" className="page container w3-rest lightText">
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
                 <div className="inner titleCard" style={{position: 'fixed', height: '300px', top: '50px', left: '0px', right: '0px'}}>
-                    <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>Matthew Pisano<br/>
-                        Student of Software Engineering</h1>
+                    <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>Matthew Pisano</h1>
+                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Student of Software Engineering</h3>
                 </div>
                 {common.build(pageInfo, tiles)}
             </div>

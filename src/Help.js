@@ -20,7 +20,7 @@ class Help extends Component {
                     navigation of the pages within this site.  Clicking on each of the files
                     displays the page associated with that file.  For example, selecting <b>home.html</b>,
                     the homepage of the website.  The names of the files as symbolic, as they are all
-                    built by *React.js* and JavaScript XML (JSX).  Additionally, when a file or folder
+                    built by <i>React.js</i> and JavaScript XML (JSX).  Additionally, when a file or folder
                     is selected, some additional information will be displayed on the blue command bar
                     at the bottom of the page, such as the file size or the number of files in a folder.
                     At the top of the explorer is the collapse button, which collapses th explorer to the
@@ -62,11 +62,12 @@ class Help extends Component {
             },
         ];
         let pageInfo = {
+            pageName: "help",
             holderStyle: {backgroundColor: "#919ba8", borderRadius: "10px"},
             tags: ["help"]
         };
         return (
-            <div id="helpPage" className="page container w3-rest lightText" style={{display: "none"}}>
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: "none"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Help Menu</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>In case you&apos;d like some assistance</h3>

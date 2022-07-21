@@ -27,6 +27,7 @@ const TerminalDiv = () => {
     cd [path] - changes the current working directory to thr given path
     ls [path] - gives information on the file or folder that matches the given path
     cat [filePath] - prints our the contents of the given file
+    open [fileName] - opens the file with the given name
     exit - clears the terminal and closes it
     `;
     const genPrompt = (newCwd) => {
@@ -209,6 +210,18 @@ const TerminalDiv = () => {
                     return outStr+"\nFile: '"+targetPath.name+"' does not exist";
                 }
                 else return outStr+"\nPath: '"+absPath+"' must be a file";
+            case 'open':
+                if(tokens[1].replace(".html", "") === "rickroll"){
+                    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                    return outStr+"\nInteresting choice...";
+                }
+                if(tokens.length < 2) return outStr+"\nopen command requires an argument";
+                for(let fileId in common.pages)
+                    if(tokens[1].replace(".html", "")+".html" === common.pages[fileId].name){
+                        common.showPage(fileId);
+                        return outStr+"\nOpened file '"+tokens[1]+"'";
+                    }
+                return outStr+"\nFile '"+tokens[1].replace(".html", "")+".html"+"' does not exist";
             case 'exit':
                 closeTerminal();
                 document.getElementById("terminalOutput").innerText = "";

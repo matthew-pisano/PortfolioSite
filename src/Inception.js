@@ -20,16 +20,17 @@ class Inception extends Component {
             },
         ];
         let pageInfo = {
+            pageName: "inception",
             holderStyle: {backgroundColor: "#919ba8", borderRadius: "10px"},
             gitLink: "https://github.com/ReactorDevelopment/InceptionCollage",
             gitTitle: "Inception",
             tags: ["personal", "java"]
         };
         return (
-            <div id="inceptionPage" className="page container w3-rest lightText" style={{display: "none"}}>
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: "none"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Inception Collage</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Java program that assembles one image mosaic from many smaller images</h3>
+                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Assembles one image mosaic from many, smaller images</h3>
                 </div>
                 {common.build(pageInfo, tiles)}
             </div>
