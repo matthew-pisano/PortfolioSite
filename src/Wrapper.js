@@ -14,7 +14,7 @@ import About from './About';
 import Help from './Help';
 import ChipFiring from './ChipFiring';
 import SCP from './SCP';
-import Babel from './Babel';
+import Babble from './Babble';
 
 const Wrapper = () => {
     function recurse(tree){
@@ -95,7 +95,7 @@ const Wrapper = () => {
                     <Neural/>
                     <ChipFiring/>
                     <SCP/>
-                    <Babel/>
+                    <Babble/>
                     <Resume/>
                     <About/>
                     <TerminalDiv/>

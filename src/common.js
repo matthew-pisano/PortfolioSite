@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import {v4} from 'uuid';
 import startStr from './Start';
+import { babbler } from './Utils';
 $.fn.visible = function() {
     return this.css('visibility', 'visible');
 };
@@ -22,7 +23,7 @@ let menuBindings = {
     "contactButton": "contactDropdown",
 };
 let activeEditor = undefined;
-let selectedFileId = undefined;
+let selectedPageId = undefined;
 let pages = {
     home: {name: "home.html"},
     imperium: {name: "imperium.html"},
@@ -34,6 +35,7 @@ let pages = {
     videntium: {name: "videntium.html"},
     anonHires: {name: "anonHires.html"},
     scp: {name: "scp.html"},
+    babble: {name: "babble.html"},
     resume: {name: "resume.html"},
     about: {name: "about.html"},
     help: {name: "help.html"},
@@ -189,16 +191,17 @@ function build(pageInfo, tiles){
                 let imgStyle = tile.thumbnail && !(tile.type === "gallery") ? {} : {display: "block", margin: "auto"};
                 let displayWidth = tile.type === "gallery" ? "row" : "col";
                 let tileStyle = tile.style ? tile.style : {};
+                let titleId = pageInfo.pageName+"Tile"+i+"Title";
                 let titleEl = tile.title && tile.title.startsWith("#") ? 
-                    <h2><b>{tile.title.replace("#", "")}</b></h2> :
+                    <h2><b id={titleId}>{tile.title.replace("#", "")}</b></h2> :
                     tile.title && tile.title.startsWith("</>") ?
-                    <p dangerouslySetInnerHTML={{__html: tile.title.replace("</>", "")}}></p> :
-                    tile.title ? <p><b>{tile.title}</b></p> : <span></span>;
-                return <div id={"tile"+i} className="displayTile w3-container w3-row" key={"tile"+i} style={tileStyle}>
+                    <p id={titleId} dangerouslySetInnerHTML={{__html: tile.title.replace("</>", "")}}></p> :
+                    tile.title ? <p><b id={titleId}>{tile.title}</b></p> : <span></span>;
+                return <div id={pageInfo.pageName+"Tile"+i} className="displayTile w3-container w3-row" key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : <span></span>}
                     <div className={`w3-${displayWidth} w3-mobile`} style={contentStyle}>
                         {tile.titleLink ? <u style={{cursor: "pointer"}} onClick={() => showPage(tile.titleLink)}>{titleEl}</u> : titleEl}
-                        <p dangerouslySetInnerHTML={{__html: tile.content}}></p>
+                        <p id={pageInfo.pageName+"Tile"+i+"Content"} dangerouslySetInnerHTML={{__html: tile.content}}></p>
                         {tile.gitLink ?
                             <div className="gitLink w3-row w3-mobile w3-col">
                                 <img className="w3-col" alt='gitLink'/>
@@ -228,8 +231,19 @@ function showPage(pageId, isLanding){
     Array.from(elements).forEach((element, index) => {
         element.style.display = "none";
     });
+    async function loop() {
+        console.log("Starting babble");
+        while(selectedPageId === "babble"){
+            console.log("Babble: ", selectedPageId);
+            babbler();
+            await new Promise(resolve => setTimeout(resolve, 2000));
+        }
+        document.getElementById("wrapperContent").style.backgroundColor = "";
+        console.log("Ending babble");
+    }
     if(pageId){
-        document.getElementById("pageTitle").innerText = pages[pageId].name;
+        selectedPageId = pageId;
+        document.getElementById("siteTitle").innerText = pages[pageId].name;
         let pageElem = document.getElementById(pageId+"Page");
         if(!pageElem){
             console.log("No element found for page "+pageId);
@@ -256,6 +270,7 @@ function showPage(pageId, isLanding){
         document.getElementById("encodingStatus").innerText = "UTF-8";
         if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !isLanding && pageLoaded && sidebarOpen)
             toggleSidebar();
+        if(selectedPageId === "babble") loop();
     }
 }
 // Bind to window for global reference
@@ -315,41 +330,41 @@ function newFile(fileName){
         else count ++;
     }
     if(!fileName) fileName = "new"+count+".html";
-    let fileId = v4();
-    explorerDiv.id = fileId+"-File";
-    customFileDiv.id = fileId+"Page";
+    let pageId = "custom-"+v4();
+    explorerDiv.id = pageId+"-File";
+    customFileDiv.id = pageId+"Page";
     if(sidebarOpen)
         customFileDiv.style.marginLeft = sidebarMax+"px";
     else
         customFileDiv.style.marginLeft = sidebarMax+"px";
-    pages[fileId] = {name: fileName, content: `<p style="margin: auto; background-color: #de3a3d">
+    pages[pageId] = {name: fileName, content: `<p style="margin: auto; background-color: #de3a3d">
         This page is Empty! Edit its content with the '<img class="editButton" style="width: 15px; margin: 0px">' icon to fill the void!</p>`};
-    customFileDiv.innerHTML += pages[fileId].content;
+    customFileDiv.innerHTML += pages[pageId].content;
     button.innerText = fileName;
     button.onclick = () => {
-        console.log("selecetd file: "+fileId);
-        selectedFileId = fileId;
-        showPage(fileId);
+        console.log("selecetd file: "+pageId);
+        selectedPageId = pageId;
+        showPage(pageId);
         setActiveEditor();
     };
     explorerDiv.appendChild(button);
     let editImg = document.createElement("IMG");
     editImg.className = "editButton";
     editImg.onclick = () => {
-        document.getElementById("editorContent").innerText = pages[fileId].content;
+        document.getElementById("editorContent").innerText = pages[pageId].content;
         refreshLineNums();
-        setActiveEditor(fileId);
+        setActiveEditor(pageId);
     };
     explorerDiv.appendChild(editImg);
     document.getElementById("customContent").appendChild(explorerDiv);
     document.getElementById("pageHolder").appendChild(customFileDiv);
     navHierarchy("/home/user/public/custom")[0].subTree.push({name: fileName});
     button.onclick();
-    return fileId;
+    return pageId;
 }
-function setFileContent(fileId, content){
-    pages[fileId].content = content;
-    document.getElementById(fileId+"Page").innerHTML = scriptParse(pages[fileId].content).content;
+function setFileContent(pageId, content){
+    pages[pageId].content = content;
+    document.getElementById(pageId+"Page").innerHTML = scriptParse(pages[pageId].content).content;
 }
 function scriptParse(content, prepareScripts){
     let cutContent = content;
@@ -387,10 +402,11 @@ function scriptParse(content, prepareScripts){
     //console.log(cutContent, scripts);
     return {content: cutContent, scripts: null};
 }
-function renameActive(fileId){
-    if(!fileId) fileId = selectedFileId;
-    console.log("renaming: "+fileId);
-    stasis.container = document.getElementById(fileId+"-File");
+function renameActive(pageId){
+    if(!pageId) pageId = selectedPageId;
+    if(!pageId.startsWith("custom-")) return;
+    console.log("renaming: "+pageId);
+    stasis.container = document.getElementById(pageId+"-File");
     stasis.icon = stasis.container.children[0];
     stasis.expFile = stasis.container.children[1];
     stasis.edit = stasis.container.children[2];
@@ -404,33 +420,33 @@ function renameActive(fileId){
     customRename.onkeyup = (evt) => {
         //console.log("Key: "+evt.key);
         if(""+evt.key === "Enter")
-            finishRenaming(selectedFileId, customRename.value);
+            finishRenaming(selectedPageId, customRename.value);
     };
     if(!sidebarOpen) toggleSidebar();
     stasis.container.appendChild(customRename);
     customRename.focus();
 }
-function finishRenaming(fileId, newName){
-    console.log("Renaming "+fileId+" as "+newName);
-    if(!fileId) fileId = selectedFileId;
+function finishRenaming(pageId, newName){
+    console.log("Renaming "+pageId+" as "+newName);
+    if(!pageId) pageId = selectedPageId;
     if(newName) {
         // Rename the file within the hierarchy
         newName = newName.endsWith(".html") ? newName : newName+".html";
         let customList = navHierarchy("/home/user/public/custom")[0].subTree;
         for(let i=0; i<customList.length; i++){
-            if(customList[i].name === pages[fileId].name){
+            if(customList[i].name === pages[pageId].name){
                 customList[i].name = newName;
                 break;
             }
         }
     }
-    else newName = pages[fileId].name;
-    console.log("New Name of "+fileId+": "+newName, pages);
+    else newName = pages[pageId].name;
+    console.log("New Name of "+pageId+": "+newName, pages);
     // Rename in pages
-    pages[fileId].name = newName;
-    document.getElementById("pageTitle").innerText = pages[fileId].name;
+    pages[pageId].name = newName;
+    document.getElementById("siteTitle").innerText = pages[pageId].name;
     if(!stasis.container) 
-        stasis.container = document.getElementById(fileId+"-File");
+        stasis.container = document.getElementById(pageId+"-File");
     console.log(stasis.container);
     console.log(navHierarchy("/home/user/public/custom")[0].subTree);
     if(stasis.container.children.length >= 3){
@@ -445,22 +461,22 @@ function finishRenaming(fileId, newName){
     stasis.container.children[1].innerText = newName;
     stasis = {container: null};
 }
-function removeFile(fileId){
-    if(fileId){
-        console.log("Removing "+fileId);
-        if(!fileId) fileId = selectedFileId;
+function removeFile(pageId){
+    if(pageId){
+        console.log("Removing "+pageId);
+        if(!pageId) pageId = selectedPageId;
         let customList = navHierarchy("/home/user/public/custom")[0].subTree;
         // Remove file from the hierarchy
         for(let i=0; i<customList.length; i++){
-            if(customList[i].name === pages[fileId].name){
+            if(customList[i].name === pages[pageId].name){
                 customList.splice(i, 1);
                 break;
             }
         }
         // Remove from pages
-        delete pages[fileId];
+        delete pages[pageId];
         // Remove from explorer
-        document.getElementById(fileId+"-File").remove();
+        document.getElementById(pageId+"-File").remove();
         showPage("home");
     }
 }
@@ -502,7 +518,7 @@ window.onload = () => {
                 $("#"+dropId).hide(0);
         }
         if(evt.target.id !== "customRename" && document.getElementById("customRename"))
-            finishRenaming(selectedFileId, document.getElementById("customRename").value);
+            finishRenaming(selectedPageId, document.getElementById("customRename").value);
     }, true); 
     let editorContent = document.getElementById("editorContent");
     editorContent.addEventListener('input', (event) => {
@@ -519,11 +535,10 @@ window.onload = () => {
     pageLoaded = true;
 };
 window.onscroll = (event) => {
-    if(document.getElementById("tileHolder") === null) return;
+    if(document.getElementById(selectedPageId+"TileHolder") === null) return;
     if(tilePositions === null)
         tilePositions = {};
-    let tiles = document.getElementById("tileHolder").children;
-    let aboveBottom = 0;
+    let tiles = document.getElementById(selectedPageId+"TileHolder").children;
     for(let tileElement of tiles){
         if(tileElement.id === "") continue;
         let tile = document.getElementById(tileElement.id);
@@ -531,10 +546,8 @@ window.onscroll = (event) => {
             tilePositions[tileElement.id] = {isOffset: false, default: "3%", initial: true};
         
         let viewportOffset = tile.getBoundingClientRect();
-        //console.log("Rect: ", viewportOffset);
         let top = viewportOffset.top;
         if(top <= window.innerHeight && tilePositions[tileElement.id].isOffset){
-            aboveBottom ++;
             $("#"+tileElement.id).animate({"margin-left": tilePositions[tileElement.id].default}, 700);
             tilePositions[tileElement.id].isOffset = false;
         }
@@ -544,6 +557,5 @@ window.onscroll = (event) => {
             tilePositions[tileElement.id].initial = false;
         }
     }
-    console.log(aboveBottom);
 };
 export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming, removeFile, folderIndent};

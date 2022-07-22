@@ -21,6 +21,7 @@ module.exports = {
     "rules": {
         "semi": ["warn", "always"],
         "no-unused-vars": "warn",
-        "no-control-regex": "off"
+        "no-control-regex": "off",
+        "no-constant-condition": "warn"
     }
 };

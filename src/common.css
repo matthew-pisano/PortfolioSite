@@ -258,6 +258,10 @@ body {
     font-family: Consolas,monaco,monospace; 
 }
 
+.forceWrap{
+    word-break: break-word;
+    white-space: normal;
+}
 #editorLines {
     width: 20px;
     background-color: #313131;

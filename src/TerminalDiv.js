@@ -46,13 +46,14 @@ const TerminalDiv = () => {
         setInitialSize(resizable.offsetHeight);
     };
     
-    const resize = (e) => {
-        let height = initialSize + initialPos - e.clientY + 50;
+    const resize = (e, heightOverride) => {
+        let height = heightOverride ? heightOverride : initialSize + initialPos - e.clientY + 50;
         //console.log(height, terminalClosed);
         if(height > 200){
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
+            document.getElementById('terminalInput').focus();
             terminalClosed = false;
         }
         else if(terminalClosed){
@@ -79,7 +80,52 @@ const TerminalDiv = () => {
         }
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
     };
+    /* View in fullscreen */
+    window.openFullscreen = () => {
+        console.log("Entering void");
+        if (document.documentElement.requestFullscreen)
+            document.documentElement.requestFullscreen();
+        else if (document.documentElement.webkitRequestFullscreen) /* Safari */
+            document.documentElement.webkitRequestFullscreen();
+        else if (document.documentElement.msRequestFullscreen) /* IE11 */
+            document.documentElement.msRequestFullscreen();
+        document.getElementById("enterVoid").style.display = "none";
+        document.getElementById("exitVoid").style.display = "block";
+    };
     
+    /* Close fullscreen */
+    window.closeFullscreen = () => {
+        if (document.exitFullscreen)
+            document.exitFullscreen();
+        else if (document.webkitExitFullscreen) /* Safari */
+            document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) /* IE11 */
+            document.msExitFullscreen();
+        document.getElementById("exitVoid").style.display = "none";
+        document.getElementById("enterVoid").style.display = "block";
+    };
+
+    async function toVoid(){
+        let voidStr = "I T - C O N S U M E S - A L L";
+        await new Promise(resolve => setTimeout(resolve, 500));
+        while(voidStr.length > 0){
+            let next = voidStr.charAt(0)
+            document.getElementById('terminalOutput').innerHTML += next !== " " ? next : "&nbsp;";
+            voidStr = voidStr.substring(1);
+            await new Promise(resolve => setTimeout(resolve, 250));
+        }
+        await new Promise(resolve => setTimeout(resolve, 500));
+        document.body.style.height = "100%";
+        document.body.innerHTML = `<img style="width: 100%;object-fit: none;height: 100%;" 
+            src="https://lightsail-image-repo.s3.amazonaws.com/pgrm/void.png">
+            <div id="exitVoid" style="display:none; width: 100%; height: 50px; background-color: black; 
+            position: fixed; bottom: 0px; color: azure; text-align: center; cursor: pointer"
+            onClick="window.closeFullscreen()">[EXIT]</div>
+            <div id="enterVoid" style="width: 100%; height: 50px; background-color: black; 
+            position: fixed; bottom: 0px; color: azure; text-align: center; cursor: pointer"
+            onClick="window.openFullscreen()">[ENTER]</div>`;
+        document.getElementById("siteTitle").innerText = "How did we get here?";
+    }
     function parseCommand(command){
         let tokens = command.split(" ");
         //console.log(tokens);
@@ -215,10 +261,18 @@ const TerminalDiv = () => {
                     window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
                     return outStr+"\nInteresting choice...";
                 }
+                else if(tokens[1].replace(".html", "") === "poland"){
+                    window.open("http://cs.newpaltz.edu/~pisanom1/CS3/");
+                    return outStr+"\nPolska Ball approves...";
+                }
+                else if(tokens[1].replace(".html", "") === "void"){
+                    toVoid();
+                    return outStr+"\n\n";
+                }
                 if(tokens.length < 2) return outStr+"\nopen command requires an argument";
-                for(let fileId in common.pages)
-                    if(tokens[1].replace(".html", "")+".html" === common.pages[fileId].name){
-                        common.showPage(fileId);
+                for(let pageId in common.pages)
+                    if(tokens[1].replace(".html", "")+".html" === common.pages[pageId].name){
+                        common.showPage(pageId);
                         return outStr+"\nOpened file '"+tokens[1]+"'";
                     }
                 return outStr+"\nFile '"+tokens[1].replace(".html", "")+".html"+"' does not exist";
@@ -256,7 +310,9 @@ const TerminalDiv = () => {
                 onDragStart = {initial} 
                 onDragEnd = {resize}
             />
-            <div id='terminal' onClick={() => document.getElementById("terminalInput").focus()}>
+            <div id='terminal' onClick={() => {
+                if(terminalClosed) resize(null, 210);
+            }}>
                 <span>Terminal</span>
                 <div id="terminalOutput"></div>
                 <div id="terminalBottom" style={{visibility: "hidden"}}>
