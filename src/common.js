@@ -3,6 +3,7 @@ import React from 'react';
 import {v4} from 'uuid';
 import startStr from './Start';
 import { babbler } from './Utils';
+import { parse, HtmlGenerator } from 'latex.js';
 $.fn.visible = function() {
     return this.css('visibility', 'visible');
 };
@@ -163,11 +164,23 @@ function toggleSidebar(){
         sidebarOpen = true;
     }
 }
+function parseLatex(text){
+
+    text = `\\documentclass{article}
+    \\begin{document}
+    ${text}
+    \\end{document}`;
+    let generator = new HtmlGenerator({ hyphenate: false });
+    generator = parse(text, { generator: generator });
+
+    //document.head.appendChild(generator.stylesAndScripts(""));
+    //document.body.appendChild();
+    return generator.domFragment().children[0].children[0].innerHTML;
+  
+}
 function build(pageInfo, tiles){
     return <div id={pageInfo.pageName+"TileHolder"} className="tileHolder inner w3-display-container" style={pageInfo.holderStyle}>
-        {pageInfo.title ? 
-            <h1 className="pageTitle" style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1> :
-            <div className="w3-row">
+        {<div className="w3-row">
                 {pageInfo.gitLink ?
                     <div className="gitLink w3-row w3-mobile w3-col"><img className="w3-col" alt='gitLink'/>
                         <a className="w3-col" href={pageInfo.gitLink} target="_blank" rel="noreferrer">{pageInfo.gitTitle ? pageInfo.gitTitle : pageInfo.title}</a>
@@ -183,6 +196,8 @@ function build(pageInfo, tiles){
                 }
             </div>
         }
+        {pageInfo.title ? 
+            <h1 className="pageTitle" style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1> : <span></span>}
         {
             tiles.map((tile, i) =>{
                 //console.log("Mapping tile "+i);
@@ -197,6 +212,12 @@ function build(pageInfo, tiles){
                     tile.title && tile.title.startsWith("</>") ?
                     <p id={titleId} dangerouslySetInnerHTML={{__html: tile.title.replace("</>", "")}}></p> :
                     tile.title ? <p><b id={titleId}>{tile.title}</b></p> : <span></span>;
+                while(tile.content.includes("</latex>")){
+                    let beginIdx = tile.content.indexOf("<latex>");
+                    let endIdx = tile.content.indexOf("</latex>");
+                    let latex = parseLatex(tile.content.substring(beginIdx+7, endIdx));
+                    tile.content = tile.content.substring(0, beginIdx)+latex+tile.content.substring(endIdx+8);
+                }
                 return <div id={pageInfo.pageName+"Tile"+i} className="displayTile w3-container w3-row" key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : <span></span>}
                     <div className={`w3-${displayWidth} w3-mobile`} style={contentStyle}>
@@ -481,6 +502,8 @@ function removeFile(pageId){
     }
 }
 window.onload = () => {
+    let generator = new HtmlGenerator({ hyphenate: false });
+    document.head.appendChild(generator.stylesAndScripts("https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/"));
     collapseSidebar = document.getElementById("collapseSidebar");
     collapseSidebar.onclick = toggleSidebar;
 

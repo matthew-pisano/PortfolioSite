@@ -109,7 +109,7 @@ const TerminalDiv = () => {
         let voidStr = "I T - C O N S U M E S - A L L";
         await new Promise(resolve => setTimeout(resolve, 500));
         while(voidStr.length > 0){
-            let next = voidStr.charAt(0)
+            let next = voidStr.charAt(0);
             document.getElementById('terminalOutput').innerHTML += next !== " " ? next : "&nbsp;";
             voidStr = voidStr.substring(1);
             await new Promise(resolve => setTimeout(resolve, 250));

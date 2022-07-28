@@ -1,3 +1,6 @@
+.it{
+    font-style: italic;
+}
 #terminalHolder{
     background-color: #1e1e1e;
     color: azure;
