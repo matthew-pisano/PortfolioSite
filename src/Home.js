@@ -22,8 +22,8 @@ class Home extends Component {
             {
                 title: "Chip Firing",
                 titleLink: "chipFiring",
-                content: `A research paper focusing on mathematical chip firing games.  The aim of the project is the analyze these structures,
-                    notice patterns, and work with algorithms that find solutions to the game.`,
+                content: `A research paper focusing on mathematical chip firing games.  This project will study Chip-Firing games and 
+                how different combinations of directed and undirected edges affect its winning strategies.`,
                 gitLink: "https://github.com/ReactorDevelopment/NuralPy",
                 tags: ["research", "academic"]
             },
@@ -71,7 +71,7 @@ class Home extends Component {
         ];
         let pageInfo = {
             pageName: "home",
-            title: "Projects",
+            title: "Notable Projects",
             holderStyle: {borderRadius: "10px"},
             gitLink: "https://github.com/ReactorDevelopment/",
             gitTitle: "GitHub",
@@ -81,7 +81,7 @@ class Home extends Component {
         return (
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
                 <div className="inner titleCard" style={{position: 'fixed', height: '300px', top: '50px', left: '0px', right: '0px'}}>
-                    <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>Matthew Pisano</h1>
+                    <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>Matthew Pisano</h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Student of Software Engineering</h3>
                 </div>
                 {common.build(pageInfo, tiles)}

@@ -39,7 +39,7 @@ class AnonHires extends Component {
             {
                 title: "Forward",
                 content: `If the project has continues into further development, planned features include support for third party certifications, such as
-                    LinkedIn badges, and collaborating with other services, such as Leetcode or Hackerrank, to add more depth to the assessment system.`,
+                    LinkedIn badges, and collaborating with other services, such as Leet Code or HackerRank, to add more depth to the assessment system.`,
                 thumbnail: ""
             },
         ];

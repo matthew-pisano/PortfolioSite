@@ -1,6 +1,9 @@
 .it{
     font-style: italic;
 }
+.katex{
+    white-space: nowrap;
+}
 #terminalHolder{
     background-color: #1e1e1e;
     color: azure;
@@ -430,6 +433,9 @@ body {
     .displayTile{
         margin-right: 0px;
         margin-left: 3%;
+    }
+    .katex{
+        white-space: normal;
     }
     /*.folderIcon{
         content:url("assets/folderSmall.png");

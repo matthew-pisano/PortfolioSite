@@ -3,7 +3,9 @@ import React from 'react';
 import {v4} from 'uuid';
 import startStr from './Start';
 import { babbler } from './Utils';
-import { parse, HtmlGenerator } from 'latex.js';
+//import { parse, HtmlGenerator } from 'latex.js';
+import { parse, HtmlGenerator } from 'https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs';
+
 $.fn.visible = function() {
     return this.css('visibility', 'visible');
 };
@@ -363,7 +365,7 @@ function newFile(fileName){
     customFileDiv.innerHTML += pages[pageId].content;
     button.innerText = fileName;
     button.onclick = () => {
-        console.log("selecetd file: "+pageId);
+        console.log("selected file: "+pageId);
         selectedPageId = pageId;
         showPage(pageId);
         setActiveEditor();

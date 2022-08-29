@@ -17,7 +17,7 @@ class About extends Component {
                 content: `I have experience in many languages with JavaScript, Java, and Python being the ones in
                     which my skills are most developed.  I have created many professional solutions for a variety
                     of companies along with machine learning applications, both from scratch and using modules such 
-                    as TensofFlow and PyTorch.  Through Java, I have created multiple android applications,
+                    as TensorFlow and PyTorch.  Through Java, I have created multiple android applications,
                     come of which have been published on the Google Play store.  I have used javascript in a variety
                     of personal and professional web applications, with React.js and Node.js being the libraries in which
                     I have the most experience.`,
@@ -32,12 +32,14 @@ class About extends Component {
             },
             {
                 title: "Recent Employment",
-                content: `I have research experience through the SUNY New Paltz summer undergraduate research experience, details
-                    about this can be found in the <u style="cursor: pointer" onClick="window.showPage('neural')">Neural page</u>.
-                    While working for Cyber Guardian Consulting Group, I have developed a variety of proprietary business
+                content: `<ul><li>I am currently working for SUNY New Paltz through their summer undergraduate research experience, details
+                    about this can be found in the <u style="cursor: pointer" onClick="window.showPage('chipFiring')">Chip Firing page</u>.
+                    With this job, I work closely with a mentor to gain research experience and to develop research for later publishing</li>
+                    <li>I am also currently employed at Cyber Guardian Consulting Group.  Here, I have developed a variety of proprietary business
                     solutions using a variety of languages and web services, primarily AWS.  Further details of these projects
-                    may be negotiated upon request. During my time at Envision2bWell, I worked as an app development intern 
-                    for their application 'EnvisionWell' where I integrated google maps capabilities to the app.`,
+                    may be negotiated upon request.</li>
+                    <li>I have previously worked for Envision2bWell as an app development intern.  During my time at Envision2bWell, I helped
+                    to develop their application 'EnvisionWell' where I integrated google maps capabilities to the app.</li></ul>`,
                 thumbnail: ""
             },
             {
