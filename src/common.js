@@ -98,7 +98,19 @@ let hierarchy = {
                     ]}
                 ]
             }]
-        }]
+        },
+        {name: "bin/", subTree: [], permission: "deny"},
+        {name: "boot/", subTree: [], permission: "deny"},
+        {name: "dev/", subTree: [], permission: "deny"},
+        {name: "etc/", subTree: [], permission: "deny"},
+        {name: "lib/", subTree: [], permission: "deny"},
+        {name: "mnt/", subTree: [], permission: "deny"},
+        {name: "opt/", subTree: [], permission: "deny"},
+        {name: "proc/", subTree: [], permission: "deny"},
+        {name: "sys/", subTree: [], permission: "deny"},
+        {name: "usr/", subTree: [], permission: "deny"},
+        {name: "var/", subTree: [], permission: "deny"},
+    ]
 };
 function navHierarchy(path){
     let tokens = path.split("/");
@@ -188,10 +200,13 @@ function build(pageInfo, tiles){
                         <a className="w3-col" href={pageInfo.gitLink} target="_blank" rel="noreferrer">{pageInfo.gitTitle ? pageInfo.gitTitle : pageInfo.title}</a>
                     </div> : <span></span>
                 }
-                {pageInfo.extraLink ?
-                    <div className="extraLink w3-row w3-mobile w3-col"><img className="w3-col" alt='extraLink'/>
-                        <a className="w3-col" href={pageInfo.extraLink} target="_blank" rel="noreferrer">{pageInfo.extraTitle ? pageInfo.extraTitle : pageInfo.title}</a>
-                    </div> : <span></span>
+                {pageInfo.extraLinks ?
+                    pageInfo.extraLinks.map((extraLink, i) => {
+                       return  <div className="extraLink w3-row w3-mobile w3-col" key={'extraLink'+pageInfo.extraTitles[i]}>
+                            <img className="w3-col" alt='extraLink'/>
+                            <a className="w3-col" href={extraLink} target="_blank" rel="noreferrer">{pageInfo.extraTitles[i]}</a>
+                        </div>;
+                    }) : <span></span>
                 }
                 {(pageInfo.tags ? pageInfo.tags : []).map((tag, i) => 
                     <div className={"w3-col tag "+tag+"Tag w3-mobile"} key={tag}><img className="w3-col" alt={tag}/><span className="w3-col"></span></div>)

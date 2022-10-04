@@ -75,8 +75,9 @@ class Home extends Component {
             holderStyle: {borderRadius: "10px"},
             gitLink: "https://github.com/ReactorDevelopment/",
             gitTitle: "GitHub",
-            extraLink: "https://docs.google.com/gview?url=https://lightsail-image-repo.s3.amazonaws.com/documents/Resume.docx",
-            extraTitle: "Résumé"
+            extraLinks: ["https://docs.google.com/gview?url=https://lightsail-image-repo.s3.amazonaws.com/documents/Resume.docx",
+                "https://www.linkedin.com/in/matthew-pisano-395827192"],
+            extraTitles: ["Résumé", "LinkedIn"]
         };
         return (
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">

@@ -132,8 +132,8 @@ class Neural extends Component {
             holderStyle: {backgroundColor: "#3c8aab", borderRadius: "10px"},
             gitLink: "https://github.com/ReactorDevelopment/NuralPy",
             gitTitle: "Neural",
-            extraLink: "https://github.com/ReactorDevelopment/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf",
-            extraTitle: "Research Paper",
+            extraLinks: ["https://github.com/ReactorDevelopment/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
+            extraTitles: ["Research Paper"],
             tags: ["research", "academic", "ai", "python"]
         };
         return (

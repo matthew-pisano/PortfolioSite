@@ -4,12 +4,17 @@
 .katex{
     white-space: nowrap;
 }
+#terminalClose:hover{
+    background-color: #313131 !important;
+    color: azure !important;
+}
 #terminalHolder{
     background-color: #1e1e1e;
     color: azure;
     position: fixed;
     bottom: 30px;
-    width: 100%;
+    left:0px;
+    right: 0px;
     z-index: 2;
 }
 #terminalOutput{

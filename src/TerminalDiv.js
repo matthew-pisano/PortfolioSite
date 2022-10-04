@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import * as common from './common';
 
 let terminalClosed = true;
+let closeTime = 0;
 const closeTerminal = () => {
+    console.log("Closing terminal...");
     document.getElementById('terminal').style.height = `30px`;
     document.getElementById('terminalOutput').style.height = `0px`;
     document.getElementById('terminalBottom').style.visibility = "hidden";
+    document.getElementById('terminalClose').style.visibility = "hidden";
     terminalClosed = true;
+    closeTime = Date.now();
 };
 
 const TerminalDiv = () => {
@@ -18,16 +22,22 @@ const TerminalDiv = () => {
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
     const [commandIndex, setCommandIndex] = useState(-1);
-    const helpMsg = `Help Menu
-    help - print this message
+    const helpMsg = `--<Help Menu>--
+    GRU mash, version 5.1.16(1)-release (x86_64-cloud-manix-gru)
+    These shell commands are defined internally.  Type 'help' to see this list.
+
+    help [options] - print this message
     echo *[msg] - echoes each of the arguments on a new line
     touch [fileName] - creates a file with the name given in the argument
     ren [oldName] [newName] - renames an existing file to the given new name
+    rm [fileName] - removes the file with the name given in the argument
     cls | clear - clears the output of the terminal
     cd [path] - changes the current working directory to thr given path
     ls [path] - gives information on the file or folder that matches the given path
     cat [filePath] - prints our the contents of the given file
     open [fileName] - opens the file with the given name
+    color [color] - sets the terminal text color to the given color in the form #rrggbb
+    dir - Why?
     exit - clears the terminal and closes it
     `;
     const genPrompt = (newCwd) => {
@@ -48,11 +58,12 @@ const TerminalDiv = () => {
     
     const resize = (e, heightOverride) => {
         let height = heightOverride ? heightOverride : initialSize + initialPos - e.clientY + 50;
-        //console.log(height, terminalClosed);
+        console.log("Resizing terminal", height, terminalClosed);
         if(height > 200){
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
+            document.getElementById('terminalClose').style.visibility = "visible";
             document.getElementById('terminalInput').focus();
             terminalClosed = false;
         }
@@ -60,6 +71,7 @@ const TerminalDiv = () => {
             document.getElementById('terminal').style.height = `200px`;
             document.getElementById('terminalOutput').style.height = `130px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
+            document.getElementById('terminalClose').style.visibility = "visible";
             terminalClosed = false;
         }
         else closeTerminal();
@@ -107,10 +119,13 @@ const TerminalDiv = () => {
 
     async function toVoid(){
         let voidStr = "I T - C O N S U M E S - A L L";
+        let initLen = voidStr.length;
         await new Promise(resolve => setTimeout(resolve, 500));
         while(voidStr.length > 0){
             let next = voidStr.charAt(0);
             document.getElementById('terminalOutput').innerHTML += next !== " " ? next : "&nbsp;";
+            if(voidStr.length == initLen)
+                document.getElementById('terminalOutput').scrollTop = document.getElementById('terminalOutput').scrollHeight;
             voidStr = voidStr.substring(1);
             await new Promise(resolve => setTimeout(resolve, 250));
         }
@@ -126,10 +141,34 @@ const TerminalDiv = () => {
             onClick="window.openFullscreen()">[ENTER]</div>`;
         document.getElementById("siteTitle").innerText = "How did we get here?";
     }
+    async function haltingProblem(){
+        let dots = 7;
+        await new Promise(resolve => setTimeout(resolve, 250));
+        document.getElementById('terminalOutput').innerHTML += "Computing solution to halting problem";
+        while(dots > 0){
+            document.getElementById('terminalOutput').innerHTML += ".";
+            await new Promise(resolve => setTimeout(resolve, 500));
+            dots --;
+        }
+        document.getElementById('terminalOutput').innerHTML += "<br>Operation completed successfully!<br>Printing solution...";
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        document.getElementById('terminalOutput').innerHTML += "<br>Segmentation fault (core dumped)";
+    }
+    function eightBall(){
+        let responses = ["It is certain", "Without a doubt", "Yes definitely", "You may rely on it",
+            "Most likely", "Outlook microsoft", "Signs point to yes", "Hmmmmm...", "Reply hazy, try again",
+            "Ask again later", "404, response not found", "Better not tell you now", "Cannot predict now",
+            "Enrich 95% Uranium 235 and try again", "Don't count on it", "My reply is no", 
+            "My sources say no [citation needed]", "Outlook not so good", "Very doubtful", "503, oh no thats not good!", 
+            "Huh?", "What?", "Can you speak up?", "Segmentation fault (core dumped)", "Han shot first",
+            "Have you tried water-scrum-fall?", "Have you tried turning it off and turning it on again?"];
+        let result = Math.floor(Math.random()*responses.length);
+        return responses[result];
+    }
     function parseCommand(command){
         let tokens = command.split(" ");
         //console.log(tokens);
-        let targetPath = false;
+        let targetItem = null;
         let outStr = genPrompt()+command;
         let absPath = "";
         for(let i=0; i<tokens.length; i++){
@@ -140,9 +179,9 @@ const TerminalDiv = () => {
         //console.log(tokens);
         function resolvePath(path){
             absPath = path ? path : cwd;
-            if(tokens.length > 1 && path[0] === "/") targetPath = common.navHierarchy(path)[0];
+            if(tokens.length > 1 && path[0] === "/") targetItem = common.navHierarchy(path)[0];
             else if(tokens.length > 1){
-                targetPath = common.navHierarchy(cwd+path)[0];
+                targetItem = common.navHierarchy(cwd+path)[0];
                 absPath = cwd+absPath;
             }
         }
@@ -214,6 +253,15 @@ const TerminalDiv = () => {
                 document.getElementById("terminalOutput").innerText = "";
                 return outStr;
             case 'help':
+                if(tokens.length > 1 && (tokens[1] == "-f" || tokens[1] == "--force"))
+                    return outStr+"\n"+helpMsg+`--Secret Help--
+                    mash - MAthesis SHell extended capabilities.
+                    Sensitive documents are exposed to these commands.  Use with caution.
+
+                    open [rickroll | poland | void | scp | babble] - opens the file with the given name
+                    mir - ??
+                    launch [warhead_id] [lat] [long] - ██████████████
+                    haltingproblem - Computes the ideal turing machine to solve the halting problem`;
                 return outStr+"\n"+helpMsg;
             case 'cd':
                 if(tokens.length === 1){
@@ -221,39 +269,47 @@ const TerminalDiv = () => {
                     return outStr;
                 }
                 resolvePath(tokens[1]);
-                targetPath = common.navHierarchy(absPath)[0];
-                if(targetPath) setCwd(absPath);
+                targetItem = common.navHierarchy(absPath)[0];
+                if(targetItem  && targetItem.permission  && targetItem.permission == "deny") {
+                    return outStr+"\nPermission denied for path: '"+absPath+"'";
+                }
+                else if(targetItem) {
+                    setCwd(absPath);
+                    return outStr;
+                }
                 else return outStr+"\nCould not find path: '"+absPath+"'";
-                return outStr;
             case 'ls':
                 resolvePath(tokens[1]);
-                targetPath = common.navHierarchy(tokens.length < 2 ? cwd : absPath)[0];
-                if(targetPath)
-                    if(targetPath.subTree){
-                        outStr += "\nFolder\n----\nChildren: "+targetPath.subTree.length;
-                        for(let i=0; i<targetPath.subTree.length; i++)
-                            outStr += "\n"+targetPath.subTree[i].name;
+                targetItem = common.navHierarchy(tokens.length < 2 ? cwd : absPath)[0];
+                if(targetItem  && targetItem.permission  && targetItem.permission == "deny") {
+                    return outStr+"\nPermission denied for path: '"+absPath+"'";
+                }
+                else if(targetItem)
+                    if(targetItem.subTree){
+                        outStr += "\nFolder\n----\nChildren: "+targetItem.subTree.length;
+                        for(let i=0; i<targetItem.subTree.length; i++)
+                            outStr += "\n"+targetItem.subTree[i].name;
                     }
-                    else outStr += "\nFile\n----\n"+targetPath.name;
+                    else outStr += "\nFile\n----\n"+targetItem.name;
                 
                 else return outStr+"\nCould not find path: '"+absPath+"'";
                 return outStr;
             case 'cat':
                 if(tokens.length < 2) return outStr+"\ncat command requires an argument";
                 resolvePath(tokens[1]);
-                targetPath = common.navHierarchy(absPath)[0];
-                if(!targetPath) return outStr+"\nCould not find path: '"+absPath+"'";
-                if(!targetPath.subTree){
+                targetItem = common.navHierarchy(absPath)[0];
+                if(!targetItem) return outStr+"\nCould not find path: '"+absPath+"'";
+                if(!targetItem.subTree){
                     for(let i=0; i<Object.keys(common.pages).length; i++){
                         let key = Object.keys(common.pages)[i];
-                        console.log("Checking ", targetPath.name, common.pages[key].name);
-                        if(targetPath.name === common.pages[key].name){
+                        console.log("Checking ", targetItem.name, common.pages[key].name);
+                        if(targetItem.name === common.pages[key].name){
                             let pageContent = common.pages[key].content;
                             if(!pageContent) pageContent = document.getElementById(key+"Page").innerHTML;
                             return outStr+"\n"+pageContent;
                         }
                     }
-                    return outStr+"\nFile: '"+targetPath.name+"' does not exist";
+                    return outStr+"\nFile: '"+targetItem.name+"' does not exist";
                 }
                 else return outStr+"\nPath: '"+absPath+"' must be a file";
             case 'open':
@@ -276,12 +332,31 @@ const TerminalDiv = () => {
                         return outStr+"\nOpened file '"+tokens[1]+"'";
                     }
                 return outStr+"\nFile '"+tokens[1].replace(".html", "")+".html"+"' does not exist";
+            case 'color':
+                if(tokens.length < 2) return outStr+"\ncolor command requires an argument";
+                if(tokens[1].match(/#[0-9|a-f|A-F]{6}/)){
+                    document.getElementById("terminalHolder").style.color = tokens[1];
+                    return outStr+"\nSet terminal color to "+tokens[1];
+                }
+                return outStr+"\nCould not set color to "+tokens[1]+" as it does not match '#rrggbb'";
+            case 'dir':
+                return outStr+"\nUnknown command: 'dir' (Wrong OS)";
+            case 'mir':
+                return outStr+"\nUnknown command: 'mir' (Like 'dir' or the space station?)";
+            case 'launch':
+                if(tokens.length < 4) return outStr+"\nlaunch command requires three arguments";
+                return outStr+"\nInsufficient permissions to cause armageddon (Did you try 'sudo'?)";
+            case 'haltingproblem':
+                haltingProblem();
+                return outStr+"\n\n";
+            case 'eightball':
+                return outStr+"\n"+eightBall();
             case 'exit':
                 closeTerminal();
                 document.getElementById("terminalOutput").innerText = "";
                 return outStr;
             default:
-                return outStr+"\nUnknown command: '"+command+"'";
+                return outStr+"\nUnknown command: '"+tokens[0]+"'";
         }
     }
     
@@ -304,16 +379,18 @@ const TerminalDiv = () => {
         }
     };
     return(
-        <div id="terminalHolder" className=' w3-row'>
+        <div id="terminalHolder" className='w3-row'>
             <div id='terminalThumb'
                 draggable = 'true'
                 onDragStart = {initial} 
                 onDragEnd = {resize}
             />
             <div id='terminal' onClick={() => {
-                if(terminalClosed) resize(null, 210);
+                if(terminalClosed && Date.now() - closeTime > 500) resize(null, 210);
             }}>
-                <span>Terminal</span>
+                <div><span>Terminal</span>
+                    <button id="terminalClose" className='w3-button' style={{float: "right", marginRight: "10px", visibility: "hidden"}}
+                        onClick={() => closeTerminal()}>X</button></div>
                 <div id="terminalOutput"></div>
                 <div id="terminalBottom" style={{visibility: "hidden"}}>
                     <div id="terminalPrompt">{genPrompt()}</div>
