@@ -82,9 +82,10 @@ const TerminalDiv = () => {
         //console.log(e);
         let terminalOutput = document.getElementById('terminalOutput');
         if(e.nativeEvent.inputType === "insertParagraph"){
-            let command = document.getElementById('terminalInput').innerText.trim().replace(/\r?\n|\r/g, " ");
+            let input = document.getElementById('terminalInput');
+            let command = input.innerText.trim().replace(/\r?\n|\r/g, "");
             console.log("Got command: "+command);
-            document.getElementById('terminalInput').innerText = "";
+            input.innerText = "";
             if(prevCommands[prevCommands.length-1] !== command) prevCommands.push(command);
             setDraftCommand("");
             let commandOut = parseCommand(command);
@@ -363,12 +364,16 @@ const TerminalDiv = () => {
     const onKeyDown = (e) => {
         let newI = commandIndex;
         if(e.code === "ArrowUp"){
-            if(commandIndex === -1) setDraftCommand(document.getElementById('terminalInput').innerText.replace("\n", "").replace("\r", ""));
+            if(commandIndex === -1) {
+                setDraftCommand(document.getElementById('terminalInput').innerText.replace("\n", "").replace("\r", ""));
+                console.log("Saving command '"+document.getElementById('terminalInput').innerText.replace("\n", "").replace("\r", "")+"'");
+            }
             if(commandIndex < prevCommands.length - 1) {
                 setCommandIndex(commandIndex + 1);
                 newI ++;
             }
             document.getElementById('terminalInput').innerText = prevCommands[prevCommands.length-1-newI];
+            console.log("Loading command '"+prevCommands[prevCommands.length-1-newI]+"'");
         }
         else if(e.code === "ArrowDown"){
             if(commandIndex > -1) {
@@ -391,7 +396,7 @@ const TerminalDiv = () => {
                 <div><span>Terminal</span>
                     <button id="terminalClose" className='w3-button' style={{float: "right", marginRight: "10px", visibility: "hidden"}}
                         onClick={() => closeTerminal()}>X</button></div>
-                <div id="terminalOutput"></div>
+                <div id="terminalOutput" onClick={() => document.getElementById('terminalInput').focus()}></div>
                 <div id="terminalBottom" style={{visibility: "hidden"}}>
                     <div id="terminalPrompt">{genPrompt()}</div>
                     <div id="terminalInput" contentEditable="true" onInput={onInput} onKeyDown={onKeyDown}></div>

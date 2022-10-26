@@ -10,6 +10,11 @@ class ChipFiring extends Component {
                     directed and undirected edges affect its winning strategies.`
             },
             {
+                title: "Submissions and Conferences",
+                content: `This paper has been accepted into the <i>Joint Mathematics Meetings</i> 2023 with presentation scheduled for
+                    January 6th 2023.  We also plan to submit this paper to the <i>Journal of Experimental Mathematics</i> by Winter 2022.`,
+            },
+            {
                 title: "#Background",
                 content: ``,
                 style: {backgroundColor: "#41414155"}
