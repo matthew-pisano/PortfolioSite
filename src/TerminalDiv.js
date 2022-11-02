@@ -27,7 +27,7 @@ const TerminalDiv = () => {
     These shell commands are defined internally.  Type 'help' to see this list.
 
     help [options] - print this message
-    echo *[msg] - echoes each of the arguments on a new line
+    echo [*msg] - echoes each of the arguments on a new line
     touch [fileName] - creates a file with the name given in the argument
     ren [oldName] [newName] - renames an existing file to the given new name
     rm [fileName] - removes the file with the name given in the argument
@@ -38,8 +38,36 @@ const TerminalDiv = () => {
     open [fileName] - opens the file with the given name
     color [color] - sets the terminal text color to the given color in the form #rrggbb
     dir - Why?
+    neofetch - displays system and software information
+    whoami - displays the current user
     exit - clears the terminal and closes it
     `;
+    const forceHelp = `--Secret Help--
+    MAthesis SHell (mash) extended capabilities.
+    Sensitive documents are exposed to these commands.  Use with caution.
+
+    open [rickroll | poland | void | scp | babble] - opens the file with the given name
+    mir - ??
+    launch [warhead_id] [lat] [long] - ██████████████
+    haltingproblem - Computes the ideal turing machine to solve the halting problem
+    eightball [query] - ${eightBall()}`;
+    const neofetch = `
+       lWMMMMMMMMMWl        lWMMMMMMMMMWl       guest@mathesisConsole
+     ,;kWMMMMMMMMMWk;,,  ,,;kWMMMMMMMMMWk;,     ---------------------
+    WWWMMMMMMMMMMMMMWWW  WWWMMMMMMMMMMMMMWWW    OS: primOS 10.02.1 x86_64-cloud-manix-gru
+    MMMMMMWKkkkKMMMMMMMMMMMMMMMMKkkkKWMMMMMM    Host: ████████
+    MMMMMMWl   lWMMMMMMMMMMMMMMWl   lWMMMMMM    kernel: 7.05.01-server
+    MMMMMMWl   ,xkkKMMMMMMMMKkkx,   lWMMMMMM    Uptime: █████
+    MMMMMMWl       lWMMMMMMWl       lWMMMMMM    Packages: 443 (████), 24 (██)
+    MMMMMMWl       ,xkkkkkkx,       lWMMMMMM    Shell: mash 5.1.16(1)-release
+    MMMMMMWl                        lWMMMMMM    Terminal: cloudTerminal
+    MMMMMMWl       .,,,,,,,,.       lWMMMMMM    CPU: ██th Gen ██████ █-██
+    MMMMMMWl       lNWWWWWWNl       lWMMMMMM    Memory: ██████TiB / ██████TiB
+    MMMMMMWl       lWM    MWl       lWMMMMMM
+    MMMMMMWl       lWM    MWl       lWMMMMMM
+      kKMMWl       lWM    MWl       lWMMKk
+       lWMWl       lWM    MWl       lWMWl   
+       lWMWl       lWM    MWl       lWMWl`;
     const genPrompt = (newCwd) => {
         return "["+(newCwd ? newCwd : cwd)+"]$ ";
     };
@@ -58,7 +86,8 @@ const TerminalDiv = () => {
     
     const resize = (e, heightOverride) => {
         let height = heightOverride ? heightOverride : initialSize + initialPos - e.clientY + 50;
-        console.log("Resizing terminal", height, terminalClosed);
+        if(height > window.innerHeight - 80) height = window.innerHeight - 80;
+        console.log("Resizing terminal", height, terminalClosed, "max:", window.innerHeight);
         if(height > 200){
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
@@ -82,12 +111,14 @@ const TerminalDiv = () => {
         //console.log(e);
         let terminalOutput = document.getElementById('terminalOutput');
         if(e.nativeEvent.inputType === "insertParagraph"){
-            let input = document.getElementById('terminalInput');
-            let command = input.innerText.trim().replace(/\r?\n|\r/g, "");
+            let terminalInput = document.getElementById('terminalInput');
+            let command = terminalInput.innerText.trim().replace(/\r?\n|\r/g, "");
             console.log("Got command: "+command);
-            input.innerText = "";
-            if(prevCommands[prevCommands.length-1] !== command) prevCommands.push(command);
+            terminalInput.innerText = "";
+            if(prevCommands[0] === "" && command.length > 0) prevCommands[0] = command;
+            else if(prevCommands[prevCommands.length-1] !== command && command.length > 0) prevCommands.push(command);
             setDraftCommand("");
+            setCommandIndex(-1);
             let commandOut = parseCommand(command);
             terminalOutput.innerText += "\n"+commandOut;
         }
@@ -119,6 +150,7 @@ const TerminalDiv = () => {
     };
 
     async function toVoid(){
+        let terminalOutput = document.getElementById('terminalOutput');
         let voidStr = "I T - C O N S U M E S - A L L";
         let initLen = voidStr.length;
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -126,7 +158,7 @@ const TerminalDiv = () => {
             let next = voidStr.charAt(0);
             document.getElementById('terminalOutput').innerHTML += next !== " " ? next : "&nbsp;";
             if(voidStr.length == initLen)
-                document.getElementById('terminalOutput').scrollTop = document.getElementById('terminalOutput').scrollHeight;
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
             voidStr = voidStr.substring(1);
             await new Promise(resolve => setTimeout(resolve, 250));
         }
@@ -144,16 +176,20 @@ const TerminalDiv = () => {
     }
     async function haltingProblem(){
         let dots = 7;
+        let terminalOutput = document.getElementById('terminalOutput');
         await new Promise(resolve => setTimeout(resolve, 250));
-        document.getElementById('terminalOutput').innerHTML += "Computing solution to halting problem";
+        terminalOutput.innerHTML += "Computing solution to halting problem";
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
         while(dots > 0){
-            document.getElementById('terminalOutput').innerHTML += ".";
+            terminalOutput.innerHTML += ".";
             await new Promise(resolve => setTimeout(resolve, 500));
             dots --;
         }
-        document.getElementById('terminalOutput').innerHTML += "<br>Operation completed successfully!<br>Printing solution...";
+        terminalOutput.innerHTML += "<br>Operation completed successfully!<br>Printing solution...";
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
         await new Promise(resolve => setTimeout(resolve, 1500));
-        document.getElementById('terminalOutput').innerHTML += "<br>Segmentation fault (core dumped)";
+        terminalOutput.innerHTML += "<br>Segmentation fault (core dumped)";
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
     }
     function eightBall(){
         let responses = ["It is certain", "Without a doubt", "Yes definitely", "You may rely on it",
@@ -167,8 +203,33 @@ const TerminalDiv = () => {
         return responses[result];
     }
     function parseCommand(command){
-        let tokens = command.split(" ");
-        //console.log(tokens);
+        let tokens = [];
+        let activeToken = "";
+        let quoteType = null;
+        for(let i=0; i<command.length; i++){
+            if(quoteType === null){
+                if(`"'`.includes(command[i]))
+                    quoteType = command[i];
+                if(`"' `.includes(command[i])){
+                    if(activeToken !== "") tokens.push(activeToken);
+                    activeToken = "";
+                    continue;
+                }
+            }
+            else {
+                if(command[i] === quoteType){
+                    if(activeToken !== "") tokens.push(activeToken);
+                    activeToken = "";
+                    quoteType = null;
+                    continue;
+                }
+            }
+            if(command[i] !== quoteType) 
+                activeToken += command[i];
+        }
+        if(activeToken !== "") tokens.push(activeToken);
+        console.log("Tokens:", tokens);
+
         let targetItem = null;
         let outStr = genPrompt()+command;
         let absPath = "";
@@ -255,14 +316,7 @@ const TerminalDiv = () => {
                 return outStr;
             case 'help':
                 if(tokens.length > 1 && (tokens[1] == "-f" || tokens[1] == "--force"))
-                    return outStr+"\n"+helpMsg+`--Secret Help--
-                    mash - MAthesis SHell extended capabilities.
-                    Sensitive documents are exposed to these commands.  Use with caution.
-
-                    open [rickroll | poland | void | scp | babble] - opens the file with the given name
-                    mir - ??
-                    launch [warhead_id] [lat] [long] - ██████████████
-                    haltingproblem - Computes the ideal turing machine to solve the halting problem`;
+                    return outStr+"\n"+helpMsg+"\n"+forceHelp;
                 return outStr+"\n"+helpMsg;
             case 'cd':
                 if(tokens.length === 1){
@@ -352,6 +406,10 @@ const TerminalDiv = () => {
                 return outStr+"\n\n";
             case 'eightball':
                 return outStr+"\n"+eightBall();
+            case 'neofetch':
+                return outStr+"\n"+neofetch.replace(new RegExp(' ', 'g'), '\u00A0');
+            case 'whoami':
+                return outStr+"\n"+"guest";
             case 'exit':
                 closeTerminal();
                 document.getElementById("terminalOutput").innerText = "";
@@ -363,24 +421,26 @@ const TerminalDiv = () => {
     
     const onKeyDown = (e) => {
         let newI = commandIndex;
+        let terminalInput = document.getElementById('terminalInput');
         if(e.code === "ArrowUp"){
-            if(commandIndex === -1) {
-                setDraftCommand(document.getElementById('terminalInput').innerText.replace("\n", "").replace("\r", ""));
-                console.log("Saving command '"+document.getElementById('terminalInput').innerText.replace("\n", "").replace("\r", "")+"'");
+            if(commandIndex === -1 && terminalInput.innerText.length > 0) {
+                setDraftCommand(terminalInput.innerText.replace("\n", "").replace("\r", ""));
+                console.log("Saving command '"+terminalInput.innerText.replace("\n", "").replace("\r", "")+"'");
             }
             if(commandIndex < prevCommands.length - 1) {
                 setCommandIndex(commandIndex + 1);
                 newI ++;
             }
-            document.getElementById('terminalInput').innerText = prevCommands[prevCommands.length-1-newI];
+            console.log("Prev commands:", prevCommands, ", index:", prevCommands.length-1-newI);
             console.log("Loading command '"+prevCommands[prevCommands.length-1-newI]+"'");
+            terminalInput.innerText = prevCommands[prevCommands.length-1-newI];
         }
         else if(e.code === "ArrowDown"){
             if(commandIndex > -1) {
                 setCommandIndex(commandIndex - 1);
                 newI --;
             }
-            document.getElementById('terminalInput').innerText = newI > -1 ? prevCommands[prevCommands.length-1-newI] : draftCommand;
+            terminalInput.innerText = newI > -1 ? prevCommands[prevCommands.length-1-newI] : draftCommand;
         }
     };
     return(
