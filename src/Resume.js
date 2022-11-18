@@ -9,7 +9,7 @@ class Resume extends Component {
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Formal summary of my experience and achievements</h3>
                 </div>
                 <div id="resumeHolder" className="tileHolder inner w3-display-container" style={{backgroundColor: "#414141", borderRadius: "10px"}}>
-                    <iframe id="resumeHolder" style={{}} src="https://docs.google.com/gview?url=https://lightsail-image-repo.s3.amazonaws.com/documents/Resume.docx&embedded=true"></iframe>
+                    <embed id="resumeHolder" type="application/pdf" src="Resume.pdf"></embed>
                 </div>
             </div>
         );

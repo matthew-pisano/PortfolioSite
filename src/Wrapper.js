@@ -16,7 +16,8 @@ import ChipFiring from './ChipFiring';
 import SCP from './SCP';
 import Babble from './Babble';
 
-const Wrapper = () => {
+// eslint-disable-next-line react/prop-types
+const Wrapper = ({location}) => {
     function recurse(tree){
         if(tree.name.endsWith("/"))
             return <div id={tree.name.substring(0, tree.name.length-1)+"-Folder"} className="sidebarItem sidebarFolder w3-row">
@@ -44,7 +45,7 @@ const Wrapper = () => {
                 }>{tree.name}</button>
             </div>;
     }
-
+    console.log("Wrapper location", location);
     return (
         <div className="w3-display-container">
             <header className="menuBar w3-row" style={{top: '0px'}}>

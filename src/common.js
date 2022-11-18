@@ -269,16 +269,7 @@ function showPage(pageId, isLanding){
     Array.from(elements).forEach((element, index) => {
         element.style.display = "none";
     });
-    async function loop() {
-        console.log("Starting babble");
-        while(selectedPageId === "babble"){
-            console.log("Babble: ", selectedPageId);
-            babbler();
-            await new Promise(resolve => setTimeout(resolve, 2000));
-        }
-        document.getElementById("wrapperContent").style.backgroundColor = "";
-        console.log("Ending babble");
-    }
+
     if(pageId){
         selectedPageId = pageId;
         document.getElementById("siteTitle").innerText = pages[pageId].name;
@@ -308,7 +299,16 @@ function showPage(pageId, isLanding){
         document.getElementById("encodingStatus").innerText = "UTF-8";
         if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !isLanding && pageLoaded && sidebarOpen)
             toggleSidebar();
-        if(selectedPageId === "babble") loop();
+        if(selectedPageId === "babble") (async () => {
+                console.log("Starting babble");
+                while(selectedPageId === "babble"){
+                    console.log("Babble: ", selectedPageId);
+                    babbler();
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                }
+                document.getElementById("wrapperContent").style.backgroundColor = "";
+                console.log("Ending babble");
+            })();
     }
 }
 // Bind to window for global reference
