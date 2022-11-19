@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as common from './common';
 import { Constants } from './Utils';
+import PropTypes from 'prop-types';
 class Babble extends Component {
     static tiles = [
         {
@@ -24,6 +25,7 @@ class Babble extends Component {
         }
     ];
 
+    static propTypes = {display: PropTypes.string};
     render() {
         let pageInfo = {
             pageName: "babble",
@@ -32,7 +34,7 @@ class Babble extends Component {
         };
         Constants.babbleTiles = Babble.tiles;
         return (
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: "none"}}>
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Babble</b></h1><br/>
                 </div>

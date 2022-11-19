@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import * as common from './common';
+import PropTypes from 'prop-types';
 class Simplex extends Component {
 
+    static propTypes = {display: PropTypes.string};
     render() {
         let tiles = [
             {
@@ -59,7 +61,7 @@ class Simplex extends Component {
             tags: ["personal", "java", "android"]
         };
         return (
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: "none"}}>
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Simplex</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>An math-oriented interpreted scripting language built in Java</h3>

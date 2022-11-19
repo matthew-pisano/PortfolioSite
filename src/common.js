@@ -187,8 +187,6 @@ function parseLatex(text){
     let generator = new HtmlGenerator({ hyphenate: false });
     generator = parse(text, { generator: generator });
 
-    //document.head.appendChild(generator.stylesAndScripts(""));
-    //document.body.appendChild();
     return generator.domFragment().children[0].children[0].innerHTML;
   
 }
@@ -261,13 +259,14 @@ function build(pageInfo, tiles){
         }
     </div>;
 }
-function showPage(pageId, isLanding){
+function showPage(pageId, isLanding = false, replaceLocation = true){
     console.log("Showing page "+pageId);
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     tilePositions = null;
     const elements = document.querySelectorAll('.page');
     Array.from(elements).forEach((element, index) => {
-        element.style.display = "none";
+        if(element.id != pageId+"Page") 
+            element.style.display = "none";
     });
 
     if(pageId){
@@ -283,6 +282,9 @@ function showPage(pageId, isLanding){
             document.getElementById("encodingStatus").innerText = "UTF-8";
             return;
         }
+
+        if(replaceLocation) window.history.pushState({"page": pageId}, null, pageId);
+
         pageElem.style.display = "block";
         let files = document.getElementsByClassName("sidebarItem");
         for(let i=0; i<files.length; i++)
@@ -344,7 +346,20 @@ function refreshLineNums(){
     for(let i=1; i<=lineNum; i++)
         editorLines.innerHTML += i+"<br>";
 }
-function newFile(fileName){
+function newFile(fileName, openOnCreate = true){
+    console.log("Creating file:", fileName);
+    let takenNames = [];
+    for(let id in pages){
+        console.log("Id: "+id);
+        takenNames.push(pages[id].name);
+    }
+    let count = "";
+    while(takenNames.includes("new"+count+".html")){
+        if(count === "") count = 1;
+        else count ++;
+    }
+    if(!fileName) fileName = "new"+count+".html";
+
     let customFileDiv = document.createElement("DIV");
     customFileDiv.className = "page container w3-rest lightText";
     customFileDiv.style.display = "none";
@@ -357,17 +372,7 @@ function newFile(fileName){
     explorerDiv.appendChild(icon);
     let button = document.createElement("BUTTON");
     button.className = "w3-button lightText";
-    let count = "";
-    let takenNames = [];
-    for(let id in pages){
-        console.log("Id: "+id);
-        takenNames.push(pages[id].name);
-    }
-    while(takenNames.includes("new"+count+".html")){
-        if(count === "") count = 1;
-        else count ++;
-    }
-    if(!fileName) fileName = "new"+count+".html";
+    
     let pageId = "custom-"+v4();
     explorerDiv.id = pageId+"-File";
     customFileDiv.id = pageId+"Page";
@@ -382,7 +387,7 @@ function newFile(fileName){
     button.onclick = () => {
         console.log("selected file: "+pageId);
         selectedPageId = pageId;
-        showPage(pageId);
+        showPage(pageId, false, false);
         setActiveEditor();
     };
     explorerDiv.appendChild(button);
@@ -397,7 +402,7 @@ function newFile(fileName){
     document.getElementById("customContent").appendChild(explorerDiv);
     document.getElementById("pageHolder").appendChild(customFileDiv);
     navHierarchy("/home/user/public/custom")[0].subTree.push({name: fileName});
-    button.onclick();
+    if(openOnCreate) button.onclick();
     return pageId;
 }
 function setFileContent(pageId, content){
@@ -518,9 +523,18 @@ function removeFile(pageId){
         showPage("home");
     }
 }
-window.onload = () => {
-    let generator = new HtmlGenerator({ hyphenate: false });
-    document.head.appendChild(generator.stylesAndScripts("https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/"));
+function init() {
+    console.log("Loading page...");
+    // Latex links
+    let latexCSS = document.createElement("LINK");
+    latexCSS.type = "text/css";
+    latexCSS.rel = "stylesheet";
+    latexCSS.href = "https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/css/katex.css";
+    let latexJS = document.createElement("SCRIPT");
+    latexJS.src = "https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/js/base.js";
+    document.head.appendChild(latexCSS);
+    document.head.appendChild(latexJS);
+
     collapseSidebar = document.getElementById("collapseSidebar");
     collapseSidebar.onclick = toggleSidebar;
 
@@ -531,12 +545,12 @@ window.onload = () => {
         };
     }
     toggleSidebar();
-    let startId = newFile("start.html");
+    let startId = newFile("start.html", false);
     setFileContent(startId, startStr);
     let parsed = scriptParse(pages[startId].content, true);
     document.getElementById(startId+"Page").innerHTML = parsed.content;
     eval(parsed.scripts);
-    showPage("home", true);
+    // showPage("home", true);
     document.getElementById("newAction").onclick = () => {
         $("#fileDropdown").fadeOut();
         newFile();
@@ -573,7 +587,10 @@ window.onload = () => {
         refreshLineNums();
     });
     pageLoaded = true;
-};
+}
+// window.onload = init;
+(async () => {while(!document.getElementById("collapseSidebar")) await new Promise(r => setTimeout(r, 100)); init();})();
+
 window.onscroll = (event) => {
     if(document.getElementById(selectedPageId+"TileHolder") === null) return;
     if(tilePositions === null)
@@ -598,4 +615,12 @@ window.onscroll = (event) => {
         }
     }
 };
-export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming, removeFile, folderIndent};
+
+window.onpopstate = (event) => {
+    if(event.state){
+        console.log("Popped state:", event.state.page);
+        showPage(event.state.page, false, false);
+    }
+};
+
+export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming, removeFile, folderIndent, init};

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import * as common from './common';
+import PropTypes from 'prop-types';
 
 class Home extends Component {
-
+    
+    static propTypes = {display: PropTypes.string};
     render() {
         let tiles = [
             {
@@ -80,7 +82,7 @@ class Home extends Component {
             extraTitles: ["Résumé", "LinkedIn"]
         };
         return (
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
                 <div className="inner titleCard" style={{position: 'fixed', height: '300px', top: '50px', left: '0px', right: '0px'}}>
                     <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>Matthew Pisano</h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Student of Software Engineering</h3>

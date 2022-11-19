@@ -18,32 +18,35 @@ import Babble from './Babble';
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({location}) => {
-    function recurse(tree){
-        if(tree.name.endsWith("/"))
-            return <div id={tree.name.substring(0, tree.name.length-1)+"-Folder"} className="sidebarItem sidebarFolder w3-row">
+    function recurse(tree, parent = null){
+        if(tree.name.endsWith("/")){
+            let name = tree.name.substring(0, tree.name.length-1)+"-Folder";
+            return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row">
                 <img className='folderIcon' alt='folder'/>
                 <button className="w3-button lightText" onClick={
                     () => {
                         document.getElementById("langStatus").innerText = "";
                         document.getElementById("encodingStatus").innerText = "";
                         document.getElementById("linesStatus").innerText = "";
-                        document.getElementById("sizeStatus").innerText = tree.subTree.length+" Children";
+                        document.getElementById("sizeStatus").innerText = "Children: "+tree.subTree.length;
                         document.getElementById("itemStatus").innerText = tree.name;
                     }
                 }>{tree.name}</button>
                 <div id={tree.name.substring(0, tree.name.length-1)+"Content"} className="w3-row sidebarContent">
-                    {
-                        tree.subTree.map(child => recurse(child))
-                    }
+                    {tree.subTree.map(child => recurse(child, tree.name))}
                 </div>
             </div>;
-        else
-            return <div id={tree.name.substring(0, tree.name.indexOf("."))+"-File"} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
+        }
+        else if(!parent.includes("custom")){
+            let name = tree.name.substring(0, tree.name.indexOf("."))+"-File";
+            return <div key={name} id={name} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
                 <img className='htmlIcon' alt='html'/>
                 <button className="w3-button lightText" onClick={
                     () => common.showPage(tree.name.substring(0, tree.name.indexOf(".")))
                 }>{tree.name}</button>
             </div>;
+        }
+        else {<div></div>;}
     }
     console.log("Wrapper location", location);
     return (
@@ -86,21 +89,21 @@ const Wrapper = ({location}) => {
                     </div>
                 </div>
                 <div id="pageHolder">
-                    <Home/>
-                    <Simplex/>
-                    <Imperium/>
-                    <MipsCmd/>
-                    <Inception/>
-                    <Videntium/>
-                    <AnonHires/>
-                    <Neural/>
-                    <ChipFiring/>
-                    <SCP/>
-                    <Babble/>
-                    <Resume/>
-                    <About/>
+                    <Home display={location == "home" ? "block" : "none"}/>
+                    <Simplex display={location == "simplex" ? "block" : "none"}/>
+                    <Imperium display={location == "imperium" ? "block" : "none"}/>
+                    <MipsCmd display={location == "mipsCmd" ? "block" : "none"}/>
+                    <Inception display={location == "inception" ? "block" : "none"}/>
+                    <Videntium display={location == "videntium" ? "block" : "none"}/>
+                    <AnonHires display={location == "anonHires" ? "block" : "none"}/>
+                    <Neural display={location == "neural" ? "block" : "none"}/>
+                    <ChipFiring display={location == "chipFiring" ? "block" : "none"}/>
+                    <SCP display={location == "scp" ? "block" : "none"}/>
+                    <Babble display={location == "babble" ? "block" : "none"}/>
+                    <Resume display={location == "resume" ? "block" : "none"}/>
+                    <About display={location == "about" ? "block" : "none"}/>
+                    <Help display={location == "help" ? "block" : "none"}/>
                     <TerminalDiv/>
-                    <Help/>
                 </div>
                 <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                     <div id="editorLines" className="w3-col">1</div>
