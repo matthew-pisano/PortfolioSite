@@ -108,11 +108,12 @@ const TerminalDiv = () => {
         
     };
     const onInput = (e) => {
-        //console.log(e);
+        // console.log("Got input:", e.nativeEvent);
         let terminalOutput = document.getElementById('terminalOutput');
-        if(e.nativeEvent.inputType === "insertParagraph"){
+        if(e.nativeEvent.inputType === "insertParagraph" || e.nativeEvent.data === null && e.nativeEvent.inputType === "insertText"){
             let terminalInput = document.getElementById('terminalInput');
-            let command = terminalInput.innerText.trim().replace(/\r?\n|\r/g, "");
+            // console.log("Untrimmed command:", terminalInput.innerText.split());
+            let command = terminalInput.innerText.trim().replace(/\r?\n\r?\n|\r\r/g, " ").replace(/\r?\n|\r/g, "");
             console.log("Got command: "+command);
             terminalInput.innerText = "";
             if(prevCommands[0] === "" && command.length > 0) prevCommands[0] = command;
@@ -249,6 +250,8 @@ const TerminalDiv = () => {
         }
         switch (tokens[0]) {
             case '':
+            case null:
+            case undefined:
                 return outStr;
             case 'echo':
                 for(let i=1; i<tokens.length; i++) outStr += "\n"+tokens[i];

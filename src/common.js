@@ -2,8 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import {v4} from 'uuid';
 import startStr from './Start';
-import { babbler } from './Utils';
-//import { parse, HtmlGenerator } from 'latex.js';
+import { babbleLoop } from './Utils';
 import { parse, HtmlGenerator } from 'https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs';
 
 $.fn.visible = function() {
@@ -141,11 +140,11 @@ function navHierarchy(path){
     //console.log("File at path: "+current.name);
     return [current, absPath];
 }
-function toggleSidebar(){
+function toggleSidebar(animate=true){
     if(sidebarOpen){
         collapseSidebar.innerText = ">";
         $(".sidebarItem").invisible();
-        $("#sidebarContent").animate({"width": "0px"});
+        $("#sidebarContent").animate({"width": "0px"}, animate ? 200 : 0);
         document.getElementById("sidebarContent").style.display = "none";
         document.getElementById("sidebar").classList.remove("openSidebar");
         document.getElementById("sidebar").style.width = sidebarMin+"px";
@@ -153,19 +152,19 @@ function toggleSidebar(){
         document.getElementById("collapseHolder").style.width = sidebarMin+"px";
         document.getElementById("collapseHolder").classList.remove("openSidebar");
         document.getElementById("pageHolder").classList.remove("smallInvisible");
-        $(".page").animate({"margin-left": sidebarMin+"px"});
-        $("#terminalHolder").animate({"margin-left": sidebarMin+"px"});
-        $(".titleCard").animate({"margin-left": sidebarMin+"px"});
-        $("#fileEditor").animate({"margin-left": sidebarMin+"px"});
+        $(".page").animate({"margin-left": sidebarMin+"px"}, animate ? 200 : 0);
+        $("#terminalHolder").animate({"margin-left": sidebarMin+"px"}, animate ? 200 : 0);
+        $(".titleCard").animate({"margin-left": sidebarMin+"px"}, animate ? 200 : 0);
+        $("#fileEditor").animate({"margin-left": sidebarMin+"px"}, animate ? 200 : 0);
         sidebarOpen = false;
     }
     else{
         collapseSidebar.innerText = "<";
-        $(".page").animate({"margin-left": sidebarMax+"px"});
-        $(".titleCard").animate({"margin-left": sidebarMax+"px"});
-        $("#fileEditor").animate({"margin-left": sidebarMax+"px"});
+        $(".page").animate({"margin-left": sidebarMax+"px"}, animate ? 200 : 0);
+        $(".titleCard").animate({"margin-left": sidebarMax+"px"}, animate ? 200 : 0);
+        $("#fileEditor").animate({"margin-left": sidebarMax+"px"}, animate ? 200 : 0);
         document.getElementById("sidebarContent").style.display = "block";
-        $("#sidebarContent").animate({"width": "100%"});
+        $("#sidebarContent").animate({"width": "100%"}, animate ? 200 : 0);
         //$("#sidebar").animate({"width": sidebarMax});
         document.getElementById("sidebar").style.width = "";
         document.getElementById("sidebar").classList.add("openSidebar");
@@ -173,7 +172,7 @@ function toggleSidebar(){
         document.getElementById("explorerTitle").style.display = "inline";
         document.getElementById("collapseHolder").style.width = "";
         document.getElementById("collapseHolder").classList.add("openSidebar");
-        $("#terminalHolder").animate({"margin-left": sidebarMax+"px"});
+        $("#terminalHolder").animate({"margin-left": sidebarMax+"px"}, animate ? 200 : 0);
         $(".sidebarItem").visible();
         sidebarOpen = true;
     }
@@ -236,7 +235,8 @@ function build(pageInfo, tiles){
                 return <div id={pageInfo.pageName+"Tile"+i} className="displayTile w3-container w3-row" key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : <span></span>}
                     <div className={`w3-${displayWidth} w3-mobile`} style={contentStyle}>
-                        {tile.titleLink ? <u style={{cursor: "pointer"}} onClick={() => showPage(tile.titleLink)}>{titleEl}</u> : titleEl}
+                        {tile.titleLink ? <u style={{cursor: "pointer"}} onClick={() => {pages[tile.titleLink] ? showPage(tile.titleLink) : 
+                            (window.history.pushState({"page": tile.titleLink}, null, tile.titleLink)); window.location.reload();}}>{titleEl}</u> : titleEl}
                         <p id={pageInfo.pageName+"Tile"+i+"Content"} dangerouslySetInnerHTML={{__html: tile.content}}></p>
                         {tile.gitLink ?
                             <div className="gitLink w3-row w3-mobile w3-col">
@@ -301,16 +301,8 @@ function showPage(pageId, isLanding = false, replaceLocation = true){
         document.getElementById("encodingStatus").innerText = "UTF-8";
         if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !isLanding && pageLoaded && sidebarOpen)
             toggleSidebar();
-        if(selectedPageId === "babble") (async () => {
-                console.log("Starting babble");
-                while(selectedPageId === "babble"){
-                    console.log("Babble: ", selectedPageId);
-                    babbler();
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                }
-                document.getElementById("wrapperContent").style.backgroundColor = "";
-                console.log("Ending babble");
-            })();
+
+        if(selectedPageId === "babble") babbleLoop();
     }
 }
 // Bind to window for global reference
@@ -402,7 +394,11 @@ function newFile(fileName, openOnCreate = true){
     document.getElementById("customContent").appendChild(explorerDiv);
     document.getElementById("pageHolder").appendChild(customFileDiv);
     navHierarchy("/home/user/public/custom")[0].subTree.push({name: fileName});
-    if(openOnCreate) button.onclick();
+    if(openOnCreate) {
+        button.onclick();
+        toggleSidebar(false);
+        toggleSidebar(false);
+    }
     return pageId;
 }
 function setFileContent(pageId, content){
@@ -619,6 +615,10 @@ window.onscroll = (event) => {
 window.onpopstate = (event) => {
     if(event.state){
         console.log("Popped state:", event.state.page);
+        if(!event.state.page) {
+            window.history.back();
+            return;
+        }
         showPage(event.state.page, false, false);
     }
 };

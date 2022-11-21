@@ -26,7 +26,6 @@ async function babbler(){
     if(!Constants.babbleTiles) return;
     let radii = ["10px", "20px", "50px", "75px"];
     for(let i=0; i<Constants.babbleTiles.length; i++){
-        console.log("Beeb", i);
         document.getElementById("babbleTileHolder").style.borderRadius = radii[Math.floor(Math.random()*radii.length)];
         let titleElem = document.getElementById("babbleTile"+i+"Title");
         if(!titleElem.classList.contains("forceWrap")) titleElem.classList.add("forceWrap");
@@ -43,4 +42,15 @@ async function babbler(){
     }
 }
 
-export {Constants, babbler};
+async function babbleLoop() {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    console.log("Starting babble");
+    while(window.location.pathname === "/babble"){
+        babbler();
+        await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+    document.getElementById("wrapperContent").style.backgroundColor = "";
+    console.log("Ending babble");
+}
+
+export {Constants, babbleLoop};

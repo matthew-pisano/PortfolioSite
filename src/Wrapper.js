@@ -12,6 +12,7 @@ import TerminalDiv from './TerminalDiv';
 import Resume from './Resume';
 import About from './About';
 import Help from './Help';
+import PageNotFound from './PageNotFound';
 import ChipFiring from './ChipFiring';
 import SCP from './SCP';
 import Babble from './Babble';
@@ -103,6 +104,7 @@ const Wrapper = ({location}) => {
                     <Resume display={location == "resume" ? "block" : "none"}/>
                     <About display={location == "about" ? "block" : "none"}/>
                     <Help display={location == "help" ? "block" : "none"}/>
+                    <PageNotFound display={location == "pageNotFound" ? "block" : "none"}/>
                     <TerminalDiv/>
                 </div>
                 <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>

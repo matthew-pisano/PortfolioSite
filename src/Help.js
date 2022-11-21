@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as common from './common';
 import PropTypes from 'prop-types';
+
 class Help extends Component {
 
     static propTypes = {display: PropTypes.string};
