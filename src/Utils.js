@@ -3,7 +3,7 @@ class Constants{
     static alpha(){
         let offset = 0;
         let tmp = Array.from(Array(26*2)).map((e, i) => {
-            if(i+65 == 91) offset = 6;
+            if(i+65 === 91) offset = 6;
             return i+65+offset;
         });
         let alpha = tmp.map((x) => String.fromCharCode(x));

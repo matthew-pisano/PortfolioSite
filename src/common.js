@@ -265,7 +265,7 @@ function showPage(pageId, isLanding = false, replaceLocation = true){
     tilePositions = null;
     const elements = document.querySelectorAll('.page');
     Array.from(elements).forEach((element, index) => {
-        if(element.id != pageId+"Page") 
+        if(element.id !== pageId+"Page") 
             element.style.display = "none";
     });
 
