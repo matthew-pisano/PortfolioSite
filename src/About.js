@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as common from './common';
 import PropTypes from 'prop-types';
+import {Constants} from './Utils';
+
 class About extends Component {
 
     static propTypes = {display: PropTypes.string};
@@ -61,8 +63,7 @@ class About extends Component {
             holderStyle: {backgroundColor: "#14a343", borderRadius: "10px"},
             gitLink: "https://github.com/ReactorDevelopment/",
             gitTitle: "GitHub",
-            extraLinks: ["https://docs.google.com/gview?url=https://lightsail-image-repo.s3.amazonaws.com/documents/Resume.docx",
-                "https://www.linkedin.com/in/matthew-pisano-395827192"],
+            extraLinks: [Constants.resumeUrl, "https://www.linkedin.com/in/matthew-pisano"],
             extraTitles: ["Résumé", "LinkedIn"]
         };
         return (

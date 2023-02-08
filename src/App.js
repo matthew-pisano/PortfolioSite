@@ -1,8 +1,20 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PropTypes from 'prop-types';
 import Wrapper from './Wrapper';
+import Admin from './Admin';
 
+function External(props) {window.location.href = props.to; return null;}
+External.propTypes = {to: PropTypes.string};
+
+function Rick() {
+    return <video width="100%" height="100%" autoPlay>
+        <source src="https://lightsail-image-repo.s3.amazonaws.com/videos/rick.mp4" type="video/mp4"/>
+        Your browser does not support the video tag.
+    </video>;
+}
+  
 const App = () => {
     return (
         <Router>
@@ -11,7 +23,8 @@ const App = () => {
                 {["home", "simplex", "imperium", "mipsCmd", "inception", "videntium", "anonHires",
                     "neural", "chipFiring", "scp", "babble", "resume", "about"].map((page) => 
                         <Route key={page+"Route"} path={"/"+page} element={<Wrapper location={page}/>}/>)}
-                <Route path='/admin' component={<Link to={{ pathname: "https://example.zendesk.com/hc/en-us/articles/123456789-Privacy-Policies" }} target="_blank" />}/>
+                <Route path='admin' element={<Admin/>}/>
+                <Route path='documents' element={<Rick/>}/>
                 <Route path="*" element={<Wrapper location="pageNotFound"/>}/>
             </Routes>
         </Router> 

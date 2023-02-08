@@ -76,7 +76,7 @@ const Wrapper = ({location}) => {
                     <div id="contactDropdown" className="menuDropdown w3-col">
                         <p className="lightText menuDropItem">Phone: +1 (845)-706-0677</p>
                         <p className="lightText menuDropItem">Email: matthewplisano14@gmail.com</p>
-                        <a className="lightText menuDropItem" style={{display: "block"}} href='https://www.linkedin.com/in/matthew-pisano-395827192' 
+                        <a className="lightText menuDropItem" style={{display: "block"}} href='https://www.linkedin.com/in/matthew-pisano' 
                             target={"_blank"} rel="noreferrer">LinkedIn</a>
                     </div>
                 </div>

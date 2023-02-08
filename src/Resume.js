@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {Constants} from './Utils';
+
 class Resume extends Component {
     
     static propTypes = {display: PropTypes.string};
@@ -11,7 +13,7 @@ class Resume extends Component {
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Formal summary of my experience and achievements</h3>
                 </div>
                 <div id="resumeHolder" className="tileHolder inner w3-display-container" style={{backgroundColor: "#414141", borderRadius: "10px"}}>
-                    <iframe id="resumeHolder" type="application/pdf" src="Resume.pdf"></iframe>
+                    <embed id="resumeHolder" type="application/pdf" src={Constants.resumeUrl}></embed>
                 </div>
             </div>
         );
