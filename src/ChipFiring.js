@@ -118,9 +118,9 @@ class ChipFiring extends Component {
         let pageInfo = {
             pageName: "chipFiring",
             holderStyle: {backgroundColor: "#4d7bd0", borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/ChipFiring",
+            gitLink: "https://github.com/matthew-pisano/ChipFiring",
             gitTitle: "Chip Firing",
-            extraLinks: ["https://github.com/ReactorDevelopment/ChipFiring/blob/master/Docs/out/SURE2022.pdf"],
+            //extraLinks: ["https://github.com/matthew-pisano/ChipFiring/blob/master/Docs/out/SURE2022.pdf"],
             extraTitles: ["Research Paper"],
             tags: ["research", "academic", "python"]
         };

@@ -24,7 +24,7 @@ class Inception extends Component {
         let pageInfo = {
             pageName: "inception",
             holderStyle: {backgroundColor: "#919ba8", borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/InceptionCollage",
+            gitLink: "https://github.com/matthew-pisano/InceptionCollage",
             gitTitle: "Inception",
             tags: ["personal", "java"]
         };

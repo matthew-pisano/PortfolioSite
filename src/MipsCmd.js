@@ -25,7 +25,7 @@ class MipsCmd extends Component {
         let pageInfo = {
             pageName: "mipsCmd",
             holderStyle: {backgroundColor: "#bf564d", borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/MIPS-Command-Processor",
+            gitLink: "https://github.com/matthew-pisano/MIPS-Command-Processor",
             gitTitle: "MIPS Cmd",
             tags: ["academic", "assembly"]
         };

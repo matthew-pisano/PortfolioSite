@@ -56,7 +56,7 @@ class Simplex extends Component {
         let pageInfo = {
             pageName: "simplex",
             holderStyle: {backgroundColor: "#824ab6", borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/SimplexIDE",
+            gitLink: "https://github.com/matthew-pisano/SimplexIDE",
             gitTitle: "Simplex",
             tags: ["personal", "java", "android"]
         };

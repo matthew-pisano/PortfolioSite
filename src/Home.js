@@ -19,7 +19,7 @@ class Home extends Component {
                 content: `A research project with the goal analyzing the differences between backpropagation, a genetic algorithm method,
                     and the decision tree optimization when training on a dataset from the Vanderbilt University Department of Biostatics.  The goal
                     of these networks was to predict whether a patient was diagnosed with type-II diabetes based on their health attributes.`,
-                gitLink: "https://github.com/ReactorDevelopment/NuralPy",
+                gitLink: "https://github.com/matthew-pisano/NuralPy",
                 tags: ["research", "academic", "ai", "python"]
             },
             {
@@ -27,7 +27,7 @@ class Home extends Component {
                 titleLink: "chipFiring",
                 content: `A research paper focusing on mathematical chip firing games.  This project will study Chip-Firing games and 
                 how different combinations of directed and undirected edges affect its winning strategies.`,
-                gitLink: "https://github.com/ReactorDevelopment/NuralPy",
+                gitLink: "https://github.com/matthew-pisano/NuralPy",
                 tags: ["research", "academic"]
             },
             {
@@ -43,7 +43,7 @@ class Home extends Component {
                     (multiplication, determinants, etc.) as well as many scientific and fundamental constants.<br>
                     Simplex also features an IDE to both help programming and educate users on how programming languages work.`,
                 thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/simplexCode.jpg",
-                gitLink: "https://github.com/ReactorDevelopment/SimplexIDE",
+                gitLink: "https://github.com/matthew-pisano/SimplexIDE",
                 tags: ["personal", "java", "android"]
             },
             {
@@ -76,7 +76,7 @@ class Home extends Component {
             pageName: "home",
             title: "Notable Projects",
             holderStyle: {borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/",
+            gitLink: "https://github.com/matthew-pisano/",
             gitTitle: "GitHub",
             extraLinks: [Constants.resumeUrl, "https://www.linkedin.com/in/matthew-pisano"],
             extraTitles: ["Résumé", "LinkedIn"]

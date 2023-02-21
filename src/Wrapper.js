@@ -70,7 +70,7 @@ const Wrapper = ({location}) => {
                     </div>
                     <div id="helpDropdown" className="menuDropdown w3-col">
                     <button id="helpAction" className="w3-button lightText menuDropItem">help.html</button>
-                        <a className="lightText menuDropItem" style={{display: "block"}} href='https://github.com/ReactorDevelopment/PortfolioSite#readme' 
+                        <a className="lightText menuDropItem" style={{display: "block"}} href='https://github.com/matthew-pisano/PortfolioSite#readme' 
                             target={"_blank"} rel="noreferrer">README</a>
                     </div>
                     <div id="contactDropdown" className="menuDropdown w3-col">

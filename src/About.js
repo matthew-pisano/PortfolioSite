@@ -61,7 +61,7 @@ class About extends Component {
         let pageInfo = {
             pageName: "about",
             holderStyle: {backgroundColor: "#14a343", borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/",
+            gitLink: "https://github.com/matthew-pisano/",
             gitTitle: "GitHub",
             extraLinks: [Constants.resumeUrl, "https://www.linkedin.com/in/matthew-pisano"],
             extraTitles: ["Résumé", "LinkedIn"]

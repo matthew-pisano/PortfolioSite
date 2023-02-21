@@ -18,7 +18,7 @@ class Neural extends Component {
                     to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
                     The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
                 thumbnail: "",
-                extraLink: "https://github.com/ReactorDevelopment/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"
+                extraLink: "https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"
             },
             {
                 title: "#Training Methods",
@@ -132,9 +132,9 @@ class Neural extends Component {
         let pageInfo = {
             pageName: "neural",
             holderStyle: {backgroundColor: "#3c8aab", borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/NuralPy",
+            gitLink: "https://github.com/matthew-pisano/NuralPy",
             gitTitle: "Neural",
-            extraLinks: ["https://github.com/ReactorDevelopment/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
+            extraLinks: ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
             extraTitles: ["Research Paper"],
             tags: ["research", "academic", "ai", "python"]
         };

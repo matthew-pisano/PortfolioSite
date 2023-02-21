@@ -41,7 +41,7 @@ class Videntium extends Component {
         let pageInfo = {
             pageName: "videntium",
             holderStyle: {backgroundColor: "#876eba", borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/Videntium",
+            gitLink: "https://github.com/matthew-pisano/Videntium",
             gitTitle: "Videntium",
             tags: ["academic", "php", "js", "html"]
         };
