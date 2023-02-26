@@ -86,7 +86,7 @@ const Wrapper = ({location}) => {
                         <h4 id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</h4>
                     </div>
                     <div id="sidebarContent" className="w3-display-container w3-row">
-                        {recurse(common.navHierarchy("/home/user/public/")[0])}
+                        {recurse(common.navHierarchy("/home/guest/public/")[0])}
                     </div>
                 </div>
                 <div id="pageHolder">
@@ -117,7 +117,7 @@ const Wrapper = ({location}) => {
                 <div id="encodingStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>
                 <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}></div>
                 <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}></div>
-                <div id="itemStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>home.html</div>
+                <div id="itemStatus" className="commandItem lightText w3-col" style={{float: 'right'}}></div>
             </footer>
         </div>
     );

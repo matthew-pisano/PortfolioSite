@@ -8,13 +8,23 @@ class ChipFiring extends Component {
         let tiles = [
             {
                 title: "#Overview",
-                content: `Ongoing study of Chip-Firing games and how different combinations of
-                    directed and undirected edges affect its winning strategies.`
+                content: `In our research, we focused on the study of Chip-Firing games and how different combinations of 
+                    directed and undirected edges affect its winning strategies.`,
+                extraTitle: "Research Paper",
+                extraLink: "https://arxiv.org/abs/2302.10327"
+            },
+            {
+                title: "Abstract",
+                content: `The Picard group of an undirected graph is a finitely generated abelian group, and the Jacobian is the 
+                    torsion subgroup of the Picard group. These groups can be computed by using the Smith normal form of the 
+                    Laplacian matrix of the graph or by using chip-firing games associated with the graph. One may consider 
+                    its generalization to directed graphs based on the Laplacian matrix. We compute Picard groups and Jacobians 
+                    for several classes of directed trees, cycles, wheel, and multipartite graphs.`,
             },
             {
                 title: "Submissions and Conferences",
-                content: `This paper has been accepted into the <i>Joint Mathematics Meetings</i> 2023 with presentation scheduled for
-                    January 6th 2023.  We also plan to submit this paper to the <i>Journal of Experimental Mathematics</i> by Winter 2022.`,
+                content: `This paper was accepted into the Joint Mathematics Meetings 2023 and presented on January 6th 2023. 
+                    We also plan to submit this paper to the Journal of Experimental Mathematics and the Journal of Combinatorial Theory.`,
             },
             {
                 title: "#Background",
@@ -96,7 +106,7 @@ class ChipFiring extends Component {
                     are bidirectional.  For zero paths (all edges are bidirectional), the Jacobian is <latex>$\\mathbb{Z}_n$</latex> and for one path, it is always
                     trivial.  For two paths, the Jacobian is more complex, but also well defined.  The Jacobian is <latex>$\\mathbb{Z}_{x-2}$, where $x$</latex>
                     is the number of bidirectional paths counter-clockwise from the clockwise path and clockwise from the counter-clockwise path with no yet noted exceptions.
-                    For all other numbers of paths, we have not yet discovered a complete description as we have with teo paths.  However, we have noticed that
+                    For all other numbers of paths, we have not yet discovered a complete description as we have with two paths.  However, we have noticed that
                     there is also always a single invariant factor and this invariant factor is almost always <latex>$\\mathbb{Z}_2 \\dots \\mathbb{Z}_4$</latex>
                     for sizes of graphs smaller than size fifteen.  We suspect that, for very large grqaphs, the behavior of four or more paths approaches that of
                     two paths.<br>
@@ -120,7 +130,7 @@ class ChipFiring extends Component {
             holderStyle: {backgroundColor: "#4d7bd0", borderRadius: "10px"},
             gitLink: "https://github.com/matthew-pisano/ChipFiring",
             gitTitle: "Chip Firing",
-            //extraLinks: ["https://github.com/matthew-pisano/ChipFiring/blob/master/Docs/out/SURE2022.pdf"],
+            extraLinks: ["https://arxiv.org/abs/2302.10327"],
             extraTitles: ["Research Paper"],
             tags: ["research", "academic", "python"]
         };

@@ -49,24 +49,24 @@ let hierarchy = {
     subTree: [{
         name: "home/",
         subTree: [
-            {name: "user/",
+            {name: "guest/",
                 subTree: [
                     {name: "public/",
                     subTree: [
                         {name: "home.html"},
+                        {
+                            name: "research/",
+                            subTree: [
+                                {name: "chipFiring.html"},
+                                {name: "neural.html"},
+                            ]
+                        },
                         {
                             name: "personal/",
                             subTree: [
                                 {name: "simplex.html"},
                                 {name: "imperium.html"},
                                 {name: "inception.html"},
-                            ]
-                        },
-                        {
-                            name: "research/",
-                            subTree: [
-                                {name: "neural.html"},
-                                {name: "chipFiring.html"},
                             ]
                         },
                         {
@@ -259,6 +259,15 @@ function build(pageInfo, tiles){
         }
     </div>;
 }
+
+function updatePageMetadata(pageName = "", lines = 0, size = 0){
+    document.getElementById("linesStatus").innerText = `${lines} Lines`;
+    document.getElementById("sizeStatus").innerText = `${size}B`;
+    document.getElementById("itemStatus").innerText = pageName;
+    document.getElementById("langStatus").innerText = "HTML";
+    document.getElementById("encodingStatus").innerText = "UTF-8";
+}
+
 function showPage(pageId, isLanding = false, replaceLocation = true){
     console.log("Showing page "+pageId);
     document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -275,11 +284,7 @@ function showPage(pageId, isLanding = false, replaceLocation = true){
         let pageElem = document.getElementById(pageId+"Page");
         if(!pageElem){
             console.log("No element found for page "+pageId);
-            document.getElementById("linesStatus").innerText = "0 Lines";
-            document.getElementById("sizeStatus").innerText = "0B";
-            document.getElementById("itemStatus").innerText = pages[pageId].name;
-            document.getElementById("langStatus").innerText = "HTML";
-            document.getElementById("encodingStatus").innerText = "UTF-8";
+            updatePageMetadata();
             return;
         }
 
@@ -294,11 +299,7 @@ function showPage(pageId, isLanding = false, replaceLocation = true){
 
         document.getElementById("fileEditor").style.display = "none";
         let lineNum = pageElem.innerHTML.split(/\r\n|\r|\n/).length;
-        document.getElementById("linesStatus").innerText = (lineNum > 1 ? lineNum-1 : 1)+" Lines";
-        document.getElementById("sizeStatus").innerText = pageElem.innerHTML.length+"B";
-        document.getElementById("itemStatus").innerText = pages[pageId].name;
-        document.getElementById("langStatus").innerText = "HTML";
-        document.getElementById("encodingStatus").innerText = "UTF-8";
+        updatePageMetadata(pages[pageId].name, Math.max(lineNum-1, 1), pageElem.innerHTML.length);
         if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !isLanding && pageLoaded && sidebarOpen)
             toggleSidebar();
 
@@ -393,7 +394,7 @@ function newFile(fileName, openOnCreate = true){
     explorerDiv.appendChild(editImg);
     document.getElementById("customContent").appendChild(explorerDiv);
     document.getElementById("pageHolder").appendChild(customFileDiv);
-    navHierarchy("/home/user/public/custom")[0].subTree.push({name: fileName});
+    navHierarchy("/home/guest/public/custom")[0].subTree.push({name: fileName});
     if(openOnCreate) {
         button.onclick();
         toggleSidebar(false);
@@ -471,7 +472,7 @@ function finishRenaming(pageId, newName){
     if(newName) {
         // Rename the file within the hierarchy
         newName = newName.endsWith(".html") ? newName : newName+".html";
-        let customList = navHierarchy("/home/user/public/custom")[0].subTree;
+        let customList = navHierarchy("/home/guest/public/custom")[0].subTree;
         for(let i=0; i<customList.length; i++){
             if(customList[i].name === pages[pageId].name){
                 customList[i].name = newName;
@@ -487,7 +488,7 @@ function finishRenaming(pageId, newName){
     if(!stasis.container) 
         stasis.container = document.getElementById(pageId+"-File");
     console.log(stasis.container);
-    console.log(navHierarchy("/home/user/public/custom")[0].subTree);
+    console.log(navHierarchy("/home/guest/public/custom")[0].subTree);
     if(stasis.container.children.length >= 3){
         stasis.icon = stasis.container.children[0];
         stasis.expFile = stasis.container.children[1];
@@ -504,7 +505,7 @@ function removeFile(pageId){
     if(pageId){
         console.log("Removing "+pageId);
         if(!pageId) pageId = selectedPageId;
-        let customList = navHierarchy("/home/user/public/custom")[0].subTree;
+        let customList = navHierarchy("/home/guest/public/custom")[0].subTree;
         // Remove file from the hierarchy
         for(let i=0; i<customList.length; i++){
             if(customList[i].name === pages[pageId].name){
@@ -546,7 +547,7 @@ function init() {
     let parsed = scriptParse(pages[startId].content, true);
     document.getElementById(startId+"Page").innerHTML = parsed.content;
     eval(parsed.scripts);
-    // showPage("home", true);
+
     document.getElementById("newAction").onclick = () => {
         $("#fileDropdown").fadeOut();
         newFile();
@@ -582,6 +583,13 @@ function init() {
         }
         refreshLineNums();
     });
+    
+    // Update bottom metadata
+    let pageId = window.location.pathname.replace(new RegExp("/", 'g'), "");
+    if(!pageId) pageId = "home";
+    let currentPage = document.getElementById(pageId+"Page");
+    let lineNum = currentPage.innerHTML.split(/\r\n|\r|\n/).length;
+    updatePageMetadata(pages[pageId].name, Math.max(lineNum-1, 1), currentPage.innerHTML.length);
     pageLoaded = true;
 }
 // window.onload = init;

@@ -35,7 +35,7 @@
     bottom: 30px;
     height: 40px;
     width: 100%;
-    margin-left: 130px;
+    margin-left: 140px;
 }
 #terminalInput:focus-visible{
     outline: none;
@@ -282,7 +282,7 @@ body {
     overflow-x: auto;
 }
 .tag{
-    width: 160px;
+    width: 160px !important;
     padding: 2px 5px;
     margin: 3px 5px;
     background-color: #414141;
@@ -442,17 +442,14 @@ body {
     .katex{
         white-space: normal;
     }
-    /*.folderIcon{
-        content:url("assets/folderSmall.png");
-    }
-    .htmlIcon{
-        content:url("assets/htmlFileSmall.png");
-    }*/
 }
 
 /*Small Screens*/
 @media (max-width: 400px) {
     #encodingStatus{
         display: none;
+    }
+    .tag {
+        width: 100% !important;
     }
 }

@@ -14,7 +14,8 @@ class About extends Component {
                     with the hopes of working as an artificial intelligence researcher in the future.  This research
                     would hopefully center around cognitive artificial intelligence and natural language processing,
                     two areas that interest me greatly.  I enjoy finding interesting or useful projects to begin 
-                    working on and develop them until they reach the best iteration they can be.`
+                    working on and develop them until they reach the best iteration they can be.`,
+                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/headshot"
             },
             {
                 title: "Software Skills",
@@ -36,14 +37,18 @@ class About extends Component {
             },
             {
                 title: "Recent Employment",
-                content: `<ul><li>I am currently working for SUNY New Paltz through their summer undergraduate research experience, details
-                    about this can be found in the <u style="cursor: pointer" onClick="window.showPage('chipFiring')">Chip Firing page</u>.
-                    With this job, I work closely with a mentor to gain research experience and to develop research for later publishing</li>
-                    <li>I am also currently employed at Cyber Guardian Consulting Group.  Here, I have developed a variety of proprietary business
+                content: `During the Spring and Fall semesters, I am employed at Rensselaer Polytechnic Institute as a teaching
+                    assistant.  In this position, I hold office hours, aid the professor in grading, and help students
+                    to better grasp relevant course material.<hr>
+
+                    Last Summer, I had worked for SUNY New Paltz through their summer undergraduate research experience, details
+                    about this can be found in the <u style="cursor: pointer" onClick="window.showPage('chipFiring')">Chip Firing page</u> and
+                    in the <a href="https://arxiv.org/abs/2302.10327" target="_blank">arXiv submission</a> for the resulting paper.
+                    With this job, I worked closely with my professor to gain research experience and to develop research for later publishing.<hr>
+
+                    I am also currently employed at Cyber Guardian Consulting Group.  Here, I have developed a variety of proprietary business
                     solutions using a variety of languages and web services, primarily AWS.  Further details of these projects
-                    may be negotiated upon request.</li>
-                    <li>I have previously worked for Envision2bWell as an app development intern.  During my time at Envision2bWell, I helped
-                    to develop their application 'EnvisionWell' where I integrated google maps capabilities to the app.</li></ul>`,
+                    may be negotiated upon request.`,
                 thumbnail: ""
             },
             {

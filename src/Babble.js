@@ -33,7 +33,7 @@ class Babble extends Component {
             tags: ["help"]
         };
         Constants.babbleTiles = Babble.tiles;
-        babbleLoop();
+        if(window.location.pathname.endsWith("babble")) babbleLoop();
         return (
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>

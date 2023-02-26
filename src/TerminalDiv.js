@@ -14,7 +14,7 @@ const closeTerminal = () => {
 };
 
 const TerminalDiv = () => {
-    const homeDir = "/home/user/";
+    const homeDir = "/home/guest/";
     const [initialPos,   setInitialPos] = useState(null);
     const [initialSize, setInitialSize] = useState(null);
     //const [terminalClosed, setTerminalClosed] = useState(true);
@@ -46,7 +46,7 @@ const TerminalDiv = () => {
     MAthesis SHell (mash) extended capabilities.
     Sensitive documents are exposed to these commands.  Use with caution.
 
-    open [rickroll | poland | void | scp | babble] - opens the file with the given name
+    open [rick | poland | void | scp | babble] - opens the file with the given name
     mir - ??
     launch [warhead_id] [lat] [long] - ██████████████
     haltingproblem - Computes the ideal turing machine to solve the halting problem
@@ -235,9 +235,11 @@ const TerminalDiv = () => {
         let outStr = genPrompt()+command;
         let absPath = "";
         for(let i=0; i<tokens.length; i++){
-            if(tokens[i] === ".") tokens[i] = cwd;
-            else if(tokens[i] === "..") tokens[i] = cwd.substring(0, cwd.substring(0, cwd.length-1).lastIndexOf("/"));
-            else if(tokens[i] === "~") tokens[i] = homeDir;
+            console.log("'"+tokens[i]+"'");
+            
+            if(tokens[i].startsWith("..")) tokens[i] = (cwd.substring(0, cwd.substring(0, cwd.length-1).lastIndexOf("/"))+tokens[i].replace("..", "")).replace(/\/\//g, "/");
+            else if(tokens[i].startsWith(".")) tokens[i] = (cwd+tokens[i].replace(".", "")).replace(/\/\//g, "/");
+            else if(tokens[i].startsWith("~")) tokens[i] = (homeDir+tokens[i].replace(".", "")).replace(/\/\//g, "/");
         }
         //console.log(tokens);
         function resolvePath(path){
@@ -262,7 +264,7 @@ const TerminalDiv = () => {
                     resolvePath(newName);
                     let rootPath = common.navHierarchy(absPath)[1];
                     // Remove custom from path if it exists and continue with the removal
-                    if(rootPath.includes("/home/user/public/custom")){
+                    if(rootPath.includes("/home/guest/public/custom")){
                         for(let pageId in common.pages)
                             if(newName.endsWith(common.pages[pageId].name))
                                 return outStr+"\n File '"+newName+"' already exists";
@@ -271,7 +273,7 @@ const TerminalDiv = () => {
                         return outStr+"\nCreated file '"+newName+"'";
                     }
                     else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
-                    return outStr+"\nrm command only applies to files in the '/home/user/public/custom' folder";
+                    return outStr+"\nrm command only applies to files in the '/home/guest/public/custom' folder";
                 }
                 return outStr+"\ntouch command requires one argument";
             case 'ren':
@@ -281,7 +283,7 @@ const TerminalDiv = () => {
                     let newName = tokens[2].replace(".html", "")+".html";
                     let rootPath = common.navHierarchy(absPath)[1];
                     // Remove custom from path if it exists and continue with the removal
-                    if(rootPath.includes("/home/user/public/custom")){
+                    if(rootPath.includes("/home/guest/public/custom")){
                         let oldId = null;
                         for(let pageId in common.pages)
                             if(oldName.endsWith(common.pages[pageId].name)){
@@ -292,7 +294,7 @@ const TerminalDiv = () => {
                         return outStr+"\nRenamed file '"+oldName+".html' to '"+newName+"'";
                     }
                     else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
-                    return outStr+"\nrm command only applies to files in the '/home/user/public/custom' folder";
+                    return outStr+"\nrm command only applies to files in the '/home/guest/public/custom' folder";
                 }
                 return outStr+"\nren command requires three arguments";
             case 'rm':
@@ -301,7 +303,7 @@ const TerminalDiv = () => {
                     resolvePath(fileName);
                     let rootPath = common.navHierarchy(absPath)[1];
                     // Remove custom from path if it exists and continue with the removal
-                    if(rootPath.includes("/home/user/public/custom")){
+                    if(rootPath.includes("/home/guest/public/custom")){
                         for(let pageId in common.pages)
                             if(fileName.endsWith(common.pages[pageId].name)){
                                 common.removeFile(pageId);
@@ -310,7 +312,7 @@ const TerminalDiv = () => {
                         return outStr+"\nRemoved file '"+fileName+"'";
                     }
                     else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
-                    return outStr+"\nrm command only applies to files in the '/home/user/public/custom' folder";
+                    return outStr+"\nrm command only applies to files in the '/home/guest/public/custom' folder";
                 }
                 return outStr+"\nrm command requires one argument";
             case 'cls':
@@ -371,8 +373,8 @@ const TerminalDiv = () => {
                 }
                 else return outStr+"\nPath: '"+absPath+"' must be a file";
             case 'open':
-                if(tokens[1].replace(".html", "") === "rickroll"){
-                    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                if(tokens[1].replace(".html", "") === "rick"){
+                    window.open("documents", "_self");
                     return outStr+"\nInteresting choice...";
                 }
                 else if(tokens[1].replace(".html", "") === "poland"){

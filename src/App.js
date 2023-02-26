@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { pages } from './common';
 import PropTypes from 'prop-types';
 import Wrapper from './Wrapper';
 import Admin from './Admin';
@@ -20,8 +21,7 @@ const App = () => {
         <Router>
             <Routes>
                 <Route path="/" element={<Wrapper location="home"/>}/>
-                {["home", "simplex", "imperium", "mipsCmd", "inception", "videntium", "anonHires",
-                    "neural", "chipFiring", "scp", "babble", "resume", "about"].map((page) => 
+                {Object.keys(pages).map((page) => 
                         <Route key={page+"Route"} path={"/"+page} element={<Wrapper location={page}/>}/>)}
                 <Route path='admin' element={<Admin/>}/>
                 <Route path='documents' element={<Rick/>}/>

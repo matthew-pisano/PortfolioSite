@@ -14,21 +14,43 @@ class Home extends Component {
                 style: {backgroundColor: "#41414155"}
             },
             {
-                title: "Neural",
-                titleLink: "neural",
-                content: `A research project with the goal analyzing the differences between backpropagation, a genetic algorithm method,
-                    and the decision tree optimization when training on a dataset from the Vanderbilt University Department of Biostatics.  The goal
-                    of these networks was to predict whether a patient was diagnosed with type-II diabetes based on their health attributes.`,
-                gitLink: "https://github.com/matthew-pisano/NuralPy",
+                title: "Large-Scale Foundation Acoustic Modeling for Automatic Speech Recognition",
+                titleLink: "",
+                content: `Through this research project, we plan to develop novel improvements to existing 
+                    NLP and ASR models through optimization and experimentation.`,
+                gitLink: "https://github.com/AIRC-ASR/AIRC-ASR-Experimental",
+                gitTitle: "AIRC ASR",
+                tags: ["research", "academic", "ai", "python"]
+            },
+            {
+                title: "GPT-Pedagogy",
+                titleLink: "",
+                content: `Research into the creation of a fine-tuned GPT-3 teaching assistant that will enable the transparent 
+                    use of the technology between instructor and student to create a more active and participatory learning environment.`,
+                gitLink: "https://github.com/GPT-Pedagogy/GPT-Pedagogy",
+                gitTitle: "GPT-Pedagogy",
                 tags: ["research", "academic", "ai", "python"]
             },
             {
                 title: "Chip Firing",
                 titleLink: "chipFiring",
-                content: `A research paper focusing on mathematical chip firing games.  This project will study Chip-Firing games and 
+                content: `A research paper focusing on mathematical chip firing games.  This project studied Chip-Firing games and 
                 how different combinations of directed and undirected edges affect its winning strategies.`,
+                extraTitle: "Research Paper",
+                extraLink: "https://arxiv.org/abs/2302.10327",
+                gitLink: "https://github.com/matthew-pisano/ChipFiring",
+                tags: ["research", "academic", "python"]
+            },
+            {
+                title: "Neural",
+                titleLink: "neural",
+                content: `A research project with the goal analyzing the differences between backpropagation, a genetic algorithm method,
+                    and the decision tree optimization when training on a dataset from the Vanderbilt University Department of Biostatics.  The goal
+                    of these networks was to predict whether a patient was diagnosed with type-II diabetes based on their health attributes.`,
+                extraTitle: "Research Paper",
+                extraLink: "https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf",
                 gitLink: "https://github.com/matthew-pisano/NuralPy",
-                tags: ["research", "academic"]
+                tags: ["research", "academic", "ai", "python"]
             },
             {
                 title: "#Featured Projects",
@@ -85,7 +107,7 @@ class Home extends Component {
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
                 <div className="inner titleCard" style={{position: 'fixed', height: '300px', top: '50px', left: '0px', right: '0px'}}>
                     <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>Matthew Pisano</h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Student of Software Engineering</h3>
+                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Student of Artificial Intelligence</h3>
                 </div>
                 {common.build(pageInfo, tiles)}
             </div>
