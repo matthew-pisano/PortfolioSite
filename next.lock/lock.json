@@ -1,0 +1,4 @@
+{
+  "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs": { "integrity": "sha512-jnDmWNqLV/IdPJZTIjs5j9elJiRfQ1knKLer69n95QGaTM82wk+Mjb+17e8ZXFXyq7VGpxNd0tPW1Xfq1Ancjg==", "contentType": "application/javascript; charset=utf-8" },
+  "version": 1
+}
