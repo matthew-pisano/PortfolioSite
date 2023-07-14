@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Constants} from '../scripts/utils';
+import {Wrapper} from '../scripts/wrapper';
 
 class Resume extends Component {
     
     static propTypes = {display: PropTypes.string};
     render() {
-        return (
+        return (<Wrapper pageName={pageInfo.pageName}>
             <div id="resumePage" className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Résumé</b></h1><br/>
@@ -16,7 +17,7 @@ class Resume extends Component {
                     <embed id="resumeHolder" type="application/pdf" src={Constants.resumeUrl}></embed>
                 </div>
             </div>
-        );
+        </Wrapper>);
     }
 }
 

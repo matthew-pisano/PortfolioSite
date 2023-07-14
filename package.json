@@ -1,17 +1,21 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "cp styles/* public/css/; next dev",
+    "build": "cp styles/* public/css/; next build",
+    "start": "cp styles/* public/css/; next start"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
+    "html-react-parser": "^3.0.16",
     "jquery": "^3.7.0",
+    "latex.js": "^0.12.6",
     "next": "latest",
     "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.11.1",
+    "svgdom": "^0.1.14",
     "uuid": "^9.0.0",
     "w3-css": "^4.1.0"
   }

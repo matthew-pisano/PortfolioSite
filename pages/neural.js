@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as common from '../scripts/common';
 import PropTypes from 'prop-types';
+import {Wrapper} from '../scripts/wrapper';
+
 class Neural extends Component {
 
     static propTypes = {display: PropTypes.string};
@@ -48,9 +50,10 @@ class Neural extends Component {
                 content: `For training, each one of the three networks was given the same 80% proportion of the original data set and 
                     trained for 150 epochs and three independent trials. The loss function for each network is given by the 
                     sum of squared errors for every sample. 
-                    <p class="tab">Each trial was given a score for comparison. The score is given by the percent
+                    
+                    Each trial was given a score for comparison. The score is given by the percent
                     of correctly identified diagnoses divided by the time it took for the trial to
-                    complete. The higher the score, the better the performance of the algorithm.</p>`,
+                    complete. The higher the score, the better the performance of the algorithm.`,
                 thumbnail: ""
             },
             {
@@ -60,20 +63,21 @@ class Neural extends Component {
             },
             {
                 title: "Backpropagation Results",
-                content: `For the backpropagation network, a learning rate (&alpha;) of 0.18 was used. Across
+                content: `For the backpropagation network, a learning rate (\\alpha) of 0.18 was used. Across
                     three trials, training over the data set for the 150 epochs, the network trained
                     after 0.82 seconds on average. The average loss for the testing set was 0.125,
                     correctly predicting 85.9% of diagnoses in the testing set and 95.1% withing
                     the training set. Its overall score was 0.96.
-                    <p class="tab">The training loss curve for backpropagation follows closely to a curve of 1/x
+                    
+                    The training loss curve for backpropagation follows closely to a curve of 1/x
                     This signifies a good loss curve with minimal over-fitting. The loss declines
-                    sharply and the accuracy rises rapidly over successive epochs of training.</p>`,
+                    sharply and the accuracy rises rapidly over successive epochs of training.`,
                 thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/backproplosses.png"
             },
             {
                 title: "Decision Tree Results",
                 content: `For the backpropagation network with the decision tree optimization, a learning 
-                    rate (&alpha;) of 0.18 was also used. The decision tree was able to eliminate the
+                    rate (\\alpha) of 0.18 was also used. The decision tree was able to eliminate the
                     attributes of weight as least impactful and glucose levels as second to least
                     impactful. For this experiment, only weight was eliminated. This brought
                     the total number of inputs down to ten input nodes. Across three trials,
@@ -81,11 +85,12 @@ class Neural extends Component {
                     seconds on average. The average loss for the testing set was 0.125, correctly
                     predicting 84.2% of diagnoses in the testing set and 95.0% withing the training set. 
                     Its overall score was 1.05.
-                    <p class="tab">The training loss curve for optimized backpropagation follows closely to a
+                    
+                    The training loss curve for optimized backpropagation follows closely to a
                     curve of 1/x. This signifies a good loss curve with minimal over-fitting. The
                     loss declines sharply and the accuracy rises rapidly over successive epochs of
                     training. Compared to raw backpropagation, this algorithm converges on an
-                    optimal solution approximately twice as fast.</p>`,
+                    optimal solution approximately twice as fast.`,
                 thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/decisionlosses.png"
             },
             {
@@ -95,7 +100,8 @@ class Neural extends Component {
                     The average loss for the testing set was 0.295, correctly identifying 70.4%
                     of diagnoses in the testing set and 88.1% withing the training set, as shown
                     below. Its overall score was 0.138.
-                    <p class="tab">The training loss curve for the genetic algorithm shows a less pronounced
+
+                    The training loss curve for the genetic algorithm shows a less pronounced
                     curve, corresponding well with a high learning rate and a high change of
                     over-fitting. The loss of the algorithm dropped sharply after the training
                     started but leveled out higher than backpropagation did, resulting in a high
@@ -104,7 +110,7 @@ class Neural extends Component {
                     than either of the two other implementations, about four times faster than
                     backpropagation with the decision tree. This algorithm settles into a local
                     minimum solution after five epochs, compared to the other two which settled
-                    at forty for raw backpropagation and twenty for optimized backpropagation.</p>`,
+                    at forty for raw backpropagation and twenty for optimized backpropagation.`,
                 thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/geneticlosses.png"
             },
             {
@@ -114,7 +120,8 @@ class Neural extends Component {
                     particular data set. It completed quickly and with a high accuracy of 84.2%
                     and score of 1.05 when predicting if a subject was diagnosed with diabetes
                     given their medical attributes.
-                    <p class="tab">One of the drawbacks of the genetic algorithm, as opposed to backpropagation, 
+
+                    One of the drawbacks of the genetic algorithm, as opposed to backpropagation, 
                     was its tendency to settle into local minima in addition to its slow
                     speed. Often, the genetic algorithm would converge on a solution that was
                     better than chance, but sub optimal. Backpropagation more often converged
@@ -123,10 +130,11 @@ class Neural extends Component {
                     The optimization of NumPy arrays is focused on multiplication, due to the
                     genetic algorithm having less array multiplication, it was not able to leverage 
                     the advantages of the arrays as much as backpropagation, resulting in a
-                    slower algorithm.</p>
-                    <p class="tab">Compared to backpropagation, the decision tree optimization slightly decreased 
+                    slower algorithm.
+                    
+                    Compared to backpropagation, the decision tree optimization slightly decreased 
                     the execution time of the network. More importantly, it converged
-                    on an optimal solution much faster than raw backpropagation.</p>`
+                    on an optimal solution much faster than raw backpropagation.`
             }
         ];
         let pageInfo = {
@@ -138,7 +146,7 @@ class Neural extends Component {
             extraTitles: ["Research Paper"],
             tags: ["research", "academic", "ai", "python"]
         };
-        return (
+        return (<Wrapper pageName={pageInfo.pageName}>
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Neural</b></h1><br/>
@@ -146,7 +154,7 @@ class Neural extends Component {
                 </div>
                 {common.build(pageInfo, tiles)}
             </div>
-        );
+        </Wrapper>);
     }
 }
 

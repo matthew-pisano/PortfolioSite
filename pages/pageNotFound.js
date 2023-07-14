@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as common from '../scripts/common';
 import PropTypes from 'prop-types';
+import {Wrapper} from '../scripts/wrapper';
+
 
 class PageNotFound extends Component {
 
@@ -48,7 +50,7 @@ class PageNotFound extends Component {
             holderStyle: {backgroundColor: "#000000", borderRadius: "10px"},
             tags: ["help"]
         };
-        return (
+        return (<Wrapper pageName={pageInfo.pageName}>
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Page Not Found</b></h1><br/>
@@ -56,7 +58,7 @@ class PageNotFound extends Component {
                 </div>
                 {common.build(pageInfo, tiles)}
             </div>
-        );
+        </Wrapper>);
     }
 }
 

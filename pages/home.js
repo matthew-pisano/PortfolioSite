@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as common from '../scripts/common';
 import PropTypes from 'prop-types';
 import {Constants} from '../scripts/utils';
-import {Header, Footer} from '../scripts/wrapper'
+import {Wrapper} from '../scripts/wrapper';
 
 class Home extends Component {
     
@@ -104,17 +104,15 @@ class Home extends Component {
             extraLinks: [Constants.resumeUrl, "https://www.linkedin.com/in/matthew-pisano"],
             extraTitles: ["Résumé", "LinkedIn"]
         };
-        return (
+        return (<Wrapper pageName={pageInfo.pageName}>
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
-                <Header/>
                 <div className="inner titleCard" style={{position: 'fixed', height: '300px', top: '50px', left: '0px', right: '0px'}}>
                     <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>Matthew Pisano</h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Student of Artificial Intelligence</h3>
                 </div>
                 {common.build(pageInfo, tiles)}
-                <Footer/>
             </div>
-        );
+        </Wrapper>);
     }
 }
 

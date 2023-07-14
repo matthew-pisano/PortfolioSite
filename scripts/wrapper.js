@@ -1,8 +1,9 @@
 import React from 'react';
+import Head from 'next/head';
 import * as common from './common';
 
 // eslint-disable-next-line react/prop-types
-const Header = () => {
+const Wrapper = ({children, pageName}) => {
     function recurse(tree, parent = null){
         if(tree.name.endsWith("/")){
             let name = tree.name.substring(0, tree.name.length-1)+"-Folder";
@@ -35,6 +36,9 @@ const Header = () => {
     }
     return (
         <div className="w3-display-container">
+            <Head>
+                <title id="siteTitle">{pageName+".html"}</title>
+            </Head>
             <header className="menuBar w3-row" style={{top: '0px'}}>
                 <button id="fileButton" className="menuItem lightText w3-button w3-col">File</button>
                 <button id="editButton" className="menuItem lightText w3-button w3-col">Edit</button>
@@ -63,7 +67,7 @@ const Header = () => {
                             target={"_blank"} rel="noreferrer">LinkedIn</a>
                     </div>
                 </div>
-                <div id="sidebar" className="w3-col" style={{width: "0px"}}>
+                <div id="sidebar" className="w3-col openSidebar">
                     <div id="collapseHolder" className="w3-cell-row">
                         <button id="collapseSidebar" className="w3-button w3-cell">&#60;</button>
                         <h4 id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</h4>
@@ -73,13 +77,9 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-        </div>
-    )
-};
-const Footer = () => {
-    return (
-        <div className="w3-display-container">
-            <div id="pageHolder"></div>
+            <div id="pageHolder">
+                {children}
+            </div>
             <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                 <div id="editorLines" className="w3-col">1</div>
                 <div id="editorContent" className="w3-col"contentEditable="true"></div>
@@ -96,4 +96,4 @@ const Footer = () => {
 };
 
 
-export {Header, Footer};
+export {Wrapper};

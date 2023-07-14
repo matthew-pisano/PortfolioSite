@@ -1,12 +1,17 @@
 import $ from 'jquery';
 import React from 'react';
+import parse from 'html-react-parser';
 import {v4} from 'uuid';
 import startStr from './start';
 import { babbleLoop } from './utils';
-//import { parse, HtmlGenerator } from 'https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs';
+import { parse as latexParse, HtmlGenerator } from 'latex.js';
+import { createHTMLWindow } from 'svgdom';
+
+global.window = createHTMLWindow();
+global.document = window.document;
 
 let tilePositions = null;
-let sidebarOpen = false;
+let sidebarOpen = true;
 let pageLoaded = false;
 let sidebarMax = 215;
 let sidebarMin = 50;
@@ -172,14 +177,18 @@ function toggleSidebar(animate=true){
 }
 function parseLatex(text){
 
-    text = `\\documentclass{article}
-    \\begin{document}
-    ${text}
-    \\end{document}`;
     let generator = new HtmlGenerator({ hyphenate: false });
-    generator = parse(text, { generator: generator });
 
-    return generator.domFragment().children[0].children[0].innerHTML;
+    let doc = latexParse(latex, { generator: generator }).htmlDocument();
+
+    console.log(doc.documentElement.outerHTML);
+
+    /*const tokens = latexParser.parse(text.replace(/%/g, "\\%"));
+    let latexText = "";
+    console.log(tokens)
+    for(let segment of tokens.value)
+        latexText += segment.text ? segment.text : segment.name
+    return latexText.replace(/\n[ ]*\n/g, '<br><br><span style="margin-left: 25px;"></span>');*/
   
 }
 function build(pageInfo, tiles){
@@ -219,18 +228,20 @@ function build(pageInfo, tiles){
                     tile.title && tile.title.startsWith("</>") ?
                     <p id={titleId} dangerouslySetInnerHTML={{__html: tile.title.replace("</>", "")}}></p> :
                     tile.title ? <p><b id={titleId}>{tile.title}</b></p> : <span></span>;
-                while(tile.content.includes("</latex>")){
+
+                /*while(tile.content.includes("</latex>")){
                     let beginIdx = tile.content.indexOf("<latex>");
                     let endIdx = tile.content.indexOf("</latex>");
                     let latex = parseLatex(tile.content.substring(beginIdx+7, endIdx));
                     tile.content = tile.content.substring(0, beginIdx)+latex+tile.content.substring(endIdx+8);
-                }
+                }*/
+                tile.content = parseLatex(tile.content)
                 return <div id={pageInfo.pageName+"Tile"+i} className="displayTile w3-container w3-row" key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : <span></span>}
                     <div className={`w3-${displayWidth} w3-mobile`} style={contentStyle}>
                         {tile.titleLink ? <u style={{cursor: "pointer"}} onClick={() => {pages[tile.titleLink] ? showPage(tile.titleLink) : 
                             (window.history.pushState({"page": tile.titleLink}, null, tile.titleLink)); window.location.reload();}}>{titleEl}</u> : titleEl}
-                        <p id={pageInfo.pageName+"Tile"+i+"Content"} dangerouslySetInnerHTML={{__html: tile.content}}></p>
+                        <p id={pageInfo.pageName+"Tile"+i+"Content"}>{parse(tile.content)}</p>
                         {tile.gitLink ?
                             <div className="gitLink w3-row w3-mobile w3-col">
                                 <img className="w3-col" alt='gitLink'/>
@@ -274,16 +285,19 @@ function showPage(pageId, isLanding = false, replaceLocation = true){
     if(pageId){
         selectedPageId = pageId;
         document.getElementById("siteTitle").innerText = pages[pageId].name;
-        let pageElem = document.getElementById(pageId+"Page");
-        if(!pageElem){
+        let pageElem = document.getElementById("__next");
+        
+        /*if(!pageElem){
             console.log("No element found for page "+pageId);
             updatePageMetadata();
             return;
-        }
+        }*/
+        //pageElem.style.display = "block";
 
-        if(replaceLocation) window.history.pushState({"page": pageId}, null, pageId);
+        if(replaceLocation) 
+            //window.history.pushState({"page": pageId}, null, pageId);
+            location.href = pageId;
 
-        pageElem.style.display = "block";
         let files = document.getElementsByClassName("sidebarItem");
         for(let i=0; i<files.length; i++)
             files[i].classList.remove("selectedSideItem");
@@ -515,14 +529,14 @@ function removeFile(pageId){
 function init() {
     console.log("Loading page...");
     // Latex links
-    let latexCSS = document.createElement("LINK");
+    /*let latexCSS = document.createElement("LINK");
     latexCSS.type = "text/css";
     latexCSS.rel = "stylesheet";
     latexCSS.href = "https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/css/katex.css";
     let latexJS = document.createElement("SCRIPT");
     latexJS.src = "https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/js/base.js";
     document.head.appendChild(latexCSS);
-    document.head.appendChild(latexJS);
+    document.head.appendChild(latexJS);*/
 
     collapseSidebar = document.getElementById("collapseSidebar");
     collapseSidebar.onclick = toggleSidebar;
@@ -533,12 +547,13 @@ function init() {
             $("#"+menuBindings[menuItem.id]).fadeToggle();
         };
     }
-    toggleSidebar();
-    let startId = newFile("start.html", false);
+    //toggleSidebar();
+
+    /*let startId = newFile("start.html", false);
     setFileContent(startId, startStr);
     let parsed = scriptParse(pages[startId].content, true);
     document.getElementById(startId+"Page").innerHTML = parsed.content;
-    eval(parsed.scripts);
+    eval(parsed.scripts);*/
 
     document.getElementById("newAction").onclick = () => {
         $("#fileDropdown").fadeOut();
@@ -581,7 +596,7 @@ function init() {
     if(!pageId) pageId = "home";
     let currentPage = document.getElementById(pageId+"Page");
     let lineNum = currentPage.innerHTML.split(/\r\n|\r|\n/).length;
-    updatePageMetadata(pages[pageId].name, Math.max(lineNum-1, 1), currentPage.innerHTML.length);
+    //updatePageMetadata(pages[pageId].name, Math.max(lineNum-1, 1), currentPage.innerHTML.length);
     pageLoaded = true;
 }
 
