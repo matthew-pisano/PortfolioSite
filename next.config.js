@@ -1,6 +1,10 @@
 const nextConfig = {
-    experimental: {
-        urlImports: ['https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs'],
+    resolve: {
+        fallback: {
+            "fs": false,
+            "os": false,
+            "path": false,
+        }
     }
 };
    

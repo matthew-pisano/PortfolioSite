@@ -4,44 +4,10 @@ import parse from 'html-react-parser';
 import {v4} from 'uuid';
 import startStr from './start';
 import { babbleLoop } from './utils';
-import { parse as latexParse, HtmlGenerator } from 'latex.js';
-import { createHTMLWindow } from 'svgdom';
+import 'katex/dist/katex.min.css';
+import Latex from 'react-latex-next';
 
-global.window = createHTMLWindow();
-global.document = window.document;
 
-let tilePositions = null;
-let sidebarOpen = true;
-let pageLoaded = false;
-let sidebarMax = 215;
-let sidebarMin = 50;
-let folderIndent = "0px";
-let menuBindings = {
-    "fileButton": "fileDropdown",
-    "editButton": "editDropdown",
-    "helpButton": "helpDropdown",
-    "contactButton": "contactDropdown",
-};
-let activeEditor = undefined;
-let selectedPageId = undefined;
-let pages = {
-    home: {name: "home.html"},
-    imperium: {name: "imperium.html"},
-    simplex: {name: "simplex.html"},
-    mipsCmd: {name: "mipsCmd.html"},
-    inception: {name: "inception.html"},
-    neural: {name: "neural.html"},
-    chipFiring: {name: "chipFiring.html"},
-    videntium: {name: "videntium.html"},
-    anonHires: {name: "anonHires.html"},
-    scp: {name: "scp.html"},
-    babble: {name: "babble.html"},
-    resume: {name: "resume.html"},
-    about: {name: "about.html"},
-    help: {name: "help.html"},
-};
-let stasis = {container: null};
-let collapseSidebar;
 let hierarchy = {
     name: "/",
     subTree: [{
@@ -51,47 +17,7 @@ let hierarchy = {
                 subTree: [
                     {name: "public/",
                     subTree: [
-                        {name: "home.html"},
-                        {
-                            name: "research/",
-                            subTree: [
-                                {name: "chipFiring.html"},
-                                {name: "neural.html"},
-                            ]
-                        },
-                        {
-                            name: "personal/",
-                            subTree: [
-                                {name: "simplex.html"},
-                                {name: "imperium.html"},
-                                {name: "inception.html"},
-                            ]
-                        },
-                        {
-                            name: "school/",
-                            subTree: [
-                                {name: "videntium.html"},
-                                {name: "mipsCmd.html"},
-                            ]
-                        },
-                        {
-                            name: "hackathons/",
-                            subTree: [
-                                {name: "anonHires.html"},
-                            ]
-                        },
-                        {
-                            name: "about/",
-                            subTree: [
-                                {name: "about.html"},
-                                {name: "resume.html"},
-                            ]
-                        },
-                        {name: "help.html"},
-                        {
-                            name: "custom/",
-                            subTree: []
-                        }
+                        {name: "custom/", subTree: []}
                     ]}
                 ]
             }]
@@ -109,6 +35,15 @@ let hierarchy = {
         {name: "var/", subTree: [], permission: "deny"},
     ]
 };
+
+let pages = {};
+
+function initFiles(initHierarchy, initPages){
+    hierarchy = initHierarchy;
+    pages = initPages;
+}
+
+
 function navHierarchy(path){
     let tokens = path.split("/");
     if(tokens[tokens.length-1] === "") tokens.pop();
@@ -138,6 +73,24 @@ function navHierarchy(path){
     //console.log("File at path: "+current.name);
     return [current, absPath];
 }
+
+let tilePositions = null;
+let sidebarOpen = true;
+let pageLoaded = false;
+let sidebarMax = 215;
+let sidebarMin = 50;
+let folderIndent = "0px";
+let menuBindings = {
+    "fileButton": "fileDropdown",
+    "editButton": "editDropdown",
+    "helpButton": "helpDropdown",
+    "contactButton": "contactDropdown",
+};
+let activeEditor = undefined;
+let selectedPageId = undefined;
+let stasis = {container: null};
+let collapseSidebar;
+
 function toggleSidebar(animate=true){
     if(sidebarOpen){
         collapseSidebar.innerText = ">";
@@ -176,6 +129,7 @@ function toggleSidebar(animate=true){
     }
 }
 function parseLatex(text){
+    return <Latex>{text}</Latex>;
 
     let generator = new HtmlGenerator({ hyphenate: false });
 
@@ -235,13 +189,15 @@ function build(pageInfo, tiles){
                     let latex = parseLatex(tile.content.substring(beginIdx+7, endIdx));
                     tile.content = tile.content.substring(0, beginIdx)+latex+tile.content.substring(endIdx+8);
                 }*/
-                tile.content = parseLatex(tile.content)
+                let parsedContent = <span>{parse(tile.content)}</span>
+                if(tile.latex) parsedContent = parseLatex(tile.content);
+
                 return <div id={pageInfo.pageName+"Tile"+i} className="displayTile w3-container w3-row" key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : <span></span>}
                     <div className={`w3-${displayWidth} w3-mobile`} style={contentStyle}>
                         {tile.titleLink ? <u style={{cursor: "pointer"}} onClick={() => {pages[tile.titleLink] ? showPage(tile.titleLink) : 
                             (window.history.pushState({"page": tile.titleLink}, null, tile.titleLink)); window.location.reload();}}>{titleEl}</u> : titleEl}
-                        <p id={pageInfo.pageName+"Tile"+i+"Content"}>{parse(tile.content)}</p>
+                        <p id={pageInfo.pageName+"Tile"+i+"Content"}>{parsedContent}</p>
                         {tile.gitLink ?
                             <div className="gitLink w3-row w3-mobile w3-col">
                                 <img className="w3-col" alt='gitLink'/>
@@ -655,4 +611,4 @@ if (typeof window !== "undefined") {
 }
 
   
-export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming, removeFile, folderIndent, init};
+export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming, removeFile, folderIndent, init, initFiles};

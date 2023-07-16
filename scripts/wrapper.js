@@ -1,10 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import * as common from './common';
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
-    function recurse(tree, parent = null){
+
+    const router = useRouter();
+    console.log(router , 'routes');
+
+    function recurse(tree, path=""){
         if(tree.name.endsWith("/")){
             let name = tree.name.substring(0, tree.name.length-1)+"-Folder";
             return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row">
@@ -18,22 +23,59 @@ const Wrapper = ({children, pageName}) => {
                         document.getElementById("itemStatus").innerText = tree.name;
                     }
                 }>{tree.name}</button>
+
                 <div id={tree.name.substring(0, tree.name.length-1)+"Content"} className="w3-row sidebarContent">
-                    {tree.subTree.map(child => recurse(child, tree.name))}
+                    {tree.subTree.map(child => recurse(child, path+tree.name))}
                 </div>
             </div>;
         }
-        else if(!parent.includes("custom")){
-            let name = tree.name.substring(0, tree.name.indexOf("."))+"-File";
-            return <div key={name} id={name} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
+        else if(!path.includes("custom")){
+            let name = tree.name.substring(0, tree.name.indexOf("."));
+
+            return <div key={name+"-File"} id={name+"-File"} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
                 <img className='htmlIcon' alt='html'/>
-                <button className="w3-button lightText" onClick={
+                <a className="w3-button lightText" style={{padding: 0}} href={path.replace("public/", "")+name}>{name}</a>
+                {/*<button className="w3-button lightText" onClick={
                     () => common.showPage(tree.name.substring(0, tree.name.indexOf(".")))
-                }>{tree.name}</button>
+                }>{tree.name}</button>*/}
             </div>;
         }
         else {<div></div>;}
     }
+    
+    let dehydrateInfo = {};
+
+    if (typeof window === 'undefined') {
+        const { resolve } = require('path');
+        const { readdirSync } = require('fs');
+        function walkPages(dir="pages") {
+            const dirents = readdirSync(dir, { withFileTypes: true });
+            for (const dirent of dirents) {
+                const res = resolve(dir, dirent.name);
+                let dirName = dir.substring(dir.lastIndexOf("pages")+6);
+                let hierarchyPath = "/home/guest/public/"+dirName;
+                if (dirent.isDirectory()) {
+                    common.navHierarchy(hierarchyPath)[0].subTree.push({name: dirent.name+"/", subTree: []});
+                    walkPages(res);
+                } else {
+                    let fileName = res.substring(res.lastIndexOf("/")+1).replace(".js", "");
+                    if(fileName[0] !== "_"){
+                        common.pages[fileName] = {name: fileName+".html"};
+                        common.navHierarchy(hierarchyPath)[0].subTree.push({name: fileName+".html"});
+                    }
+                }
+            }
+        }
+        walkPages();
+        dehydrateInfo = {hierarchy: common.hierarchy, pages: common.pages}
+    }
+    else{
+        dehydrateInfo = JSON.parse(document.getElementById("dehydrateInfo").innerText);
+        common.initFiles(dehydrateInfo.hierarchy, dehydrateInfo.pages)
+    }
+
+    let explorerTree = recurse(common.navHierarchy("/home/guest/public/")[0]);
+
     return (
         <div className="w3-display-container">
             <Head>
@@ -45,6 +87,7 @@ const Wrapper = ({children, pageName}) => {
                 <button id="helpButton" className="menuItem lightText w3-button w3-col">Help</button>
                 <button id="contactButton" className="menuItem lightText w3-button w3-col">Contact Info</button>
             </header>
+            <span id="dehydrateInfo" style={{display: "none"}}>{JSON.stringify(dehydrateInfo)}</span>
             <div id="wrapperContent" className="w3-display-container w3-row">
                 <div id="menuDropHolder">
                     <div id="fileDropdown" className="menuDropdown w3-col">
@@ -72,14 +115,10 @@ const Wrapper = ({children, pageName}) => {
                         <button id="collapseSidebar" className="w3-button w3-cell">&#60;</button>
                         <h4 id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</h4>
                     </div>
-                    <div id="sidebarContent" className="w3-display-container w3-row">
-                        {recurse(common.navHierarchy("/home/guest/public/")[0])}
-                    </div>
+                    <div id="sidebarContent" className="w3-display-container w3-row">{explorerTree}</div>
                 </div>
             </div>
-            <div id="pageHolder">
-                {children}
-            </div>
+            <div id="pageHolder">{children}</div>
             <div id="fileEditor" className="container w3-rest lightText w3-row" style={{display: 'none'}}>
                 <div id="editorLines" className="w3-col">1</div>
                 <div id="editorContent" className="w3-col"contentEditable="true"></div>
