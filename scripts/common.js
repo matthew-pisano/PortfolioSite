@@ -6,73 +6,8 @@ import startStr from './start';
 import { babbleLoop } from './utils';
 import 'katex/dist/katex.min.css';
 import Latex from 'react-latex-next';
+import { navHierarchy, hierarchy, pages } from './fileHierarchy';
 
-
-let hierarchy = {
-    name: "/",
-    subTree: [{
-        name: "home/",
-        subTree: [
-            {name: "guest/",
-                subTree: [
-                    {name: "public/",
-                    subTree: [
-                        {name: "custom/", subTree: []}
-                    ]}
-                ]
-            }]
-        },
-        {name: "bin/", subTree: [], permission: "deny"},
-        {name: "boot/", subTree: [], permission: "deny"},
-        {name: "dev/", subTree: [], permission: "deny"},
-        {name: "etc/", subTree: [], permission: "deny"},
-        {name: "lib/", subTree: [], permission: "deny"},
-        {name: "mnt/", subTree: [], permission: "deny"},
-        {name: "opt/", subTree: [], permission: "deny"},
-        {name: "proc/", subTree: [], permission: "deny"},
-        {name: "sys/", subTree: [], permission: "deny"},
-        {name: "usr/", subTree: [], permission: "deny"},
-        {name: "var/", subTree: [], permission: "deny"},
-    ]
-};
-
-let pages = {};
-
-function initFiles(initHierarchy, initPages){
-    hierarchy = initHierarchy;
-    pages = initPages;
-}
-
-
-function navHierarchy(path){
-    let tokens = path.split("/");
-    if(tokens[tokens.length-1] === "") tokens.pop();
-    let current = hierarchy;
-    let absPath = "/";
-    console.log("Nav tokens: "+tokens);
-    while(tokens.length > 0){
-        let foundPath = false;
-        //console.log("Current token: "+tokens[0], current);
-        if(tokens.length === 1 && tokens[0] === current.name.replace("/", "")) {
-            //console.log("File at path: "+current.name);
-            return [current, absPath];
-        }
-        for(let i=0; i<current.subTree.length; i++){
-            //console.log(current.subTree[i].name.replace("/", ""), tokens[1], tokens);
-            if(current.subTree[i].name.replace("/", "") === tokens[1]){
-                //console.log("Found: "+current.subTree[i].name);
-                current = current.subTree[i];
-                absPath += current.name;
-                tokens.shift();
-                foundPath = true;
-                break;
-            }
-        }
-        if(!foundPath) return [null, ""];
-    }
-    //console.log("File at path: "+current.name);
-    return [current, absPath];
-}
 
 let tilePositions = null;
 let sidebarOpen = true;
@@ -548,11 +483,13 @@ function init() {
     });
     
     // Update bottom metadata
-    let pageId = window.location.pathname.replace(new RegExp("/", 'g'), "");
-    if(!pageId) pageId = "home";
-    let currentPage = document.getElementById(pageId+"Page");
-    let lineNum = currentPage.innerHTML.split(/\r\n|\r|\n/).length;
-    //updatePageMetadata(pages[pageId].name, Math.max(lineNum-1, 1), currentPage.innerHTML.length);
+    // let pageId = window.location.pathname;
+    // pageId = pageId.substring(pageId.lastIndexOf("/")+1);
+    // pageId = pageId.replace(new RegExp("/", 'g'), "");
+    // if(!pageId) pageId = "home";
+    // let pageHolder = document.getElementById("pageHolder");
+    // let lineNum = pageHolder.innerHTML.split(/\r\n|\r|\n/).length;
+    // updatePageMetadata(pages[pageId].name, Math.max(lineNum-1, 1), pageHolder.innerHTML.length);
     pageLoaded = true;
 }
 
@@ -570,8 +507,10 @@ if (typeof window !== "undefined") {
     window.showPage = showPage;
 
     // window.onload = init;
-
-    (async () => {while(!document.getElementById("collapseSidebar")) await new Promise(r => setTimeout(r, 100)); init();})();
+    (async () => {
+        await new Promise(r => setTimeout(r, 100));
+        init();
+    })();
 
     window.onscroll = (event) => {
         if(document.getElementById(selectedPageId+"TileHolder") === null) return;
@@ -611,4 +550,4 @@ if (typeof window !== "undefined") {
 }
 
   
-export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming, removeFile, folderIndent, init, initFiles};
+export {$, showPage, build, hierarchy, navHierarchy, pages, newFile, finishRenaming, removeFile, folderIndent, init};

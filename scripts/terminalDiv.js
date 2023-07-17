@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as common from '../scripts/common';
+import * as common from './common';
 
 let terminalClosed = true;
 let closeTime = 0;

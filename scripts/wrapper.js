@@ -1,15 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import * as common from './common';
+import * as fileHierarchy from './fileHierarchy';
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
 
-    const router = useRouter();
-    console.log(router , 'routes');
-
-    function recurse(tree, path=""){
+    function elementsFromTree(tree, path=""){
         if(tree.name.endsWith("/")){
             let name = tree.name.substring(0, tree.name.length-1)+"-Folder";
             return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row">
@@ -23,58 +20,25 @@ const Wrapper = ({children, pageName}) => {
                         document.getElementById("itemStatus").innerText = tree.name;
                     }
                 }>{tree.name}</button>
-
+    
                 <div id={tree.name.substring(0, tree.name.length-1)+"Content"} className="w3-row sidebarContent">
-                    {tree.subTree.map(child => recurse(child, path+tree.name))}
+                    {tree.subTree.map(child => elementsFromTree(child, path+tree.name))}
                 </div>
             </div>;
         }
         else if(!path.includes("custom")){
             let name = tree.name.substring(0, tree.name.indexOf("."));
-
+    
             return <div key={name+"-File"} id={name+"-File"} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
                 <img className='htmlIcon' alt='html'/>
-                <a className="w3-button lightText" style={{padding: 0}} href={path.replace("public/", "")+name}>{name}</a>
-                {/*<button className="w3-button lightText" onClick={
-                    () => common.showPage(tree.name.substring(0, tree.name.indexOf(".")))
-                }>{tree.name}</button>*/}
+                <a className="w3-button lightText" style={{padding: 0}} href={"/"+path.replace("public/", "")+name}>{name}</a>
             </div>;
         }
         else {<div></div>;}
     }
-    
-    let dehydrateInfo = {};
 
-    if (typeof window === 'undefined') {
-        const { resolve } = require('path');
-        const { readdirSync } = require('fs');
-        function walkPages(dir="pages") {
-            const dirents = readdirSync(dir, { withFileTypes: true });
-            for (const dirent of dirents) {
-                const res = resolve(dir, dirent.name);
-                let dirName = dir.substring(dir.lastIndexOf("pages")+6);
-                let hierarchyPath = "/home/guest/public/"+dirName;
-                if (dirent.isDirectory()) {
-                    common.navHierarchy(hierarchyPath)[0].subTree.push({name: dirent.name+"/", subTree: []});
-                    walkPages(res);
-                } else {
-                    let fileName = res.substring(res.lastIndexOf("/")+1).replace(".js", "");
-                    if(fileName[0] !== "_"){
-                        common.pages[fileName] = {name: fileName+".html"};
-                        common.navHierarchy(hierarchyPath)[0].subTree.push({name: fileName+".html"});
-                    }
-                }
-            }
-        }
-        walkPages();
-        dehydrateInfo = {hierarchy: common.hierarchy, pages: common.pages}
-    }
-    else{
-        dehydrateInfo = JSON.parse(document.getElementById("dehydrateInfo").innerText);
-        common.initFiles(dehydrateInfo.hierarchy, dehydrateInfo.pages)
-    }
-
-    let explorerTree = recurse(common.navHierarchy("/home/guest/public/")[0]);
+    let dehydrateInfo = {hierarchy: fileHierarchy.hierarchy, pages: fileHierarchy.pages};
+    let explorerTree = elementsFromTree(common.navHierarchy("/home/guest/public/")[0]);
 
     return (
         <div className="w3-display-container">
@@ -126,9 +90,9 @@ const Wrapper = ({children, pageName}) => {
             <footer className="commandBar w3-row" style={{bottom: '0px'}}>
                 <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>
                 <div id="encodingStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>
-                <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}></div>
-                <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}></div>
-                <div id="itemStatus" className="commandItem lightText w3-col" style={{float: 'right'}}></div>
+                <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{Math.round(common.pages[pageName].size/140.6)+" Lines"}</div>
+                <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{common.pages[pageName].size+"B"}</div>
+                <div id="itemStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageName+".html"}</div>
             </footer>
         </div>
     );
