@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import * as common from './common';
 import * as fileHierarchy from './fileHierarchy';
+import TerminalDiv from './terminalDiv';
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
@@ -87,6 +88,7 @@ const Wrapper = ({children, pageName}) => {
                 <div id="editorLines" className="w3-col">1</div>
                 <div id="editorContent" className="w3-col"contentEditable="true"></div>
             </div>
+            <TerminalDiv/>
             <footer className="commandBar w3-row" style={{bottom: '0px'}}>
                 <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>
                 <div id="encodingStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>

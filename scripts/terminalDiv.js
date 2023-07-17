@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as common from './common';
+import * as fileHierarchy from './fileHierarchy';
 
 let terminalClosed = true;
 let closeTime = 0;
@@ -125,30 +126,6 @@ const TerminalDiv = () => {
         }
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
     };
-    /* View in fullscreen */
-    window.openFullscreen = () => {
-        console.log("Entering void");
-        if (document.documentElement.requestFullscreen)
-            document.documentElement.requestFullscreen();
-        else if (document.documentElement.webkitRequestFullscreen) /* Safari */
-            document.documentElement.webkitRequestFullscreen();
-        else if (document.documentElement.msRequestFullscreen) /* IE11 */
-            document.documentElement.msRequestFullscreen();
-        document.getElementById("enterVoid").style.display = "none";
-        document.getElementById("exitVoid").style.display = "block";
-    };
-    
-    /* Close fullscreen */
-    window.closeFullscreen = () => {
-        if (document.exitFullscreen)
-            document.exitFullscreen();
-        else if (document.webkitExitFullscreen) /* Safari */
-            document.webkitExitFullscreen();
-        else if (document.msExitFullscreen) /* IE11 */
-            document.msExitFullscreen();
-        document.getElementById("exitVoid").style.display = "none";
-        document.getElementById("enterVoid").style.display = "block";
-    };
 
     async function toVoid(){
         let terminalOutput = document.getElementById('terminalOutput');
@@ -244,9 +221,9 @@ const TerminalDiv = () => {
         //console.log(tokens);
         function resolvePath(path){
             absPath = path ? path : cwd;
-            if(tokens.length > 1 && path[0] === "/") targetItem = common.navHierarchy(path)[0];
+            if(tokens.length > 1 && path[0] === "/") targetItem = fileHierarchy.navHierarchy(path)[0];
             else if(tokens.length > 1){
-                targetItem = common.navHierarchy(cwd+path)[0];
+                targetItem = fileHierarchy.navHierarchy(cwd+path)[0];
                 absPath = cwd+absPath;
             }
         }
@@ -262,11 +239,11 @@ const TerminalDiv = () => {
                 if(tokens.length == 2){
                     let newName = tokens[2].replace(".html", "")+".html";
                     resolvePath(newName);
-                    let rootPath = common.navHierarchy(absPath)[1];
+                    let rootPath = fileHierarchy.navHierarchy(absPath)[1];
                     // Remove custom from path if it exists and continue with the removal
                     if(rootPath.includes("/home/guest/public/custom")){
-                        for(let pageId in common.pages)
-                            if(newName.endsWith(common.pages[pageId].name))
+                        for(let pageId in fileHierarchy.pages)
+                            if(newName.endsWith(fileHierarchy.pages[pageId].name))
                                 return outStr+"\n File '"+newName+"' already exists";
                             
                         common.newFile(newName);
@@ -281,12 +258,12 @@ const TerminalDiv = () => {
                     let oldName = tokens[1].replace(".html", "")+".html";
                     resolvePath(oldName);
                     let newName = tokens[2].replace(".html", "")+".html";
-                    let rootPath = common.navHierarchy(absPath)[1];
+                    let rootPath = fileHierarchy.navHierarchy(absPath)[1];
                     // Remove custom from path if it exists and continue with the removal
                     if(rootPath.includes("/home/guest/public/custom")){
                         let oldId = null;
-                        for(let pageId in common.pages)
-                            if(oldName.endsWith(common.pages[pageId].name)){
+                        for(let pageId in fileHierarchy.pages)
+                            if(oldName.endsWith(fileHierarchy.pages[pageId].name)){
                                 oldId = pageId;
                                 break;
                             }
@@ -301,11 +278,11 @@ const TerminalDiv = () => {
                 if(tokens.length == 2){
                     let fileName = tokens[1].replace(".html", "")+".html";
                     resolvePath(fileName);
-                    let rootPath = common.navHierarchy(absPath)[1];
+                    let rootPath = fileHierarchy.navHierarchy(absPath)[1];
                     // Remove custom from path if it exists and continue with the removal
                     if(rootPath.includes("/home/guest/public/custom")){
-                        for(let pageId in common.pages)
-                            if(fileName.endsWith(common.pages[pageId].name)){
+                        for(let pageId in fileHierarchy.pages)
+                            if(fileName.endsWith(fileHierarchy.pages[pageId].name)){
                                 common.removeFile(pageId);
                                 break;
                             }
@@ -329,7 +306,7 @@ const TerminalDiv = () => {
                     return outStr;
                 }
                 resolvePath(tokens[1]);
-                targetItem = common.navHierarchy(absPath)[0];
+                targetItem = fileHierarchy.navHierarchy(absPath)[0];
                 if(targetItem  && targetItem.permission  && targetItem.permission == "deny") {
                     return outStr+"\nPermission denied for path: '"+absPath+"'";
                 }
@@ -340,7 +317,7 @@ const TerminalDiv = () => {
                 else return outStr+"\nCould not find path: '"+absPath+"'";
             case 'ls':
                 resolvePath(tokens[1]);
-                targetItem = common.navHierarchy(tokens.length < 2 ? cwd : absPath)[0];
+                targetItem = fileHierarchy.navHierarchy(tokens.length < 2 ? cwd : absPath)[0];
                 if(targetItem  && targetItem.permission  && targetItem.permission == "deny") {
                     return outStr+"\nPermission denied for path: '"+absPath+"'";
                 }
@@ -357,14 +334,14 @@ const TerminalDiv = () => {
             case 'cat':
                 if(tokens.length < 2) return outStr+"\ncat command requires an argument";
                 resolvePath(tokens[1]);
-                targetItem = common.navHierarchy(absPath)[0];
+                targetItem = fileHierarchy.navHierarchy(absPath)[0];
                 if(!targetItem) return outStr+"\nCould not find path: '"+absPath+"'";
                 if(!targetItem.subTree){
-                    for(let i=0; i<Object.keys(common.pages).length; i++){
-                        let key = Object.keys(common.pages)[i];
-                        console.log("Checking ", targetItem.name, common.pages[key].name);
-                        if(targetItem.name === common.pages[key].name){
-                            let pageContent = common.pages[key].content;
+                    for(let i=0; i<Object.keys(fileHierarchy.pages).length; i++){
+                        let key = Object.keys(fileHierarchy.pages)[i];
+                        console.log("Checking ", targetItem.name, fileHierarchy.pages[key].name);
+                        if(targetItem.name === fileHierarchy.pages[key].name){
+                            let pageContent = fileHierarchy.pages[key].content;
                             if(!pageContent) pageContent = document.getElementById(key+"Page").innerHTML;
                             return outStr+"\n"+pageContent;
                         }
@@ -386,8 +363,8 @@ const TerminalDiv = () => {
                     return outStr+"\n\n";
                 }
                 if(tokens.length < 2) return outStr+"\nopen command requires an argument";
-                for(let pageId in common.pages)
-                    if(tokens[1].replace(".html", "")+".html" === common.pages[pageId].name){
+                for(let pageId in fileHierarchy.pages)
+                    if(tokens[1].replace(".html", "")+".html" === fileHierarchy.pages[pageId].name){
                         common.showPage(pageId);
                         return outStr+"\nOpened file '"+tokens[1]+"'";
                     }
