@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import * as common from '../scripts/common';
+import { buildPage } from '../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import {Wrapper} from '../scripts/wrapper';
+import { Wrapper } from '../scripts/wrapper';
+import { buildPage } from '../scripts/pageBuilder';
 
 class SCP extends Component {
 
@@ -87,7 +88,7 @@ class SCP extends Component {
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center", color: "#ba3a3a"}}><b>SCP-616<span style={{color: "black"}}>██</span>5</b></h1><br/>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }

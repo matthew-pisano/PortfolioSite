@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as common from '../../scripts/common';
+import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import {Wrapper} from '../../scripts/wrapper';
+import { Wrapper } from '../../scripts/wrapper';
 
 class Videntium extends Component {
 
@@ -41,7 +41,7 @@ class Videntium extends Component {
             },
         ];
         let pageInfo = {
-            pageName: "videntium",
+            pageName: "school/videntium",
             holderStyle: {backgroundColor: "#876eba", borderRadius: "10px"},
             gitLink: "https://github.com/matthew-pisano/Videntium",
             gitTitle: "Videntium",
@@ -53,7 +53,7 @@ class Videntium extends Component {
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Videntium</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Online map viewer for Imperium written in PHP</h3>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }

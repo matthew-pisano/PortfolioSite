@@ -87,13 +87,14 @@ if (typeof window === 'undefined') {
                 if(["admin", "index", "404"].includes(fileName)) continue;
 
                 if(fileName[0] !== "_"){
-                    pages[fileName] = {name: fileName+".html", size: size};
+                    pages[(dirName ? dirName+"/": "")+fileName] = {name: fileName+".html", size: size};
                     navHierarchy(hierarchyPath)[0].subTree.unshift({name: fileName+".html"});
                 }
             }
         }
     }
     walkPages();
+    console.log("Pages", pages)
 }
 else{
     let dehydrateInfo = JSON.parse(document.getElementById("dehydrateInfo").innerText);

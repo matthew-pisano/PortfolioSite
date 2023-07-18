@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import * as common from '../../scripts/common';
+import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import {Constants} from '../../scripts/utils';
-import {Wrapper} from '../../scripts/wrapper';
+import { Constants } from '../../scripts/utils';
+import { Wrapper } from '../../scripts/wrapper';
 
 class About extends Component {
 
@@ -40,12 +40,12 @@ class About extends Component {
                 title: "Recent Employment",
                 content: `During the Spring and Fall semesters, I am employed at Rensselaer Polytechnic Institute as a teaching
                     assistant.  In this position, I hold office hours, aid the professor in grading, and help students
-                    to better grasp relevant course material.<hr>
+                    to better grasp relevant course material.<hr></hr>
 
                     Last Summer, I had worked for SUNY New Paltz through their summer undergraduate research experience, details
                     about this can be found in the <u style="cursor: pointer" onClick="window.showPage('chipFiring')">Chip Firing page</u> and
                     in the <a href="https://arxiv.org/abs/2302.10327" target="_blank">arXiv submission</a> for the resulting paper.
-                    With this job, I worked closely with my professor to gain research experience and to develop research for later publishing.<hr>
+                    With this job, I worked closely with my professor to gain research experience and to develop research for later publishing.<hr></hr>
 
                     I am also currently employed at Cyber Guardian Consulting Group.  Here, I have developed a variety of proprietary business
                     solutions using a variety of languages and web services, primarily AWS.  Further details of these projects
@@ -65,7 +65,7 @@ class About extends Component {
             },
         ];
         let pageInfo = {
-            pageName: "about",
+            pageName: "about/about",
             holderStyle: {backgroundColor: "#14a343", borderRadius: "10px"},
             gitLink: "https://github.com/matthew-pisano/",
             gitTitle: "GitHub",
@@ -73,12 +73,12 @@ class About extends Component {
             extraTitles: ["Résumé", "LinkedIn"]
         };
         return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
+            <div className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>About</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Extra information on me as a developer, student, researcher and person</h3>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }

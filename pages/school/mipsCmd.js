@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as common from '../../scripts/common';
+import { buildPage } from '../../scripts/pageBuilder'
 import PropTypes from 'prop-types';
-import {Wrapper} from '../../scripts/wrapper';
+import { Wrapper } from '../../scripts/wrapper';
 
 class MipsCmd extends Component {
 
@@ -25,7 +25,7 @@ class MipsCmd extends Component {
             },
         ];
         let pageInfo = {
-            pageName: "mipsCmd",
+            pageName: "school/mipsCmd",
             holderStyle: {backgroundColor: "#bf564d", borderRadius: "10px"},
             gitLink: "https://github.com/matthew-pisano/MIPS-Command-Processor",
             gitTitle: "MIPS Cmd",
@@ -37,7 +37,7 @@ class MipsCmd extends Component {
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>MIPS Terminal</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A simple command processor written in the MIPS assembly language</h3>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }

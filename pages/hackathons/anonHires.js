@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as common from '../../scripts/common';
+import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import {Wrapper} from '../../scripts/wrapper';
+import { Wrapper } from '../../scripts/wrapper';
 
 class AnonHires extends Component {
 
@@ -48,7 +48,7 @@ class AnonHires extends Component {
             },
         ];
         let pageInfo = {
-            pageName: "anonHires",
+            pageName: "hackathons/anonHires",
             holderStyle: {backgroundColor: "#3eab3c", borderRadius: "10px"},
             gitLink: "https://github.com/OpenHubHackathonGreen/Anonymous-Hires",
             gitTitle: "Anon Hires",
@@ -60,7 +60,7 @@ class AnonHires extends Component {
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Anon Hires</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A Web-based hiring platform with anonymity</h3>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }

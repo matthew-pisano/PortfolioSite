@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as common from '../../scripts/common';
+import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import {Wrapper} from '../../scripts/wrapper';
+import { Wrapper } from '../../scripts/wrapper';
 
 class Simplex extends Component {
 
@@ -56,7 +56,7 @@ class Simplex extends Component {
             }
         ];
         let pageInfo = {
-            pageName: "simplex",
+            pageName: "personal/simplex",
             holderStyle: {backgroundColor: "#824ab6", borderRadius: "10px"},
             gitLink: "https://github.com/matthew-pisano/SimplexIDE",
             gitTitle: "Simplex",
@@ -68,7 +68,7 @@ class Simplex extends Component {
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Simplex</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>An math-oriented interpreted scripting language built in Java</h3>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }

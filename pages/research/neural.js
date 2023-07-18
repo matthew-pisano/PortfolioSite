@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as common from '../../scripts/common';
+import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import {Wrapper} from '../../scripts/wrapper';
+import { Wrapper } from '../../scripts/wrapper';
 
 class Neural extends Component {
 
@@ -20,7 +20,8 @@ class Neural extends Component {
                     to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
                     The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
                 thumbnail: "",
-                extraLink: "https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"
+                extraTitles: ["Research Paper"],
+                extraLinks: ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"]
             },
             {
                 title: "#Training Methods",
@@ -138,7 +139,7 @@ class Neural extends Component {
             }
         ];
         let pageInfo = {
-            pageName: "neural",
+            pageName: "research/neural",
             holderStyle: {backgroundColor: "#3c8aab", borderRadius: "10px"},
             gitLink: "https://github.com/matthew-pisano/NuralPy",
             gitTitle: "Neural",
@@ -152,7 +153,7 @@ class Neural extends Component {
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Neural</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A research project for comparing training neural networks</h3>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }

@@ -4,6 +4,7 @@ import * as fileHierarchy from './fileHierarchy';
 
 let terminalClosed = true;
 let closeTime = 0;
+
 const closeTerminal = () => {
     console.log("Closing terminal...");
     document.getElementById('terminal').style.height = `30px`;
@@ -23,6 +24,7 @@ const TerminalDiv = () => {
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
     const [commandIndex, setCommandIndex] = useState(-1);
+
     const helpMsg = `--<Help Menu>--
     GRU mash, version 5.1.16(1)-release (x86_64-cloud-manix-gru)
     These shell commands are defined internally.  Type 'help' to see this list.
@@ -69,9 +71,11 @@ const TerminalDiv = () => {
       kKMMWl       lWM    MWl       lWMMKk
        lWMWl       lWM    MWl       lWMWl   
        lWMWl       lWM    MWl       lWMWl`;
+    
     const genPrompt = (newCwd) => {
         return "["+(newCwd ? newCwd : cwd)+"]$ ";
     };
+
     const setCwd = (newCwd) => {
         if(newCwd[newCwd.length-1] !== "/") newCwd += "/";
         protoSetCwd(newCwd);
@@ -79,6 +83,7 @@ const TerminalDiv = () => {
         document.getElementById('terminalInput').style.marginLeft = (9*genPrompt(newCwd).length+5)+"px";
         return "["+cwd+"]$ ";
     };
+
     const initial = (e) => {
         let resizable = document.getElementById('terminal');
         setInitialPos(e.clientY);
@@ -105,9 +110,8 @@ const TerminalDiv = () => {
             terminalClosed = false;
         }
         else closeTerminal();
-        
-        
     };
+
     const onInput = (e) => {
         // console.log("Got input:", e.nativeEvent);
         let terminalOutput = document.getElementById('terminalOutput');
@@ -138,12 +142,12 @@ const TerminalDiv = () => {
             if(voidStr.length == initLen)
                 terminalOutput.scrollTop = terminalOutput.scrollHeight;
             voidStr = voidStr.substring(1);
-            await new Promise(resolve => setTimeout(resolve, 250));
+            await new Promise(resolve => setTimeout(resolve, 100));
         }
         await new Promise(resolve => setTimeout(resolve, 500));
         document.body.style.height = "100%";
-        document.body.innerHTML = `<img style="width: 100%;object-fit: none;height: 100%;" 
-            src="https://lightsail-image-repo.s3.amazonaws.com/pgrm/void.png">
+        document.body.innerHTML = `<div class="void"></div>
+
             <div id="exitVoid" style="display:none; width: 100%; height: 50px; background-color: black; 
             position: fixed; bottom: 0px; color: azure; text-align: center; cursor: pointer"
             onClick="window.closeFullscreen()">[EXIT]</div>
@@ -152,6 +156,7 @@ const TerminalDiv = () => {
             onClick="window.openFullscreen()">[ENTER]</div>`;
         document.getElementById("siteTitle").innerText = "How did we get here?";
     }
+
     async function haltingProblem(){
         let dots = 7;
         let terminalOutput = document.getElementById('terminalOutput');
@@ -169,6 +174,7 @@ const TerminalDiv = () => {
         terminalOutput.innerHTML += "<br>Segmentation fault (core dumped)";
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
     }
+
     function eightBall(){
         let responses = ["It is certain", "Without a doubt", "Yes definitely", "You may rely on it",
             "Most likely", "Outlook microsoft", "Signs point to yes", "Hmmmmm...", "Reply hazy, try again",
@@ -180,6 +186,7 @@ const TerminalDiv = () => {
         let result = Math.floor(Math.random()*responses.length);
         return responses[result];
     }
+
     function parseCommand(command){
         let tokens = [];
         let activeToken = "";
@@ -296,6 +303,8 @@ const TerminalDiv = () => {
             case 'clear':
                 document.getElementById("terminalOutput").innerText = "";
                 return outStr;
+            case 'pwd':
+                return outStr+"\n"+cwd;
             case 'help':
                 if(tokens.length > 1 && (tokens[1] == "-f" || tokens[1] == "--force"))
                     return outStr+"\n"+helpMsg+"\n"+forceHelp;

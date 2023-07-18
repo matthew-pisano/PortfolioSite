@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as common from '../scripts/common';
+import { buildPage } from '../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import {Wrapper} from '../scripts/wrapper';
 
@@ -76,7 +76,7 @@ class Help extends Component {
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Help Menu</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>In case you&apos;d like some assistance</h3>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }

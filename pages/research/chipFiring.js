@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as common from '../../scripts/common';
+import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import {Wrapper} from '../../scripts/wrapper';
+import { Wrapper } from '../../scripts/wrapper';
 
 class ChipFiring extends Component {
 
@@ -12,8 +12,8 @@ class ChipFiring extends Component {
                 title: "#Overview",
                 content: `In our research, we focused on the study of Chip-Firing games and how different combinations of 
                     directed and undirected edges affect its winning strategies.`,
-                extraTitle: "Research Paper",
-                extraLink: "https://arxiv.org/abs/2302.10327"
+                extraTitles: ["Research Paper"],
+                extraLinks: ["https://arxiv.org/abs/2302.10327"]
             },
             {
                 title: "Abstract",
@@ -133,7 +133,7 @@ class ChipFiring extends Component {
             },
         ];
         let pageInfo = {
-            pageName: "chipFiring",
+            pageName: "research/chipFiring",
             holderStyle: {backgroundColor: "#4d7bd0", borderRadius: "10px"},
             gitLink: "https://github.com/matthew-pisano/ChipFiring",
             gitTitle: "Chip Firing",
@@ -147,7 +147,7 @@ class ChipFiring extends Component {
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Chip Firing</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A research project to examine patterns in chip firing games</h3>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }

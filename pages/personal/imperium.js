@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as common from '../../scripts/common';
+import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import {Wrapper} from '../../scripts/wrapper';
+import { Wrapper } from '../../scripts/wrapper';
 
 class Imperium extends Component {
 
@@ -43,7 +43,7 @@ class Imperium extends Component {
             }
         ];
         let pageInfo = {
-            pageName: "imperium",
+            pageName: "personal/imperium",
             holderStyle: {backgroundColor: "#babd93", borderRadius: "10px"},
             gitLink: "https://github.com/ReactorDevelopment/Imperium",
             gitTitle: "Imperium",
@@ -55,7 +55,7 @@ class Imperium extends Component {
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Imperium</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A historical grand strategy game for android devices</h3>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }

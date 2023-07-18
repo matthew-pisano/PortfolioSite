@@ -6,7 +6,7 @@ import {Wrapper} from '../../scripts/wrapper';
 const Resume = () => {
 
     let pageInfo = {
-        pageName: "resume",
+        pageName: "about/resume",
     };
 
     return (<Wrapper pageName={pageInfo.pageName}>

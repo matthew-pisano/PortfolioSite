@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as common from '../../scripts/common';
+import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import {Wrapper} from '../../scripts/wrapper';
+import { Wrapper } from '../../scripts/wrapper';
 
 class Inception extends Component {
 
@@ -24,7 +24,7 @@ class Inception extends Component {
             },
         ];
         let pageInfo = {
-            pageName: "inception",
+            pageName: "personal/inception",
             holderStyle: {backgroundColor: "#919ba8", borderRadius: "10px"},
             gitLink: "https://github.com/matthew-pisano/InceptionCollage",
             gitTitle: "Inception",
@@ -36,7 +36,7 @@ class Inception extends Component {
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Inception Collage</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Assembles one image mosaic from many, smaller images</h3>
                 </div>
-                {common.build(pageInfo, tiles)}
+                {buildPage(pageInfo, tiles)}
             </div>
         </Wrapper>);
     }
