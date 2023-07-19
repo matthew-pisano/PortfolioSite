@@ -4,42 +4,50 @@ import * as common from './common';
 import * as fileSystem from './fileSystem';
 import TerminalDiv from './terminal';
 
+
+function elementsFromTree(tree, path=""){
+    if(tree.constructor === fileSystem.Directory){
+        let name = tree.name+"-Folder";
+        return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row">
+            <img className='folderIcon' alt='folder'/>
+            <button className="w3-button lightText" onClick={
+                () => {
+                    document.getElementById("langStatus").innerText = "";
+                    document.getElementById("encodingStatus").innerText = "";
+                    document.getElementById("linesStatus").innerText = "";
+                    document.getElementById("sizeStatus").innerText = "Children: "+tree.subTree.length;
+                    document.getElementById("itemStatus").innerText = tree.name;
+                }
+            }>{tree.name}</button>
+
+            <div id={tree.name+"Content"} className="w3-row sidebarContent">
+                {tree.subTree.map(child => elementsFromTree(child, path+tree.name))}
+            </div>
+        </div>;
+    }
+    else if(!path.includes("custom")){
+        let name = tree.name.substring(0, tree.name.indexOf("."));
+
+        return <div key={name+"-File"} id={name+"-File"} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
+            <img className='htmlIcon' alt='html'/>
+            <a className="w3-button lightText" style={{padding: 0}} href={"/"+path.replace("public/", "")+name}>{tree.name}</a>
+        </div>;
+    }
+    else {<div></div>;}
+}
+
+
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
+    const [explorerTree,   setExplorerTree] = useState(elementsFromTree(fileSystem.navHierarchy("/home/guest/public/").result));
 
-    function elementsFromTree(tree, path=""){
-        if(tree.constructor === fileSystem.Directory){
-            let name = tree.name+"-Folder";
-            return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row">
-                <img className='folderIcon' alt='folder'/>
-                <button className="w3-button lightText" onClick={
-                    () => {
-                        document.getElementById("langStatus").innerText = "";
-                        document.getElementById("encodingStatus").innerText = "";
-                        document.getElementById("linesStatus").innerText = "";
-                        document.getElementById("sizeStatus").innerText = "Children: "+tree.subTree.length;
-                        document.getElementById("itemStatus").innerText = tree.name;
-                    }
-                }>{tree.name}</button>
+    useEffect(() => {
+        setExplorerTree(elementsFromTree(fileSystem.navHierarchy("/home/guest/public/").result));
+    }, [fileSystem.hierarchy]);
+
     
-                <div id={tree.name+"Content"} className="w3-row sidebarContent">
-                    {tree.subTree.map(child => elementsFromTree(child, path+tree.name))}
-                </div>
-            </div>;
-        }
-        else if(!path.includes("custom")){
-            let name = tree.name.substring(0, tree.name.indexOf("."));
-    
-            return <div key={name+"-File"} id={name+"-File"} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
-                <img className='htmlIcon' alt='html'/>
-                <a className="w3-button lightText" style={{padding: 0}} href={"/"+path.replace("public/", "")+name}>{tree.name}</a>
-            </div>;
-        }
-        else {<div></div>;}
-    }
 
     let dehydrateInfo = {hierarchy: fileSystem.hierarchy, pages: fileSystem.pages};
-    let explorerTree = elementsFromTree(fileSystem.navHierarchy("/home/guest/public/").result);
 
     return (
         <div className="w3-display-container">

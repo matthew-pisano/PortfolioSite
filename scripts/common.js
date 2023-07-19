@@ -4,7 +4,7 @@ import {v4} from 'uuid';
 import startStr from './start';
 import { babbleLoop } from './utils';
 import 'katex/dist/katex.min.css';
-import { navHierarchy, hierarchy, pages } from './fileSystem';
+import { masterFileSystem, pageRegistry } from './fileSystem';
 
 
 let tilePositions = null;
@@ -74,7 +74,7 @@ function showPage(pageId, isLanding = false, replaceLocation = true){
             location.href = pageId;
             return;
 
-        document.getElementById("siteTitle").innerText = pages[pageId].name;
+        document.getElementById("siteTitle").innerText = pageRegistry[pageId].name;
         let pageElem = document.getElementById("__next");
         
         /*if(!pageElem){
@@ -92,7 +92,7 @@ function showPage(pageId, isLanding = false, replaceLocation = true){
 
         document.getElementById("fileEditor").style.display = "none";
         let lineNum = pageElem.innerHTML.split(/\r\n|\r|\n/).length;
-        updatePageMetadata(pages[pageId].name, Math.max(lineNum-1, 1), pageElem.innerHTML.length);
+        updatePageMetadata(pageRegistry[pageId].name, Math.max(lineNum-1, 1), pageElem.innerHTML.length);
         if(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 600 && !isLanding && pageLoaded && sidebarOpen)
             toggleSidebar();
 
