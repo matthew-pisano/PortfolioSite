@@ -8,8 +8,8 @@ import TerminalDiv from './terminal';
 const Wrapper = ({children, pageName}) => {
 
     function elementsFromTree(tree, path=""){
-        if(tree.name.endsWith("/")){
-            let name = tree.name.substring(0, tree.name.length-1)+"-Folder";
+        if(tree.constructor === fileSystem.Directory){
+            let name = tree.name+"-Folder";
             return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row">
                 <img className='folderIcon' alt='folder'/>
                 <button className="w3-button lightText" onClick={
@@ -22,7 +22,7 @@ const Wrapper = ({children, pageName}) => {
                     }
                 }>{tree.name}</button>
     
-                <div id={tree.name.substring(0, tree.name.length-1)+"Content"} className="w3-row sidebarContent">
+                <div id={tree.name+"Content"} className="w3-row sidebarContent">
                     {tree.subTree.map(child => elementsFromTree(child, path+tree.name))}
                 </div>
             </div>;
@@ -39,7 +39,7 @@ const Wrapper = ({children, pageName}) => {
     }
 
     let dehydrateInfo = {hierarchy: fileSystem.hierarchy, pages: fileSystem.pages};
-    let explorerTree = elementsFromTree(fileSystem.navHierarchy("/home/guest/public/")[0]);
+    let explorerTree = elementsFromTree(fileSystem.navHierarchy("/home/guest/public/").result);
 
     return (
         <div className="w3-display-container">

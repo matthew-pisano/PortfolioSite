@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as common from './common';
 import * as pathlib from 'path';
-import { resolvePath, parseCommand, homeDir, eightBall } from './terminalCommands';
+import { resolvePath, parseCommand, HOME, eightBall } from './terminalCommands';
 
 
 let terminalClosed = true;
@@ -21,69 +21,22 @@ const closeTerminal = () => {
 const TerminalDiv = () => {
 
     function genPrompt(cwd) {
-        if(parseCommand(cwd) === homeDir) cwd = "~";
+        if(resolvePath(cwd) === HOME) cwd = "~";
         return "["+cwd+"]$ ";
     };
 
     const [initialPos,   setInitialPos] = useState(null);
     const [initialSize, setInitialSize] = useState(null);
     //const [terminalClosed, setTerminalClosed] = useState(true);
-    const [prompt, setPrompt] = useState(genPrompt(homeDir));
-    const [cwd, setCwd] = useState(homeDir);
+    const [prompt, setPrompt] = useState(genPrompt(HOME));
+    const [ENV, setENV] = useState({cwd: HOME});
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
     const [commandIndex, setCommandIndex] = useState(-1);
 
     useEffect(() => {
-        setPrompt(genPrompt(cwd))
-    }, [cwd]);
-
-    const helpMsg = `--<Help Menu>--
-    GRU mash, version 5.1.16(1)-release (x86_64-cloud-manix-gru)
-    These shell commands are defined internally.  Type 'help' to see this list.
-
-    help [options] - print this message
-    echo [*msg] - echoes each of the arguments on a new line
-    touch [fileName] - creates a file with the name given in the argument
-    ren [oldName] [newName] - renames an existing file to the given new name
-    rm [fileName] - removes the file with the name given in the argument
-    cls | clear - clears the output of the terminal
-    cd [path] - changes the current working directory to thr given path
-    ls [path] - gives information on the file or folder that matches the given path
-    cat [filePath] - prints our the contents of the given file
-    open [fileName] - opens the file with the given name
-    color [color] - sets the terminal text color to the given color in the form #rrggbb
-    dir - Why?
-    neofetch - displays system and software information
-    whoami - displays the current user
-    exit - clears the terminal and closes it
-    `;
-    const forceHelp = `--Secret Help--
-    MAthesis SHell (mash) extended capabilities.
-    Sensitive documents are exposed to these commands.  Use with caution.
-
-    open [rick | poland | void | scp | babble] - opens the file with the given name
-    mir - ??
-    launch [warhead_id] [lat] [long] - ██████████████
-    haltingproblem - Computes the ideal turing machine to solve the halting problem
-    eightball [query] - ${eightBall()}`;
-    const neofetch = `
-       lWMMMMMMMMMWl        lWMMMMMMMMMWl       guest@mathesisConsole
-     ,;kWMMMMMMMMMWk;,,  ,,;kWMMMMMMMMMWk;,     ---------------------
-    WWWMMMMMMMMMMMMMWWW  WWWMMMMMMMMMMMMMWWW    OS: primOS 10.02.1 x86_64-cloud-manix-gru
-    MMMMMMWKkkkKMMMMMMMMMMMMMMMMKkkkKWMMMMMM    Host: ████████
-    MMMMMMWl   lWMMMMMMMMMMMMMMWl   lWMMMMMM    kernel: 7.05.01-server
-    MMMMMMWl   ,xkkKMMMMMMMMKkkx,   lWMMMMMM    Uptime: █████
-    MMMMMMWl       lWMMMMMMWl       lWMMMMMM    Packages: 443 (████), 24 (██)
-    MMMMMMWl       ,xkkkkkkx,       lWMMMMMM    Shell: mash 5.1.16(1)-release
-    MMMMMMWl                        lWMMMMMM    Terminal: cloudTerminal
-    MMMMMMWl       .,,,,,,,,.       lWMMMMMM    CPU: ██th Gen ██████ █-██
-    MMMMMMWl       lNWWWWWWNl       lWMMMMMM    Memory: ██████TiB / ██████TiB
-    MMMMMMWl       lWM    MWl       lWMMMMMM
-    MMMMMMWl       lWM    MWl       lWMMMMMM
-      kKMMWl       lWM    MWl       lWMMKk
-       lWMWl       lWM    MWl       lWMWl   
-       lWMWl       lWM    MWl       lWMWl`;
+        setPrompt(genPrompt(ENV.cwd))
+    }, [ENV]);
 
     const dragStart = (e) => {
         let resizable = document.getElementById('terminal');
@@ -129,7 +82,10 @@ const TerminalDiv = () => {
             setDraftCommand("");
             setCommandIndex(-1);
             
-            terminalOutput.innerText += "\n"+prompt+parseCommand(command);
+            const {result: result, env: newEnv} = parseCommand(command, ENV);
+            setENV(newEnv);
+
+            terminalOutput.innerText += "\n"+prompt+result;
         }
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
     };

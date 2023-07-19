@@ -1,8 +1,59 @@
 import * as fileSystem from './fileSystem';
 
 
+const HOME = "/home/guest/";
+
+const helpMsg = `--<Help Menu>--
+GRU mash, version 5.1.16(1)-release (x86_64-cloud-manix-gru)
+These shell commands are defined internally.  Type 'help' to see this list.
+
+help [options] - print this message
+echo [*msg] - echoes each of the arguments on a new line
+touch [fileName] - creates a file with the name given in the argument
+ren [oldName] [newName] - renames an existing file to the given new name
+rm [fileName] - removes the file with the name given in the argument
+cls | clear - clears the output of the terminal
+cd [path] - changes the current working directory to thr given path
+ls [path] - gives information on the file or folder that matches the given path
+cat [filePath] - prints our the contents of the given file
+open [fileName] - opens the file with the given name
+color [color] - sets the terminal text color to the given color in the form #rrggbb
+dir - Why?
+neofetch - displays system and software information
+whoami - displays the current user
+exit - clears the terminal and closes it`;
+
+const forceHelp = `--Secret Help--
+MAthesis SHell (mash) extended capabilities.
+Sensitive documents are exposed to these commands.  Use with caution.
+
+open [rick | poland | void | scp | babble] - opens the file with the given name
+mir - ??
+launch [warhead_id] [lat] [long] - ██████████████
+haltingproblem - Computes the ideal turing machine to solve the halting problem
+eightball [query] - ${eightBall()}`;
+
+const neofetch = `
+   lWMMMMMMMMMWl        lWMMMMMMMMMWl       guest@mathesisConsole
+ ,;kWMMMMMMMMMWk;,,  ,,;kWMMMMMMMMMWk;,     ---------------------
+WWWMMMMMMMMMMMMMWWW  WWWMMMMMMMMMMMMMWWW    OS: primOS 10.02.1 x86_64-cloud-manix-gru
+MMMMMMWKkkkKMMMMMMMMMMMMMMMMKkkkKWMMMMMM    Host: ████████
+MMMMMMWl   lWMMMMMMMMMMMMMMWl   lWMMMMMM    kernel: 7.05.01-server
+MMMMMMWl   ,xkkKMMMMMMMMKkkx,   lWMMMMMM    Uptime: █████
+MMMMMMWl       lWMMMMMMWl       lWMMMMMM    Packages: 443 (████), 24 (██)
+MMMMMMWl       ,xkkkkkkx,       lWMMMMMM    Shell: mash 5.1.16(1)-release
+MMMMMMWl                        lWMMMMMM    Terminal: cloudTerminal
+MMMMMMWl       .,,,,,,,,.       lWMMMMMM    CPU: ██th Gen ██████ █-██
+MMMMMMWl       lNWWWWWWNl       lWMMMMMM    Memory: ██████TiB / ██████TiB
+MMMMMMWl       lWM    MWl       lWMMMMMM
+MMMMMMWl       lWM    MWl       lWMMMMMM
+  kKMMWl       lWM    MWl       lWMMKk
+   lWMWl       lWM    MWl       lWMWl   
+   lWMWl       lWM    MWl       lWMWl`;
+
+
 function resolvePath(path){
-    if(path[0] === "~") path = path.replace("~", homeDir);
+    if(path[0] === "~") path = path.replace("~", HOME);
     if(path.length > 0 && path[0] === "/") return pathlib.join(path)+"/".replace("//", "/");
     return pathlib.join(cwd, path)+"/".replace("//", "/");
 }
@@ -99,58 +150,168 @@ function tokenizeCommand(command){
 
 class Commands {
 
-    echo = (args) => {
+    static ENV = {}
+
+    static validateArgs(args, val) {
+        if(val.nargs !== undefined &&  !val.nargs.includes(args.length)) 
+            return `Only ${val.nargs} arguments are accepted, found ${args.length}`;
+
+        return "";
+    }
+
+    static echo = (args) => {
         let echoed = "";
         for(let i=1; i<tokens.length; i++) echoed += args[i]+"\n";
         return echoed;
     }
 
-    touch = (args) => {
+    static touch = (args) => {
         if(args.length == 1){
             let newName = args[0].replace(".html", "")+".html";
             newName = resolvePath(newName);
             // Remove custom from path if it exists and continue with the removal
             if(newName.startsWith("/home/guest/public/custom")){
-                for(let pageId in fileSystem.pages)
-                    if(newName.endsWith(fileHierarchy.pages[pageId].name))
-                        return outStr+"\n File '"+newName+"' already exists";
+                if(fileSystem.navHierarchy(newName).result !== null)
+                    return "File '"+newName+"' already exists\n";
                     
                 common.newFile(newName);
-                return outStr+"\nCreated file '"+newName+"'";
+                return "Created file '"+newName+"'\n";
             }
-            else if(newName === "") return "File: '"+absPath+"' does not exist\n";
+            else if(newName === "") 
+                return "File: '"+absPath+"' does not exist\n";
+
             return "touch command only applies to files in the '/home/guest/public/custom' folder\n";
         }
         return "touch command requires one argument\n";
     }
 
-    touch = () => {
+    static mv = (args) => {
+        if(tokens.length == 3){
+            let oldName = tokens[1].replace(".html", "")+".html";
+            resolvePath(oldName);
+            let newName = tokens[2].replace(".html", "")+".html";
+            let rootPath = fileHierarchy.navHierarchy(absPath)[1];
+            // Remove custom from path if it exists and continue with the removal
+            if(rootPath.includes("/home/guest/public/custom")){
+                let oldId = null;
+                for(let pageId in fileHierarchy.pages)
+                    if(oldName.endsWith(fileHierarchy.pages[pageId].name)){
+                        oldId = pageId;
+                        break;
+                    }
+                common.finishRenaming(oldId, newName);
+                return outStr+"\nRenamed file '"+oldName+".html' to '"+newName+"'";
+            }
+            else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
+            return outStr+"\nrm command only applies to files in the '/home/guest/public/custom' folder";
+        }
+        return outStr+"\nren command requires three arguments";
+    }
+
+    static rm = (args) => {
+        if(tokens.length == 2){
+            let fileName = tokens[1].replace(".html", "")+".html";
+            resolvePath(fileName);
+            let rootPath = fileHierarchy.navHierarchy(absPath)[1];
+            // Remove custom from path if it exists and continue with the removal
+            if(rootPath.includes("/home/guest/public/custom")){
+                for(let pageId in fileHierarchy.pages)
+                    if(fileName.endsWith(fileHierarchy.pages[pageId].name)){
+                        common.removeFile(pageId);
+                        break;
+                    }
+                return outStr+"\nRemoved file '"+fileName+"'";
+            }
+            else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
+            return outStr+"\nrm command only applies to files in the '/home/guest/public/custom' folder";
+        }
+        return outStr+"\nrm command requires one argument";
+    }
+
+    static cls = (args) => {
+        let valResult = this.validateArgs(args, {nargs: [0]});
+        if(valResult) return valResult;
+
+        document.getElementById("terminalOutput").innerText = "";
+        return ""
+    }
+    static clear = this.cls;
+
+    static pwd = (args) => {
+        let valResult = this.validateArgs(args, {nargs: [0]});
+        if(valResult) return valResult;
+
+        return this.ENV.cwd+"\n";
+    }
+
+    static help = (args) => {
+        let valResult = this.validateArgs(args, {nargs: [0, 1]});
+        if(valResult) return valResult;
+
+        if(args.length > 0 && (args[0] === "-f" || args[1] === "--force"))
+            return helpMsg+"\n"+forceHelp+"\n";
+
+        return helpMsg+"\n";
+    }
+
+    static cd = (args) => {
+
+        let valResult = this.validateArgs(args, {nargs: [0, 1]});
+        if(valResult) return valResult;
+
+        if(args.length === 1){
+            this.ENV.cwd = HOME
+            return "";
+        }
+
+        args[0] = resolvePath(args[0]);
+        let targetItem = fileSystem.navHierarchy(args[0]).result;
+
+        if(targetItem  && targetItem.permission == "deny")
+            return "Permission denied for path: '"+args[0]+"'\n";
+        
+        else if(targetItem) {
+            this.ENV.cwd = args[0]
+            return "";
+        }
+        else return "Could not find path: '"+args[0]+"'\n";
+    }
+
+    static touch = (args) => {
         
     }
 
-    touch = () => {
+    static touch = (args) => {
         
     }
 
-    touch = () => {
+    static touch = (args) => {
         
     }
 
-    touch = () => {
+    static touch = (args) => {
         
     }
 
-    touch = () => {
+    static touch = (args) => {
         
     }
 
-    touch = () => {
+    static touch = (args) => {
+        
+    }
+
+    static touch = (args) => {
+        
+    }
+
+    static touch = (args) => {
         
     }
 
 }
 
-function parseCommand(command){
+function parseCommand(command, env){
     let tokens = tokenizeCommand(command);
     let command = tokens[0];
     let args = tokens.slice(1)
@@ -159,9 +320,11 @@ function parseCommand(command){
     let outStr = command+"\n";
     let absPath = "";
 
-    if(!command) return outStr;
+    if(!command) return {result: outStr, env: Commands.ENV};
 
-    return Commands[command](args)
+    Commands.ENV = env;
+
+    return {result: Commands[command](args), env: Commands.ENV};
 
     switch (command) {
         case '':
@@ -173,44 +336,9 @@ function parseCommand(command){
         case 'touch':
             return Commands.touch()
         case 'ren':
-            if(tokens.length == 3){
-                let oldName = tokens[1].replace(".html", "")+".html";
-                resolvePath(oldName);
-                let newName = tokens[2].replace(".html", "")+".html";
-                let rootPath = fileHierarchy.navHierarchy(absPath)[1];
-                // Remove custom from path if it exists and continue with the removal
-                if(rootPath.includes("/home/guest/public/custom")){
-                    let oldId = null;
-                    for(let pageId in fileHierarchy.pages)
-                        if(oldName.endsWith(fileHierarchy.pages[pageId].name)){
-                            oldId = pageId;
-                            break;
-                        }
-                    common.finishRenaming(oldId, newName);
-                    return outStr+"\nRenamed file '"+oldName+".html' to '"+newName+"'";
-                }
-                else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
-                return outStr+"\nrm command only applies to files in the '/home/guest/public/custom' folder";
-            }
-            return outStr+"\nren command requires three arguments";
+            
         case 'rm':
-            if(tokens.length == 2){
-                let fileName = tokens[1].replace(".html", "")+".html";
-                resolvePath(fileName);
-                let rootPath = fileHierarchy.navHierarchy(absPath)[1];
-                // Remove custom from path if it exists and continue with the removal
-                if(rootPath.includes("/home/guest/public/custom")){
-                    for(let pageId in fileHierarchy.pages)
-                        if(fileName.endsWith(fileHierarchy.pages[pageId].name)){
-                            common.removeFile(pageId);
-                            break;
-                        }
-                    return outStr+"\nRemoved file '"+fileName+"'";
-                }
-                else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
-                return outStr+"\nrm command only applies to files in the '/home/guest/public/custom' folder";
-            }
-            return outStr+"\nrm command requires one argument";
+
         case 'cls':
         case 'clear':
             document.getElementById("terminalOutput").innerText = "";
@@ -323,4 +451,4 @@ function parseCommand(command){
 }
 
 
-export {resolvePath, parseCommand, eightBall};
+export {resolvePath, parseCommand, eightBall, HOME};

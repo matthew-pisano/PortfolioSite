@@ -10,13 +10,36 @@ class File {
 class Directory {
 
     constructor(name, subTree=null, permission="allow") {
-        this.name = name;
+        this.name = name.replace(/\//g, "");
         this.subTree = subTree ? subTree : [];
         this.permission = permission;
     }
 }
 
-let hierarchy = {
+let hierarchy = new Directory("", [
+    new Directory("home", [
+        new Directory("guest", [
+            new Directory("public", [
+                new Directory("custom", [
+
+                ])
+            ])
+        ]),
+        new Directory("admin", [], "deny"),
+    ]),
+    new Directory("bin", [], "deny"),
+    new Directory("boot", [], "deny"),
+    new Directory("dev", [], "deny"),
+    new Directory("etc", [], "deny"),
+    new Directory("lib", [], "deny"),
+    new Directory("mnt", [], "deny"),
+    new Directory("opt", [], "deny"),
+    new Directory("proc", [], "deny"),
+    new Directory("usr", [], "deny"),
+    new Directory("var", [], "deny"),
+])
+
+/*let hierarchy = {
     name: "/",
     subTree: [{
         name: "home/",
@@ -42,27 +65,29 @@ let hierarchy = {
         {name: "usr/", subTree: [], permission: "deny"},
         {name: "var/", subTree: [], permission: "deny"},
     ]
-};
+};*/
 
 let pages = {};
 
 
 function navHierarchy(path) {
     let tokens = path.split("/");
+
     if (tokens[tokens.length - 1] === "") tokens.pop();
+    if (tokens[0] === "") tokens.shift();
+
     let current = hierarchy;
     let absPath = "/";
     //console.log("Nav tokens: "+tokens);
     while (tokens.length > 0) {
         let foundPath = false;
         //console.log("Current token: "+tokens[0], current);
-        if (tokens.length === 1 && tokens[0] === current.name.replace("/", "")) {
-            //console.log("File at path: "+current.name);
-            return [current, absPath];
-        }
+        if (tokens.length === 1 && tokens[0] === current.name)
+            return {result: current, path: absPath};
+        
         for (let i = 0; i < current.subTree.length; i++) {
-            //console.log(current.subTree[i].name.replace("/", ""), tokens[1], tokens);
-            if (current.subTree[i].name.replace("/", "") === tokens[1]) {
+            //console.log(current.subTree[i].name, tokens[1], tokens);
+            if (current.subTree[i].name === tokens[0]) {
                 //console.log("Found: "+current.subTree[i].name);
                 current = current.subTree[i];
                 absPath += current.name;
@@ -71,10 +96,10 @@ function navHierarchy(path) {
                 break;
             }
         }
-        if (!foundPath) return [null, ""];
+        if (!foundPath) return {result: null, path: null};
     }
     //console.log("File at path: "+current.name);
-    return [current, absPath];
+    return {result: current, path: absPath};
 }
 
 
@@ -90,7 +115,7 @@ if (typeof window === 'undefined') {
             let dirName = dir.substring(dir.lastIndexOf("pages")+6);
             let hierarchyPath = "/home/guest/public/"+dirName;
             if (dirent.isDirectory()) {
-                navHierarchy(hierarchyPath)[0].subTree.unshift({name: dirent.name+"/", subTree: []});
+                navHierarchy(hierarchyPath).result.subTree.unshift(new Directory(dirent.name));
                 walkPages(res);
             }
         }
@@ -106,7 +131,7 @@ if (typeof window === 'undefined') {
 
                 if(fileName[0] !== "_"){
                     pages[(dirName ? dirName+"/": "")+fileName] = {name: fileName+".html", size: size};
-                    navHierarchy(hierarchyPath)[0].subTree.unshift({name: fileName+".html"});
+                    navHierarchy(hierarchyPath).result.subTree.unshift(new File(fileName+".html"));
                 }
             }
         }
@@ -120,4 +145,4 @@ else{
     pages = dehydrateInfo.pages
 }
 
-export {hierarchy, pages, navHierarchy};
+export {hierarchy, pages, navHierarchy, Directory, File};
