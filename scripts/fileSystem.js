@@ -1,3 +1,21 @@
+
+class File {
+
+    constructor(name, permission="allow") {
+        this.name = name;
+        this.permission = permission;
+    }
+}
+
+class Directory {
+
+    constructor(name, subTree=null, permission="allow") {
+        this.name = name;
+        this.subTree = subTree ? subTree : [];
+        this.permission = permission;
+    }
+}
+
 let hierarchy = {
     name: "/",
     subTree: [{

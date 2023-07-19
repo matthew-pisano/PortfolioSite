@@ -4,7 +4,7 @@ import {v4} from 'uuid';
 import startStr from './start';
 import { babbleLoop } from './utils';
 import 'katex/dist/katex.min.css';
-import { navHierarchy, hierarchy, pages } from './fileHierarchy';
+import { navHierarchy, hierarchy, pages } from './fileSystem';
 
 
 let tilePositions = null;

@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import * as common from './common';
-import * as fileHierarchy from './fileHierarchy';
-import TerminalDiv from './terminalDiv';
+import * as fileSystem from './fileSystem';
+import TerminalDiv from './terminal';
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
@@ -38,8 +38,8 @@ const Wrapper = ({children, pageName}) => {
         else {<div></div>;}
     }
 
-    let dehydrateInfo = {hierarchy: fileHierarchy.hierarchy, pages: fileHierarchy.pages};
-    let explorerTree = elementsFromTree(fileHierarchy.navHierarchy("/home/guest/public/")[0]);
+    let dehydrateInfo = {hierarchy: fileSystem.hierarchy, pages: fileSystem.pages};
+    let explorerTree = elementsFromTree(fileSystem.navHierarchy("/home/guest/public/")[0]);
 
     return (
         <div className="w3-display-container">
@@ -101,8 +101,8 @@ const Wrapper = ({children, pageName}) => {
             <footer className="commandBar w3-row" style={{bottom: '0px'}}>
                 <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>
                 <div id="encodingStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>
-                <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{Math.round(fileHierarchy.pages[pageName].size/140.6)+" Lines"}</div>
-                <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{fileHierarchy.pages[pageName].size+"B"}</div>
+                <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{Math.round(fileSystem.pages[pageName].size/140.6)+" Lines"}</div>
+                <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{fileSystem.pages[pageName].size+"B"}</div>
                 <div id="itemStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageName+".html"}</div>
             </footer>
         </div>
