@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import * as common from './common';
-import * as fileSystem from './fileSystem';
+import { masterFileSystem, Directory, File, pageRegistry } from './fileSystem';
 import TerminalDiv from './terminal';
 
 
 function elementsFromTree(tree, path=""){
-    if(tree.constructor === fileSystem.Directory){
+    if(tree.constructor === Directory){
         let name = tree.name+"-Folder";
         return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row">
             <img className='folderIcon' alt='folder'/>
@@ -39,15 +39,16 @@ function elementsFromTree(tree, path=""){
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
-    const [explorerTree,   setExplorerTree] = useState(elementsFromTree(fileSystem.navHierarchy("/home/guest/public/").result));
+    const [explorerTree,   setExplorerTree] = useState(elementsFromTree(masterFileSystem.navHierarchy("/home/guest/public/")));
+    const [lastUpdateTime, setLastUpdateTime] = useState(masterFileSystem.lastUpdateTime);
 
     useEffect(() => {
-        setExplorerTree(elementsFromTree(fileSystem.navHierarchy("/home/guest/public/").result));
-    }, [fileSystem.hierarchy]);
+        setExplorerTree(elementsFromTree(masterFileSystem.navHierarchy("/home/guest/public/")));
+    }, [lastUpdateTime]);
 
-    
+    masterFileSystem.registerCallback((updateTime) => {setLastUpdateTime(updateTime)});
 
-    let dehydrateInfo = {hierarchy: fileSystem.hierarchy, pages: fileSystem.pages};
+    let dehydrateInfo = {hierarchy: masterFileSystem.hierarchy.constructor.toDict(masterFileSystem.hierarchy), pageRegistry: pageRegistry};
 
     return (
         <div className="w3-display-container">

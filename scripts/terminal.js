@@ -1,41 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import * as common from './common';
 import * as pathlib from 'path';
-import { resolvePath, parseCommand, HOME, eightBall } from './terminalCommands';
-
-
-let terminalClosed = true;
-let closeTime = 0;
-
-const closeTerminal = () => {
-    console.log("Closing terminal...");
-    document.getElementById('terminal').style.height = `30px`;
-    document.getElementById('terminalOutput').style.height = `0px`;
-    document.getElementById('terminalBottom').style.visibility = "hidden";
-    document.getElementById('terminalClose').style.visibility = "hidden";
-    terminalClosed = true;
-    closeTime = Date.now();
-};
+import { resolvePath, parseCommand, HOME } from './terminalCommands';
 
 
 const TerminalDiv = () => {
 
-    function genPrompt(cwd) {
-        if(resolvePath(cwd) === HOME) cwd = "~";
-        return "["+cwd+"]$ ";
-    };
-
-    const [initialPos,   setInitialPos] = useState(null);
+    const [initialPos, setInitialPos] = useState(null);
     const [initialSize, setInitialSize] = useState(null);
-    //const [terminalClosed, setTerminalClosed] = useState(true);
     const [prompt, setPrompt] = useState(genPrompt(HOME));
-    const [ENV, setENV] = useState({cwd: HOME});
+    const [ENV, setENV] = useState({cwd: HOME, color: "#ffffff", closed: true, closeTime: 0});
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
     const [commandIndex, setCommandIndex] = useState(-1);
 
+    function genPrompt(cwd) {
+        if(resolvePath(ENV.cwd, cwd) === HOME) cwd = "~";
+        return "["+cwd+"]$ ";
+    };
+
     useEffect(() => {
-        setPrompt(genPrompt(ENV.cwd))
+        setPrompt(genPrompt(ENV.cwd));
+
+        document.getElementById("terminalHolder").style.color = ENV.color;
     }, [ENV]);
 
     const dragStart = (e) => {
@@ -47,21 +34,21 @@ const TerminalDiv = () => {
     const resize = (e, heightOverride) => {
         let height = heightOverride ? heightOverride : initialSize + initialPos - e.clientY + 50;
         if(height > window.innerHeight - 80) height = window.innerHeight - 80;
-        console.log("Resizing terminal", height, terminalClosed, "max:", window.innerHeight);
+        console.log("Resizing terminal", height, ENV.terminalClosed, "max:", window.innerHeight);
         if(height > 200){
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
             document.getElementById('terminalClose').style.visibility = "visible";
             document.getElementById('terminalInput').focus();
-            terminalClosed = false;
+            ENV.terminalClosed = false;
         }
-        else if(terminalClosed){
+        else if(ENV.terminalClosed){
             document.getElementById('terminal').style.height = `200px`;
             document.getElementById('terminalOutput').style.height = `130px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
             document.getElementById('terminalClose').style.visibility = "visible";
-            terminalClosed = false;
+            ENV.terminalClosed = false;
         }
         else closeTerminal();
     };
@@ -123,7 +110,7 @@ const TerminalDiv = () => {
                 onDragEnd = {resize}
             />
             <div id='terminal' onClick={() => {
-                if(terminalClosed && Date.now() - closeTime > 500) resize(null, 210);
+                if(ENV.terminalClosed && Date.now() - ENV.closeTime > 500) resize(null, 210);
             }}>
                 <div><span>Terminal</span>
                     <button id="terminalClose" className='w3-button' style={{float: "right", marginRight: "10px", visibility: "hidden"}}

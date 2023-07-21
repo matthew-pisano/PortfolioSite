@@ -1,4 +1,6 @@
-import * as fileSystem from './fileSystem';
+import * as pathlib from 'path';
+
+import { Directory, masterFileSystem, pageRegistry } from './fileSystem';
 
 
 const HOME = "/home/guest/";
@@ -52,11 +54,19 @@ MMMMMMWl       lWM    MWl       lWMMMMMM
    lWMWl       lWM    MWl       lWMWl`;
 
 
-function resolvePath(path){
+function resolvePath(cwd, path){
     if(path[0] === "~") path = path.replace("~", HOME);
     if(path.length > 0 && path[0] === "/") return pathlib.join(path)+"/".replace("//", "/");
     return pathlib.join(cwd, path)+"/".replace("//", "/");
 }
+
+function closeTerminal() {
+    console.log("Closing terminal...");
+    document.getElementById('terminal').style.height = `30px`;
+    document.getElementById('terminalOutput').style.height = `0px`;
+    document.getElementById('terminalBottom').style.visibility = "hidden";
+    document.getElementById('terminalClose').style.visibility = "hidden";
+};
 
 async function toVoid(){
     let terminalOutput = document.getElementById('terminalOutput');
@@ -150,7 +160,9 @@ function tokenizeCommand(command){
 
 class Commands {
 
-    static ENV = {}
+    static ENV = {};
+
+    static resolvePath(path) {return resolvePath(this.ENV.cwd, path);}
 
     static validateArgs(args, val) {
         if(val.nargs !== undefined &&  !val.nargs.includes(args.length)) 
@@ -166,66 +178,63 @@ class Commands {
     }
 
     static touch = (args) => {
-        if(args.length == 1){
-            let newName = args[0].replace(".html", "")+".html";
-            newName = resolvePath(newName);
-            // Remove custom from path if it exists and continue with the removal
-            if(newName.startsWith("/home/guest/public/custom")){
-                if(fileSystem.navHierarchy(newName).result !== null)
-                    return "File '"+newName+"' already exists\n";
-                    
-                common.newFile(newName);
-                return "Created file '"+newName+"'\n";
-            }
-            else if(newName === "") 
-                return "File: '"+absPath+"' does not exist\n";
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
 
-            return "touch command only applies to files in the '/home/guest/public/custom' folder\n";
-        }
-        return "touch command requires one argument\n";
+        let newPath = resolvePath(args[0].replace(".html", "")+".html");
+
+        if(newPath === "") 
+            return "File: '"+absPath+"' does not exist\n";
+        
+        if(masterFileSystem.navHierarchy(newPath) !== null)
+            return "File '"+newPath+"' already exists\n";
+            
+        // common.newFile(newName);
+        masterFileSystem.touch(newPath)
+        return "Created file '"+newPath+"'\n";
+    }
+
+    static copy = (args) => {
+        let valResult = this.validateArgs(args, {nargs: [2]});
+        if(valResult) return valResult;
+
+        let oldPath = resolvePath(args[0]);
+        let oldName = oldPath.substring(oldPath.lastIndexOf("/")+1);
+        let newPath = resolvePath(args[1]);
+        
+        let oldObj = masterFileSystem.navHierarchy(oldPath);
+        let newObj = masterFileSystem.navHierarchy(newPath);
+
+        if(newObj && newObj.constructor === Directory) 
+            masterFileSystem.copy(oldPath, pathlib.join(newPath, oldName));
+        else if(!newObj || (newObj && oldObj.constructor === File && newObj.constructor === File))
+            masterFileSystem.copy(oldPath, newPath);
+        else throw new Error(`Cannot copy directory at ${oldPath} to file at ${newPath}!`);
+
+        return "Copied '"+oldPath+"' to '"+newPath+"'\n";
     }
 
     static mv = (args) => {
-        if(tokens.length == 3){
-            let oldName = tokens[1].replace(".html", "")+".html";
-            resolvePath(oldName);
-            let newName = tokens[2].replace(".html", "")+".html";
-            let rootPath = fileHierarchy.navHierarchy(absPath)[1];
-            // Remove custom from path if it exists and continue with the removal
-            if(rootPath.includes("/home/guest/public/custom")){
-                let oldId = null;
-                for(let pageId in fileHierarchy.pages)
-                    if(oldName.endsWith(fileHierarchy.pages[pageId].name)){
-                        oldId = pageId;
-                        break;
-                    }
-                common.finishRenaming(oldId, newName);
-                return outStr+"\nRenamed file '"+oldName+".html' to '"+newName+"'";
-            }
-            else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
-            return outStr+"\nrm command only applies to files in the '/home/guest/public/custom' folder";
-        }
-        return outStr+"\nren command requires three arguments";
+        let valResult = this.validateArgs(args, {nargs: [2]});
+        if(valResult) return valResult;
+
+        this.copy(args);
+        
+        let oldPath = resolvePath(args[0]);
+        let newPath = resolvePath(args[1]);
+        masterFileSystem.rm(oldPath);
+        return "Moved '"+oldPath+"' to '"+newPath+"'\n";
     }
 
     static rm = (args) => {
-        if(tokens.length == 2){
-            let fileName = tokens[1].replace(".html", "")+".html";
-            resolvePath(fileName);
-            let rootPath = fileHierarchy.navHierarchy(absPath)[1];
-            // Remove custom from path if it exists and continue with the removal
-            if(rootPath.includes("/home/guest/public/custom")){
-                for(let pageId in fileHierarchy.pages)
-                    if(fileName.endsWith(fileHierarchy.pages[pageId].name)){
-                        common.removeFile(pageId);
-                        break;
-                    }
-                return outStr+"\nRemoved file '"+fileName+"'";
-            }
-            else if(rootPath === "") return outStr+"\nFile: '"+absPath+"' does not exist";
-            return outStr+"\nrm command only applies to files in the '/home/guest/public/custom' folder";
-        }
-        return outStr+"\nrm command requires one argument";
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        let fileName = resolvePath(args[0]);
+        masterFileSystem.rm(fileName);
+
+        return "Removed '"+fileName+"'\n";
+
     }
 
     static cls = (args) => {
@@ -259,54 +268,119 @@ class Commands {
         let valResult = this.validateArgs(args, {nargs: [0, 1]});
         if(valResult) return valResult;
 
-        if(args.length === 1){
+        if(args.length === 0){
             this.ENV.cwd = HOME
             return "";
         }
 
         args[0] = resolvePath(args[0]);
-        let targetItem = fileSystem.navHierarchy(args[0]).result;
+        let targetItem = fileSystem.navHierarchy(args[0]);
+        if(!targetItem) 
+            throw new Error(`Cannot enter directory.  Directory at ${args[0]} does not exist!`);
 
-        if(targetItem  && targetItem.permission == "deny")
-            return "Permission denied for path: '"+args[0]+"'\n";
+        if(targetItem.permission === "deny")
+            throw new Error(`Cannot enter ${args[0]}.  Permission denied!`);
         
-        else if(targetItem) {
-            this.ENV.cwd = args[0]
-            return "";
-        }
-        else return "Could not find path: '"+args[0]+"'\n";
+        this.ENV.cwd = args[0]
+        return "";
     }
 
-    static touch = (args) => {
+    static ls = (args) => {
+
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
         
+        return masterFileSystem.ls(args[0])+"\n";
     }
 
-    static touch = (args) => {
-        
+    static cat = (args) => {
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        return masterFileSystem.readText(args[0])+"\n";
     }
 
-    static touch = (args) => {
-        
+    static open = (args) => {
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        if(pageRegistry[args[0]])
+            window.open(args[0].substring(args[0].lastIndexOf("/")+1).replace(".html", ""), '_self', false);
+        else throw new Error(`Cannot open ${args[0]}.  This is not a valid page!`);
     }
 
-    static touch = (args) => {
-        
+    static color = (args) => {
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        if(args[0].match(/#[0-9|a-f|A-F]{6}/))
+            this.ENV.color = args[0]
+        else throw new Error(`${args[0]} is not a valid color!`);
+
+        return `Set terminal color to ${args[0]}\n`;
     }
 
-    static touch = (args) => {
-        
+    static exit = () => {
+        closeTerminal();
+        document.getElementById("terminalOutput").innerText = "";
+
+        this.ENV.closed = true;
+        this.ENV.closeTime = Date.now();
     }
 
-    static touch = (args) => {
-        
+    static dir = () => {
+        return "Unknown command: 'dir' (Wrong OS)\n";
     }
 
-    static touch = (args) => {
-        
+    static mir = () => {
+        return "Unknown command: 'mir' (Like 'dir' or the space station?)\n";
     }
 
-    static touch = (args) => {
-        
+    static launch = () => {
+        let valResult = this.validateArgs(args, {nargs: [3]});
+        if(valResult) return valResult;
+
+        return "Insufficient permissions to cause armageddon (Did you try 'sudo'?)\n";
+    }
+
+    static sudo = () => {
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        return "Sudo is just bloat (Maybe try 'doas'?)\n";
+    }
+
+    static doas = () => {
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        return "Did you mean to type 'does'?\n";
+    }
+
+    static haltingproblem = () => {
+        haltingProblem();
+        return "\n\n";
+    }
+
+    static eightball = () => {
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        return eightBall()+"\n";
+    }
+
+    static neofetch = () => {
+        let valResult = this.validateArgs(args, {nargs: [0]});
+        if(valResult) return valResult;
+
+        return neofetch.replace(new RegExp(' ', 'g'), '\u00A0')+"\n";
+    }
+
+    static whoami = () => {
+        let valResult = this.validateArgs(args, {nargs: [0]});
+        if(valResult) return valResult;
+
+        return "guest\n";
     }
 
 }
