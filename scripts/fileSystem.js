@@ -1,7 +1,24 @@
-import * as pathlib from 'path';
 
 
 let pageRegistry = {};
+
+
+function pathJoin(...paths) {
+    let totalPath = []
+    for(let i in paths){
+        if(paths[i][0] === "/") totalPath = [];
+        let tmpPath = paths[i].split('/').reduce((a, v) => {
+            if (v === '.'); // do nothing
+            else if (v === '..') a.pop();
+            else a.push(v);
+            return a;
+        }, [])
+        for(let token of tmpPath)
+            if(token) totalPath.push(token);
+    }
+
+    return totalPath.join('/');
+}
 
 
 class File {
@@ -13,7 +30,7 @@ class File {
     }
 
     static toDict(file) {
-        return {name: this.name, text: this.text, permission: this.permission};
+        return {name: file.name, text: file.text, permission: file.permission};
     }
 
     static fromDict(dict) {
@@ -154,7 +171,7 @@ class FileSystem {
             let list = [];
             for(let child of obj.subTree){
                 let denyPerms = "---";
-                if(pageRegistry[pathlib.join(path, child.name)]) denyPerms = "--x";
+                if(pageRegistry[pathJoin(path, child.name)]) denyPerms = "--x";
                 list.push([`${child.constructor === Directory ? "d" : "-"}${child.permission === "allow" ? "rwx" : denyPerms}    ${child.name}`, child.name]);
             }
             
@@ -167,7 +184,7 @@ class FileSystem {
         }
         else {
             let denyPerms = "---";
-            if(pageRegistry[pathlib.join(path, child.name)]) denyPerms = "--x";
+            if(pageRegistry[pathJoin(path, child.name)]) denyPerms = "--x";
             lsStr = "File Information\n--------------------\n"+
                 `-${obj.permission === "allow" ? "rwx" : denyPerms}    ${obj.name}`;
         }
@@ -232,13 +249,12 @@ class FileSystem {
                 if (current.subTree[i].name === tokens[0]) {
                     //console.log("Found: "+current.subTree[i].name);
                     current = current.subTree[i];
-                    absPath += current.name;
                     tokens.shift();
                     foundPath = true;
                     break;
                 }
             }
-            if (!foundPath) null;
+            if (!foundPath) return null;
         }
         //console.log("File at path: "+current.name);
         return current;
@@ -272,6 +288,8 @@ let initialHierarchy = new Directory("", [
  * @type {FileSystem}*/
 let masterFileSystem;
 
+let dehydrateInfo;
+
 if (typeof window === 'undefined') {
     const { resolve } = require('path');
     const { readdirSync, statSync } = require('fs');
@@ -287,12 +305,13 @@ if (typeof window === 'undefined') {
             let hierarchyPath = "/home/guest/public/"+dirName;
             if (!dirent.isDirectory()) {
                 let size = statSync(res).size;
-                let fileName = res.substring(res.lastIndexOf("/")+1).replace(".js", "");
+                let fileName = res.substring(res.lastIndexOf("pages")+6).replace(".js", "");
                 if(["admin", "index", "404"].includes(fileName)) continue;
 
                 if(fileName[0] !== "_"){
-                    pageRegistry[pathlib.join(hierarchyPath, fileName+".html")] = {name: fileName+".html", size: size};
-                    masterFileSystem.touch(pathlib.join(hierarchyPath, fileName+".html"), "deny");
+                    console.log(hierarchyPath, fileName+".html", pathJoin(hierarchyPath, fileName+".html"));
+                    pageRegistry[pathJoin(hierarchyPath, fileName+".html")] = {name: fileName+".html", size: size};
+                    masterFileSystem.touch(pathJoin(hierarchyPath, fileName+".html"), "deny");
                 }
             }
         }
@@ -302,18 +321,25 @@ if (typeof window === 'undefined') {
             let dirName = dir.substring(dir.lastIndexOf("pages")+6);
             let hierarchyPath = "/home/guest/public/"+dirName;
             if (dirent.isDirectory()) {
-                masterFileSystem.mkdir(pathlib.join(hierarchyPath, dirent.name));
+                masterFileSystem.mkdir(pathJoin(hierarchyPath, dirent.name));
                 walkPages(res);
             }
         }
     }
     walkPages();
+
+    dehydrateInfo = JSON.stringify(
+        {hierarchy: masterFileSystem.hierarchy.constructor.toDict(masterFileSystem.hierarchy), pageRegistry: pageRegistry}
+    );
 }
 else{
-    let dehydrateInfo = JSON.parse(document.getElementById("dehydrateInfo").innerText);
-    hierarchy = dehydrateInfo.hierarchy;
-    pageRegistry = dehydrateInfo.pageRegistry;
-    masterFileSystem = new FileSystem(Directory.fromDict(dehydrateInfo.hierarchy));
+    let dehydrateElem = document.getElementById("dehydrateInfo");
+    dehydrateInfo = dehydrateElem.innerText;
+    let hydratedInfo = JSON.parse(dehydrateElem.innerText);
+    // dehydrateElem.remove();
+    
+    pageRegistry = hydratedInfo.pageRegistry;
+    masterFileSystem = new FileSystem(Directory.fromDict(hydratedInfo.hierarchy));
 }
 
-export {pageRegistry, masterFileSystem, FileSystem, Directory, File};
+export {pageRegistry, masterFileSystem, FileSystem, Directory, File, dehydrateInfo, pathJoin};

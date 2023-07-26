@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import * as common from './common';
-import { masterFileSystem, Directory, File, pageRegistry } from './fileSystem';
+import { masterFileSystem, Directory, pageRegistry, dehydrateInfo } from './fileSystem';
+import { utimes } from 'fs';
 import TerminalDiv from './terminal';
 
 
@@ -21,16 +22,18 @@ function elementsFromTree(tree, path=""){
             }>{tree.name}</button>
 
             <div id={tree.name+"Content"} className="w3-row sidebarContent">
-                {tree.subTree.map(child => elementsFromTree(child, path+tree.name))}
+                {tree.subTree.map(child => elementsFromTree(child, path+"/"+tree.name))}
             </div>
         </div>;
     }
     else if(!path.includes("custom")){
         let name = tree.name.substring(0, tree.name.indexOf("."));
+        let urlPath = path.replace("public", "")+"/"+name;
+        urlPath = urlPath.replace("//", "/");
 
         return <div key={name+"-File"} id={name+"-File"} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
             <img className='htmlIcon' alt='html'/>
-            <a className="w3-button lightText" style={{padding: 0}} href={"/"+path.replace("public/", "")+name}>{tree.name}</a>
+            <a className="w3-button lightText" style={{padding: 0}} href={urlPath}>{tree.name}</a>
         </div>;
     }
     else {<div></div>;}
@@ -43,17 +46,27 @@ const Wrapper = ({children, pageName}) => {
     const [lastUpdateTime, setLastUpdateTime] = useState(masterFileSystem.lastUpdateTime);
 
     useEffect(() => {
+        if(document.getElementById("dehydrateInfo")) document.getElementById("dehydrateInfo").remove();
+    }, []);
+
+    useEffect(() => {
         setExplorerTree(elementsFromTree(masterFileSystem.navHierarchy("/home/guest/public/")));
     }, [lastUpdateTime]);
 
     masterFileSystem.registerCallback((updateTime) => {setLastUpdateTime(updateTime)});
 
-    let dehydrateInfo = {hierarchy: masterFileSystem.hierarchy.constructor.toDict(masterFileSystem.hierarchy), pageRegistry: pageRegistry};
+    function pageSize(){
+        for(let key of Object.keys(pageRegistry))
+            if(pageRegistry[key].name === pageName+".html")
+                return pageRegistry[key].size;
+        
+        return 0;
+    }
 
     return (
         <div className="w3-display-container">
             <Head>
-                <title id="siteTitle">{pageName+".html"}</title>
+                <title id="siteTitle">{pageName.substring(pageName.lastIndexOf("/")+1)+".html"}</title>
             </Head>
             <header className="menuBar w3-row" style={{top: '0px'}}>
                 <button id="fileButton" className="menuItem lightText w3-button w3-col" 
@@ -65,7 +78,9 @@ const Wrapper = ({children, pageName}) => {
                 <button id="contactButton" className="menuItem lightText w3-button w3-col"
                     onClick={() => common.$("#contactDropdown").fadeToggle()}>Contact Info</button>
             </header>
-            <span id="dehydrateInfo" style={{display: "none"}}>{JSON.stringify(dehydrateInfo)}</span>
+
+            <span id="dehydrateInfo" style={{display: "none"}}>{dehydrateInfo}</span>
+
             <div id="wrapperContent" className="w3-display-container w3-row">
                 <div id="menuDropHolder">
                     <div id="fileDropdown" className="menuDropdown w3-col">
@@ -110,8 +125,8 @@ const Wrapper = ({children, pageName}) => {
             <footer className="commandBar w3-row" style={{bottom: '0px'}}>
                 <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>
                 <div id="encodingStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>
-                <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{Math.round(fileSystem.pages[pageName].size/140.6)+" Lines"}</div>
-                <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{fileSystem.pages[pageName].size+"B"}</div>
+                <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{Math.round(pageSize()/140.6)+" Lines"}</div>
+                <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageSize()+"B"}</div>
                 <div id="itemStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageName+".html"}</div>
             </footer>
         </div>

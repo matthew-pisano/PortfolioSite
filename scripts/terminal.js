@@ -1,29 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import * as common from './common';
-import * as pathlib from 'path';
-import { resolvePath, parseCommand, HOME } from './terminalCommands';
+import { resolvePath, parseCommand, HOME, closeTerminal } from './terminalCommands';
 
 
 const TerminalDiv = () => {
 
     const [initialPos, setInitialPos] = useState(null);
     const [initialSize, setInitialSize] = useState(null);
-    const [prompt, setPrompt] = useState(genPrompt(HOME));
-    const [ENV, setENV] = useState({cwd: HOME, color: "#ffffff", closed: true, closeTime: 0});
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
     const [commandIndex, setCommandIndex] = useState(-1);
+    const [ENV, setENV] = useState({cwd: HOME, color: "#ffffff", closed: true, closeTime: 0});
 
-    function genPrompt(cwd) {
+    let genPrompt = (cwd) => {
         if(resolvePath(ENV.cwd, cwd) === HOME) cwd = "~";
         return "["+cwd+"]$ ";
     };
+
+    const [prompt, setPrompt] = useState(genPrompt(HOME));
 
     useEffect(() => {
         setPrompt(genPrompt(ENV.cwd));
 
         document.getElementById("terminalHolder").style.color = ENV.color;
-    }, [ENV]);
+    });
 
     const dragStart = (e) => {
         let resizable = document.getElementById('terminal');
@@ -117,8 +116,8 @@ const TerminalDiv = () => {
                         onClick={() => closeTerminal()}>X</button></div>
                 <div id="terminalOutput" onClick={() => document.getElementById('terminalInput').focus()}></div>
                 <div id="terminalBottom" style={{visibility: "hidden"}}>
-                    <div id="terminalPrompt" style={{marginLeft: (9*prompt.length+5)+"px"}}>{prompt}</div>
-                    <div id="terminalInput" contentEditable="true" onInput={onInput} onKeyDown={onKeyDown}></div>
+                    <div id="terminalPrompt">{prompt}</div>
+                    <div id="terminalInput" style={{marginLeft: (9*prompt.length+5)+"px"}} contentEditable="true" onInput={onInput} onKeyDown={onKeyDown}></div>
                 </div>
             </div>
         </div>

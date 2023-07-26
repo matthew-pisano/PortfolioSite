@@ -1,6 +1,4 @@
-import * as pathlib from 'path';
-
-import { Directory, masterFileSystem, pageRegistry } from './fileSystem';
+import { Directory, masterFileSystem, pageRegistry, pathJoin } from './fileSystem';
 
 
 const HOME = "/home/guest/";
@@ -55,9 +53,10 @@ MMMMMMWl       lWM    MWl       lWMMMMMM
 
 
 function resolvePath(cwd, path){
+    console.log("Resolving", cwd, path);
     if(path[0] === "~") path = path.replace("~", HOME);
-    if(path.length > 0 && path[0] === "/") return pathlib.join(path)+"/".replace("//", "/");
-    return pathlib.join(cwd, path)+"/".replace("//", "/");
+    if(path.length > 0 && path[0] === "/") return pathJoin(path)+"/".replace("//", "/");
+    return pathJoin(cwd, path)+"/".replace("//", "/");
 }
 
 function closeTerminal() {
@@ -155,6 +154,8 @@ function tokenizeCommand(command){
     // Add new token to list
     if(activeToken !== "") tokens.push(activeToken);
     console.log("Tokens:", tokens);
+
+    return tokens;
 }
 
 
@@ -181,7 +182,7 @@ class Commands {
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
-        let newPath = resolvePath(args[0].replace(".html", "")+".html");
+        let newPath = this.resolvePath(args[0].replace(".html", "")+".html");
 
         if(newPath === "") 
             return "File: '"+absPath+"' does not exist\n";
@@ -198,15 +199,15 @@ class Commands {
         let valResult = this.validateArgs(args, {nargs: [2]});
         if(valResult) return valResult;
 
-        let oldPath = resolvePath(args[0]);
+        let oldPath = this.resolvePath(args[0]);
         let oldName = oldPath.substring(oldPath.lastIndexOf("/")+1);
-        let newPath = resolvePath(args[1]);
+        let newPath = this.resolvePath(args[1]);
         
         let oldObj = masterFileSystem.navHierarchy(oldPath);
         let newObj = masterFileSystem.navHierarchy(newPath);
 
         if(newObj && newObj.constructor === Directory) 
-            masterFileSystem.copy(oldPath, pathlib.join(newPath, oldName));
+            masterFileSystem.copy(oldPath, pathJoin(newPath, oldName));
         else if(!newObj || (newObj && oldObj.constructor === File && newObj.constructor === File))
             masterFileSystem.copy(oldPath, newPath);
         else throw new Error(`Cannot copy directory at ${oldPath} to file at ${newPath}!`);
@@ -220,8 +221,8 @@ class Commands {
 
         this.copy(args);
         
-        let oldPath = resolvePath(args[0]);
-        let newPath = resolvePath(args[1]);
+        let oldPath = this.resolvePath(args[0]);
+        let newPath = this.resolvePath(args[1]);
         masterFileSystem.rm(oldPath);
         return "Moved '"+oldPath+"' to '"+newPath+"'\n";
     }
@@ -230,7 +231,7 @@ class Commands {
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
-        let fileName = resolvePath(args[0]);
+        let fileName = this.resolvePath(args[0]);
         masterFileSystem.rm(fileName);
 
         return "Removed '"+fileName+"'\n";
@@ -272,9 +273,9 @@ class Commands {
             this.ENV.cwd = HOME
             return "";
         }
-
-        args[0] = resolvePath(args[0]);
-        let targetItem = fileSystem.navHierarchy(args[0]);
+        console.log("cd to 1", args[0]);
+        args[0] = this.resolvePath(args[0]);
+        let targetItem = masterFileSystem.navHierarchy(args[0]);
         if(!targetItem) 
             throw new Error(`Cannot enter directory.  Directory at ${args[0]} does not exist!`);
 
@@ -282,15 +283,17 @@ class Commands {
             throw new Error(`Cannot enter ${args[0]}.  Permission denied!`);
         
         this.ENV.cwd = args[0]
+        console.log("cd to", args[0]);
         return "";
     }
 
     static ls = (args) => {
 
-        let valResult = this.validateArgs(args, {nargs: [1]});
+        let valResult = this.validateArgs(args, {nargs: [0, 1]});
         if(valResult) return valResult;
-        
-        return masterFileSystem.ls(args[0])+"\n";
+
+        if(args.length === 0) args = [this.ENV.cwd];
+        return masterFileSystem.ls(this.resolvePath(args[0]))+"\n";
     }
 
     static cat = (args) => {
@@ -385,144 +388,17 @@ class Commands {
 
 }
 
-function parseCommand(command, env){
-    let tokens = tokenizeCommand(command);
+function parseCommand(commandString, env){
+    Commands.ENV = env;
+
+    let tokens = tokenizeCommand(commandString);
     let command = tokens[0];
     let args = tokens.slice(1)
 
-    let targetItem = null;
-    let outStr = command+"\n";
-    let absPath = "";
+    if(!command) return {result: "", env: Commands.ENV};
 
-    if(!command) return {result: outStr, env: Commands.ENV};
-
-    Commands.ENV = env;
-
-    return {result: Commands[command](args), env: Commands.ENV};
-
-    switch (command) {
-        case '':
-        case null:
-        case undefined:
-            return outStr;
-        case 'echo':
-            return Commands.echo(tokens.slice(1));
-        case 'touch':
-            return Commands.touch()
-        case 'ren':
-            
-        case 'rm':
-
-        case 'cls':
-        case 'clear':
-            document.getElementById("terminalOutput").innerText = "";
-            return outStr;
-        case 'pwd':
-            return outStr+"\n"+cwd;
-        case 'help':
-            if(tokens.length > 1 && (tokens[1] == "-f" || tokens[1] == "--force"))
-                return outStr+"\n"+helpMsg+"\n"+forceHelp;
-            return outStr+"\n"+helpMsg;
-        case 'cd':
-            if(tokens.length === 1){
-                setCwd(homeDir);
-                return outStr;
-            }
-            resolvePath(tokens[1]);
-            targetItem = fileHierarchy.navHierarchy(absPath)[0];
-            if(targetItem  && targetItem.permission  && targetItem.permission == "deny") {
-                return outStr+"\nPermission denied for path: '"+absPath+"'";
-            }
-            else if(targetItem) {
-                setCwd(absPath);
-                return outStr;
-            }
-            else return outStr+"\nCould not find path: '"+absPath+"'";
-        case 'ls':
-            resolvePath(tokens[1]);
-            targetItem = fileHierarchy.navHierarchy(tokens.length < 2 ? cwd : absPath)[0];
-            if(targetItem  && targetItem.permission  && targetItem.permission == "deny") {
-                return outStr+"\nPermission denied for path: '"+absPath+"'";
-            }
-            else if(targetItem)
-                if(targetItem.subTree){
-                    outStr += "\nFolder\n----\nChildren: "+targetItem.subTree.length;
-                    for(let i=0; i<targetItem.subTree.length; i++)
-                        outStr += "\n"+targetItem.subTree[i].name;
-                }
-                else outStr += "\nFile\n----\n"+targetItem.name;
-            
-            else return outStr+"\nCould not find path: '"+absPath+"'";
-            return outStr;
-        case 'cat':
-            if(tokens.length < 2) return outStr+"\ncat command requires an argument";
-            resolvePath(tokens[1]);
-            targetItem = fileHierarchy.navHierarchy(absPath)[0];
-            if(!targetItem) return outStr+"\nCould not find path: '"+absPath+"'";
-            if(!targetItem.subTree){
-                for(let i=0; i<Object.keys(fileHierarchy.pages).length; i++){
-                    let key = Object.keys(fileHierarchy.pages)[i];
-                    console.log("Checking ", targetItem.name, fileHierarchy.pages[key].name);
-                    if(targetItem.name === fileHierarchy.pages[key].name){
-                        let pageContent = fileHierarchy.pages[key].content;
-                        if(!pageContent) pageContent = document.getElementById(key+"Page").innerHTML;
-                        return outStr+"\n"+pageContent;
-                    }
-                }
-                return outStr+"\nFile: '"+targetItem.name+"' does not exist";
-            }
-            else return outStr+"\nPath: '"+absPath+"' must be a file";
-        case 'open':
-            if(tokens[1].replace(".html", "") === "rick"){
-                window.open("documents", "_self");
-                return outStr+"\nInteresting choice...";
-            }
-            else if(tokens[1].replace(".html", "") === "poland"){
-                window.open("http://cs.newpaltz.edu/~pisanom1/CS3/");
-                return outStr+"\nPolska Ball approves...";
-            }
-            else if(tokens[1].replace(".html", "") === "void"){
-                toVoid();
-                return outStr+"\n\n";
-            }
-            if(tokens.length < 2) return outStr+"\nopen command requires an argument";
-            for(let pageId in fileHierarchy.pages)
-                if(tokens[1].replace(".html", "")+".html" === fileHierarchy.pages[pageId].name){
-                    common.showPage(pageId);
-                    return outStr+"\nOpened file '"+tokens[1]+"'";
-                }
-            return outStr+"\nFile '"+tokens[1].replace(".html", "")+".html"+"' does not exist";
-        case 'color':
-            if(tokens.length < 2) return outStr+"\ncolor command requires an argument";
-            if(tokens[1].match(/#[0-9|a-f|A-F]{6}/)){
-                document.getElementById("terminalHolder").style.color = tokens[1];
-                return outStr+"\nSet terminal color to "+tokens[1];
-            }
-            return outStr+"\nCould not set color to "+tokens[1]+" as it does not match '#rrggbb'";
-        case 'dir':
-            return outStr+"\nUnknown command: 'dir' (Wrong OS)";
-        case 'mir':
-            return outStr+"\nUnknown command: 'mir' (Like 'dir' or the space station?)";
-        case 'launch':
-            if(tokens.length < 4) return outStr+"\nlaunch command requires three arguments";
-            return outStr+"\nInsufficient permissions to cause armageddon (Did you try 'sudo'?)";
-        case 'haltingproblem':
-            haltingProblem();
-            return outStr+"\n\n";
-        case 'eightball':
-            return outStr+"\n"+eightBall();
-        case 'neofetch':
-            return outStr+"\n"+neofetch.replace(new RegExp(' ', 'g'), '\u00A0');
-        case 'whoami':
-            return outStr+"\n"+"guest";
-        case 'exit':
-            closeTerminal();
-            document.getElementById("terminalOutput").innerText = "";
-            return outStr;
-        default:
-            return outStr+"\nUnknown command: '"+tokens[0]+"'";
-    }
+    return {result: commandString+"\n"+Commands[command](args), env: Commands.ENV};
 }
 
 
-export {resolvePath, parseCommand, eightBall, HOME};
+export {resolvePath, parseCommand, HOME, closeTerminal};
