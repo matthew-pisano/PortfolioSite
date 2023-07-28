@@ -42,18 +42,16 @@ function elementsFromTree(tree, path=""){
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
-    const [explorerTree,   setExplorerTree] = useState(elementsFromTree(masterFileSystem.navHierarchy("/home/guest/public/")));
-    const [lastUpdateTime, setLastUpdateTime] = useState(masterFileSystem.lastUpdateTime);
+    const [explorerTree,   setExplorerTree] = useState(elementsFromTree(masterFileSystem.getItem("/home/guest/public/")));
 
     useEffect(() => {
         if(document.getElementById("dehydrateInfo")) document.getElementById("dehydrateInfo").remove();
     }, []);
 
-    useEffect(() => {
-        setExplorerTree(elementsFromTree(masterFileSystem.navHierarchy("/home/guest/public/")));
-    }, [lastUpdateTime]);
 
-    masterFileSystem.registerCallback((updateTime) => {setLastUpdateTime(updateTime)});
+    masterFileSystem.registerCallback((updateTime) => {
+        setExplorerTree(elementsFromTree(masterFileSystem.getItem("/home/guest/public/")));
+    });
 
     function pageSize(){
         for(let key of Object.keys(pageRegistry))

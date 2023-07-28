@@ -33,23 +33,29 @@ const TerminalDiv = () => {
     const resize = (e, heightOverride) => {
         let height = heightOverride ? heightOverride : initialSize + initialPos - e.clientY + 50;
         if(height > window.innerHeight - 80) height = window.innerHeight - 80;
-        console.log("Resizing terminal", height, ENV.terminalClosed, "max:", window.innerHeight);
+        console.log("Resizing terminal", height, ENV.closed, "max:", window.innerHeight);
         if(height > 200){
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
             document.getElementById('terminalClose').style.visibility = "visible";
             document.getElementById('terminalInput').focus();
-            ENV.terminalClosed = false;
+            ENV.closed = false;
+            setENV(ENV);
         }
-        else if(ENV.terminalClosed){
+        else if(ENV.closed){
             document.getElementById('terminal').style.height = `200px`;
             document.getElementById('terminalOutput').style.height = `130px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
             document.getElementById('terminalClose').style.visibility = "visible";
-            ENV.terminalClosed = false;
+            ENV.closed = false;
+            setENV(ENV);
         }
-        else closeTerminal();
+        else {
+            ENV.closed = true;
+            setENV(ENV);
+            closeTerminal();
+        }
     };
 
     const onInput = (e) => {
@@ -59,7 +65,7 @@ const TerminalDiv = () => {
             let terminalInput = document.getElementById('terminalInput');
             // console.log("Untrimmed command:", terminalInput.innerText.split());
             let command = terminalInput.innerText.trim().replace(/\r?\n\r?\n|\r\r/g, " ").replace(/\r?\n|\r/g, "");
-            console.log("Got command: "+command);
+            // console.log("Got command: "+command);
             terminalInput.innerText = "";
 
             if(prevCommands[0] === "" && command.length > 0) setPrevCommands([command, ...prevCommands.slice(1)]);
@@ -88,8 +94,8 @@ const TerminalDiv = () => {
                 setCommandIndex(commandIndex + 1);
                 newI ++;
             }
-            console.log("Prev commands:", prevCommands, ", index:", prevCommands.length-1-newI);
-            console.log("Loading command '"+prevCommands[prevCommands.length-1-newI]+"'");
+            // console.log("Prev commands:", prevCommands, ", index:", prevCommands.length-1-newI);
+            // console.log("Loading command '"+prevCommands[prevCommands.length-1-newI]+"'");
             terminalInput.innerText = prevCommands[prevCommands.length-1-newI];
         }
         else if(e.code === "ArrowDown"){
@@ -109,7 +115,7 @@ const TerminalDiv = () => {
                 onDragEnd = {resize}
             />
             <div id='terminal' onClick={() => {
-                if(ENV.terminalClosed && Date.now() - ENV.closeTime > 500) resize(null, 210);
+                if(ENV.closed && Date.now() - ENV.closeTime > 500) resize(null, 210);
             }}>
                 <div><span>Terminal</span>
                     <button id="terminalClose" className='w3-button' style={{float: "right", marginRight: "10px", visibility: "hidden"}}

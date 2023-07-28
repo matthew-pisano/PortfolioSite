@@ -1,7 +1,8 @@
-import { Directory, masterFileSystem, pageRegistry, pathJoin } from './fileSystem';
+import { Directory, File, masterFileSystem, pageRegistry, pathJoin } from './fileSystem';
 
 
-const HOME = "/home/guest/";
+const HOME_FOLDER = "/home/guest";
+const PUBLIC_FOLDER = "/home/guest/public";
 
 const helpMsg = `--<Help Menu>--
 GRU mash, version 5.1.16(1)-release (x86_64-cloud-manix-gru)
@@ -53,10 +54,9 @@ MMMMMMWl       lWM    MWl       lWMMMMMM
 
 
 function resolvePath(cwd, path){
-    console.log("Resolving", cwd, path);
-    if(path[0] === "~") path = path.replace("~", HOME);
-    if(path.length > 0 && path[0] === "/") return pathJoin(path)+"/".replace("//", "/");
-    return pathJoin(cwd, path)+"/".replace("//", "/");
+    //console.log("Resolving", cwd, path);
+    if(path[0] === "~") path = path.replace("~", HOME_FOLDER);
+    return pathJoin(cwd, path).replace("//", "/");
 }
 
 function closeTerminal() {
@@ -174,7 +174,7 @@ class Commands {
 
     static echo = (args) => {
         let echoed = "";
-        for(let i=1; i<tokens.length; i++) echoed += args[i]+"\n";
+        for(let i=0; i<args.length; i++) echoed += args[i]+"\n";
         return echoed;
     }
 
@@ -182,49 +182,50 @@ class Commands {
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
-        let newPath = this.resolvePath(args[0].replace(".html", "")+".html");
-
-        if(newPath === "") 
-            return "File: '"+absPath+"' does not exist\n";
+        let newPath = this.resolvePath(args[0]);
         
-        if(masterFileSystem.navHierarchy(newPath) !== null)
-            return "File '"+newPath+"' already exists\n";
+        if(masterFileSystem.exists(newPath))
+            throw new Error(`File ${newPath} already exists!`);
             
         // common.newFile(newName);
-        masterFileSystem.touch(newPath)
-        return "Created file '"+newPath+"'\n";
+        masterFileSystem.touch(newPath);
+        return "";
     }
 
-    static copy = (args) => {
+    static cp = (args) => {
         let valResult = this.validateArgs(args, {nargs: [2]});
         if(valResult) return valResult;
 
         let oldPath = this.resolvePath(args[0]);
         let oldName = oldPath.substring(oldPath.lastIndexOf("/")+1);
         let newPath = this.resolvePath(args[1]);
-        
-        let oldObj = masterFileSystem.navHierarchy(oldPath);
-        let newObj = masterFileSystem.navHierarchy(newPath);
 
+        if(newPath === oldPath) throw new Error(`${oldPath} ${newPath} are at the same location!`);
+        
+        // let oldObj = masterFileSystem.getItem(oldPath);
+        let newObj = masterFileSystem.getItem(newPath);
+        
         if(newObj && newObj.constructor === Directory) 
-            masterFileSystem.copy(oldPath, pathJoin(newPath, oldName));
-        else if(!newObj || (newObj && oldObj.constructor === File && newObj.constructor === File))
-            masterFileSystem.copy(oldPath, newPath);
+            masterFileSystem.cp(oldPath, pathJoin(newPath, oldName));
+        else if(!newObj)
+            masterFileSystem.cp(oldPath, newPath);
+        else if(newObj && newObj.constructor === File)
+            throw new Error(`File at ${newPath} already exists!`);
         else throw new Error(`Cannot copy directory at ${oldPath} to file at ${newPath}!`);
 
-        return "Copied '"+oldPath+"' to '"+newPath+"'\n";
+        return "";
     }
 
     static mv = (args) => {
         let valResult = this.validateArgs(args, {nargs: [2]});
         if(valResult) return valResult;
 
-        this.copy(args);
+        this.cp(args);
         
         let oldPath = this.resolvePath(args[0]);
-        let newPath = this.resolvePath(args[1]);
+        // let newPath = this.resolvePath(args[1]);
         masterFileSystem.rm(oldPath);
-        return "Moved '"+oldPath+"' to '"+newPath+"'\n";
+        return "";
     }
 
     static rm = (args) => {
@@ -234,7 +235,7 @@ class Commands {
         let fileName = this.resolvePath(args[0]);
         masterFileSystem.rm(fileName);
 
-        return "Removed '"+fileName+"'\n";
+        return "";
 
     }
 
@@ -270,20 +271,20 @@ class Commands {
         if(valResult) return valResult;
 
         if(args.length === 0){
-            this.ENV.cwd = HOME
+            this.ENV.cwd = HOME_FOLDER
             return "";
         }
-        console.log("cd to 1", args[0]);
         args[0] = this.resolvePath(args[0]);
-        let targetItem = masterFileSystem.navHierarchy(args[0]);
+        let targetItem = masterFileSystem.getItem(args[0]);
         if(!targetItem) 
             throw new Error(`Cannot enter directory.  Directory at ${args[0]} does not exist!`);
+        else if(targetItem.constructor === File)
+        throw new Error(`Cannot enter ${args[0]}, it is a file!`);
 
-        if(targetItem.permission === "deny")
+        else if(targetItem.permission === "deny")
             throw new Error(`Cannot enter ${args[0]}.  Permission denied!`);
         
-        this.ENV.cwd = args[0]
-        console.log("cd to", args[0]);
+        this.ENV.cwd = args[0];
         return "";
     }
 
@@ -293,7 +294,36 @@ class Commands {
         if(valResult) return valResult;
 
         if(args.length === 0) args = [this.ENV.cwd];
-        return masterFileSystem.ls(this.resolvePath(args[0]))+"\n";
+        
+        let path = this.resolvePath(args[0]);
+        let lsObj = masterFileSystem.getItem(path);
+
+        let lsStr;
+        if(lsObj.constructor === Directory){
+            let list = [];
+            for(let child of lsObj.subTree){
+                let denyPerms = "---";
+                if(pageRegistry[pathJoin(path, child.name)]) denyPerms = "--x";
+                
+                let modStr = new Date(lsObj.modified).toISOString().split("T")[0];
+                list.push([`${child.constructor === Directory ? "d" : "-"}${child.permission === "allow" ? "rwx" : denyPerms}    ${modStr}    ${child.name}`, child.name]);
+            }
+            
+            list.sort((a, b) => a[1].localeCompare(b[1]));
+
+            lsStr = "Directory Contents\n--------------------\n";
+
+            for(let entry of list)
+                lsStr += entry[0]+"\n";
+        }
+        else {
+            let denyPerms = "---";
+            if(pageRegistry[pathJoin(path, child.name)]) denyPerms = "--x";
+            let modStr = new Date(lsObj.modified).toISOString().split("T")[0];
+            lsStr = "File Information\n--------------------\n"+
+                `-${lsObj.permission === "allow" ? "rwx" : denyPerms}    ${modStr}    ${obj.name}`;
+        }
+        return lsStr+"\n";
     }
 
     static cat = (args) => {
@@ -307,79 +337,81 @@ class Commands {
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
-        if(pageRegistry[args[0]])
-            window.open(args[0].substring(args[0].lastIndexOf("/")+1).replace(".html", ""), '_self', false);
+        let pagePath = this.resolvePath(args[0]);
+        console.log(pageRegistry, pagePath);
+        if(pageRegistry[pagePath]){
+            let relPath = pagePath.replace(PUBLIC_FOLDER, "");
+            window.open(relPath.replace(".html", ""), '_self', false);
+        }
         else throw new Error(`Cannot open ${args[0]}.  This is not a valid page!`);
+
+        return "";
     }
 
     static color = (args) => {
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
-        if(args[0].match(/#[0-9|a-f|A-F]{6}/))
+        if(args[0].match(/#[0-9|a-f|A-F]{6}/) || args[0].match(/#[0-9|a-f|A-F]{3}/))
             this.ENV.color = args[0]
         else throw new Error(`${args[0]} is not a valid color!`);
 
         return `Set terminal color to ${args[0]}\n`;
     }
 
-    static exit = () => {
+    static exit = (args) => {
         closeTerminal();
         document.getElementById("terminalOutput").innerText = "";
 
         this.ENV.closed = true;
         this.ENV.closeTime = Date.now();
+
+        return "";
     }
 
-    static dir = () => {
+    static dir = (args) => {
         return "Unknown command: 'dir' (Wrong OS)\n";
     }
 
-    static mir = () => {
+    static mir = (args) => {
         return "Unknown command: 'mir' (Like 'dir' or the space station?)\n";
     }
 
-    static launch = () => {
+    static launch = (args) => {
         let valResult = this.validateArgs(args, {nargs: [3]});
         if(valResult) return valResult;
 
         return "Insufficient permissions to cause armageddon (Did you try 'sudo'?)\n";
     }
 
-    static sudo = () => {
-        let valResult = this.validateArgs(args, {nargs: [1]});
-        if(valResult) return valResult;
-
+    static sudo = (args) => {
         return "Sudo is just bloat (Maybe try 'doas'?)\n";
     }
 
-    static doas = () => {
-        let valResult = this.validateArgs(args, {nargs: [1]});
-        if(valResult) return valResult;
-
+    static doas = (args) => {
         return "Did you mean to type 'does'?\n";
     }
 
-    static haltingproblem = () => {
+    static haltingproblem = (args) => {
         haltingProblem();
         return "\n\n";
     }
 
-    static eightball = () => {
+    static eightball = (args) => {
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
         return eightBall()+"\n";
     }
 
-    static neofetch = () => {
+    static neofetch = (args) => {
         let valResult = this.validateArgs(args, {nargs: [0]});
         if(valResult) return valResult;
 
         return neofetch.replace(new RegExp(' ', 'g'), '\u00A0')+"\n";
     }
 
-    static whoami = () => {
+    static whoami = (args) => {
         let valResult = this.validateArgs(args, {nargs: [0]});
         if(valResult) return valResult;
 
@@ -397,8 +429,17 @@ function parseCommand(commandString, env){
 
     if(!command) return {result: "", env: Commands.ENV};
 
-    return {result: commandString+"\n"+Commands[command](args), env: Commands.ENV};
+    let result;
+    try{
+        let commandFunc = Commands[command];
+        if(!commandFunc) throw new Error(command+": command not found");
+
+        result = {result: commandString+"\n"+commandFunc(args), env: Commands.ENV};
+    }catch(e){
+        result = {result: commandString+"\n"+e.message, env: Commands.ENV};
+    }
+    return result;
 }
 
 
-export {resolvePath, parseCommand, HOME, closeTerminal};
+export {resolvePath, parseCommand, HOME_FOLDER as HOME, closeTerminal};

@@ -1,22 +1,17 @@
-var pathlib = require('path');
-
-function resolvePath(cwd, path){
-    if(!path) path = "";
-    if(path.length < 1 || path[0] !== "/") path = pathlib.join(cwd, path);
-    let pathArr = [];
-    let splitPath = path.split("/");
-    for(let i in splitPath){
-        if(!splitPath[i] || splitPath[i] === ".") continue;
-
-        if(splitPath[i] === ".."){
-            if(pathArr.length === 0) return undefined;
-
-            pathArr.pop();
-            continue;
+function pathJoin(...paths) {
+    let totalPath = [];
+    for(let path of paths){
+        if(path[0] === "/") totalPath = [''];
+        let split = path.split('/');
+        for(let elem of split){
+            if (elem === '.' || (elem === ''));
+            else if (elem === '..') totalPath.pop();
+            else totalPath.push(elem);
         }
-        pathArr.push(splitPath[i]);
     }
-    return pathlib.join("/", ...pathArr);
+    if(totalPath.length === 1 && totalPath[0] === "") totalPath.push('');
+    return totalPath.join('/').replace("//", "/");
 }
 
+console.log(pathJoin("/home/guest", ".."));
 console.log();
