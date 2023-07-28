@@ -112,13 +112,16 @@ async function haltingProblem(){
 }
 
 function eightBall(){
-    let responses = ["It is certain", "Without a doubt", "Yes definitely", "You may rely on it",
-        "Most likely", "Outlook microsoft", "Signs point to yes", "Hmmmmm...", "Reply hazy, try again",
+    let responses = [
+        "It is certain", "Without a doubt", "Yes definitely", "You may rely on it",
+        "Most likely", "Outlook not installed", "Signs point to yes", "Hmmmmm...", "Reply hazy, try again",
         "Ask again later", "404, response not found", "Better not tell you now", "Cannot predict now",
-        "Enrich 95% Uranium 235 and try again", "Don't count on it", "My reply is no", 
+        "Enrich 95% Uranium 235 and try again", "Don't count on it", "My reply is no", "have you tried sudo?",
         "My sources say no [citation needed]", "Outlook not so good", "Very doubtful", "503, oh no thats not good!", 
         "Huh?", "What?", "Can you speak up?", "Segmentation fault (core dumped)", "Han shot first",
-        "Have you tried water-scrum-fall?", "Have you tried turning it off and turning it on again?"];
+        "Have you tried water-scrum-fall?", "Have you tried turning it off and turning it on again?",
+        "Survey says: no",
+    ];
     let result = Math.floor(Math.random()*responses.length);
     return responses[result];
 }
@@ -252,7 +255,7 @@ class Commands {
         let valResult = this.validateArgs(args, {nargs: [0]});
         if(valResult) return valResult;
 
-        return this.ENV.cwd+"\n";
+        return this.ENV.cwd;
     }
 
     static help = (args) => {
@@ -262,7 +265,7 @@ class Commands {
         if(args.length > 0 && (args[0] === "-f" || args[1] === "--force"))
             return helpMsg+"\n"+forceHelp+"\n";
 
-        return helpMsg+"\n";
+        return helpMsg;
     }
 
     static cd = (args) => {
@@ -306,7 +309,8 @@ class Commands {
                 if(pageRegistry[pathJoin(path, child.name)]) denyPerms = "--x";
                 
                 let modStr = new Date(lsObj.modified).toISOString().split("T")[0];
-                list.push([`${child.constructor === Directory ? "d" : "-"}${child.permission === "allow" ? "rwx" : denyPerms}    ${modStr}    ${child.name}`, child.name]);
+                list.push([`${child.constructor === Directory ? "d" : "-"}`+
+                    `${child.permission === "allow" ? "rwx" : denyPerms}\xa0\xa0\xa0\xa0${modStr}\xa0\xa0\xa0\xa0${child.name}`, child.name]);
             }
             
             list.sort((a, b) => a[1].localeCompare(b[1]));
@@ -318,19 +322,19 @@ class Commands {
         }
         else {
             let denyPerms = "---";
-            if(pageRegistry[pathJoin(path, child.name)]) denyPerms = "--x";
+            if(pageRegistry[path]) denyPerms = "--x";
             let modStr = new Date(lsObj.modified).toISOString().split("T")[0];
             lsStr = "File Information\n--------------------\n"+
-                `-${lsObj.permission === "allow" ? "rwx" : denyPerms}    ${modStr}    ${obj.name}`;
+                `-${lsObj.permission === "allow" ? "rwx" : denyPerms}\xa0\xa0\xa0\xa0${modStr}\xa0\xa0\xa0\xa0${lsObj.name}`;
         }
-        return lsStr+"\n";
+        return lsStr;
     }
 
     static cat = (args) => {
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
-        return masterFileSystem.readText(args[0])+"\n";
+        return masterFileSystem.readText(this.resolvePath(args[0]));
     }
 
     static open = (args) => {
@@ -356,7 +360,7 @@ class Commands {
             this.ENV.color = args[0]
         else throw new Error(`${args[0]} is not a valid color!`);
 
-        return `Set terminal color to ${args[0]}\n`;
+        return `Set terminal color to ${args[0]}`;
     }
 
     static exit = (args) => {
@@ -370,52 +374,57 @@ class Commands {
     }
 
     static dir = (args) => {
-        return "Unknown command: 'dir' (Wrong OS)\n";
+        return "'dir: command not found (Wrong OS)";
     }
 
     static mir = (args) => {
-        return "Unknown command: 'mir' (Like 'dir' or the space station?)\n";
+        return "mir: command not found (Like 'dir' or the space station?)";
     }
 
     static launch = (args) => {
         let valResult = this.validateArgs(args, {nargs: [3]});
         if(valResult) return valResult;
 
-        return "Insufficient permissions to cause armageddon (Did you try 'sudo'?)\n";
+        return "Insufficient permissions to cause armageddon (Did you try 'sudo'?)";
     }
 
     static sudo = (args) => {
-        return "Sudo is just bloat (Maybe try 'doas'?)\n";
+        return "sudo is just bloat (Maybe try 'doas'?)";
     }
 
     static doas = (args) => {
-        return "Did you mean to type 'does'?\n";
+        return "Did you mean to type 'does'?";
     }
 
     static haltingproblem = (args) => {
         haltingProblem();
-        return "\n\n";
+        return "";
     }
 
     static eightball = (args) => {
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
-        return eightBall()+"\n";
+        return eightBall();
     }
 
     static neofetch = (args) => {
         let valResult = this.validateArgs(args, {nargs: [0]});
         if(valResult) return valResult;
 
-        return neofetch.replace(new RegExp(' ', 'g'), '\u00A0')+"\n";
+        return neofetch.replace(new RegExp(' ', 'g'), '\u00A0');
     }
 
     static whoami = (args) => {
         let valResult = this.validateArgs(args, {nargs: [0]});
         if(valResult) return valResult;
 
-        return "guest\n";
+        return "guest";
+    }
+
+    static void = (args) => {
+        toVoid();
+        return "";
     }
 
 }
@@ -429,16 +438,30 @@ function parseCommand(commandString, env){
 
     if(!command) return {result: "", env: Commands.ENV};
 
-    let result;
+    let outPath = undefined;
+    if(args.includes(">")){
+        if(args.indexOf(">") === args.length-1)
+            throw new Error("You must include a file to write to!");
+
+        outPath = resolvePath(env.cwd, args.slice(args.indexOf(">")+1)[0]);
+
+        args = args.slice(0, args.indexOf(">"))
+    }
+
+    let cmdOutput;
     try{
         let commandFunc = Commands[command];
         if(!commandFunc) throw new Error(command+": command not found");
 
-        result = {result: commandString+"\n"+commandFunc(args), env: Commands.ENV};
-    }catch(e){
-        result = {result: commandString+"\n"+e.message, env: Commands.ENV};
-    }
-    return result;
+        cmdOutput = {result: commandFunc(args), env: Commands.ENV};
+
+        if(outPath){
+            masterFileSystem.writeText(outPath, cmdOutput.result);
+            cmdOutput.result = "";
+        }
+    }catch(e){cmdOutput = {result: e.message, env: Commands.ENV};}
+
+    return cmdOutput;
 }
 
 

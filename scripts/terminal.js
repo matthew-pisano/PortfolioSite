@@ -77,7 +77,7 @@ const TerminalDiv = () => {
             const {result: result, env: newEnv} = parseCommand(command, ENV);
             setENV(newEnv);
 
-            terminalOutput.innerText += "\n"+prompt+result;
+            terminalOutput.innerText += "\n"+prompt+command+"\n"+result+"\n";
         }
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
     };

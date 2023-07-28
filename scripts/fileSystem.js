@@ -176,6 +176,8 @@ class FileSystem {
 
     writeText(path, text) {
         let file = this._navHierarchy(path);
+        if(file.constructor === Directory) throw new Error(`Cannot write to directory at ${path}!`);
+
         if(!file) file = this.touch(path);
 
         if(file.permission !== "allow") throw new Error(`Cannot write to ${path}.  Permission denied!`);
@@ -189,6 +191,7 @@ class FileSystem {
 
     appendText(path, text) {
         let file = this._navHierarchy(path);
+        if(file.constructor === Directory) throw new Error(`Cannot write to directory at ${path}!`);
 
         if(!file) throw new Error(`Cannot append to file.  File at ${path} does not exist!`);
         if(file.permission !== "allow") throw new Error(`Cannot write to ${path}.  Permission denied!`);
@@ -202,6 +205,7 @@ class FileSystem {
 
     readText(path) {
         let file = this._navHierarchy(path);
+        if(file.constructor === Directory) throw new Error(`Cannot read from directory at ${path}!`);
 
         if(!file) throw new Error(`Cannot read from file.  File at ${path} does not exist!`);
         if(file.permission !== "allow") throw new Error(`Cannot read from ${path}.  Permission denied!`);
