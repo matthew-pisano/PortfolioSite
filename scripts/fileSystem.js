@@ -81,6 +81,11 @@ class FileSystem {
     }
 
     update() {
+        if(typeof window !== 'undefined') localStorage.setItem("hierarchy", JSON.stringify({
+            pageRegistry: pageRegistry,
+            hierarchy: this.hierarchy
+        }));
+
         this.lastUpdateTime = Date.now();
         for(let callback of this.callbacks)
             callback(this.lastUpdateTime);
@@ -321,14 +326,20 @@ if (typeof window === 'undefined') {
         {hierarchy: masterFileSystem.hierarchy.constructor.toDict(masterFileSystem.hierarchy), pageRegistry: pageRegistry}
     );
 }
-else{
+else {
     let dehydrateElem = document.getElementById("dehydrateInfo");
     dehydrateInfo = dehydrateElem.innerText;
     let hydratedInfo = JSON.parse(dehydrateElem.innerText);
-    // dehydrateElem.remove();
     
     pageRegistry = hydratedInfo.pageRegistry;
     masterFileSystem = new FileSystem(Directory.fromDict(hydratedInfo.hierarchy));
 }
 
-export {pageRegistry, masterFileSystem, FileSystem, Directory, File, dehydrateInfo, pathJoin};
+function setPageRegistry(newRegistry) { pageRegistry = newRegistry; }
+function setMasterFileSystem(hierarchyDict, copyCallbacks=true) {
+    let newMaster = new FileSystem(Directory.fromDict(hierarchyDict));
+    if(copyCallbacks) newMaster.callbacks = masterFileSystem.callbacks;
+    masterFileSystem = newMaster;
+}
+
+export {pageRegistry, masterFileSystem, FileSystem, Directory, File, dehydrateInfo, pathJoin, setPageRegistry, setMasterFileSystem};

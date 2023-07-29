@@ -161,12 +161,33 @@ function tokenizeCommand(command){
     return tokens;
 }
 
+function resolveTokens(tokens) {
+    for(let i=0; i<tokens.length; i++) {
+        if(tokens[i][0] === "$") {
+            let envVar = Commands.ENV[tokens[i].substring(1)]
+            tokens[i] = envVar ? envVar : "";
+        }
+        if(i==0 && tokens[i].includes("=")) {
+            let assignTokens = tokens[i].split("=");
+            if(!assignTokens[0]) throw new Error("Assignment requires a variable name before '='!");
+            else if(assignTokens[0][0] === "$") throw new Error("Assignment requires naked variables (no '$')!");
+            else if(!assignTokens[1]) delete Commands.ENV[assignTokens[0]];
+            else Commands.ENV[assignTokens[0]] = assignTokens[1];
+
+            tokens.splice(i, 1);
+            i --;
+            continue;
+        }
+    }
+    console.log("Out tokens", tokens);
+}
+
 
 class Commands {
 
     static ENV = {};
 
-    static resolvePath(path) {return resolvePath(this.ENV.cwd, path);}
+    static resolvePath(path) {return resolvePath(this.ENV.CWD, path);}
 
     static validateArgs(args, val) {
         if(val.nargs !== undefined &&  !val.nargs.includes(args.length)) 
@@ -255,7 +276,7 @@ class Commands {
         let valResult = this.validateArgs(args, {nargs: [0]});
         if(valResult) return valResult;
 
-        return this.ENV.cwd;
+        return this.ENV.CWD;
     }
 
     static help = (args) => {
@@ -274,7 +295,7 @@ class Commands {
         if(valResult) return valResult;
 
         if(args.length === 0){
-            this.ENV.cwd = HOME_FOLDER
+            this.ENV.CWD = HOME_FOLDER
             return "";
         }
         args[0] = this.resolvePath(args[0]);
@@ -287,7 +308,7 @@ class Commands {
         else if(targetItem.permission === "deny")
             throw new Error(`Cannot enter ${args[0]}.  Permission denied!`);
         
-        this.ENV.cwd = args[0];
+        this.ENV.CWD = args[0];
         return "";
     }
 
@@ -296,7 +317,7 @@ class Commands {
         let valResult = this.validateArgs(args, {nargs: [0, 1]});
         if(valResult) return valResult;
 
-        if(args.length === 0) args = [this.ENV.cwd];
+        if(args.length === 0) args = [this.ENV.CWD];
         
         let path = this.resolvePath(args[0]);
         let lsObj = masterFileSystem.getItem(path);
@@ -357,7 +378,7 @@ class Commands {
         if(valResult) return valResult;
 
         if(args[0].match(/#[0-9|a-f|A-F]{6}/) || args[0].match(/#[0-9|a-f|A-F]{3}/))
-            this.ENV.color = args[0]
+            this.ENV.COLOR = args[0]
         else throw new Error(`${args[0]} is not a valid color!`);
 
         return `Set terminal color to ${args[0]}`;
@@ -367,11 +388,18 @@ class Commands {
         closeTerminal();
         document.getElementById("terminalOutput").innerText = "";
 
-        this.ENV.closed = true;
-        this.ENV.closeTime = Date.now();
+        this.ENV.CLOSED = true;
+        this.ENV.CLOSE_TIME = Date.now();
 
         return "";
     }
+
+    static restart = (args) => {
+        window.location.reload();
+    }
+    static reboot = this.restart;
+    static reload = this.restart;
+    static refresh = this.restart;
 
     static dir = (args) => {
         return "'dir: command not found (Wrong OS)";
@@ -429,40 +457,51 @@ class Commands {
 
 }
 
-function parseCommand(commandString, env){
+function parseCommand(rawString, env){
     Commands.ENV = env;
 
-    let tokens = tokenizeCommand(commandString);
-    let command = tokens[0];
-    let args = tokens.slice(1)
+    let commandStrings = rawString.split(";");
+    let cmdOutput = {result: "", env: Commands.ENV};;
 
-    if(!command) return {result: "", env: Commands.ENV};
+    for(let commandString of commandStrings){
+        if(!commandString) continue;
 
-    let outPath = undefined;
-    if(args.includes(">")){
-        if(args.indexOf(">") === args.length-1)
-            throw new Error("You must include a file to write to!");
+        try{
+            let tokens = tokenizeCommand(commandString);
+            resolveTokens(tokens);
+            let command = tokens[0];
+            let args = tokens.slice(1)
 
-        outPath = resolvePath(env.cwd, args.slice(args.indexOf(">")+1)[0]);
+            if(!command) continue;
 
-        args = args.slice(0, args.indexOf(">"))
+            let outPath = undefined;
+
+            if(args.includes(">")){
+                if(args.indexOf(">") === args.length-1)
+                    throw new Error("You must include a file to write to!");
+
+                outPath = resolvePath(env.CWD, args.slice(args.indexOf(">")+1)[0]);
+
+                args = args.slice(0, args.indexOf(">"))
+            }
+
+            let commandFunc = Commands[command];
+            if(!commandFunc) throw new Error(command+": command not found");
+
+            let tmpOutput = commandFunc(args);
+
+            if(outPath)
+                masterFileSystem.writeText(outPath, tmpOutput);
+            else
+                cmdOutput.result += (cmdOutput.result ? "\n" : "") + tmpOutput;
+
+        }catch(e){cmdOutput.result += (cmdOutput.result ? "\n" : "") + e.message;}
+
+        cmdOutput.env = Commands.ENV;
     }
-
-    let cmdOutput;
-    try{
-        let commandFunc = Commands[command];
-        if(!commandFunc) throw new Error(command+": command not found");
-
-        cmdOutput = {result: commandFunc(args), env: Commands.ENV};
-
-        if(outPath){
-            masterFileSystem.writeText(outPath, cmdOutput.result);
-            cmdOutput.result = "";
-        }
-    }catch(e){cmdOutput = {result: e.message, env: Commands.ENV};}
 
     return cmdOutput;
 }
 
 
-export {resolvePath, parseCommand, HOME_FOLDER as HOME, closeTerminal};
+export {resolvePath, parseCommand, HOME_FOLDER, closeTerminal};

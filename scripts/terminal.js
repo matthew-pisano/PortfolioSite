@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { resolvePath, parseCommand, HOME, closeTerminal } from './terminalCommands';
+import { resolvePath, parseCommand, HOME_FOLDER, closeTerminal } from './terminalCommands';
 
 
 const TerminalDiv = () => {
@@ -9,19 +9,19 @@ const TerminalDiv = () => {
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
     const [commandIndex, setCommandIndex] = useState(-1);
-    const [ENV, setENV] = useState({cwd: HOME, color: "#ffffff", closed: true, closeTime: 0});
+    const [ENV, setENV] = useState({CWD: HOME_FOLDER, HOME: HOME_FOLDER, COLOR: "#ffffff", CLOSED: true, CLOSE_TIME: 0});
 
     let genPrompt = (cwd) => {
-        if(resolvePath(ENV.cwd, cwd) === HOME) cwd = "~";
+        if(resolvePath(ENV.CWD, cwd) === HOME_FOLDER) cwd = "~";
         return "["+cwd+"]$ ";
     };
 
-    const [prompt, setPrompt] = useState(genPrompt(HOME));
+    const [prompt, setPrompt] = useState(genPrompt(HOME_FOLDER));
 
     useEffect(() => {
-        setPrompt(genPrompt(ENV.cwd));
+        setPrompt(genPrompt(ENV.CWD));
 
-        document.getElementById("terminalHolder").style.color = ENV.color;
+        document.getElementById("terminalHolder").style.color = ENV.COLOR;
     });
 
     const dragStart = (e) => {
@@ -33,26 +33,26 @@ const TerminalDiv = () => {
     const resize = (e, heightOverride) => {
         let height = heightOverride ? heightOverride : initialSize + initialPos - e.clientY + 50;
         if(height > window.innerHeight - 80) height = window.innerHeight - 80;
-        console.log("Resizing terminal", height, ENV.closed, "max:", window.innerHeight);
+        console.log("Resizing terminal", height, ENV.CLOSED, "max:", window.innerHeight);
         if(height > 200){
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
             document.getElementById('terminalClose').style.visibility = "visible";
             document.getElementById('terminalInput').focus();
-            ENV.closed = false;
+            ENV.CLOSED = false;
             setENV(ENV);
         }
-        else if(ENV.closed){
+        else if(ENV.CLOSED){
             document.getElementById('terminal').style.height = `200px`;
             document.getElementById('terminalOutput').style.height = `130px`;
             document.getElementById('terminalBottom').style.visibility = "visible";
             document.getElementById('terminalClose').style.visibility = "visible";
-            ENV.closed = false;
+            ENV.CLOSED = false;
             setENV(ENV);
         }
         else {
-            ENV.closed = true;
+            ENV.CLOSED = true;
             setENV(ENV);
             closeTerminal();
         }
@@ -94,8 +94,6 @@ const TerminalDiv = () => {
                 setCommandIndex(commandIndex + 1);
                 newI ++;
             }
-            // console.log("Prev commands:", prevCommands, ", index:", prevCommands.length-1-newI);
-            // console.log("Loading command '"+prevCommands[prevCommands.length-1-newI]+"'");
             terminalInput.innerText = prevCommands[prevCommands.length-1-newI];
         }
         else if(e.code === "ArrowDown"){
@@ -115,9 +113,9 @@ const TerminalDiv = () => {
                 onDragEnd = {resize}
             />
             <div id='terminal' onClick={() => {
-                if(ENV.closed && Date.now() - ENV.closeTime > 500) resize(null, 210);
+                if(ENV.CLOSED && Date.now() - ENV.CLOSE_TIME > 500) resize(null, 210);
             }}>
-                <div><span>Terminal</span>
+                <div><span>/bin/mash</span>
                     <button id="terminalClose" className='w3-button' style={{float: "right", marginRight: "10px", visibility: "hidden"}}
                         onClick={() => closeTerminal()}>X</button></div>
                 <div id="terminalOutput" onClick={() => document.getElementById('terminalInput').focus()}></div>

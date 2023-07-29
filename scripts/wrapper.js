@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import * as common from './common';
-import { masterFileSystem, Directory, pageRegistry, dehydrateInfo } from './fileSystem';
+import { masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem } from './fileSystem';
 import { utimes } from 'fs';
 import TerminalDiv from './terminal';
 
@@ -44,14 +44,23 @@ function elementsFromTree(tree, path=""){
 const Wrapper = ({children, pageName}) => {
     const [explorerTree,   setExplorerTree] = useState(elementsFromTree(masterFileSystem.getItem("/home/guest/public/")));
 
-    useEffect(() => {
-        if(document.getElementById("dehydrateInfo")) document.getElementById("dehydrateInfo").remove();
-    }, []);
-
-
     masterFileSystem.registerCallback((updateTime) => {
         setExplorerTree(elementsFromTree(masterFileSystem.getItem("/home/guest/public/")));
     });
+
+    useEffect(() => {
+        if(document.getElementById("dehydrateInfo")) document.getElementById("dehydrateInfo").remove();
+        
+        let savedHierarchy = localStorage.getItem("hierarchy");
+        if(savedHierarchy) {
+            console.log("Loading saved hierarchy!");
+            let hydratedInfo = JSON.parse(savedHierarchy);
+            
+            setPageRegistry(hydratedInfo.pageRegistry);
+            setMasterFileSystem(hydratedInfo.hierarchy);
+            masterFileSystem.update();
+        }
+    }, []);
 
     function pageSize(){
         for(let key of Object.keys(pageRegistry))
