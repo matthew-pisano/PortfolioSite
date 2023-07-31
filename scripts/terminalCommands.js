@@ -202,6 +202,20 @@ class Commands {
         return echoed;
     }
 
+    static mkdir = (args) => {
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        let newPath = this.resolvePath(args[0]);
+        
+        if(masterFileSystem.exists(newPath))
+            throw new Error(`Directory ${newPath} already exists!`);
+            
+        // common.newFile(newName);
+        masterFileSystem.mkdir(newPath);
+        return "";
+    }
+
     static touch = (args) => {
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
@@ -321,32 +335,41 @@ class Commands {
         
         let path = this.resolvePath(args[0]);
         let lsObj = masterFileSystem.getItem(path);
+        let pad = "\xa0\xa0";
 
         let lsStr;
+
         if(lsObj.constructor === Directory){
             let list = [];
             for(let child of lsObj.subTree){
-                let denyPerms = "---";
-                if(pageRegistry[pathJoin(path, child.name)]) denyPerms = "--x";
+                if(child.constructor === File) {
+                    list.push([this.ls([pathJoin(path, child.name)]), child.name]);
+                    continue;
+                }
+
+                let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
+                modStr = modStr.substring(0, modStr.lastIndexOf(":"));
                 
-                let modStr = new Date(lsObj.modified).toISOString().split("T")[0];
-                list.push([`${child.constructor === Directory ? "d" : "-"}`+
-                    `${child.permission === "allow" ? "rwx" : denyPerms}\xa0\xa0\xa0\xa0${modStr}\xa0\xa0\xa0\xa0${child.name}`, child.name]);
+                let paddedSize = `${lsObj.size()}`.padStart(6, "");
+                list.push([`d${child.permission === "allow" ? "rwx" : "---"}${pad}${paddedSize}`+
+                        `${pad}${modStr}${pad}${child.name}`, child.name]);
             }
             
             list.sort((a, b) => a[1].localeCompare(b[1]));
 
-            lsStr = "Directory Contents\n--------------------\n";
+            lsStr = "total "+lsObj.subTree.length+"\n";
 
             for(let entry of list)
                 lsStr += entry[0]+"\n";
         }
         else {
-            let denyPerms = "---";
-            if(pageRegistry[path]) denyPerms = "--x";
-            let modStr = new Date(lsObj.modified).toISOString().split("T")[0];
-            lsStr = "File Information\n--------------------\n"+
-                `-${lsObj.permission === "allow" ? "rwx" : denyPerms}\xa0\xa0\xa0\xa0${modStr}\xa0\xa0\xa0\xa0${lsObj.name}`;
+            let denyPerms = "----";
+            if(pageRegistry[path]) denyPerms = "---x";
+            let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
+            modStr = modStr.substring(0, modStr.lastIndexOf(":"));
+            let paddedSize = `${lsObj.size()}`.padStart(6, "");
+            lsStr = `-${lsObj.permission === "allow" ? "rw-" : denyPerms}${pad}${paddedSize}`+
+                `${pad}${modStr}${pad}${lsObj.name}`;
         }
         return lsStr;
     }
