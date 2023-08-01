@@ -195,87 +195,15 @@ class Commands {
     }
 
     static echo = (args) => {
+        if(args[0] === "--help") return "echo [*msg] - echoes each of the arguments on a new line";
+
         let echoed = "";
         for(let i=0; i<args.length; i++) echoed += args[i]+"\n";
         return echoed;
     }
 
-    static mkdir = (args) => {
-        let valResult = this.validateArgs(args, {nargs: [1]});
-        if(valResult) return valResult;
-
-        let newPath = this.resolvePath(args[0]);
-        
-        if(masterFileSystem.exists(newPath))
-            throw new Error(`Directory ${newPath} already exists!`);
-            
-        // common.newFile(newName);
-        masterFileSystem.mkdir(newPath);
-        return "";
-    }
-
-    static touch = (args) => {
-        let valResult = this.validateArgs(args, {nargs: [1]});
-        if(valResult) return valResult;
-
-        let newPath = this.resolvePath(args[0]);
-        
-        if(masterFileSystem.exists(newPath))
-            throw new Error(`File ${newPath} already exists!`);
-            
-        // common.newFile(newName);
-        masterFileSystem.touch(newPath);
-        return "";
-    }
-
-    static cp = (args) => {
-        let valResult = this.validateArgs(args, {nargs: [2]});
-        if(valResult) return valResult;
-
-        let oldPath = this.resolvePath(args[0]);
-        let oldName = oldPath.substring(oldPath.lastIndexOf("/")+1);
-        let newPath = this.resolvePath(args[1]);
-
-        if(newPath === oldPath) throw new Error(`${oldPath} ${newPath} are at the same location!`);
-        
-        // let oldObj = masterFileSystem.getItem(oldPath);
-        let newObj = masterFileSystem.getItem(newPath);
-        
-        if(newObj && newObj.constructor === Directory) 
-            masterFileSystem.cp(oldPath, pathJoin(newPath, oldName));
-        else if(!newObj)
-            masterFileSystem.cp(oldPath, newPath);
-        else if(newObj && newObj.constructor === File)
-            throw new Error(`File at ${newPath} already exists!`);
-        else throw new Error(`Cannot copy directory at ${oldPath} to file at ${newPath}!`);
-
-        return "";
-    }
-
-    static mv = (args) => {
-        let valResult = this.validateArgs(args, {nargs: [2]});
-        if(valResult) return valResult;
-
-        this.cp(args);
-        
-        let oldPath = this.resolvePath(args[0]);
-        // let newPath = this.resolvePath(args[1]);
-        masterFileSystem.rm(oldPath);
-        return "";
-    }
-
-    static rm = (args) => {
-        let valResult = this.validateArgs(args, {nargs: [1]});
-        if(valResult) return valResult;
-
-        let fileName = this.resolvePath(args[0]);
-        masterFileSystem.rm(fileName);
-
-        return "";
-
-    }
-
     static cls = (args) => {
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [0]});
         if(valResult) return valResult;
 
@@ -285,6 +213,7 @@ class Commands {
     static clear = this.cls;
 
     static pwd = (args) => {
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [0]});
         if(valResult) return valResult;
 
@@ -292,6 +221,7 @@ class Commands {
     }
 
     static help = (args) => {
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [0, 1]});
         if(valResult) return valResult;
 
@@ -302,7 +232,7 @@ class Commands {
     }
 
     static cd = (args) => {
-
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [0, 1]});
         if(valResult) return valResult;
 
@@ -325,7 +255,7 @@ class Commands {
     }
 
     static ls = (args) => {
-
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [0, 1]});
         if(valResult) return valResult;
 
@@ -374,7 +304,88 @@ class Commands {
         return lsStr;
     }
 
+    static mkdir = (args) => {
+        if(args[0] === "--help") return "";
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        let newPath = this.resolvePath(args[0]);
+        
+        if(masterFileSystem.exists(newPath))
+            throw new Error(`Directory ${newPath} already exists!`);
+            
+        // common.newFile(newName);
+        masterFileSystem.mkdir(newPath);
+        return "";
+    }
+
+    static touch = (args) => {
+        if(args[0] === "--help") return "";
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        let newPath = this.resolvePath(args[0]);
+        
+        if(masterFileSystem.exists(newPath))
+            throw new Error(`File ${newPath} already exists!`);
+            
+        // common.newFile(newName);
+        masterFileSystem.touch(newPath);
+        return "";
+    }
+
+    static cp = (args) => {
+        if(args[0] === "--help") return "";
+        let valResult = this.validateArgs(args, {nargs: [2]});
+        if(valResult) return valResult;
+
+        let oldPath = this.resolvePath(args[0]);
+        let oldName = oldPath.substring(oldPath.lastIndexOf("/")+1);
+        let newPath = this.resolvePath(args[1]);
+
+        if(newPath === oldPath) throw new Error(`${oldPath} ${newPath} are at the same location!`);
+        
+        // let oldObj = masterFileSystem.getItem(oldPath);
+        let newObj = masterFileSystem.getItem(newPath);
+        
+        if(newObj && newObj.constructor === Directory) 
+            masterFileSystem.cp(oldPath, pathJoin(newPath, oldName));
+        else if(!newObj)
+            masterFileSystem.cp(oldPath, newPath);
+        else if(newObj && newObj.constructor === File)
+            throw new Error(`File at ${newPath} already exists!`);
+        else throw new Error(`Cannot copy directory at ${oldPath} to file at ${newPath}!`);
+
+        return "";
+    }
+
+    static mv = (args) => {
+        if(args[0] === "--help") return "";
+        let valResult = this.validateArgs(args, {nargs: [2]});
+        if(valResult) return valResult;
+
+        this.cp(args);
+        
+        let oldPath = this.resolvePath(args[0]);
+        // let newPath = this.resolvePath(args[1]);
+        masterFileSystem.rm(oldPath);
+        return "";
+    }
+
+    static rm = (args) => {
+        if(args[0] === "--help") return "";
+        let valResult = this.validateArgs(args, {nargs: [1]});
+        if(valResult) return valResult;
+
+        let fileName = this.resolvePath(args[0]);
+        masterFileSystem.rm(fileName);
+
+        return "";
+
+    }
+
     static cat = (args) => {
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
@@ -382,6 +393,7 @@ class Commands {
     }
 
     static open = (args) => {
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
@@ -397,6 +409,7 @@ class Commands {
     }
 
     static color = (args) => {
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
@@ -408,6 +421,7 @@ class Commands {
     }
 
     static exit = (args) => {
+        if(args[0] === "--help") return "";
         closeTerminal();
         document.getElementById("terminalOutput").innerText = "";
 
@@ -418,23 +432,28 @@ class Commands {
     }
 
     static restart = (args) => {
+        if(args[0] === "--help") return "";
         window.location.reload();
     }
 
     static reset = (args) => {
+        if(args[0] === "--help") return "";
         delete localStorage.hierarchy;
     }
     static nuke = this.reset;
 
     static dir = (args) => {
+        if(args[0] === "--help") return "";
         return "'dir: command not found (Wrong OS)";
     }
 
     static mir = (args) => {
+        if(args[0] === "--help") return "";
         return "mir: command not found (Like 'dir' or the space station?)";
     }
 
     static launch = (args) => {
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [3]});
         if(valResult) return valResult;
 
@@ -442,19 +461,23 @@ class Commands {
     }
 
     static sudo = (args) => {
+        if(args[0] === "--help") return "";
         return "sudo is just bloat (Maybe try 'doas'?)";
     }
 
     static doas = (args) => {
+        if(args[0] === "--help") return "";
         return "Did you mean to type 'does'?";
     }
 
     static haltingproblem = (args) => {
+        if(args[0] === "--help") return "";
         haltingProblem();
         return "";
     }
 
     static eightball = (args) => {
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [1]});
         if(valResult) return valResult;
 
@@ -462,6 +485,7 @@ class Commands {
     }
 
     static neofetch = (args) => {
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [0]});
         if(valResult) return valResult;
 
@@ -469,6 +493,7 @@ class Commands {
     }
 
     static whoami = (args) => {
+        if(args[0] === "--help") return "";
         let valResult = this.validateArgs(args, {nargs: [0]});
         if(valResult) return valResult;
 
@@ -476,6 +501,7 @@ class Commands {
     }
 
     static void = (args) => {
+        if(args[0] === "--help") return "";
         toVoid();
         return "";
     }

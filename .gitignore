@@ -30,3 +30,6 @@ yarn-error.log*
 .env.production.local
 
 .cert
+.vscode
+gimp
+next.lock
