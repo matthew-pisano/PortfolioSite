@@ -1,4 +1,5 @@
-class Constants{
+class Constants {
+
     static babbleTiles = null;
     static alpha(){
         let offset = 0;
@@ -15,6 +16,35 @@ class Constants{
     static resumeUrl = "https://lightsail-image-repo.s3.amazonaws.com/documents/Resume.pdf";
     
 }
+
+
+class SysEnv {
+    static HOME_FOLDER = "/home/guest";
+    static PUBLIC_FOLDER = "/home/guest/public";
+
+    static SHELL = "GRU mash, version 5.1.16(1)-release";
+    static ARCH = "x86_64-cloud-manix-gru";
+    static OS = "primOS 10.02.1";
+    static KERNEL = "7.05.01-server";
+}
+
+
+class Permissions {
+
+    static READ = "r";
+    static WRITE = "w";
+    static EXECUTE = "x";
+    static DENY = "---";
+    static ALLOW = this.READ + this.WRITE + this.EXECUTE;
+
+    static validate(permString) {
+        if(permString.length != 3) throw Error("Expected a permission string of length 3!");
+        if(![this.READ, "-"].includes(permString[0])) throw Error(`Expected '${this.READ}' or '-' at permissions[0]!`);
+        if(![this.WRITE, "-"].includes(permString[1])) throw Error(`Expected '${this.WRITE}' or '-' at permissions[1]!`);
+        if(![this.EXECUTE, "-"].includes(permString[2])) throw Error(`Expected '${this.EXECUTE}' or '-' at permissions[2]!`);
+    }
+}
+
 function randText(len){
     let randStr = "";
     while(randStr.length < len) randStr += Constants.alphabet[Math.floor(Math.random()*Constants.alphabet.length)];
@@ -54,4 +84,4 @@ async function babbleLoop() {
     console.log("Ending babble");
 }
 
-export {Constants, babbleLoop};
+export {Constants, babbleLoop, Permissions, SysEnv};

@@ -1,11 +1,9 @@
+import { Permissions as Perms, SysEnv } from './utils';
 import { Directory, File, masterFileSystem, pageRegistry, pathJoin } from './fileSystem';
 
 
-const HOME_FOLDER = "/home/guest";
-const PUBLIC_FOLDER = "/home/guest/public";
-
 const helpMsg = `--<Help Menu>--
-GRU mash, version 5.1.16(1)-release (x86_64-cloud-manix-gru)
+${SysEnv.SHELL} (${SysEnv.ARCH})
 These shell commands are defined internally.  Type 'help' to see this list.
 
 help [options] - print this message
@@ -37,12 +35,12 @@ eightball [query] - ${eightBall()}`;
 const neofetch = `
    lWMMMMMMMMMWl        lWMMMMMMMMMWl       guest@mathesisConsole
  ,;kWMMMMMMMMMWk;,,  ,,;kWMMMMMMMMMWk;,     ---------------------
-WWWMMMMMMMMMMMMMWWW  WWWMMMMMMMMMMMMMWWW    OS: primOS 10.02.1 x86_64-cloud-manix-gru
+WWWMMMMMMMMMMMMMWWW  WWWMMMMMMMMMMMMMWWW    OS: ${SysEnv.OS} ${SysEnv.ARCH}
 MMMMMMWKkkkKMMMMMMMMMMMMMMMMKkkkKWMMMMMM    Host: ████████
-MMMMMMWl   lWMMMMMMMMMMMMMMWl   lWMMMMMM    kernel: 7.05.01-server
+MMMMMMWl   lWMMMMMMMMMMMMMMWl   lWMMMMMM    kernel:${SysEnv.KERNEL}
 MMMMMMWl   ,xkkKMMMMMMMMKkkx,   lWMMMMMM    Uptime: █████
 MMMMMMWl       lWMMMMMMWl       lWMMMMMM    Packages: 443 (████), 24 (██)
-MMMMMMWl       ,xkkkkkkx,       lWMMMMMM    Shell: mash 5.1.16(1)-release
+MMMMMMWl       ,xkkkkkkx,       lWMMMMMM    Shell: ${SysEnv.SHELL}
 MMMMMMWl                        lWMMMMMM    Terminal: cloudTerminal
 MMMMMMWl       .,,,,,,,,.       lWMMMMMM    CPU: ██th Gen ██████ █-██
 MMMMMMWl       lNWWWWWWNl       lWMMMMMM    Memory: ██████TiB / ██████TiB
@@ -55,7 +53,7 @@ MMMMMMWl       lWM    MWl       lWMMMMMM
 
 function resolvePath(cwd, path){
     //console.log("Resolving", cwd, path);
-    if(path[0] === "~") path = path.replace("~", HOME_FOLDER);
+    if(path[0] === "~") path = path.replace("~", SysEnv.HOME_FOLDER);
     return pathJoin(cwd, path).replace("//", "/");
 }
 
@@ -309,7 +307,7 @@ class Commands {
         if(valResult) return valResult;
 
         if(args.length === 0){
-            this.ENV.CWD = HOME_FOLDER
+            this.ENV.CWD = SysEnv.HOME_FOLDER
             return "";
         }
         args[0] = this.resolvePath(args[0]);
@@ -317,9 +315,9 @@ class Commands {
         if(!targetItem) 
             throw new Error(`Cannot enter directory.  Directory at ${args[0]} does not exist!`);
         else if(targetItem.constructor === File)
-        throw new Error(`Cannot enter ${args[0]}, it is a file!`);
+            throw new Error(`Cannot enter ${args[0]}, it is a file!`);
 
-        else if(targetItem.permission === "deny")
+        else if(!targetItem.permission.includes(Perms.EXECUTE))
             throw new Error(`Cannot enter ${args[0]}.  Permission denied!`);
         
         this.ENV.CWD = args[0];
@@ -335,11 +333,15 @@ class Commands {
         
         let path = this.resolvePath(args[0]);
         let lsObj = masterFileSystem.getItem(path);
+        if(!lsObj) throw new Error(`Cannot list file or directory.  File or directory at ${args[0]} does not exist!`);
+
         let pad = "\xa0\xa0";
 
         let lsStr;
 
         if(lsObj.constructor === Directory){
+            if(!lsObj.permission.includes(Perms.READ)) throw new Error(`Cannot list ${path}.  Permission denied!`);
+
             let list = [];
             for(let child of lsObj.subTree){
                 if(child.constructor === File) {
@@ -349,10 +351,9 @@ class Commands {
 
                 let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
                 modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-                
                 let paddedSize = `${lsObj.size()}`.padStart(6, "");
-                list.push([`d${child.permission === "allow" ? "rwx" : "---"}${pad}${paddedSize}`+
-                        `${pad}${modStr}${pad}${child.name}`, child.name]);
+
+                list.push([`d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${child.name}`, child.name]);
             }
             
             list.sort((a, b) => a[1].localeCompare(b[1]));
@@ -363,13 +364,12 @@ class Commands {
                 lsStr += entry[0]+"\n";
         }
         else {
-            let denyPerms = "----";
-            if(pageRegistry[path]) denyPerms = "---x";
             let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
             modStr = modStr.substring(0, modStr.lastIndexOf(":"));
             let paddedSize = `${lsObj.size()}`.padStart(6, "");
-            lsStr = `-${lsObj.permission === "allow" ? "rw-" : denyPerms}${pad}${paddedSize}`+
-                `${pad}${modStr}${pad}${lsObj.name}`;
+            if(!lsObj.permission.includes(Perms.READ)) paddedSize = "?".padStart(6, "")
+
+            lsStr = `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${lsObj.name}`;
         }
         return lsStr;
     }
@@ -388,7 +388,7 @@ class Commands {
         let pagePath = this.resolvePath(args[0]);
         console.log(pageRegistry, pagePath);
         if(pageRegistry[pagePath]){
-            let relPath = pagePath.replace(PUBLIC_FOLDER, "");
+            let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
             window.open(relPath.replace(".html", ""), '_self', false);
         }
         else throw new Error(`Cannot open ${args[0]}.  This is not a valid page!`);
@@ -420,9 +420,11 @@ class Commands {
     static restart = (args) => {
         window.location.reload();
     }
-    static reboot = this.restart;
-    static reload = this.restart;
-    static refresh = this.restart;
+
+    static reset = (args) => {
+        delete localStorage.hierarchy;
+    }
+    static nuke = this.reset;
 
     static dir = (args) => {
         return "'dir: command not found (Wrong OS)";
@@ -527,4 +529,4 @@ function parseCommand(rawString, env){
 }
 
 
-export {resolvePath, parseCommand, HOME_FOLDER, closeTerminal};
+export {resolvePath, parseCommand, closeTerminal};

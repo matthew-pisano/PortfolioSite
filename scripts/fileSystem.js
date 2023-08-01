@@ -1,3 +1,5 @@
+import { Permissions as Perms } from './utils';
+
 let pageRegistry = {};
 
 
@@ -20,7 +22,10 @@ function pathJoin(...paths) {
 
 class File {
 
-    constructor(name, text = "", permission = "allow") {
+    constructor(name, text = "", permission = Perms.ALLOW) {
+
+        Perms.validate(permission);
+
         this.name = name;
         this.text = text
         this.permission = permission;
@@ -41,7 +46,10 @@ class File {
 
 class Directory {
 
-    constructor(name, subTree = null, permission = "allow") {
+    constructor(name, subTree = null, permission = Perms.ALLOW) {
+
+        Perms.validate(permission);
+
         this.name = name.replace(/\//g, "");
         this.subTree = subTree ? subTree : [];
         this.permission = permission;
@@ -104,7 +112,8 @@ class FileSystem {
         let childName = path.substring(path.lastIndexOf("/") + 1);
         let parent = this._navHierarchy(parentPath);
 
-        if (parent.permission !== "allow") throw new Error(`Cannot make directory under ${parentPath}.  Permission denied!`);
+        if (!parent.permission.includes(Perms.WRITE))
+            throw new Error(`Cannot make directory under ${parentPath}.  Permission denied!`);
 
         let childDir = new Directory(childName);
         parent.subTree.push(childDir);
@@ -113,7 +122,7 @@ class FileSystem {
         return childDir
     }
 
-    touch(path, permission = "allow") {
+    touch(path, permission = Perms.ALLOW) {
 
         if (this.exists(path)) throw new Error(`Cannot create file.  File at ${path} already exists!`);
 
@@ -121,7 +130,8 @@ class FileSystem {
         let childName = path.substring(path.lastIndexOf("/") + 1);
         let parent = this._navHierarchy(parentPath);
 
-        if (parent.permission !== "allow") throw new Error(`Cannot make file under ${parentPath}.  Permission denied!`);
+        if (!parent.permission.includes(Perms.WRITE))
+            throw new Error(`Cannot make file under ${parentPath}.  Permission denied!`);
 
         let childFile = new File(childName, "", permission);
         parent.subTree.push(childFile);
@@ -131,16 +141,20 @@ class FileSystem {
     }
 
     cp(oldPath, newPath) {
-        if (!this.exists(oldPath)) throw new Error(`Cannot copy file or directory.  File or directory at ${path} does not exist!`);
+        if (!this.exists(oldPath))
+            throw new Error(`Cannot copy file or directory.  File or directory at ${path} does not exist!`);
 
         let newParentPath = newPath.substring(0, newPath.lastIndexOf("/") + 1);
         let newChildName = newPath.substring(newPath.lastIndexOf("/") + 1);
-        if (!this.exists(newParentPath)) throw new Error(`Cannot copy to directory.  Directory at ${path} does not exist!`);
+        if (!this.exists(newParentPath))
+            throw new Error(`Cannot copy to directory.  Directory at ${path} does not exist!`);
         let newParentObj = this._navHierarchy(newParentPath);
         let oldObj = this._navHierarchy(oldPath);
 
-        if (newParentObj.permission !== "allow") throw new Error(`Cannot make copy to ${newParentPath}.  Permission denied!`);
-        if (oldObj.permission !== "allow") throw new Error(`Cannot make copy from ${oldPath}.  Permission denied!`);
+        if (!newParentObj.permission.includes(Perms.WRITE))
+            throw new Error(`Cannot make copy to ${newParentPath}.  Permission denied!`);
+        if (!oldObj.permission.includes(Perms.READ))
+            throw new Error(`Cannot make copy from ${oldPath}.  Permission denied!`);
 
 
         let copied;
@@ -156,7 +170,8 @@ class FileSystem {
 
     rm(path) {
 
-        if (!this.exists(path)) throw new Error(`Cannot remove file or directory.  File or directory at ${path} does not exist!`);
+        if (!this.exists(path))
+            throw new Error(`Cannot remove file or directory.  File or directory at ${path} does not exist!`);
 
         let parentPath = path.substring(0, path.lastIndexOf("/") + 1);
         let childName = path.substring(path.lastIndexOf("/") + 1);
@@ -165,7 +180,8 @@ class FileSystem {
         for (let i in parentDir.subTree) {
             let target = parentDir.subTree[i];
             if (target.name === childName) {
-                if (target.permission !== "allow") throw new Error(`Cannot remove ${path}.  Permission denied!`);
+                if (!target.permission.includes(Perms.WRITE))
+                    throw new Error(`Cannot remove ${path}.  Permission denied!`);
 
                 if (target.constructor === Directory)
                     for (let child of target.subTree)
@@ -181,10 +197,6 @@ class FileSystem {
 
     getItem(path) {
         let obj = this._navHierarchy(path);
-
-        if (!obj) throw new Error(`Cannot list file or directory.  File or directory at ${path} does not exist!`);
-        if (obj.permission !== "allow") throw new Error(`Cannot list ${path}.  Permission denied!`);
-
         return obj;
     }
 
@@ -194,7 +206,8 @@ class FileSystem {
 
         if (!file) file = this.touch(path);
 
-        if (file.permission !== "allow") throw new Error(`Cannot write to ${path}.  Permission denied!`);
+        if (!file.permission.includes(Perms.WRITE))
+            throw new Error(`Cannot write to ${path}.  Permission denied!`);
 
         file.text = text;
         file.modified = Date.now();
@@ -208,7 +221,8 @@ class FileSystem {
         if (file.constructor === Directory) throw new Error(`Cannot write to directory at ${path}!`);
 
         if (!file) throw new Error(`Cannot append to file.  File at ${path} does not exist!`);
-        if (file.permission !== "allow") throw new Error(`Cannot write to ${path}.  Permission denied!`);
+        if (!file.permission.includes(Perms.WRITE))
+            throw new Error(`Cannot write to ${path}.  Permission denied!`);
 
         file.text += text;
         file.modified = Date.now();
@@ -222,7 +236,8 @@ class FileSystem {
         if (file.constructor === Directory) throw new Error(`Cannot read from directory at ${path}!`);
 
         if (!file) throw new Error(`Cannot read from file.  File at ${path} does not exist!`);
-        if (file.permission !== "allow") throw new Error(`Cannot read from ${path}.  Permission denied!`);
+        if (!file.permission.includes(Perms.READ))
+            throw new Error(`Cannot read from ${path}.  Permission denied!`);
 
         return file.text;
     }
@@ -274,18 +289,18 @@ let initialHierarchy = new Directory("", [
                 ])
             ])
         ]),
-        new Directory("admin", [], "deny"),
+        new Directory("admin", [], Perms.DENY),
     ]),
-    new Directory("bin", [], "deny"),
-    new Directory("boot", [], "deny"),
-    new Directory("dev", [], "deny"),
-    new Directory("etc", [], "deny"),
-    new Directory("lib", [], "deny"),
-    new Directory("mnt", [], "deny"),
-    new Directory("opt", [], "deny"),
-    new Directory("proc", [], "deny"),
-    new Directory("usr", [], "deny"),
-    new Directory("var", [], "deny"),
+    new Directory("bin", [], Perms.DENY),
+    new Directory("boot", [], Perms.DENY),
+    new Directory("dev", [], Perms.DENY),
+    new Directory("etc", [], Perms.DENY),
+    new Directory("lib", [], Perms.DENY),
+    new Directory("mnt", [], Perms.DENY),
+    new Directory("opt", [], Perms.DENY),
+    new Directory("proc", [], Perms.DENY),
+    new Directory("usr", [], Perms.DENY),
+    new Directory("var", [], Perms.DENY),
 ])
 
 /** The master file system of the program
@@ -314,7 +329,7 @@ if (typeof window === 'undefined') {
 
                 if (fileName[0] !== "_") {
                     pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = { name: fileName + ".html", size: size };
-                    masterFileSystem.touch(pathJoin(hierarchyPath, fileName + ".html"), "deny");
+                    masterFileSystem.touch(pathJoin(hierarchyPath, fileName + ".html"), "--"+Perms.EXECUTE);
                 }
             }
         }

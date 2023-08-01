@@ -101,10 +101,10 @@ const Wrapper = ({children, pageName}) => {
                         <button id="renameAction" className="w3-button lightText menuDropItem"
                             onClick={() => {common.$("#editDropdown").fadeOut();}}>Rename</button>
                     </div>
-                    <div id="helpDropdown" className="menuDropdown w3-col"
-                        onClick={() => common.showPage("help")}>
+                    <div id="helpDropdown" className="menuDropdown w3-col">
                     
-                    <button id="helpAction" className="w3-button lightText menuDropItem">help.html</button>
+                        <button id="helpAction" className="w3-button lightText menuDropItem"
+                            onClick={() => common.showPage("help")}>help.html</button>
                         <a className="lightText menuDropItem" style={{display: "block"}} href='https://github.com/matthew-pisano/PortfolioSite#readme' 
                             target={"_blank"} rel="noreferrer">README</a>
                     </div>

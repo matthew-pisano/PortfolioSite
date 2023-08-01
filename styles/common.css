@@ -58,6 +58,7 @@ html,body {
 #terminal{
     border: 1px solid black; 
     height: 30px;
+    cursor: text;
 }
 #terminalThumb{
     background: #838383;
@@ -123,7 +124,7 @@ html,body {
 #menuDropHolder {
     display: table; 
     position: fixed;
-    top: 40px;
+    top: 27px;
     z-index: 3;
 }
 .menuDropdown {
