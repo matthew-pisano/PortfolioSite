@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { buildPage } from '../scripts/pageBuilder';
+import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import { Wrapper } from '../scripts/wrapper';
-import { buildPage } from '../scripts/pageBuilder';
+import { Wrapper } from '../../scripts/wrapper';
 
 class SCP extends Component {
 
@@ -25,7 +24,7 @@ class SCP extends Component {
                     <span style="color: black">██████████████</span> research division of Mathesis International, 
                     <span style="color: black">███████ █████ ██████████████████████████</span>.
                     <span style="color: black">██████████████████████ ████████████████ █████████████████ ██████████ ███████ ███████████</span> after
-                    the initial incident.  Researcher L<span style="color: black">███████</span> Williams <span style="color: black">████████</span>.
+                    the initial incident.  Researcher L<span style="color: black">███████</span> P█████ <span style="color: black">████████</span>.
                     <span style="color: black">██████████</span>, is a <span style="color: black">█████████████████████████████ ███████████
                     █████████████████████████ ███████████████████████</span> and <span style="color: black">█████████████████████ ████████████████████████
                     ███████████ ████████████████████ █████████████████████ ██████████████ ███████████████████████</span>.`,

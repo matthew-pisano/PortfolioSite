@@ -6,6 +6,7 @@
     "start": "cp styles/* public/css/; next start"
   },
   "dependencies": {
+    "eslint-plugin-react": "^7.33.1",
     "fs": "^0.0.1-security",
     "html-react-parser": "^3.0.16",
     "jquery": "^3.7.0",

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import {Constants} from '../../scripts/utils';
 import {Wrapper} from '../../scripts/wrapper';
 
@@ -20,6 +19,6 @@ const Resume = () => {
             </div>
         </div>
     </Wrapper>);
-}
+};
 
 export default Resume;

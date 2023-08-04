@@ -19,6 +19,7 @@ class Constants {
 
 
 class SysEnv {
+
     static HOME_FOLDER = "/home/guest";
     static PUBLIC_FOLDER = "/home/guest/public";
 
@@ -38,12 +39,13 @@ class Permissions {
     static ALLOW = this.READ + this.WRITE + this.EXECUTE;
 
     static validate(permString) {
-        if(permString.length != 3) throw Error("Expected a permission string of length 3!");
+        if(permString.length !== 3) throw Error("Expected a permission string of length 3!");
         if(![this.READ, "-"].includes(permString[0])) throw Error(`Expected '${this.READ}' or '-' at permissions[0]!`);
         if(![this.WRITE, "-"].includes(permString[1])) throw Error(`Expected '${this.WRITE}' or '-' at permissions[1]!`);
         if(![this.EXECUTE, "-"].includes(permString[2])) throw Error(`Expected '${this.EXECUTE}' or '-' at permissions[2]!`);
     }
 }
+
 
 function randText(len){
     let randStr = "";
@@ -53,6 +55,8 @@ function randText(len){
 let grayState = 30;
 let grayDirection = 2;
 let redBias = Math.log(grayState)+20;
+
+
 async function babbler(){
     if(!Constants.babbleTiles) return;
     let radii = ["10px", "20px", "50px", "75px"];
@@ -64,7 +68,8 @@ async function babbler(){
         if(!contentElem.classList.contains("forceWrap")) contentElem.classList.add("forceWrap");
         titleElem.innerHTML = randText(Math.floor(Math.random()*20)+10);
         contentElem.innerHTML = randText(Math.floor(Math.random()*300)+100);
-        document.getElementById("wrapperContent").style.backgroundColor = "rgb("+(grayState+redBias)+", "+(grayState-redBias)+", "+(grayState-redBias)+")";
+        document.body.style.backgroundColor = "rgb("+(grayState+redBias)+", "+(grayState-redBias)+", "+(grayState-redBias)+")";
+        console.log("Gray", grayState);
         grayState += grayDirection;
         redBias = Math.log(grayState)+20;
         if(grayState >= 200) grayDirection = -2;
@@ -76,12 +81,11 @@ async function babbler(){
 async function babbleLoop() {
     await new Promise(resolve => setTimeout(resolve, 200));
     console.log("Starting babble");
-    while(window.location.pathname === "/babble"){
+    // eslint-disable-next-line no-constant-condition
+    while(true){
         babbler();
         await new Promise(resolve => setTimeout(resolve, 2000));
     }
-    document.getElementById("wrapperContent").style.backgroundColor = "";
-    console.log("Ending babble");
 }
 
-export {Constants, babbleLoop, Permissions, SysEnv};
+export { Constants, Permissions, SysEnv, babbleLoop };

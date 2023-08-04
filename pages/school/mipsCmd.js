@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder'
+import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
 

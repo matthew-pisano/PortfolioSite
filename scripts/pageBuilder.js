@@ -1,5 +1,7 @@
+import React from "react";
 import parse from 'html-react-parser';
 import Latex from 'react-latex-next';
+import { showPage } from "./common";
 
 function buildTags(tags){
     return (
@@ -45,18 +47,18 @@ function buildPage(pageInfo, tiles){
                 let titleId = pageInfo.pageName+"Tile"+i+"Title";
 
                 let titleElement;
-                if(tile.title.startsWith("#")) titleElement = <h2><b>{parse(tile.title.substring(1))}</b></h2>;
-                else titleElement = <b>{parse(tile.title)}</b>;
+                if(tile.title.startsWith("#")) titleElement = <h2><b id={titleId}>{parse(tile.title.substring(1))}</b></h2>;
+                else titleElement = <b id={titleId}>{parse(tile.title)}</b>;
 
                 if(tile.titleLink){
-                    let gotoLink = () => {showPage(tile.titleLink);}
+                    let gotoLink = () => {showPage(tile.titleLink);};
                     titleElement = <u style={{cursor: "pointer"}} onClick={gotoLink}>
                         {titleElement}
                     </u>;
                 }
 
-                let tileContent = parse(tile.content)
-                if(tile.latex) tileContent = <Latex>{tile.content}</Latex>
+                let tileContent = parse(tile.content);
+                if(tile.latex) tileContent = <Latex>{tile.content}</Latex>;
 
                 return <div id={pageInfo.pageName+"Tile"+i} className="displayTile w3-container w3-row" key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     

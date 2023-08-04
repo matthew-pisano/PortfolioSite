@@ -1,7 +1,4 @@
 import $ from 'jquery';
-import React from 'react';
-import {v4} from 'uuid';
-import startStr from './start';
 import { babbleLoop } from './utils';
 import 'katex/dist/katex.min.css';
 import { masterFileSystem, pageRegistry } from './fileSystem';
@@ -145,7 +142,7 @@ if (typeof window !== "undefined") {
     };
 
     // Bind to window for global reference
-    window.showPage = showPage;
+    // window.showPage = showPage;
 
     init();
 

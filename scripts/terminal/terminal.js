@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { SysEnv } from './utils';
-import { resolvePath, parseCommand, closeTerminal } from './terminalCommands';
+import { SysEnv } from '../utils';
+import { resolvePath, parseCommand, closeTerminal } from './commands';
 
 
 const TerminalDiv = () => {
@@ -21,7 +21,7 @@ const TerminalDiv = () => {
 
     useEffect(() => {
         document.getElementById("terminalHolder").style.display = "block";
-    }, [])
+    }, []);
 
     useEffect(() => {
         setPrompt(genPrompt(ENV.CWD));
@@ -122,7 +122,12 @@ const TerminalDiv = () => {
             }}>
                 <div><span>/bin/mash</span>
                     <button id="terminalClose" className='w3-button' style={{ float: "right", marginRight: "10px", visibility: "hidden" }}
-                        onClick={() => closeTerminal()}>X</button></div>
+                        onClick={() => {
+                            closeTerminal();
+                            ENV.CLOSED = true;
+                            ENV.CLOSE_TIME = Date.now();
+                            setENV(ENV);
+                        }}>X</button></div>
                 <div id="terminalOutput" onClick={() => document.getElementById('terminalInput').focus()}></div>
                 <div id="terminalBottom" style={{ visibility: "hidden" }}>
                     <div id="terminalPrompt">{prompt}</div>

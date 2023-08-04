@@ -104,7 +104,7 @@ class FileSystem {
     }
 
     exists(path) {
-        return this._navHierarchy(path) ? true : false;
+        return !!this._navHierarchy(path);
     }
 
     mkdir(path) {
@@ -119,7 +119,7 @@ class FileSystem {
         parent.subTree.push(childDir);
 
         this.update();
-        return childDir
+        return childDir;
     }
 
     touch(path, permission = Perms.ALLOW) {
@@ -137,17 +137,17 @@ class FileSystem {
         parent.subTree.push(childFile);
 
         this.update();
-        return childFile
+        return childFile;
     }
 
     cp(oldPath, newPath) {
         if (!this.exists(oldPath))
-            throw new Error(`Cannot copy file or directory.  File or directory at ${path} does not exist!`);
+            throw new Error(`Cannot copy file or directory.  File or directory at ${oldPath} does not exist!`);
 
         let newParentPath = newPath.substring(0, newPath.lastIndexOf("/") + 1);
         let newChildName = newPath.substring(newPath.lastIndexOf("/") + 1);
         if (!this.exists(newParentPath))
-            throw new Error(`Cannot copy to directory.  Directory at ${path} does not exist!`);
+            throw new Error(`Cannot copy to directory.  Directory at ${newParentPath} does not exist!`);
         let newParentObj = this._navHierarchy(newParentPath);
         let oldObj = this._navHierarchy(oldPath);
 
@@ -196,8 +196,7 @@ class FileSystem {
     }
 
     getItem(path) {
-        let obj = this._navHierarchy(path);
-        return obj;
+        return this._navHierarchy(path);
     }
 
     writeText(path, text) {
@@ -315,12 +314,14 @@ if (typeof window === 'undefined') {
 
     masterFileSystem = new FileSystem(initialHierarchy);
 
+    // eslint-disable-next-line no-inner-declarations
     function walkPages(dir = "pages") {
         const dirents = readdirSync(dir, { withFileTypes: true });
 
         for (const dirent of dirents) {
             const res = resolve(dir, dirent.name);
             let dirName = dir.substring(dir.lastIndexOf("pages") + 6);
+
             let hierarchyPath = "/home/guest/public/" + dirName;
             if (!dirent.isDirectory()) {
                 let size = statSync(res).size;
@@ -339,6 +340,7 @@ if (typeof window === 'undefined') {
             let dirName = dir.substring(dir.lastIndexOf("pages") + 6);
             let hierarchyPath = "/home/guest/public/" + dirName;
             if (dirent.isDirectory()) {
+                if(dirent.name.endsWith("secure")) continue;
                 masterFileSystem.mkdir(pathJoin(hierarchyPath, dirent.name));
                 walkPages(res);
             }

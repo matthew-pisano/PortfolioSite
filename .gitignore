@@ -31,5 +31,6 @@ yarn-error.log*
 
 .cert
 .vscode
+.idea
 gimp
 next.lock

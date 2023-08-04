@@ -1,6 +1,5 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { buildPage } from '../scripts/pageBuilder';
-import PropTypes from 'prop-types';
 import {Wrapper} from '../scripts/wrapper';
 
 
@@ -24,8 +23,8 @@ const PageNotFound = () => {
 
     function nextLink() {
         let rand = Math.random() + 1;
-        if(rand > 1.1) return rand.toString(36).substring(6);
-        return "babble";
+        if(rand > 1.1) return "/"+rand.toString(36).substring(6);
+        return "/secure/babble";
     }
 
     let tiles = [
@@ -65,6 +64,6 @@ const PageNotFound = () => {
             {buildPage(pageInfo, tiles)}
         </div>
     </Wrapper>);
-}
+};
 
 export default PageNotFound;

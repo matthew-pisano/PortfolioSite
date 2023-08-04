@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import * as common from './common';
 import { masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem } from './fileSystem';
-import { utimes } from 'fs';
-import TerminalDiv from './terminal';
+import TerminalDiv from './terminal/terminal';
 
 
 function elementsFromTree(tree, path=""){
