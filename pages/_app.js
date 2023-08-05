@@ -6,7 +6,7 @@ function Portfolio({ Component, pageProps }) {
 }
 Portfolio.propTypes = {
     Component: PropTypes.func,
-    pageProps: PropTypes.PropTypes
+    pageProps: PropTypes.func
 };
 
 export default Portfolio;

@@ -98,63 +98,63 @@ function eightBall(){
 class Help {
 
     static echo = "echo [*msg] - echoes each of the arguments on a new line";
-    static cls = "";
-    static clear = "";
-    static pwd = "";
-    static cd = "";
-    static ls = "";
-    static mkdir = "";
+    static clear = "cls | clear - clears the output of the terminal";
+    static pwd = "pwd - prints the working directory to the console";
+    static cd = "cd [path] - changes the current working directory to the given path";
+    static ls = "ls [path] - gives information on the file or folder that matches the given path";
+    static mkdir = "mkdir [path] - Creates a directory at the given path";
     static touch = "touch [fileName] - creates a file with the name given in the argument";
-    static cp = "";
-    static mv = "mv [oldName] [newName] - moves an existing file or directory to the new name";
-    static rm = "rm [fileName] - removes the file or directory with the name given in the argument";
-    static cat = "";
-    static open = "";
-    static color = "";
-    static exit = "";
-    static restart = "";
+    static cp = "cp [oldPath] [newPath] - copies an existing file or directory to the new path";
+    static mv = "mv [oldPath] [newPath] - moves an existing file or directory to the new path";
+    static rm = "rm [path] - removes the file or directory with the given path";
+    static cat = "cat [filePath] - prints our the contents of the given file";
+    static open = "open [fileName] - opens the file with the given name.  Only files with the execute permission can be opened";
+    static color = "color [color] - sets the terminal text color to the given color in the form #rrggbb or #rgb";
+    static exit = "exit - clears the terminal and closes it";
+    static restart = "restart - Reloads the page";
     static reset = "reset | nuke - Resets all persistent page data";
-    static dir = "";
-    static mir = "";
-    static launch = "";
-    static sudo = "";
-    static doas = "";
-    static haltingproblem = "";
-    static eightball = "";
-    static neofetch = "";
-    static whoami = "";
-    static void = "";
+    static secretSentinel = null;
+    static dir = "dir - Why?";
+    static mir = "mir - ??";
+    static launch = "launch [warhead_id] [lat] [long] - ██████████████";
+    static sudo = "sudo [command] - Elevates the user to root for a command";
+    static doas = "doas [command] - Elevates the user to root for a command";
+    static haltingproblem = "haltingproblem - Computes and prints out the optimal solution to the halting problem";
+    static eightball = `eightball [query] - ${eightBall()}`;
+    static neofetch = "neofetch - displays system and software information";
+    static whoami = "whoami - displays the current user";
+    static void = "void - ██████████████";
 
+    static aggregateHelp() {
+        let aggStr = "";
+        for(let key of Object.keys(Help)){
+            if(["aggregateHelp", "help", "aggregateSecretHelp"].includes(key)) continue;
+            if(key === "secretSentinel") break;
+            aggStr += Help[key]+"\n";
+        }
+        return aggStr;
+    }
+    static aggregateSecretHelp() {
+        let aggStr = "";
+        for(let key of Object.keys(Help)){
+            if(["aggregateHelp", "help", "aggregateSecretHelp", "secretSentinel"].includes(key)) continue;
+            aggStr += Help[key]+"\n";
+        }
+        return aggStr;
+    }
     static help = `--< Help Menu >--
 ${SysEnv.SHELL} (${SysEnv.ARCH})
 These shell commands are defined internally.  Type 'help' to see this list.
 
 help [options] - print this message
-${this.echo}
-${this.touch}
-${this.mv}
-
-
-cls | clear - clears the output of the terminal
-cd [path] - changes the current working directory to thr given path
-ls [path] - gives information on the file or folder that matches the given path
-cat [filePath] - prints our the contents of the given file
-open [fileName] - opens the file with the given name
-color [color] - sets the terminal text color to the given color in the form #rrggbb
-dir - Why?
-neofetch - displays system and software information
-whoami - displays the current user
-exit - clears the terminal and closes it`;
+${this.aggregateHelp()}`;
 
     static secretHelp = `--Secret Help--
 MAthesis SHell (mash) extended capabilities.
 Sensitive documents are exposed to these commands.  Use with caution.
 
-open [rick | poland | void | scp | babble] - opens the file with the given name
-mir - ??
-launch [warhead_id] [lat] [long] - ██████████████
-haltingproblem - Computes the ideal turing machine to solve the halting problem
-eightball [query] - ${eightBall()}`;
+${this.aggregateSecretHelp()}`;
+
 }
 
 

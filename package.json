@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "cp styles/* public/css/; next dev",
-    "build": "cp styles/* public/css/; next build",
-    "start": "cp styles/* public/css/; next start"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "eslint-plugin-react": "^7.33.1",

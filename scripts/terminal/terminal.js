@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SysEnv } from '../utils';
-import { resolvePath, parseCommand, closeTerminal } from './commands';
+import { resolvePath, Commands, closeTerminal } from './commands';
 
 
 const TerminalDiv = () => {
@@ -79,7 +79,7 @@ const TerminalDiv = () => {
             setDraftCommand("");
             setCommandIndex(-1);
 
-            const { result: result, env: newEnv } = parseCommand(command, ENV);
+            const { result: result, env: newEnv } = Commands.parseCommand(command, ENV);
             setENV(newEnv);
 
             terminalOutput.innerText += "\n" + prompt + command + "\n" + result + "\n";

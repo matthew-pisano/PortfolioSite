@@ -1,0 +1,111 @@
+#resumeHolder{
+    width: 100%;
+    height: 1100px;
+    margin-bottom: 60px;
+}
+
+.container {
+    height: auto;
+    display: grid;
+    place-items: center;
+    overflow-y: auto;
+    z-index: 1;
+    grid-template-areas: "inner-div";
+}
+.displayTile {
+    border-style: none solid none none;
+    border-color: azure;
+    border-width: 5px;
+    background-color: #313131;
+    border-radius: 10px;
+    margin: 50px 20px 20px 3%;
+    padding: 10px;
+}
+.displayTile img {
+    width: 25%;
+    min-width: 50px;
+    max-width: 300px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+.displayTile > div {
+    float: right;
+    width: 75%;
+}
+
+#wrapperContent{
+    margin-bottom: 30px;
+    background-color: #1e1e1e;
+}
+
+.inner {
+    grid-area: inner-div;
+}
+#fileContent, #fileEditor {
+    margin-left: 215px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+.tileHolder {
+    width: 100%;
+    background-color: #2b40a1;
+    margin-top: 250px;
+    min-height: 500px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+    margin-bottom: 60px;
+}
+
+
+.page {
+    margin-left: 215px;
+}
+
+.titleCard {
+    margin-left: 215px;
+}
+
+.gitLink, .extraLink{
+    width: 200px;
+    padding: 2px 5px;
+    margin: 3px 5px;
+    background-color: #313131;
+    border-radius: 10px;
+    color: azure;
+}
+.gitLink a, .extraLink a{
+    float: right;
+    width: 80%;
+}
+.gitLink img, .extraLink img{
+    width: 10%;
+    min-width: 20px;
+    margin-right: 5px;
+}
+.gitLink img{
+    content:url("../assets/github.png");
+}
+
+.extraLink img{
+    content:url("../assets/paper.png");
+}
+
+.forceWrap{
+    word-break: break-word;
+    white-space: normal;
+}
+#editorLines {
+    width: 20px;
+    background-color: #313131;
+}
+#editorContent {
+    width: 90%;
+    overflow-x: auto;
+}
+
+.tab{
+    text-indent:40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
