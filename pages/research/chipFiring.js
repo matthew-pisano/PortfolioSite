@@ -142,7 +142,7 @@ class ChipFiring extends Component {
             tags: ["research", "academic", "python"]
         };
         return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Chip Firing</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A research project to examine patterns in chip firing games</h3>

@@ -89,12 +89,6 @@
     background-color: #414141;
 }
 
-.sidebarFolder{
-    border-style: none none none solid;
-    border-color: azure;
-    border-width: 1px;
-}
-
 .sidebarFolder > button{
     cursor: default;
 }
@@ -147,6 +141,7 @@
     background-color: #414141;
     border-style: none none none solid;
     border-color: azure;
+    border-width: 2px;
 }
 
 #collapseSidebar:hover {

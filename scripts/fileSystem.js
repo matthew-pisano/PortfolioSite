@@ -1,4 +1,4 @@
-import { Permissions as Perms } from './utils';
+import {Permissions as Perms, SysEnv} from './utils';
 
 let pageRegistry = {};
 
@@ -201,9 +201,9 @@ class FileSystem {
 
     writeText(path, text) {
         let file = this._navHierarchy(path);
-        if (file.constructor === Directory) throw new Error(`Cannot write to directory at ${path}!`);
-
         if (!file) file = this.touch(path);
+
+        if (file.constructor === Directory) throw new Error(`Cannot write to directory at ${path}!`);
 
         if (!file.permission.includes(Perms.WRITE))
             throw new Error(`Cannot write to ${path}.  Permission denied!`);
@@ -282,11 +282,7 @@ class FileSystem {
 let initialHierarchy = new Directory("", [
     new Directory("home", [
         new Directory("guest", [
-            new Directory("public", [
-                new Directory("custom", [
-
-                ])
-            ])
+            new Directory("public", [])
         ]),
         new Directory("admin", [], Perms.DENY),
     ]),
@@ -322,23 +318,23 @@ if (typeof window === 'undefined') {
             const res = resolve(dir, dirent.name);
             let dirName = dir.substring(dir.lastIndexOf("pages") + 6);
 
-            let hierarchyPath = "/home/guest/public/" + dirName;
+            let hierarchyPath = pathJoin(SysEnv.PUBLIC_FOLDER, dirName);
             if (!dirent.isDirectory()) {
                 let size = statSync(res).size;
                 let fileName = res.substring(res.lastIndexOf("/") + 1).replace(".js", "");
                 if (["admin", "index", "404"].includes(fileName)) continue;
 
                 if (fileName[0] !== "_") {
-                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = { name: fileName + ".html", size: size };
-                    masterFileSystem.touch(pathJoin(hierarchyPath, fileName + ".html"), "--"+Perms.EXECUTE);
+                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = {name: fileName + ".html", size: size};
+                    masterFileSystem.touch(pathJoin(hierarchyPath, fileName + ".html"), "--" + Perms.EXECUTE);
                 }
             }
         }
-
+        let customEnt;
         for (const dirent of dirents) {
             const res = resolve(dir, dirent.name);
             let dirName = dir.substring(dir.lastIndexOf("pages") + 6);
-            let hierarchyPath = "/home/guest/public/" + dirName;
+            let hierarchyPath = pathJoin(SysEnv.PUBLIC_FOLDER, dirName);
             if (dirent.isDirectory()) {
                 if(dirent.name.endsWith("secure")) continue;
                 masterFileSystem.mkdir(pathJoin(hierarchyPath, dirent.name));

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import * as common from './common';
 import { masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem } from './fileSystem';
 import TerminalDiv from './terminal/terminal';
+import {SysEnv} from "./utils";
 
 
 function elementsFromTree(tree, path=""){
@@ -25,7 +26,7 @@ function elementsFromTree(tree, path=""){
             </div>
         </div>;
     }
-    else if(!path.includes("custom")){
+    else {
         let name = tree.name.substring(0, tree.name.indexOf("."));
         let urlPath = path.replace("public", "")+"/"+name;
         urlPath = urlPath.replace("//", "/");
@@ -35,16 +36,16 @@ function elementsFromTree(tree, path=""){
             <a className="w3-button lightText" style={{padding: 0}} href={urlPath}>{tree.name}</a>
         </div>;
     }
-    else {<div></div>;}
+
 }
 
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
-    const [explorerTree,   setExplorerTree] = useState(elementsFromTree(masterFileSystem.getItem("/home/guest/public/")));
+    const [explorerTree,   setExplorerTree] = useState(elementsFromTree(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER)));
 
     masterFileSystem.registerCallback((updateTime) => {
-        setExplorerTree(elementsFromTree(masterFileSystem.getItem("/home/guest/public/")));
+        setExplorerTree(elementsFromTree(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER)));
     });
 
     useEffect(() => {

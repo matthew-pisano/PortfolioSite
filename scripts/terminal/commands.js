@@ -223,12 +223,16 @@ class Commands {
         if (valResult) return valResult;
 
         let pagePath = this.resolvePath(args[0]);
-        console.log(pageRegistry, pagePath);
         if (pageRegistry[pagePath]) {
             let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
             window.open(relPath.replace(".html", ""), '_self', false);
-        } else throw new Error(`Cannot open ${args[0]}.  This is not a valid page!`);
-
+        }
+        else if (!masterFileSystem.exists(pagePath)) throw new Error(`Cannot open file.  File at ${args[0]} does not exist!`);
+        else if (masterFileSystem.getItem(pagePath).constructor === Directory) throw new Error(`Cannot open a directory!`);
+        else {
+            let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
+            window.open(`/custom?file=${relPath}`, '_self', false);
+        }
         return "";
     }
 
@@ -258,11 +262,13 @@ class Commands {
     static restart(args) {
         if (args[0] === "--help") return Help.restart;
         window.location.reload();
+        return "";
     }
 
     static reset(args) {
         if (args[0] === "--help") return Help.reset;
         delete localStorage.hierarchy;
+        return "";
     }
 
     static nuke(args) {

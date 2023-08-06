@@ -50,7 +50,7 @@ class Imperium extends Component {
             tags: ["personal", "java", "android"]
         };
         return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText" style={{display: this.props.display ? this.props.display : "block"}}>
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
                 <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Imperium</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A historical grand strategy game for android devices</h3>
