@@ -19,6 +19,7 @@ let menuBindings = {
 let activeEditor = undefined;
 let selectedPageId = undefined;
 
+// TODO: Move this and other wrapper-related functions ot Wrapper
 function toggleSidebar(animate=true){
     document.getElementById("collapseSidebar").innerText = sidebarOpen ? ">" : "<";
     if(sidebarOpen){
@@ -45,13 +46,6 @@ function toggleSidebar(animate=true){
     sidebarOpen = !sidebarOpen;
 }
 
-function updatePageMetadata(pageName = "", lines = 0, size = 0){
-    document.getElementById("linesStatus").innerText = `${lines} Lines`;
-    document.getElementById("sizeStatus").innerText = `${size}B`;
-    document.getElementById("itemStatus").innerText = pageName;
-    document.getElementById("langStatus").innerText = "HTML";
-    document.getElementById("encodingStatus").innerText = "UTF-8";
-}
 
 function showPage(pageId, isLanding = false, replaceLocation = true){
     console.log("Showing page "+pageId);
@@ -114,19 +108,6 @@ function init() {
         if(evt.target.id !== "customRename" && document.getElementById("customRename"))
             finishRenaming(selectedPageId, document.getElementById("customRename").value);
     }, true);
-
-    let editorContent = document.getElementById("editorContent");
-    editorContent.addEventListener('input', (event) => {
-        let editorContent = document.getElementById("editorContent");
-        setFileContent(activeEditor, editorContent.innerText.replace("\t", "    "));
-        if(editorContent.innerText.length > 0){
-            let pageElem = document.getElementById(activeEditor+"Page");
-            let lineNum = pageElem.innerHTML.split(/\r\n|\r|\n/).length;
-            document.getElementById("linesStatus").innerText = (lineNum > 1 ? lineNum-1 : 1)+" Lines";
-            document.getElementById("sizeStatus").innerText = pageElem.innerHTML.length+"B";
-        }
-        refreshLineNums();
-    });
     
     pageLoaded = true;
 }

@@ -1,4 +1,4 @@
-import {Permissions as Perms, SysEnv} from './utils';
+import { SysEnv, Permissions as Perms } from './utils';
 
 let pageRegistry = {};
 
@@ -320,11 +320,12 @@ if (typeof window === 'undefined') {
 
             let hierarchyPath = pathJoin(SysEnv.PUBLIC_FOLDER, dirName);
             if (!dirent.isDirectory()) {
+                let size = statSync(res).size;
                 let fileName = res.substring(res.lastIndexOf("/") + 1).replace(".js", "");
                 if (["admin", "index", "404", "display", "edit"].includes(fileName)) continue;
 
                 if (fileName[0] !== "_") {
-                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = {name: fileName + ".html", size: 0};
+                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = {name: pathJoin(hierarchyPath.replace(SysEnv.PUBLIC_FOLDER+"/", ""), fileName + ".html"), size: size};
                     masterFileSystem.touch(pathJoin(hierarchyPath, fileName + ".html"), "--" + Perms.EXECUTE);
                 }
             }

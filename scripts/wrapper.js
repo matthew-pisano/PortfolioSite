@@ -3,7 +3,7 @@ import Head from 'next/head';
 import * as common from './common';
 import {masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem, pathJoin} from './fileSystem';
 import TerminalDiv from './terminal/terminal';
-import {SysEnv} from "./utils";
+import {currentCustom, SysEnv} from "./utils";
 
 
 function elementsFromTree(tree, path=""){
@@ -46,6 +46,7 @@ function elementsFromTree(tree, path=""){
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
     const [explorerTree,   setExplorerTree] = useState(elementsFromTree(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER)));
+    const [customFile, setCustomFile] = useState(null);
 
     masterFileSystem.registerCallback((updateTime) => {
         setExplorerTree(elementsFromTree(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER)));
@@ -63,14 +64,18 @@ const Wrapper = ({children, pageName}) => {
             setMasterFileSystem(hydratedInfo.hierarchy);
             masterFileSystem.update();
         }
+
+        setCustomFile(currentCustom(masterFileSystem).result);
     }, []);
 
-    function pageSize(){
+    function pageStats(){
         for(let key of Object.keys(pageRegistry))
             if(pageRegistry[key].name === pageName+".html")
-                return pageRegistry[key].size;
-        
-        return 0;
+                return {lines: Math.round(pageRegistry[key].size/140.6), size: pageRegistry[key].size};
+
+        if(customFile)
+            return {lines: customFile.text.split(/\r\n|\r|\n/).length, size: customFile.text.length};
+        return {lines: 0, size: 0};
     }
 
     return (
@@ -135,8 +140,8 @@ const Wrapper = ({children, pageName}) => {
             <footer className="commandBar w3-row" style={{bottom: '0px'}}>
                 <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>
                 <div id="encodingStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>
-                <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{Math.round(pageSize()/140.6)+" Lines"}</div>
-                <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageSize()+"B"}</div>
+                <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageStats().lines+" Lines"}</div>
+                <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageStats().size+"B"}</div>
                 <div id="itemStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageName+".html"}</div>
             </footer>
         </div>
