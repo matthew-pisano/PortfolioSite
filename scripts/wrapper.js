@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import * as common from './common';
-import { masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem } from './fileSystem';
+import {masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem, pathJoin} from './fileSystem';
 import TerminalDiv from './terminal/terminal';
 import {SysEnv} from "./utils";
 
@@ -27,9 +27,12 @@ function elementsFromTree(tree, path=""){
         </div>;
     }
     else {
+        let urlPath;
         let name = tree.name.substring(0, tree.name.indexOf("."));
-        let urlPath = path.replace("public", "")+"/"+name;
-        urlPath = urlPath.replace("//", "/");
+        if(pageRegistry[pathJoin(SysEnv.HOME_FOLDER, path.substring(1), tree.name)])
+            urlPath = pathJoin(path.replace("public", ""), name);
+        else urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), tree.name)}`;
+
 
         return <div key={name+"-File"} id={name+"-File"} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
             <img className='htmlIcon' alt='html'/>

@@ -4,20 +4,20 @@ import {Constants, SysEnv} from "../scripts/utils";
 import {Wrapper} from "../scripts/wrapper";
 import parse from "html-react-parser";
 
-const Custom = () => {
+const Display = () => {
     const [pageText,  setPageText] = useState("");
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        let customPath = urlParams.get("file") ? urlParams.get("file") : "";
-        let customItem = masterFileSystem.getItem(customPath);
-        if(!customItem) setPageText(`Cannot find file at ${customPath}!`);
-        else if(customItem.constructor === Directory) setPageText("Cannot open a directory!");
-        else setPageText(customItem.text);
+        let displayPath = urlParams.get("file") ? urlParams.get("file") : "";
+        let displayItem = masterFileSystem.getItem(displayPath);
+        if(!displayItem) setPageText(`Cannot find file at ${displayPath}!`);
+        else if(displayItem.constructor === Directory) setPageText("Cannot open a directory!");
+        else setPageText(displayItem.text);
     }, []);
 
     let pageInfo = {
-        pageName: "custom",
+        pageName: "display",
     };
     return (<Wrapper pageName={pageInfo.pageName}>
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
@@ -26,4 +26,4 @@ const Custom = () => {
         </Wrapper>);
 };
 
-export default Custom;
+export default Display;

@@ -320,17 +320,16 @@ if (typeof window === 'undefined') {
 
             let hierarchyPath = pathJoin(SysEnv.PUBLIC_FOLDER, dirName);
             if (!dirent.isDirectory()) {
-                let size = statSync(res).size;
                 let fileName = res.substring(res.lastIndexOf("/") + 1).replace(".js", "");
-                if (["admin", "index", "404"].includes(fileName)) continue;
+                if (["admin", "index", "404", "display", "edit"].includes(fileName)) continue;
 
                 if (fileName[0] !== "_") {
-                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = {name: fileName + ".html", size: size};
+                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = {name: fileName + ".html", size: 0};
                     masterFileSystem.touch(pathJoin(hierarchyPath, fileName + ".html"), "--" + Perms.EXECUTE);
                 }
             }
         }
-        let customEnt;
+
         for (const dirent of dirents) {
             const res = resolve(dir, dirent.name);
             let dirName = dir.substring(dir.lastIndexOf("pages") + 6);

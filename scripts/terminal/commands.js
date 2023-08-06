@@ -108,7 +108,7 @@ class Commands {
 
                 let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
                 modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-                let paddedSize = `${lsObj.size()}`.padStart(6, "");
+                let paddedSize = `${lsObj.size()}`.padStart(6, "\xa0");
 
                 list.push([`d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${child.name}`, child.name]);
             }
@@ -122,8 +122,8 @@ class Commands {
         } else {
             let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
             modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-            let paddedSize = `${lsObj.size()}`.padStart(6, "");
-            if (!lsObj.permission.includes(Perms.READ)) paddedSize = "?".padStart(6, "");
+            let paddedSize = `${lsObj.size()}`.padStart(6, "\xa0");
+            if (!lsObj.permission.includes(Perms.READ)) paddedSize = "?".padStart(6, "\xa0");
 
             lsStr = `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${lsObj.name}`;
         }
@@ -229,10 +229,7 @@ class Commands {
         }
         else if (!masterFileSystem.exists(pagePath)) throw new Error(`Cannot open file.  File at ${args[0]} does not exist!`);
         else if (masterFileSystem.getItem(pagePath).constructor === Directory) throw new Error(`Cannot open a directory!`);
-        else {
-            let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
-            window.open(`/custom?file=${relPath}`, '_self', false);
-        }
+        else window.open(`/display?file=${pagePath}`, '_self', false);
         return "";
     }
 
@@ -366,9 +363,9 @@ class Commands {
                     args = args.slice(0, args.indexOf(">"));
                 }
 
-                let commandFunc = this[command].bind(this);
-
+                let commandFunc = this[command];
                 if (!commandFunc) throw new Error(command + ": command not found");
+                commandFunc = commandFunc.bind(this);
 
                 let tmpOutput = commandFunc(args);
 
@@ -379,7 +376,6 @@ class Commands {
 
             } catch (e) {
                 cmdOutput.result += (cmdOutput.result ? "\n" : "") + e.message;
-                throw e;
             }
 
             cmdOutput.env = this.ENV;

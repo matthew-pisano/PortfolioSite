@@ -102,6 +102,24 @@
 #editorContent {
     width: 90%;
     overflow-x: auto;
+    border-style: solid;
+    border-color: azure;
+    border-width: 2px;
+}
+
+#editorSave {
+    padding: 3px;
+    margin-top: 10px;
+    color: azure; !important;
+    background-color: #414141;
+    border-style: none none none solid;
+    border-color: azure;
+    border-width: 2px;
+}
+
+#editorSave:hover {
+    background-color: #51555b !important;
+    color: azure !important;
 }
 
 .tab{
