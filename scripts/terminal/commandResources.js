@@ -1,5 +1,6 @@
 import {SysEnv} from "../utils";
-import {pathJoin} from "../fileSystem";
+import {pathJoin} from "../fileSystem/fileSystem";
+import $ from "jquery";
 
 
 const neofetch = `
@@ -31,34 +32,8 @@ function closeTerminal() {
     console.log("Closing terminal...");
     document.getElementById('terminal').style.height = `30px`;
     document.getElementById('terminalOutput').style.height = `0px`;
-    document.getElementById('terminalBottom').style.visibility = "hidden";
-    document.getElementById('terminalClose').style.visibility = "hidden";
-}
-
-async function toVoid(){
-    let terminalOutput = document.getElementById('terminalOutput');
-    let voidStr = "I T - C O N S U M E S - A L L";
-    let initLen = voidStr.length;
-    await new Promise(resolve => setTimeout(resolve, 500));
-    while(voidStr.length > 0){
-        let next = voidStr.charAt(0);
-        document.getElementById('terminalOutput').innerHTML += next !== " " ? next : "&nbsp;";
-        if(voidStr.length === initLen)
-            terminalOutput.scrollTop = terminalOutput.scrollHeight;
-        voidStr = voidStr.substring(1);
-        await new Promise(resolve => setTimeout(resolve, 100));
-    }
-    await new Promise(resolve => setTimeout(resolve, 500));
-    document.body.style.height = "100%";
-    document.body.innerHTML = `<div class="void"></div>
-
-        <div id="exitVoid" style="display:none; width: 100%; height: 50px; background-color: black; 
-        position: fixed; bottom: 0px; color: azure; text-align: center; cursor: pointer"
-        onClick="window.closeFullscreen()">[EXIT]</div>
-        <div id="enterVoid" style="width: 100%; height: 50px; background-color: black; 
-        position: fixed; bottom: 0px; color: azure; text-align: center; cursor: pointer"
-        onClick="window.openFullscreen()">[ENTER]</div>`;
-    document.getElementById("siteTitle").innerText = "How did we get here?";
+    $('#terminalBottom').invisible();
+    $('#terminalClose').invisible();
 }
 
 async function haltingProblem(){
@@ -212,4 +187,4 @@ function resolveTokens(env, tokens) {
     }
 }
 
-export { resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, toVoid, neofetch, closeTerminal };
+export { resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, neofetch, closeTerminal };

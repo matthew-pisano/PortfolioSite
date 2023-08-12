@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import * as common from './common';
-import {masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem, pathJoin} from './fileSystem';
+import {masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem, pathJoin} from './fileSystem/fileSystem';
 import TerminalDiv from './terminal/terminal';
 import {currentCustom, Permissions as Perms, SysEnv} from "./utils";
 import $ from "jquery";
-import {createContextMenu, newCustomFile} from "./fileSystemGUI";
+import {createContextMenu, newCustomFile} from "./fileSystem/fileSystemGUI";
+import PropTypes from "prop-types";
 
 
 function elementsFromTree(tree, path=""){
@@ -110,33 +110,35 @@ const Wrapper = ({children, pageName}) => {
         }
 
         setCustomFile(currentCustom(masterFileSystem).result);
+
+        document.getElementById("terminalButton").classList.remove("gone");
     }, []);
 
 
     function toggleSidebar(animate=true){
-        let sidebarMax = 215;
+        let sidebarMax = 230;
         let sidebarMin = 50;
         document.getElementById("collapseSidebar").innerText = sidebarOpen ? ">" : "<";
         if(sidebarOpen){
             $(".sidebarItem").invisible();
             document.getElementById("sidebarContent").style.display = "none";
-            document.getElementById("sidebar").classList.remove("openSidebar");
+            document.getElementById("sidebar").classList.replace("openSidebar", "closeSidebar");
             document.getElementById("explorerTitle").style.display = "none";
-            document.getElementById("collapseHolder").classList.remove("openSidebar");
+            document.getElementById("collapseHolder").classList.replace("openSidebar", "closeSidebar");
             document.getElementById("pageHolder").classList.remove("smallInvisible");
             $("#sidebarContent").animate({"width": "0px"}, animate ? 200 : 0);
         }
         else{
             document.getElementById("sidebarContent").style.display = "block";
             $("#sidebarContent").animate({"width": "100%"}, animate ? 200 : 0);
-            document.getElementById("sidebar").classList.add("openSidebar");
-            document.getElementById("collapseHolder").classList.add("openSidebar");
+            document.getElementById("sidebar").classList.replace("closeSidebar", "openSidebar");
+            document.getElementById("collapseHolder").classList.replace("closeSidebar", "openSidebar");
             document.getElementById("pageHolder").classList.add("smallInvisible");
             document.getElementById("explorerTitle").style.display = "inline";
             $(".sidebarItem").visible();
         }
 
-        for(let tag of [".page", "#terminalHolder", ".titleCard", "#fileEditor"])
+        for(let tag of [".page", "#fileEditor"])
             $(tag).animate({"margin-left": (sidebarOpen ? sidebarMin : sidebarMax)+"px"}, animate ? 200 : 0);
         setSidebarOpen(!sidebarOpen);
     }
@@ -158,15 +160,15 @@ const Wrapper = ({children, pageName}) => {
             </Head>
             <header className="menuBar w3-row" style={{top: '0px'}}>
                 <button id="fileButton" className="menuItem lightText w3-button w3-col" 
-                    onClick={async () => {await new Promise(r => setTimeout(r, 20)); common.$("#fileDropdown").fadeToggle();}}>File</button>
+                    onClick={async () => {await new Promise(r => setTimeout(r, 20)); $("#fileDropdown").fadeToggle();}}>File</button>
                 <button id="editButton" className="menuItem lightText w3-button w3-col"
-                    onClick={async () => {await new Promise(r => setTimeout(r, 20)); common.$("#editDropdown").fadeToggle();}}>Edit</button>
-                <button id="terminalButton" className="menuItem lightText w3-button w3-col"
-                    onClick={async () => {await new Promise(r => setTimeout(r, 20)); common.$("#terminalDropdown").fadeToggle();}}>Terminal</button>
+                    onClick={async () => {await new Promise(r => setTimeout(r, 20)); $("#editDropdown").fadeToggle();}}>Edit</button>
+                <button id="terminalButton" className="menuItem lightText w3-button w3-col gone"
+                    onClick={async () => {await new Promise(r => setTimeout(r, 20)); $("#terminalDropdown").fadeToggle();}}>Terminal</button>
                 <button id="helpButton" className="menuItem lightText w3-button w3-col"
-                    onClick={async () => {await new Promise(r => setTimeout(r, 20)); common.$("#helpDropdown").fadeToggle();}}>Help</button>
+                    onClick={async () => {await new Promise(r => setTimeout(r, 20)); $("#helpDropdown").fadeToggle();}}>Help</button>
                 <button id="contactButton" className="menuItem lightText w3-button w3-col"
-                    onClick={async () => {await new Promise(r => setTimeout(r, 20)); common.$("#contactDropdown").fadeToggle();}}>Contact Info</button>
+                    onClick={async () => {await new Promise(r => setTimeout(r, 20)); $("#contactDropdown").fadeToggle();}}>Contact Info</button>
             </header>
 
             <span id="dehydrateInfo" style={{display: "none"}}>{dehydrateInfo}</span>
@@ -183,8 +185,10 @@ const Wrapper = ({children, pageName}) => {
                             }}>Save</button>
                         <button id="resetAction" className="w3-button lightText menuDropItem"
                             onClick={() => {
-                                delete localStorage.hierarchy;
-                                window.location.reload();
+                                if(confirm("Do you really want to reset the system?")) {
+                                    delete localStorage.hierarchy;
+                                    window.location.replace("/home");
+                                }
                             }}>Reset</button>
                     </div>
                     <div id="editDropdown" className="menuDropdown w3-col">
@@ -233,6 +237,10 @@ const Wrapper = ({children, pageName}) => {
             </footer>
         </div>
     );
+};
+
+Wrapper.propTypes = {
+    pageName: PropTypes.string
 };
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Directory, masterFileSystem, pathJoin} from "../scripts/fileSystem";
+import {Directory, masterFileSystem, pathJoin} from "../scripts/fileSystem/fileSystem";
 import {Constants, currentCustom, SysEnv} from "../scripts/utils";
 import {Wrapper} from "../scripts/wrapper";
 import {gutter, GutterMarker, lineNumbers, EditorViewConfig} from "@codemirror/view";

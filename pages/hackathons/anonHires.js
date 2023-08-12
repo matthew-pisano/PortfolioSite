@@ -56,7 +56,7 @@ class AnonHires extends Component {
         };
         return (<Wrapper pageName={pageInfo.pageName}>
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
+                <div className="inner titleCard">
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Anon Hires</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A Web-based hiring platform with anonymity</h3>
                 </div>

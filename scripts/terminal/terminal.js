@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import React, { useState, useEffect } from 'react';
 import { SysEnv } from '../utils';
 import { resolvePath, Commands, closeTerminal } from './commands';
@@ -20,7 +21,7 @@ const TerminalDiv = () => {
     const [prompt, setPrompt] = useState(genPrompt(SysEnv.HOME_FOLDER));
 
     useEffect(() => {
-        document.getElementById("terminalHolder").style.display = "block";
+        document.getElementById("terminalHolder").classList.remove('gone');
     }, []);
 
     useEffect(() => {
@@ -39,21 +40,13 @@ const TerminalDiv = () => {
     const resize = (e, heightOverride) => {
         let height = heightOverride ? heightOverride : initialSize + initialPos - e.clientY + 50;
         if (height > window.innerHeight - 80) height = window.innerHeight - 80;
-        console.log("Resizing terminal", height, ENV.CLOSED, "max:", window.innerHeight);
-        if (height > 200) {
+        if(ENV.CLOSED) height = 200;
+        if (height > 200 || ENV.CLOSED) {
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
-            document.getElementById('terminalBottom').style.visibility = "visible";
-            document.getElementById('terminalClose').style.visibility = "visible";
+            $('#terminalClose').visible();
+            $('#terminalBottom').visible();
             document.getElementById('terminalInput').focus();
-            ENV.CLOSED = false;
-            setENV(ENV);
-        }
-        else if (ENV.CLOSED) {
-            document.getElementById('terminal').style.height = `200px`;
-            document.getElementById('terminalOutput').style.height = `130px`;
-            document.getElementById('terminalBottom').style.visibility = "visible";
-            document.getElementById('terminalClose').style.visibility = "visible";
             ENV.CLOSED = false;
             setENV(ENV);
         }
@@ -112,7 +105,7 @@ const TerminalDiv = () => {
     };
 
     return (
-        <div id="terminalHolder" style={{display: "none"}} className='w3-row'>
+        <div id="terminalHolder" className='w3-row gone'>
             <div id='terminalThumb'
                 draggable='true'
                 onDragStart={dragStart}

@@ -19,13 +19,8 @@ html {
     color: azure;
 }
 
-
-
-/*Large Screens*/
-@media (max-width: 1500px) {
-    .displayTile > div {
-        width: 70%;
-    }
+.gone {
+    display: none;
 }
 
 /*Medium Screens*/

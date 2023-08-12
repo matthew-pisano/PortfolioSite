@@ -57,13 +57,14 @@
     margin-bottom: 60px;
 }
 
-
 .page {
-    margin-left: 215px;
+    margin-left: 230px;
 }
 
 .titleCard {
-    margin-left: 215px;
+    position: fixed;
+    height: 300px;
+    top: 50px;
 }
 
 .gitLink, .extraLink{
@@ -149,4 +150,11 @@
     text-indent:40px;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+/*Large Screens*/
+@media (max-width: 1500px) {
+    .displayTile > div {
+        width: 70%;
+    }
 }

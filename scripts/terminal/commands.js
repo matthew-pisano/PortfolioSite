@@ -1,6 +1,7 @@
 import { Permissions as Perms, SysEnv } from '../utils';
-import { Directory, File, masterFileSystem, pageRegistry, pathJoin } from '../fileSystem';
-import { resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, toVoid, neofetch, closeTerminal } from './commandResources';
+import { Directory, File, masterFileSystem, pageRegistry, pathJoin } from '../fileSystem/fileSystem';
+import { resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, neofetch, closeTerminal } from './commandResources';
+import toVoid from "./void";
 
 
 class Commands {

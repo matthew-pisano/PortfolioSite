@@ -74,7 +74,7 @@ class About extends Component {
         };
         return (<Wrapper pageName={pageInfo.pageName}>
             <div className="page container w3-rest lightText">
-                <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
+                <div className="inner titleCard">
                     <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>About</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Extra information on me as a developer, student, researcher and person</h3>
                 </div>

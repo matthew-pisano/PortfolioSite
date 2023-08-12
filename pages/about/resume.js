@@ -10,7 +10,7 @@ const Resume = () => {
 
     return (<Wrapper pageName={pageInfo.pageName}>
         <div id="resumePage" className="page container w3-rest lightText">
-            <div className="inner titleCard" style={{position: "fixed", height: "300px", top: "50px", left: '0px', right: '0px'}}>
+            <div className="inner titleCard">
                 <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Résumé</b></h1><br/>
                 <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Formal summary of my experience and achievements</h3>
             </div>

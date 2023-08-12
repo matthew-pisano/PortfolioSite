@@ -1,7 +1,6 @@
 import React from "react";
 import parse from 'html-react-parser';
 import Latex from 'react-latex-next';
-import { showPage } from "./common";
 
 function buildTags(tags){
     return (

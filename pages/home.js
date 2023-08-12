@@ -106,7 +106,7 @@ class Home extends Component {
         };
         return (<Wrapper pageName={pageInfo.pageName}>
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard" style={{position: 'fixed', height: '300px', top: '50px', left: '0px', right: '0px'}}>
+                <div className="inner titleCard">
                     <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>Matthew Pisano</h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Student of Artificial Intelligence</h3>
                 </div>

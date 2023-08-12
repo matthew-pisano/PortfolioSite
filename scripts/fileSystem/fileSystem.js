@@ -1,5 +1,5 @@
-import { SysEnv, Permissions as Perms } from './utils';
-import contentHtml from "./start";
+import { SysEnv, Permissions as Perms } from '../utils';
+import contentHtml from "../start";
 
 let pageRegistry = {};
 

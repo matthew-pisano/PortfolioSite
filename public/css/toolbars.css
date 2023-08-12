@@ -53,8 +53,15 @@
     color: azure !important;
 }
 
-#sidebar {
+.openSidebar {
+    width: 230px;
+}
+
+.closeSidebar {
     width: 50px;
+}
+
+#sidebar {
     bottom: 30px;
     top: 25px;
     position: fixed;
@@ -68,10 +75,6 @@
     z-index: 3;
     width: 0px;
     background-color: #313131;
-}
-
-.openSidebar {
-    width: 215px !important;
 }
 
 #sidebarContent {
@@ -176,4 +179,11 @@
     border-bottom: solid;
     border-color: azure;
     border-width: 1px;
+}
+
+/*Medium Screens*/
+@media (max-width: 600px) {
+    #terminalButton{
+        display: none;
+    }
 }

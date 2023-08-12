@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 let grayState = 30;
 let grayDirection = 2;
 let redBias = Math.log(grayState)+20;
@@ -90,6 +92,11 @@ class Permissions {
         if(![this.WRITE, "-"].includes(permString[1])) throw Error(`Expected '${this.WRITE}' or '-' at permissions[1]!`);
         if(![this.EXECUTE, "-"].includes(permString[2])) throw Error(`Expected '${this.EXECUTE}' or '-' at permissions[2]!`);
     }
+}
+
+if(typeof window !== 'undefined'){
+    $.fn.visible = function() {return this.css('visibility', 'visible');};
+    $.fn.invisible = function() {return this.css('visibility', 'hidden');};
 }
 
 

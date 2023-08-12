@@ -1,5 +1,5 @@
 import {masterFileSystem, pathJoin} from './fileSystem';
-import {SysEnv} from "./utils";
+import {SysEnv} from "../utils";
 
 function newCustomFile() {
     let customFolder = masterFileSystem.getItem(pathJoin(SysEnv.PUBLIC_FOLDER, "custom"));
@@ -10,7 +10,7 @@ function newCustomFile() {
         if(file.name.includes(newFileName)) newFileIndex++;
 
     newFileName += newFileIndex !== 0 ? newFileIndex : "";
-    masterFileSystem.touch(pathJoin(SysEnv.PUBLIC_FOLDER, "custom", newFileName));
+    masterFileSystem.touch(pathJoin(SysEnv.PUBLIC_FOLDER, "custom", newFileName+".html"));
 }
 
 function createContextMenu(mouseEvent, items) {
