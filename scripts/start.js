@@ -1,4 +1,5 @@
 let contentHtml = `
+<head>
 <style id="styler">
     .centered {
         width: 100%;
@@ -22,6 +23,7 @@ let contentHtml = `
         background-color: #4e61b8;
     }
 </style>
+</head>
 <body>
     <h1 class="centered">Welcome</h1><br>
     <h3 class="centered">to the HTML editor!</h3>
@@ -45,48 +47,7 @@ let contentHtml = `
             in the editor to return to viewing mode.</p>
         </li>
     </ul>
-    <button id="styleButton" class="w3-button" onclick="noCSS()">Click to remove CSS</button>
 </body>
-<script>
-    let styler = document.getElementById("styler");
-    let baseStyle = styler.innerHTML;
-    let hasCSS = true;
-    function noCSS(){
-        if(hasCSS){
-            hasCSS = false;
-            styler.innerHTML = "#_bodyDiv_{background-color: white; color: black;}";
-            document.getElementById("styleButton").innerText = "Click to add CSS";
-        }
-        else{
-            hasCSS = true;
-            styler.innerHTML = baseStyle;
-            document.getElementById("styleButton").innerText = "Click to remove CSS";
-        }
-    }
-    //document.getElementById("lister").onclick = tester;
-    async function rotate(){
-        let state = 3;
-        while(true){
-            await new Promise(r => setTimeout(r, 2000));
-            //console.log("State: "+state);
-            state ++
-            if(hasCSS){
-                if(state === 4){
-                    state = 0;
-                    styler.innerHTML = baseStyle.replace("/*repl*/", "border-bottom: 1px groove #797979;");
-                }
-                else if(state === 1)
-                    styler.innerHTML = baseStyle.replace("/*repl*/", "border-right: 1px groove #797979;");
-                else if(state === 2)
-                    styler.innerHTML = baseStyle.replace("/*repl*/", "border-top: 1px groove #797979;");
-                else if(state === 3)
-                    styler.innerHTML = baseStyle.replace("/*repl*/", "border-left: 1px groove #797979;");
-            }
-            //console.log(styler.innerHTML);
-        }
-    }
-    rotate();
-</script>
 `;
 
 export default contentHtml;

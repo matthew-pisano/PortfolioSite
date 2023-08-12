@@ -28,15 +28,21 @@ function elementsFromTree(tree, path=""){
     }
     else {
         let urlPath;
+        let editIcon = null;
         let name = tree.name.substring(0, tree.name.indexOf("."));
         if(pageRegistry[pathJoin(SysEnv.HOME_FOLDER, path.substring(1), tree.name)])
             urlPath = pathJoin(path.replace("public", ""), name);
-        else urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), tree.name)}`;
-
+        else {
+            urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), tree.name)}`;
+            editIcon = <img className='editButton' alt='html' onClick={() => {
+                window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), tree.name)}`);
+            }}/>;
+        }
 
         return <div key={name+"-File"} id={name+"-File"} className="sidebarItem w3-row" style={{marginLeft: common.folderIndent}}>
             <img className='htmlIcon' alt='html'/>
             <a className="w3-button lightText" style={{padding: 0}} href={urlPath}>{tree.name}</a>
+            {editIcon}
         </div>;
     }
 

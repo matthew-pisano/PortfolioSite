@@ -99,16 +99,39 @@
     width: 20px;
     background-color: #313131;
 }
-#editorContent {
+.cm-editor {
     width: 90%;
-    overflow-x: auto;
+    min-height: 100px;
     border-style: solid;
     border-color: azure;
     border-width: 2px;
+    white-space: nowrap;
+    color: azure;
+    background-color: #414141;
+}
+
+.cm-scroller {
+    min-height: 100px;
+}
+
+.cm-tooltip, .cm-tooltip-autocomplete{
+    background-color: #414141 !important;
+}
+
+.cm-cursor {
+    border-left-color: azure !important;
+}
+
+.CodeMirror-cursor {
+    border-color: azure;
+}
+
+.CodeMirror-gutters {
+    background-color: #33383f
 }
 
 #editorSave {
-    padding: 3px;
+    padding: 10px;
     margin-top: 10px;
     color: azure; !important;
     background-color: #414141;

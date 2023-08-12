@@ -1,4 +1,5 @@
 import { SysEnv, Permissions as Perms } from './utils';
+import contentHtml from "./start";
 
 let pageRegistry = {};
 
@@ -343,6 +344,9 @@ if (typeof window === 'undefined') {
         }
     }
     walkPages();
+
+    masterFileSystem.mkdir(pathJoin(SysEnv.PUBLIC_FOLDER, "custom"));
+    masterFileSystem.writeText(pathJoin(SysEnv.PUBLIC_FOLDER, "custom", "start.html"), contentHtml);
 
     dehydrateInfo = JSON.stringify(
         { hierarchy: masterFileSystem.hierarchy.constructor.toDict(masterFileSystem.hierarchy), pageRegistry: pageRegistry }

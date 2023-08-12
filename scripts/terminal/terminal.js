@@ -24,9 +24,10 @@ const TerminalDiv = () => {
     }, []);
 
     useEffect(() => {
+        let terminalHolder = document.getElementById("terminalHolder");
+        if(!terminalHolder) return;
         setPrompt(genPrompt(ENV.CWD));
-
-        document.getElementById("terminalHolder").style.color = ENV.COLOR;
+        terminalHolder.style.color = ENV.COLOR;
     });
 
     const dragStart = (e) => {

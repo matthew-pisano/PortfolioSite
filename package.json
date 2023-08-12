@@ -6,6 +6,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@codemirror/lang-html": "^6.4.5",
+    "@codemirror/state": "^6.2.1",
+    "@codemirror/view": "^6.16.0",
+    "codemirror": "^6.0.1",
     "eslint-plugin-react": "^7.33.1",
     "fs": "^0.0.1-security",
     "html-react-parser": "^3.0.16",
