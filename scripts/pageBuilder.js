@@ -32,6 +32,7 @@ function buildTags(tags){
 }
 
 function buildPage(pageInfo, tiles){
+    pageInfo.pageName = pageInfo.pageName.split("/").join("");
     return <div id={pageInfo.pageName+"TileHolder"} className="tileHolder inner w3-display-container" style={pageInfo.holderStyle}>
         {buildTags(pageInfo)}
         {pageInfo.title ? 
@@ -51,7 +52,7 @@ function buildPage(pageInfo, tiles){
                 else titleElement = <b id={titleId}>{parse(tile.title)}</b>;
 
                 if(tile.titleLink){
-                    let gotoLink = () => {showPage(tile.titleLink);};
+                    let gotoLink = () => {window.location.replace(tile.titleLink);};
                     titleElement = <u style={{cursor: "pointer"}} onClick={gotoLink}>
                         {titleElement}
                     </u>;

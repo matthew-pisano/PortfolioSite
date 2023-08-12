@@ -28,7 +28,7 @@ class File {
         Perms.validate(permission);
 
         this.name = name;
-        this.text = text
+        this.text = text;
         this.permission = permission;
         this.created = Date.now();
         this.modified = Date.now();
@@ -84,7 +84,7 @@ class FileSystem {
 
     /** @param {Directory} hierarchy */
     constructor(hierarchy) {
-        this.hierarchy = hierarchy
+        this.hierarchy = hierarchy;
         this.lastUpdateTime = Date.now();
         this.callbacks = [];
     }
@@ -145,6 +145,7 @@ class FileSystem {
         if (!this.exists(oldPath))
             throw new Error(`Cannot copy file or directory.  File or directory at ${oldPath} does not exist!`);
 
+        console.log("Compyinh", oldPath, newPath)
         let newParentPath = newPath.substring(0, newPath.lastIndexOf("/") + 1);
         let newChildName = newPath.substring(newPath.lastIndexOf("/") + 1);
         if (!this.exists(newParentPath))
@@ -326,7 +327,9 @@ if (typeof window === 'undefined') {
                 if (["admin", "index", "404", "display", "edit"].includes(fileName)) continue;
 
                 if (fileName[0] !== "_") {
-                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = {name: pathJoin(hierarchyPath.replace(SysEnv.PUBLIC_FOLDER+"/", ""), fileName + ".html"), size: size};
+                    let name = hierarchyPath.replace(SysEnv.PUBLIC_FOLDER, "");
+                    if(name[0] === "/") name = name.substring(1);
+                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = {name: pathJoin(name, fileName + ".html"), size: size};
                     masterFileSystem.touch(pathJoin(hierarchyPath, fileName + ".html"), "--" + Perms.EXECUTE);
                 }
             }

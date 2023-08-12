@@ -36,6 +36,7 @@
 }
 
 .menuDropItem {
+    display: block;
     min-width: 200px;
     padding: 2px 3px;
     margin-left: 5px;
@@ -69,7 +70,7 @@
     background-color: #313131;
 }
 
-.openSidebar{
+.openSidebar {
     width: 215px !important;
 }
 
@@ -122,9 +123,8 @@
 }
 
 #explorerTitle{
-    display: none;
+    text-align: left;
     border-style: none;
-    text-align: center;
     vertical-align: middle;
     margin-left: 30px;
 }
@@ -150,4 +150,30 @@
     content:url("../assets/edit.png");
     cursor: pointer;
     margin-left: 5px;
+}
+
+.fileRenamer {
+    max-width: 100px;
+    max-height: 30px;
+    background-color: #414141;
+    color: azure;
+}
+.contextMenu {
+    width: 200px;
+    border-style: solid;
+    border-color: azure;
+    border-width: 2px;
+    z-index: 100;
+    position: fixed;
+    background-color: #414141;
+    color: azure;
+}
+
+.contextMenuItem {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border-bottom: solid;
+    border-color: azure;
+    border-width: 1px;
 }

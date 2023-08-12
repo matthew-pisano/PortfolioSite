@@ -7,12 +7,12 @@ import { masterFileSystem, pageRegistry } from './fileSystem';
 let tilePositions = null;
 let sidebarOpen = true;
 let pageLoaded = false;
-let sidebarMax = 215;
-let sidebarMin = 50;
+
 let folderIndent = "0px";
 let menuBindings = {
     "fileButton": "fileDropdown",
     "editButton": "editDropdown",
+    "terminalButton": "terminalDropdown",
     "helpButton": "helpDropdown",
     "contactButton": "contactDropdown",
 };
@@ -20,31 +20,6 @@ let activeEditor = undefined;
 let selectedPageId = undefined;
 
 // TODO: Move this and other wrapper-related functions ot Wrapper
-function toggleSidebar(animate=true){
-    document.getElementById("collapseSidebar").innerText = sidebarOpen ? ">" : "<";
-    if(sidebarOpen){
-        $(".sidebarItem").invisible();
-        document.getElementById("sidebarContent").style.display = "none";
-        document.getElementById("sidebar").classList.remove("openSidebar");
-        document.getElementById("explorerTitle").style.display = "none";
-        document.getElementById("collapseHolder").classList.remove("openSidebar");
-        document.getElementById("pageHolder").classList.remove("smallInvisible");
-        $("#sidebarContent").animate({"width": "0px"}, animate ? 200 : 0);
-    }
-    else{
-        document.getElementById("sidebarContent").style.display = "block";
-        $("#sidebarContent").animate({"width": "100%"}, animate ? 200 : 0);
-        document.getElementById("sidebar").classList.add("openSidebar");
-        document.getElementById("collapseHolder").classList.add("openSidebar");
-        document.getElementById("pageHolder").classList.add("smallInvisible");
-        document.getElementById("explorerTitle").style.display = "inline";
-        $(".sidebarItem").visible();
-    }
-
-    for(let tag of [".page", "#terminalHolder", ".titleCard", "#fileEditor"])
-        $(tag).animate({"margin-left": (sidebarOpen ? sidebarMin : sidebarMax)+"px"}, animate ? 200 : 0);
-    sidebarOpen = !sidebarOpen;
-}
 
 
 function showPage(pageId, isLanding = false, replaceLocation = true){
@@ -92,7 +67,7 @@ function showPage(pageId, isLanding = false, replaceLocation = true){
 }
 
 function init() {
-    console.log("Loading page...");
+    // console.log("Loading page...");
 
     /*let startId = newFile("start.html", false);
     setFileContent(startId, startStr);
@@ -100,16 +75,52 @@ function init() {
     document.getElementById(startId+"Page").innerHTML = parsed.content;
     eval(parsed.scripts);*/
 
-    document.body.addEventListener('click', (evt) => {
-        for(let [buttonId, dropId] of Object.entries(menuBindings)){
-            if(evt.target.id !== buttonId)
-                $("#"+dropId).hide(0);
-        }
+    document.documentElement.addEventListener('click', (evt) => {
+        for(let elem of document.getElementsByClassName("menuDropdown"))
+            elem.style.display = "none";
+        if(!evt.target.className.includes("contextMenu"))
+            for(let elem of document.getElementsByClassName("contextMenu"))
+                elem.remove();
+
+
         if(evt.target.id !== "customRename" && document.getElementById("customRename"))
             finishRenaming(selectedPageId, document.getElementById("customRename").value);
     }, true);
+
+    document.body.addEventListener('contextmenu', (evt) => {
+        if (!evt.target.className.includes("contextMenu"))
+            for (let elem of document.getElementsByClassName("contextMenu"))
+                elem.remove();
+    }, true);
     
     pageLoaded = true;
+}
+
+function slideTilesOnScroll() {
+    let tileHolder = document.getElementsByClassName("tileHolder")[0];
+    if(!tileHolder) return;
+
+    if(tilePositions === null)
+        tilePositions = {};
+    let tiles = tileHolder.children;
+    for(let tileElement of tiles){
+        if(tileElement.id === "") continue;
+        let tile = document.getElementById(tileElement.id);
+        if(tilePositions[tileElement.id] === undefined)
+            tilePositions[tileElement.id] = {isOffset: false, default: "3%", initial: true};
+
+        let viewportOffset = tile.getBoundingClientRect();
+        let top = viewportOffset.top;
+        if(top <= window.innerHeight && tilePositions[tileElement.id].isOffset){
+            $("#"+tileElement.id).animate({"margin-left": tilePositions[tileElement.id].default}, 700);
+            tilePositions[tileElement.id].isOffset = false;
+        }
+        else if(top > window.innerHeight && !tilePositions[tileElement.id].isOffset && tilePositions[tileElement.id].initial){
+            $("#"+tileElement.id).animate({"margin-left": "90%"}, 0);
+            tilePositions[tileElement.id].isOffset = true;
+            tilePositions[tileElement.id].initial = false;
+        }
+    }
 }
 
 if (typeof window !== "undefined") {
@@ -127,30 +138,7 @@ if (typeof window !== "undefined") {
 
     init();
 
-    window.onscroll = (event) => {
-        if(document.getElementById(selectedPageId+"TileHolder") === null) return;
-        if(tilePositions === null)
-            tilePositions = {};
-        let tiles = document.getElementById(selectedPageId+"TileHolder").children;
-        for(let tileElement of tiles){
-            if(tileElement.id === "") continue;
-            let tile = document.getElementById(tileElement.id);
-            if(tilePositions[tileElement.id] === undefined)
-                tilePositions[tileElement.id] = {isOffset: false, default: "3%", initial: true};
-            
-            let viewportOffset = tile.getBoundingClientRect();
-            let top = viewportOffset.top;
-            if(top <= window.innerHeight && tilePositions[tileElement.id].isOffset){
-                $("#"+tileElement.id).animate({"margin-left": tilePositions[tileElement.id].default}, 700);
-                tilePositions[tileElement.id].isOffset = false;
-            }
-            else if(top > window.innerHeight && !tilePositions[tileElement.id].isOffset && tilePositions[tileElement.id].initial){
-                $("#"+tileElement.id).animate({"margin-left": "90%"}, 0);
-                tilePositions[tileElement.id].isOffset = true;
-                tilePositions[tileElement.id].initial = false;
-            }
-        }
-    };
+    window.onscroll = (event) => {slideTilesOnScroll();};
 
     /* View in fullscreen */
     window.openFullscreen = () => {
@@ -179,4 +167,4 @@ if (typeof window !== "undefined") {
 }
 
   
-export {$, showPage, folderIndent, toggleSidebar, init};
+export {$, showPage, folderIndent, init};

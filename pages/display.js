@@ -6,16 +6,12 @@ import parse from "html-react-parser";
 
 const Display = () => {
     const [pageText,  setPageText] = useState("");
-    const [pagePath, setPagePath] = useState("");
 
     useEffect(() => {
         const {path: customPath, result: customResult} = currentCustom(masterFileSystem);
         if(!customResult) setPageText(`Cannot find file at ${customPath}!`);
         else if(customResult.constructor === Directory) setPageText("Cannot open a directory!");
-        else {
-            setPageText(customResult.text);
-            setPagePath(customPath);
-        }
+        else setPageText(customResult.text);
     }, []);
 
     let pageInfo = {
