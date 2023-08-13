@@ -1,0 +1,71 @@
+#terminalClose:hover{
+    background-color: #313131 !important;
+    color: azure !important;
+}
+
+#terminalHolder{
+    background-color: #1e1e1e;
+    color: azure;
+    position: fixed;
+    bottom: 30px;
+    left:0px;
+    right: 0px;
+    z-index: 2;
+}
+
+#terminalOutput{
+    position: fixed;
+    bottom: 70px;
+    height: 0px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#terminalPrompt{
+    position: fixed;
+    bottom: 30px;
+    height: 40px;
+    width: auto;
+}
+
+#terminalInput{
+    position: fixed;
+    bottom: 30px;
+    height: 40px;
+    width: 100%;
+}
+
+#terminalInput:focus-visible{
+    outline: none;
+}
+
+#terminal{
+    border: 1px solid black;
+    height: 30px;
+    cursor: text;
+}
+
+#terminalThumb{
+    background: #838383;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    cursor: row-resize;
+    height: 10px;
+}
+
+.void {
+    background: url(https://lightsail-image-repo.s3.amazonaws.com/pgrm/void.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+@media (max-width: 600px) {
+    #terminalHolder {
+        display: none;
+    }
+}

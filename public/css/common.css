@@ -1,0 +1,62 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: Consolas,monaco,monospace;
+}
+
+html {
+    background-color: #1e1e1e;
+}
+
+.it{
+    font-style: italic;
+}
+.katex{
+    white-space: nowrap;
+}
+
+.lightText {
+    color: azure;
+}
+
+.gone {
+    display: none;
+}
+
+/*Medium Screens*/
+@media (max-width: 600px) {
+    #editorContent {
+        width: 80%;
+    }
+    .openSidebar{
+        width: 100% !important;
+    }
+    #resumeHolder{
+        margin-bottom: 40px;
+        height: 500px;
+    }
+    .tileHolder{
+        margin-top: 300px;
+        padding-right: 10px;
+    }
+    .smallInvisible{
+        visibility: hidden;
+    }
+    .displayTile{
+        margin-right: 0px;
+        margin-left: 3%;
+    }
+    .katex{
+        white-space: normal;
+    }
+}
+
+/*Small Screens*/
+@media (max-width: 400px) {
+    #encodingStatus{
+        display: none;
+    }
+    .tag {
+        width: 100% !important;
+    }
+}

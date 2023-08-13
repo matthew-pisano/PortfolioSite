@@ -1,0 +1,189 @@
+.menuBar {
+    position: fixed;
+    width: 100%;
+    background-color: #33383f;
+    z-index: 3;
+}
+
+.commandBar {
+    position: fixed;
+    width: 100%;
+    background-color: #3b71bb;
+    z-index: 3;
+    height: 30px;
+}
+
+.menuItem, .commandItem {
+    width: auto;
+    padding: 2px 8px;
+}
+
+#menuDropHolder {
+    display: table;
+    position: fixed;
+    top: 27px;
+    z-index: 3;
+}
+
+.menuDropdown {
+    background-color: #2a2b2c;
+    border-style: solid;
+    border-color: rgb(219, 224, 224);
+    border-width: 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: none;
+}
+
+.menuDropItem {
+    display: block;
+    min-width: 200px;
+    padding: 2px 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: left;
+}
+
+.commandItem:hover, .menuDropItem:hover {
+    background-color: #77a6e9 !important;
+}
+
+.menuItem:hover {
+    background-color: #4a5058 !important;
+    color: azure !important;
+}
+
+.openSidebar {
+    width: 230px;
+}
+
+.closeSidebar {
+    width: 50px;
+}
+
+#sidebar {
+    bottom: 30px;
+    top: 25px;
+    position: fixed;
+    z-index: 2;
+    overflow-y: auto;
+    background-color: #313131;
+}
+
+#collapseHolder {
+    position: fixed;
+    z-index: 3;
+    width: 0px;
+    background-color: #313131;
+}
+
+#sidebarContent {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.sidebarItem {
+    margin-right: 5px;
+    border-style: none none none solid;
+    border-color: azure;
+    border-width: 2px;
+}
+
+.selectedSideItem{
+    background-color: #414141;
+}
+
+.sidebarFolder > button{
+    cursor: default;
+}
+
+.folderIcon{
+    content:url("../assets/folder.png");
+}
+
+.htmlIcon{
+    content:url("../assets/htmlFile.png");
+}
+
+.sidebarContent{
+    padding-left: 15px;
+}
+
+.sidebarItem img{
+    width: 15px;
+    max-width: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.sidebarItem button{
+    padding: 0px;
+}
+
+.sidebarItem button:hover, .sidebarItem a:hover{
+    background-color: #3e4146 !important;
+    color: azure !important;
+}
+
+#explorerTitle{
+    text-align: left;
+    border-style: none;
+    vertical-align: middle;
+    margin-left: 30px;
+}
+
+#collapseSidebar {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    padding: 1px;
+    color: azure;
+    background-color: #414141;
+    border-style: none none none solid;
+    border-color: azure;
+    border-width: 2px;
+}
+
+#collapseSidebar:hover {
+    background-color: #51555b !important;
+    color: azure !important;
+}
+
+.editButton{
+    content:url("../assets/edit.png");
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.fileRenamer {
+    max-width: 100px;
+    max-height: 30px;
+    background-color: #414141;
+    color: azure;
+}
+.contextMenu {
+    width: 200px;
+    border-style: solid;
+    border-color: azure;
+    border-width: 2px;
+    z-index: 100;
+    position: fixed;
+    background-color: #414141;
+    color: azure;
+}
+
+.contextMenuItem {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border-bottom: solid;
+    border-color: azure;
+    border-width: 1px;
+}
+
+/*Medium Screens*/
+@media (max-width: 600px) {
+    #terminalButton{
+        display: none;
+    }
+}
