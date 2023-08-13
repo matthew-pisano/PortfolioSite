@@ -16,6 +16,37 @@
     width: 80%;
 }
 
+.gitLink, .extraLink{
+    width: 200px;
+    padding: 2px 5px;
+    margin: 3px 5px;
+    background-color: #414141;
+    border-radius: 10px;
+    color: azure;
+}
+
+.gitLink a, .extraLink a{
+    float: right;
+    width: 70%;
+}
+.gitLink img, .extraLink img{
+    width: 10%;
+    min-width: 20px;
+    max-width: 30px;
+    margin-right: 5px;
+}
+.gitLink img{
+    content:url("../assets/github.png");
+}
+
+.extraLink img{
+    content:url("../assets/paper.png");
+}
+
+.darkTag {
+    background-color: #313131;
+}
+
 /*Tags*/
 .personalTag img{
     content:url("../assets/personal.png");

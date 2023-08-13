@@ -12,8 +12,6 @@ class ChipFiring extends Component {
                 title: "#Overview",
                 content: `In our research, we focused on the study of Chip-Firing games and how different combinations of 
                     directed and undirected edges affect its winning strategies.`,
-                extraTitles: ["Research Paper"],
-                extraLinks: ["https://arxiv.org/abs/2302.10327"]
             },
             {
                 title: "Abstract",

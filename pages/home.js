@@ -29,7 +29,7 @@ class Home extends Component {
                 content: `<i>PredictChain</i> is a decentralized artificial intelligence marketplace.
                     It utilizes the Algorand blockchain to allow users to host instances of this
                     marketplace, with the goal of more freely distributing AI models, data, and compute among all users.
-                    Won 1st place in the 2023 Mega-Ace hackathon`,
+                    Won 1st place in the 2023 Mega-Ace hackathon.`,
                 gitLink: "https://github.com/predict-chain/predict-chain",
                 gitTitle: "PredictChain",
                 extraTitles: ["Research Paper"],

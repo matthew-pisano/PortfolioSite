@@ -67,31 +67,6 @@
     top: 50px;
 }
 
-.gitLink, .extraLink{
-    width: 200px;
-    padding: 2px 5px;
-    margin: 3px 5px;
-    background-color: #313131;
-    border-radius: 10px;
-    color: azure;
-}
-.gitLink a, .extraLink a{
-    float: right;
-    width: 80%;
-}
-.gitLink img, .extraLink img{
-    width: 10%;
-    min-width: 20px;
-    margin-right: 5px;
-}
-.gitLink img{
-    content:url("../assets/github.png");
-}
-
-.extraLink img{
-    content:url("../assets/paper.png");
-}
-
 .forceWrap{
     word-break: break-word;
     white-space: normal;
