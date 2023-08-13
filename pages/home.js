@@ -38,12 +38,12 @@ class Home extends Component {
                 thumbnail: "/assets/predictChain.png"
             },
             {
-                title: "GPT-Pedagogy",
+                title: "Mathesis",
                 titleLink: "",
                 content: `Research into the creation of a fine-tuned GPT-3 teaching assistant that will enable the transparent 
                     use of the technology between instructor and student to create a more active and participatory learning environment.`,
                 gitLink: "https://github.com/GPT-Pedagogy/GPT-Pedagogy",
-                gitTitle: "GPT-Pedagogy",
+                gitTitle: "Mathesis Pedagogy",
                 tags: ["research", "academic", "ai", "python"],
                 thumbnail: "/assets/mathesis.png"
             },

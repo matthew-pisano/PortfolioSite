@@ -12,21 +12,25 @@ class About extends Component {
             {
                 title: "#Introduction",
                 content: `My name is Matthew Pisano.  I am a student and software developer, pursuing higher education
-                    with the hopes of working as an artificial intelligence researcher in the future.  This research
-                    would hopefully center around cognitive artificial intelligence and natural language processing,
-                    two areas that interest me greatly.  I enjoy finding interesting or useful projects to begin 
-                    working on and develop them until they reach the best iteration they can be.`,
+                    with the hopes of working as an artificial intelligence researcher in the future.
+                    
+                    <br>My research centers around language model alignment; enforcing safety without hampering its cognitive 
+                    abilities. I often draw inspiration from biological intelligences to aid im my work with artificial ones. 
+                    I enjoy learning about how the mind works and the cognitive principles that can be applied to it.`,
                 thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/headshot"
             },
             {
                 title: "Software Skills",
-                content: `I have experience in many languages with JavaScript, Java, and Python being the ones in
-                    which my skills are most developed.  I have created many professional solutions for a variety
-                    of companies along with machine learning applications, both from scratch and using modules such 
-                    as TensorFlow and PyTorch.  Through Java, I have created multiple android applications,
-                    come of which have been published on the Google Play store.  I have used javascript in a variety
-                    of personal and professional web applications, with React.js and Node.js being the libraries in which
-                    I have the most experience.`,
+                content: `I have experience in many languages with Python, JavaScript, and Java being the ones in
+                    which my skills are most developed.
+                    <ul>
+                    <li>I have created many professional solutions for a variety of companies along with machine
+                     learning applications, both from scratch and using modules such as 🤗Transformers and PyTorch.</li>
+                    <li>Through Java, I have created multiple android applications, come of which have been 
+                    published on the Google Play store.</li>
+                    <li>I have used javascript in a variety of personal and professional web applications, 
+                    with React.js and Node.js being the libraries in which I have the most experience.</li>
+                    </ul>`,
             },
             {
                 title: "Development Experience",
@@ -36,14 +40,18 @@ class About extends Component {
             },
             {
                 title: "Recent Employment",
-                content: `During the Spring and Fall semesters, I am employed at Rensselaer Polytechnic Institute as a teaching
+                content: `Over the course of Summer 2023, I worked as a research intern at IBM's research facility in Yorktown as
+                    part of a program through RPI.  During this time, I researched new techniques of model alignment using text-based
+                    game for safety training on moral and ethical principles.<hr>
+                    
+                    During the Spring and Fall semesters, I am employed at Rensselaer Polytechnic Institute as a teaching
                     assistant.  In this position, I hold office hours, aid the professor in grading, and help students
-                    to better grasp relevant course material.<hr></hr>
+                    to better grasp relevant course material.<hr>
 
-                    Last Summer, I had worked for SUNY New Paltz through their summer undergraduate research experience, details
+                    During the Summer of 2022, I had worked for SUNY New Paltz through their summer undergraduate research experience, details
                     about this can be found in the <u style="cursor: pointer" onClick="window.showPage('chipFiring')">Chip Firing page</u> and
                     in the <a href="https://arxiv.org/abs/2302.10327" target="_blank">arXiv submission</a> for the resulting paper.
-                    With this job, I worked closely with my professor to gain research experience and to develop research for later publishing.<hr></hr>
+                    With this job, I worked closely with my professor to gain research experience and to develop research for later publishing.<hr>
 
                     I am also currently employed at Cyber Guardian Consulting Group.  Here, I have developed a variety of proprietary business
                     solutions using a variety of languages and web services, primarily AWS.  Further details of these projects
@@ -52,12 +60,13 @@ class About extends Component {
             {
                 title: "Leadership",
                 content: `A key attribute of someone who can work well with a team, whether the focus is software 
-                    development, research, or something else, is leadership.  Many of my leadership skills
-                    come from my time in scouting.  I spend 10 years in the Boy Scouts of America program learning the attributes
+                    development or research, is leadership.  Many of my leadership skills
+                    come from my time in scouting.  I spent 10 years in the Boy Scouts of America program learning the attributes
                     of good leaders and good team players.  This culminated in my Eagle Scout project where I preformed renovations
                     on my community's local recreation center.  My experience has continued on from there as I took active roles in
-                    leading the front end development of the <u style="cursor: pointer" onClick="window.showPage('anonHires')">Anonymous Hires</u>
-                    project and SUNY Ulster's Team Orion collaboration with IBM.`,
+                    the planning and machine learning components of PredictChain, the front-end and ChatGPT interface of Mathesis,
+                    leading the front-end development of the <a href="/hackathons/anonHires">Anonymous Hires</a>
+                    project, and in SUNY Ulster's Team Orion collaboration with IBM.`,
             },
         ];
         let pageInfo = {
