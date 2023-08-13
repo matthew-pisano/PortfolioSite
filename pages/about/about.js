@@ -27,14 +27,12 @@ class About extends Component {
                     come of which have been published on the Google Play store.  I have used javascript in a variety
                     of personal and professional web applications, with React.js and Node.js being the libraries in which
                     I have the most experience.`,
-                thumbnail: ""
             },
             {
                 title: "Development Experience",
                 content: `Through both my employment and professional experience through my higher education, I have
                     gained invaluable experience as a developer.  I have experience using the DevOps and Agile methodologies,
                     full-stack development, and continuous integration and continuous delivery using AWS Amplify.`,
-                thumbnail: ""
             },
             {
                 title: "Recent Employment",
@@ -50,7 +48,6 @@ class About extends Component {
                     I am also currently employed at Cyber Guardian Consulting Group.  Here, I have developed a variety of proprietary business
                     solutions using a variety of languages and web services, primarily AWS.  Further details of these projects
                     may be negotiated upon request.`,
-                thumbnail: ""
             },
             {
                 title: "Leadership",
@@ -61,7 +58,6 @@ class About extends Component {
                     on my community's local recreation center.  My experience has continued on from there as I took active roles in
                     leading the front end development of the <u style="cursor: pointer" onClick="window.showPage('anonHires')">Anonymous Hires</u>
                     project and SUNY Ulster's Team Orion collaboration with IBM.`,
-                thumbnail: ""
             },
         ];
         let pageInfo = {

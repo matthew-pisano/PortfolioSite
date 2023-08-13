@@ -40,7 +40,6 @@ class Simplex extends Component {
                     functions have been loaded into memory with their initial values, so execution begins at the beginning and goes line by line.<br>
                     As each line is hit, any expressions in that line are resolved to their real values, reading the index of an array for example,
                     and functions have the real values or their arguments given to them for their execution.`,
-                thumbnail: ""
             },
             {
                 title: "Scientific Focus",

@@ -12,17 +12,14 @@ const Babble = () => {
         {
             title: "_",
             content: ``,
-            thumbnail: ""
         },
         {
             title: "_",
             content: ``,
-            thumbnail: ""
         },
         {
             title: "_",
             content: ``,
-            thumbnail: ""
         }
     ];
     let pageInfo = {

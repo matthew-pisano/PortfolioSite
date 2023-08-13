@@ -19,7 +19,6 @@ class Neural extends Component {
                     developed the presentation much further into a research paper under the guidance of our professor.  I used this as an opportunity
                     to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
                     The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
-                thumbnail: "",
                 extraTitles: ["Research Paper"],
                 extraLinks: ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"]
             },
@@ -55,7 +54,6 @@ class Neural extends Component {
                     Each trial was given a score for comparison. The score is given by the percent
                     of correctly identified diagnoses divided by the time it took for the trial to
                     complete. The higher the score, the better the performance of the algorithm.`,
-                thumbnail: ""
             },
             {
                 title: "#Results",

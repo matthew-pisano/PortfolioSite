@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import '../scripts/globalListeners';
+
 import Head from 'next/head';
 import {masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem, pathJoin} from './fileSystem/fileSystem';
 import TerminalDiv from './terminal/terminal';
@@ -134,7 +136,7 @@ const Wrapper = ({children, pageName}) => {
             document.getElementById("sidebar").classList.replace("closeSidebar", "openSidebar");
             document.getElementById("collapseHolder").classList.replace("closeSidebar", "openSidebar");
             document.getElementById("pageHolder").classList.add("smallInvisible");
-            document.getElementById("explorerTitle").style.display = "inline";
+            document.getElementById("explorerTitle").style.display = "";
             $(".sidebarItem").visible();
         }
 
@@ -210,6 +212,12 @@ const Wrapper = ({children, pageName}) => {
                             onClick={() => window.location.replace("/help")}>help.html</button>
                         <a className="lightText menuDropItem" style={{display: "block"}} href='https://github.com/matthew-pisano/PortfolioSite#readme' 
                             target={"_blank"} rel="noreferrer">README</a>
+                        <button id="helpAction" className="w3-button lightText menuDropItem"
+                            onClick={() => {
+                                document.getElementById('terminal').dispatchEvent(new CustomEvent("openTo", {detail: 550}));
+                                document.getElementById('terminalInput').innerText = "help";
+                                document.getElementById('terminalInput').dispatchEvent(new Event("submit"));
+                            }}>Terminal Help</button>
                     </div>
                     <div id="contactDropdown" className="menuDropdown w3-col">
                         <p className="lightText menuDropItem">Phone: +1 (845)-706-0677</p>

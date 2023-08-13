@@ -22,7 +22,7 @@
     padding: 10px;
 }
 .displayTile img {
-    width: 25%;
+    width: 15%;
     min-width: 50px;
     max-width: 300px;
     margin-right: 5px;
@@ -30,7 +30,7 @@
 }
 .displayTile > div {
     float: right;
-    width: 75%;
+    width: 83%;
 }
 
 #wrapperContent{
@@ -155,6 +155,17 @@
 /*Large Screens*/
 @media (max-width: 1500px) {
     .displayTile > div {
-        width: 70%;
+        width: 80%;
+    }
+}
+
+/*Medium Screens*/
+@media (max-width: 1000px) {
+    .displayTile > div {
+        width: 75%;
+    }
+
+    .displayTile img {
+        width: 20%;
     }
 }

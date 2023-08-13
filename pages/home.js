@@ -10,7 +10,7 @@ class Home extends Component {
     render() {
         let tiles = [
             {
-                title: "#Research",
+                title: "#Featured Research",
                 content: ``,
                 style: {backgroundColor: "#41414155"}
             },
@@ -24,13 +24,28 @@ class Home extends Component {
                 tags: ["research", "academic", "ai", "python"]
             },
             {
+                title: "PredictChain",
+                titleLink: "research/predictChain",
+                content: `<i>PredictChain</i> is a decentralized artificial intelligence marketplace.
+                    It utilizes the Algorand blockchain to allow users to host instances of this
+                    marketplace, with the goal of more freely distributing AI models, data, and compute among all users.
+                    Won 1st place in the 2023 Mega-Ace hackathon`,
+                gitLink: "https://github.com/predict-chain/predict-chain",
+                gitTitle: "PredictChain",
+                extraTitles: ["Research Paper"],
+                extraLinks: ["https://arxiv.org/abs/2307.15168"],
+                tags: ["research", "academic", "ai", "python", "hack"],
+                thumbnail: "/assets/predictChain.png"
+            },
+            {
                 title: "GPT-Pedagogy",
                 titleLink: "",
                 content: `Research into the creation of a fine-tuned GPT-3 teaching assistant that will enable the transparent 
                     use of the technology between instructor and student to create a more active and participatory learning environment.`,
                 gitLink: "https://github.com/GPT-Pedagogy/GPT-Pedagogy",
                 gitTitle: "GPT-Pedagogy",
-                tags: ["research", "academic", "ai", "python"]
+                tags: ["research", "academic", "ai", "python"],
+                thumbnail: "/assets/mathesis.png"
             },
             {
                 title: "Chip Firing",
@@ -41,17 +56,6 @@ class Home extends Component {
                 extraLinks: ["https://arxiv.org/abs/2302.10327"],
                 gitLink: "https://github.com/matthew-pisano/ChipFiring",
                 tags: ["research", "academic", "python"]
-            },
-            {
-                title: "Neural",
-                titleLink: "neural",
-                content: `A research project with the goal analyzing the differences between backpropagation, a genetic algorithm method,
-                    and the decision tree optimization when training on a dataset from the Vanderbilt University Department of Biostatics.  The goal
-                    of these networks was to predict whether a patient was diagnosed with type-II diabetes based on their health attributes.`,
-                extraTitles: ["Research Paper"],
-                extraLinks: ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
-                gitLink: "https://github.com/matthew-pisano/NuralPy",
-                tags: ["research", "academic", "ai", "python"]
             },
             {
                 title: "#Featured Projects",

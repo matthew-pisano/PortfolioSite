@@ -20,7 +20,6 @@ class AnonHires extends Component {
                     job market.  Oftentimes, the decision of hiring a candidate can partially depend on what connections a candidate has,
                     their race, or gender.  By anonymizing the hiring process, both employers and candidates can focus more on
                     the skills a candidate has, which are often the most important thing employers are looking for.`,
-                thumbnail: ""
             },
             {
                 title: "Implementation",
@@ -29,7 +28,6 @@ class AnonHires extends Component {
                     someone's ability to work well within a group.  Job listings will contain information about the company, the job in
                     question, and a list of skills and skill levels needed for that job.  Candidates then apply anonymously to that listing.
                     Once a candidate is selected, the process of sharing contact and personal information is started between the two parties.`,
-                thumbnail: ""
             },
             {
                 title: "Big Data Recommendation Engine",
@@ -38,13 +36,11 @@ class AnonHires extends Component {
                     from employees and executive on how important various skills are for a job.  Based on this data, the <i>Pandas</i> Python library
                     was used to process the data from O*Net to provide job recommendations to potential candidates.  This functionality increased the
                     usefulness of the service by providing candidates with jobs that were more fit to the badges they has earned.`,
-                thumbnail: ""
             },
             {
                 title: "Forward",
                 content: `If the project has continues into further development, planned features include support for third party certifications, such as
                     LinkedIn badges, and collaborating with other services, such as Leet Code or HackerRank, to add more depth to the assessment system.`,
-                thumbnail: ""
             },
         ];
         let pageInfo = {

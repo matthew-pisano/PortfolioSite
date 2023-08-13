@@ -29,7 +29,6 @@ class Videntium extends Component {
                     was translated from Java to JavaScript.  This allows the browser to preform the same viewing and
                     information interaction as within the same, although the process is considerably lighter without the
                     rest of the game's code running along side of it.`,
-                thumbnail: ""
             },
             {
                 title: "Map Sharing",

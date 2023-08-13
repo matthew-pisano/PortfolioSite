@@ -24,7 +24,8 @@ const PageNotFound = () => {
     function nextLink() {
         let rand = Math.random() + 1;
         if(rand > 1.1) return "/"+rand.toString(36).substring(6);
-        return "/secure/babble";
+        let securePages = ["/secure/babble", "/secure/scp"];
+        return securePages[Math.floor(Math.random()*securePages.length)];
     }
 
     let tiles = [
@@ -46,7 +47,7 @@ const PageNotFound = () => {
             title: "Continue Onwards",
             titleLink: nextLink(),
             content: ``,
-            style: {backgroundColor: "#9e1111", backgroundImage: 'url("matrix.gif")', textAlign: "center"}
+            style: {backgroundColor: "#9e1111", backgroundImage: 'url("/matrix.gif")', textAlign: "center"}
         },
     ];
     let pageInfo = {

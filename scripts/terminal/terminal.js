@@ -13,15 +13,24 @@ const TerminalDiv = () => {
     const [commandIndex, setCommandIndex] = useState(-1);
     const [ENV, setENV] = useState({ CWD: SysEnv.HOME_FOLDER, HOME: SysEnv.HOME_FOLDER, COLOR: "#ffffff", CLOSED: true, CLOSE_TIME: 0 });
 
-    let genPrompt = (cwd) => {
+    function genPrompt (cwd) {
         if (resolvePath(ENV.CWD, cwd) === SysEnv.HOME_FOLDER) cwd = "~";
         return "[" + cwd + "]$ ";
-    };
+    }
 
     const [prompt, setPrompt] = useState(genPrompt(SysEnv.HOME_FOLDER));
 
     useEffect(() => {
         document.getElementById("terminalHolder").classList.remove('gone');
+
+        document.getElementById("terminal").addEventListener("openTo", (evt) => {
+            console.log("Got e", evt);
+            resize(null, evt.detail ? evt.detail: 210);
+        });
+
+        document.getElementById("terminalInput").addEventListener("submit", (evt) => {
+            submit();
+        });
     }, []);
 
     useEffect(() => {
@@ -31,16 +40,16 @@ const TerminalDiv = () => {
         terminalHolder.style.color = ENV.COLOR;
     });
 
-    const dragStart = (e) => {
+    function dragStart(e) {
         let resizable = document.getElementById('terminal');
         setInitialPos(e.clientY);
         setInitialSize(resizable.offsetHeight);
-    };
+    }
 
-    const resize = (e, heightOverride) => {
+    function resize(e, heightOverride) {
         let height = heightOverride ? heightOverride : initialSize + initialPos - e.clientY + 50;
         if (height > window.innerHeight - 80) height = window.innerHeight - 80;
-        if(ENV.CLOSED) height = 200;
+        if(ENV.CLOSED && !heightOverride) height = 200;
         if (height > 200 || ENV.CLOSED) {
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
@@ -55,33 +64,37 @@ const TerminalDiv = () => {
             setENV(ENV);
             closeTerminal();
         }
-    };
+    }
 
-    const onInput = (e) => {
-        // console.log("Got input:", e.nativeEvent);
+    function submit() {
+        let terminalInput = document.getElementById('terminalInput');
         let terminalOutput = document.getElementById('terminalOutput');
-        if (e.nativeEvent.inputType === "insertParagraph" || e.nativeEvent.data === null && e.nativeEvent.inputType === "insertText") {
-            let terminalInput = document.getElementById('terminalInput');
-            // console.log("Untrimmed command:", terminalInput.innerText.split());
-            let command = terminalInput.innerText.trim().replace(/\r?\n\r?\n|\r\r/g, " ").replace(/\r?\n|\r/g, "");
-            // console.log("Got command: "+command);
-            terminalInput.innerText = "";
+        // console.log("Untrimmed command:", terminalInput.innerText.split());
+        let command = terminalInput.innerText.trim().replace(/\r?\n\r?\n|\r\r/g, " ").replace(/\r?\n|\r/g, "");
+        // console.log("Got command: "+command);
+        terminalInput.innerText = "";
 
-            if (prevCommands[0] === "" && command.length > 0) setPrevCommands([command, ...prevCommands.slice(1)]);
-            else if (prevCommands[prevCommands.length - 1] !== command && command.length > 0) setPrevCommands([...prevCommands, command]);
+        if (prevCommands[0] === "" && command.length > 0) setPrevCommands([command, ...prevCommands.slice(1)]);
+        else if (prevCommands[prevCommands.length - 1] !== command && command.length > 0) setPrevCommands([...prevCommands, command]);
 
-            setDraftCommand("");
-            setCommandIndex(-1);
+        setDraftCommand("");
+        setCommandIndex(-1);
 
-            const { result: result, env: newEnv } = Commands.parseCommand(command, ENV);
-            setENV(newEnv);
+        const { result: result, env: newEnv } = Commands.parseCommand(command, ENV);
+        setENV(newEnv);
 
-            terminalOutput.innerText += "\n" + prompt + command + "\n" + result + "\n";
-        }
+        terminalOutput.innerText += "\n" + prompt + command + "\n" + result + "\n";
+    }
+    function onInput(e) {
+        // console.log("Got input:", e.nativeEvent);
+        if (e.nativeEvent.inputType === "insertParagraph" || e.nativeEvent.data === null && e.nativeEvent.inputType === "insertText")
+            submit();
+
+        let terminalOutput = document.getElementById('terminalOutput');
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
-    };
+    }
 
-    const onKeyDown = (e) => {
+    function onKeyDown(e) {
         let newI = commandIndex;
         let terminalInput = document.getElementById('terminalInput');
         if (e.code === "ArrowUp") {

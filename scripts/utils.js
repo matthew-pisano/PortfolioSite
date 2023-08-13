@@ -63,7 +63,7 @@ class Constants {
         return alpha;
     }
     static alphabet = this.alpha();
-    static resumeUrl = "https://lightsail-image-repo.s3.amazonaws.com/documents/Resume.pdf";
+    static resumeUrl = "https://lightsail-image-repo.s3.amazonaws.com/documents/resume.pdf";
     
 }
 

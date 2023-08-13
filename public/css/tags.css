@@ -27,7 +27,7 @@
     content:url("../assets/academic.png");
 }
 .academicTag span::after{
-    content: "Acedemic";
+    content: "Academic";
 }
 .javaTag img{
     content:url("../assets/java.png");

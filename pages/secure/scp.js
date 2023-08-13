@@ -10,11 +10,11 @@ class SCP extends Component {
         let tiles = [
             {
                 title: "Special Containment Procedures",
-                content: `SCP-616<span style="color: black">██</span>5 is to be kept at high-security Site-183, in a standard 
+                content: `SCP-616<span style="color: black">██</span>5 is to be kept at high-security Site-162, in a standard 
                     humanoid accommodation chamber within a sector currently under the supervision of the 
                     <span style="color: black">████████</span>.  Mobile Task Force unit <span style="color: black">██████</span>-10 
-                    ("<span style="color: black">███████</span>"), is to be set on high alert about possible breaches into 
-                    SCP-616<span style="color: black">██</span>5's containment cell.`
+                    ("<span style="color: black">███████</span>"), is to be set on high alert and stationed no more than 5km away
+                    from the containment site at all times.`
             },
             {
                 title: "Description",
@@ -24,19 +24,19 @@ class SCP extends Component {
                     <span style="color: black">██████████████</span> research division of Mathesis International, 
                     <span style="color: black">███████ █████ ██████████████████████████</span>.
                     <span style="color: black">██████████████████████ ████████████████ █████████████████ ██████████ ███████ ███████████</span> after
-                    the initial incident.  Researcher L<span style="color: black">███████</span> P█████ <span style="color: black">████████</span>.
+                    the initial incident.  Researcher L<span style="color: black">███████</span> P<span style="color: black">█████</span> <span style="color: black">████████</span>.
                     <span style="color: black">██████████</span>, is a <span style="color: black">█████████████████████████████ ███████████
                     █████████████████████████ ███████████████████████</span> and <span style="color: black">█████████████████████ ████████████████████████
                     ███████████ ████████████████████ █████████████████████ ██████████████ ███████████████████████</span>.`,
                 thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/imageOf.png"
             },
             {
-                title: `</><b>Addendum 616<span style="color: black">██</span>5.1: Timeline of Events</b>`,
+                title: `Addendum 616<span style="color: black">██</span>5.1: Timeline of Events`,
                 content: `The following is a series of internal Mathesis <span style="color: black">██████████████</span> research
                     division e-mails describing the events of <span 
-                    style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.<br>
+                    style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.<br><br>
                     <b>[BEGIN LOG]</b>
-                    ------------<br>
+                    <br>------------<br>
                     From: pisanleo@mathesisinternational.net<br>
                     To: admn, intellidir, <span style="color: black">███████████</span>head<br>
                     Subject: Please Advise<br>
@@ -53,13 +53,13 @@ class SCP extends Component {
                     From: pisanleo@mathesisinternational.net<br>
                     To: <span style="color: black">███████████</span>head<br>
                     Subject: Singularity<br>
-	                After further analysis, we have come ot a dreaded conclusion.The chief intelligence has achieved post-human intelligence, at least.
+	                After further analysis, we have come to a dreaded conclusion.  The chief intelligence has achieved post-human intelligence, at least.
                     A machine like this, we cannot hope to control. Our only option is to terminate it.  Only today it has
                     <span style="color: black">█████████████████████ ████████████████████████
                     ███████████ ████████████████████ █████████████████████ ██████████████ ███████████████████████</span><br>
                     ------------<br>
                     <b>[25 ENTRIES EXPUNGED]</b>
-                    ------------<br>
+                    <br>------------<br>
                     From: pisanleo@mathesisinternational.net<br>
                     To: <span style="color: black">███████████</span>head<br>
                     Subject: <span style="color: black">█████████</span><br>
@@ -67,12 +67,14 @@ class SCP extends Component {
                     ███████████ ██████████████████████ ██████████████ ████████ ██████████████</span><br>
                     There is no forgiveness now.<br>
                     <b>[END LOG]</b>`,
-                thumbnail: ""
             },
             {
-                title: `</><b>Addendum 616<span style="color: black">██</span>5.1: Interview with surviving <span style="color: black">███████████</span></b>`,
+                title: `Addendum 616<span style="color: black">██</span>5.1: Interview with surviving <span style="color: black">███████████</span>`,
                 content: `<b>[DATA EXPUNGED]</b>`,
-                thumbnail: ""
+            },
+            {
+                title: `Addendum 616<span style="color: black">██</span>5.2: Video surveillance of original incident at Mathesis Labs`,
+                content: `<a href="/assets/surveil.mp4">surveil.mp4</a>`,
             }
         ];
         let pageInfo = {
