@@ -180,10 +180,3 @@
     border-color: azure;
     border-width: 1px;
 }
-
-/*Medium Screens*/
-@media (max-width: 600px) {
-    #terminalButton{
-        display: none;
-    }
-}

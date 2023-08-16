@@ -4,38 +4,78 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
 
 <url>
   <loc>https://matthewpisano.com/</loc>
-  <lastmod>2023-03-07T01:03:13+00:00</lastmod>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://matthewpisano.com/help</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://matthewpisano.com/home</loc>
-  <lastmod>2023-03-07T01:03:13+00:00</lastmod>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://matthewpisano.com/about</loc>
-  <lastmod>2023-03-07T01:03:13+00:00</lastmod>
+  <loc>https://matthewpisano.com/about/about</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://matthewpisano.com/resume</loc>
-  <lastmod>2023-03-07T01:03:13+00:00</lastmod>
+  <loc>https://matthewpisano.com/about/resume</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://matthewpisano.com/chipFiring</loc>
-  <lastmod>2023-03-07T01:03:13+00:00</lastmod>
+  <loc>https://matthewpisano.com/hackathons/anonHires</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://matthewpisano.com/neural</loc>
-  <lastmod>2023-03-07T01:03:13+00:00</lastmod>
+  <loc>https://matthewpisano.com/personal/imperium</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://matthewpisano.com/simplex</loc>
-  <lastmod>2023-03-07T01:03:13+00:00</lastmod>
+  <loc>https://matthewpisano.com/personal/inception</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://matthewpisano.com/imperium</loc>
-  <lastmod>2023-03-07T01:03:13+00:00</lastmod>
+  <loc>https://matthewpisano.com/personal/simplex</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://matthewpisano.com/research/chipFiring</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://matthewpisano.com/research/neural</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://matthewpisano.com/research/predictChain</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://matthewpisano.com/school/mipsCmd</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://matthewpisano.com/school/videntium</loc>
+  <lastmod>2023-08-13T21:15:40+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 
 

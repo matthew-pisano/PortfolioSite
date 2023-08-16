@@ -127,7 +127,7 @@ const Wrapper = ({children, pageName}) => {
             document.getElementById("sidebar").classList.replace("openSidebar", "closeSidebar");
             document.getElementById("explorerTitle").style.display = "none";
             document.getElementById("collapseHolder").classList.replace("openSidebar", "closeSidebar");
-            document.getElementById("pageHolder").classList.remove("smallInvisible");
+            document.getElementsByClassName("page")[0].classList.remove("sidebarOpenPage");
             $("#sidebarContent").animate({"width": "0px"}, animate ? 200 : 0);
         }
         else{
@@ -135,13 +135,12 @@ const Wrapper = ({children, pageName}) => {
             $("#sidebarContent").animate({"width": "100%"}, animate ? 200 : 0);
             document.getElementById("sidebar").classList.replace("closeSidebar", "openSidebar");
             document.getElementById("collapseHolder").classList.replace("closeSidebar", "openSidebar");
-            document.getElementById("pageHolder").classList.add("smallInvisible");
+            document.getElementsByClassName("page")[0].classList.add("sidebarOpenPage");
             document.getElementById("explorerTitle").style.display = "";
             $(".sidebarItem").visible();
         }
 
-        for(let tag of [".page", "#fileEditor"])
-            $(tag).animate({"margin-left": (sidebarOpen ? sidebarMin : sidebarMax)+"px"}, animate ? 200 : 0);
+        $(".page").animate({"margin-left": (sidebarOpen ? sidebarMin : sidebarMax)+"px"}, animate ? 200 : 0);
         setSidebarOpen(!sidebarOpen);
     }
 
@@ -156,7 +155,7 @@ const Wrapper = ({children, pageName}) => {
     }
 
     return (
-        <div className="w3-display-container">
+        <div id="wrapper" className="w3-display-container">
             <Head>
                 <title id="siteTitle">{pageName.substring(pageName.lastIndexOf("/")+1)+".html"}</title>
             </Head>
@@ -234,7 +233,7 @@ const Wrapper = ({children, pageName}) => {
                     <div id="sidebarContent" className="w3-display-container w3-row">{explorerTree}</div>
                 </div>
             </div>
-            <div id="pageHolder">{children}</div>
+            {children}
             <TerminalDiv/>
             <footer className="commandBar w3-row" style={{bottom: '0px'}}>
                 <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>

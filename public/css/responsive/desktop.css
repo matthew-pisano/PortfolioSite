@@ -1,0 +1,8 @@
+/* Screen Sizes 1280-1920 */
+
+/*Large Screens*/
+@media (max-width: 1500px) {
+    .displayTile > div {
+        width: 80%;
+    }
+}

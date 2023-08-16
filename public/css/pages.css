@@ -1,7 +1,46 @@
-#resumeHolder{
+
+#wrapperContent{
+    margin-bottom: 30px;
+    background-color: #1e1e1e;
+}
+
+.inner {
+    grid-area: inner-div;
+}
+
+.page {
+    margin-left: 230px;
+    margin-bottom: 100px;
+}
+
+.titleCard {
+    position: fixed;
+    height: 300px;
+    top: 50px;
+}
+
+.tileHolder {
     width: 100%;
-    height: 1100px;
-    margin-bottom: 60px;
+    background-color: #2b40a1;
+    margin-top: 250px;
+    min-height: 500px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+}
+
+#resumeEmbed {
+    width: 100%;
+    height: 100%;
+}
+
+#resumePage {
+    position: fixed;
+    top: 100px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-radius: 25px;
 }
 
 .container {
@@ -9,9 +48,9 @@
     display: grid;
     place-items: center;
     overflow-y: auto;
-    z-index: 1;
     grid-template-areas: "inner-div";
 }
+
 .displayTile {
     border-style: none solid none none;
     border-color: azure;
@@ -21,6 +60,7 @@
     margin: 50px 20px 20px 3%;
     padding: 10px;
 }
+
 .displayTile img {
     width: 15%;
     min-width: 50px;
@@ -31,40 +71,6 @@
 .displayTile > div {
     float: right;
     width: 83%;
-}
-
-#wrapperContent{
-    margin-bottom: 30px;
-    background-color: #1e1e1e;
-}
-
-.inner {
-    grid-area: inner-div;
-}
-#fileContent, #fileEditor {
-    margin-left: 215px;
-    margin-top: 25px;
-    margin-bottom: 30px;
-}
-.tileHolder {
-    width: 100%;
-    background-color: #2b40a1;
-    margin-top: 250px;
-    min-height: 500px;
-    padding-top: 50px;
-    padding-bottom: 10px;
-    border-radius: 25px;
-    margin-bottom: 60px;
-}
-
-.page {
-    margin-left: 230px;
-}
-
-.titleCard {
-    position: fixed;
-    height: 300px;
-    top: 50px;
 }
 
 .forceWrap{
@@ -125,22 +131,4 @@
     text-indent:40px;
     margin-top: 5px;
     margin-bottom: 5px;
-}
-
-/*Large Screens*/
-@media (max-width: 1500px) {
-    .displayTile > div {
-        width: 80%;
-    }
-}
-
-/*Medium Screens*/
-@media (max-width: 1000px) {
-    .displayTile > div {
-        width: 75%;
-    }
-
-    .displayTile img {
-        width: 20%;
-    }
 }

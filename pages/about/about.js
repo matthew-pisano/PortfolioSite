@@ -12,7 +12,7 @@ class About extends Component {
             {
                 title: "#Introduction",
                 content: `My name is Matthew Pisano.  I am a student and software developer, pursuing higher education
-                    with the hopes of working as an artificial intelligence researcher in the future.
+                    while working towards becoming an artificial intelligence alignment researcher in the future.
                     
                     <br>My research centers around language model alignment; enforcing safety without hampering its cognitive 
                     abilities. I often draw inspiration from biological intelligences to aid im my work with artificial ones. 

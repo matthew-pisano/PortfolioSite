@@ -10,13 +10,7 @@ const Resume = () => {
 
     return (<Wrapper pageName={pageInfo.pageName}>
         <div id="resumePage" className="page container w3-rest lightText">
-            <div className="inner titleCard">
-                <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Résumé</b></h1><br/>
-                <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Formal summary of my experience and achievements</h3>
-            </div>
-            <div id="resumeHolder" className="tileHolder inner w3-display-container" style={{backgroundColor: "#414141", borderRadius: "10px"}}>
-                <embed id="resumeHolder" type="application/pdf" src={Constants.resumeUrl}></embed>
-            </div>
+            <embed id="resumeEmbed" type="application/pdf" src={Constants.resumeUrl+"#zoom=FitH"}></embed>
         </div>
     </Wrapper>);
 };

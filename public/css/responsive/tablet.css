@@ -1,0 +1,49 @@
+/* Screen Sizes 600-1280 */
+
+/*Medium Screens*/
+@media (max-width: 1000px) {
+    .displayTile > div {
+        width: 75%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .page {
+        margin-bottom: 70px;
+    }
+
+    #terminalButton {
+        display: none;
+    }
+
+    #terminalHolder {
+        display: none;
+    }
+
+    #editorContent {
+        width: 80%;
+    }
+
+    .openSidebar {
+        width: 100% !important;
+    }
+
+    .tileHolder {
+        margin-top: 300px;
+        padding-right: 10px;
+    }
+
+    .sidebarOpenPage {
+        display: none;
+    }
+
+    .displayTile {
+        margin-right: 0px;
+        margin-left: 3%;
+    }
+
+    .katex {
+        white-space: normal;
+    }
+}

@@ -24,8 +24,7 @@ const PageNotFound = () => {
     function nextLink() {
         let rand = Math.random() + 1;
         if(rand > 1.1) return "/"+rand.toString(36).substring(6);
-        let securePages = ["/secure/babble", "/secure/scp"];
-        return securePages[Math.floor(Math.random()*securePages.length)];
+        return "/secure/babble";
     }
 
     let tiles = [
