@@ -129,7 +129,7 @@
     text-align: left;
     border-style: none;
     vertical-align: middle;
-    margin-left: 30px;
+    padding-left: 10px;
 }
 
 #collapseSidebar {
@@ -142,6 +142,10 @@
     border-style: none none none solid;
     border-color: azure;
     border-width: 2px;
+    background-image: url("../assets/explorerIcon.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 #collapseSidebar:hover {

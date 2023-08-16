@@ -13,7 +13,11 @@
         margin-bottom: 70px;
     }
 
-    #terminalButton {
+    .editButton {
+        display: none;
+    }
+
+    #terminalButton, #editButton, #terminalHelpAction {
         display: none;
     }
 

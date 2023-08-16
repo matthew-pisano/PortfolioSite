@@ -99,6 +99,8 @@ const Wrapper = ({children, pageName}) => {
     });
 
     useEffect(() => {
+        if(window.innerWidth < 600) setSidebarState(false);
+
         if(document.getElementById("dehydrateInfo")) document.getElementById("dehydrateInfo").remove();
         
         let savedHierarchy = localStorage.getItem("hierarchy");
@@ -117,11 +119,10 @@ const Wrapper = ({children, pageName}) => {
     }, []);
 
 
-    function toggleSidebar(animate=true){
+    function setSidebarState(openState=!sidebarOpen, animate=true){
         let sidebarMax = 230;
         let sidebarMin = 50;
-        document.getElementById("collapseSidebar").innerText = sidebarOpen ? ">" : "<";
-        if(sidebarOpen){
+        if(!openState){
             $(".sidebarItem").invisible();
             document.getElementById("sidebarContent").style.display = "none";
             document.getElementById("sidebar").classList.replace("openSidebar", "closeSidebar");
@@ -140,8 +141,8 @@ const Wrapper = ({children, pageName}) => {
             $(".sidebarItem").visible();
         }
 
-        $(".page").animate({"margin-left": (sidebarOpen ? sidebarMin : sidebarMax)+"px"}, animate ? 200 : 0);
-        setSidebarOpen(!sidebarOpen);
+        $(".page").animate({"margin-left": (openState ? sidebarMax : sidebarMin )+"px"}, animate ? 200 : 0);
+        setSidebarOpen(openState);
     }
 
     function pageStats(){
@@ -211,7 +212,7 @@ const Wrapper = ({children, pageName}) => {
                             onClick={() => window.location.replace("/help")}>help.html</button>
                         <a className="lightText menuDropItem" style={{display: "block"}} href='https://github.com/matthew-pisano/PortfolioSite#readme' 
                             target={"_blank"} rel="noreferrer">README</a>
-                        <button id="helpAction" className="w3-button lightText menuDropItem"
+                        <button id="terminalHelpAction" className="w3-button lightText menuDropItem"
                             onClick={() => {
                                 document.getElementById('terminal').dispatchEvent(new CustomEvent("openTo", {detail: 550}));
                                 document.getElementById('terminalInput').innerText = "help";
@@ -227,7 +228,7 @@ const Wrapper = ({children, pageName}) => {
                 </div>
                 <div id="sidebar" className="w3-col openSidebar">
                     <div id="collapseHolder" className="w3-cell-row openSidebar">
-                        <button id="collapseSidebar" className="w3-button w3-cell" onClick={toggleSidebar}>&#60;</button>
+                        <button id="collapseSidebar" className="w3-button w3-cell" onClick={() => setSidebarState()}></button>
                         <h4 id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</h4>
                     </div>
                     <div id="sidebarContent" className="w3-display-container w3-row">{explorerTree}</div>

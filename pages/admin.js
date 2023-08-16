@@ -65,7 +65,7 @@ const Admin = () => {
            MMMMMMWl       .,,,,,,,,.       lWMMMMMM
            MMMMMMWl       lNWWWWWWNl       lWMMMMMM
            MMMMMMWl       lWM    MWl       lWMMMMMM
-           MMMMMMWl       lWM    MWl       lWMMMMMM
+           MMMMMMWl       lWMMMMMMWl       lWMMMMMM
              kKMMWl       lWM    MWl       lWMMKk
               lWMWl       lWM    MWl       lWMWl
               lWMWl       lWM    MWl       lWMWl

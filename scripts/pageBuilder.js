@@ -10,7 +10,7 @@ function buildTags(tags, dark= false){
                 <div className={"gitLink "+tagClasses}>
                     <img className="w3-col" alt='gitLink'/>
                     <a className="w3-col" href={tags.gitLink} target="_blank" rel="noreferrer">{tags.gitTitle ? tags.gitTitle : tags.title}</a>
-                </div> : <span></span>
+                </div> : null
             }
             {tags.extraLinks ?
                 tags.extraLinks.map((extraLink, i) => {
@@ -18,7 +18,7 @@ function buildTags(tags, dark= false){
                         <img className="w3-col" alt='extraLink'/>
                         <a className="w3-col" href={extraLink} target="_blank" rel="noreferrer">{tags.extraTitles[i]}</a>
                     </div>;
-                }) : <span></span>
+                }) : null
             }
             {(tags.tags ? tags.tags : []).map((tag, i) => 
                 <div className={"w3-col tag "+tag+"Tag w3-mobile"} key={tag}>
@@ -36,7 +36,7 @@ function buildPage(pageInfo, tiles){
     return <div id={pageInfo.pageName+"TileHolder"} className="tileHolder inner w3-display-container" style={pageInfo.holderStyle}>
         {buildTags(pageInfo, true)}
         {pageInfo.title ? 
-            <h1 className="pageTitle" style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1> : <span></span>}
+            <h1 className="pageTitle" style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1> : null}
         {
             tiles.map((tile, i) =>{
                 //console.log("Mapping tile "+i);
@@ -63,7 +63,7 @@ function buildPage(pageInfo, tiles){
 
                 return <div id={pageInfo.pageName+"Tile"+i} className="displayTile w3-container w3-row" key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     
-                    {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : <span></span>}
+                    {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : null}
 
                     <div className={`w3-${displayWidth} w3-mobile`} style={contentStyle}>
                         <span>{titleElement}</span><br/>

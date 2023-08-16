@@ -16,7 +16,7 @@ MMMMMMWl                        lWMMMMMM    Terminal: cloudTerminal
 MMMMMMWl       .,,,,,,,,.       lWMMMMMM    CPU: ██th Gen ██████ █-██
 MMMMMMWl       lNWWWWWWNl       lWMMMMMM    Memory: ██████TiB / ██████TiB
 MMMMMMWl       lWM    MWl       lWMMMMMM
-MMMMMMWl       lWM    MWl       lWMMMMMM
+MMMMMMWl       lWMMMMMMWl       lWMMMMMM
   kKMMWl       lWM    MWl       lWMMKk
    lWMWl       lWM    MWl       lWMWl   
    lWMWl       lWM    MWl       lWMWl`;

@@ -3,7 +3,7 @@ import React from "react";
  
 export default function Document() {
     return (
-        <Html style={{height: "100%"}}>
+        <Html style={{height: "100%"}} lang="en">
             <Head>
                 <meta name="description" content="A showcase of my project, skills, and future goals"/>
 
