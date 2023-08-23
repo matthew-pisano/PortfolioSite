@@ -2,4 +2,7 @@
 User-agent: *
 Allow: /
 
+User-agent: *
+Disallow: /secure/*
+
 Sitemap: https://matthewpisano.com/sitemap.xml

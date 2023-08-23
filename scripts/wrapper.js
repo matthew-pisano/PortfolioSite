@@ -205,6 +205,8 @@ const Wrapper = ({children, pageName}) => {
                     <div id="terminalDropdown" className="menuDropdown w3-col">
                         <button id="showTerminal" className="w3-button lightText menuDropItem"
                             onClick={() => {document.getElementById("terminal").click();}}>Open Terminal</button>
+                        <button id="hideTerminal" className="w3-button lightText menuDropItem"
+                            onClick={() => {document.getElementById("terminal").dispatchEvent(new CustomEvent("close"));}}>Close Terminal</button>
                     </div>
                     <div id="helpDropdown" className="menuDropdown w3-col">
                     

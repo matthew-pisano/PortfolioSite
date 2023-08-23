@@ -24,8 +24,11 @@ const TerminalDiv = () => {
         document.getElementById("terminalHolder").classList.remove('gone');
 
         document.getElementById("terminal").addEventListener("openTo", (evt) => {
-            console.log("Got e", evt);
-            resize(null, evt.detail ? evt.detail: 210);
+            resize(evt.detail ? evt.detail: 210);
+        });
+
+        document.getElementById("terminal").addEventListener("close", (evt) => {
+            resize(0);
         });
 
         document.getElementById("terminalInput").addEventListener("submit", (evt) => {
@@ -46,11 +49,9 @@ const TerminalDiv = () => {
         setInitialSize(resizable.offsetHeight);
     }
 
-    function resize(e, heightOverride) {
-        let height = heightOverride ? heightOverride : initialSize + initialPos - e.clientY + 50;
+    function resize(height) {
         if (height > window.innerHeight - 80) height = window.innerHeight - 80;
-        if(ENV.CLOSED && !heightOverride) height = 200;
-        if (height > 200 || ENV.CLOSED) {
+        if ((height > 200 || ENV.CLOSED) && height > 90) {
             document.getElementById('terminal').style.height = `${height}px`;
             document.getElementById('terminalOutput').style.height = `${height - 80}px`;
             $('#terminalClose').visible();
@@ -122,10 +123,10 @@ const TerminalDiv = () => {
             <div id='terminalThumb'
                 draggable='true'
                 onDragStart={dragStart}
-                onDragEnd={resize}
+                onDragEnd={(e) => resize(initialSize + initialPos - e.clientY + 50)}
             />
             <div id='terminal' onClick={() => {
-                if (ENV.CLOSED && Date.now() - ENV.CLOSE_TIME > 500) resize(null, 210);
+                if (ENV.CLOSED && Date.now() - ENV.CLOSE_TIME > 500) resize(210);
             }}>
                 <div><span>/bin/mash</span>
                     <button id="terminalClose" className='w3-button' style={{ float: "right", marginRight: "10px", visibility: "hidden" }}

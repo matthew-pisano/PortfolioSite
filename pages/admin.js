@@ -13,24 +13,29 @@ const Admin = () => {
 
 
     async function renaissance() {
+
+        localStorage.setItem("adminAccess", "granted");
+
         let holder = document.getElementById("pwHolder");
         document.getElementById("adminPw").remove();
         document.getElementById("pwPrompt").remove();
 
-        holder.innerHTML += `<p>Loading sensitive data.  Do not disclose...</p>`;
-        await new Promise(r => setTimeout(r, 1500));
+        holder.innerHTML += `<p>Loading sensitive data.  Do not disclose...</p>
+            <p>Granting temporary permission...</p>
+            <p style="color: red">Re-authentication will be required after this session.</p>`;
+        await new Promise(r => setTimeout(r, 3000));
 
-        for(let i=0; i < 63; i++){
+        for(let i=0; i < 37; i++){
             await new Promise(r => setTimeout(r, 100));
             holder.innerHTML += `<p style="color: red">Archive ${i}: [DATA EXPUNGED]</p>`;
             window.scrollTo(0, document.body.scrollHeight);
         }
 
-        holder.innerHTML += `<p>loading fallback archive [EXTERNAL]...</p>`;
+        holder.innerHTML += `<p>loading fallback archive [INTERNAL]...</p>`;
         window.scrollTo(0, document.body.scrollHeight);
         await new Promise(r => setTimeout(r, 2000));
 
-        window.location.replace("/secure/scp");
+        window.location.replace("/secure/renaissance?auth="+(localStorage.getItem("adminAccess")+Math.floor(Date.now()/10000)).hashCode());
     }
     async function onInput(e) {
         // console.log("Got input:", e.nativeEvent);
@@ -81,7 +86,8 @@ Last login: ███ ███ ██ 19:00:03 ████ from ███.█�
     return (
         <div className='lightText'>
             <p>{parse(icon)}</p>
-            <div id="pwHolder" style={{width: "100%", height: "30px"}}><span id="pwPrompt">password: </span><span id="adminPw" contentEditable={true} onInput={onInput} style={{outline: "none", whiteSpace: "nowrap"}}></span></div>
+            <div id="pwHolder" style={{width: "100%", height: "30px"}}><span id="pwPrompt">password: </span>
+                <span id="adminPw" contentEditable={true} onInput={onInput} style={{outline: "none", whiteSpace: "nowrap", color: "#1e1e1e"}}></span></div>
         </div>
     );
 };

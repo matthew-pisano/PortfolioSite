@@ -1,18 +1,18 @@
-import $ from "jquery";
-
 let grayState = 30;
 let grayDirection = 2;
 let redBias = Math.log(grayState)+20;
 
 
 async function babbler(){
-    if(!Constants.babbleTiles) return;
+    document.getElementsByClassName("titleCard")[0].children[0].children[0].innerText = randText(Math.floor(Math.random()*5)+10);
+
     let radii = ["10px", "20px", "50px", "75px"];
-    for(let i=0; i<Constants.babbleTiles.length; i++){
+    let tileIndex = 0;
+    while(document.getElementById("babbleTile"+tileIndex+"Title")) {
         document.getElementById("babbleTileHolder").style.borderRadius = radii[Math.floor(Math.random()*radii.length)];
-        let titleElem = document.getElementById("babbleTile"+i+"Title");
+        let titleElem = document.getElementById("babbleTile"+tileIndex+"Title");
         if(!titleElem.classList.contains("forceWrap")) titleElem.classList.add("forceWrap");
-        let contentElem = document.getElementById("babbleTile"+i+"Content");
+        let contentElem = document.getElementById("babbleTile"+tileIndex+"Content");
         if(!contentElem.classList.contains("forceWrap")) contentElem.classList.add("forceWrap");
         titleElem.innerHTML = randText(Math.floor(Math.random()*20)+10);
         contentElem.innerHTML = randText(Math.floor(Math.random()*300)+100);
@@ -23,6 +23,7 @@ async function babbler(){
         if(grayState >= 200) grayDirection = -2;
         else if(grayState <= 30) grayDirection = 2;
         await new Promise(resolve => setTimeout(resolve, 500));
+        tileIndex++;
     }
 }
 
@@ -50,7 +51,6 @@ function randText(len){
 
 class Constants {
 
-    static babbleTiles = null;
     static alpha(){
         let offset = 0;
         let tmp = Array.from(Array(26*2)).map((e, i) => {
@@ -94,7 +94,20 @@ class Permissions {
     }
 }
 
+String.prototype.hashCode = function() {
+  let hash = 0,
+    i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+};
+
 if(typeof window !== 'undefined'){
+    let $ = require("jquery");
     $.fn.visible = function() {return this.css('visibility', 'visible');};
     $.fn.invisible = function() {return this.css('visibility', 'hidden');};
 }

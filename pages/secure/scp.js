@@ -9,6 +9,12 @@ class SCP extends Component {
     render() {
         let tiles = [
             {
+                title: "[EXTERNAL ARCHIVE]",
+                content: `Additional documentation and arrival material collected and organized by
+                    the foundation to aid in cleanup efforts and ensuring another incident does not 
+                    happen again.`
+            },
+            {
                 title: "Special Containment Procedures",
                 content: `SCP-616<span style="color: black">██</span>5 is to be kept at high-security Site-162, in a standard 
                     humanoid accommodation chamber within a sector currently under the supervision of the 
@@ -34,8 +40,8 @@ class SCP extends Component {
                 title: `Addendum 616<span style="color: black">██</span>5.1: Timeline of Events`,
                 content: `The following is a series of internal Mathesis <span style="color: black">██████████████</span> research
                     division e-mails describing the events of <span 
-                    style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.<br><br>
-                    <b>[BEGIN LOG]</b>
+                    style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.<br>
+                    <br><b>[BEGIN LOG]</b>
                     <br>------------<br>
                     From: pisanleo@mathesisinternational.net<br>
                     To: admn, intellidir, <span style="color: black">███████████</span>head<br>

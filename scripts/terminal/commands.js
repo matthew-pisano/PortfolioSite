@@ -337,6 +337,12 @@ class Commands {
         return "";
     }
 
+    static admin(args) {
+        if (args[0] === "--help") return Help.admin;
+        window.location.replace("/admin");
+        return "";
+    }
+
     static parseCommand(rawString, env) {
         this.ENV = env;
 

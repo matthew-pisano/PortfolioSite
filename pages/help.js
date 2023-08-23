@@ -14,6 +14,13 @@ class Help extends Component {
                     This site features many of the navigation and editing characteristics of VS Code.`
             },
             {
+                title: "Source",
+                content: `As with the vast majority of my projects, this website is fully open-source!  All system pages,
+                    terminal emulation code, and build scripts can be found in a GitHub repository.`,
+                gitLink: "https://github.com/matthew-pisano/PortfolioSite",
+                gitTitle: "Source Code",
+            },
+            {
                 title: "#Features",
                 content: ``,
                 style: {backgroundColor: "#41414155"}

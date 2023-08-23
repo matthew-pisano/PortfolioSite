@@ -99,6 +99,7 @@ class Help {
     static neofetch = "neofetch - displays system and software information";
     static whoami = "whoami - displays the current user";
     static void = "void - ██████████████";
+    static admin = "admin - Administrator use only";
 
     static aggregateHelp() {
         let aggStr = "";
