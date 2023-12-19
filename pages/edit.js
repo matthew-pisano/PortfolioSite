@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import {Directory, masterFileSystem, pathJoin} from "../scripts/fileSystem/fileSystem";
-import {Constants, currentCustom, SysEnv} from "../scripts/utils";
+import {Directory, masterFileSystem} from "../scripts/fileSystem/fileSystem";
 import {Wrapper} from "../scripts/wrapper";
 import {gutter, GutterMarker, lineNumbers, EditorViewConfig} from "@codemirror/view";
 import {EditorState, Compartment} from "@codemirror/state";
 import {basicSetup, EditorView} from "codemirror";
 import {html} from "@codemirror/lang-html";
+import {Perms} from "../scripts/utils";
 
 const Edit = () => {
     const [pagePath, setPagePath] = useState("");
@@ -17,10 +17,12 @@ const Edit = () => {
 
     useEffect(() => {
         let errorMsg = null;
-        const {path: customPath, result: customResult} = currentCustom(masterFileSystem);
-        if(!customResult) errorMsg = `Cannot find file at ${customPath}!`;
-        else if(customResult.constructor === Directory) errorMsg = "Cannot open a directory!";
-        else setPagePath(customPath);
+        let filePath = new URLSearchParams(window.location.search).get("file");
+        let currentFile = masterFileSystem.getItem(filePath ? filePath : "/");
+        if(!currentFile) errorMsg = `Cannot find file at ${filePath}!`;
+        else if(currentFile.constructor === Directory) errorMsg = "Cannot open a directory!";
+        else if(!currentFile.permission.includes(Perms.WRITE)) errorMsg = `Insufficient permissions to write ${filePath}!`;
+        else setPagePath(filePath);
 
         if(errorMsg){
             let errElem = document.createElement("p");
@@ -45,7 +47,7 @@ const Edit = () => {
 
         document.getElementsByClassName("cm-editor")[0].style.maxWidth = `${Math.round(window.innerWidth*0.9)}px`;
         document.getElementsByClassName("cm-editor")[0].style.maxHeight = `${Math.round(window.innerHeight*0.7)}px`;
-        const update = editor.state.update({changes: {from: 0, to: state.doc.length, insert: customResult.text}});
+        const update = editor.state.update({changes: {from: 0, to: state.doc.length, insert: currentFile.text}});
         editor.update([update]);
         setCodeEditor((editor));
     }, []);

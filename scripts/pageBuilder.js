@@ -76,4 +76,4 @@ function buildPage(pageInfo, tiles){
     </div>;
 }
 
-export { buildPage }
+export { buildPage };

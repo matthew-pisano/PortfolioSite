@@ -12,8 +12,8 @@ const authQuotes = ["You appear to have been misinformed.", "You're not from aro
 
 const Anauthorized = () => {
 
-    const [quote, setQuote] = useState();
-    const [location, setLocation] = useState();
+    const [quote, setQuote] = useState("");
+    const [location, setLocation] = useState("");
 
     useEffect(() => {
         setQuote(authQuotes[Math.floor(Math.random()*authQuotes.length)]);
@@ -24,7 +24,7 @@ const Anauthorized = () => {
         {
             title: "We have detected an unauthorized access attempt",
             content: `You either do not have the permissions to view the requested page or your authorization
-                token has expired.  If the later is the case, attempt to re-authenticate and access the
+                token has expired.  If the latter is the case, attempt to re-authenticate and access the
                 path through the original means.  If the former is the case, you do not belong here.
                 Searching in areas that you are not meant to go serves the good of nobody.`
         },

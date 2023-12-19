@@ -12,8 +12,7 @@ const Admin = () => {
     }, []);
 
 
-    async function renaissance() {
-
+    async function accessGranted() {
         localStorage.setItem("adminAccess", "granted");
 
         let holder = document.getElementById("pwHolder");
@@ -22,7 +21,8 @@ const Admin = () => {
 
         holder.innerHTML += `<p>Loading sensitive data.  Do not disclose...</p>
             <p>Granting temporary permission...</p>
-            <p style="color: red">Re-authentication will be required after this session.</p>`;
+            <p style="color: red">Re-authentication will be required shortly after this session.</p>`;
+
         await new Promise(r => setTimeout(r, 3000));
 
         for(let i=0; i < 37; i++){
@@ -31,12 +31,53 @@ const Admin = () => {
             window.scrollTo(0, document.body.scrollHeight);
         }
 
+        return holder;
+    }
+
+
+    async function renaissance() {
+        let holder = await accessGranted();
         holder.innerHTML += `<p>loading fallback archive [INTERNAL]...</p>`;
         window.scrollTo(0, document.body.scrollHeight);
         await new Promise(r => setTimeout(r, 2000));
 
         window.location.replace("/secure/renaissance?auth="+(localStorage.getItem("adminAccess")+Math.floor(Date.now()/10000)).hashCode());
     }
+
+    async function anomaly() {
+        let holder = await accessGranted();
+        holder.innerHTML += `<span>
+.------------------------------------------------------------------------------------------.
+|                                                         ,#############,                  |
+|  ____                                                   ##           ##                  |
+| / ___|  ___  ___ _   _ _ __ ___                     m####             ####m              |
+| \\___ \\ / _ \\/ __| | | | '__/ _ \\                 m##*'        mmm        '*##m           |
+|  ___) |  __/ (__| |_| | | |  __/_              ###'         mm###mm         '###         |
+| |____/ \\___|\\___|\\__,_|_|  \\___(_)           ###        m#############m        ###       |
+|                                             ##       m####*'  ###  '*####        ##      |
+|                                            ##      m####      ###      ####m      ##     |
+|   ____            _        _              ##      ####      #######      ####      ##    |
+|  / ___|___  _ __ | |_ __ _(_)_ __        m#      ###'        #####        '###      #m   |
+| | |   / _ \\| '_ \\| __/ _\` | | '_ \\       ##     ####           #           ####     ##   |
+| | |__| (_) | | | | || (_| | | | | |_     ##     ###    wwwwwwww wwwwwwww    ###     ##   |
+|  \\____\\___/|_| |_|\\__\\__,_|_|_| |_(_)    ##     ###m    ######   ######    m###     ##   |
+|                                        ,###     '### m#######     #######m ###'     ###, |
+|                                        ##'      m######'   *       *   '######m      '## |
+|  ____            _            _         ##     *#*'######             ######'*#*     ##  |
+| |  _ \\ _ __ ___ | |_ ___  ___| |_        ##         '#######m     m#######'         ##   |
+| | |_) | '__/ _ \\| __/ _ \\/ __| __|        *#m          '###############'          m#*    |
+| |  __/| | | (_) | ||  __/ (__| |_ _         ##m ,m,        ''*****''        ,m, m##      |
+| |_|   |_|  \\___/ \\__\\___|\\___|\\__(_)         *##'*###m                   m###*'##*       |
+|                                                    '*#######m     m#######*'             |
+|                                                           '*#######*'                    |
+'------------------------------------------------------------------------------------------'</span>`.replace(/\n/g, "<br>").replace(/ /g, '&nbsp;');
+        holder.innerHTML += `<p>loading archive [EXTERNAL]...</p>`;
+        window.scrollTo(0, document.body.scrollHeight);
+        await new Promise(r => setTimeout(r, 2000));
+
+        window.location.replace("/secure/scp?auth="+(localStorage.getItem("adminAccess")+Math.floor(Date.now()/10000)).hashCode());
+    }
+
     async function onInput(e) {
         // console.log("Got input:", e.nativeEvent);
         if (e.nativeEvent.inputType === "insertParagraph" || e.nativeEvent.data === null && e.nativeEvent.inputType === "insertText"){
@@ -44,6 +85,7 @@ const Admin = () => {
             let holder = document.getElementById("pwHolder");
 
             if(input.innerText.substring(0, input.innerText.length-2) === "renaissance") return await renaissance();
+            else if(input.innerText.substring(0, input.innerText.length-2) === "anomaly") return await anomaly();
 
             input.innerText = "incorrect";
             input.contentEditable = "false";
@@ -74,20 +116,20 @@ const Admin = () => {
              kKMMWl       lWM    MWl       lWMMKk
               lWMWl       lWM    MWl       lWMWl
               lWMWl       lWM    MWl       lWMWl
-     __  __       _______ _    _ ______  _____ _____  _____ 
-    |  \\/  |   /\\|__   __| |  | |  ____|/ ____|_   _|/ ____|
+     __  ___    _________ __   __ ______ _____ ______ ______ 
+    /  \\/  /   / ___   __/ /  / /  ____/  ___/__   __/ ____/
     | \\  / |  /  \\  | |  | |__| | |__  | (___   | | | (___  
     | |\\/| | / /\\ \\ | |  |  __  |  __|  \\___ \\  | |  \\___ \\ 
     | |  | |/ ____ \\| |  | |  | | |____ ____) |_| |_ ____) |
-    |_|  |_/_/    \\_\\_|  |_|  |_|______|_____/|_____|_____/
+    /_/  /___/    \\___/  /_/  /_/______/_____/______/_____/
     </span>
-entering admin landing shell...
+Entering admin landing shell...
 Last login: ███ ███ ██ 19:00:03 ████ from ███.███.██.█`.replace(/\n/g, "<br>").replace(/\s\s/g, "&nbsp;&nbsp;");
     return (
         <div className='lightText'>
             <p>{parse(icon)}</p>
             <div id="pwHolder" style={{width: "100%", height: "30px"}}><span id="pwPrompt">password: </span>
-                <span id="adminPw" contentEditable={true} onInput={onInput} style={{outline: "none", whiteSpace: "nowrap", color: "#1e1e1e"}}></span></div>
+                <span id="adminPw" spellCheck="false" contentEditable={true} onInput={onInput} style={{outline: "none", whiteSpace: "nowrap", color: "#1e1e1e"}}></span></div>
         </div>
     );
 };

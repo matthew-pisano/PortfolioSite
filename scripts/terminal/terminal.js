@@ -81,7 +81,7 @@ const TerminalDiv = () => {
         setDraftCommand("");
         setCommandIndex(-1);
 
-        const { result: result, env: newEnv } = Commands.parseCommand(command, ENV);
+        const { result: result, env: newEnv } = Commands._parseCommand(command, ENV);
         setENV(newEnv);
 
         terminalOutput.innerText += "\n" + prompt + command + "\n" + result + "\n";
@@ -116,7 +116,7 @@ const TerminalDiv = () => {
             }
             terminalInput.innerText = newI > -1 ? prevCommands[prevCommands.length - 1 - newI] : draftCommand;
         }
-    };
+    }
 
     return (
         <div id="terminalHolder" className='w3-row gone'>

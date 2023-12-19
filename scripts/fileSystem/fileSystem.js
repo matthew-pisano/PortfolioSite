@@ -1,12 +1,20 @@
-import { SysEnv, Permissions as Perms } from '../utils';
+import { SysEnv, Perms } from '../utils';
 import contentHtml from "../start";
 
+
 let pageRegistry = {};
+
+/** The master file system of the program
+ * @type {FileSystem}*/
+let masterFileSystem;
+
+let dehydrateInfo;
 
 
 function pathJoin(...paths) {
     let totalPath = [];
     for (let path of paths) {
+        if(!path) continue;
         if (path[0] === "/") totalPath = [''];
         let split = path.split('/');
         for (let elem of split) {
@@ -297,13 +305,7 @@ let initialHierarchy = new Directory("", [
     new Directory("proc", [], Perms.DENY),
     new Directory("usr", [], Perms.DENY),
     new Directory("var", [], Perms.DENY),
-])
-
-/** The master file system of the program
- * @type {FileSystem}*/
-let masterFileSystem;
-
-let dehydrateInfo;
+]);
 
 if (typeof window === 'undefined') {
     const { resolve } = require('path');

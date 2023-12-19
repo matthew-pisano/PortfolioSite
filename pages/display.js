@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import {Directory, masterFileSystem, pathJoin} from "../scripts/fileSystem/fileSystem";
-import {Constants, currentCustom, SysEnv} from "../scripts/utils";
+import {Directory, masterFileSystem} from "../scripts/fileSystem/fileSystem";
 import {Wrapper} from "../scripts/wrapper";
 import parse from "html-react-parser";
+import {Perms} from "../scripts/utils";
 
 const Display = () => {
     const [pageText,  setPageText] = useState("");
 
     useEffect(() => {
-        const {path: customPath, result: customResult} = currentCustom(masterFileSystem);
-        if(!customResult) setPageText(`Cannot find file at ${customPath}!`);
-        else if(customResult.constructor === Directory) setPageText("Cannot open a directory!");
-        else setPageText(customResult.text);
+        let filePath = new URLSearchParams(window.location.search).get("file");
+        let currentFile = masterFileSystem.getItem(filePath ? filePath : "/");
+
+        if(!currentFile) setPageText(`Cannot find file at ${filePath}!`);
+        else if(currentFile.constructor === Directory) setPageText("Cannot open a directory!");
+        else if(!currentFile.permission.includes(Perms.WRITE)) setPageText(`Insufficient permissions to access source of ${filePath}!`);
+        else setPageText(currentFile.text);
     }, []);
 
     let pageInfo = {

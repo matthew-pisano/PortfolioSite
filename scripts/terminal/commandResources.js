@@ -69,6 +69,48 @@ function eightBall(){
     return responses[result];
 }
 
+function tfLogo() {
+    return `
+                #####                   
+           ##########    #####          
+        ((((((((((((    ((((((###       
+      ((((((((((((((    (((((((((((     
+    ((((((((((((((((    ((((((((((///   
+   ((((((((((((((       (((((((((/////  
+                          ((((/*******  
+   ((((,                           ***  
+   //////******                         
+   ***************      ***********,,,  
+    *************.   ***,,,,,,,,,,,,,   
+      *******,,,,    ,,,,,,,,,,,,,,     
+        ,,,,,,,,,    ,,,,,,,,,,,,       
+           ,,,,,    ,,,,,,,,,.          
+                    .... `.replace(/ /g, "\xa0");
+}
+
+function hal(msg) {
+    return `
+ _______________
+|===============|
+|: .---------. :|
+|: | HAL-9000| :|
+|: '---------' :|    
+|:             :| -- <${msg.replace("\n", "")}>
+|:             :|    
+|:             :|
+|:     __      :|
+|:  ,\`    \`.   :|
+|: :   (o)  :  :|
+|:  \`. __ ,\`   :|
+|:             :|
+|:_____________:|
+|:=============:|
+|:*%*%*%*%*%*%*:|
+|:%*%*%*%*%*%*%:|
+|:*%*%*%*%*%*%*:|
+|:%*%*%*%*%*%*%:|
+'==============='`.replace(/ /g, "\xa0");
+}
 
 class Help {
 
@@ -88,6 +130,8 @@ class Help {
     static exit = "exit - clears the terminal and closes it";
     static restart = "restart - Reloads the page";
     static reset = "reset | nuke - Resets all persistent page data";
+    static mann = "mann - Brought to you by TF Industries";
+    static halsay = "halsay [msg] - Generates an ASCII image of Hal-9000 with the option of a custom message";
     static secretSentinel = null;
     static dir = "dir - Why?";
     static mir = "mir - ??";
@@ -188,4 +232,4 @@ function resolveTokens(env, tokens) {
     }
 }
 
-export { resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, neofetch, closeTerminal };
+export { resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, neofetch, closeTerminal, tfLogo, hal };

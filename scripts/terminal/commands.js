@@ -1,6 +1,6 @@
-import { Permissions as Perms, SysEnv } from '../utils';
+import { Perms as Perms, SysEnv } from '../utils';
 import { Directory, File, masterFileSystem, pageRegistry, pathJoin } from '../fileSystem/fileSystem';
-import { resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, neofetch, closeTerminal } from './commandResources';
+import {resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, neofetch, closeTerminal, tfLogo, hal } from './commandResources';
 import toVoid from "./void";
 
 
@@ -8,11 +8,11 @@ class Commands {
 
     static ENV = {};
 
-    static resolvePath(path) {
+    static _resolvePath(path) {
         return resolvePath(this.ENV.CWD, path);
     }
 
-    static validateArgs(args, val) {
+    static _validateArgs(args, val) {
         if (val.nargs !== undefined && !val.nargs.includes(args.length))
             return `Only ${val.nargs} arguments are accepted, found ${args.length}`;
 
@@ -29,7 +29,7 @@ class Commands {
 
     static clear(args) {
         if (args[0] === "--help") return Help.clear;
-        let valResult = this.validateArgs(args, {nargs: [0]});
+        let valResult = this._validateArgs(args, {nargs: [0]});
         if (valResult) return valResult;
 
         document.getElementById("terminalOutput").innerText = "";
@@ -42,33 +42,53 @@ class Commands {
 
     static pwd(args) {
         if (args[0] === "--help") return Help.pwd;
-        let valResult = this.validateArgs(args, {nargs: [0]});
+        let valResult = this._validateArgs(args, {nargs: [0]});
         if (valResult) return valResult;
 
         return this.ENV.CWD;
     }
 
     static help(args) {
-        if (Object.getOwnPropertyNames(this).includes(args[0])) return Help[args[0]];
-        let valResult = this.validateArgs(args, {nargs: [0, 1]});
+        if (Object.getOwnPropertyNames(this).includes(args[0]) && args[0] in Help) return Help[args[0]];
+        else if(Object.getOwnPropertyNames(this).includes(args[0])) return "No help information available";
+        let valResult = this._validateArgs(args, {nargs: [0, 1]});
         if (valResult) return valResult;
 
         if (args.length > 0 && (args[0] === "-f" || args[1] === "--force"))
-            return Help.help + "\n" + Help.secretHelp + "\n";
+            return Help.secretHelp;
 
         return Help.help;
     }
 
+    static man(args) {
+        return this.help(args);
+    }
+
+    static mann(args) {
+        let valResult = this._validateArgs(args, {nargs: [0]});
+        if (valResult) return valResult;
+
+        return tfLogo();
+    }
+
+    static halsay(args) {
+        if (args[0] === "--help") return Help.halsay;
+        let valResult = this._validateArgs(args, {nargs: [0, 1]});
+        if (valResult) return valResult;
+
+        return hal(args.length > 0 ? args[0] : "I'm sorry Dave..." );
+    }
+
     static cd(args) {
         if (args[0] === "--help") return Help.cd;
-        let valResult = this.validateArgs(args, {nargs: [0, 1]});
+        let valResult = this._validateArgs(args, {nargs: [0, 1]});
         if (valResult) return valResult;
 
         if (args.length === 0) {
             this.ENV.CWD = SysEnv.HOME_FOLDER;
             return "";
         }
-        args[0] = this.resolvePath(args[0]);
+        args[0] = this._resolvePath(args[0]);
         let targetItem = masterFileSystem.getItem(args[0]);
         if (!targetItem)
             throw new Error(`Cannot enter directory.  Directory at ${args[0]} does not exist!`);
@@ -84,12 +104,12 @@ class Commands {
 
     static ls(args) {
         if (args[0] === "--help") return Help.ls;
-        let valResult = this.validateArgs(args, {nargs: [0, 1]});
+        let valResult = this._validateArgs(args, {nargs: [0, 1]});
         if (valResult) return valResult;
 
         if (args.length === 0) args = [this.ENV.CWD];
 
-        let path = this.resolvePath(args[0]);
+        let path = this._resolvePath(args[0]);
         let lsObj = masterFileSystem.getItem(path);
         if (!lsObj) throw new Error(`Cannot list file or directory.  File or directory at ${args[0]} does not exist!`);
 
@@ -133,10 +153,10 @@ class Commands {
 
     static mkdir(args) {
         if (args[0] === "--help") return Help.mkdir;
-        let valResult = this.validateArgs(args, {nargs: [1]});
+        let valResult = this._validateArgs(args, {nargs: [1]});
         if (valResult) return valResult;
 
-        let newPath = this.resolvePath(args[0]);
+        let newPath = this._resolvePath(args[0]);
 
         if (masterFileSystem.exists(newPath))
             throw new Error(`Directory ${newPath} already exists!`);
@@ -148,10 +168,10 @@ class Commands {
 
     static touch(args) {
         if (args[0] === "--help") return Help.touch;
-        let valResult = this.validateArgs(args, {nargs: [1]});
+        let valResult = this._validateArgs(args, {nargs: [1]});
         if (valResult) return valResult;
 
-        let newPath = this.resolvePath(args[0]);
+        let newPath = this._resolvePath(args[0]);
 
         if (masterFileSystem.exists(newPath))
             throw new Error(`File ${newPath} already exists!`);
@@ -163,12 +183,12 @@ class Commands {
 
     static cp(args) {
         if (args[0] === "--help") return Help.cp;
-        let valResult = this.validateArgs(args, {nargs: [2]});
+        let valResult = this._validateArgs(args, {nargs: [2]});
         if (valResult) return valResult;
 
-        let oldPath = this.resolvePath(args[0]);
+        let oldPath = this._resolvePath(args[0]);
         let oldName = oldPath.substring(oldPath.lastIndexOf("/") + 1);
-        let newPath = this.resolvePath(args[1]);
+        let newPath = this._resolvePath(args[1]);
 
         if (newPath === oldPath) throw new Error(`${oldPath} ${newPath} are at the same location!`);
 
@@ -188,12 +208,12 @@ class Commands {
 
     static mv(args) {
         if (args[0] === "--help") return Help.mv;
-        let valResult = this.validateArgs(args, {nargs: [2]});
+        let valResult = this._validateArgs(args, {nargs: [2]});
         if (valResult) return valResult;
 
         this.cp(args);
 
-        let oldPath = this.resolvePath(args[0]);
+        let oldPath = this._resolvePath(args[0]);
         // let newPath = this.resolvePath(args[1]);
         masterFileSystem.rm(oldPath);
         return "";
@@ -201,10 +221,10 @@ class Commands {
 
     static rm(args) {
         if (args[0] === "--help") return Help.rm;
-        let valResult = this.validateArgs(args, {nargs: [1]});
+        let valResult = this._validateArgs(args, {nargs: [1]});
         if (valResult) return valResult;
 
-        let fileName = this.resolvePath(args[0]);
+        let fileName = this._resolvePath(args[0]);
         masterFileSystem.rm(fileName);
 
         return "";
@@ -212,18 +232,18 @@ class Commands {
 
     static cat(args) {
         if (args[0] === "--help") return Help.cat;
-        let valResult = this.validateArgs(args, {nargs: [1]});
+        let valResult = this._validateArgs(args, {nargs: [1]});
         if (valResult) return valResult;
 
-        return masterFileSystem.readText(this.resolvePath(args[0]));
+        return masterFileSystem.readText(this._resolvePath(args[0]));
     }
 
     static open(args) {
         if (args[0] === "--help") return Help.open;
-        let valResult = this.validateArgs(args, {nargs: [1]});
+        let valResult = this._validateArgs(args, {nargs: [1]});
         if (valResult) return valResult;
 
-        let pagePath = this.resolvePath(args[0]);
+        let pagePath = this._resolvePath(args[0]);
         if (pageRegistry[pagePath]) {
             let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
             window.open(relPath.replace(".html", ""), '_self', false);
@@ -236,7 +256,7 @@ class Commands {
 
     static color(args) {
         if (args[0] === "--help") return Help.color;
-        let valResult = this.validateArgs(args, {nargs: [1]});
+        let valResult = this._validateArgs(args, {nargs: [1]});
         if (valResult) return valResult;
 
         if (args[0].match(/#[0-9|a-f|A-F]{6}/) || args[0].match(/#[0-9|a-f|A-F]{3}/))
@@ -259,8 +279,11 @@ class Commands {
 
     static restart(args) {
         if (args[0] === "--help") return Help.restart;
-        window.location.reload();
-        return "";
+        (async () => {
+            await new Promise(r => setTimeout(r, 1000));
+            window.location.reload();
+        })();
+        return "Re-provisioning system.  Standby...";
     }
 
     static reset(args) {
@@ -285,7 +308,7 @@ class Commands {
 
     static launch(args) {
         if (args[0] === "--help") return Help.launch;
-        let valResult = this.validateArgs(args, {nargs: [3]});
+        let valResult = this._validateArgs(args, {nargs: [3]});
         if (valResult) return valResult;
 
         return "Insufficient permissions to cause armageddon (Did you try 'sudo'?)";
@@ -309,7 +332,7 @@ class Commands {
 
     static eightball(args) {
         if (args[0] === "--help") return "";
-        let valResult = this.validateArgs(args, {nargs: [1]});
+        let valResult = this._validateArgs(args, {nargs: [1]});
         if (valResult) return valResult;
 
         return eightBall();
@@ -317,7 +340,7 @@ class Commands {
 
     static neofetch(args) {
         if (args[0] === "--help") return Help.neofetch;
-        let valResult = this.validateArgs(args, {nargs: [0]});
+        let valResult = this._validateArgs(args, {nargs: [0]});
         if (valResult) return valResult;
 
         return neofetch.replace(new RegExp(' ', 'g'), '\u00A0');
@@ -325,7 +348,7 @@ class Commands {
 
     static whoami(args) {
         if (args[0] === "--help") return Help.whoami;
-        let valResult = this.validateArgs(args, {nargs: [0]});
+        let valResult = this._validateArgs(args, {nargs: [0]});
         if (valResult) return valResult;
 
         return "guest";
@@ -343,7 +366,7 @@ class Commands {
         return "";
     }
 
-    static parseCommand(rawString, env) {
+    static _parseCommand(rawString, env) {
         this.ENV = env;
 
         let commandStrings = rawString.split(";");
@@ -356,6 +379,8 @@ class Commands {
                 let tokens = tokenizeCommand(commandString);
                 resolveTokens(this.ENV, tokens);
                 let command = tokens[0];
+                if(command === "?") command = "help";
+
                 let args = tokens.slice(1);
                 if (!command) continue;
 
@@ -371,7 +396,7 @@ class Commands {
                 }
 
                 let commandFunc = this[command];
-                if (!commandFunc) throw new Error(command + ": command not found");
+                if (!commandFunc || command.startsWith("_")) throw new Error(command + ": command not found");
                 commandFunc = commandFunc.bind(this);
 
                 let tmpOutput = commandFunc(args);

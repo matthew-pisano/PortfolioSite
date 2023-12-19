@@ -141,6 +141,13 @@
     content: "Keter";
 }
 
+.alignmentTag img{
+    content:url("../assets/alignment.png");
+}
+.alignmentTag span::after{
+    content: "Alignment";
+}
+
 .paperTag img{
     content:url("../assets/paper.png");
 }

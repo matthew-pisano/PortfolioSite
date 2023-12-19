@@ -4,7 +4,7 @@ import '../scripts/globalListeners';
 import Head from 'next/head';
 import {masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem, pathJoin} from './fileSystem/fileSystem';
 import TerminalDiv from './terminal/terminal';
-import {currentCustom, Permissions as Perms, SysEnv} from "./utils";
+import {Perms, SysEnv} from "./utils";
 import $ from "jquery";
 import {createContextMenu, newCustomFile} from "./fileSystem/fileSystemGUI";
 import PropTypes from "prop-types";
@@ -91,7 +91,7 @@ function elementsFromTree(tree, path=""){
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
     const [explorerTree,   setExplorerTree] = useState(elementsFromTree(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER)));
-    const [customFile, setCustomFile] = useState(null);
+    const [currentPath, setCurrentPath] = useState(null);
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     masterFileSystem.registerCallback((updateTime) => {
@@ -102,6 +102,8 @@ const Wrapper = ({children, pageName}) => {
         if(window.innerWidth < 600) setSidebarState(false);
 
         if(document.getElementById("dehydrateInfo")) document.getElementById("dehydrateInfo").remove();
+
+        setCurrentPath(window.location.pathname);
         
         let savedHierarchy = localStorage.getItem("hierarchy");
         if(savedHierarchy) {
@@ -113,11 +115,8 @@ const Wrapper = ({children, pageName}) => {
             masterFileSystem.update();
         }
 
-        setCustomFile(currentCustom(masterFileSystem).result);
-
         document.getElementById("terminalButton").classList.remove("gone");
     }, []);
-
 
     function setSidebarState(openState=!sidebarOpen, animate=true){
         let sidebarMax = 230;
@@ -146,13 +145,27 @@ const Wrapper = ({children, pageName}) => {
     }
 
     function pageStats(){
-        for(let key of Object.keys(pageRegistry))
-            if(pageRegistry[key].name === pageName+".html")
-                return {lines: Math.round(pageRegistry[key].size/140.6), size: pageRegistry[key].size};
+        let fileSize = 0;
+        let fileLines = 0;
 
-        if(customFile)
-            return {lines: customFile.text.split(/\r\n|\r|\n/).length, size: customFile.text.length};
-        return {lines: 0, size: 0};
+        if(currentPath !== null && (currentPath.endsWith("display") || currentPath.endsWith("edit"))) {
+            let filePath = new URLSearchParams(window.location.search).get("file");
+            let customFile = masterFileSystem.getItem(filePath);
+            if(customFile !== null && customFile.text !== undefined){
+                fileSize = customFile.text.length;
+                fileLines = customFile.text.split(/\r\n|\r|\n/).length;
+            }
+        }
+        else if(currentPath !== null) {
+            let fullCurrentPath = pathJoin(SysEnv.PUBLIC_FOLDER, currentPath !== "/" ? currentPath.substring(1): "home.html");
+            fullCurrentPath = fullCurrentPath.endsWith(".html") ? fullCurrentPath : fullCurrentPath+".html";
+            if(Object.keys(pageRegistry).includes(fullCurrentPath)){
+                fileSize = pageRegistry[fullCurrentPath].size;
+                fileLines = Math.round(fileSize/140.6);
+            }
+        }
+
+        return {lines: fileLines, size: fileSize};
     }
 
     return (
@@ -196,9 +209,10 @@ const Wrapper = ({children, pageName}) => {
                     <div id="editDropdown" className="menuDropdown w3-col">
                         <button id="editCurrentAction" className="w3-button lightText menuDropItem"
                             onClick={() => {
-                                let current = currentCustom(masterFileSystem);
-                                if(!current.result) alert("The current page is not editable");
-                                else window.location.replace(`edit?file=${current.path}`);
+                                let filePath = new URLSearchParams(window.location.search).get("file");
+                                let current = masterFileSystem.getItem(filePath ? filePath : "/");
+                                if(!current.permission.includes(Perms.WRITE)) alert("The current page is not editable");
+                                else window.location.replace(`edit?file=${filePath}`);
 
                             }}>Edit Current Page</button>
                     </div>
