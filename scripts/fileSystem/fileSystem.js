@@ -42,6 +42,8 @@ class File {
         this.modified = Date.now();
     }
 
+    copy() { return new File(this.name, this.text, this.permission); }
+
     size() { return this.text.length; }
 
     static toDict(file) {
@@ -65,6 +67,8 @@ class Directory {
         this.created = Date.now();
         this.modified = Date.now();
     }
+
+    copy() { return new Directory(this.name, this.subTree, this.permission); }
 
     size() { return 4096; }
 

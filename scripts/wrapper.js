@@ -1,101 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import '../scripts/globalListeners';
 
 import Head from 'next/head';
-import {masterFileSystem, Directory, pageRegistry, dehydrateInfo, setPageRegistry, setMasterFileSystem, pathJoin} from './fileSystem/fileSystem';
+import {dehydrateInfo, masterFileSystem, pageRegistry, pathJoin, setMasterFileSystem, setPageRegistry} from './fileSystem/fileSystem';
 import TerminalDiv from './terminal/terminal';
 import {Perms, SysEnv} from "./utils";
 import $ from "jquery";
-import {createContextMenu, newCustomFile} from "./fileSystem/fileSystemGUI";
+import {newCustomFile} from "./fileSystem/fileSystemGUI";
 import PropTypes from "prop-types";
+import {buildHierarchy} from "./sidebar";
 
 
-function elementsFromTree(tree, path=""){
-    if(tree.constructor === Directory){
-        let name = tree.name+"-Folder";
-        return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row">
-            <img className='folderIcon' alt='folder'/>
-            <button className="w3-button lightText" onClick={
-                () => {
-                    document.getElementById("langStatus").innerText = "";
-                    document.getElementById("encodingStatus").innerText = "";
-                    document.getElementById("linesStatus").innerText = "";
-                    document.getElementById("sizeStatus").innerText = "Children: "+tree.subTree.length;
-                    document.getElementById("itemStatus").innerText = tree.name;
-                }
-            }>{tree.name}</button>
+function spliceFromSubTree(subTree, name) {
+    for(let i=0; i<subTree.length; i++)
+        if(subTree[i].name === name) return subTree.splice(i,1)[0];
+    return null;
+}
 
-            <div id={tree.name+"Content"} className="w3-row sidebarContent">
-                {tree.subTree.map(child => elementsFromTree(child, path+"/"+tree.name))}
-            </div>
-        </div>;
-    }
-    else {
-        let urlPath;
-        let editIcon = null;
-        let name = tree.name.split(".")[0];
-        if(pageRegistry[pathJoin(SysEnv.HOME_FOLDER, path.substring(1), tree.name)])
-            urlPath = pathJoin(path.replace("public", ""), name);
-        else {
-            urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), tree.name)}`;
-            editIcon = <img className='editButton' alt='html' onClick={() => {
-                window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), tree.name)}`);
-            }}/>;
-        }
-
-        return <div key={name+"-File"} id={name+"-File"} className="sidebarItem w3-row">
-            <img className='htmlIcon' alt='html'/>
-            <a id={name+"-FileLink"} className="w3-button lightText" style={{padding: 0}} href={urlPath} onContextMenu={(e) => {
-                createContextMenu(e, {
-                    rename: () => {
-                        if(tree.permission.includes(Perms.WRITE)){
-                            let renamer = document.createElement("textarea");
-                            renamer.id = name+"-FileRenamer";
-                            renamer.className = "fileRenamer";
-                            renamer.value = tree.name;
-                            let fileLink = document.getElementById(name+"-FileLink");
-                            fileLink.replaceWith(renamer);
-                            let rename = () => {
-                                renamer.remove();
-                                let parentFolder = pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""));
-                                if(!masterFileSystem.exists(pathJoin(parentFolder, tree.name))) return;
-                                masterFileSystem.cp(pathJoin(parentFolder, tree.name), pathJoin(parentFolder, renamer.value.replace("\n", "")));
-                                masterFileSystem.rm(pathJoin(parentFolder, tree.name));
-                            };
-                            let clickEvent =  (evt) => {if(evt.target.id !== renamer.id) rename();};
-                            renamer.oninput = (e) => {
-                                if (["insertParagraph", "insertLineBreak"].includes(e.inputType)) {
-                                    rename();
-                                    document.documentElement.addEventListener('click', clickEvent, true);
-                                }
-                            };
-                            document.documentElement.addEventListener('click', clickEvent, true);
-                        }
-                        else alert("You do not have permission to rename this file!");
-                    },
-                    remove: () => {
-                        if(tree.permission.includes(Perms.WRITE))
-                            masterFileSystem.rm(pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""), tree.name));
-                        else alert("You do not have permission to remove this file!");
-                    }
-                });
-                e.preventDefault();
-            }}>{tree.name}</a>
-            {editIcon}
-        </div>;
-    }
-
+function buildSidebar() {
+    let publicFolder = masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER).copy();
+    let subTreeCopy = [...publicFolder.subTree];
+    let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
+    let homeFile = spliceFromSubTree(subTreeCopy, "home.html");
+    let researchFolder = spliceFromSubTree(subTreeCopy, "research");
+    let hackFolder = spliceFromSubTree(subTreeCopy, "hackathons");
+    let customFolder = spliceFromSubTree(subTreeCopy, "custom");
+    let aboutFolder = spliceFromSubTree(subTreeCopy, "about");
+    subTreeCopy = [homeFile, helpFile, researchFolder, ...subTreeCopy, hackFolder, aboutFolder, customFolder];
+    publicFolder.subTree = subTreeCopy;
+    return buildHierarchy(publicFolder);
 }
 
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
-    const [explorerTree,   setExplorerTree] = useState(elementsFromTree(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER)));
+    const [explorerTree,   setExplorerTree] = useState(buildSidebar());
     const [currentPath, setCurrentPath] = useState(null);
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     masterFileSystem.registerCallback((updateTime) => {
-        setExplorerTree(elementsFromTree(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER)));
+        setExplorerTree(buildSidebar());
     });
 
     useEffect(() => {
@@ -210,9 +154,11 @@ const Wrapper = ({children, pageName}) => {
                         <button id="editCurrentAction" className="w3-button lightText menuDropItem"
                             onClick={() => {
                                 let filePath = new URLSearchParams(window.location.search).get("file");
-                                let current = masterFileSystem.getItem(filePath ? filePath : "/");
-                                if(!current.permission.includes(Perms.WRITE)) alert("The current page is not editable");
-                                else window.location.replace(`edit?file=${filePath}`);
+                                //let current = masterFileSystem.getItem(filePath ? filePath : "/");
+                                //if(!current.permission.includes(Perms.WRITE)) alert("The current page is not editable");
+                                if(currentPath.endsWith("edit")) return;
+                                if(filePath === null || !currentPath.endsWith("display")) alert("The current page is not editable");
+                                else window.location.replace(`/edit?file=${filePath}`);
 
                             }}>Edit Current Page</button>
                     </div>

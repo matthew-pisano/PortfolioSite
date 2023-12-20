@@ -22,3 +22,7 @@ html {
 .gone {
     display: none;
 }
+
+a {
+    color: #add3ee !important;
+}

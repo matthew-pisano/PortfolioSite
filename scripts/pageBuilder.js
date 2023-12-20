@@ -1,5 +1,5 @@
 import React from "react";
-import parse from 'html-react-parser';
+import HTMLReactParser from 'html-react-parser';
 import Latex from 'react-latex-next';
 
 function buildTags(tags, dark= false){
@@ -41,15 +41,16 @@ function buildPage(pageInfo, tiles){
             tiles.map((tile, i) =>{
                 //console.log("Mapping tile "+i);
                 if(!tile.tags) tile.tags = [];
-                let contentStyle = tile.thumbnail && !(tile.type === "gallery") ? {} : {width: "100%"};
-                let imgStyle = tile.thumbnail && !(tile.type === "gallery") ? {} : {display: "block", margin: "auto"};
-                let displayWidth = tile.type === "gallery" ? "row" : "col";
-                let tileStyle = tile.style ? tile.style : {};
+                let contentStyle = tile.thumbnail && !tile.gallery ? {} : {width: "100%"};
+                let imgStyle = tile.thumbnail && !tile.gallery ? {} : {display: "block", margin: "auto", width: "90%", maxWidth: "800px"};
+                let displayWidth = !tile.gallery ? "col" : "row";
+                let tileStyle = tile.style ? tile.style : !tile.gallery ? {} : {width: "75%", maxWidth: "850px", marginRight: "auto", marginLeft: "auto"};
                 let titleId = pageInfo.pageName+"Tile"+i+"Title";
 
                 let titleElement;
-                if(tile.title.startsWith("#")) titleElement = <h2><b id={titleId}>{parse(tile.title.substring(1))}</b></h2>;
-                else titleElement = <b id={titleId}>{parse(tile.title)}</b>;
+                let titleStyle = !tile.gallery ? {} : {display: "block", margin: "auto", textAlign: "center"};
+                if(tile.title.startsWith("#")) titleElement = <h2><b id={titleId}>{HTMLReactParser(tile.title.substring(1))}</b></h2>;
+                else titleElement = <b id={titleId} style={titleStyle}>{HTMLReactParser(tile.title)}</b>;
 
                 if(tile.titleLink){
                     let gotoLink = () => {window.location.replace(tile.titleLink);};
@@ -57,9 +58,9 @@ function buildPage(pageInfo, tiles){
                         {titleElement}
                     </u>;
                 }
+                let titleContent = tile.content && tile.latex ? <Latex>{tile.content}</Latex> : tile.content ? HTMLReactParser(tile.content) : "";
+                let tileContentElem = tile.content ? <span id={pageInfo.pageName+"Tile"+i+"Content"} style={{margin: "15px 0px", display: "block"}}>{titleContent}</span> : <></>;
 
-                let tileContent = parse(tile.content);
-                if(tile.latex) tileContent = <Latex>{tile.content}</Latex>;
 
                 return <div id={pageInfo.pageName+"Tile"+i} className="displayTile w3-container w3-row" key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     
@@ -67,7 +68,7 @@ function buildPage(pageInfo, tiles){
 
                     <div className={`w3-${displayWidth} w3-mobile`} style={contentStyle}>
                         <span>{titleElement}</span><br/>
-                        <span id={pageInfo.pageName+"Tile"+i+"Content"} style={{margin: "15px 0px", display: "block"}}>{tileContent}</span>
+                        {tileContentElem}
                         {buildTags(tile)}
                     </div>
                 </div>;

@@ -3,7 +3,7 @@ import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
 
-class Neural extends Component {
+class PredictChain extends Component {
 
     static propTypes = {display: PropTypes.string};
     render() {
@@ -13,7 +13,7 @@ class Neural extends Component {
                 content: `<i>PredictChain</i> is a decentralized artificial intelligence marketplace that I developed, primarily along
                     with another student at RPI.  It utilizes the Algorand blockchain to allow users to host instances of this
                     marketplace, with the goal of more freely distributing AI models, data, and compute among all users.`,
-                thumbnail: "/assets/predictChain.png"
+                thumbnail: "/media/image/predictChain.png"
             },
             {
                 title: "Abstract (Abridged)",
@@ -26,7 +26,7 @@ class Neural extends Component {
                     learning models, request model training on previously uploaded datasets, or submit queries to trained
                     models. This network will offer a range of archetype machine learning models with varying characteristics, 
                     Our decentralized approach empowers users to develop improved models accessible to the public, promotes 
-                    data sharing, and reduces reliance on centralized cloud providers`,
+                    data sharing, and reduces reliance on centralized cloud providers.`,
             },
             {
                 title: "Conferences and Publications",
@@ -60,7 +60,7 @@ class Neural extends Component {
                     network, the Oracle is rewarded according to a rae they set.  Users can also choose to connect to any available Oracle node
                     if a better rate is offered.  In addition to hosting the network, Oracles also have the responsibility of managing uploaded
                     datasets and both training and performing inference on models.`,
-                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/predictChainFull.png"
+                thumbnail: "/media/image/predictChainFull.png"
             },
             {
                 title: "User Actions",
@@ -103,4 +103,4 @@ class Neural extends Component {
     }
 }
 
-export default Neural;
+export default PredictChain;

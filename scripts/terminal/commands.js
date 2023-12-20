@@ -64,21 +64,6 @@ class Commands {
         return this.help(args);
     }
 
-    static mann(args) {
-        let valResult = this._validateArgs(args, {nargs: [0]});
-        if (valResult) return valResult;
-
-        return tfLogo();
-    }
-
-    static halsay(args) {
-        if (args[0] === "--help") return Help.halsay;
-        let valResult = this._validateArgs(args, {nargs: [0, 1]});
-        if (valResult) return valResult;
-
-        return hal(args.length > 0 ? args[0] : "I'm sorry Dave..." );
-    }
-
     static cd(args) {
         if (args[0] === "--help") return Help.cd;
         let valResult = this._validateArgs(args, {nargs: [0, 1]});
@@ -296,6 +281,32 @@ class Commands {
         return this.reset(args);
     }
 
+    static ng(args) {
+        if (args[0] === "--help") return Help.ng;
+        (async () => {
+            await new Promise(r => setTimeout(r, 1000));
+            window.location.replace("/media/video/rick.mp4");
+        })();
+
+        return "ng (never gonna) - give you up";
+    }
+
+    static mann(args) {
+        if (args[0] === "--help") return Help.mann;
+        let valResult = this._validateArgs(args, {nargs: [0]});
+        if (valResult) return valResult;
+
+        return tfLogo();
+    }
+
+    static halsay(args) {
+        if (args[0] === "--help") return Help.halsay;
+        let valResult = this._validateArgs(args, {nargs: [0, 1]});
+        if (valResult) return valResult;
+
+        return hal(args.length > 0 ? args[0] : "I'm sorry Dave..." );
+    }
+
     static dir(args) {
         if (args[0] === "--help") return Help.dir;
         return "'dir: command not found (Wrong OS)";
@@ -331,7 +342,7 @@ class Commands {
     }
 
     static eightball(args) {
-        if (args[0] === "--help") return "";
+        if (args[0] === "--help") return Help.eightball;
         let valResult = this._validateArgs(args, {nargs: [1]});
         if (valResult) return valResult;
 

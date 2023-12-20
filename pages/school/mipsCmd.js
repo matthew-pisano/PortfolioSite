@@ -21,7 +21,7 @@ class MipsCmd extends Component {
                     same interface.  It has the ability to preform mathematical operations, bi-directional decimal and hexadecimal
                     conversions, produce MIDI audio output, and display sections of its memory to the user.  It also has the ability
                     to draw using one of <i>Mars</i>'s virtual screens.`,
-                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/mipscmd.png"
+                thumbnail: "media/image/mipscmd.png"
             },
         ];
         let pageInfo = {

@@ -27,12 +27,12 @@ class Home extends Component {
                 extraTitles: ["Research Paper"],
                 extraLinks: ["https://arxiv.org/abs/2312.00029"],
                 tags: ["research", "academic", "ai", "alignment", "python"],
-                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/bergeron.png"
+                thumbnail: "/media/image/bergeron.png"
             },
             {
                 title: "Test-Based Games Moral Alignment",
                 titleLink: "research/gamesAlignment",
-                content: `As part of a collaboration with <i>IBM Research</i>, this research aims to better instill moral values and principles
+                content: `As part of my employment with <i>IBM Research</i>, this research aims to better instill moral values and principles
                     into LLMs through the usage of text-based games.  Here, we develop a benchmark of these games in conversational format that run using 
                     <i>Microsoft's</i> TextWorld environment.  We use both fine-tuning and instruction-tuning methods to use these games to improve 
                     the moral reasoning abilities of several LLMs.`,
@@ -41,7 +41,7 @@ class Home extends Component {
                 // extraTitles: ["Research Paper"],
                 // extraLinks: ["https://arxiv.org/abs/2312.00029"],
                 tags: ["research", "academic", "ai", "alignment", "python"],
-                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/tw-llm.png"
+                thumbnail: "/media/image/tw-llm.png"
             },
             {
                 title: "Large-Scale Foundation Acoustic Modeling for Automatic Speech Recognition",
@@ -63,7 +63,7 @@ class Home extends Component {
                 extraTitles: ["Research Paper"],
                 extraLinks: ["https://arxiv.org/abs/2307.15168"],
                 tags: ["research", "academic", "ai", "python", "hack"],
-                thumbnail: "/assets/predictChain.png"
+                thumbnail: "/media/image/predictChain.png"
             },
             {
                 title: "Chip Firing",
@@ -106,7 +106,7 @@ class Home extends Component {
                     Simplex's focus is on mathematic and scientific calculations as it offers built-in matrix operations 
                     (multiplication, determinants, etc.) as well as many scientific and fundamental constants.<br>
                     Simplex also features an IDE to both help programming and educate users on how programming languages work.`,
-                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/simplexCode.jpg",
+                thumbnail: "media/image/simplexCode.jpg",
                 gitLink: "https://github.com/matthew-pisano/SimplexIDE",
                 tags: ["personal", "java", "android"]
             },
@@ -116,7 +116,7 @@ class Home extends Component {
                 content: `Imperium is an android grand strategy game modeled after other popular titles on the PC platform.<br>
                     The goal of this project is to provide mobile users with a fun empire simulator in either historical 
                     settings within Europe or blank maps with game play more similar to the <i>RISK</i> board game.`,
-                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/imperiumLogo.png",
+                thumbnail: "media/image/imperiumLogo.png",
                 gitLink: "https://github.com/ReactorDevelopment/Imperium",
                 tags: ["personal", "java", "android"]
             },
@@ -137,7 +137,7 @@ class Home extends Component {
                 extraTitles: ["Research Paper"],
                 extraLinks: ["https://arxiv.org/abs/2307.15168"],
                 tags: ["research", "academic", "ai", "python", "hack"],
-                thumbnail: "/assets/predictChain.png"
+                thumbnail: "/media/image/predictChain.png"
             },
             {
                 title: "Anonymous Hiring",

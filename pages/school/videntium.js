@@ -21,7 +21,7 @@ class Videntium extends Component {
                     The two MySQL databases that Videntium uses as storage are created and managed by PHPMyAdmin for
                     easier management.  The map viewer allows the user to toggle between different views of their
                     map using colored filters and text boxes to show information about the various provinces on the map.`,
-                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/videntiumMap.png"
+                thumbnail: "media/image/videntiumMap.png"
             },
             {
                 title: "Implementation",
@@ -36,7 +36,7 @@ class Videntium extends Component {
                     On the page that display's a user's private maps, all maps that are shared publicly are also shown.
                     These maps contain information such as the owner's name and the name of the map file.  The user can
                     then load their personal maps or those publicly available into the viewer.`,
-                thumbnail: "https://lightsail-image-repo.s3.amazonaws.com/pgrm/videntiumDB.png"
+                thumbnail: "media/image/videntiumDB.png"
             },
         ];
         let pageInfo = {

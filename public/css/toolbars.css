@@ -89,6 +89,10 @@
     border-width: 2px;
 }
 
+.sidebarItem > a {
+    color: whitesmoke !important;
+}
+
 .selectedSideItem{
     background-color: #414141;
 }

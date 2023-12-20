@@ -32,24 +32,34 @@ const Edit = () => {
             return;
         }
 
+        let updateListenerExtension = EditorView.updateListener.of(v => {
+            if(v.flags === 4) {
+                window.onbeforeunload = function () {
+                    return true;
+                };
+            }
+        });
+
+
         let state = EditorState.create({
             extensions: [
                 basicSetup,
+                updateListenerExtension,
                 EditorView.theme({}, {dark: true}),
                 lineNumbers(),
                 new Compartment().of(html())
             ]
         });
         let editor = new EditorView({
-            state,
-            parent: document.getElementById(pageInfo.pageName+"Page"),
+            state, parent: document.getElementById(pageInfo.pageName+"Page"),
         });
 
         document.getElementsByClassName("cm-editor")[0].style.maxWidth = `${Math.round(window.innerWidth*0.9)}px`;
         document.getElementsByClassName("cm-editor")[0].style.maxHeight = `${Math.round(window.innerHeight*0.7)}px`;
         const update = editor.state.update({changes: {from: 0, to: state.doc.length, insert: currentFile.text}});
         editor.update([update]);
-        setCodeEditor((editor));
+        setCodeEditor(editor);
+
     }, []);
 
     return (<Wrapper pageName={pageInfo.pageName}>
@@ -57,7 +67,7 @@ const Edit = () => {
                 <button id="editorSave" className="w3-button" onClick={async () => {
                     let editorText = codeEditor.state.doc.toString();
                     masterFileSystem.writeText(pagePath, editorText.replace("\t", ""));
-
+                    window.onbeforeunload = null;
                     // Visual saving feedback
                     document.documentElement.style.backgroundColor = "#626262";
                     document.getElementById("editorSave").innerText = "Saved!";
