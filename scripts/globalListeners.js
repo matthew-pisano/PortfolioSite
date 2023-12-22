@@ -10,8 +10,9 @@ function slideTilesOnScroll() {
     for(let tileElement of tiles){
         if(tileElement.id === "") continue;
         let tile = document.getElementById(tileElement.id);
+        let defaultMargin = !tile.className.includes("galleryTile") ? "3%" : "23%";
         if(tilePositions[tileElement.id] === undefined)
-            tilePositions[tileElement.id] = {isOffset: false, default: "3%", initial: true};
+            tilePositions[tileElement.id] = {isOffset: false, default: defaultMargin, initial: true};
 
         let viewportOffset = tile.getBoundingClientRect();
         let top = viewportOffset.top;

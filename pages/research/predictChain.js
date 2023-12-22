@@ -42,7 +42,7 @@ class PredictChain extends Component {
             {
                 title: "#Project Details",
                 content: ``,
-                style: {backgroundColor: "#2d5186"}
+                style: {backgroundColor: "rgba(139,166,175,0.45)"}
             },
             {
                 title: "Background",

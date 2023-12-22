@@ -25,7 +25,7 @@ class Neural extends Component {
             {
                 title: "#Training Methods",
                 content: ``,
-                style: {backgroundColor: "#41414155"}
+                style: {backgroundColor: "rgba(139,166,175,0.45)"}
             },
             {
                 title: "Backpropagation",
@@ -58,7 +58,7 @@ class Neural extends Component {
             {
                 title: "#Results",
                 content: ``,
-                style: {backgroundColor: "#41414155"}
+                style: {backgroundColor: "rgba(139,166,175,0.45)"}
             },
             {
                 title: "Backpropagation Results",

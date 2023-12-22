@@ -44,7 +44,7 @@ function buildPage(pageInfo, tiles){
                 let contentStyle = tile.thumbnail && !tile.gallery ? {} : {width: "100%"};
                 let imgStyle = tile.thumbnail && !tile.gallery ? {} : {display: "block", margin: "auto", width: "90%", maxWidth: "800px"};
                 let displayWidth = !tile.gallery ? "col" : "row";
-                let tileStyle = tile.style ? tile.style : !tile.gallery ? {} : {width: "75%", maxWidth: "850px", marginRight: "auto", marginLeft: "auto"};
+                let tileStyle = tile.style ? tile.style : !tile.gallery ? {} : {width: "75%", maxWidth: "850px", marginRight: "20px", marginLeft: "23%"};
                 let titleId = pageInfo.pageName+"Tile"+i+"Title";
 
                 let titleElement;
@@ -60,9 +60,8 @@ function buildPage(pageInfo, tiles){
                 }
                 let titleContent = tile.content && tile.latex ? <Latex>{tile.content}</Latex> : tile.content ? HTMLReactParser(tile.content) : "";
                 let tileContentElem = tile.content ? <span id={pageInfo.pageName+"Tile"+i+"Content"} style={{margin: "15px 0px", display: "block"}}>{titleContent}</span> : <></>;
-
-
-                return <div id={pageInfo.pageName+"Tile"+i} className="displayTile w3-container w3-row" key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
+                let className = "displayTile w3-container w3-row"+(tile.gallery ? "galleryTile" : "");
+                return <div id={pageInfo.pageName+"Tile"+i} className={className} key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     
                     {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : null}
 

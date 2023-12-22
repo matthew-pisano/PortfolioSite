@@ -29,7 +29,7 @@ class ChipFiring extends Component {
             {
                 title: "#Background",
                 content: ``,
-                style: {backgroundColor: "#41414155"}
+                style: {backgroundColor: "rgba(139,166,175,0.45)"}
             },
             {
                 title: "The Chip Firing Game",
@@ -80,9 +80,9 @@ class ChipFiring extends Component {
                 latex: true
             },
             {
-                title: "#The Project",
+                title: "#Project Details",
                 content: ``,
-                style: {backgroundColor: "#41414155"}
+                style: {backgroundColor: "rgba(139,166,175,0.45)"}
             },
             {
                 title: "Goal",
@@ -132,7 +132,7 @@ class ChipFiring extends Component {
         ];
         let pageInfo = {
             pageName: "research/chipFiring",
-            holderStyle: {backgroundColor: "#4d7bd0", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#a24f67", borderRadius: "10px"},
             gitLink: "https://github.com/matthew-pisano/ChipFiring",
             gitTitle: "Chip Firing",
             extraLinks: ["https://arxiv.org/abs/2302.10327"],

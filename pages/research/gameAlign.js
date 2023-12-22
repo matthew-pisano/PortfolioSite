@@ -40,7 +40,7 @@ class GameAlign extends Component {
             {
                 title: "#Project Details",
                 content: ``,
-                style: {backgroundColor: "rgba(175,175,175,0.45)"}
+                style: {backgroundColor: "rgba(139,166,175,0.45)"}
             },
             {
                 title: "Background",
