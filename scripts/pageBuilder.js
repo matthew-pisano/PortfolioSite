@@ -41,8 +41,8 @@ function buildPage(pageInfo, tiles){
             tiles.map((tile, i) =>{
                 //console.log("Mapping tile "+i);
                 if(!tile.tags) tile.tags = [];
-                let contentStyle = tile.thumbnail && !tile.gallery ? {} : {width: "100%"};
-                let imgStyle = tile.thumbnail && !tile.gallery ? {} : {display: "block", margin: "auto", width: "90%", maxWidth: "800px"};
+                let contentStyle = tile.thumbnail && !tile.gallery ? {} : {width: "100%", marginTop: "10px"};
+                let imgStyle = tile.thumbnail && !tile.gallery ? {} : tile.galleryStyle ? tile.galleryStyle : {display: "block", margin: "auto", width: "90%", maxWidth: "800px"};
                 let displayWidth = !tile.gallery ? "col" : "row";
                 let tileStyle = tile.style ? tile.style : !tile.gallery ? {} : {width: "75%", maxWidth: "850px", marginRight: "20px", marginLeft: "23%"};
                 let titleId = pageInfo.pageName+"Tile"+i+"Title";

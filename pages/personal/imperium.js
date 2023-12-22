@@ -21,14 +21,14 @@ class Imperium extends Component {
                 content: `Starting as a side-project, Imperium soon became a learning exercise in Android and Java development. 
                     Utilizing many techniques such as thread management, Android layout design, knowledge of the Android file system and permissions, 
                     and general game design, the making of Imperium greatly expanded my knowledge of Java, Android, and software development.`,
-                thumbnail: "media/image/imperiumLogo.png"
+                thumbnail: "/media/image/imperiumLogo.png"
             },
             {
                 title: "Publishing and Best Practices",
                 content: `Published to the Google Play store in early 2020, Imperium has amassed several thousand downloads.  
                     Adherence to Google Play guidelines and standards has resulted in an enjoyable experience for many users.  
                     Local multiplayer is also supported resulting in many users being reached by recommendations.`,
-                thumbnail: "media/image/imperiumGooglePlay.png"
+                thumbnail: "/media/image/imperiumGooglePlay.png"
             },
             {
                 title: "Features and Game-play",
@@ -39,7 +39,7 @@ class Imperium extends Component {
                     The modes increase in complexity, starting from the basic rules of <i>RISK</i> with devastation of provinces and attrition added next, 
                     up to diplomacy and historical scenarios at its most complex.  Statistics of a player's game are recorded and saved for access by 
                     the player in-game.`,
-                thumbnail: "media/image/imperiumMap.png"
+                thumbnail: "/media/image/imperiumMap.png"
             }
         ];
         let pageInfo = {

@@ -40,7 +40,7 @@ All files within the `custom/` folder are editable and can be renamed or deleted
 Selecting `File > New` on the menu bar will create a new file.  The most recently
 selected file can be renamed using the `Edit > Rename` button on the menu bar.
 
-These files will initially appear blank, all except for the `start.html` file,
+These files will initially appear blank, all except for the `readme.html` file,
 which offers further explanation on how to use the editor.  To add or edit the
 content of these files, click the pencil icon to the right of the file.  This will
 open the editor, whatever valid HTML, inline JS, or CSS that is typed here will

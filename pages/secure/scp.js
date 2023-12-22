@@ -34,7 +34,7 @@ class SCP extends Component {
                     <span style="color: black">██████████</span>, is a <span style="color: black">█████████████████████████████ ███████████
                     █████████████████████████ ███████████████████████</span> and <span style="color: black">█████████████████████ ████████████████████████
                     ███████████ ████████████████████ █████████████████████ ██████████████ ███████████████████████</span>.`,
-                thumbnail: "media/image/imageOf.png"
+                thumbnail: "/media/image/imageOf.png"
             },
             {
                 title: `Addendum 672<span style="color: black">██</span>.1: Timeline of Events`,

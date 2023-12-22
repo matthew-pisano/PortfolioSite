@@ -71,7 +71,7 @@ class Neural extends Component {
                     The training loss curve for backpropagation follows closely to a curve of 1/x
                     This signifies a good loss curve with minimal over-fitting. The loss declines
                     sharply and the accuracy rises rapidly over successive epochs of training.`,
-                thumbnail: "media/image/backproplosses.png"
+                thumbnail: "/media/image/backproplosses.png"
             },
             {
                 title: "Decision Tree Results",
@@ -90,7 +90,7 @@ class Neural extends Component {
                     loss declines sharply and the accuracy rises rapidly over successive epochs of
                     training. Compared to raw backpropagation, this algorithm converges on an
                     optimal solution approximately twice as fast.`,
-                thumbnail: "media/image/decisionlosses.png"
+                thumbnail: "/media/image/decisionlosses.png"
             },
             {
                 title: "Genetic Algorithm Results",
@@ -110,7 +110,7 @@ class Neural extends Component {
                     backpropagation with the decision tree. This algorithm settles into a local
                     minimum solution after five epochs, compared to the other two which settled
                     at forty for raw backpropagation and twenty for optimized backpropagation.`,
-                thumbnail: "media/image/geneticlosses.png"
+                thumbnail: "/media/image/geneticlosses.png"
             },
             {
                 title: "Conclusions",

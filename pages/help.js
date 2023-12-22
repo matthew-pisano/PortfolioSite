@@ -57,7 +57,7 @@ class Help extends Component {
                     Selecting <b>File > New</b> on the menu bar will create a new file.  Files can be
                     renamed by right-clicking on them and selecting the <b>Rename</b> button in the context menu.
         
-                    These files will initially appear blank, all except for the <b>custom/start.html</b> file,
+                    These files will initially appear blank, all except for the <b>custom/readme.html</b> file,
                     which offers further explanation on how to use the editor.  To add or edit the
                     content of these files, click the pencil icon to the right of the file.  This will
                     open the editor; whatever valid HTML or CSS that is typed here will

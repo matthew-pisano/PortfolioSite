@@ -106,7 +106,7 @@ class Home extends Component {
                     Simplex's focus is on mathematic and scientific calculations as it offers built-in matrix operations 
                     (multiplication, determinants, etc.) as well as many scientific and fundamental constants.<br>
                     Simplex also features an IDE to both help programming and educate users on how programming languages work.`,
-                thumbnail: "media/image/simplexCode.jpg",
+                thumbnail: "/media/image/simplexCode.jpg",
                 gitLink: "https://github.com/matthew-pisano/SimplexIDE",
                 tags: ["personal", "java", "android"]
             },
@@ -116,7 +116,7 @@ class Home extends Component {
                 content: `Imperium is an android grand strategy game modeled after other popular titles on the PC platform.<br>
                     The goal of this project is to provide mobile users with a fun empire simulator in either historical 
                     settings within Europe or blank maps with game play more similar to the <i>RISK</i> board game.`,
-                thumbnail: "media/image/imperiumLogo.png",
+                thumbnail: "/media/image/imperiumLogo.png",
                 gitLink: "https://github.com/ReactorDevelopment/Imperium",
                 tags: ["personal", "java", "android"]
             },

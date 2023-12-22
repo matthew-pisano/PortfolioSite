@@ -17,7 +17,7 @@ class About extends Component {
                     <br>My research centers around language model alignment; enforcing safety without hampering its cognitive 
                     abilities. I often draw inspiration from biological intelligences to aid im my work with artificial ones. 
                     I enjoy learning about how the mind works and the cognitive principles that can be applied to it.`,
-                thumbnail: "media/image/headshot"
+                thumbnail: "/media/image/headshot"
             },
             {
                 title: "Software Skills",
