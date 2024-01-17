@@ -21,7 +21,7 @@ class Home extends Component {
                     adversarial attacks and its own bias toward mis-alignment. This is done through the usage of a 
                     secondary model that judges the prompts to and responses from that primary model. This leaves 
                     the primary model and the end user less exposed to potential threats.  
-                    <br>This can be thought of attaching a conscience to these models to help guide them toward aligned responses.`,
+                    <br><br>This can be thought of attaching a conscience to these models to help guide them toward aligned responses.`,
                 gitLink: "https://github.com/matthew-pisano/Bergeron",
                 gitTitle: "Bergeron",
                 extraTitles: ["Research Paper"],
@@ -30,8 +30,8 @@ class Home extends Component {
                 thumbnail: "/media/image/bergeron.png"
             },
             {
-                title: "Test-Based Games Moral Alignment",
-                titleLink: "research/gamesAlignment",
+                title: "Moral High Ground",
+                titleLink: "research/highGround",
                 content: `As part of my employment with <i>IBM Research</i>, this research aims to better instill moral values and principles
                     into LLMs through the usage of text-based games.  Here, we develop a benchmark of these games in conversational format that run using 
                     <i>Microsoft's</i> TextWorld environment.  We use both fine-tuning and instruction-tuning methods to use these games to improve 
@@ -73,7 +73,8 @@ class Home extends Component {
                 extraTitles: ["Research Paper"],
                 extraLinks: ["https://arxiv.org/abs/2302.10327"],
                 gitLink: "https://github.com/matthew-pisano/ChipFiring",
-                tags: ["research", "academic", "python"]
+                tags: ["research", "academic", "python"],
+                thumbnail: "/media/image/chipfiring.png"
             },
             {
                 title: "#Featured Projects",
@@ -104,7 +105,7 @@ class Home extends Component {
                 titleLink: "simplex",
                 content: `An math-oriented interpreted scripting language built in Java.<br>
                     Simplex's focus is on mathematic and scientific calculations as it offers built-in matrix operations 
-                    (multiplication, determinants, etc.) as well as many scientific and fundamental constants.<br>
+                    (multiplication, determinants, etc.) as well as many scientific and fundamental constants.<br><br>
                     Simplex also features an IDE to both help programming and educate users on how programming languages work.`,
                 thumbnail: "/media/image/simplexCode.jpg",
                 gitLink: "https://github.com/matthew-pisano/SimplexIDE",
@@ -113,7 +114,7 @@ class Home extends Component {
             {
                 title: "Imperium",
                 titleLink: "imperium",
-                content: `Imperium is an android grand strategy game modeled after other popular titles on the PC platform.<br>
+                content: `Imperium is an android grand strategy game modeled after other popular titles on the PC platform.<br><br>
                     The goal of this project is to provide mobile users with a fun empire simulator in either historical 
                     settings within Europe or blank maps with game play more similar to the <i>RISK</i> board game.`,
                 thumbnail: "/media/image/imperiumLogo.png",
@@ -163,7 +164,7 @@ class Home extends Component {
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
                 <div className="inner titleCard">
                     <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>Matthew Pisano</h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Student of Artificial Intelligence</h3>
+                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Student and Artificial Intelligence Alignment Researcher</h3>
                 </div>
                 {buildPage(pageInfo, tiles)}
             </div>

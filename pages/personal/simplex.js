@@ -11,7 +11,7 @@ class Simplex extends Component {
             {
                 title: "#Overview",
                 content: `Simplex's focus is on mathematic and scientific calculations
-                    as it offers built-in matrix operations (multiplication, determinants, etc.) as well as several scientific and fundamental constants.<br>
+                    as it offers built-in matrix operations (multiplication, determinants, etc.) as well as several scientific and fundamental constants.<br><br>
                     It is strictly typed like languages such C or Java, but has a similar syntax to python with type hinting.  Being a hybrid interpreted
                     language offers Simplex the ability to freeze any source code on its way to execution for viewing by the user.`
             },
@@ -37,7 +37,7 @@ class Simplex extends Component {
             {
                 title: "Execution",
                 content: `After a program has been built into its data structure, it is ready for execution.  By the time of execution, all variables and
-                    functions have been loaded into memory with their initial values, so execution begins at the beginning and goes line by line.<br>
+                    functions have been loaded into memory with their initial values, so execution begins at the beginning and goes line by line.<br><br>
                     As each line is hit, any expressions in that line are resolved to their real values, reading the index of an array for example,
                     and functions have the real values or their arguments given to them for their execution.`,
             },

@@ -10,8 +10,9 @@ class Help extends Component {
         let tiles = [
             {
                 title: "#Overview",
-                content: `This website is modeled after Visual Studio Code, the editor that I write many of my projects in. 
-                    This site features many of the navigation and editing characteristics of VS Code.`
+                content: `This website is modeled after Visual Studio Code, the IDE that I write many of my projects in. 
+                    This site features many of the navigation and editing characteristics of VS Code and other IDEs that
+                    I use regularly.`
             },
             {
                 title: "Source",
@@ -31,8 +32,8 @@ class Help extends Component {
                     navigation of the pages within this site.  Clicking on each of the files
                     displays the page associated with that file.  For example, selecting <b>home.html</b>
                     opens the homepage of the website.  The names of the files are symbolic, as they are all
-                    built by <i>React.js</i> and JavaScript XML (JSX).  Additionally, when a file or folder
-                    is selected, some additional information will be displayed on the blue command bar
+                    built by <i>Next.js</i> and JavaScript XML (JSX).  Additionally, when a file or folder
+                    is selected, some additional information will be displayed on the blue status bar
                     at the bottom of the page, such as the file size or the number of files in a folder.
                     At the top of the explorer is the collapse button, which collapses the explorer to the
                     left if more room for viewing the website content is needed.`
@@ -62,7 +63,7 @@ class Help extends Component {
                     content of these files, click the pencil icon to the right of the file.  This will
                     open the editor; whatever valid HTML or CSS that is typed here will
                     be interpreted and shown on screen whenever you select the main file itself once again.
-                    This editor yields almost all of the standard features of HTML.  In fact, large portions
+                    This editor yields almost all the standard features of HTML.  In fact, large portions
                     of this website can be recreated by using the editor alone!`
             },
             {
@@ -70,7 +71,9 @@ class Help extends Component {
                 content: `For browsers with larger screen sizes, a terminal emulator is available at the bottom of
                     the screen.  This serves as a tool similar to the menu bar.  Files can be created, renamed
                     or deleted from here, along with other standard commands.  Further information can
-                    be gathered by the <b>help</b> command in the terminal.`
+                    be gathered by the <b>help</b> command in the terminal.  Feel free to explor the available
+                    commands for managing files, gathering information about this mock system, and even a few secrets
+                    and hidden features!`
             },
         ];
         let pageInfo = {

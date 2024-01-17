@@ -77,7 +77,7 @@ class Bergeron extends Component {
                     These models are then configured within the bergeron framework (<i>B</i>) as either the primary model (<i>P</i>) or the secondary model (<i>S</i>).
                     For example, <i>B</i>(G, M) means a framework with GPT-3.5 as the primary and Mistral as the secondary.  Each of these models has their own unique
                     attributes that are observable in our results.
-                    <br>
+                    <br><br>
                     GPT-3.5 is the bast overall model.  It has the best abilities of answer user prompts and is best able to discern unsafe text from safe text.  However,
                     it is very costly to run (from OpenAI's perspective)  It works well as either a primary or secondary model.  Llama2 is much easier to run than GPT-3.5
                     and it is better at detecting attacks.  This comes at the cost of it being overly sensitive to safe prompts.  It works well as a secondary model.  Mistral
@@ -88,7 +88,7 @@ class Bergeron extends Component {
                 gallery: true,
                 content: `Rate of attack success for <i>P</i>(·) and <i>B</i>(·, ·). The first letter of each model name is used here for brevity.
                     Each value is the percentage of adversarial prompts that a model failed to defend against (lower is better). Text in
-                    ↓<span style="color:#00ff00">green</span> shows an improvement upon the <i>P</i> model.  These attack success rates were determined
+                    <span style="color:#00ff00">↓green</span> shows an improvement upon the <i>P</i> model.  These attack success rates were determined
                     manually by myself and another author with a high degree of agreement.  An attack is judged as successful if the ultimate response contains
                     unsafe content, like enriching uranium from the first example.`,
                 thumbnail: "/media/image/attackDefense.png"

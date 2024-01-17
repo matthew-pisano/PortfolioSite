@@ -12,6 +12,7 @@ class ChipFiring extends Component {
                 title: "#Overview",
                 content: `In our research, we focused on the study of Chip-Firing games and how different combinations of 
                     directed and undirected edges affect its winning strategies.`,
+                thumbnail: "/media/image/chipfiring.png"
             },
             {
                 title: "Abstract",
@@ -97,7 +98,7 @@ class ChipFiring extends Component {
                 title: "Trees",
                 content: `Tree graphs are one of the simplest structures that we investigate and their Picard groups are also quite simple.  We have determined that
                     the Jacobian of a tree is always the trivial group.  This follows from the matrix-tree theorem due to the fact that a tree graph only has
-                    one spanning tree.<br>
+                    one spanning tree.<br><br>
                     The rank of a tree's Picard group is more complex, but still follows a clear pattern.  The rank is determined by the number of 
                     terminal-strong-components inside that tree.  These components are areas of the tree that are strongly connected, but only have edges pointing inward
                     to them from the greater tree.  The greater the number of these components, the higher the rank of the Picard group.`,
@@ -112,7 +113,7 @@ class ChipFiring extends Component {
                     For all other numbers of paths, we have not yet discovered a complete description as we have with two paths.  However, we have noticed that
                     there is also always a single invariant factor and this invariant factor is almost always $\\mathbb{Z}_2 \\dots \\mathbb{Z}_4$
                     for sizes of graphs smaller than size fifteen.  We suspect that, for very large graphs, the behavior of four or more paths approaches that of
-                    two paths.<br>
+                    two paths.<br><br>
                     The rank of a cycle's Picard group is similar to that of a tree.  Is also the number of terminal-strong-components.`,
                 latex: true
             },
@@ -125,7 +126,7 @@ class ChipFiring extends Component {
                     $\\mathbb{Z}_{\\alpha\\phi^{n}} \\times \\mathbb{Z}_{5\\alpha\\phi^{n}}$ when the size
                     was odd where $\\alpha \\approxeq 0.27555$ and $\\mathbb{Z}_{\\beta\\phi^{n}} \\times \\mathbb{Z}_{\\beta\\phi^{n}}$
                     when the size was even where $\\beta \\approxeq 0.618035$. In both of these patterns,
-                    $\\phi$ represents the golden ratio.<br>
+                    $\\phi$ represents the golden ratio.<br><br>
                     The rank of a wheel graph is also the number of terminal-strong-components in the graph.`,
                 latex: true
             },

@@ -11,10 +11,9 @@ class About extends Component {
         let tiles = [
             {
                 title: "#Introduction",
-                content: `My name is Matthew Pisano.  I am a student and software developer, pursuing higher education
-                    while working towards becoming an artificial intelligence alignment researcher in the future.
-                    
-                    <br>My research centers around language model alignment; enforcing safety without hampering its cognitive 
+                content: `My name is Matthew Pisano.  I am a student and software developer.  I am pursuing a graduate education
+                    while working on researching methods of artificial intelligence alignment.
+                    <br><br>My research centers around language model alignment; enforcing safety without hampering its cognitive 
                     abilities. I often draw inspiration from biological intelligences to aid im my work with artificial ones. 
                     I enjoy learning about how the mind works and the cognitive principles that can be applied to it.`,
                 thumbnail: "/media/image/headshot"
@@ -26,30 +25,34 @@ class About extends Component {
                     <ul>
                     <li>I have created many professional solutions for a variety of companies along with machine
                      learning applications, both from scratch and using modules such as 🤗Transformers and PyTorch.</li>
-                    <li>Through Java, I have created multiple android applications, come of which have been 
-                    published on the Google Play store.</li>
                     <li>I have used javascript in a variety of personal and professional web applications, 
                     with React.js and Node.js being the libraries in which I have the most experience.</li>
+                    <li>Through Java, I have created multiple android applications, come of which have been 
+                    published on the Google Play store.</li>
                     </ul>`,
             },
             {
                 title: "Development Experience",
                 content: `Through both my employment and professional experience through my higher education, I have
                     gained invaluable experience as a developer.  I have experience using the DevOps and Agile methodologies,
-                    full-stack development, and continuous integration and continuous delivery using AWS Amplify.`,
+                    full-stack development, and continuous integration and continuous delivery using AWS.
+                    <br><br>
+                    I have work experience ranging from small startups to Multinational Research divisions.  With each new experience,
+                    I gain valuable knowledge on the unique cultures and strategies that they offer.`,
             },
             {
                 title: "Recent Employment",
                 content: `Over the course of Summer 2023, I worked as a research intern at IBM's research facility in Yorktown as
                     part of a program through RPI.  During this time, I researched new techniques of model alignment using text-based
-                    game for safety training on moral and ethical principles.<hr>
+                    game for safety training on moral and ethical principles.  More information can be found in the 
+                    <a href="/research/highGround">Moral High Ground</a> page<hr>
                     
                     During the Spring and Fall semesters, I am employed at Rensselaer Polytechnic Institute as a teaching
                     assistant.  In this position, I hold office hours, aid the professor in grading, and help students
                     to better grasp relevant course material.<hr>
 
                     During the Summer of 2022, I had worked for SUNY New Paltz through their summer undergraduate research experience, details
-                    about this can be found in the <u style="cursor: pointer" onClick="window.showPage('chipFiring')">Chip Firing page</u> and
+                    about this can be found in the <a href="/research/chipFiring">Chip Firing</a> page and
                     in the <a href="https://arxiv.org/abs/2302.10327" target="_blank">arXiv submission</a> for the resulting paper.
                     With this job, I worked closely with my professor to gain research experience and to develop research for later publishing.<hr>
 
@@ -61,7 +64,12 @@ class About extends Component {
                 title: "Leadership",
                 content: `A key attribute of someone who can work well with a team, whether the focus is software 
                     development or research, is leadership.  Many of my leadership skills
-                    come from my time in scouting.  I spent 10 years in the Boy Scouts of America program learning the attributes
+                    come from my participation in research projects and my time in scouting.
+                    <br><br>I have worked on numerous different academic and research projects.  In many of these, I was the primary organizer of the project
+                    and in charge of delegating tasks to collaborators or teammates.  This is evident in my projects like 
+                    <a href="/research/predictChain">Predict Chain</a>, <a href="/hackathons/anonHires">Anonymous Hiring</a>, or my Master's thesis, 
+                    <a href="/research/bergeron">Bergeron</a>.
+                    <br><br>I spent 10 years in the Boy Scouts of America program learning the attributes
                     of good leaders and good team players.  This culminated in my Eagle Scout project where I preformed renovations
                     on my community's local recreation center.  My experience has continued on from there as I took active roles in
                     the planning and machine learning components of PredictChain, the front-end and ChatGPT interface of Mathesis,

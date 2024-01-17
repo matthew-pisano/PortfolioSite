@@ -88,7 +88,7 @@ const Wrapper = ({children, pageName}) => {
         setSidebarOpen(openState);
     }
 
-    function pageStats(){
+    function getPageStats(){
         let fileSize = 0;
         let fileLines = 0;
 
@@ -111,6 +111,8 @@ const Wrapper = ({children, pageName}) => {
 
         return {lines: fileLines, size: fileSize};
     }
+
+    let pStats = getPageStats();
 
     return (
         <div id="wrapper" className="w3-display-container">
@@ -201,8 +203,8 @@ const Wrapper = ({children, pageName}) => {
             <footer className="commandBar w3-row" style={{bottom: '0px'}}>
                 <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>
                 <div id="encodingStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>
-                <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageStats().lines+" Lines"}</div>
-                <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageStats().size+"B"}</div>
+                <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pStats.lines+" Lines"}</div>
+                <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pStats.size <= 1024 ? pStats.size+"B" : Math.round(pStats.size/102.4)/10+"kB"}</div>
                 <div id="itemStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageName+".html"}</div>
             </footer>
         </div>

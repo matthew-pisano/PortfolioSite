@@ -3,7 +3,7 @@ import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
 
-class GameAlign extends Component {
+class HighGround extends Component {
 
     static propTypes = {display: PropTypes.string};
     render() {
@@ -101,7 +101,7 @@ class GameAlign extends Component {
             },
         ];
         let pageInfo = {
-            pageName: "research/gameAlign",
+            pageName: "research/highGround",
             holderStyle: {backgroundColor: "#3749a1", borderRadius: "10px"},
             // gitLink: "https://github.com/predict-chain/predict-chain",
             // gitTitle: "PredictChain",
@@ -112,7 +112,7 @@ class GameAlign extends Component {
         return (<Wrapper pageName={pageInfo.pageName}>
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
                 <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Text-Based Games Alignment</b></h1><br/>
+                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Moral High Ground</b></h1><br/>
                     <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A Conversational Benchmark for LLM Moral Alignment</h3>
                 </div>
                 {buildPage(pageInfo, tiles)}
@@ -121,4 +121,4 @@ class GameAlign extends Component {
     }
 }
 
-export default GameAlign;
+export default HighGround;
