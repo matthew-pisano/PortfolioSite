@@ -26,7 +26,6 @@
 }
 
 .gitLink a, .extraLink a{
-    float: right;
     width: 70%;
 }
 .gitLink img, .extraLink img{

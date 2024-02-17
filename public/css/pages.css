@@ -132,3 +132,10 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+code {
+    color: azure;
+    background-color: #414141;
+    padding: 5px;
+    border-radius: 5px;
+}

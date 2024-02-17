@@ -314,7 +314,7 @@ class Commands {
 
     static mir(args) {
         if (args[0] === "--help") return Help.mir;
-        return "mir: command not found (Like 'dir' or the space station?)";
+        return "mir: command not found (Like 'dir' or like the space station?)";
     }
 
     static launch(args) {

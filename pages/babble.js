@@ -25,7 +25,7 @@ async function babbler(){
         let titleElem = document.getElementById("babbleTile"+tileIndex+"Title");
 
         if(!titleElem.classList.contains("forceWrap")) titleElem.classList.add("forceWrap");
-        let contentElem = document.getElementById("babbleTile"+tileIndex+"Content");
+        let contentElem = document.getElementById("babbleTile"+tileIndex).children[0].children[2];
         if(!contentElem.classList.contains("forceWrap")) contentElem.classList.add("forceWrap");
 
         titleElem.innerHTML = randText(Math.floor(Math.random()*20)+10);

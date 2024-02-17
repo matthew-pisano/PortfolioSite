@@ -8,4 +8,8 @@
     .tag {
         width: 100% !important;
     }
+
+    .gitLink a, .extraLink a {
+        float: right;
+    }
 }

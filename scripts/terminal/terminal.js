@@ -72,6 +72,7 @@ const TerminalDiv = () => {
         let terminalOutput = document.getElementById('terminalOutput');
         // console.log("Untrimmed command:", terminalInput.innerText.split());
         let command = terminalInput.innerText.trim().replace(/\r?\n\r?\n|\r\r/g, " ").replace(/\r?\n|\r/g, "");
+        command = command.replace(/\xa0/g, " ");
         // console.log("Got command: "+command);
         terminalInput.innerText = "";
 
