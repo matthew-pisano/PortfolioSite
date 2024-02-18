@@ -45,7 +45,7 @@ class Imperium extends Component {
         let pageInfo = {
             pageName: "personal/imperium",
             holderStyle: {backgroundColor: "#babd93", borderRadius: "10px"},
-            gitLink: "https://github.com/ReactorDevelopment/Imperium",
+            gitLink: "https://github.com/matthew-pisano/Imperium",
             gitTitle: "Imperium",
             tags: ["personal", "java", "android"]
         };

@@ -10,10 +10,10 @@ class Bergeron extends Component {
         let tiles = [
             {
                 title: "#Overview",
-                content: `The <i>Universal Models</i> serves as an adapter between Huggingface Transformers
+                content: `The <i>Universal Models</i> library serves as an adapter between Huggingface Transformers
                     and several other APIs.  This includes the OpenAI API, the Huggingface API, and local
-                    OpenAI APis, such as <a href="https://github.com/lm-sys/FastChat">FastChat</a>.  All
-                    models from these different sources can be instantiated and interated with in the same
+                    OpenAI APis, such as <a href="https://github.com/lm-sys/FastChat" target="_blank">FastChat</a>.  All
+                    models from these different sources can be instantiated and interacted with in the same
                     way as regular, local <i>Transformers</i> models.  This allows for the easy integration
                     of these models into projects that need generation from models from different sources.
                     It is designed to work primarily with autoregressive, decoder-only models, but can be
@@ -28,7 +28,7 @@ class Bergeron extends Component {
             },
             {
                 title: "Source",
-                content: `The source code for this project can be found on the above GitHub page.  The package is
+                content: `The source code for this project can be found on the above GitHub page or on <a href="https://pypi.org/project/universalmodels/" target="_blank">PyPI</a>.  The package is
                     available for installation via:<br>
                     <code>pip install universalmodels</code>`,
             }
@@ -38,6 +38,8 @@ class Bergeron extends Component {
             holderStyle: {backgroundColor: "#38af70", borderRadius: "10px"},
             gitLink: "https://github.com/matthew-pisano/UniversalModels",
             gitTitle: "UniversalModels",
+            extraLinks: ["https://pypi.org/project/universalmodels/"],
+            extraTitles: ["PyPi Project"],
             tags: ["personal", "ai", "python"]
         };
         return (<Wrapper pageName={pageInfo.pageName}>

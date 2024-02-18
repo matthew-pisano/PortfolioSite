@@ -44,14 +44,6 @@ class Home extends Component {
                 thumbnail: "/media/image/tw-llm.png"
             },
             {
-                title: "Large-Scale Foundation Acoustic Modeling for Automatic Speech Recognition",
-                titleLink: "",
-                content: `Improving the performance of modern ASM models by using a variety of techniques such as model fine-tuning and corrector LLMs.`,
-                gitLink: "https://github.com/AIRC-ASR/AIRC-ASR-Experimental",
-                gitTitle: "AIRC ASR",
-                tags: ["research", "academic", "ai", "python"]
-            },
-            {
                 title: "PredictChain",
                 titleLink: "research/predictChain",
                 content: `<i>PredictChain</i> is a decentralized artificial intelligence marketplace.
@@ -66,20 +58,30 @@ class Home extends Component {
                 thumbnail: "/media/image/predictChain.png"
             },
             {
-                title: "Chip Firing",
-                titleLink: "research/chipFiring",
-                content: `A research paper focusing on mathematical chip firing games.  This project studied Chip-Firing games and 
-                    how different combinations of directed and undirected edges affect its winning strategies.`,
-                extraTitles: ["Research Paper"],
-                extraLinks: ["https://arxiv.org/abs/2302.10327"],
-                gitLink: "https://github.com/matthew-pisano/ChipFiring",
-                tags: ["research", "academic", "python"],
-                thumbnail: "/media/image/chipfiring.png"
+                title: "Large-Scale Foundation Acoustic Modeling for Automatic Speech Recognition",
+                titleLink: "",
+                content: `Improving the performance of modern ASM models by using a variety of techniques such as model fine-tuning and corrector LLMs.`,
+                gitLink: "https://github.com/AIRC-ASR/AIRC-ASR-Experimental",
+                gitTitle: "AIRC ASR",
+                tags: ["research", "academic", "ai", "python"]
             },
             {
                 title: "#Featured Projects",
                 content: ``,
                 style: {backgroundColor: "#41414155"}
+            },
+            {
+                title: "Universal Models",
+                titleLink: "personal/univmodels",
+                content: `The <i>Universal Models</i> library serves as an adapter between Huggingface Transformers
+                    and several other APIs.  All models from these different sources can be instantiated and 
+                    interacted with in the same way as regular, local <i>Transformers</i> models.  This allows
+                    for the easy integration of these models into projects that need generation from models from different sources.`,
+                gitLink: "https://github.com/matthew-pisano/UniversalModels",
+                gitTitle: "UniversalModels",
+                extraLinks: ["https://pypi.org/project/universalmodels/"],
+                extraTitles: ["PyPi Project"],
+                tags: ["personal", "ai", "python"]
             },
             {
                 title: "LLM Augmented Information Retrieval",
@@ -102,7 +104,7 @@ class Home extends Component {
             },
             {
                 title: "Simplex",
-                titleLink: "simplex",
+                titleLink: "personal/simplex",
                 content: `An math-oriented interpreted scripting language built in Java.<br>
                     Simplex's focus is on mathematic and scientific calculations as it offers built-in matrix operations 
                     (multiplication, determinants, etc.) as well as many scientific and fundamental constants.<br><br>
@@ -113,12 +115,12 @@ class Home extends Component {
             },
             {
                 title: "Imperium",
-                titleLink: "imperium",
+                titleLink: "personal/imperium",
                 content: `Imperium is an android grand strategy game modeled after other popular titles on the PC platform.<br><br>
                     The goal of this project is to provide mobile users with a fun empire simulator in either historical 
                     settings within Europe or blank maps with game play more similar to the <i>RISK</i> board game.`,
                 thumbnail: "/media/image/imperiumLogo.png",
-                gitLink: "https://github.com/ReactorDevelopment/Imperium",
+                gitLink: "https://github.com/matthew-pisano/Imperium",
                 tags: ["personal", "java", "android"]
             },
             {
