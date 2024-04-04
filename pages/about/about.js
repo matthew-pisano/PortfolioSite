@@ -47,18 +47,19 @@ class About extends Component {
                     game for safety training on moral and ethical principles.  More information can be found in the 
                     <a href="/research/highGround">Moral High Ground</a> page<hr>
                     
-                    During the Spring and Fall semesters, I am employed at Rensselaer Polytechnic Institute as a teaching
+                    Through my employment at Cyber Guardian Consulting Group, I have developed a variety of proprietary business
+                    solutions using a variety of languages and web services, primarily AWS.  These often involved custom SaaS solutions
+                    for clients, writing distributed and asynchronous backup software from scratch, database management, and many full-stack
+                    web applications.<hr>
+                    
+                    Over the past three semesters, I have been employed at Rensselaer Polytechnic Institute as a teaching
                     assistant.  In this position, I hold office hours, aid the professor in grading, and help students
                     to better grasp relevant course material.<hr>
 
                     During the Summer of 2022, I had worked for SUNY New Paltz through their summer undergraduate research experience, details
                     about this can be found in the <a href="/research/chipFiring">Chip Firing</a> page and
                     in the <a href="https://arxiv.org/abs/2302.10327" target="_blank">arXiv submission</a> for the resulting paper.
-                    With this job, I worked closely with my professor to gain research experience and to develop research for later publishing.<hr>
-
-                    I am also currently employed at Cyber Guardian Consulting Group.  Here, I have developed a variety of proprietary business
-                    solutions using a variety of languages and web services, primarily AWS.  Further details of these projects
-                    may be negotiated upon request.`,
+                    With this job, I worked closely with my professor to gain research experience and to develop research for later publishing.`,
             },
             {
                 title: "Leadership",
