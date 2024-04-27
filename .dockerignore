@@ -1,0 +1,6 @@
+node_modules
+.cert
+.idea
+.next
+next.lock
+package-lock.json
