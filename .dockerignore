@@ -4,3 +4,4 @@ node_modules
 .next
 next.lock
 package-lock.json
+build
