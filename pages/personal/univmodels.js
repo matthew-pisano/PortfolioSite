@@ -3,7 +3,7 @@ import { buildPage } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
 
-class Bergeron extends Component {
+class UnivModels extends Component {
 
     static propTypes = {display: PropTypes.string};
     render() {
@@ -54,4 +54,4 @@ class Bergeron extends Component {
     }
 }
 
-export default Bergeron;
+export default UnivModels;

@@ -52,12 +52,9 @@ function buildPage(pageInfo, tiles){
                 if(tile.title.startsWith("#")) titleElement = <h2><b id={titleId}>{HTMLReactParser(tile.title.substring(1))}</b></h2>;
                 else titleElement = <b id={titleId} style={titleStyle}>{HTMLReactParser(tile.title)}</b>;
 
-                if(tile.titleLink){
-                    let gotoLink = () => {window.location.replace(tile.titleLink);};
-                    titleElement = <u style={{cursor: "pointer"}} onClick={gotoLink}>
-                        {titleElement}
-                    </u>;
-                }
+                if(tile.titleLink)
+                    titleElement = <a href={tile.titleLink}><u>{titleElement}</u></a>;
+
                 let titleContent = tile.content && tile.latex ? <Latex>{tile.content}</Latex> : tile.content ? HTMLReactParser(tile.content) : "";
                 let tileContentElem = tile.content ? <span id={pageInfo.pageName+"Tile"+i+"Content"} style={{margin: "15px 0px", display: "block"}}>{titleContent}</span> : <></>;
                 let className = "displayTile w3-container w3-row"+(tile.gallery ? "galleryTile" : "");

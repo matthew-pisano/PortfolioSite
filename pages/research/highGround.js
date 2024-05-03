@@ -18,7 +18,8 @@ class HighGround extends Component {
                 thumbnail: "/media/image/tw-llm.png"
             },
             {
-                title: "NOTE: This research is currently undergoing a blind review.  Thus, identifying information, such has the title, has been omitted.",
+                title: `NOTE: This research is currently undergoing a blind review.  Thus, identifying 
+                    information, such has the title, has been omitted.`,
                 style: {backgroundColor: "rgba(255,219,55,0.63)"}
             },
             {

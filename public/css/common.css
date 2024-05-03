@@ -26,3 +26,8 @@ html {
 a {
     color: #add3ee !important;
 }
+
+.tabCell {
+    border: 1px solid azure;
+    padding: 5px;
+}

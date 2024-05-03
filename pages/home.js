@@ -84,6 +84,28 @@ class Home extends Component {
                 tags: ["personal", "ai", "python"]
             },
             {
+                title: "Manifest Destiny",
+                titleLink: "school/destiny",
+                content: `A highly parallelized population growth simulator. It is based on 
+                    a cellular automata model of the United States during its period of rapid Westward 
+                    expansion from 1763 to 1863.`,
+                gitLink: "https://github.com/matthew-pisano/ManifestDestiny",
+                gitTitle: "ManifestDestiny",
+                extraTitles: ["Research Paper"],
+                extraLinks: ["https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf"],
+                tags: ["academic", "clang", "cuda", "collab"],
+                thumbnail: "/media/image/1763-timelapse.gif"
+            },
+            {
+                title: "Image-Crypt",
+                titleLink: "personal/imageCrypt",
+                content: `A image-based document encoder and decoder that stores text within an image using small amounts of noise.`,
+                gitLink: "https://github.com/matthew-pisano/ImageCrypt",
+                gitTitle: "Image-Crypt",
+                tags: ["personal", "cpp"],
+                thumbnail: "/media/image/secret-message.png"
+            },
+            {
                 title: "LLM Augmented Information Retrieval",
                 titleLink: "",
                 content: `A Solr information retrieval system with the capabilities of a large language model.  Uses a language model to improve
@@ -98,14 +120,14 @@ class Home extends Component {
                 content: `Research into the creation of a fine-tuned GPT-3 teaching assistant that will enable the transparent 
                     use of the technology between instructor and student to create a more active and participatory learning environment.`,
                 gitLink: "https://github.com/GPT-Pedagogy/GPT-Pedagogy",
-                gitTitle: "Mathesis Pedagogy",
+                gitTitle: "MathesisPedagogy",
                 tags: ["research", "academic", "ai", "python"],
                 thumbnail: "/assets/mathesis.png"
             },
             {
                 title: "Simplex",
                 titleLink: "personal/simplex",
-                content: `An math-oriented interpreted scripting language built in Java.<br>
+                content: `A math-oriented interpreted scripting language built in Java.<br>
                     Simplex's focus is on mathematic and scientific calculations as it offers built-in matrix operations 
                     (multiplication, determinants, etc.) as well as many scientific and fundamental constants.<br><br>
                     Simplex also features an IDE to both help programming and educate users on how programming languages work.`,

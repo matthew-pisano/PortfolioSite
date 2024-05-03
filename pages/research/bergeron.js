@@ -18,7 +18,8 @@ class Bergeron extends Component {
                 thumbnail: "/media/image/bergeron.png"
             },
             {
-                title: "NOTE: This research is currently undergoing a blind review.  Thus, identifying information has been omitted and data may be more recent than in preprint versions.",
+                title: `NOTE: This research is currently undergoing a blind review.  Thus, identifying
+                    information has been omitted and data may be more recent than in preprint versions.`,
                 style: {backgroundColor: "rgba(255,219,55,0.63)"}
             },
             {

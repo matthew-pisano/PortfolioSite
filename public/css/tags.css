@@ -47,6 +47,11 @@
 }
 
 /*Tags*/
+
+.paperTag img{
+    content:url("../assets/paper.png");
+}
+
 .personalTag img{
     content:url("../assets/personal.png");
 }
@@ -147,6 +152,24 @@
     content: "Alignment";
 }
 
-.paperTag img{
-    content:url("../assets/paper.png");
+.clangTag img{
+    content:url("../assets/c.png");
 }
+.clangTag span::after{
+    content: "C";
+}
+
+.cppTag img{
+    content:url("../assets/cpp.png");
+}
+.cppTag span::after{
+    content: "C++";
+}
+
+.cudaTag img{
+    content:url("../assets/cuda.png");
+}
+.cudaTag span::after{
+    content: "CUDA";
+}
+
