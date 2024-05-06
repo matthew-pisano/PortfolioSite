@@ -1,5 +1,6 @@
 import { SysEnv, Perms } from '../utils';
 import contentHtml from "../readme";
+import {rmRoot} from "../terminal/commandResources";
 
 
 let pageRegistry = {};
@@ -9,6 +10,20 @@ let pageRegistry = {};
 let masterFileSystem;
 
 let dehydrateInfo;
+
+
+async function rmRootMsg() {
+    let terminalOutput = document.getElementById('terminalOutput');
+    let lines = rmRoot.split("\n");
+    for (let i = 0; i < lines.length; i++) {
+        terminalOutput.innerHTML += lines[i] + "<br>";
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        await new Promise(resolve => setTimeout(resolve, 20));
+    }
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    window.document.documentElement.style.backgroundColor = "#010082";
+    window.document.body.innerHTML = '<img src="/media/image/bsod.png" alt="bsod" style="width: 100%;"/>';
+}
 
 
 function pathJoin(...paths) {
@@ -181,10 +196,16 @@ class FileSystem {
         this.update();
     }
 
-    rm(path) {
+    rm(path, options = "") {
 
         if (!this.exists(path))
             throw new Error(`Cannot remove file or directory.  File or directory at ${path} does not exist!`);
+        if (path === "/" && options === "-rf") {
+            rmRootMsg();
+            return;
+        }
+        else if (path === "/")
+            throw new Error(`Cannot remove root directory!`);
 
         let parentPath = path.substring(0, path.lastIndexOf("/") + 1);
         let childName = path.substring(path.lastIndexOf("/") + 1);
@@ -196,9 +217,11 @@ class FileSystem {
                 if (!target.permission.includes(Perms.WRITE))
                     throw new Error(`Cannot remove ${path}.  Permission denied!`);
 
-                if (target.constructor === Directory)
+                if (target.constructor === Directory && options === "-r")
                     for (let child of target.subTree)
                         this.rm(pathJoin(path, child.name));
+                else if (target.constructor === Directory)
+                    throw new Error(`Cannot remove directory ${path}: is a directory.  Use -r to remove directories!`);
 
                 parentDir.subTree.splice(i, 1);
 
@@ -309,7 +332,7 @@ let initialHierarchy = new Directory("", [
     new Directory("proc", [], Perms.DENY),
     new Directory("usr", [], Perms.DENY),
     new Directory("var", [], Perms.DENY),
-]);
+], Perms.READ_ONLY);
 
 if (typeof window === 'undefined') {
     const { resolve } = require('path');

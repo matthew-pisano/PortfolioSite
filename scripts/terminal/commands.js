@@ -80,8 +80,13 @@ class Commands {
         else if (targetItem.constructor === File)
             throw new Error(`Cannot enter ${args[0]}, it is a file!`);
 
-        else if (!targetItem.permission.includes(Perms.EXECUTE))
+        else if (!targetItem.permission.includes(Perms.EXECUTE)) {
+            if (args[0] === "/home/admin") {
+                window.location.href = "/admin";
+                throw new Error(`Verifying credentials for ${args[0]}...`);
+            }
             throw new Error(`Cannot enter ${args[0]}.  Permission denied!`);
+        }
 
         this.ENV.CWD = args[0];
         return "";
@@ -206,11 +211,11 @@ class Commands {
 
     static rm(args) {
         if (args[0] === "--help") return Help.rm;
-        let valResult = this._validateArgs(args, {nargs: [1]});
+        let valResult = this._validateArgs(args, {nargs: [1, 2]});
         if (valResult) return valResult;
-
-        let fileName = this._resolvePath(args[0]);
-        masterFileSystem.rm(fileName);
+        let pathArg = args.length > 1 ? args[1] : args[0];
+        let fileName = this._resolvePath(pathArg);
+        masterFileSystem.rm(fileName, args.length > 1 ? args[0] : "");
 
         return "";
     }
@@ -309,7 +314,7 @@ class Commands {
 
     static dir(args) {
         if (args[0] === "--help") return Help.dir;
-        return "'dir: command not found (Wrong OS)";
+        return "dir: command not found (Wrong OS)";
     }
 
     static mir(args) {

@@ -14,7 +14,7 @@ const TerminalDiv = () => {
     const [ENV, setENV] = useState({ CWD: SysEnv.HOME_FOLDER, HOME: SysEnv.HOME_FOLDER, COLOR: "#ffffff", CLOSED: true, CLOSE_TIME: 0 });
 
     function genPrompt (cwd) {
-        if (resolvePath(ENV.CWD, cwd) === SysEnv.HOME_FOLDER) cwd = "~";
+        if (cwd.startsWith(SysEnv.HOME_FOLDER)) cwd = cwd.replace(SysEnv.HOME_FOLDER, "~");
         return "[" + cwd + "]$ ";
     }
 
