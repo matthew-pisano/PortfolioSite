@@ -202,8 +202,11 @@ function hal(msg) {
 
 class Help {
 
+    static help = "help | man [options] - print a help menu";
+    static man = Help.help;
     static echo = "echo [*msg] - echoes each of the arguments on a new line";
     static clear = "cls | clear - clears the output of the terminal";
+    static cls = Help.clear;
     static pwd = "pwd - prints the working directory to the console";
     static cd = "cd [path] - changes the current working directory to the given path";
     static ls = "ls [path] - gives information on the file or folder that matches the given path";
@@ -214,10 +217,11 @@ class Help {
     static rm = "rm [-r|-rf] [path] - removes the file or directory with the given path";
     static cat = "cat [filePath] - prints our the contents of the given file";
     static open = "open [fileName] - opens the file with the given name.  Only files with the execute permission can be opened";
-    static color = "color [color] - sets the terminal text color to the given color in the form #rrggbb or #rgb";
+    static color = "color [color] - sets the terminal text color to the given hex color in the form #rrggbb or #rgb.  For example: #ff0000 or #f00";
     static exit = "exit - clears the terminal and closes it";
     static restart = "restart - Reloads the page";
     static reset = "reset | nuke - Resets all persistent page data";
+    static nuke = Help.reset;
     static halsay = "halsay [msg] - Generates an ASCII image of Hal-9000 with the option of a custom message";
     static eightball = `eightball [query] - ${eightBall()}`;
     static secretSentinel = null;
@@ -236,26 +240,32 @@ class Help {
 
     static aggregateHelp() {
         let aggStr = "";
+        let lastHelp = "";
         for(let key of Object.keys(Help)){
-            if(["aggregateHelp", "help", "aggregateSecretHelp"].includes(key)) continue;
+            if(["helpMenu", "aggregateHelp", "aggregateSecretHelp"].includes(key)) continue;
             if(key === "secretSentinel") break;
+            if(Help[key] === lastHelp) continue;
             aggStr += Help[key]+"\n";
+            lastHelp = Help[key];
         }
         return aggStr;
     }
     static aggregateSecretHelp() {
         let aggStr = "";
+        let lastHelp = "";
         for(let key of Object.keys(Help)){
-            if(["aggregateHelp", "help", "aggregateSecretHelp", "secretSentinel"].includes(key)) continue;
+            if(["helpMenu", "aggregateHelp", "aggregateSecretHelp", "secretSentinel"].includes(key)) continue;
+            if(Help[key] === lastHelp) continue;
             aggStr += Help[key]+"\n";
+            lastHelp = Help[key];
         }
         return aggStr;
     }
-    static help = `--< Help Menu >--
+    static helpMenu = `--< Help Menu >--
 ${SysEnv.SHELL} (${SysEnv.ARCH})
-These shell commands are defined internally.  Type 'help' to see this list.
+These shell commands are defined internally.  Type 'help' to see this list.  Type 'help [command]' to see more information about a specific command.
+Use -f or --force to override all security checks.
 
-help [options] - print this message
 ${this.aggregateHelp()}`;
 
     static secretHelp = `--Secret Help--

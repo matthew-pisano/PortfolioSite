@@ -54,10 +54,10 @@ class Commands {
         let valResult = this._validateArgs(args, {nargs: [0, 1]});
         if (valResult) return valResult;
 
-        if (args.length > 0 && (args[0] === "-f" || args[1] === "--force"))
+        if (args.length > 0 && (args[0] === "-f" || args[0] === "--force"))
             return Help.secretHelp;
 
-        return Help.help;
+        return Help.helpMenu;
     }
 
     static man(args) {
