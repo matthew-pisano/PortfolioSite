@@ -104,7 +104,7 @@ class Commands {
         if (!lsObj) throw new Error(`Cannot list file or directory.  File or directory at ${args[0]} does not exist!`);
 
         let pad = "\xa0\xa0";
-
+        let paddedSize = `${lsObj.size()}`.padStart(6, "\xa0");
         let lsStr;
 
         if (lsObj.constructor === Directory) {
@@ -119,7 +119,6 @@ class Commands {
 
                 let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
                 modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-                let paddedSize = `${lsObj.size()}`.padStart(6, "\xa0");
 
                 list.push([`d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${child.name}`, child.name]);
             }
@@ -128,12 +127,18 @@ class Commands {
 
             lsStr = "total " + lsObj.subTree.length + "\n";
 
+            if (path !== "/") {
+                let modStr = new Date(Date.now()).toISOString().split("T").join(" ");
+                modStr = modStr.substring(0, modStr.lastIndexOf(":"));
+                lsStr += `drwx${pad}${paddedSize}${pad}${modStr}${pad}.\n`;
+                lsStr += `drwx${pad}${paddedSize}${pad}${modStr}${pad}..\n`;
+            }
+
             for (let entry of list)
                 lsStr += entry[0] + "\n";
         } else {
             let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
             modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-            let paddedSize = `${lsObj.size()}`.padStart(6, "\xa0");
             if (!lsObj.permission.includes(Perms.READ)) paddedSize = "?".padStart(6, "\xa0");
 
             lsStr = `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${lsObj.name}`;
@@ -234,13 +239,29 @@ class Commands {
         if (valResult) return valResult;
 
         let pagePath = this._resolvePath(args[0]);
+        let currentFile = masterFileSystem.getItem(pagePath);
         if (pageRegistry[pagePath]) {
             let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
             window.open(relPath.replace(".html", ""), '_self', false);
         }
         else if (!masterFileSystem.exists(pagePath)) throw new Error(`Cannot open file.  File at ${args[0]} does not exist!`);
-        else if (masterFileSystem.getItem(pagePath).constructor === Directory) throw new Error(`Cannot open a directory!`);
-        else window.open(`/display?file=${pagePath}`, '_self', false);
+        else if (currentFile.constructor === Directory) throw new Error(`Cannot open a directory!`);
+        else if (currentFile.permission.includes(Perms.EXECUTE)) window.open(`/display?file=${pagePath}`, '_self', false);
+        else return `Insufficient permissions to open ${args[0]}!`;
+        return "";
+    }
+
+    static edit(args) {
+        if (args[0] === "--help") return Help.edit;
+        let valResult = this._validateArgs(args, {nargs: [1]});
+        if (valResult) return valResult;
+
+        let pagePath = this._resolvePath(args[0]);
+        let currentFile = masterFileSystem.getItem(pagePath);
+        if (!masterFileSystem.exists(pagePath)) throw new Error(`Cannot edit file.  File at ${args[0]} does not exist!`);
+        else if (currentFile.constructor === Directory) throw new Error(`Cannot edit a directory!`);
+        else if (currentFile.permission.includes(Perms.WRITE)) window.location.replace(`/edit?file=${pagePath}`);
+        else return `Insufficient permissions to edit ${args[0]}!`;
         return "";
     }
 
@@ -273,13 +294,17 @@ class Commands {
             await new Promise(r => setTimeout(r, 1000));
             window.location.reload();
         })();
-        return "Re-provisioning system.  Standby...";
+        return "Re-provisioning system (keeping state).  Standby...";
     }
 
     static reset(args) {
         if (args[0] === "--help") return Help.reset;
         delete localStorage.hierarchy;
-        return "";
+        (async () => {
+            await new Promise(r => setTimeout(r, 1000));
+            window.location.reload();
+        })();
+        return "Re-provisioning system (clearing state).  Standby...";
     }
 
     static nuke(args) {

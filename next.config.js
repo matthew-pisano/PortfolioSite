@@ -7,6 +7,12 @@ const nextConfig = {
                 permanent: true,
                 basePath: false
             },
+            {
+                source: '/home',
+                destination: '/',
+                permanent: true,
+                basePath: false
+            },
         ];
     },
 };

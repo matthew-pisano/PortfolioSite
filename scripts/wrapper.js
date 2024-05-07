@@ -60,6 +60,15 @@ const Wrapper = ({children, pageName}) => {
         }
 
         document.getElementById("terminalButton").classList.remove("gone");
+
+        // Capture CTRL + S
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.key === 's') {
+                // Prevent the Save dialog to open
+                e.preventDefault();
+                document.getElementById("saveAction").click();
+            }
+        });
     }, []);
 
     function setSidebarState(openState=!sidebarOpen, animate=true){
@@ -140,15 +149,26 @@ const Wrapper = ({children, pageName}) => {
                         <button id="newAction" className="w3-button lightText menuDropItem"
                             onClick={() => {newCustomFile(); }}>New</button>
                         <button id="saveAction" className="w3-button lightText menuDropItem"
-                            onClick={() => {
-                                if(document.getElementById("editorSave")) document.getElementById("editorSave").click();
-                                else alert("This file is not in editing mode!");
+                            onClick={async () => {
+                                if (!document.codeEditor) {
+                                    alert("This file is not in editing mode!");
+                                    return;
+                                }
+
+                                let editorText = document.codeEditor.state.doc.toString();
+                                let filePath = new URLSearchParams(window.location.search).get("file");
+                                masterFileSystem.writeText(filePath, editorText.replace("\t", ""));
+                                window.onbeforeunload = null;
+                                // Visual saving feedback
+                                document.getElementsByClassName("cm-editor")[0].style.backgroundColor = "#626262";
+                                await new Promise(r => setTimeout(r, 200));
+                                document.getElementsByClassName("cm-editor")[0].style.backgroundColor = "";
                             }}>Save</button>
                         <button id="resetAction" className="w3-button lightText menuDropItem"
                             onClick={() => {
                                 if(confirm("Do you really want to reset the system?")) {
                                     delete localStorage.hierarchy;
-                                    window.location.replace("/home");
+                                    window.location.replace("/");
                                 }
                             }}>Reset</button>
                     </div>

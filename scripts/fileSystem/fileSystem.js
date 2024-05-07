@@ -1,6 +1,6 @@
 import { SysEnv, Perms } from '../utils';
 import contentHtml from "../readme";
-import {rmRoot} from "../terminal/commandResources";
+import {bashrc, rmRoot} from "../terminal/commandResources";
 
 
 let pageRegistry = {};
@@ -62,11 +62,14 @@ class File {
     size() { return this.text.length; }
 
     static toDict(file) {
-        return { name: file.name, text: file.text, permission: file.permission };
+        return { name: file.name, text: file.text, permission: file.permission, modified: file.modified};
     }
 
     static fromDict(dict) {
-        return new File(dict.name, dict.text, dict.permission);
+        let newFile = new File(dict.name, dict.text, dict.permission);
+        newFile.modified = dict.modified;
+        console.log(newFile);
+        return newFile;
     }
 }
 
@@ -88,7 +91,7 @@ class Directory {
     size() { return 4096; }
 
     static toDict(directory) {
-        let dict = { name: directory.name, permission: directory.permission, subTree: [] };
+        let dict = { name: directory.name, permission: directory.permission, modified: directory.modified, subTree: [] };
 
         for (let child of directory.subTree)
             dict.subTree.push(child.constructor.toDict(child));
@@ -98,6 +101,7 @@ class Directory {
 
     static fromDict(dict) {
         let directory = new Directory(dict.name, null, dict.permission);
+        directory.modified = dict.modified;
 
         for (let child of dict.subTree)
             directory.subTree.push((child.subTree !== undefined ? Directory : File).fromDict(child));
@@ -190,6 +194,7 @@ class FileSystem {
         else copied = new File(oldObj.name, oldObj.text, oldObj.permission);
 
         copied.name = newChildName;
+        copied.modified = oldObj.modified;
 
         newParentObj.subTree.push(copied);
 
@@ -318,7 +323,13 @@ class FileSystem {
 let initialHierarchy = new Directory("", [
     new Directory("home", [
         new Directory("guest", [
-            new Directory("public", [])
+            new File(".bashrc", bashrc),
+            new Directory(".ssh", []),
+            new Directory("bin", []),
+            new Directory("mnt", []),
+            new Directory("public", []),
+            new Directory("src", []),
+            new Directory("tmp", []),
         ]),
         new Directory("admin", [], Perms.DENY),
     ]),
@@ -350,15 +361,16 @@ if (typeof window === 'undefined') {
 
             let hierarchyPath = pathJoin(SysEnv.PUBLIC_FOLDER, dirName);
             if (!dirent.isDirectory()) {
-                let size = statSync(res).size;
+                let fileStats = statSync(res);
                 let fileName = res.substring(res.lastIndexOf("/") + 1).replace(".js", "");
                 if (["admin", "index", "404", "display", "edit", "babble", "403"].includes(fileName)) continue;
 
                 if (fileName[0] !== "_") {
                     let name = hierarchyPath.replace(SysEnv.PUBLIC_FOLDER, "");
                     if(name[0] === "/") name = name.substring(1);
-                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = {name: pathJoin(name, fileName + ".html"), size: size};
-                    masterFileSystem.touch(pathJoin(hierarchyPath, fileName + ".html"), "--" + Perms.EXECUTE);
+                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = {name: pathJoin(name, fileName + ".html"), size: fileStats.size};
+                    let newFile = masterFileSystem.touch(pathJoin(hierarchyPath, fileName + ".html"), "--" + Perms.EXECUTE);
+                    newFile.modified = fileStats.mtimeMs;
                 }
             }
         }

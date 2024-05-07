@@ -110,6 +110,21 @@ removing '/usr/local/lib': Operation succeeded
 [    4.397681] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000h`;
 
 
+const bashrc = `
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# alias definitions
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias la='ls -a'`;
+
+
 function resolvePath(cwd, path){
     //console.log("Resolving", cwd, path);
     if(path[0] === "~") path = path.replace("~", SysEnv.HOME_FOLDER);
@@ -231,6 +246,7 @@ class Help {
     static rm = "rm [-r|-rf] [path] - removes the file or directory with the given path";
     static cat = "cat [filePath] - prints our the contents of the given file";
     static open = "open [fileName] - opens the file with the given name.  Only files with the execute permission can be opened";
+    static edit = "edit [fileName] - opens the file with the given name for editing.  Only files with the write permission can be edited";
     static color = "color [color] - sets the terminal text color to the given hex color in the form #rrggbb or #rgb.  For example: #ff0000 or #f00";
     static exit = "exit - clears the terminal and closes it";
     static restart = "restart - Reloads the page";
@@ -345,4 +361,4 @@ function resolveTokens(env, tokens) {
     }
 }
 
-export { resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, neofetch, closeTerminal, tfLogo, hal, rmRoot };
+export { resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, neofetch, closeTerminal, tfLogo, hal, rmRoot, bashrc };

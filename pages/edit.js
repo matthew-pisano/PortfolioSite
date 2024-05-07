@@ -6,10 +6,9 @@ import {EditorState, Compartment} from "@codemirror/state";
 import {basicSetup, EditorView} from "codemirror";
 import {html} from "@codemirror/lang-html";
 import {Perms} from "../scripts/utils";
+import {promises} from "fs";
 
 const Edit = () => {
-    const [pagePath, setPagePath] = useState("");
-    const [codeEditor, setCodeEditor] = useState(null);
 
     let pageInfo = {
         pageName: "edit",
@@ -22,21 +21,21 @@ const Edit = () => {
         if(!currentFile) errorMsg = `Cannot find file at ${filePath}!`;
         else if(currentFile.constructor === Directory) errorMsg = "Cannot open a directory!";
         else if(!currentFile.permission.includes(Perms.WRITE)) errorMsg = `Insufficient permissions to write ${filePath}!`;
-        else setPagePath(filePath);
 
         if(errorMsg){
             let errElem = document.createElement("p");
             errElem.innerText = errorMsg;
             document.getElementById(pageInfo.pageName+"Page").appendChild(errElem);
-            document.getElementById("editorSave").remove();
             return;
         }
 
         let updateListenerExtension = EditorView.updateListener.of(v => {
-            if(v.flags === 4) {
-                window.onbeforeunload = function () {
-                    return true;
-                };
+            if(v.changedRanges.length) {
+                if (EditorView.hasLoaded)
+                    window.onbeforeunload = function () {
+                        return confirm("Confirm refresh");
+                    };
+                else EditorView.hasLoaded = true;
             }
         });
 
@@ -45,7 +44,14 @@ const Edit = () => {
             extensions: [
                 basicSetup,
                 updateListenerExtension,
-                EditorView.theme({}, {dark: true}),
+                EditorView.theme({
+                    ".ͼe": {color: "#3ddb42"},
+                    ".ͼd": {color: "#00bacf"},
+                    ".ͼb": {color: "#0098cf"},
+                    ".ͼc": {color: "#1bc24f"},
+                    ".ͼm": {color: "#989898"},
+                    ".ͼj": {color: "#009afa"},
+                }, {dark: true}),
                 lineNumbers(),
                 new Compartment().of(html())
             ]
@@ -54,28 +60,14 @@ const Edit = () => {
             state, parent: document.getElementById(pageInfo.pageName+"Page"),
         });
 
-        document.getElementsByClassName("cm-editor")[0].style.maxWidth = `${Math.round(window.innerWidth*0.9)}px`;
-        document.getElementsByClassName("cm-editor")[0].style.maxHeight = `${Math.round(window.innerHeight*0.7)}px`;
-        const update = editor.state.update({changes: {from: 0, to: state.doc.length, insert: currentFile.text}});
-        editor.update([update]);
-        setCodeEditor(editor);
+        document.getElementsByClassName("cm-editor")[0].minHeight = `${Math.round(window.innerHeight*0.7)}px`;
 
+        editor.update([editor.state.update({changes: {from: 0, to: state.doc.length, insert: currentFile.text}})]);
+        document.codeEditor = editor;
     }, []);
 
     return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <button id="editorSave" className="w3-button" onClick={async () => {
-                    let editorText = codeEditor.state.doc.toString();
-                    masterFileSystem.writeText(pagePath, editorText.replace("\t", ""));
-                    window.onbeforeunload = null;
-                    // Visual saving feedback
-                    document.documentElement.style.backgroundColor = "#626262";
-                    document.getElementById("editorSave").innerText = "Saved!";
-                    await new Promise(r => setTimeout(r, 200));
-                    document.getElementById("editorSave").innerText = "Save";
-                    document.documentElement.style.backgroundColor = "";
-                }}>Save</button>
-            </div>
+            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText"/>
         </Wrapper>);
 };
 

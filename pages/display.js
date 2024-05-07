@@ -13,8 +13,11 @@ const Display = () => {
 
         if(!currentFile) setPageText(`Cannot find file at ${filePath}!`);
         else if(currentFile.constructor === Directory) setPageText("Cannot open a directory!");
-        else if(!currentFile.permission.includes(Perms.WRITE)) setPageText(`Insufficient permissions to access source of ${filePath}!`);
-        else setPageText(currentFile.text);
+        else if(!currentFile.permission.includes(Perms.READ)) setPageText(`Insufficient permissions to access source of ${filePath}!`);
+        else {
+            let pageText = filePath.endsWith(".html") ? currentFile.text : currentFile.text.replaceAll("\n", "<br>");
+            setPageText(pageText);
+        }
     }, []);
 
     let pageInfo = {
