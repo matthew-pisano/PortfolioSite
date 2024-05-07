@@ -11,7 +11,7 @@ class About extends Component {
         let tiles = [
             {
                 title: "#Introduction",
-                content: `My name is Matthew Pisano.  I am a student and software developer.  I am pursuing a graduate education
+                content: `My name is Matthew Pisano.  I am a researcher and software developer.  I am pursuing a graduate education
                     while working on researching methods of artificial intelligence alignment.
                     <br><br>My research centers around language model alignment; enforcing safety without hampering its cognitive 
                     abilities. I often draw inspiration from biological intelligences to aid im my work with artificial ones. 

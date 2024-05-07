@@ -188,7 +188,7 @@ class Home extends Component {
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
                 <div className="inner titleCard">
                     <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>Matthew Pisano</h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Student and Artificial Intelligence Alignment Researcher</h3>
+                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Language Model and Artificial Intelligence Alignment Researcher</h3>
                 </div>
                 {buildPage(pageInfo, tiles)}
             </div>

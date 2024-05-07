@@ -1,7 +1,7 @@
 # Portfolio Website of Matthew Pisano
 
 This project serves as a showcase of the accomplishments and projects that
-I have completed during my time as a student an a developer.
+I have completed during my time as a student, researcher, and developer.
 
 ## Features
 
