@@ -7,7 +7,7 @@ const authQuotes = ["You appear to have been misinformed.", "You're not from aro
         "Curiosity killed the cat.", "You have somehow found this webpage, not intended for you.",
         "The darkest pit of this server has opened up to swallow you whole ... so don't keep the errors waiting, old friend.",
         "Danger!  Keep out!", "A riddle wrapped in a mystery inside an enigma.", "You shall not pass.",
-        "There is a way out planned for you."];
+        "There is a way out planned for you.", "All your base are belong to us", "I'm sorry, Dave.  I'm afraid I can't do that.",];
 
 
 const Anauthorized = () => {

@@ -9,7 +9,8 @@ const lostQuotes = ['How did we get here?', 'Not all who wander are lost...',
         'Onward!  Into the great unknown...', '"Our only true failure would be to not explore at all." -Ernest Shackleton',
         '"Only those who will risk going too far can possibly know how far one can go." -T.S. Eliot',
         "I'm not taking myself too seriously, you're taking my seriousness too seriously.",
-        "I have a feeling that you're ... right where you want to be"];
+        "I have a feeling that you're ... right where you want to be", "It's dangerous to go alone, take this: 🗡️",
+        "Nobody expects the Spanish Inquisition!!", "Lerroooyyyyy Jeeennnkkkinnnssss!"];
 
 
 const PageNotFound = () => {

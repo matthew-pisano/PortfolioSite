@@ -5,4 +5,7 @@ Allow: /
 User-agent: *
 Disallow: /secure/*
 
+User-agent: *
+Disallow: /display/*
+
 Sitemap: https://matthewpisano.com/sitemap.xml

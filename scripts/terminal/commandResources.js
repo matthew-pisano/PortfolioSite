@@ -145,13 +145,27 @@ async function haltingProblem(){
 function eightBall(){
     let responses = [
         "It is certain", "Without a doubt", "Yes definitely", "You may rely on it",
-        "Most likely", "Outlook not installed", "Signs point to yes", "Hmmmmm...", "Reply hazy, try again",
+        "Most likely", "Outlook® not installed", "Signs point to yes", "Hmmmmm...", "Reply hazy, try again",
         "Ask again later", "404, response not found", "Better not tell you now", "Cannot predict now",
         "Enrich 95% Uranium 235 and try again", "Don't count on it", "My reply is no", "have you tried sudo?",
-        "My sources say no [citation needed]", "Outlook not so good", "Very doubtful", "503, oh no thats not good!",
+        "My sources say no [citation needed]", "Outlook® not so good", "Very doubtful", "503, oh no that's not good!",
         "Huh?", "What?", "Can you speak up?", "Segmentation fault (core dumped)", "Han shot first",
         "Have you tried water-scrum-fall?", "Have you tried turning it off and turning it on again?",
-        "Survey says: no",
+        "Survey says: no", "You are likely to be eaten by a grue", "I'm sorry, Dave, I'm afraid I can't answer that",
+        "Have you tried rewriting in rust?", "That's what you get for using PHP", "418, I'm a teapot",
+        "The only winning move is not to play", "You should try rearranging the deck chairs on the Titanic",
+        "Have you tried adding blockchain?", "Have you tried using AI?", "Have you tried implementing it serverlessly?",
+        "Sounds like an NP-hard problem, the solution is trivial", "Your answer is in another castle",
+        "Your mother was a hamster and your father smelt of elderberries", "You will die of dysentery",
+        "Of course it's a good idea!", "I require a shrubbery!",
+        "Wenn ist das Nunstück git und Slotermeyer? Ja! Beiherhund das Oder die Flipperwaldt gersput!",
+        "A monad is just a monoid in the category of endofunctors, what's the problem?",
+        "Always bet on black", "Always look on the bright side of life", "My name is Inigo Montoya, you killed my father, prepare to die",
+        '"My response is "); DROP TABLE *;--""', "Any sufficiently advanced bug is indistinguishable from a feature.",
+        "Can I offer you a Klein bottle for rent?  Inquire within.", "If and only if the Goldbach conjecture is true",
+        "If and only if BusyBeaver(1000) is bigger than TREE(3)",
+        "If and only if all axioms of our current system of mathematics are provably consistent within said system",
+
     ];
     let result = Math.floor(Math.random()*responses.length);
     return responses[result];
