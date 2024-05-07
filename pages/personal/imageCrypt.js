@@ -14,7 +14,8 @@ class ImageCrypt extends Component {
                     are encoded based off of noise inserted into a target image. The noise may 
                     optionally be generated based off of a key file to further obfuscate it using 
                     a hash-based encoding. The encoded document can be extracted from the image using
-                    the same key file.`
+                    the same key file.`,
+                thumbnail: "/media/image/secret-message.png",
             },
             {
                 title: `CAUTION: This program is not cryptographically secure and should not be used to
@@ -42,19 +43,19 @@ class ImageCrypt extends Component {
                     <br><br>
                     The noise added to an image using one of three different bit widths. The bit width
                     determines the number of bits that will be used to encode the text into each pixel 
-                    channel. The bit width can be set using the <i>-b</i> flag. The following bit widths are 
+                    channel. The bit width can be set using the <code>-b</code> flag. The following bit widths are 
                     available: 1, 2, and 4.
                     <br><br>
                     First, each channel of each pixel is rounded down to the nearest multiple of the 
                     selected bit width's max value (2 for b.w. 1, 4 for b.w. 2, and 16 for b.w. 4). 
-                    Next, the bits of each character are encoded into an image's pixels by adding <i>[0-bitWidth)</i> 
+                    Next, the bits of each character are encoded into an image's pixels by adding <code>[0-bitWidth)</code> 
                     to it, depending on the bits within the character to be encoded.
                     <br><br>
                     For example, if the bit width is 2, each pixel channel will encode two bits of a 
-                    character by adding <i>[0-4)</i> to the rounded down channel value. If the channel 
-                    value is 100, the character value is <i>M (ASCII-77)</i>, the first two bits of M (<i>1001101</i>) 
-                    are <i>01</i> (little-endian), so the channel value will be set to 101. The next channel will encode 
-                    the next two bits of <i>1001101</i>: <i>11</i>. If the value of the next channel is 124, its new value will be 
+                    character by adding <code>[0-4)</code> to the rounded down channel value. If the channel 
+                    value is 100, the character value is <code>M (ASCII-77)</code>, the first two bits of M (<code>1001101</code>) 
+                    are <code>01</code> (little-endian), so the channel value will be set to 101. The next channel will encode 
+                    the next two bits of <code>1001101</code>: <code>11</code>. If the value of the next channel is 124, its new value will be 
                     127. With this bit width, each 4-channel pixel can encode a single, 1-byte character as each 
                     channel encodes 2-bits within its noise. The noise always stays within the space created by
                     the rounding, so the modulo of the value can be used to losslessly decode the text.
@@ -77,11 +78,19 @@ class ImageCrypt extends Component {
                     <br><br>
                     <b>Per-Character Shifting</b>
                     <br><br>
-                    Documents obfuscated in this manner have each of their characters shifted based off of the 
-                    combined hash of the character index and the key. This ensures that the contents cannot be 
-                    decoded by simply guessing the shift value as each character may have a different shift. 
-                    This method is more secure than full-text shifting, but it is still possible to decode 
-                    the text by brute-force guessing keys with different hashes until the correct <i>hash % 128</i> is found.`
+                    Documents obfuscated in this manner have each of their characters shifted based off of 
+                    the combined hash of the character index and the character of the key at that index. 
+                    <br><br>
+                    For example, if encoding the fourth character of <code>hello world</code> using the key <code>secret</code>, 
+                    the character <code>o</code> would be shifted by the <code>hash % 128</code> of <code>e4</code>, since <code>e</code> is the 
+                    fourth character of the key (zero indexed).
+                    <br><br>
+                    This ensures that the contents cannot be decoded by simply guessing the shift value as 
+                    each character may have a different shift.  This method is more secure than full-text shifting, 
+                    as it cannot be trivially brute forced by just guessing one <code>[0-128]</code> value.  Since hashes 
+                    cannot be easily reversed, using simple frequency analysis to decode the text is likely 
+                    not possible.  However, such a simple algorithm can likely be cracked with enough effort, 
+                    so using a more secure encryption method before encoding the text is recommended if security is a concern.`
             },
         ];
         let pageInfo = {

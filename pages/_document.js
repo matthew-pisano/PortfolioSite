@@ -16,13 +16,13 @@ export default function Document() {
                 <link href="/css/tags.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/App.css" rel="stylesheet" type="text/css"/>
 
-                <link href="/css/responsive/mobile.css" rel="stylesheet" type="text/css"/>
-                <link href="/css/responsive/tablet.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/responsive/desktop.css" rel="stylesheet" type="text/css"/>
+                <link href="/css/responsive/tablet.css" rel="stylesheet" type="text/css"/>
+                <link href="/css/responsive/mobile.css" rel="stylesheet" type="text/css"/>
             </Head>
             <body>
-                <Main />
-                <NextScript />
+            <Main/>
+            <NextScript/>
             </body>
         </Html>
     );

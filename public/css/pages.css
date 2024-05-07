@@ -61,16 +61,24 @@
     padding: 10px;
 }
 
-.displayTile img {
-    width: 15%;
+.displayTile > img {
+    width: 20%;
+    margin: auto;
     min-width: 50px;
     max-width: 300px;
-    margin-right: 5px;
     border-radius: 10px;
 }
+
 .displayTile > div {
     float: right;
-    width: 83%;
+    width: 75%;
+}
+
+.galleryTile > img {
+    display: block;
+    margin: auto;
+    width: 90%;
+    max-width: 800px;
 }
 
 .forceWrap{

@@ -1,11 +1,6 @@
 /* Screen Sizes 600-1280 */
 
 /*Medium Screens*/
-@media (max-width: 1000px) {
-    .displayTile > div {
-        width: 75%;
-    }
-}
 
 @media (max-width: 600px) {
 

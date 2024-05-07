@@ -3,6 +3,12 @@
 /*Large Screens*/
 @media (max-width: 1500px) {
     .displayTile > div {
-        width: 80%;
+        width: 100%;
+    }
+
+    .displayTile > img {
+        width: 100%;
+        display: block;
+        float: none;
     }
 }

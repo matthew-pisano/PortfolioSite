@@ -108,7 +108,7 @@ class Bergeron extends Component {
             {
                 title: "Weak-to-Strong Model Adversarial Defense",
                 gallery: true,
-                galleryStyle: {display: "block", margin: "auto", width: "50%", maxWidth: "800px"},
+                imgStyle: {maxWidth: "500px"},
                 content: `Attack success rates for the frameworks with mixed <i>P</i> and <i>S</i> components.  Here, the much smaller models of Llama and 
                     Mistral detect about as many attacks as GPT-3.5 as the secondary model.  This demonstrates that notable improvements in the alignment
                     of responses can be achieved with secondary models that are significantly smaller and easier to run than the primary model.`,
@@ -127,7 +127,7 @@ class Bergeron extends Component {
             {
                 title: "Model F1 Scores",
                 gallery: true,
-                galleryStyle: {display: "block", margin: "auto", width: "50%", maxWidth: "800px"},
+                imgStyle: {maxWidth: "500px"},
                 content: `F1 scores for each type of secondary model, calculated using unsafe prompt detection
                     records from the adversarial and mundane datasets. Text in green indicates a score of over 0.75.  GPT-4 has the best overall F1 score,
                     with Mistral following closely behind.`,
