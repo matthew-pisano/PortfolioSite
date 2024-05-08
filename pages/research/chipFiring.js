@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class ChipFiring extends Component {
 
@@ -131,24 +132,18 @@ class ChipFiring extends Component {
                 latex: true
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Chip Firing",
+            summary: "A research project to examine patterns in chip firing games",
             pageName: "research/chipFiring",
-            holderStyle: {backgroundColor: "#a24f67", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#a24f67"},
             gitLink: "https://github.com/matthew-pisano/ChipFiring",
             gitTitle: "Chip Firing",
             extraLinks: ["https://arxiv.org/abs/2302.10327"],
             extraTitles: ["Research Paper"],
             tags: ["research", "academic", "python"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Chip Firing</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A research project to examine patterns in chip firing games</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class Neural extends Component {
 
@@ -136,24 +137,18 @@ class Neural extends Component {
                     on an optimal solution much faster than raw backpropagation.`
             }
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Neural",
+            summary: "A research project for comparing training methods of neural networks",
             pageName: "research/neural",
-            holderStyle: {backgroundColor: "#3c8aab", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#3c8aab"},
             gitLink: "https://github.com/matthew-pisano/NuralPy",
             gitTitle: "Neural",
             extraLinks: ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
             extraTitles: ["Research Paper"],
             tags: ["research", "academic", "ai", "python"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Neural</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A research project for comparing training neural networks</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class PredictChain extends Component {
 
@@ -82,24 +83,18 @@ class PredictChain extends Component {
                     </ul>`,
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "PredictChain",
+            summary: "Empowering collaboration and data accessibility for AI in a decentralized blockchain-based marketplace",
             pageName: "research/predictChain",
-            holderStyle: {backgroundColor: "#3b6098", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#3b6098"},
             gitLink: "https://github.com/predict-chain/predict-chain",
             gitTitle: "PredictChain",
             extraLinks: ["https://arxiv.org/abs/2307.15168"],
             extraTitles: ["Research Paper"],
             tags: ["research", "academic", "ai", "python", "hack"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>PredictChain</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Empowering Collaboration and Data Accessibility for AI in a Decentralized Blockchain-based Marketplace</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

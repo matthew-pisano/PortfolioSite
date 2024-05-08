@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class Destiny extends Component {
 
@@ -66,24 +67,18 @@ class Destiny extends Component {
                     when utilizing 4 MPI ranks with 4 GPUs.`
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Manifest Destiny",
+            summary: "A cellular automata population growth simulator",
             pageName: "school/destiny",
-            holderStyle: {backgroundColor: "#4db6bf", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#4db6bf"},
             gitLink: "https://github.com/matthew-pisano/ManifestDestiny",
             gitTitle: "ManifestDestiny",
             extraLinks: ["https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf"],
             extraTitles: ["Research Paper"],
             tags: ["academic", "clang", "cuda", "collab"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Manifest Destiny</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A cellular automata population growth simulator</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

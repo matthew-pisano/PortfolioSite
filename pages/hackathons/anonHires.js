@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class AnonHires extends Component {
 
@@ -43,22 +44,16 @@ class AnonHires extends Component {
                     LinkedIn badges, and collaborating with other services, such as Leet Code or HackerRank, to add more depth to the assessment system.`,
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Anon Hires",
+            summary: "A Web-based hiring platform with anonymity",
             pageName: "hackathons/anonHires",
-            holderStyle: {backgroundColor: "#3eab3c", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#3eab3c"},
             gitLink: "https://github.com/OpenHubHackathonGreen/Anonymous-Hires",
             gitTitle: "Anon Hires",
             tags: ["hack", "collab", "js", "python", "html"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Anon Hires</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A Web-based hiring platform with anonymity</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

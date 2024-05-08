@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class UnivModels extends Component {
 
@@ -33,24 +34,18 @@ class UnivModels extends Component {
                     <code>pip install universalmodels</code>`,
             }
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Universal Models",
+            summary: "An adapter between Huggingface transformers and several different APIs",
             pageName: "personal/univmodels",
-            holderStyle: {backgroundColor: "#38af70", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#38af70"},
             gitLink: "https://github.com/matthew-pisano/UniversalModels",
             gitTitle: "UniversalModels",
             extraLinks: ["https://pypi.org/project/universalmodels/"],
             extraTitles: ["PyPi Project"],
             tags: ["personal", "ai", "python"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Universal models</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>An adapter between Huggingface transformers and several different APIs</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

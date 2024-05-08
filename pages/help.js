@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import {Wrapper} from '../scripts/wrapper';
+import {DefaultWrapper} from "../scripts/defaultWrapper";
 
 class Help extends Component {
 
@@ -78,20 +79,14 @@ class Help extends Component {
                     and hidden features!`
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Help Menu",
+            summary: "In case you'd like some assistance",
             pageName: "help",
-            holderStyle: {backgroundColor: "#919ba8", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#919ba8"},
             tags: ["help"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Help Menu</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>In case you&apos;d like some assistance</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

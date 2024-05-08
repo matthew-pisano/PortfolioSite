@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { buildPage } from '../scripts/pageBuilder';
 import {Wrapper} from '../scripts/wrapper';
+import {DefaultWrapper} from "../scripts/defaultWrapper";
 
 
 const lostQuotes = ['How did we get here?', 'Not all who wander are lost...', 
@@ -52,20 +53,14 @@ const PageNotFound = () => {
         },
     ];
     let pageInfo = {
+        title: "Page Not Found",
+        summary: quote,
         pageName: "404",
-        holderStyle: {backgroundColor: "#000000", borderRadius: "10px"},
+        holderStyle: {backgroundColor: "#000000"},
         tags: ["help"]
     };
     
-    return (<Wrapper pageName={pageInfo.pageName}>
-        <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-            <div className="inner titleCard">
-                <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Page Not Found</b></h1><br/>
-                <h3 id="quote" style={{margin: "auto", width: "auto", textAlign: "center"}}>{quote}</h3>
-            </div>
-            {buildPage(pageInfo, tiles)}
-        </div>
-    </Wrapper>);
+    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 };
 
 export default PageNotFound;

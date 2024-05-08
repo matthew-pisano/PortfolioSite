@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class Inception extends Component {
 
@@ -23,22 +24,16 @@ class Inception extends Component {
                 thumbnail: "/media/image/inceptionDog.bmp"
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Inception Collage",
+            summary: "Assembles one image mosaic from many, smaller images",
             pageName: "personal/inception",
-            holderStyle: {backgroundColor: "#919ba8", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#919ba8"},
             gitLink: "https://github.com/matthew-pisano/InceptionCollage",
             gitTitle: "Inception",
             tags: ["personal", "java"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Inception Collage</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Assembles one image mosaic from many, smaller images</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

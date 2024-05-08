@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class ImageCrypt extends Component {
 
@@ -93,22 +94,16 @@ class ImageCrypt extends Component {
                     so using a more secure encryption method before encoding the text is recommended if security is a concern.`
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Image-Crypt",
+            summary: "An image-based document encoder",
             pageName: "personal/imageCrypt",
-            holderStyle: {backgroundColor: "#63beca", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#63beca"},
             gitLink: "https://github.com/matthew-pisano/ImageCrypt",
             gitTitle: "ImageCrypt",
             tags: ["personal", "cpp"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Image-Crypt</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A image-based document encoder</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

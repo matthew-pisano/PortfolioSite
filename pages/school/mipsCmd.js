@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class MipsCmd extends Component {
 
@@ -24,22 +25,16 @@ class MipsCmd extends Component {
                 thumbnail: "/media/image/mipscmd.png"
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "MIPS Terminal",
+            summary: "A simple command processor written in the MIPS assembly language",
             pageName: "school/mipsCmd",
-            holderStyle: {backgroundColor: "#bf564d", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#bf564d"},
             gitLink: "https://github.com/matthew-pisano/MIPS-Command-Processor",
             gitTitle: "MIPS Cmd",
             tags: ["academic", "assembly"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>MIPS Terminal</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A simple command processor written in the MIPS assembly language</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

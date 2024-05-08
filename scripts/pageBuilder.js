@@ -2,25 +2,67 @@ import React from "react";
 import HTMLReactParser from 'html-react-parser';
 import Latex from 'react-latex-next';
 
-function buildTags(tags, dark= false){
+
+class Tile {
+    constructor({title = "", content = "", tags = [], thumbnail = "", gallery = false, style = {}, imgStyle = {}, titleLink = "", latex = false, gitLink = "", gitTitle = "", extraLinks = [], extraTitles = []}){
+        this.title = title;
+        this.content = content;
+        this.tags = tags;
+        this.thumbnail = thumbnail;
+        this.gallery = gallery;
+        this.style = style;
+        this.imgStyle = imgStyle;
+        this.titleLink = titleLink;
+        this.latex = latex;
+        this.gitLink = gitLink;
+        this.gitTitle = gitTitle;
+        this.extraLinks = extraLinks;
+        this.extraTitles = extraTitles;
+    }
+}
+
+
+class PageInfo {
+    constructor({pageName = "", title = "", summary = "", holderStyle = {}, gitLink = "", gitTitle = "", extraLinks = [], extraTitles = []}){
+        this.pageName = pageName;
+        this.title = title;
+        this.summary = summary;
+        this.holderStyle = holderStyle;
+        this.gitLink = gitLink;
+        this.gitTitle = gitTitle;
+        this.extraLinks = extraLinks;
+        this.extraTitles = extraTitles;
+    }
+
+}
+
+
+/**
+ * Builds the tags for a page or tile
+ * @param tile {Tile | PageInfo} The tiles to build tags for
+ * @param dark {boolean} Whether the tags should be dark or darker
+ * @return {JSX.Element} The tags JSX DIV element
+ */
+function buildTags(tile, dark= false){
+
     let tagClasses = (dark ? "darkTag ": "") + "w3-row w3-mobile w3-col";
     return (
         <div className="w3-row">
-            {tags.gitLink ?
+            {tile.gitLink ?
                 <div className={"gitLink "+tagClasses}>
                     <img className="w3-col" alt='gitLink'/>
-                    <a className="w3-col" href={tags.gitLink} target="_blank" rel="noreferrer">{tags.gitTitle ? tags.gitTitle : tags.title}</a>
+                    <a className="w3-col" href={tile.gitLink} target="_blank" rel="noreferrer">{tile.gitTitle ? tile.gitTitle : tile.title}</a>
                 </div> : null
             }
-            {tags.extraLinks ?
-                tags.extraLinks.map((extraLink, i) => {
-                return  <div className={"extraLink "+tagClasses} key={'extraLink'+tags.extraTitles[i]}>
+            {tile.extraLinks ?
+                tile.extraLinks.map((extraLink, i) => {
+                return  <div className={"extraLink "+tagClasses} key={'extraLink'+tile.extraTitles[i]}>
                         <img className="w3-col" alt='extraLink'/>
-                        <a className="w3-col" href={extraLink} target="_blank" rel="noreferrer">{tags.extraTitles[i]}</a>
+                        <a className="w3-col" href={extraLink} target="_blank" rel="noreferrer">{tile.extraTitles[i]}</a>
                     </div>;
                 }) : null
             }
-            {(tags.tags ? tags.tags : []).map((tag, i) => 
+            {(tile.tags ? tile.tags : []).map((tag, i) =>
                 <div className={"w3-col tag "+tag+"Tag w3-mobile"} key={tag}>
                     <img className="w3-col" alt={tag}/>
                     <span className="w3-col"></span>
@@ -31,15 +73,21 @@ function buildTags(tags, dark= false){
     );
 }
 
+
+/**
+ * Builds a page from the given pageInfo and tiles
+ * @param pageInfo {PageInfo} The page information for making the title and page-level tags
+ * @param tiles {Tile[]} The tiles to display on the page
+ * @return {JSX.Element} The page JSX DIV element
+ */
 function buildPage(pageInfo, tiles){
+
     pageInfo.pageName = pageInfo.pageName.split("/").join("");
     return <div id={pageInfo.pageName+"TileHolder"} className="tileHolder inner w3-display-container" style={pageInfo.holderStyle}>
         {buildTags(pageInfo, true)}
-        {pageInfo.title ? 
-            <h1 className="pageTitle" style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1> : null}
         {
             tiles.map((tile, i) =>{
-                //console.log("Mapping tile "+i);
+
                 if(!tile.tags) tile.tags = [];
                 let contentStyle = tile.thumbnail && !tile.gallery ? {} : {width: "100%", marginTop: "10px"};
                 let imgStyle = tile.imgStyle ? tile.imgStyle : {};
@@ -58,6 +106,7 @@ function buildPage(pageInfo, tiles){
                 let titleContent = tile.content && tile.latex ? <Latex>{tile.content}</Latex> : tile.content ? HTMLReactParser(tile.content) : "";
                 let tileContentElem = tile.content ? <span id={pageInfo.pageName+"Tile"+i+"Content"} style={{margin: "15px 0px", display: "block"}}>{titleContent}</span> : <></>;
                 let className = "displayTile w3-container w3-row"+(tile.gallery ? " galleryTile" : "");
+
                 return <div id={pageInfo.pageName+"Tile"+i} className={className} key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     
                     {tile.thumbnail ? <img className={`w3-${displayWidth} w3-mobile`} src={tile.thumbnail} alt='gitLogo' style={imgStyle}/> : null}
@@ -73,4 +122,4 @@ function buildPage(pageInfo, tiles){
     </div>;
 }
 
-export { buildPage };
+export { buildPage, PageInfo, Tile };

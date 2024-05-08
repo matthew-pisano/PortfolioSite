@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { buildPage } from '../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../scripts/pageBuilder';
 import { Wrapper } from '../scripts/wrapper';
 import {Constants} from "../scripts/utils";
 
@@ -70,11 +70,11 @@ const Babble = () => {
             content: ``,
         }
     ];
-    let pageInfo = {
+    let pageInfo = new PageInfo({
         pageName: "babble",
-        holderStyle: {backgroundColor: "#5a3afa00", borderRadius: "10px"},
+        holderStyle: {backgroundColor: "#5a3afa00"},
         tags: ["help"]
-    };
+    });
 
     useEffect(() => {
         babbleLoop();

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class Bergeron extends Component {
 
@@ -134,24 +135,18 @@ class Bergeron extends Component {
                 thumbnail: "/media/image/f1Scores.png"
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Bergeron",
+            summary: "A conscience-based alignment framework",
             pageName: "research/bergeron",
-            holderStyle: {backgroundColor: "#38af70", borderRadius: "10px"},
-            // gitLink: "https://github.com/predict-chain/predict-chain",
-            // gitTitle: "PredictChain",
+            holderStyle: {backgroundColor: "#38af70"},
+            // gitLink: "",
+            // gitTitle: "",
             extraLinks: ["https://arxiv.org/abs/2312.00029"],
             extraTitles: ["Research Paper"],
             tags: ["research", "academic", "ai", "alignment", "python"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Bergeron</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A Conscience-Based Alignment Framework</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

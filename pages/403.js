@@ -36,15 +36,17 @@ const Anauthorized = () => {
         },
     ];
     let pageInfo = {
+        title: "Forbidden",
+        summary: quote,
         pageName: "403",
-        holderStyle: {backgroundColor: "#000000", borderRadius: "10px"},
+        holderStyle: {backgroundColor: "#000000"},
     };
     
     return (<Wrapper pageName={pageInfo.pageName}>
         <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
             <div className="inner titleCard">
-                <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>Forbidden</b></h1><br/>
-                <h3 id="quote" style={{margin: "auto", width: "auto", textAlign: "center"}}>{quote}</h3>
+                <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>{pageInfo.title}</b></h1><br/>
+                <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
             </div>
             {buildPage(pageInfo, tiles)}
         </div>

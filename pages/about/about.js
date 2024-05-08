@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import { buildPage, PageInfo, Tile } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Constants } from '../../scripts/utils';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class About extends Component {
 
@@ -78,23 +79,17 @@ class About extends Component {
                     project, and in SUNY Ulster's Team Orion collaboration with IBM.`,
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "About",
+            summary: "Extra information on me as a developer, student, researcher and person",
             pageName: "about/about",
-            holderStyle: {backgroundColor: "#14a343", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#14a343"},
             gitLink: "https://github.com/matthew-pisano/",
             gitTitle: "GitHub",
             extraLinks: [Constants.resumeUrl, "https://www.linkedin.com/in/matthew-pisano"],
             extraTitles: ["Résumé", "LinkedIn"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>About</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Extra information on me as a developer, student, researcher and person</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

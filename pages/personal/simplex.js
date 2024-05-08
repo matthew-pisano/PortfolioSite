@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class Simplex extends Component {
 
@@ -54,22 +55,16 @@ class Simplex extends Component {
                 thumbnail: "/media/image/simplexSci.jpg"
             }
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Simplex",
+            summary: "A math-oriented interpreted scripting language built in Java",
             pageName: "personal/simplex",
-            holderStyle: {backgroundColor: "#824ab6", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#824ab6"},
             gitLink: "https://github.com/matthew-pisano/SimplexIDE",
             gitTitle: "Simplex",
             tags: ["personal", "java", "android"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Simplex</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>An math-oriented interpreted scripting language built in Java</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

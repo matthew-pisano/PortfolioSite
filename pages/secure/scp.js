@@ -84,8 +84,10 @@ class SCP extends Component {
             }
         ];
         let pageInfo = {
+            title: "SCP-672<span style='color: black'>██</span>",
+            summary: "",
             pageName: "scp",
-            holderStyle: {backgroundColor: "#ba3a3a", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#ba3a3a"},
             gitLink: "https://scp-wiki.wikidot.com/scp-672--",
             gitTitle: "██████ Entry ███",
             tags: ["keter", "research", "ai"]
@@ -93,7 +95,7 @@ class SCP extends Component {
         return (<Wrapper pageName={pageInfo.pageName}>
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
                 <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center", color: "#ba3a3a"}}><b>SCP-672<span style={{color: "black"}}>██</span></b></h1><br/>
+                    <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1><br/>
                 </div>
                 {buildPage(pageInfo, tiles)}
             </div>

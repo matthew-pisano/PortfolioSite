@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class Imperium extends Component {
 
@@ -42,22 +43,16 @@ class Imperium extends Component {
                 thumbnail: "/media/image/imperiumMap.png"
             }
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Imperium",
+            summary: "A historical grand strategy game for android devices",
             pageName: "personal/imperium",
-            holderStyle: {backgroundColor: "#babd93", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#babd93"},
             gitLink: "https://github.com/matthew-pisano/Imperium",
             gitTitle: "Imperium",
             tags: ["personal", "java", "android"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Imperium</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>A historical grand strategy game for android devices</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 

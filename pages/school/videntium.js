@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
+import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
 class Videntium extends Component {
 
@@ -39,22 +40,16 @@ class Videntium extends Component {
                 thumbnail: "/media/image/videntiumDB.png"
             },
         ];
-        let pageInfo = {
+        let pageInfo = new PageInfo({
+            title: "Videntium",
+            summary: "Online map viewer for Imperium written in PHP",
             pageName: "school/videntium",
-            holderStyle: {backgroundColor: "#876eba", borderRadius: "10px"},
+            holderStyle: {backgroundColor: "#876eba"},
             gitLink: "https://github.com/matthew-pisano/Videntium",
             gitTitle: "Videntium",
             tags: ["academic", "php", "js", "html"]
-        };
-        return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
-                <div className="inner titleCard">
-                    <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b>Videntium</b></h1><br/>
-                    <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>Online map viewer for Imperium written in PHP</h3>
-                </div>
-                {buildPage(pageInfo, tiles)}
-            </div>
-        </Wrapper>);
+        });
+        return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }
 
