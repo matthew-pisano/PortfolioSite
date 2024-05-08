@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import React, { useState, useEffect } from 'react';
 import { SysEnv } from '../utils';
-import { resolvePath, Commands, closeTerminal } from './commands';
+import { Commands, closeTerminal } from './commands';
 
 
 const TerminalDiv = () => {

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {Directory, masterFileSystem} from "../scripts/fileSystem/fileSystem";
+import {masterFileSystem} from "../scripts/fileSystem/buildfs";
 import {Wrapper} from "../scripts/wrapper";
 import parse from "html-react-parser";
 import {Perms} from "../scripts/utils";
+import {Directory} from "../scripts/fileSystem/fileSystemObjects";
 
 const Display = () => {
     const [pageText,  setPageText] = useState("");

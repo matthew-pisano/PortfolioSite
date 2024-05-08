@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {Directory, masterFileSystem} from "../scripts/fileSystem/fileSystem";
+import {masterFileSystem} from "../scripts/fileSystem/buildfs";
 import {Wrapper} from "../scripts/wrapper";
 import {gutter, GutterMarker, lineNumbers, EditorViewConfig} from "@codemirror/view";
 import {EditorState, Compartment} from "@codemirror/state";
 import {basicSetup, EditorView} from "codemirror";
 import {html} from "@codemirror/lang-html";
 import {Perms} from "../scripts/utils";
-import {promises} from "fs";
+import {Directory} from "../scripts/fileSystem/fileSystemObjects";
 
 const Edit = () => {
 

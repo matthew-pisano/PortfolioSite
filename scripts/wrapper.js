@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import '../scripts/globalListeners';
 
 import Head from 'next/head';
-import {dehydrateInfo, masterFileSystem, pageRegistry, pathJoin, setMasterFileSystem, setPageRegistry} from './fileSystem/fileSystem';
+import {setPageRegistry, setMasterFileSystem, masterFileSystem, pageRegistry, dehydratedInfo} from './fileSystem/buildfs';
+import {pathJoin} from './fileSystem/fileSystem';
 import TerminalDiv from './terminal/terminal';
-import {Perms, SysEnv} from "./utils";
+import {SysEnv} from "./utils";
 import $ from "jquery";
 import {newCustomFile} from "./fileSystem/fileSystemGUI";
 import PropTypes from "prop-types";
@@ -26,6 +27,7 @@ function spliceFromSubTree(subTree, name) {
 }
 
 function buildSidebar() {
+
     let publicFolder = masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER).copy();
     let subTreeCopy = [...publicFolder.subTree];
     let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
@@ -151,7 +153,7 @@ const Wrapper = ({children, pageName}) => {
                     onClick={async () => {await new Promise(r => setTimeout(r, 20)); $("#contactDropdown").fadeToggle();}}>Contact Info</button>
             </header>
 
-            <span id="dehydrateInfo" style={{display: "none"}}>{dehydrateInfo}</span>
+            <span id="dehydrateInfo" style={{display: "none"}}>{dehydratedInfo}</span>
 
             <div id="wrapperContent" className="w3-display-container w3-row">
                 <div id="menuDropHolder">

@@ -1,7 +1,9 @@
 import { Perms as Perms, SysEnv } from '../utils';
-import { Directory, File, masterFileSystem, pageRegistry, pathJoin } from '../fileSystem/fileSystem';
+import { pathJoin } from '../fileSystem/fileSystem';
+import { masterFileSystem, pageRegistry } from '../fileSystem/buildfs';
 import {resolveTokens, resolvePath, tokenizeCommand, Help, eightBall, haltingProblem, neofetch, closeTerminal, tfLogo, hal } from './commandResources';
 import toVoid from "./void";
+import {Directory, File} from "../fileSystem/fileSystemObjects";
 
 
 class Commands {
@@ -152,11 +154,6 @@ class Commands {
         if (valResult) return valResult;
 
         let newPath = this._resolvePath(args[0]);
-
-        if (masterFileSystem.exists(newPath))
-            throw new Error(`Directory ${newPath} already exists!`);
-
-        // common.newFile(newName);
         masterFileSystem.mkdir(newPath);
         return "";
     }
@@ -167,11 +164,6 @@ class Commands {
         if (valResult) return valResult;
 
         let newPath = this._resolvePath(args[0]);
-
-        if (masterFileSystem.exists(newPath))
-            throw new Error(`File ${newPath} already exists!`);
-
-        // common.newFile(newName);
         masterFileSystem.touch(newPath);
         return "";
     }

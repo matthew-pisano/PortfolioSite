@@ -1,7 +1,9 @@
-import {Directory, masterFileSystem, pageRegistry, pathJoin} from "./fileSystem/fileSystem";
+import {pathJoin} from "./fileSystem/fileSystem";
+import {masterFileSystem, pageRegistry} from './fileSystem/buildfs';
 import {Perms, SysEnv} from "./utils";
 import {createContextMenu} from "./fileSystem/fileSystemGUI";
 import React from "react";
+import {Directory} from "./fileSystem/fileSystemObjects";
 
 
 function buildDirectory(directory, path) {

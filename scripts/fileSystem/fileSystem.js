@@ -1,18 +1,13 @@
-import { SysEnv, Perms } from '../utils';
-import contentHtml from "../readme";
-import {bashrc, rmRoot} from "../terminal/commandResources";
+import {Perms} from "../utils";
+import {Directory, File} from "./fileSystemObjects";
+import {rmRoot} from "../terminal/commandResources";
 
 
-let pageRegistry = {};
-
-/** The master file system of the program
- * @type {FileSystem}*/
-let masterFileSystem;
-
-let dehydrateInfo;
-
-
+/**
+ * Displays the root deletion message and displays the BSOD
+ */
 async function rmRootMsg() {
+
     let terminalOutput = document.getElementById('terminalOutput');
     let lines = rmRoot.split("\n");
     for (let i = 0; i < lines.length; i++) {
@@ -26,7 +21,13 @@ async function rmRootMsg() {
 }
 
 
+/**
+ * Joins paths together, removing any unnecessary elements
+ * @param paths {string} The paths to join
+ * @return {string} The joined path
+ */
 function pathJoin(...paths) {
+
     let totalPath = [];
     for (let path of paths) {
         if(!path) continue;
@@ -40,109 +41,73 @@ function pathJoin(...paths) {
     }
 
     if (totalPath.length === 1 && totalPath[0] === "") totalPath.push('');
+    // Remove any duplicate slashes
     return totalPath.join('/').replace("//", "/");
 }
 
 
-class File {
-
-    constructor(name, text = "", permission = Perms.ALLOW) {
-
-        Perms.validate(permission);
-
-        this.name = name;
-        this.text = text;
-        this.permission = permission;
-        this.created = Date.now();
-        this.modified = Date.now();
-    }
-
-    copy() { return new File(this.name, this.text, this.permission); }
-
-    size() { return this.text.length; }
-
-    static toDict(file) {
-        return { name: file.name, text: file.text, permission: file.permission, modified: file.modified};
-    }
-
-    static fromDict(dict) {
-        let newFile = new File(dict.name, dict.text, dict.permission);
-        newFile.modified = dict.modified;
-        console.log(newFile);
-        return newFile;
-    }
-}
-
-class Directory {
-
-    constructor(name, subTree = null, permission = Perms.ALLOW) {
-
-        Perms.validate(permission);
-
-        this.name = name.replace(/\//g, "");
-        this.subTree = subTree ? subTree : [];
-        this.permission = permission;
-        this.created = Date.now();
-        this.modified = Date.now();
-    }
-
-    copy() { return new Directory(this.name, this.subTree, this.permission); }
-
-    size() { return 4096; }
-
-    static toDict(directory) {
-        let dict = { name: directory.name, permission: directory.permission, modified: directory.modified, subTree: [] };
-
-        for (let child of directory.subTree)
-            dict.subTree.push(child.constructor.toDict(child));
-
-        return dict;
-    }
-
-    static fromDict(dict) {
-        let directory = new Directory(dict.name, null, dict.permission);
-        directory.modified = dict.modified;
-
-        for (let child of dict.subTree)
-            directory.subTree.push((child.subTree !== undefined ? Directory : File).fromDict(child));
-
-        return directory;
-    }
-}
-
-
+/**
+ * The filesystem class that manages the filesystem hierarchy
+ */
 class FileSystem {
 
-    /** @param {Directory} hierarchy */
-    constructor(hierarchy) {
+    /**
+     * @param {Directory} hierarchy The root directory of the filesystem
+     * @param pageRegistry {{string: Page}} The registry of preset, viewable HTML pages
+     */
+    constructor(hierarchy, pageRegistry) {
+
         this.hierarchy = hierarchy;
+        this.pageRegistry = pageRegistry;
         this.lastUpdateTime = Date.now();
         this.callbacks = [];
     }
 
+    /**
+     * Registers a callback to be called when the filesystem is updated
+     * @param callback The callback to register
+     */
     registerCallback(callback) {
         this.callbacks.push(callback);
     }
 
+    /**
+     * Updates the filesystem and calls all registered callbacks
+     */
     update() {
+
         if (typeof window !== 'undefined') localStorage.setItem("hierarchy", JSON.stringify({
-            pageRegistry: pageRegistry,
+            pageRegistry: this.pageRegistry,
             hierarchy: this.hierarchy
         }));
 
+        // Update the last update time and call all registered callbacks
         this.lastUpdateTime = Date.now();
         for (let callback of this.callbacks)
             callback(this.lastUpdateTime);
     }
 
+    /**
+     * Checks if a file or directory exists at the given path
+     * @param path The path to check
+     * @return {boolean}
+     */
     exists(path) {
-        return !!this._navHierarchy(path);
+        return !!this.getItem(path);
     }
 
+    /**
+     * Creates a new directory at the given path
+     * @param path {string} The path to create the directory at
+     * @return {Directory} The created directory
+     */
     mkdir(path) {
+
+        if (this.exists(path)) throw new Error(`Cannot make directory.  Directory at ${path} already exists!`);
+
         let parentPath = path.substring(0, path.lastIndexOf("/") + 1);
         let childName = path.substring(path.lastIndexOf("/") + 1);
-        let parent = this._navHierarchy(parentPath);
+        let parent = this.getItem(parentPath);
 
         if (!parent.permission.includes(Perms.WRITE))
             throw new Error(`Cannot make directory under ${parentPath}.  Permission denied!`);
@@ -154,13 +119,19 @@ class FileSystem {
         return childDir;
     }
 
+    /**
+     * Creates a new file at the given path
+     * @param path {string} The path to create the file at
+     * @param permission {string} The permission of the file
+     * @return {File} The created file
+     */
     touch(path, permission = Perms.ALLOW) {
 
         if (this.exists(path)) throw new Error(`Cannot create file.  File at ${path} already exists!`);
 
         let parentPath = path.substring(0, path.lastIndexOf("/") + 1);
         let childName = path.substring(path.lastIndexOf("/") + 1);
-        let parent = this._navHierarchy(parentPath);
+        let parent = this.getItem(parentPath);
 
         if (!parent.permission.includes(Perms.WRITE))
             throw new Error(`Cannot make file under ${parentPath}.  Permission denied!`);
@@ -172,76 +143,106 @@ class FileSystem {
         return childFile;
     }
 
+    /**
+     * Copies a file or directory from one path to another
+     * @param oldPath {string} The path to copy from
+     * @param newPath {string} The path to copy to
+     * @return {Directory | File} The copied file or directory
+     */
     cp(oldPath, newPath) {
+
         if (!this.exists(oldPath))
             throw new Error(`Cannot copy file or directory.  File or directory at ${oldPath} does not exist!`);
 
         let newParentPath = newPath.substring(0, newPath.lastIndexOf("/") + 1);
         let newChildName = newPath.substring(newPath.lastIndexOf("/") + 1);
+
         if (!this.exists(newParentPath))
             throw new Error(`Cannot copy to directory.  Directory at ${newParentPath} does not exist!`);
-        let newParentObj = this._navHierarchy(newParentPath);
-        let oldObj = this._navHierarchy(oldPath);
+
+        let newParentObj = this.getItem(newParentPath);
+        let oldObj = this.getItem(oldPath);
 
         if (!newParentObj.permission.includes(Perms.WRITE))
             throw new Error(`Cannot make copy to ${newParentPath}.  Permission denied!`);
         if (!oldObj.permission.includes(Perms.READ))
             throw new Error(`Cannot make copy from ${oldPath}.  Permission denied!`);
 
-
         let copied;
         if (oldObj.constructor === Directory) copied = new Directory(oldObj.name, oldObj.subTree, oldObj.permission);
         else copied = new File(oldObj.name, oldObj.text, oldObj.permission);
-
         copied.name = newChildName;
         copied.modified = oldObj.modified;
-
         newParentObj.subTree.push(copied);
 
         this.update();
+        return copied;
     }
 
+    /**
+     * Removes a file or directory from one path to another
+     * @param path {string} The path to remove from
+     * @param options {string} The options for the remove command
+     * @return {Directory | File}
+     */
     rm(path, options = "") {
 
         if (!this.exists(path))
             throw new Error(`Cannot remove file or directory.  File or directory at ${path} does not exist!`);
+
+        // Check if the root directory is being removed and if the -rf option is used
         if (path === "/" && options === "-rf") {
             rmRootMsg();
-            return;
-        }
-        else if (path === "/")
+            return null;
+        } else if (path === "/")
             throw new Error(`Cannot remove root directory!`);
 
         let parentPath = path.substring(0, path.lastIndexOf("/") + 1);
         let childName = path.substring(path.lastIndexOf("/") + 1);
-        let parentDir = masterFileSystem._navHierarchy(parentPath);
+        let parentDir = this.getItem(parentPath);
 
+        // Search for the file or directory to remove in the parent directory
         for (let i in parentDir.subTree) {
+
             let target = parentDir.subTree[i];
             if (target.name === childName) {
                 if (!target.permission.includes(Perms.WRITE))
                     throw new Error(`Cannot remove ${path}.  Permission denied!`);
 
+                // Recursively remove directories if the -r option is used
                 if (target.constructor === Directory && options === "-r")
                     for (let child of target.subTree)
                         this.rm(pathJoin(path, child.name));
                 else if (target.constructor === Directory)
                     throw new Error(`Cannot remove directory ${path}: is a directory.  Use -r to remove directories!`);
 
+                // Remove the file or directory from the parent directory
                 parentDir.subTree.splice(i, 1);
 
                 this.update();
-                break;
+                return target;
             }
         }
     }
 
+    /**
+     * Gets a file or directory at the given path
+     * @param path {string} The path to get the file or directory from
+     * @return {Directory | File} The file or directory at the given path
+     */
     getItem(path) {
         return this._navHierarchy(path);
     }
 
-    writeText(path, text) {
-        let file = this._navHierarchy(path);
+    /**
+     * Writes text to a file at the given path
+     * @param path {string} The path to write to
+     * @param text {string} The text to write to the file
+     * @param append {boolean} Whether to append the text to the file
+     * @return {Directory | File} The file that was written to
+     */
+    writeText(path, text, append = false) {
+        let file = this.getItem(path);
         if (!file) file = this.touch(path);
 
         if (file.constructor === Directory) throw new Error(`Cannot write to directory at ${path}!`);
@@ -249,21 +250,7 @@ class FileSystem {
         if (!file.permission.includes(Perms.WRITE))
             throw new Error(`Cannot write to ${path}.  Permission denied!`);
 
-        file.text = text;
-        file.modified = Date.now();
-
-        this.update();
-        return file;
-    }
-
-    appendText(path, text) {
-        let file = this._navHierarchy(path);
-        if (file.constructor === Directory) throw new Error(`Cannot write to directory at ${path}!`);
-
-        if (!file) throw new Error(`Cannot append to file.  File at ${path} does not exist!`);
-        if (!file.permission.includes(Perms.WRITE))
-            throw new Error(`Cannot write to ${path}.  Permission denied!`);
-
+        if (!append) file.text = "";
         file.text += text;
         file.modified = Date.now();
 
@@ -271,11 +258,17 @@ class FileSystem {
         return file;
     }
 
+    /**
+     * Reads text from a file at the given path
+     * @param path {string} The path to read from
+     * @return {string} The text read from the file
+     */
     readText(path) {
-        let file = this._navHierarchy(path);
+        let file = this.getItem(path);
+        if (!file) throw new Error(`Cannot read from file.  File at ${path} does not exist!`);
+
         if (file.constructor === Directory) throw new Error(`Cannot read from directory at ${path}!`);
 
-        if (!file) throw new Error(`Cannot read from file.  File at ${path} does not exist!`);
         if (!file.permission.includes(Perms.READ))
             throw new Error(`Cannot read from ${path}.  Permission denied!`);
 
@@ -283,8 +276,8 @@ class FileSystem {
     }
 
     /** Navigates the filesystem hierarchy given a valid path and returns the object at that path
-     * @param {string} path
-     * @returns {Directory | File}
+     * @param {string} path The path to navigate to
+     * @returns {Directory | File} The object at the given path
      */
     _navHierarchy(path) {
 
@@ -292,21 +285,24 @@ class FileSystem {
 
         let tokens = path.split("/");
 
+        // Strip any empty strings from the ends of the tokens array
         if (tokens[tokens.length - 1] === "") tokens.pop();
         if (tokens[0] === "") tokens.shift();
 
         let current = this.hierarchy;
-        //console.log("Nav tokens: "+tokens);
+
+        // Navigate the hierarchy until the end of the path is reached
         while (tokens.length > 0) {
             let foundPath = false;
-            //console.log("Current token: "+tokens[0], current);
+
+            // Return once the end of the path is reached
             if (tokens.length === 1 && tokens[0] === current.name)
                 return current;
 
             for (let i = 0; i < current.subTree.length; i++) {
-                //console.log(current.subTree[i].name, tokens[1], tokens);
+
                 if (current.subTree[i].name === tokens[0]) {
-                    //console.log("Found: "+current.subTree[i].name);
+
                     current = current.subTree[i];
                     tokens.shift();
                     foundPath = true;
@@ -315,100 +311,9 @@ class FileSystem {
             }
             if (!foundPath) return null;
         }
-        //console.log("File at path: "+current.name);
+
         return current;
     }
 }
 
-let initialHierarchy = new Directory("", [
-    new Directory("home", [
-        new Directory("guest", [
-            new File(".bashrc", bashrc),
-            new Directory(".ssh", []),
-            new Directory("bin", []),
-            new Directory("mnt", []),
-            new Directory("public", []),
-            new Directory("src", []),
-            new Directory("tmp", []),
-        ]),
-        new Directory("admin", [], Perms.DENY),
-    ]),
-    new Directory("bin", [], Perms.DENY),
-    new Directory("boot", [], Perms.DENY),
-    new Directory("dev", [], Perms.DENY),
-    new Directory("etc", [], Perms.DENY),
-    new Directory("lib", [], Perms.DENY),
-    new Directory("mnt", [], Perms.DENY),
-    new Directory("opt", [], Perms.DENY),
-    new Directory("proc", [], Perms.DENY),
-    new Directory("usr", [], Perms.DENY),
-    new Directory("var", [], Perms.DENY),
-], Perms.READ_ONLY);
-
-if (typeof window === 'undefined') {
-    const { resolve } = require('path');
-    const { readdirSync, statSync } = require('fs');
-
-    masterFileSystem = new FileSystem(initialHierarchy);
-
-    // eslint-disable-next-line no-inner-declarations
-    function walkPages(dir = "pages") {
-        const dirents = readdirSync(dir, { withFileTypes: true });
-
-        for (const dirent of dirents) {
-            const res = resolve(dir, dirent.name);
-            let dirName = dir.substring(dir.lastIndexOf("pages") + 6);
-
-            let hierarchyPath = pathJoin(SysEnv.PUBLIC_FOLDER, dirName);
-            if (!dirent.isDirectory()) {
-                let fileStats = statSync(res);
-                let fileName = res.substring(res.lastIndexOf("/") + 1).replace(".js", "");
-                if (["admin", "index", "404", "display", "edit", "babble", "403"].includes(fileName)) continue;
-
-                if (fileName[0] !== "_") {
-                    let name = hierarchyPath.replace(SysEnv.PUBLIC_FOLDER, "");
-                    if(name[0] === "/") name = name.substring(1);
-                    pageRegistry[pathJoin(hierarchyPath, fileName + ".html")] = {name: pathJoin(name, fileName + ".html"), size: fileStats.size};
-                    let newFile = masterFileSystem.touch(pathJoin(hierarchyPath, fileName + ".html"), "--" + Perms.EXECUTE);
-                    newFile.modified = fileStats.mtimeMs;
-                }
-            }
-        }
-
-        for (const dirent of dirents) {
-            const res = resolve(dir, dirent.name);
-            let dirName = dir.substring(dir.lastIndexOf("pages") + 6);
-            let hierarchyPath = pathJoin(SysEnv.PUBLIC_FOLDER, dirName);
-            if (dirent.isDirectory()) {
-                if(dirent.name.endsWith("secure")) continue;
-                masterFileSystem.mkdir(pathJoin(hierarchyPath, dirent.name));
-                walkPages(res);
-            }
-        }
-    }
-    walkPages();
-
-    masterFileSystem.mkdir(pathJoin(SysEnv.PUBLIC_FOLDER, "custom"));
-    masterFileSystem.writeText(pathJoin(SysEnv.PUBLIC_FOLDER, "custom", "readme.html"), contentHtml);
-
-    dehydrateInfo = JSON.stringify(
-        { hierarchy: masterFileSystem.hierarchy.constructor.toDict(masterFileSystem.hierarchy), pageRegistry: pageRegistry }
-    );
-}
-else {
-    let dehydrateElem = document.getElementById("dehydrateInfo");
-    dehydrateInfo = dehydrateElem.innerText;
-    let hydratedInfo = JSON.parse(dehydrateElem.innerText);
-
-    pageRegistry = hydratedInfo.pageRegistry;
-    masterFileSystem = new FileSystem(Directory.fromDict(hydratedInfo.hierarchy));
-}
-
-function setPageRegistry(newRegistry) { pageRegistry = newRegistry; }
-function setMasterFileSystem(hierarchyDict, copyCallbacks = true) {
-    let newMaster = new FileSystem(Directory.fromDict(hierarchyDict));
-    if (copyCallbacks) newMaster.callbacks = masterFileSystem.callbacks;
-    masterFileSystem = newMaster;
-}
-
-export { pageRegistry, masterFileSystem, FileSystem, Directory, File, dehydrateInfo, pathJoin, setPageRegistry, setMasterFileSystem };
+export {FileSystem, pathJoin};
