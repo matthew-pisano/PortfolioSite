@@ -1,4 +1,6 @@
-
+/**
+ * This script is responsible for the void effect by setting the body to a void
+ */
 function addFullscreenEvents() {
     /* View in fullscreen */
     window.openFullscreen = () => {
@@ -26,6 +28,10 @@ function addFullscreenEvents() {
     };
 }
 
+
+/**
+ * Sets the body to a void and allows the user to fullscreen the void
+ */
 async function toVoid(){
     addFullscreenEvents();
 
@@ -33,6 +39,8 @@ async function toVoid(){
     let voidStr = "I T - C O N S U M E S - A L L";
     let initLen = voidStr.length;
     await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Slowly print the void string
     while(voidStr.length > 0){
         let next = voidStr.charAt(0);
         document.getElementById('terminalOutput').innerHTML += next !== " " ? next : "&nbsp;";
@@ -41,7 +49,9 @@ async function toVoid(){
         voidStr = voidStr.substring(1);
         await new Promise(resolve => setTimeout(resolve, 100));
     }
+
     await new Promise(resolve => setTimeout(resolve, 500));
+    // Replace the body with a void
     document.body.style.height = "100%";
     document.body.innerHTML = `<div class="void"></div>
 

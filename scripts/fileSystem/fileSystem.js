@@ -151,8 +151,13 @@ class FileSystem {
      */
     cp(oldPath, newPath) {
 
+        if (newPath === oldPath) throw new Error(`${oldPath} and ${newPath} are at the same location!`);
+
         if (!this.exists(oldPath))
             throw new Error(`Cannot copy file or directory.  File or directory at ${oldPath} does not exist!`);
+        let newObj = this.getItem(newPath);
+        if (newObj && newObj.constructor === File)
+            throw new Error(`File at ${newPath} already exists!`);
 
         let newParentPath = newPath.substring(0, newPath.lastIndexOf("/") + 1);
         let newChildName = newPath.substring(newPath.lastIndexOf("/") + 1);
@@ -278,6 +283,7 @@ class FileSystem {
     /** Navigates the filesystem hierarchy given a valid path and returns the object at that path
      * @param {string} path The path to navigate to
      * @returns {Directory | File} The object at the given path
+     * @private
      */
     _navHierarchy(path) {
 
