@@ -142,3 +142,24 @@ code {
     padding: 5px;
     border-radius: 5px;
 }
+
+#dialogBox {
+    background-color: #4c4c4c;
+    color: azure;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 40px;
+    right: 5px;
+    z-index: 3;
+    width: 400px;
+    height: 100px;
+    padding: 10px;
+    border-right: azure 5px solid;
+    display: none;
+}
+
+#dialogBoxTitle {
+    font-weight: bold;
+    font-size: large;
+    margin-left: 10px;
+}

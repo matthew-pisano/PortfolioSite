@@ -11,6 +11,14 @@ import PropTypes from "prop-types";
 import {buildHierarchy} from "./sidebar";
 
 
+function showDialog(title, body, duration = 2000){
+    document.getElementById("dialogBoxTitle").innerText = title;
+    document.getElementById("dialogBoxBody").innerText = body;
+    document.getElementById("dialogBox").style.display = "block";
+    setTimeout(() => $("#dialogBox").fadeOut("slow"), duration);
+}
+
+
 function spliceFromSubTree(subTree, name) {
     for(let i=0; i<subTree.length; i++)
         if(subTree[i].name === name) return subTree.splice(i,1)[0];
@@ -69,6 +77,8 @@ const Wrapper = ({children, pageName}) => {
                 document.getElementById("saveAction").click();
             }
         });
+
+        document.showDialog = showDialog;
     }, []);
 
     function setSidebarState(openState=!sidebarOpen, animate=true){
@@ -151,7 +161,9 @@ const Wrapper = ({children, pageName}) => {
                         <button id="saveAction" className="w3-button lightText menuDropItem"
                             onClick={async () => {
                                 if (!document.codeEditor) {
-                                    alert("This file is not in editing mode!");
+                                    if (currentPath.endsWith("display"))
+                                        showDialog("File Cannot Be Saved", "This file must be in edit mode before saving!");
+                                    else showDialog("Permission Denied", "You do not have permission to edit this file!");
                                     return;
                                 }
 
@@ -159,7 +171,10 @@ const Wrapper = ({children, pageName}) => {
                                 let filePath = new URLSearchParams(window.location.search).get("file");
                                 masterFileSystem.writeText(filePath, editorText.replace("\t", ""));
                                 window.onbeforeunload = null;
+
                                 // Visual saving feedback
+                                showDialog("File Saved", "The file has been saved!");
+
                                 document.getElementsByClassName("cm-editor")[0].style.backgroundColor = "#626262";
                                 await new Promise(r => setTimeout(r, 200));
                                 document.getElementsByClassName("cm-editor")[0].style.backgroundColor = "";
@@ -176,10 +191,9 @@ const Wrapper = ({children, pageName}) => {
                         <button id="editCurrentAction" className="w3-button lightText menuDropItem"
                             onClick={() => {
                                 let filePath = new URLSearchParams(window.location.search).get("file");
-                                //let current = masterFileSystem.getItem(filePath ? filePath : "/");
-                                //if(!current.permission.includes(Perms.WRITE)) alert("The current page is not editable");
                                 if(currentPath.endsWith("edit")) return;
-                                if(filePath === null || !currentPath.endsWith("display")) alert("The current page is not editable");
+                                if(filePath === null || !currentPath.endsWith("display"))
+                                    document.showDialog("Permission Denied", "You do not have permission to edit this file!");
                                 else window.location.replace(`/edit?file=${filePath}`);
 
                             }}>Edit Current Page</button>
@@ -220,6 +234,11 @@ const Wrapper = ({children, pageName}) => {
             </div>
             {children}
             <TerminalDiv/>
+            <div id="dialogBox">
+                <img src="/assets/personal.png" style={{width: '20px'}}/>
+                <span id="dialogBoxTitle">Message Title</span>
+                <p id="dialogBoxBody">Message Body</p>
+            </div>
             <footer className="commandBar w3-row" style={{bottom: '0px'}}>
                 <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>
                 <div id="encodingStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>

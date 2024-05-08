@@ -68,12 +68,12 @@ function buildFile(file, path) {
                             }
                         };
                         document.documentElement.addEventListener('click', clickEvent, true);
-                    } else alert("You do not have permission to rename this file!");
+                    } else document.showDialog("Permission Denied", "You do not have permission to rename this file!");
                 },
                 remove: () => {
                     if (file.permission.includes(Perms.WRITE))
                         masterFileSystem.rm(pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""), file.name));
-                    else alert("You do not have permission to remove this file!");
+                    else document.showDialog("Permission Denied", "You do not have permission to remove this file!");
                 }
             });
             e.preventDefault();
