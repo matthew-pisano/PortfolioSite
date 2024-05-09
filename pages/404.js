@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { buildPage } from '../scripts/pageBuilder';
+import {buildPage, PageInfo, Tile} from '../scripts/pageBuilder';
 import {Wrapper} from '../scripts/wrapper';
 import {DefaultWrapper} from "../scripts/defaultWrapper";
 
@@ -31,34 +31,34 @@ const PageNotFound = () => {
     }
 
     let tiles = [
-        {
-            title: "Something's Not Right",
-            content: `The page <i style="background-color: #454545; border-radius: 4px">'${location}'</i>
+        new Tile(
+            "Something's Not Right",
+            `The page <i style="background-color: #454545; border-radius: 4px">'${location}'</i>
             does not seem to exist.  These are uncharted waters, it would be wise to return home.<br><br>
             ...This your last chance.  After this there is no turning back.  You take the blue pill, the story ends.
             You wake up in your bed and believe whatever you want to. You take the red pill, you stay in Wonderland, 
             and I show you how deep the rabbit hole goes.  Remember, all I'm offering is the truth.  Nothing more.`
-        },
-        {
-            title: "Back to Safety",
-            titleLink: "home",
-            content: ``,
-            style: {backgroundColor: "#225799", textAlign: "center", fontSize: "20px"}
-        },
-        {
-            title: "Continue Onwards",
-            titleLink: nextLink(),
-            content: ``,
-            style: {backgroundColor: "#9e1111", backgroundImage: 'url("/matrix.gif")', textAlign: "center", fontSize: "20px"}
-        },
+        ),
+        new Tile(
+            "Back to Safety",
+            "", "", false, {}, [], "", "", [], [],
+            "home",
+            {backgroundColor: "#225799", textAlign: "center", fontSize: "20px"}
+        ),
+        new Tile(
+            "Continue Onwards",
+            "", "", false, {}, [], "", "", [], [],
+            nextLink(),
+            {backgroundColor: "#9e1111", backgroundImage: 'url("/matrix.gif")', textAlign: "center", fontSize: "20px"}
+        ),
     ];
-    let pageInfo = {
-        title: "Page Not Found",
-        summary: quote,
-        pageName: "404",
-        holderStyle: {backgroundColor: "#000000"},
-        tags: ["help"]
-    };
+    let pageInfo = new PageInfo(
+        "404",
+        "Page Not Found",
+        quote,
+        {backgroundColor: "#000000"},
+        ["help"]
+    );
     
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 };

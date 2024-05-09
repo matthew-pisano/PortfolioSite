@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { buildPage, PageInfo, Tile } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import { Constants } from '../../scripts/utils';
+import {Constants, resolvePageLocation} from '../../scripts/utils';
 import { Wrapper } from '../../scripts/wrapper';
 import {DefaultWrapper} from "../../scripts/defaultWrapper";
 
@@ -10,18 +10,18 @@ class About extends Component {
     static propTypes = {display: PropTypes.string};
     render() {
         let tiles = [
-            {
-                title: "#Introduction",
-                content: `My name is Matthew Pisano.  I am a researcher and software developer.  I am pursuing a graduate education
+            new Tile(
+                "#Introduction",
+                 `My name is Matthew Pisano.  I am a researcher and software developer.  I am pursuing a graduate education
                     while working on researching methods of artificial intelligence alignment.
                     <br><br>My research centers around language model alignment; enforcing safety without hampering its cognitive 
                     abilities. I often draw inspiration from biological intelligences to aid im my work with artificial ones. 
                     I enjoy learning about how the mind works and the cognitive principles that can be applied to it.`,
-                thumbnail: "/media/image/headshot"
-            },
-            {
-                title: "Software Skills",
-                content: `I have experience in many languages with Python, JavaScript, and Java being the ones in
+                 "/media/image/headshot"
+            ),
+            new Tile(
+                "Software Skills",
+                `I have experience in many languages with Python, JavaScript, and Java being the ones in
                     which my skills are most developed.
                     <ul>
                     <li>I have created many professional solutions for a variety of companies along with machine
@@ -31,19 +31,19 @@ class About extends Component {
                     <li>Through Java, I have created multiple android applications, come of which have been 
                     published on the Google Play store.</li>
                     </ul>`,
-            },
-            {
-                title: "Development Experience",
-                content: `Through both my employment and professional experience through my higher education, I have
+            ),
+            new Tile(
+                "Development Experience",
+                `Through both my employment and professional experience through my higher education, I have
                     gained invaluable experience as a developer.  I have experience using the DevOps and Agile methodologies,
                     full-stack development, and continuous integration and continuous delivery using AWS.
                     <br><br>
                     I have work experience ranging from small startups to Multinational Research divisions.  With each new experience,
                     I gain valuable knowledge on the unique cultures and strategies that they offer.`,
-            },
-            {
-                title: "Recent Employment",
-                content: `Over the course of Summer 2023, I worked as a research intern at IBM's research facility in Yorktown as
+            ),
+            new Tile(
+                "Recent Employment",
+                `Over the course of Summer 2023, I worked as a research intern at IBM's research facility in Yorktown as
                     part of a program through RPI.  During this time, I researched new techniques of model alignment using text-based
                     game for safety training on moral and ethical principles.  More information can be found in the 
                     <a href="/research/highGround">Moral High Ground</a> page<hr>
@@ -61,10 +61,10 @@ class About extends Component {
                     about this can be found in the <a href="/research/chipFiring">Chip Firing</a> page and
                     in the <a href="https://arxiv.org/abs/2302.10327" target="_blank">arXiv submission</a> for the resulting paper.
                     With this job, I worked closely with my professor to gain research experience and to develop research for later publishing.`,
-            },
-            {
-                title: "Leadership",
-                content: `A key attribute of someone who can work well with a team, whether the focus is software 
+            ),
+            new Tile(
+                "Leadership",
+                `A key attribute of someone who can work well with a team, whether the focus is software 
                     development or research, is leadership.  Many of my leadership skills
                     come from my participation in research projects and my time in scouting.
                     <br><br>I have worked on numerous different academic and research projects.  In many of these, I was the primary organizer of the project
@@ -77,18 +77,19 @@ class About extends Component {
                     the planning and machine learning components of PredictChain, the front-end and ChatGPT interface of Mathesis,
                     leading the front-end development of the <a href="/hackathons/anonHires">Anonymous Hires</a>
                     project, and in SUNY Ulster's Team Orion collaboration with IBM.`,
-            },
+            ),
         ];
-        let pageInfo = new PageInfo({
-            title: "About",
-            summary: "Extra information on me as a developer, student, researcher and person",
-            pageName: "about/about",
-            holderStyle: {backgroundColor: "#14a343"},
-            gitLink: "https://github.com/matthew-pisano/",
-            gitTitle: "GitHub",
-            extraLinks: [Constants.resumeUrl, "https://www.linkedin.com/in/matthew-pisano"],
-            extraTitles: ["Résumé", "LinkedIn"]
-        });
+        let pageInfo = new PageInfo(
+            typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
+            "About",
+            "Extra information on me as a developer, student, researcher and person",
+            {backgroundColor: "#14a343"},
+            [],
+            "https://github.com/matthew-pisano/",
+            "GitHub",
+            [Constants.resumeUrl, "https://www.linkedin.com/in/matthew-pisano"],
+            ["Résumé", "LinkedIn"]
+        );
         return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }

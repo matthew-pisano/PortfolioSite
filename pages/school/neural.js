@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {buildPage, PageInfo} from '../../scripts/pageBuilder';
+import {buildPage, PageInfo, Tile} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
 import {DefaultWrapper} from "../../scripts/defaultWrapper";
@@ -9,61 +9,62 @@ class Neural extends Component {
     static propTypes = {display: PropTypes.string};
     render() {
         let tiles = [
-            {
-                title: "#Overview",
-                content: `The objective of this project was to analyze the differences between backpropagation, a genetic algorithm method,
+            new Tile(
+                "#Overview",
+                `The objective of this project was to analyze the differences between backpropagation, a genetic algorithm method,
                     and the decision tree optimization on the training and execution of a neural network.`
-            },
-            {
-                title: "Research Paper",
-                content: `While the paper originally intended to only be a short presentation of the project, my classmate and I 
+            ),
+            new Tile(
+                "Research Paper",
+                `While the paper originally intended to only be a short presentation of the project, my classmate and I 
                     developed the presentation much further into a research paper under the guidance of our professor.  I used this as an opportunity
                     to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
                     The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
-                extraTitles: ["Research Paper"],
-                extraLinks: ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"]
-            },
-            {
-                title: "#Training Methods",
-                content: ``,
-                style: {backgroundColor: "rgba(139,166,175,0.45)"}
-            },
-            {
-                title: "Backpropagation",
-                content: `The backpropagation algorithm is one of the most widely used in neural networks today, with many applicable
+                "", false, {}, [], "", "",
+                ["Research Paper"],
+                ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"]
+            ),
+            new Tile(
+                "#Training Methods",
+                "", "", false, {}, [], "", "", [], [], "",
+                {backgroundColor: "rgba(139,166,175,0.45)"}
+            ),
+            new Tile(
+                "Backpropagation",
+                `The backpropagation algorithm is one of the most widely used in neural networks today, with many applicable
                     situations.  This method acted similar to a control for this project, being compared to the other two algorithms in
                     its performance and accuracy.`
-            },
-            {
-                title: "Decision Tree",
-                content: `For this project, a decision tree was used to decrease the number of inputs to the neural network.  
+            ),
+            new Tile(
+                "Decision Tree",
+                `For this project, a decision tree was used to decrease the number of inputs to the neural network.  
                     This was used in conjunction with backpropagation, resulting in fewer of the matrix-heavy calculations that can make
                     backpropagation very resource intensive to train.`
-            },
-            {
-                title: "Genetic Algorithm",
-                content: `The genetic algorithm used for this project is the most different from backpropagation.  The genome of each
+            ),
+            new Tile(
+                "Genetic Algorithm",
+                `The genetic algorithm used for this project is the most different from backpropagation.  The genome of each
                     individual in the population was composed of a section of the weights in the network.  These individuals were then bred
                     and passed on their combined genomes to the next generation.`
-            },
-            {
-                title: "Testing",
-                content: `For training, each one of the three networks was given the same 80% proportion of the original data set and 
+            ),
+            new Tile(
+                "Testing",
+                `For training, each one of the three networks was given the same 80% proportion of the original data set and 
                     trained for 150 epochs and three independent trials. The loss function for each network is given by the 
                     sum of squared errors for every sample. 
                     
                     Each trial was given a score for comparison. The score is given by the percent
                     of correctly identified diagnoses divided by the time it took for the trial to
                     complete. The higher the score, the better the performance of the algorithm.`,
-            },
-            {
-                title: "#Results",
-                content: ``,
-                style: {backgroundColor: "rgba(139,166,175,0.45)"}
-            },
-            {
-                title: "Backpropagation Results",
-                content: `For the backpropagation network, a learning rate (\\alpha) of 0.18 was used. Across
+            ),
+            new Tile(
+                "#Results",
+                "", "", false, {}, [], "", "", [], [], "",
+                {backgroundColor: "rgba(139,166,175,0.45)"}
+            ),
+            new Tile(
+                "Backpropagation Results",
+                `For the backpropagation network, a learning rate (\\alpha) of 0.18 was used. Across
                     three trials, training over the data set for the 150 epochs, the network trained
                     after 0.82 seconds on average. The average loss for the testing set was 0.125,
                     correctly predicting 85.9% of diagnoses in the testing set and 95.1% withing
@@ -72,11 +73,11 @@ class Neural extends Component {
                     The training loss curve for backpropagation follows closely to a curve of 1/x
                     This signifies a good loss curve with minimal over-fitting. The loss declines
                     sharply and the accuracy rises rapidly over successive epochs of training.`,
-                thumbnail: "/media/image/backproplosses.png"
-            },
-            {
-                title: "Decision Tree Results",
-                content: `For the backpropagation network with the decision tree optimization, a learning 
+                "/media/image/backproplosses.png"
+            ),
+            new Tile(
+                "Decision Tree Results",
+                `For the backpropagation network with the decision tree optimization, a learning 
                     rate (\\alpha) of 0.18 was also used. The decision tree was able to eliminate the
                     attributes of weight as least impactful and glucose levels as second to least
                     impactful. For this experiment, only weight was eliminated. This brought
@@ -91,11 +92,11 @@ class Neural extends Component {
                     loss declines sharply and the accuracy rises rapidly over successive epochs of
                     training. Compared to raw backpropagation, this algorithm converges on an
                     optimal solution approximately twice as fast.`,
-                thumbnail: "/media/image/decisionlosses.png"
-            },
-            {
-                title: "Genetic Algorithm Results",
-                content: `For the genetic algorithm, a population size of 6, a crossover rate of 0.5, and
+                "/media/image/decisionlosses.png"
+            ),
+            new Tile(
+                "Genetic Algorithm Results",
+                `For the genetic algorithm, a population size of 6, a crossover rate of 0.5, and
                     a mutation rate of 0.01. Across three trials, the network took 4.95 seconds.
                     The average loss for the testing set was 0.295, correctly identifying 70.4%
                     of diagnoses in the testing set and 88.1% withing the training set, as shown
@@ -111,11 +112,11 @@ class Neural extends Component {
                     backpropagation with the decision tree. This algorithm settles into a local
                     minimum solution after five epochs, compared to the other two which settled
                     at forty for raw backpropagation and twenty for optimized backpropagation.`,
-                thumbnail: "/media/image/geneticlosses.png"
-            },
-            {
-                title: "Conclusions",
-                content: `Across the three trials for each of the three different algorithms, backpropagation 
+                "/media/image/geneticlosses.png"
+            ),
+            new Tile(
+                "Conclusions",
+                `Across the three trials for each of the three different algorithms, backpropagation 
                     with the decision tree optimization seems to be the best fit for this
                     particular data set. It completed quickly and with a high accuracy of 84.2%
                     and score of 1.05 when predicting if a subject was diagnosed with diabetes
@@ -135,19 +136,19 @@ class Neural extends Component {
                     Compared to backpropagation, the decision tree optimization slightly decreased 
                     the execution time of the network. More importantly, it converged
                     on an optimal solution much faster than raw backpropagation.`
-            }
+            )
         ];
-        let pageInfo = new PageInfo({
-            title: "Neural",
-            summary: "A research project for comparing training methods of neural networks",
-            pageName: "research/neural",
-            holderStyle: {backgroundColor: "#3c8aab"},
-            gitLink: "https://github.com/matthew-pisano/NuralPy",
-            gitTitle: "Neural",
-            extraLinks: ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
-            extraTitles: ["Research Paper"],
-            tags: ["research", "academic", "ai", "python"]
-        });
+        let pageInfo = new PageInfo(
+            typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
+            "Neural",
+            "A research project for comparing training methods of neural networks",
+            {backgroundColor: "#3c8aab"},
+            ["research", "academic", "ai", "python"],
+            "https://github.com/matthew-pisano/NuralPy",
+            "Neural",
+            ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
+            ["Research Paper"]
+        );
         return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }

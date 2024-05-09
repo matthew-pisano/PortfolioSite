@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {buildPage, PageInfo} from '../../scripts/pageBuilder';
+import {buildPage, PageInfo, Tile} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
 import {DefaultWrapper} from "../../scripts/defaultWrapper";
@@ -9,31 +9,32 @@ class ImageCrypt extends Component {
     static propTypes = {display: PropTypes.string};
     render() {
         let tiles = [
-            {
-                title: "#Overview",
-                content: `<i>Image-Crypt</i> encodes documents into a target image file. Documents 
+            new Tile(
+                "#Overview",
+                `<i>Image-Crypt</i> encodes documents into a target image file. Documents 
                     are encoded based off of noise inserted into a target image. The noise may 
                     optionally be generated based off of a key file to further obfuscate it using 
                     a hash-based encoding. The encoded document can be extracted from the image using
                     the same key file.`,
-                thumbnail: "/media/image/secret-message.png",
-            },
-            {
-                title: `CAUTION: This program is not cryptographically secure and should not be used to
+                "/media/image/secret-message.png",
+            ),
+            new Tile(
+                `CAUTION: This program is not cryptographically secure and should not be used to
                     encode sensitive information. If security is a concern, use a more secure encryption 
                     method before encoding the text into an image.`,
-                style: {backgroundColor: "rgba(255,55,55,0.68)"}
-            },
-            {
-                title: "Text Preprocessing",
-                content: `To ensure that non-ASCII text can be losslessly encoded to and decoded from
+                "", "", false, {}, [], "", "", [], [], "",
+                {backgroundColor: "rgba(255,55,55,0.68)"}
+            ),
+            new Tile(
+                "Text Preprocessing",
+                `To ensure that non-ASCII text can be losslessly encoded to and decoded from
                     images, base64 encoding is used to encode the text before it undergoes any obfuscation 
                     or is inserted into the image. The text is decoded after it undergoes any de-obfuscation
                      or is extracted from the image.`
-            },
-            {
-                title: "Noise Generation",
-                content: `Text is encoded into an image by inserting noise into the image. The noise is 
+            ),
+            new Tile(
+                "Noise Generation",
+                `Text is encoded into an image by inserting noise into the image. The noise is 
                     generated based off of the text to be encoded and an optional key file. If a key file 
                     is given, the raw text will first be obfuscated using the key before being encoded 
                     into the image. This encoding can only be performed on a 4-channel image (RGBA); 
@@ -63,10 +64,10 @@ class ImageCrypt extends Component {
                     <br><br>
                     The resulting image appears nearly identical to the original, but with a small 
                     amount of noise added from the text encoding.`
-            },
-            {
-                title: "Text Obfuscation",
-                content: `To make the encoded text less obvious, it can be obfuscated using a key file. 
+            ),
+            new Tile(
+                "Text Obfuscation",
+                `To make the encoded text less obvious, it can be obfuscated using a key file. 
                     The key file's contents are hashed to generate a key that is used to obfuscate the text.
                     <br><br>
                     The following two hash-based obfuscation strategies are available:
@@ -92,17 +93,17 @@ class ImageCrypt extends Component {
                     cannot be easily reversed, using simple frequency analysis to decode the text is likely 
                     not possible.  However, such a simple algorithm can likely be cracked with enough effort, 
                     so using a more secure encryption method before encoding the text is recommended if security is a concern.`
-            },
+            ),
         ];
-        let pageInfo = new PageInfo({
-            title: "Image-Crypt",
-            summary: "An image-based document encoder",
-            pageName: "personal/imageCrypt",
-            holderStyle: {backgroundColor: "#63beca"},
-            gitLink: "https://github.com/matthew-pisano/ImageCrypt",
-            gitTitle: "ImageCrypt",
-            tags: ["personal", "cpp"]
-        });
+        let pageInfo = new PageInfo(
+            typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
+            "Image-Crypt",
+            "An image-based document encoder",
+            {backgroundColor: "#63beca"},
+            ["personal", "cpp"],
+            "https://github.com/matthew-pisano/ImageCrypt",
+            "ImageCrypt"
+        );
         return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
     }
 }

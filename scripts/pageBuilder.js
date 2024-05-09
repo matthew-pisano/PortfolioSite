@@ -4,7 +4,23 @@ import Latex from 'react-latex-next';
 
 
 class Tile {
-    constructor({title = "", content = "", tags = [], thumbnail = "", gallery = false, style = {}, imgStyle = {}, titleLink = "", latex = false, gitLink = "", gitTitle = "", extraLinks = [], extraTitles = []}){
+
+    /**
+     * @param title {string} The title of the tile
+     * @param content {string} The content of the tile
+     * @param thumbnail {string} The thumbnail image for the tile
+     * @param gallery {boolean} Whether the tile is a gallery
+     * @param imgStyle {object} The style of the image
+     * @param tags {string[]} The tags for the tile
+     * @param gitLink {string} The link to the git repository
+     * @param gitTitle {string} The title of the git repository link
+     * @param extraLinks {string[]} Extra links to display
+     * @param extraTitles {string[]} The titles of the extra links
+     * @param titleLink {string} The link that the title should go to
+     * @param style {object} The style of the tile
+     * @param latex {boolean} Whether the content should be rendered as latex
+     */
+    constructor(title, content, thumbnail = "", gallery = false, imgStyle = {}, tags = [], gitLink = "", gitTitle = "", extraLinks = [], extraTitles = [], titleLink = "", style = {}, latex = false){
         this.title = title;
         this.content = content;
         this.tags = tags;
@@ -23,7 +39,19 @@ class Tile {
 
 
 class PageInfo {
-    constructor({pageName = "", title = "", summary = "", holderStyle = {}, gitLink = "", gitTitle = "", extraLinks = [], extraTitles = []}){
+
+    /**
+     * @param pageName {string} The name of the page
+     * @param title {string} The title of the page
+     * @param summary {string} A brief summary of the page
+     * @param holderStyle {object} The style of the page holder
+     * @param tags {string[]} The tags for the page
+     * @param gitLink {string} The link to the git repository
+     * @param gitTitle {string} The title of the git repository link
+     * @param extraLinks {string[]} Extra links to display
+     * @param extraTitles {string[]} The titles of the extra links
+     */
+    constructor(pageName, title, summary, holderStyle = {}, tags = [], gitLink = "", gitTitle = "", extraLinks = [], extraTitles = []){
         this.pageName = pageName;
         this.title = title;
         this.summary = summary;
@@ -32,8 +60,8 @@ class PageInfo {
         this.gitTitle = gitTitle;
         this.extraLinks = extraLinks;
         this.extraTitles = extraTitles;
+        this.tags = tags;
     }
-
 }
 
 

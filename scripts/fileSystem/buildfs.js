@@ -61,7 +61,7 @@ function setPageRegistry(newRegistry) { pageRegistry = newRegistry; }
 
 /**
  * Sets the master file system to a new file system
- * @param hierarchyDict {Object} The dictionary representation of the new hierarchy
+ * @param hierarchyDict {object} The dictionary representation of the new hierarchy
  * @param copyCallbacks {boolean} Whether to copy the callbacks from the old file system
  */
 function setMasterFileSystem(hierarchyDict, copyCallbacks = true) {

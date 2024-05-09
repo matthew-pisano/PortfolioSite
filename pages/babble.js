@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {buildPage, PageInfo} from '../scripts/pageBuilder';
+import {buildPage, PageInfo, Tile} from '../scripts/pageBuilder';
 import { Wrapper } from '../scripts/wrapper';
 import {Constants} from "../scripts/utils";
 
@@ -53,28 +53,19 @@ async function babbleLoop() {
 
 const Babble = () => {
     let tiles = [
-        {
-            title: "_",
-            content: ``
-        },
-        {
-            title: "_",
-            content: ``,
-        },
-        {
-            title: "_",
-            content: ``,
-        },
-        {
-            title: "_",
-            content: ``,
-        }
+        new Tile("_", ""),
+        new Tile("_", ""),
+        new Tile("_", ""),
+        new Tile("_", ""),
+        new Tile("_", ""),
     ];
-    let pageInfo = new PageInfo({
-        pageName: "babble",
-        holderStyle: {backgroundColor: "#5a3afa00"},
-        tags: ["help"]
-    });
+    let pageInfo = new PageInfo(
+        "babble",
+        "",
+        "",
+        {backgroundColor: "#5a3afa00"},
+        ["help"]
+    );
 
     useEffect(() => {
         babbleLoop();

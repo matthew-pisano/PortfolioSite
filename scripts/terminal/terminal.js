@@ -118,7 +118,7 @@ const TerminalDiv = () => {
 
     /**
      * Handles the input event
-     * @param e {Object} The input event
+     * @param e {object} The input event
      */
     function onInput(e) {
         // Submit the command if the user presses enter
@@ -132,7 +132,7 @@ const TerminalDiv = () => {
 
     /**
      * Handles the key down event
-     * @param e {Object} The key down event
+     * @param e {object} The key down event
      */
     function onKeyDown(e) {
         let newI = commandIndex;

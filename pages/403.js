@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { buildPage } from '../scripts/pageBuilder';
+import {buildPage, PageInfo, Tile} from '../scripts/pageBuilder';
 import {Wrapper} from '../scripts/wrapper';
 
 
@@ -21,27 +21,26 @@ const Anauthorized = () => {
     }, []);
 
     let tiles = [
-        {
-            title: "We have detected an unauthorized access attempt",
-            content: `You either do not have the permissions to view the requested page or your authorization
+        new Tile(
+            "We have detected an unauthorized access attempt",
+            `You either do not have the permissions to view the requested page or your authorization
                 token has expired.  If the latter is the case, attempt to re-authenticate and access the
                 path through the original means.  If the former is the case, you do not belong here.
                 Searching in areas that you are not meant to go serves the good of nobody.`
-        },
-        {
-            title: "Back to Safety",
-            titleLink: "home",
-            content: ``,
-            style: {backgroundColor: "#225799", textAlign: "center", fontSize: "20px"}
-        },
+        ),
+        new Tile(
+            "Back to Safety",
+            "", "", false, {}, [], "", "", [], [],
+            "home",
+            {backgroundColor: "#225799", textAlign: "center", fontSize: "20px"}
+        ),
     ];
-    let pageInfo = {
-        title: "Forbidden",
-        summary: quote,
-        pageName: "403",
-        holderStyle: {backgroundColor: "#000000"},
-    };
-    
+    let pageInfo = new PageInfo(
+        "403",
+        "Forbidden",
+        quote,
+        {backgroundColor: "#000000"}
+    );
     return (<Wrapper pageName={pageInfo.pageName}>
         <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
             <div className="inner titleCard">

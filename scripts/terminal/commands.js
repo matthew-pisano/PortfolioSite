@@ -15,7 +15,7 @@ class Commands {
 
     /**
      * The environment object that contains the current working directory and other environment variables
-     * @type {Object}
+     * @type {object}
      */
     static ENV = {};
 
@@ -34,7 +34,7 @@ class Commands {
     /**
      * Validates the number of arguments passed to a command
      * @param args {string[]} The arguments passed to the command
-     * @param val {Object} The validation specification
+     * @param val {object} The validation specification
      * @return {string} An error message if the validation fails, otherwise an empty string
      * @private
      */
@@ -593,8 +593,8 @@ class Commands {
     /**
      * Parses a raw string as a command and arguments, executes them, then returns the output and updated environment
      * @param rawString {string} The raw command string
-     * @param env {Object} The environment object
-     * @return {{result: string, env: Object}} The command output and updated environment
+     * @param env {object} The environment object
+     * @return {{result: string, env: object}} The command output and updated environment
      */
     static parseCommand(rawString, env) {
         this.ENV = env;

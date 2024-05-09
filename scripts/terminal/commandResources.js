@@ -194,7 +194,7 @@ function tokenizeCommand(command){
 
 /**
  * Resolves any environment variables or assignments in the tokens
- * @param env {Object} The environment object
+ * @param env {object} The environment object
  * @param tokens {string[]} The array of tokens to resolve
  */
 function resolveTokens(env, tokens) {

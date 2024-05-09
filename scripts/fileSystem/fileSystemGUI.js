@@ -37,7 +37,7 @@ function itemClick(itemFunction) {
 /**
  * Creates a context menu at the mouse event location
  * @param mouseEvent {MouseEvent} The right-click mouse event
- * @param items {Object} The items to be displayed in the context menu
+ * @param items {object} The items to be displayed in the context menu
  */
 function createContextMenu(mouseEvent, items) {
 

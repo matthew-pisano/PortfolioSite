@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo, Tile} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
 
@@ -8,23 +8,23 @@ class SCP extends Component {
     static propTypes = {display: PropTypes.string};
     render() {
         let tiles = [
-            {
-                title: "[EXTERNAL ARCHIVE]",
-                content: `Additional documentation and arrival material collected and organized by
+            new Tile(
+                "[EXTERNAL ARCHIVE]",
+                `Additional documentation and arrival material collected and organized by
                     the foundation to aid in cleanup efforts and ensuring another incident does not 
                     happen again.`
-            },
-            {
-                title: "Special Containment Procedures",
-                content: `SCP-672<span style="color: black">██</span> is to be kept at high-security Site-162, in a standard 
+            ),
+            new Tile(
+                "Special Containment Procedures",
+                `SCP-672<span style="color: black">██</span> is to be kept at high-security Site-162, in a standard 
                     humanoid accommodation chamber within a sector currently under the supervision of the 
                     <span style="color: black">████████</span>.  Mobile Task Force unit <span style="color: black">██████</span>-10 
                     ("<span style="color: black">███████</span>"), is to be set on high alert and stationed no more than 5km away
                     from the containment site at all times.`
-            },
-            {
-                title: "Description",
-                content: `SCP-672<span style="color: black">██</span> was <span style="color: black">██████ ████ ██ ████████████</span>
+            ),
+            new Tile(
+                "Description",
+                `SCP-672<span style="color: black">██</span> was <span style="color: black">██████ ████ ██ ████████████</span>
                     as into <span style="color: black">███████ ██████ ████████ ████████████████</span>, <span style="color: black">██</span>. 
                     Originally created as part of <i>Project <span style="color: black">███████████</span></i> by the 
                     <span style="color: black">██████████████</span> research division of Mathesis International, 
@@ -34,11 +34,11 @@ class SCP extends Component {
                     <span style="color: black">██████████</span>, is a <span style="color: black">█████████████████████████████ ███████████
                     █████████████████████████ ███████████████████████</span> and <span style="color: black">█████████████████████ ████████████████████████
                     ███████████ ████████████████████ █████████████████████ ██████████████ ███████████████████████</span>.`,
-                thumbnail: "/media/image/imageOf.png"
-            },
-            {
-                title: `Addendum 672<span style="color: black">██</span>.1: Timeline of Events`,
-                content: `The following is a series of internal Mathesis <span style="color: black">██████████████</span> research
+                "/media/image/imageOf.png"
+            ),
+            new Tile(
+                `Addendum 672<span style="color: black">██</span>.1: Timeline of Events`,
+                `The following is a series of internal Mathesis <span style="color: black">██████████████</span> research
                     division e-mails describing the events of <span 
                     style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.<br>
                     <br><b>[BEGIN LOG]</b>
@@ -73,25 +73,23 @@ class SCP extends Component {
                     ███████████ ██████████████████████ ██████████████ ████████ ██████████████</span><br>
                     There is no forgiveness now.<br>
                     <b>[END LOG]</b>`,
-            },
-            {
-                title: `Addendum 672<span style="color: black">██</span>.1: Interview with surviving <span style="color: black">███████████</span>`,
-                content: `<b>[DATA EXPUNGED]</b>`,
-            },
-            {
-                title: `Addendum 672<span style="color: black">██</span>.2: Video surveillance of original incident at Mathesis Labs`,
-                content: `<a href="/assets/surveil.mp4">surveil.mp4</a>`,
-            }
+            ),
+            new Tile(
+                `Addendum 672<span style="color: black">██</span>.1: Interview with surviving <span style="color: black">███████████</span>`,
+                `<b>[DATA EXPUNGED]</b>`,
+            ),
+            new Tile(
+                `Addendum 672<span style="color: black">██</span>.2: Video surveillance of original incident at Mathesis Labs`,
+                `<a href="/assets/surveil.mp4">surveil.mp4</a>`,
+            )
         ];
-        let pageInfo = {
-            title: "SCP-672<span style='color: black'>██</span>",
-            summary: "",
-            pageName: "scp",
-            holderStyle: {backgroundColor: "#ba3a3a"},
-            gitLink: "https://scp-wiki.wikidot.com/scp-672--",
-            gitTitle: "██████ Entry ███",
-            tags: ["keter", "research", "ai"]
-        };
+        let pageInfo = new PageInfo(
+            "scp", "SCP-672<span style='color: black'>██</span>",
+            "", {backgroundColor: "#ba3a3a"},
+            ["keter", "research", "ai"],
+            "https://scp-wiki.wikidot.com/scp-672--",
+            "██████ Entry ███"
+        );
         return (<Wrapper pageName={pageInfo.pageName}>
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
                 <div className="inner titleCard">

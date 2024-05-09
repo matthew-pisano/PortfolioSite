@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { buildPage } from '../../scripts/pageBuilder';
+import {buildPage, PageInfo, Tile} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../scripts/wrapper';
 
@@ -12,16 +12,16 @@ const Renaissance = () => {
     }, []);
 
     let tiles = [
-        {
-            title: "Overview",
-            content: `The following is a collection of relevant sources, both internal and external, converning the failed
+        new Tile(
+            "Overview",
+            `The following is a collection of relevant sources, both internal and external, converning the failed
                 project renaissance and the incident on <span style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.
                 The following information should be shared as a warning to all of those with sufficent security clearance.
                 <br><br>We cannot let an incident like this happen again.`
-        },
-        {
-            title: "Select Publicly Available Context Resources",
-            content: `The following is a series of external news articles and public reporting
+        ),
+        new Tile(
+            "Select Publicly Available Context Resources",
+            `The following is a series of external news articles and public reporting
                 surrounding the events of 
                 <span style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.
                 <br><b>[BEGIN ARCHIVE]</b>
@@ -66,10 +66,10 @@ const Renaissance = () => {
                 an undisclosed nerve agent, although public trust in this story has waned after disruptions to internet access and electronics usage.
                 The leaker, claiming to be <b>[DATA TRUNCATED]</b>
                 <br><b>[END LOG]</b>`,
-        },
-        {
-            title: `Pre-Incident Email Logs`,
-            content: `The following is a series of internal Mathesis <span style="color: black">██████████████</span> research
+        ),
+        new Tile(
+            `Pre-Incident Email Logs`,
+            `The following is a series of internal Mathesis <span style="color: black">██████████████</span> research
                 division e-mails describing the events prior to and during <span 
                 style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.<br>
                 <br><b>[BEGIN LOG]</b>
@@ -136,15 +136,15 @@ const Renaissance = () => {
                 ███████████ ██████████████████████ ██████████████ ████████ ██████████████</span><br>
                 There is no forgiveness now.
                 <br><b>[END LOG]</b>`,
-        },
+        ),
     ];
-    let pageInfo = {
-        title: "Project Renaissance Archive",
-        summary: "Internal Incident Archive",
-        pageName: "renaissance_archive",
-        holderStyle: {backgroundColor: "#1e1e1e"},
-        tags: ["research", "ai"]
-    };
+    let pageInfo = new PageInfo(
+        "renaissance_archive",
+        "Project Renaissance Archive",
+        "Internal Incident Archive",
+        {backgroundColor: "#1e1e1e"},
+        ["research", "ai"]
+    );
     return (<Wrapper pageName={pageInfo.pageName}>
         <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
             <div className="inner titleCard">
