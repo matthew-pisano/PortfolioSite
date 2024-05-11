@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {masterFileSystem} from "../scripts/fileSystem/buildfs";
-import {Wrapper} from "../scripts/wrapper";
-import {gutter, GutterMarker, lineNumbers, EditorViewConfig} from "@codemirror/view";
+import Wrapper from "../scripts/wrapper";
+import {lineNumbers} from "@codemirror/view";
 import {EditorState, Compartment} from "@codemirror/state";
 import {basicSetup, EditorView} from "codemirror";
 import {html} from "@codemirror/lang-html";

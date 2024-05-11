@@ -1,5 +1,4 @@
 import {SysEnv} from "../utils";
-import $ from "jquery";
 import {eightballResponses, hal9000} from "./strings";
 
 

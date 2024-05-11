@@ -233,4 +233,4 @@ Wrapper.propTypes = {
 };
 
 
-export {Wrapper};
+export default Wrapper;

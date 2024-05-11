@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { buildPage, PageInfo, Tile } from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import {Constants, resolvePageLocation} from '../../scripts/utils';
-import { Wrapper } from '../../scripts/wrapper';
-import {DefaultWrapper} from "../../scripts/defaultWrapper";
+import {PageInfo, Tile} from '../../scripts/pageBuilder';
+import DefaultWrapper from "../../scripts/defaultWrapper";
+import * as Constants from "node:constants";
 
 class About extends Component {
 

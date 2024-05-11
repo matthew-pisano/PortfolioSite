@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import {buildPage, PageInfo, Tile} from '../../scripts/pageBuilder';
 import PropTypes from 'prop-types';
-import { Wrapper } from '../../scripts/wrapper';
-import {DefaultWrapper} from "../../scripts/defaultWrapper";
+import {PageInfo, Tile} from '../../scripts/pageBuilder';
+import DefaultWrapper from "../../scripts/defaultWrapper";
 
 class Destiny extends Component {
 

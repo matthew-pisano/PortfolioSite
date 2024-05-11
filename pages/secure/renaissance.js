@@ -1,10 +1,8 @@
 import React, {useEffect} from 'react';
 import {buildPage, PageInfo, Tile} from '../../scripts/pageBuilder';
-import PropTypes from 'prop-types';
-import { Wrapper } from '../../scripts/wrapper';
+import Wrapper from '../../scripts/wrapper';
 
 const Renaissance = () => {
-
 
     useEffect(() => {
         for( let elem of document.getElementsByClassName("displayTile"))

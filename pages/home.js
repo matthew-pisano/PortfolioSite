@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import {buildPage, PageInfo, Tile} from '../scripts/pageBuilder';
+import {PageInfo, Tile} from '../scripts/pageBuilder';
 import PropTypes from 'prop-types';
 import {Constants} from '../scripts/utils';
-import {Wrapper} from '../scripts/wrapper';
-import {DefaultWrapper} from "../scripts/defaultWrapper";
+import DefaultWrapper from "../scripts/defaultWrapper";
 
 class Home extends Component {
     

@@ -2,7 +2,7 @@ import {readdirSync, statSync} from "fs";
 import {resolve} from "path";
 import {Directory, File} from "./fileSystemObjects";
 import {FileSystem, pathJoin} from "./fileSystem";
-import {bashrc} from "../terminal/commandResources";
+import {bashrc} from "../terminal/strings";
 import {Perms, SysEnv} from "../utils";
 import contentHtml from "../readme";
 

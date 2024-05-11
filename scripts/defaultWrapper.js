@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import {buildPage} from "./pageBuilder";
-import {Wrapper} from "./wrapper";
+import Wrapper from "./wrapper";
 import React from "react";
 
 /**
@@ -29,4 +29,4 @@ DefaultWrapper.propTypes = {
 };
 
 
-export {DefaultWrapper};
+export default DefaultWrapper;

@@ -1,6 +1,6 @@
 import {Perms} from "../utils";
 import {Directory, File} from "./fileSystemObjects";
-import {rmRoot} from "../terminal/commandResources";
+import {rmRoot} from "../terminal/strings";
 
 
 /**
