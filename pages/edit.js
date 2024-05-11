@@ -7,12 +7,12 @@ import {basicSetup, EditorView} from "codemirror";
 import {html} from "@codemirror/lang-html";
 import {Perms} from "../scripts/utils";
 import {Directory} from "../scripts/fileSystem/fileSystemObjects";
+import {PageInfo} from "../scripts/pageBuilder";
 
-const Edit = () => {
 
-    let pageInfo = {
-        pageName: "edit",
-    };
+function Edit() {
+
+    let pageInfo = new PageInfo("edit", "Edit", "Edit the contents of a file");
 
     useEffect(() => {
         let errorMsg = null;
@@ -29,8 +29,10 @@ const Edit = () => {
             return;
         }
 
+        // Add a listener to prompt the user before leaving the page if changes have been made
         let updateListenerExtension = EditorView.updateListener.of(v => {
             if(v.changedRanges.length) {
+                // Only prompt the user if the page has loaded and changes have been made
                 if (EditorView.hasLoaded)
                     window.onbeforeunload = function () {
                         return confirm("Confirm refresh");
@@ -39,7 +41,7 @@ const Edit = () => {
             }
         });
 
-
+        // Set up the editor
         let state = EditorState.create({
             extensions: [
                 basicSetup,
@@ -63,12 +65,14 @@ const Edit = () => {
         document.getElementsByClassName("cm-editor")[0].minHeight = `${Math.round(window.innerHeight*0.7)}px`;
 
         editor.update([editor.state.update({changes: {from: 0, to: state.doc.length, insert: currentFile.text}})]);
+        // Save the editor to the document object for later use
         document.codeEditor = editor;
     }, []);
 
     return (<Wrapper pageName={pageInfo.pageName}>
-            <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText"/>
-        </Wrapper>);
-};
+        <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText"/>
+    </Wrapper>);
+}
+
 
 export default Edit;

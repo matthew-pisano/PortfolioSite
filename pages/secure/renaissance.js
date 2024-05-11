@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import {buildPage, PageInfo, Tile} from '../../scripts/pageBuilder';
 import Wrapper from '../../scripts/wrapper';
 
-const Renaissance = () => {
+
+function Renaissance() {
 
     useEffect(() => {
         for( let elem of document.getElementsByClassName("displayTile"))
@@ -152,6 +153,7 @@ const Renaissance = () => {
             {buildPage(pageInfo, tiles)}
         </div>
     </Wrapper>);
-};
+}
+
 
 export default Renaissance;

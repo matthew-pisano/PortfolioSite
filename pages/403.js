@@ -10,14 +10,12 @@ const authQuotes = ["You appear to have been misinformed.", "You're not from aro
         "There is a way out planned for you.", "All your base are belong to us", "I'm sorry, Dave.  I'm afraid I can't do that.",];
 
 
-const Anauthorized = () => {
+function Unauthorized() {
 
     const [quote, setQuote] = useState("");
-    const [location, setLocation] = useState("");
 
     useEffect(() => {
         setQuote(authQuotes[Math.floor(Math.random()*authQuotes.length)]);
-        setLocation(window.location.href);
     }, []);
 
     let tiles = [
@@ -50,6 +48,7 @@ const Anauthorized = () => {
             {buildPage(pageInfo, tiles)}
         </div>
     </Wrapper>);
-};
+}
 
-export default Anauthorized;
+
+export default Unauthorized;

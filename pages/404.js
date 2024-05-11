@@ -13,10 +13,10 @@ const lostQuotes = ['How did we get here?', 'Not all who wander are lost...',
         "Nobody expects the Spanish Inquisition!!", "Lerroooyyyyy Jeeennnkkkinnnssss!"];
 
 
-const PageNotFound = () => {
+function PageNotFound() {
 
-    const [quote, setQuote] = useState();
-    const [location, setLocation] = useState();
+    const [quote, setQuote] = useState("");
+    const [location, setLocation] = useState("");
 
     useEffect(() => {
         setQuote(lostQuotes[Math.floor(Math.random()*lostQuotes.length)]);
@@ -60,6 +60,7 @@ const PageNotFound = () => {
     );
     
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
-};
+}
+
 
 export default PageNotFound;

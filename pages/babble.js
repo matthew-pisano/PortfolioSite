@@ -79,7 +79,9 @@ async function babbleLoop() {
     }
 }
 
-const Babble = () => {
+
+function Babble() {
+
     let tiles = [
         new Tile("_", ""),
         new Tile("_", ""),
@@ -108,6 +110,7 @@ const Babble = () => {
             {buildPage(pageInfo, tiles)}
         </div>
     </Wrapper>);
-};
+}
+
 
 export default Babble;
