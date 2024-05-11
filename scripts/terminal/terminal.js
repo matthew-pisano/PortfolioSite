@@ -168,7 +168,7 @@ const TerminalDiv = () => {
             <div id='terminal' onClick={() => {
                 if (ENV.CLOSED && Date.now() - ENV.CLOSE_TIME > 500) resize(210);
             }}>
-                <div><span>/bin/mash</span>
+                <div id="terminalHeader"><span>/bin/mash</span>
                     <button id="terminalClose" className='w3-button' style={{ float: "right", marginRight: "10px", visibility: "hidden" }}
                         onClick={() => {
                             Commands.exit([]);

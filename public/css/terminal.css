@@ -22,6 +22,10 @@
     overflow-x: hidden;
 }
 
+#terminalHeader {
+    cursor: pointer;
+}
+
 #terminalPrompt{
     position: fixed;
     bottom: 30px;

@@ -1,39 +1,64 @@
 import React, { useEffect } from 'react';
 import {buildPage, PageInfo, Tile} from '../scripts/pageBuilder';
 import { Wrapper } from '../scripts/wrapper';
-import {Constants} from "../scripts/utils";
 
 
+/**
+ * The saturation of the background color
+ * @type {number}
+ */
 let grayState = 30;
+/**
+ * The direction of the background color change (dark to light or light to dark)
+ * @type {number}
+ */
 let grayDirection = 2;
-let redBias = Math.log(grayState)+20;
 
+
+/**
+ * Generate a random string of text
+ * @param len {number} Length of the string to generate
+ * @return {string} Random string of text
+ */
 function randText(len){
     let randStr = "";
-    while(randStr.length < len) randStr += Constants.alphabet[Math.floor(Math.random()*Constants.alphabet.length)];
+    let alphabet = "aaaaabcdeeeeeefghhhiiiijklmnnnopqrsttttttuvwxyz         ";
+    while(randStr.length < len) randStr += alphabet[Math.floor(Math.random()*alphabet.length)];
     return randStr;
 }
 
+
+/**
+ * Babbler function to generate random text and update the page tiles with it in an infinite loop
+ */
 async function babbler(){
+    // Update the title card with random text
     document.getElementsByClassName("titleCard")[0].children[0].children[0].innerText = randText(Math.floor(Math.random()*5)+10);
 
-    let radii = ["10px", "20px", "50px", "75px"];
+    let radii = ["10px", "20px", "50px"];
     let tileIndex = 0;
+    // For each tile on the page
     while(document.getElementById("babbleTile"+tileIndex+"Title")) {
 
-        document.getElementById("babbleTileHolder").style.borderRadius = radii[Math.floor(Math.random()*radii.length)];
+        document.getElementById("babbleTile"+tileIndex).style.borderRadius = radii[Math.floor(Math.random()*radii.length)];
         let titleElem = document.getElementById("babbleTile"+tileIndex+"Title");
 
         if(!titleElem.classList.contains("forceWrap")) titleElem.classList.add("forceWrap");
         let contentElem = document.getElementById("babbleTile"+tileIndex).children[0].children[2];
         if(!contentElem.classList.contains("forceWrap")) contentElem.classList.add("forceWrap");
 
+        // Add random text to the tile
         titleElem.innerHTML = randText(Math.floor(Math.random()*20)+10);
         contentElem.innerHTML = randText(Math.floor(Math.random()*300)+100);
+        for (let i =0; i < Math.floor(Math.random()*5); i++)
+            contentElem.innerHTML += "<br><br>&nbsp;" + randText(Math.floor(Math.random()*400)+100);
+
+        // Update background with red bias
+        let redBias = Math.log(grayState)+20;
         document.body.style.backgroundColor = "rgb("+(grayState+redBias)+", "+(grayState-redBias)+", "+(grayState-redBias)+")";
 
+        // Update the brightness of the background
         grayState += grayDirection;
-        redBias = Math.log(grayState)+20;
         if(grayState >= 200) grayDirection = -2;
         else if(grayState <= 30) grayDirection = 2;
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -41,9 +66,12 @@ async function babbler(){
     }
 }
 
+
+/**
+ * Infinite loop to update the page with random text
+ */
 async function babbleLoop() {
     await new Promise(resolve => setTimeout(resolve, 200));
-    console.log("Starting babble");
     // eslint-disable-next-line no-constant-condition
     while(true){
         babbler();
@@ -67,6 +95,7 @@ const Babble = () => {
         ["help"]
     );
 
+    // Start the babble loop when the page loads
     useEffect(() => {
         babbleLoop();
     }, []);

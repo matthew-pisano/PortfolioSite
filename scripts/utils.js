@@ -1,27 +1,21 @@
+import $ from "jquery";
 
-
+/**
+ * Class to hold constants used throughout the site.
+ */
 class Constants {
-
-    static alpha(){
-        let offset = 0;
-        let tmp = Array.from(Array(26*2)).map((e, i) => {
-            if(i+65 === 91) offset = 6;
-            return i+65+offset;
-        });
-        let alpha = tmp.map((x) => String.fromCharCode(x));
-        alpha.push(".", ".", ",", "e", "e", "e", "e", "a", "a", "a",
-        "t", "t", "t", "o", "o", "i", "i", "n", "h");
-        return alpha;
-    }
-    static alphabet = this.alpha();
     static resumeUrl = "/assets/resume.pdf";
-
 }
 
+
+/**
+ * Class to hold system environment variables for the terminal.
+ */
 class SysEnv {
 
-    static HOME_FOLDER = "/home/guest";
-    static PUBLIC_FOLDER = "/home/guest/public";
+    static USER = "guest";
+    static HOME_FOLDER = "/home/"+this.USER;
+    static PUBLIC_FOLDER = `/home/${this.USER}/public`;
 
     static SHELL = "GRU mash, version 5.1.16(1)-release";
     static ARCH = "x86_64-cloud-manix-gru";
@@ -29,6 +23,10 @@ class SysEnv {
     static KERNEL = "7.05.01-server";
 }
 
+
+/**
+ * Class to hold permission constants for the file system.
+ */
 class Perms {
 
     static READ = "r";
@@ -46,6 +44,11 @@ class Perms {
     }
 }
 
+
+/**
+ * Add a hashCode function to the String prototype.
+ * @return {number} The hash code of the string
+ */
 String.prototype.hashCode = function() {
   let hash = 0,
     i, chr;
@@ -58,6 +61,23 @@ String.prototype.hashCode = function() {
   return hash;
 };
 
+
+/**
+ * Show a dialog box with a title and body for a certain duration.
+ * @param title {string} The title of the dialog box
+ * @param body {string} The body of the dialog box
+ * @param duration {number} The duration to show the dialog box util it is faded out
+ */
+function showDialog(title, body, duration = 2000) {
+    document.getElementById("dialogBoxTitle").innerText = title;
+    document.getElementById("dialogBoxBody").innerText = body;
+    document.getElementById("dialogBox").style.display = "block";
+    // Fade out the dialog box after a certain duration
+    setTimeout(() => $("#dialogBox").fadeOut("slow"), duration);
+}
+
+
+// Add a visible and invisible function to the jQuery prototype
 if(typeof window !== 'undefined'){
     let $ = require("jquery");
     $.fn.visible = function() {return this.css('visibility', 'visible');};
@@ -65,4 +85,4 @@ if(typeof window !== 'undefined'){
 }
 
 
-export { Constants, Perms, SysEnv };
+export { Constants, Perms, SysEnv, showDialog };

@@ -2,43 +2,100 @@ import React, {useEffect, useState} from 'react';
 import '../scripts/globalListeners';
 
 import Head from 'next/head';
-import {setPageRegistry, setMasterFileSystem, masterFileSystem, pageRegistry, dehydratedInfo} from './fileSystem/buildfs';
+import {dehydratedInfo, masterFileSystem, pageRegistry, setMasterFileSystem, setPageRegistry} from './fileSystem/buildfs';
 import {pathJoin} from './fileSystem/fileSystem';
 import TerminalDiv from './terminal/terminal';
-import {SysEnv} from "./utils";
+import {showDialog, SysEnv} from "./utils";
 import $ from "jquery";
 import {newCustomFile} from "./fileSystem/fileSystemGUI";
 import PropTypes from "prop-types";
-import {buildHierarchy} from "./sidebar";
+import {buildSidebar, setSidebarState} from "./sidebar";
 
 
-function showDialog(title, body, duration = 2000){
-    document.getElementById("dialogBoxTitle").innerText = title;
-    document.getElementById("dialogBoxBody").innerText = body;
-    document.getElementById("dialogBox").style.display = "block";
-    setTimeout(() => $("#dialogBox").fadeOut("slow"), duration);
+/**
+ * Get the statistics of the current page file from the master file system or page registry
+ * @param currentPath {string} The current path of the page
+ * @return {{size: number, lines: number}} The size and line count of the page
+ */
+function getPageStats(currentPath){
+    let fileSize = 0;
+    let fileLines = 0;
+
+    // If the current path is a custom file, get the size and line count from the custom file
+    if(currentPath !== null && (currentPath.endsWith("display") || currentPath.endsWith("edit"))) {
+        let filePath = new URLSearchParams(window.location.search).get("file");
+        let customFile = masterFileSystem.getItem(filePath);
+        if(customFile !== null && customFile.text !== undefined){
+            fileSize = customFile.text.length;
+            fileLines = customFile.text.split(/\r\n|\r|\n/).length;
+        }
+    }
+    // If the current path is a page, get the size and estimated line count from the page registry
+    else if(currentPath !== null) {
+        let fullCurrentPath = pathJoin(SysEnv.PUBLIC_FOLDER, currentPath !== "/" ? currentPath.substring(1): "home.html");
+        fullCurrentPath = fullCurrentPath.endsWith(".html") ? fullCurrentPath : fullCurrentPath+".html";
+        if(Object.keys(pageRegistry).includes(fullCurrentPath)){
+            fileSize = pageRegistry[fullCurrentPath].size;
+            fileLines = Math.round(fileSize/140.6);
+        }
+    }
+
+    return {lines: fileLines, size: fileSize};
 }
 
 
-function spliceFromSubTree(subTree, name) {
-    for(let i=0; i<subTree.length; i++)
-        if(subTree[i].name === name) return subTree.splice(i,1)[0];
-    return null;
+/**
+ * Save the current custom page to the master file system
+ * @param currentPath {string} The current path of the page
+ */
+async function savePage(currentPath) {
+    // If the current path is not editing a custom file, show a dialog box error
+    if (!document.codeEditor) {
+        if (currentPath.endsWith("display"))
+            showDialog("File Cannot Be Saved", "This file must be in edit mode before saving!");
+        else showDialog("Permission Denied", "You do not have permission to edit this file!");
+        return;
+    }
+
+    // Save the file to the master file system
+    let editorText = document.codeEditor.state.doc.toString();
+    let filePath = new URLSearchParams(window.location.search).get("file");
+    masterFileSystem.writeText(filePath, editorText.replace("\t", ""));
+    // Clear the unsaved changes warning
+    window.onbeforeunload = null;
+
+    // Visual saving feedback
+    showDialog("File Saved", "The file has been saved!");
+    document.getElementsByClassName("cm-editor")[0].style.backgroundColor = "#626262";
+    await new Promise(r => setTimeout(r, 200));
+    document.getElementsByClassName("cm-editor")[0].style.backgroundColor = "";
 }
 
-function buildSidebar() {
 
-    let publicFolder = masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER).copy();
-    let subTreeCopy = [...publicFolder.subTree];
-    let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
-    let homeFile = spliceFromSubTree(subTreeCopy, "home.html");
-    let researchFolder = spliceFromSubTree(subTreeCopy, "research");
-    let hackFolder = spliceFromSubTree(subTreeCopy, "hackathons");
-    let customFolder = spliceFromSubTree(subTreeCopy, "custom");
-    let aboutFolder = spliceFromSubTree(subTreeCopy, "about");
-    subTreeCopy = [homeFile, helpFile, researchFolder, ...subTreeCopy, hackFolder, aboutFolder, customFolder];
-    publicFolder.subTree = subTreeCopy;
-    return buildHierarchy(publicFolder);
+/**
+ * Edit the current page if it is a custom file
+ * @param currentPath {string} The current path of the page
+ */
+function editPage(currentPath) {
+    let filePath = new URLSearchParams(window.location.search).get("file");
+    // Cancel if already editing
+    if(currentPath.endsWith("edit")) return;
+    // If the current path is not a custom file, show a dialog box error
+    if(filePath === null || !currentPath.endsWith("display"))
+        showDialog("Permission Denied", "You do not have permission to edit this file!");
+    else window.location.replace(`/edit?file=${filePath}`);
+
+}
+
+
+/**
+ * Reset the file system to its default state by deleting the hierarchy from local storage
+ */
+function resetFileSystem() {
+    if(confirm("Do you really want to reset the system?  This will delete all custom files and reset the site to its default state!")) {
+        delete localStorage.hierarchy;
+        window.location.replace("/");
+    }
 }
 
 
@@ -46,19 +103,21 @@ function buildSidebar() {
 const Wrapper = ({children, pageName}) => {
     const [explorerTree,   setExplorerTree] = useState(buildSidebar());
     const [currentPath, setCurrentPath] = useState(null);
-    const [sidebarOpen, setSidebarOpen] = useState(true);
 
+    // Update the sidebar when the file system is updated
     masterFileSystem.registerCallback((updateTime) => {
         setExplorerTree(buildSidebar());
     });
-
+    // Initialize the sidebar state and load the saved hierarchy
     useEffect(() => {
+        // Close the sidebar on mobile
         if(window.innerWidth < 600) setSidebarState(false);
-
+        // Remove the dehydrated info from the page
         if(document.getElementById("dehydrateInfo")) document.getElementById("dehydrateInfo").remove();
 
         setCurrentPath(window.location.pathname);
-        
+
+        // Load the saved hierarchy from local storage
         let savedHierarchy = localStorage.getItem("hierarchy");
         if(savedHierarchy) {
             console.log("Loading saved hierarchy!");
@@ -69,6 +128,7 @@ const Wrapper = ({children, pageName}) => {
             masterFileSystem.update();
         }
 
+        // Add the terminal button to the menu bar
         document.getElementById("terminalButton").classList.remove("gone");
 
         // Capture CTRL + S
@@ -76,65 +136,12 @@ const Wrapper = ({children, pageName}) => {
             if (e.ctrlKey && e.key === 's') {
                 // Prevent the Save dialog to open
                 e.preventDefault();
-                document.getElementById("saveAction").click();
+                savePage(currentPath);
             }
         });
-
-        document.showDialog = showDialog;
     }, []);
 
-    function setSidebarState(openState=!sidebarOpen, animate=true){
-        let sidebarMax = 230;
-        let sidebarMin = 50;
-        if(!openState){
-            $(".sidebarItem").invisible();
-            document.getElementById("sidebarContent").style.display = "none";
-            document.getElementById("sidebar").classList.replace("openSidebar", "closeSidebar");
-            document.getElementById("explorerTitle").style.display = "none";
-            document.getElementById("collapseHolder").classList.replace("openSidebar", "closeSidebar");
-            document.getElementsByClassName("page")[0].classList.remove("sidebarOpenPage");
-            $("#sidebarContent").animate({"width": "0px"}, animate ? 200 : 0);
-        }
-        else{
-            document.getElementById("sidebarContent").style.display = "block";
-            $("#sidebarContent").animate({"width": "100%"}, animate ? 200 : 0);
-            document.getElementById("sidebar").classList.replace("closeSidebar", "openSidebar");
-            document.getElementById("collapseHolder").classList.replace("closeSidebar", "openSidebar");
-            document.getElementsByClassName("page")[0].classList.add("sidebarOpenPage");
-            document.getElementById("explorerTitle").style.display = "";
-            $(".sidebarItem").visible();
-        }
-
-        $(".page").animate({"margin-left": (openState ? sidebarMax : sidebarMin )+"px"}, animate ? 200 : 0);
-        setSidebarOpen(openState);
-    }
-
-    function getPageStats(){
-        let fileSize = 0;
-        let fileLines = 0;
-
-        if(currentPath !== null && (currentPath.endsWith("display") || currentPath.endsWith("edit"))) {
-            let filePath = new URLSearchParams(window.location.search).get("file");
-            let customFile = masterFileSystem.getItem(filePath);
-            if(customFile !== null && customFile.text !== undefined){
-                fileSize = customFile.text.length;
-                fileLines = customFile.text.split(/\r\n|\r|\n/).length;
-            }
-        }
-        else if(currentPath !== null) {
-            let fullCurrentPath = pathJoin(SysEnv.PUBLIC_FOLDER, currentPath !== "/" ? currentPath.substring(1): "home.html");
-            fullCurrentPath = fullCurrentPath.endsWith(".html") ? fullCurrentPath : fullCurrentPath+".html";
-            if(Object.keys(pageRegistry).includes(fullCurrentPath)){
-                fileSize = pageRegistry[fullCurrentPath].size;
-                fileLines = Math.round(fileSize/140.6);
-            }
-        }
-
-        return {lines: fileLines, size: fileSize};
-    }
-
-    let pStats = getPageStats();
-
+    let pStats = getPageStats(currentPath);
     return (
         <div id="wrapper" className="w3-display-container">
             <Head>
@@ -161,44 +168,13 @@ const Wrapper = ({children, pageName}) => {
                         <button id="newAction" className="w3-button lightText menuDropItem"
                             onClick={() => {newCustomFile(); }}>New</button>
                         <button id="saveAction" className="w3-button lightText menuDropItem"
-                            onClick={async () => {
-                                if (!document.codeEditor) {
-                                    if (currentPath.endsWith("display"))
-                                        showDialog("File Cannot Be Saved", "This file must be in edit mode before saving!");
-                                    else showDialog("Permission Denied", "You do not have permission to edit this file!");
-                                    return;
-                                }
-
-                                let editorText = document.codeEditor.state.doc.toString();
-                                let filePath = new URLSearchParams(window.location.search).get("file");
-                                masterFileSystem.writeText(filePath, editorText.replace("\t", ""));
-                                window.onbeforeunload = null;
-
-                                // Visual saving feedback
-                                showDialog("File Saved", "The file has been saved!");
-
-                                document.getElementsByClassName("cm-editor")[0].style.backgroundColor = "#626262";
-                                await new Promise(r => setTimeout(r, 200));
-                                document.getElementsByClassName("cm-editor")[0].style.backgroundColor = "";
-                            }}>Save</button>
+                            onClick={() => savePage(currentPath)}>Save</button>
                         <button id="resetAction" className="w3-button lightText menuDropItem"
-                            onClick={() => {
-                                if(confirm("Do you really want to reset the system?")) {
-                                    delete localStorage.hierarchy;
-                                    window.location.replace("/");
-                                }
-                            }}>Reset</button>
+                            onClick={() => resetFileSystem()}>Reset</button>
                     </div>
                     <div id="editDropdown" className="menuDropdown w3-col">
                         <button id="editCurrentAction" className="w3-button lightText menuDropItem"
-                            onClick={() => {
-                                let filePath = new URLSearchParams(window.location.search).get("file");
-                                if(currentPath.endsWith("edit")) return;
-                                if(filePath === null || !currentPath.endsWith("display"))
-                                    document.showDialog("Permission Denied", "You do not have permission to edit this file!");
-                                else window.location.replace(`/edit?file=${filePath}`);
-
-                            }}>Edit Current Page</button>
+                            onClick={() => editPage(currentPath)}>Edit Current Page</button>
                     </div>
                     <div id="terminalDropdown" className="menuDropdown w3-col">
                         <button id="showTerminal" className="w3-button lightText menuDropItem"

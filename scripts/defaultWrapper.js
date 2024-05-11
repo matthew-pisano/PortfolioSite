@@ -3,6 +3,12 @@ import {buildPage} from "./pageBuilder";
 import {Wrapper} from "./wrapper";
 import React from "react";
 
+/**
+ * Default wrapper for pages that do not need any special handling.
+ * @param pageInfo {PageInfo} Information about the page to be displayed
+ * @param tiles {Tile[]} Tiles to be displayed on the page
+ * @return {JSX.Element} The page wrapped in the default wrapper
+ */
 const DefaultWrapper = ({pageInfo, tiles}) => {
     return (
         <Wrapper pageName={pageInfo.pageName}>

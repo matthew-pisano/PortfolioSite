@@ -561,7 +561,7 @@ class Commands {
         let valResult = this._validateArgs(args, {nargs: [0]});
         if (valResult) throw new Error(valResult);
 
-        return "guest";
+        return SysEnv.USER;
     }
 
     /**
