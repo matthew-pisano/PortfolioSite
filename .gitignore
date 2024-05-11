@@ -35,7 +35,6 @@ yarn-error.log*
 .idea
 gimp
 next.lock
-sandbox.js
 public/assets/resume.pdf
 
 deploy*

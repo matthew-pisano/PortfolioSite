@@ -1,8 +1,8 @@
 import { Perms, SysEnv } from '../utils';
 import { pathJoin } from '../fileSystem/fileSystem';
 import { masterFileSystem, pageRegistry } from '../fileSystem/buildfs';
-import {resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal } from './commandResources';
-import { tfLogo, neofetch } from './strings';
+import {resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer} from './commandResources';
+import {tfLogo, neofetch, system32, letoucan, pacerTest} from './strings';
 import toVoid from "./void";
 import {Directory, File} from "../fileSystem/fileSystemObjects";
 import $ from "jquery";
@@ -277,6 +277,10 @@ class Commands {
         if (valResult) throw new Error(valResult);
 
         let pathArg = args.length > 1 ? args[1] : args[0];
+
+        if (pathArg.replace(/\\/g, "/") === "C:/Windows/System32")
+            throw new Error(system32);
+
         let fileName = this.resolvePath(pathArg);
         masterFileSystem.rm(fileName, args.length > 1 ? args[0] : "");
 
@@ -536,6 +540,32 @@ class Commands {
         if (valResult) throw new Error(valResult);
 
         return eightBall();
+    }
+
+    /**
+     * Displays the toucan ASCII art
+     * @param args {string[]} The arguments passed to the command
+     * @return {string} The toucan ASCII art
+     */
+    static toucan(args) {
+        if (args[0] === "--help") return Help.toucan;
+        let valResult = this._validateArgs(args, {nargs: [0]});
+        if (valResult) throw new Error(valResult);
+
+        return letoucan;
+    }
+
+    /**
+     * Runs the pacer test
+     * @param args {string[]} The arguments passed to the command
+     */
+    static pacer(args) {
+        if (args[0] === "--help") return Help.pacer;
+        let valResult = this._validateArgs(args, {nargs: [0]});
+        if (valResult) throw new Error(valResult);
+
+        runPacer();
+        return "";
     }
 
     /**

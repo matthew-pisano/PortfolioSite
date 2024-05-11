@@ -49,9 +49,10 @@ function getPageStats(currentPath){
  * @param currentPath {string} The current path of the page
  */
 async function savePage(currentPath) {
+
     // If the current path is not editing a custom file, show a dialog box error
     if (!document.codeEditor) {
-        if (currentPath.endsWith("display"))
+        if (currentPath && currentPath.endsWith("display"))
             showDialog("File Cannot Be Saved", "This file must be in edit mode before saving!");
         else showDialog("Permission Denied", "You do not have permission to edit this file!");
         return;

@@ -1,5 +1,5 @@
 import {SysEnv} from "../utils";
-import {eightballResponses, hal9000} from "./strings";
+import {eightballResponses, hal9000, pacerTest} from "./strings";
 
 
 /**
@@ -43,6 +43,8 @@ class Help {
     static whoami = "whoami - displays the current user";
     static void = "void - ██████████████";
     static admin = "admin - Administrator use only";
+    static toucan = "toucan - le toucan has arrived";
+    static pacer = "pacer - the FitnessGram™ Pacer Test is...";
 
     /**
      * Aggregates all the help information into a single string
@@ -151,6 +153,35 @@ function hal(msg) {
 
 
 /**
+ * Runs the FitnessGram™ Pacer Test
+ */
+async function runPacer(){
+    // Delay for the terminal to catch up
+    await new Promise(resolve => setTimeout(resolve, 500));
+    let terminalOutput = document.getElementById('terminalOutput');
+    terminalOutput.innerHTML += pacerTest;
+    // Play the instruction audio
+    await new Audio('/media/audio/pacer.mp3').play();
+    await new Promise(resolve => setTimeout(resolve, 42000));
+
+    let numbers = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
+    let delays = [2000, 1900, 1800, 1700, 1600, 1500, 1400, 1300, 1200, 1100];
+
+    // Display the numbers and play the beep
+    let beep = new Audio('/media/audio/pacerBeep.mp3');
+    for(let i=0; i<numbers.length; i++){
+        await new Promise(resolve => setTimeout(resolve, delays[i]));
+        terminalOutput.innerHTML += `<br>[beep] ${numbers[i]}<br>`;
+        await beep.play();
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+
+    terminalOutput.innerHTML += "<br>End Test<br>";
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
+
+
+/**
  * Tokenizes a command string into an array of tokens
  * @param command {string} The command string to tokenize
  * @return {string[]} The array of tokens
@@ -220,4 +251,4 @@ function resolveTokens(env, tokens) {
     }
 }
 
-export { resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal };
+export { resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer };

@@ -29,8 +29,8 @@ function buildDirectory(directory, path) {
                 document.getElementById("langStatus").innerText = "";
                 document.getElementById("encodingStatus").innerText = "";
                 document.getElementById("linesStatus").innerText = "";
-                document.getElementById("sizeStatus").innerText = "Children: " + directory.subTree.length;
-                document.getElementById("itemStatus").innerText = directory.name;
+                document.getElementById("sizeStatus").innerText = directory.subTree.length > 1 ? `${directory.subTree.length} Children` : `${directory.subTree.length} Child`;
+                document.getElementById("itemStatus").innerText = directory.name+"/";
             }}
             onMouseLeave={() => {
                 // Restore the status bar to its previous state
