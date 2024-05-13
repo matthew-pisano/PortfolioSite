@@ -15,17 +15,18 @@ html {
     white-space: nowrap;
 }
 
-.lightText {
-    color: azure;
-}
-
 .gone {
     display: none;
 }
 
 a {
-    color: #add3ee !important;
+    color: #add3ee;
 }
+
+.lightText {
+    color: azure;
+}
+
 
 .tabCell {
     border: 1px solid azure;

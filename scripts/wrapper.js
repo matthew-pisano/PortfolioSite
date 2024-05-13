@@ -140,6 +140,11 @@ const Wrapper = ({children, pageName}) => {
                 savePage(currentPath);
             }
         });
+        let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
+        if (pagePath.endsWith("display") || pagePath.endsWith("edit")) pagePath = window.location.search.split("file=")[1];
+        let selectedLink = document.querySelectorAll(`.sidebarItem[linkPath="${pagePath}"]`)[0];
+        if (selectedLink) selectedLink.style.backgroundColor = "#6a6a6a";
+
     }, []);
 
     let pStats = getPageStats(currentPath);

@@ -17,29 +17,31 @@ function buildDirectory(directory, path) {
     let name = directory.name + "-Folder";
     let langStatus, encodingStatus, linesStatus, sizeStatus, itemStatus;
     return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row">
-            <img className='folderIcon' alt='folder'/>
-            <button className="w3-button lightText" onMouseEnter={() => {
-                // Save the current status information and update the status bar with the directory information
-                langStatus = document.getElementById("langStatus").innerText;
-                encodingStatus = document.getElementById("encodingStatus").innerText;
-                linesStatus = document.getElementById("linesStatus").innerText;
-                sizeStatus = document.getElementById("sizeStatus").innerText;
-                itemStatus = document.getElementById("itemStatus").innerText;
+            <div className="sidebarFolderHeader" onMouseEnter={() => {
+                    // Save the current status information and update the status bar with the directory information
+                    langStatus = document.getElementById("langStatus").innerText;
+                    encodingStatus = document.getElementById("encodingStatus").innerText;
+                    linesStatus = document.getElementById("linesStatus").innerText;
+                    sizeStatus = document.getElementById("sizeStatus").innerText;
+                    itemStatus = document.getElementById("itemStatus").innerText;
 
-                document.getElementById("langStatus").innerText = "";
-                document.getElementById("encodingStatus").innerText = "";
-                document.getElementById("linesStatus").innerText = "";
-                document.getElementById("sizeStatus").innerText = directory.subTree.length > 1 ? `${directory.subTree.length} Children` : `${directory.subTree.length} Child`;
-                document.getElementById("itemStatus").innerText = directory.name+"/";
-            }}
-            onMouseLeave={() => {
-                // Restore the status bar to its previous state
-                document.getElementById("langStatus").innerText = langStatus;
-                document.getElementById("encodingStatus").innerText = encodingStatus;
-                document.getElementById("linesStatus").innerText = linesStatus;
-                document.getElementById("sizeStatus").innerText = sizeStatus;
-                document.getElementById("itemStatus").innerText = itemStatus;
-            }}>{directory.name}</button>
+                    document.getElementById("langStatus").innerText = "";
+                    document.getElementById("encodingStatus").innerText = "";
+                    document.getElementById("linesStatus").innerText = "";
+                    document.getElementById("sizeStatus").innerText = directory.subTree.length > 1 ? `${directory.subTree.length} Children` : `${directory.subTree.length} Child`;
+                    document.getElementById("itemStatus").innerText = directory.name+"/";
+                }}
+                onMouseLeave={() => {
+                    // Restore the status bar to its previous state
+                    document.getElementById("langStatus").innerText = langStatus;
+                    document.getElementById("encodingStatus").innerText = encodingStatus;
+                    document.getElementById("linesStatus").innerText = linesStatus;
+                    document.getElementById("sizeStatus").innerText = sizeStatus;
+                    document.getElementById("itemStatus").innerText = itemStatus;
+                }}>
+                <img className='folderIcon'/>
+                <span className="lightText">{directory.name}</span>
+            </div>
 
             <div id={directory.name + "Content"} className="w3-row sidebarContent">
                 {directory.subTree.map(child => buildHierarchy(child, path + "/" + directory.name))}
@@ -59,19 +61,22 @@ function buildFile(file, path) {
     let name = file.name.split(".")[0];
 
     let urlPath;
+    let linkPath;
     // Link to the file if it is a page, otherwise link to the display page to show a custom file
-    if (pageRegistry[pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)])
+    if (pageRegistry[pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)]) {
         urlPath = pathJoin(path.replace("public", ""), name);
+        linkPath = urlPath;
+    }
     else {
         urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
-        editIcon = <img className='editButton' alt='html' onClick={() => {
+        linkPath = `${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
+        editIcon = <img className='editButton' alt='edit' onClick={() => {
             window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`);
         }}/>;
     }
 
-    return <div key={name + "-File"} id={name + "-File"} className="sidebarItem w3-row">
-        <img className='htmlIcon' alt='html'/>
-        <a id={name + "-FileLink"} className="w3-button lightText" style={{padding: 0}} href={urlPath} onContextMenu={(e) => {
+    // eslint-disable-next-line react/no-unknown-property
+    return <div key={name + "-File"} id={name + "-File"} className="sidebarItem sidebarLink w3-row" linkPath={linkPath} onContextMenu={(e) => {
             createContextMenu(e, {
                 // Rename the file
                 rename: () => {
@@ -120,7 +125,9 @@ function buildFile(file, path) {
             });
             // Prevent the default context menu from appearing
             e.preventDefault();
-        }}>{file.name}</a>
+        }}>
+        <img className='htmlIcon'/>
+        <a id={name + "-FileLink"} className="lightText" href={urlPath}>{file.name}</a>
         {editIcon}
     </div>;
 }
@@ -185,7 +192,7 @@ let sidebarOpen = true;
  * @param animate {boolean} Whether to animate the sidebar state change
  */
 function setSidebarState(openState =! sidebarOpen, animate = true){
-    let sidebarMax = 230;
+    let sidebarMax = 240;
     let sidebarMin = 50;
     if(!openState){
         $(".sidebarItem").invisible();

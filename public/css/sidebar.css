@@ -1,0 +1,149 @@
+.openSidebar {
+    width: 240px;
+}
+
+.closeSidebar {
+    width: 50px;
+}
+
+#sidebar {
+    bottom: 30px;
+    top: 25px;
+    position: fixed;
+    z-index: 2;
+    overflow-y: auto;
+    background-color: #313131;
+}
+
+#collapseHolder {
+    position: fixed;
+    z-index: 3;
+    width: 0px;
+    background-color: #313131;
+}
+
+#sidebarContent {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.sidebarItem {
+    border-style: none none none solid;
+    border-color: azure;
+    border-width: 2px;
+}
+
+.sidebarFolderHeader {
+    border-radius: 0px 5px 5px 0px;
+}
+
+.sidebarFolderHeader span {
+    cursor: default;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.sidebarItem {
+    padding: 1px;
+    width: 100%;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.sidebarItem a {
+    padding: 0px;
+    text-decoration: none;
+    flex-grow: 1;
+}
+
+.sidebarLink {
+    display: flex;
+}
+
+.sidebarLink a:hover {
+    background-color: #3e4146 !important;
+}
+
+.sidebarFolderHeader:hover, .sidebarLink:hover{
+    background-color: #3e4146 !important;
+}
+
+.sidebarItem img{
+    width: 15px;
+    max-width: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    object-fit: contain;
+}
+
+.folderIcon{
+    content:url("../assets/folder.png");
+}
+
+.htmlIcon{
+    content:url("../assets/htmlFile.png");
+}
+
+.sidebarContent{
+    padding-left: 15px;
+}
+
+#explorerTitle{
+    text-align: left;
+    border-style: none;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+#collapseSidebar {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    padding: 1px;
+    color: azure;
+    background-color: #414141;
+    border-style: none none none solid;
+    border-color: azure;
+    border-width: 2px;
+    background-image: url("../assets/explorerIcon.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#collapseSidebar:hover {
+    background-color: #51555b !important;
+    color: azure !important;
+}
+
+.editButton{
+    content:url("../assets/edit.png");
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.fileRenamer {
+    max-width: 100px;
+    max-height: 30px;
+    background-color: #414141;
+    color: azure;
+}
+.contextMenu {
+    width: 200px;
+    border-style: solid;
+    border-color: azure;
+    border-width: 2px;
+    z-index: 100;
+    position: fixed;
+    background-color: #414141;
+    color: azure;
+}
+
+.contextMenuItem {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border-bottom: solid;
+    border-color: azure;
+    border-width: 1px;
+}

@@ -20,9 +20,6 @@
 }
 
 #terminalOutput{
-    /*position: fixed;*/
-    /*bottom: 70px;*/
-    /*height: 0px;*/
     width: 100%;
 }
 
@@ -32,18 +29,12 @@
 }
 
 #terminalPrompt{
-    /*position: fixed;*/
-    /*bottom: 30px;*/
     height: 40px;
-    width: auto;
     float: left;
 }
 
 #terminalInput{
-    /*position: fixed;*/
-    /*bottom: 30px;*/
     height: 40px;
-    /*width: 100%;*/
 }
 
 #terminalInput:focus-visible{
@@ -51,12 +42,11 @@
 }
 
 #terminal{
-    /*border: 1px solid black;*/
-    /*height: 30px;*/
     cursor: text;
     overflow-y: scroll;
     overflow-x: hidden;
     display: none;
+    overscroll-behavior-y: contain;
 }
 
 #terminalThumb{

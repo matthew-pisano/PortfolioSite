@@ -11,6 +11,7 @@ export default function Document() {
                 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
                 <link href="/css/common.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/terminal.css" rel="stylesheet" type="text/css"/>
+                <link href="/css/sidebar.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/toolbars.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/pages.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/tags.css" rel="stylesheet" type="text/css"/>

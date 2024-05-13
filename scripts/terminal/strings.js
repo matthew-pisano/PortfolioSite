@@ -188,7 +188,7 @@ const hal9000 = `
 '==============='`.replace(/ /g, "\xa0");
 
 
-const system32 = `Nice try, however I'd just like to interject for a moment.  You have failed to consider that this operating system is not a Microsoft Windows machine!  Rather, this is a GNU/Linux-based system, or or as I've recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX.
+const system32 = `Nice try, however I'd just like to interject for a moment.  You have failed to consider that this system is not a Microsoft Windows machine!  Rather, this is a GNU/Linux-based system, or or as I've recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX.
 
 Many computer users run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called Linux, and many of its users are not aware that it is basically the GNU system, developed by the GNU Project.
 
