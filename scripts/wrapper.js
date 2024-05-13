@@ -134,7 +134,7 @@ const Wrapper = ({children, pageName}) => {
 
         // Capture CTRL + S
         document.addEventListener('keydown', e => {
-            if (e.ctrlKey && e.key === 's') {
+            if (e.ctrlKey && e.key === 's' && !e.shiftKey && !e.altKey) {
                 // Prevent the Save dialog to open
                 e.preventDefault();
                 savePage(currentPath);
@@ -179,7 +179,7 @@ const Wrapper = ({children, pageName}) => {
                     </div>
                     <div id="terminalDropdown" className="menuDropdown w3-col">
                         <button id="showTerminal" className="w3-button lightText menuDropItem"
-                            onClick={() => {document.getElementById("terminal").click();}}>Open Terminal</button>
+                            onClick={() => {document.getElementById("terminalHeader").click();}}>Open Terminal</button>
                         <button id="hideTerminal" className="w3-button lightText menuDropItem"
                             onClick={() => {document.getElementById("terminal").dispatchEvent(new CustomEvent("close"));}}>Close Terminal</button>
                     </div>

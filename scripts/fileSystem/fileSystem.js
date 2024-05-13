@@ -1,25 +1,5 @@
 import {Perms} from "../utils";
 import {Directory, File} from "./fileSystemObjects";
-import {rmRoot} from "../terminal/strings";
-
-
-/**
- * Displays the root deletion message and displays the BSOD
- */
-async function rmRootMsg() {
-
-    let terminalOutput = document.getElementById('terminalOutput');
-    let lines = rmRoot.split("\n");
-    for (let i = 0; i < lines.length; i++) {
-        terminalOutput.innerHTML += lines[i] + "<br>";
-        terminalOutput.scrollTop = terminalOutput.scrollHeight;
-        await new Promise(resolve => setTimeout(resolve, 20));
-    }
-    document.getElementById("sidebarContent").innerText = "";
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    window.document.documentElement.style.backgroundColor = "#010082";
-    window.document.body.innerHTML = '<img src="/media/image/bsod.png" alt="bsod" style="width: 100%;"/>';
-}
 
 
 /**
@@ -195,13 +175,6 @@ class FileSystem {
 
         if (!this.exists(path))
             throw new Error(`Cannot remove file or directory.  File or directory at ${path} does not exist!`);
-
-        // Check if the root directory is being removed and if the -rf option is used
-        if (path === "/" && (["-rf", "-fr"].includes(options))) {
-            rmRootMsg();
-            return null;
-        } else if (path === "/")
-            throw new Error(`Permission denied for path '/'!  Use -rf to force.`);
 
         let parentPath = path.substring(0, path.lastIndexOf("/") + 1);
         let childName = path.substring(path.lastIndexOf("/") + 1);

@@ -1,3 +1,9 @@
+#terminalClose {
+    float: right;
+    margin-right: 10px;
+    visibility: hidden;
+}
+
 #terminalClose:hover{
     background-color: #313131 !important;
     color: azure !important;
@@ -14,30 +20,30 @@
 }
 
 #terminalOutput{
-    position: fixed;
-    bottom: 70px;
-    height: 0px;
+    /*position: fixed;*/
+    /*bottom: 70px;*/
+    /*height: 0px;*/
     width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 
 #terminalHeader {
     cursor: pointer;
+    height: 40px;
 }
 
 #terminalPrompt{
-    position: fixed;
-    bottom: 30px;
+    /*position: fixed;*/
+    /*bottom: 30px;*/
     height: 40px;
     width: auto;
+    float: left;
 }
 
 #terminalInput{
-    position: fixed;
-    bottom: 30px;
+    /*position: fixed;*/
+    /*bottom: 30px;*/
     height: 40px;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 #terminalInput:focus-visible{
@@ -45,9 +51,12 @@
 }
 
 #terminal{
-    border: 1px solid black;
-    height: 30px;
+    /*border: 1px solid black;*/
+    /*height: 30px;*/
     cursor: text;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: none;
 }
 
 #terminalThumb{

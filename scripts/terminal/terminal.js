@@ -24,7 +24,7 @@ const TerminalDiv = () => {
      */
     function genPrompt (cwd) {
         if (cwd.startsWith(SysEnv.HOME_FOLDER)) cwd = cwd.replace(SysEnv.HOME_FOLDER, "~");
-        return "[" + cwd + "]$ ";
+        return `[${SysEnv.USER}]-(${cwd})$ `;
     }
 
     const [prompt, setPrompt] = useState(genPrompt(SysEnv.HOME_FOLDER));
@@ -38,7 +38,7 @@ const TerminalDiv = () => {
         });
 
         document.getElementById("terminal").addEventListener("close", (evt) => {
-            resize(0);
+            exit();
         });
 
         document.getElementById("terminalInput").addEventListener("submit", (evt) => {
@@ -69,31 +69,29 @@ const TerminalDiv = () => {
      * @param height {number} The height to resize to
      */
     function resize(height) {
+        let terminal = document.getElementById('terminal');
         // Ensure the terminal is not too tall
-        if (height > window.innerHeight - 80) height = window.innerHeight - 80;
+        if (height > window.innerHeight - 120)
+            height = window.innerHeight - 120;
+        else if (height < 90)
+            height = 90;
+
         // Resize the terminal to the given height
-        if ((height > 200 || ENV.CLOSED) && height > 90) {
-            document.getElementById('terminal').style.height = `${height}px`;
-            document.getElementById('terminalOutput').style.height = `${height - 80}px`;
-            $('#terminalClose').visible();
-            $('#terminalBottom').visible();
-            document.getElementById('terminalInput').focus();
-            ENV.CLOSED = false;
-            setENV(ENV);
-        }
-        // Close the terminal if it is too small
-        else {
-            ENV.CLOSED = true;
-            setENV(ENV);
-            Commands.exit([]);
-        }
+        terminal.style.height = `${height}px`;
+        terminal.style.display = "block";
+        document.getElementById('terminalInput').focus();
+        document.getElementById('terminalClose').style.visibility = "visible";
+        ENV.CLOSED = false;
+        setENV(ENV);
     }
 
     /**
      * Submits the command in the terminal input
      */
-    function submit() {
+    async function submit() {
+        let terminal = document.getElementById('terminal');
         let terminalInput = document.getElementById('terminalInput');
+        let terminalBottom = document.getElementById('terminalBottom');
         let terminalOutput = document.getElementById('terminalOutput');
 
         // Sanitize the command from the input
@@ -101,6 +99,7 @@ const TerminalDiv = () => {
         command = command.replace(/\xa0/g, " ");
         // Clear the terminal input area
         terminalInput.innerText = "";
+        terminalBottom.style.visibility = "hidden";
 
         // Add the command to the history
         if (prevCommands[0] === "" && command.length > 0) setPrevCommands([command, ...prevCommands.slice(1)]);
@@ -109,11 +108,18 @@ const TerminalDiv = () => {
         setDraftCommand("");
         setCommandIndex(-1);
 
+        if (!terminalOutput.innerText.endsWith("\n") && terminalOutput.innerText) terminalOutput.innerText += "\n";
+        terminalOutput.innerText += prompt + command + "\n";
+
         // Parse the command and update the environment
-        const { result: result, env: newEnv } = Commands.parseCommand(command, ENV);
-        setENV(newEnv);
-        // Update the terminal output with the command and result
-        terminalOutput.innerText += "\n" + prompt + command + "\n" + result + "\n";
+        for await (let line of Commands.parseCommand(command, ENV)) {
+            setENV(Commands.ENV);
+            // Update the terminal output with next line
+            terminalOutput.innerText += line;
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        terminalBottom.style.visibility = "visible";
     }
 
     /**
@@ -139,10 +145,10 @@ const TerminalDiv = () => {
         let terminalInput = document.getElementById('terminalInput');
         // Handle the arrow keys to navigate the command history
         if (e.code === "ArrowUp") {
-            if (commandIndex === -1 && terminalInput.innerText.length > 0) {
+            // Save the draft command if it is not in the history
+            if (commandIndex === -1 && terminalInput.innerText.length > 0)
                 setDraftCommand(terminalInput.innerText.replace("\n", "").replace("\r", ""));
-                console.log("Saving command '" + terminalInput.innerText.replace("\n", "").replace("\r", "") + "'");
-            }
+
             if (commandIndex < prevCommands.length - 1) {
                 setCommandIndex(commandIndex + 1);
                 newI++;
@@ -158,28 +164,33 @@ const TerminalDiv = () => {
         }
     }
 
+    /**
+     * Exits the terminal
+     */
+    async function exit() {
+        Commands.ENV = ENV;
+        await Commands.exit([]).next();
+        setENV(Commands.ENV);
+    }
+
     return (
         <div id="terminalHolder" className='w3-row gone'>
             <div id='terminalThumb'
-                draggable='true'
-                onDragStart={dragStart}
-                onDragEnd={(e) => resize(initialSize + initialPos - e.clientY + 50)}
+                 draggable='true'
+                 onDragStart={dragStart}
+                 onDragEnd={(e) => resize(initialSize + initialPos - e.clientY)}
             />
-            <div id='terminal' onClick={() => {
+            <div id="terminalHeader" onClick={() => {
                 if (ENV.CLOSED && Date.now() - ENV.CLOSE_TIME > 500) resize(210);
             }}>
-                <div id="terminalHeader"><span>/bin/mash</span>
-                    <button id="terminalClose" className='w3-button' style={{ float: "right", marginRight: "10px", visibility: "hidden" }}
-                        onClick={() => {
-                            Commands.exit([]);
-                            ENV.CLOSED = true;
-                            ENV.CLOSE_TIME = Date.now();
-                            setENV(ENV);
-                        }}>X</button></div>
-                <div id="terminalOutput" onClick={() => document.getElementById('terminalInput').focus()}></div>
-                <div id="terminalBottom" style={{ visibility: "hidden" }}>
+                <span>/bin/mash</span>
+                <button id="terminalClose" className='w3-button' onClick={exit}>X</button>
+            </div>
+            <div id='terminal' onClick={() => document.getElementById('terminalInput').focus()}>
+                <div id="terminalOutput"></div>
+                <div id="terminalBottom">
                     <div id="terminalPrompt">{prompt}</div>
-                    <div id="terminalInput" style={{ marginLeft: (9 * prompt.length + 5) + "px" }} contentEditable="true" onInput={onInput} onKeyDown={onKeyDown}></div>
+                    <div id="terminalInput" style={{marginLeft: (9 * prompt.length + 5) + "px"}} contentEditable="true" onInput={onInput} onKeyDown={onKeyDown}></div>
                 </div>
             </div>
         </div>

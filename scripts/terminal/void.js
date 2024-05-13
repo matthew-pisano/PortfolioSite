@@ -32,21 +32,15 @@ function addFullscreenEvents() {
 /**
  * Sets the body to a void and allows the user to fullscreen the void
  */
-async function toVoid(){
+async function *toVoid(){
     addFullscreenEvents();
 
-    let terminalOutput = document.getElementById('terminalOutput');
     let voidStr = "I T - C O N S U M E S - A L L";
-    let initLen = voidStr.length;
     await new Promise(resolve => setTimeout(resolve, 500));
 
     // Slowly print the void string
-    while(voidStr.length > 0){
-        let next = voidStr.charAt(0);
-        document.getElementById('terminalOutput').innerHTML += next !== " " ? next : "&nbsp;";
-        if(voidStr.length === initLen)
-            terminalOutput.scrollTop = terminalOutput.scrollHeight;
-        voidStr = voidStr.substring(1);
+    for (let letter of voidStr) {
+        yield letter;
         await new Promise(resolve => setTimeout(resolve, 100));
     }
 

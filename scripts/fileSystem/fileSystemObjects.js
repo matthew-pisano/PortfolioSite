@@ -51,7 +51,6 @@ class File {
     static fromDict(dict) {
         let newFile = new File(dict.name, dict.text, dict.permission);
         newFile.modified = dict.modified;
-        console.log(newFile);
         return newFile;
     }
 }

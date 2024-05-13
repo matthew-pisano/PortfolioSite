@@ -1,5 +1,5 @@
 import {SysEnv} from "../utils";
-import {eightballResponses, hal9000, pacerTest} from "./strings";
+import {eightballResponses, hal9000, pacerTest, rmRoot} from "./strings";
 
 
 /**
@@ -110,25 +110,22 @@ ${this._aggregateSecretHelp()}`;
 /**
  * Computes the solution to the halting problem...then segfaults
  */
-async function haltingProblem(){
+async function *haltingProblem(){
     let dots = 7;
-    let terminalOutput = document.getElementById('terminalOutput');
 
     await new Promise(resolve => setTimeout(resolve, 250));
-    terminalOutput.innerHTML += "Computing solution to halting problem";
-    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    yield "Computing solution to halting problem";
     // Loading dots
     while(dots > 0){
-        terminalOutput.innerHTML += ".";
+        yield ".";
         await new Promise(resolve => setTimeout(resolve, 500));
         dots --;
     }
 
-    terminalOutput.innerHTML += "<br>Operation completed successfully!<br>Printing solution...";
-    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    yield "\nOperation completed successfully!";
+    yield "\nPrinting solution...";
     await new Promise(resolve => setTimeout(resolve, 1500));
-    terminalOutput.innerHTML += "<br>Segmentation fault (core dumped)";
-    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    yield "\nSegmentation fault (core dumped)";
 }
 
 
@@ -155,11 +152,10 @@ function hal(msg) {
 /**
  * Runs the FitnessGram™ Pacer Test
  */
-async function runPacer(){
+async function *runPacer(){
     // Delay for the terminal to catch up
     await new Promise(resolve => setTimeout(resolve, 500));
-    let terminalOutput = document.getElementById('terminalOutput');
-    terminalOutput.innerHTML += pacerTest;
+    yield pacerTest;
     // Play the instruction audio
     await new Audio('/media/audio/pacer.mp3').play();
     await new Promise(resolve => setTimeout(resolve, 42000));
@@ -171,13 +167,61 @@ async function runPacer(){
     let beep = new Audio('/media/audio/pacerBeep.mp3');
     for(let i=0; i<numbers.length; i++){
         await new Promise(resolve => setTimeout(resolve, delays[i]));
-        terminalOutput.innerHTML += `<br>[beep] ${numbers[i]}<br>`;
+        yield `\n[beep] ${numbers[i]}\n`;
         await beep.play();
-        terminalOutput.scrollTop = terminalOutput.scrollHeight;
     }
 
-    terminalOutput.innerHTML += "<br>End Test<br>";
-    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    yield "\nEnd Test";
+}
+
+
+/**
+ * Removes all styles from an element and its children
+ * @param el {HTMLElement|ChildNode} The element to remove styles from
+ * @param delay {number} The delay between removing styles
+ */
+async function removeStyles(el, delay){
+    await new Promise(resolve => setTimeout(resolve, delay));
+    el.removeAttribute('style');
+    el.setAttribute('src', '');
+    el.setAttribute('class', '');
+    el.style.display = "none";
+    el.style.display = "";
+
+    for (const x of el.childNodes) {
+        if(x.nodeType === 1) await removeStyles(x);
+    }
+}
+
+
+
+/**
+ * Displays the root deletion message and displays the BSOD
+ */
+async function *rmRootMsg() {
+
+    let lines = rmRoot.split("\n");
+    for (let i = 0; i < lines.length; i++) {
+        yield lines[i]+"\n";
+        await new Promise(resolve => setTimeout(resolve, 20));
+    }
+    let pageElem = document.getElementsByClassName("page")[0];
+    document.getElementById("menuDropHolder").remove();
+    for (let statusElem of ["langStatus", "encodingStatus", "linesStatus", "sizeStatus", "itemStatus"]) {
+        document.getElementById(statusElem).innerText = "???";
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    await removeStyles(document.documentElement, 300);
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    document.getElementById("sidebarContent").innerHTML = `<p style="color: red">ERROR: Could not read directory '${SysEnv.PUBLIC_FOLDER}'</p>`;
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    pageElem.innerHTML = `<p style="color: red">ERROR: File not found</p>`;
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    window.document.documentElement.style.backgroundColor = "#010082";
+    window.document.body.innerHTML = '<img src="/media/image/bsod.png" alt="bsod" style="width: 100%;"/>';
 }
 
 
@@ -216,7 +260,6 @@ function tokenizeCommand(command){
     }
     // Add new token to list
     if(activeToken !== "") tokens.push(activeToken);
-    console.log("Tokens:", tokens);
 
     return tokens;
 }
@@ -251,4 +294,4 @@ function resolveTokens(env, tokens) {
     }
 }
 
-export { resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer };
+export { resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer, rmRootMsg };
