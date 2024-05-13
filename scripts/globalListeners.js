@@ -21,21 +21,24 @@ function slideTilesOnScroll() {
 
         if(tileElement.id === "") continue;
         let tile = document.getElementById(tileElement.id);
-        let defaultMargin = "3%";
+        let defaultMargin = 3;
         // If the tile is not in the tile positions, add it
         if(tilePositions[tileElement.id] === undefined)
             tilePositions[tileElement.id] = {isOffset: false, default: defaultMargin, initial: true};
 
         let viewportOffset = tile.getBoundingClientRect();
         let top = viewportOffset.top;
+        let jTile = $("#"+tileElement.id);
         // If the tile is in view and offset, slide it into view
         if(top <= window.innerHeight && tilePositions[tileElement.id].isOffset){
-            $("#"+tileElement.id).animate({"margin-left": tilePositions[tileElement.id].default}, 700);
+            jTile.animate({"margin-left": tilePositions[tileElement.id].default+"%"}, {duration: 700, queue: false});
+            jTile.animate({"margin-right": "20px"}, {duration: 700, queue: false});
             tilePositions[tileElement.id].isOffset = false;
         }
         // Sides the tile off screen if it is out of view as the page initially loads
         else if(top > window.innerHeight && !tilePositions[tileElement.id].isOffset && tilePositions[tileElement.id].initial){
-            $("#"+tileElement.id).animate({"margin-left": "90%"}, 0);
+            jTile.animate({"margin-left": "90%"}, 0);
+            jTile.animate({"margin-right": "-87%"}, 0);
             tilePositions[tileElement.id].isOffset = true;
             tilePositions[tileElement.id].initial = false;
         }

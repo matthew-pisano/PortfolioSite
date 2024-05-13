@@ -340,12 +340,17 @@ class Commands {
      */
     static async *color(args) {
         if (args[0] === "--help") {yield Help.color; return;}
-        let valResult = this._validateArgs(args, {nargs: [1]});
+        let valResult = this._validateArgs(args, {nargs: [0, 1]});
         if (valResult) throw new Error(valResult);
+
+        if (args.length === 0) {
+            this.ENV.COLOR = "azure";
+            return;
+        }
 
         if (args[0].match(/#[0-9|a-f|A-F]{6}/) || args[0].match(/#[0-9|a-f|A-F]{3}/))
             this.ENV.COLOR = args[0];
-        else throw new Error(`${args[0]} is not a valid color!`);
+        else throw new Error(`${args[0]} is not a valid color.  Use --help for more information.`);
     }
 
     /**

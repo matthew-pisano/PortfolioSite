@@ -24,7 +24,7 @@ const TerminalDiv = () => {
      */
     function genPrompt (cwd) {
         if (cwd.startsWith(SysEnv.HOME_FOLDER)) cwd = cwd.replace(SysEnv.HOME_FOLDER, "~");
-        return `[${SysEnv.USER}]-(${cwd})$ `;
+        return `[${SysEnv.USER}]-(${cwd})$\u00A0`;
     }
 
     const [prompt, setPrompt] = useState(genPrompt(SysEnv.HOME_FOLDER));
@@ -190,7 +190,7 @@ const TerminalDiv = () => {
                 <div id="terminalOutput"></div>
                 <div id="terminalBottom">
                     <div id="terminalPrompt">{prompt}</div>
-                    <div id="terminalInput" style={{marginLeft: (9 * prompt.length + 5) + "px"}} contentEditable="true" onInput={onInput} onKeyDown={onKeyDown}></div>
+                    <div id="terminalInput" contentEditable="true" onInput={onInput} onKeyDown={onKeyDown}></div>
                 </div>
             </div>
         </div>

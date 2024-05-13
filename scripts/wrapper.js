@@ -140,6 +140,15 @@ const Wrapper = ({children, pageName}) => {
                 savePage(currentPath);
             }
         });
+
+        // Capture CTRL + ALT + T
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.altKey && e.key === 't' && !e.shiftKey) {
+                // Prevent the Save dialog to open
+                e.preventDefault();
+                document.getElementById("terminalHeader").click();
+            }
+        });
         let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
         if (pagePath.endsWith("display") || pagePath.endsWith("edit")) pagePath = window.location.search.split("file=")[1];
         let selectedLink = document.querySelectorAll(`.sidebarItem[linkPath="${pagePath}"]`)[0];
