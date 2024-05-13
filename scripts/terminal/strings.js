@@ -119,7 +119,7 @@ HISTFILESIZE=2000
 # alias definitions
 alias ls='ls --color=auto'
 alias ll='ls -l'
-alias la='ls -a'`;
+alias la='ls -la'`;
 
 
 const eightballResponses = [

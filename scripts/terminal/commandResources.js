@@ -24,6 +24,7 @@ class Help {
     static open = "open [fileName] - opens the file with the given name.  Only files with the execute permission can be opened";
     static edit = "edit [fileName] - opens the file with the given name for editing.  Only files with the write permission can be edited";
     static color = "color [color] - sets the terminal text color to the given hex color in the form #rrggbb or #rgb.  For example: #ff0000 or #f00";
+    static resize = "resize [size] - resizes the terminal to the given height in pixels";
     static exit = "exit - clears the terminal and closes it";
     static restart = "restart - Reloads the page";
     static reset = "reset | nuke - Resets all persistent page data";

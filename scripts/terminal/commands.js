@@ -40,7 +40,7 @@ class Commands {
      */
     static _validateArgs(args, val) {
         if (val.nargs !== undefined && !val.nargs.includes(args.length))
-            return `Only ${val.nargs} arguments are accepted, found ${args.length}`;
+            return `Error: only ${val.nargs} arguments are accepted, found ${args.length} (${args})`;
 
         return "";
     }
@@ -138,15 +138,25 @@ class Commands {
      */
     static async *ls(args) {
         if (args[0] === "--help") {yield Help.ls; return;}
-        let valResult = this._validateArgs(args, {nargs: [0, 1]});
+        let valResult = this._validateArgs(args, {nargs: [0, 1, 2]});
         if (valResult) throw new Error(valResult);
 
-        // If no arguments are passed, list the current directory
-        if (args.length === 0) args = [this.ENV.CWD];
+        let pathArg = args.length > 1 ? args[1] : args.length > 0 ? args[0] : "";
+        let options = args.length > 1 ? args[0] : "";
+        if (args.length === 1 && pathArg.startsWith("-")) {
+            options = pathArg;
+            pathArg = "";
+        }
+        if (!options.startsWith("-")) options = "";
+        let showHidden = options.includes("a");
+        let showDetails = options.includes("l");
 
-        let path = this.resolvePath(args[0]);
+        // If no arguments are passed, list the current directory
+        if (pathArg.length === 0) pathArg = this.ENV.CWD;
+
+        let path = this.resolvePath(pathArg);
         let lsObj = masterFileSystem.getItem(path);
-        if (!lsObj) throw new Error(`Cannot list file or directory.  File or directory at ${args[0]} does not exist!`);
+        if (!lsObj) throw new Error(`Cannot list file or directory.  File or directory at ${pathArg} does not exist!`);
 
         let pad = "\xa0\xa0";
         let paddedSize = `${lsObj.size()}`.padStart(6, "\xa0");
@@ -158,39 +168,47 @@ class Commands {
             let list = [];
             for (let child of lsObj.subTree) {
                 if (child.constructor === File) {
-                    let fileInfo = (await this.ls([pathJoin(path, child.name)]).next()).value;
+                    let fileInfo = (await this.ls([options, pathJoin(path, child.name)]).next()).value;
                     list.push([fileInfo, child.name]);
                     continue;
                 }
 
                 let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
                 modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-                list.push([`d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${child.name}`, child.name]);
+                if (showDetails) list.push([`d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${child.name}`, child.name]);
+                else list.push([child.name, child.name]);
             }
 
             list.sort((a, b) => a[1].localeCompare(b[1]));
 
-            yield "total " + lsObj.subTree.length + "\n";
+            if (showDetails) yield "total " + lsObj.subTree.length + "\n";
 
             // Add the parent and current directory to the list
             if (path !== "/") {
                 let modStr = new Date(Date.now()).toISOString().split("T").join(" ");
                 modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-                yield `drwx${pad}${paddedSize}${pad}${modStr}${pad}.\n`;
-                yield `drwx${pad}${paddedSize}${pad}${modStr}${pad}..\n`;
+                if (showDetails) list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}.`, "."]);
+                else list.unshift([".", "."]);
+                if (showDetails) list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}..`, ".."]);
+                else list.unshift(["..", ".."]);
             }
 
             // Add the information for each file and directory to the list
-            for (let entry of list)
-                yield entry[0]+"\n";
+            for (let entry of list) {
+                if(!showHidden && entry[1].startsWith(".")) continue;
+                yield entry[0] + (showDetails ? "\n" : pad);
+            }
         } else {
             let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
             modStr = modStr.substring(0, modStr.lastIndexOf(":"));
             if (!lsObj.permission.includes(Perms.READ)) paddedSize = "?".padStart(6, "\xa0");
 
-            yield `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${lsObj.name}`;
+            if (showDetails) yield `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${lsObj.name}`;
+            else yield lsObj.name;
         }
     }
+    static async *ll(args) {yield* await this.ls(["-l", ...args]);}
+    static async *la(args) {yield* await this.ls(["-la", ...args]);}
 
     /**
      * Makes a new directory
@@ -351,6 +369,17 @@ class Commands {
         if (args[0].match(/#[0-9|a-f|A-F]{6}/) || args[0].match(/#[0-9|a-f|A-F]{3}/))
             this.ENV.COLOR = args[0];
         else throw new Error(`${args[0]} is not a valid color.  Use --help for more information.`);
+    }
+
+    static async *resize(args) {
+        if (args[0] === "--help") {yield Help.resize; return;}
+        let valResult = this._validateArgs(args, {nargs: [1]});
+        if (valResult) throw new Error(valResult);
+
+        let height = parseInt(args[0]);
+        if (isNaN(height)) throw new Error(`Invalid height: ${args[0]}`);
+
+        document.getElementById('terminal').dispatchEvent(new CustomEvent("openTo", {detail: height}));
     }
 
     /**

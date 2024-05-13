@@ -24,7 +24,7 @@ const TerminalDiv = () => {
      */
     function genPrompt (cwd) {
         if (cwd.startsWith(SysEnv.HOME_FOLDER)) cwd = cwd.replace(SysEnv.HOME_FOLDER, "~");
-        return `[${SysEnv.USER}]-(${cwd})$\u00A0`;
+        return `[${SysEnv.USER}]-(${cwd})$\xa0`;
     }
 
     const [prompt, setPrompt] = useState(genPrompt(SysEnv.HOME_FOLDER));
@@ -39,6 +39,18 @@ const TerminalDiv = () => {
 
         document.getElementById("terminal").addEventListener("close", (evt) => {
             exit();
+        });
+
+        // Add zoom functionality to the terminal
+        $("#terminal").bind('mousewheel DOMMouseScroll', (evt) => {
+            if(evt.ctrlKey === true) {
+                evt.preventDefault();
+                let terminal = document.getElementById('terminal');
+                let fontSize = parseFloat(window.getComputedStyle(terminal).fontSize);
+
+                if(evt.originalEvent.detail > 0) terminal.style.fontSize = `${fontSize - 1}px`;
+                else terminal.style.fontSize = `${fontSize + 1}px`;
+            }
         });
 
         document.getElementById("terminalInput").addEventListener("submit", (evt) => {
