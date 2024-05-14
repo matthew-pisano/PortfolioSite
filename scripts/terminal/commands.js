@@ -1,11 +1,9 @@
 import { Perms, SysEnv } from '../utils';
 import { pathJoin } from '../fileSystem/fileSystem';
 import { masterFileSystem, pageRegistry } from '../fileSystem/buildfs';
-import {resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer, rmRootMsg} from './commandResources';
+import {resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer, rmRootMsg, toVoid} from './commandResources';
 import {tfLogo, neofetch, system32, letoucan, pacerTest} from './strings';
-import toVoid from "./void";
 import {Directory, File} from "../fileSystem/fileSystemObjects";
-import $ from "jquery";
 
 
 /**
@@ -128,8 +126,8 @@ class Commands {
         if (valResult) throw new Error(valResult);
 
         // General help and secret help menu
-        if (args.length === 0 && (options.includes("-f") || options.includes("--force"))) yield Help.secretHelpMenu;
-        else if (args.length === 0) yield Help.helpMenu;
+        if (args.length === 0 && (options.includes("-f") || options.includes("--force"))) {yield Help.secretHelpMenu; return;}
+        else if (args.length === 0) {yield Help.helpMenu; return;}
 
         // Help for a specific command
         if (Object.getOwnPropertyNames(this).includes(args[0]) && args[0] in Help) {yield Help[args[0]]; return;}

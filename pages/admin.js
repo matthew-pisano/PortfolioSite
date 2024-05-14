@@ -93,7 +93,6 @@ function Admin() {
 
     async function renaissance() {
         let holder = await accessGranted();
-        holder.innerHTML += scpIcon;
         window.scrollTo(0, document.body.scrollHeight);
         await new Promise(r => setTimeout(r, 2000));
 
@@ -102,6 +101,7 @@ function Admin() {
 
     async function anomaly() {
         let holder = await accessGranted();
+        holder.innerHTML += scpIcon;
         holder.innerHTML += `<p>loading archive [EXTERNAL]...</p>`;
         window.scrollTo(0, document.body.scrollHeight);
         await new Promise(r => setTimeout(r, 2000));

@@ -45,7 +45,7 @@ class Help {
     static void = "void - ██████████████";
     static admin = "admin - Administrator use only";
     static toucan = "toucan - le toucan has arrived";
-    static pacer = "pacer - the FitnessGram™ Pacer Test is...";
+    static pacer = "pacer - the FitnessGram™ Pacer Test";
 
     /**
      * Aggregates all the help information into a single string
@@ -226,6 +226,21 @@ async function *rmRootMsg() {
 }
 
 
+async function *toVoid() {
+    let voidStr = "I T - C O N S U M E S - A L L";
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Slowly print the void string
+    for (let letter of voidStr) {
+        yield letter;
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    window.location.href = "/void";
+}
+
+
 /**
  * Tokenizes a command string into an array of tokens
  * @param command {string} The command string to tokenize
@@ -295,4 +310,4 @@ function resolveTokens(env, tokens) {
     }
 }
 
-export { resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer, rmRootMsg };
+export { resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer, rmRootMsg, toVoid };
