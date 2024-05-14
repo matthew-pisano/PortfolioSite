@@ -2,7 +2,7 @@ import {readdirSync, statSync} from "fs";
 import {resolve} from "path";
 import {Directory, File} from "./fileSystemObjects";
 import {FileSystem, pathJoin} from "./fileSystem";
-import {bashrc} from "../terminal/strings";
+import {bashrc, keyArt} from "../terminal/strings";
 import {Perms, SysEnv} from "../utils";
 import contentHtml from "../readme";
 
@@ -14,9 +14,23 @@ let initialHierarchy = new Directory("", [
     new Directory("home", [
         new Directory("guest", [
             new File(".bashrc", bashrc),
-            new Directory(".ssh", []),
-            new Directory("bin", []),
-            new Directory("mnt", []),
+            new Directory(".ssh", [
+                new File("authorized_keys", "I would tell you, but then I would have to ^C you."),
+                new File("id_rsa", "It would be pretty silly if this was a real key, wouldn't it?"),
+                new File("id_rsa.pub", keyArt),
+                new File("known_hosts", "I don't know any good hosts, do you?"),
+            ]),
+            new Directory("bin", [
+                new File("icrypt", "", Perms.DENY)
+            ]),
+            new Directory("mnt", [
+                new File("DO_NOT_REMOVE_SYS32", "Do NOT rm C:/Windows/System32"),
+                new Directory("C:", [
+                    new Directory("Windows", [
+                        new Directory("System32", [], Perms.NO_EXECUTE),
+                    ], Perms.NO_EXECUTE),
+                ], Perms.NO_EXECUTE)
+            ]),
             new Directory("public", []),
             new Directory("src", []),
             new Directory("tmp", []),

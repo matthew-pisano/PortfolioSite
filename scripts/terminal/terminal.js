@@ -132,6 +132,7 @@ const TerminalDiv = () => {
         }
 
         terminalBottom.style.visibility = "visible";
+        document.getElementById('terminalInput').focus();
     }
 
     /**
@@ -198,7 +199,12 @@ const TerminalDiv = () => {
                 <span>/bin/mash</span>
                 <button id="terminalClose" className='w3-button' onClick={exit}>X</button>
             </div>
-            <div id='terminal' onClick={() => document.getElementById('terminalInput').focus()}>
+            <div id='terminal' onClick={(e) => {
+                // Focus the terminal input if the user clicks on the terminal
+                // Ensure the user is not selecting text, and it is a single click
+                if (e.detail === 1 && window.getSelection().isCollapsed)
+                    document.getElementById('terminalInput').focus();
+            }}>
                 <div id="terminalOutput"></div>
                 <div id="terminalBottom">
                     <div id="terminalPrompt">{prompt}</div>

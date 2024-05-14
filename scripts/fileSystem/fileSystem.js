@@ -168,10 +168,10 @@ class FileSystem {
     /**
      * Removes a file or directory from one path to another
      * @param path {string} The path to remove from
-     * @param options {string} The options for the remove command
+     * @param options {string[]} The options for the remove command
      * @return {Directory | File}
      */
-    rm(path, options = "") {
+    rm(path, options = []) {
 
         if (!this.exists(path))
             throw new Error(`Cannot remove file or directory.  File or directory at ${path} does not exist!`);
@@ -189,7 +189,7 @@ class FileSystem {
                     throw new Error(`Cannot remove ${path}.  Permission denied!`);
 
                 // Recursively remove directories if the -r option is used
-                if (target.constructor === Directory && options === "-r")
+                if (target.constructor === Directory && options.includes("-r"))
                     for (let child of target.subTree)
                         this.rm(pathJoin(path, child.name));
                 else if (target.constructor === Directory)
@@ -246,7 +246,7 @@ class FileSystem {
         let file = this.getItem(path);
         if (!file) throw new Error(`Cannot read from file.  File at ${path} does not exist!`);
 
-        if (file.constructor === Directory) throw new Error(`Cannot read from directory at ${path}!`);
+        if (file.constructor === Directory) throw new Error(`Cannot read: Is a directory at ${path}!`);
 
         if (!file.permission.includes(Perms.READ))
             throw new Error(`Cannot read from ${path}.  Permission denied!`);

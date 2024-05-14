@@ -1,6 +1,6 @@
 import {Directory, Page} from "./fileSystemObjects";
 import {FileSystem} from "./fileSystem";
-import {masterFileSystem as serverFS, pageRegistry as serverRegistry, buildServerside} from "./serverside";
+import {masterFileSystem as serverFS, pageRegistry as serverRegistry, buildServerside} from "./bootstrap";
 
 
 /**
