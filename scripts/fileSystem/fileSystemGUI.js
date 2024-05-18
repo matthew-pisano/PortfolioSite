@@ -20,6 +20,8 @@ function newCustomFile() {
     newFileName += newFileIndex !== 0 ? newFileIndex : "";
     // Create the new file
     masterFileSystem.touch(pathJoin(SysEnv.PUBLIC_FOLDER, "custom", newFileName+".html"));
+
+    window.location.href = "/edit?file="+pathJoin(SysEnv.PUBLIC_FOLDER, "custom", newFileName+".html");
 }
 
 

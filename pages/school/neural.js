@@ -18,8 +18,8 @@ function Neural() {
                 to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
                 The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
             "", false, {}, [], "", "",
-            ["Research Paper"],
-            ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"]
+            ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
+            ["Research Paper"]
         ),
         new Tile(
             "#Training Methods",

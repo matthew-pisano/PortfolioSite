@@ -513,10 +513,8 @@ class Commands {
     static async *halsay(tokens) {
         let {args, options} = this._parseArgs(tokens);
         if (options.includes("--help")) {yield Help.halsay; return;}
-        let valResult = this._validateArgs(args, options, [0, 1], [0], []);
-        if (valResult) throw new Error(valResult);
 
-        yield hal(args.length > 0 ? args[0] : "I'm sorry Dave..." );
+        yield hal(tokens.length > 0 ? tokens.join(" ") : "I'm sorry Dave..." );
     }
 
     /**

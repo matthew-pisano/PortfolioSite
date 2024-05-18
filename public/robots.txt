@@ -6,6 +6,21 @@ User-agent: *
 Disallow: /secure/*
 
 User-agent: *
+Disallow: /void/*
+
+User-agent: *
+Disallow: /edit/*
+
+User-agent: *
+Disallow: /babble/*
+
+User-agent: *
+Disallow: /403/*
+
+User-agent: *
+Disallow: /404/*
+
+User-agent: *
 Disallow: /display/*
 
 Sitemap: https://matthewpisano.com/sitemap.xml

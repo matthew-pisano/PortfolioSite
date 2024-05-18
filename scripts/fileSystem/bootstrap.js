@@ -86,7 +86,7 @@ function buildServerside() {
             if (!dirent.isDirectory()) {
                 let fileStats = statSync(res);
                 let fileName = res.substring(res.lastIndexOf("/") + 1).replace(".js", "");
-                if (["admin", "index", "404", "display", "edit", "babble", "403"].includes(fileName)) continue;
+                if (["admin", "index", "404", "display", "edit", "babble", "403", "void"].includes(fileName)) continue;
                 // Add the file to the file system and the page registry if it is not hidden
                 if (fileName[0] !== "_") {
                     let name = hierarchyPath.replace(SysEnv.PUBLIC_FOLDER, "");

@@ -146,7 +146,7 @@ function eightBall(){
  * @return {string} The message from Hal-9000
  */
 function hal(msg) {
-    return hal9000.replace("{msg}", msg.replace("\n", ""));
+    return hal9000.replace("{msg}", msg.replace("\n", " "));
 }
 
 

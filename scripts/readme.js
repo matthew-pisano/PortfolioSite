@@ -43,7 +43,7 @@ let contentHtml = `
         </li>
         <li><h3>Editing</h3>
             <p>Hitting the edit button next to the file in the editor will enter the text editor for that file.  Here, you can
-            edit the contents of the file using HTML, embedded CSS and embedded JavaScript.  Once you are done editing, click on any of the files
+            edit the contents of the file using HTML and embedded CSS.  Once you are done editing, click on any of the files
             in the editor to return to viewing mode.</p>
         </li>
     </ul>

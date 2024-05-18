@@ -23,7 +23,7 @@ function Display() {
         else {
             // Load the file text into the page
             let pageText = filePath.endsWith(".html") ? currentFile.text : currentFile.text.replaceAll("\n", "<br>");
-            setPageText(pageText);
+            setPageText(pageText ? pageText : "<h3><i>[Empty file]</i></h3>");
         }
     }, []);
 

@@ -15,8 +15,9 @@ import $ from "jquery";
  */
 function buildDirectory(directory, path) {
     let name = directory.name + "-Folder";
+    let dirStyle = directory.name === "public" ? {borderStyle: "none"} : {};
     let langStatus, encodingStatus, linesStatus, sizeStatus, itemStatus;
-    return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row">
+    return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row" style={dirStyle}>
             <div className="sidebarFolderHeader" onMouseEnter={() => {
                     // Save the current status information and update the status bar with the directory information
                     langStatus = document.getElementById("langStatus").innerText;
@@ -51,6 +52,88 @@ function buildDirectory(directory, path) {
 
 
 /**
+ * Rename a file in the file system
+ * @param file {File} The file to rename
+ * @param parentPath {string} The parentPath of the file
+ */
+function renameCustom(file, parentPath) {
+
+    if (!file || !parentPath) {
+        showDialog("File Not Found", "The file that you are attempting to rename does not exist!");
+        return;
+    }
+
+    let fileName = file.name.split(".")[0];
+    // Check if the user has permission to rename the file
+    if (!file.permission.includes(Perms.WRITE)) {
+        showDialog("Permission Denied", "You do not have permission to rename this file!");
+        return;
+    }
+
+    // Create a text area to rename the file
+    let renamer = document.createElement("textarea");
+    renamer.id = fileName + "-FileRenamer";
+    renamer.className = "fileRenamer";
+    renamer.value = file.name;
+    // Replace the file link with the renamer
+    let fileLink = document.getElementById(fileName + "-FileLink");
+    fileLink.replaceWith(renamer);
+
+    let renameFile = () => {
+        // Replace the renamer with the file link and rename the file in the file system
+        renamer.replaceWith(fileLink);
+        let oldPath = pathJoin(parentPath, file.name);
+        let newPath = pathJoin(parentPath, renamer.value.replace("\n", ""));
+
+        if (!masterFileSystem.exists(oldPath)) return;
+        if (newPath === oldPath) return;
+
+        masterFileSystem.cp(oldPath, newPath);
+        masterFileSystem.rm(oldPath);
+    };
+
+    // Remove the renamer if the user clicks outside of it and cancel the rename
+    let clickEvent = (evt) => { if (evt.target.id !== renamer.id) renameFile(); };
+    renamer.oninput = (e) => {
+        // Rename the file if the user presses enter
+        if (["insertParagraph", "insertLineBreak"].includes(e.inputType)) {
+            renameFile();
+            document.documentElement.removeEventListener('click', clickEvent, true);
+        }
+    };
+
+    document.documentElement.addEventListener('click', clickEvent, true);
+}
+
+
+/**
+ * Remove a file from the file system
+ * @param file {File} The file to remove
+ * @param parentPath {string} The parentPath of the file
+ */
+function removeCustom(file, parentPath) {
+
+    if (!file || !parentPath) {
+        showDialog("File Not Found", "The file that you are attempting to remove does not exist!");
+        return;
+    }
+
+    // Check if the user has permission to remove the file
+    if (!file.permission.includes(Perms.WRITE)) {
+        showDialog("Permission Denied", "You do not have permission to remove this file!");
+        return;
+    }
+
+    let filePath = pathJoin(parentPath, file.name);
+    // Remove the file from the file system
+    masterFileSystem.rm(filePath);
+
+    // Redirect to the home page if the file being removed is the current file
+    if (window.location.search.split("file=")[1] === filePath) window.location.replace("/");
+}
+
+
+/**
  * Create a file element in the sidebar
  * @param file {File} The file to create
  * @param path {string} The path of the file
@@ -58,13 +141,13 @@ function buildDirectory(directory, path) {
  */
 function buildFile(file, path) {
     let editIcon = null;
-    let name = file.name.split(".")[0];
+    let fileName = file.name.split(".")[0];
 
     let urlPath;
     let linkPath;
     // Link to the file if it is a page, otherwise link to the display page to show a custom file
     if (pageRegistry[pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)]) {
-        urlPath = pathJoin(path.replace("public", ""), name);
+        urlPath = pathJoin(path.replace("public", ""), fileName);
         linkPath = urlPath;
     }
     else {
@@ -75,59 +158,16 @@ function buildFile(file, path) {
         }}/>;
     }
 
-    // eslint-disable-next-line react/no-unknown-property
-    return <div key={name + "-File"} id={name + "-File"} className="sidebarItem sidebarLink w3-row" linkPath={linkPath} onContextMenu={(e) => {
-            createContextMenu(e, {
-                // Rename the file
-                rename: () => {
-                    // Check if the user has permission to rename the file
-                    if (!file.permission.includes(Perms.WRITE)) {
-                        showDialog("Permission Denied", "You do not have permission to rename this file!");
-                        return;
-                    }
+    let parentFolder = pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""));
 
-                    // Create a text area to rename the file
-                    let renamer = document.createElement("textarea");
-                    renamer.id = name + "-FileRenamer";
-                    renamer.className = "fileRenamer";
-                    renamer.value = file.name;
-                    // Replace the file link with the renamer
-                    let fileLink = document.getElementById(name + "-FileLink");
-                    fileLink.replaceWith(renamer);
-                    let rename = () => {
-                        renamer.remove();
-                        let parentFolder = pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""));
-                        if (!masterFileSystem.exists(pathJoin(parentFolder, file.name))) return;
-                        masterFileSystem.cp(pathJoin(parentFolder, file.name), pathJoin(parentFolder, renamer.value.replace("\n", "")));
-                        masterFileSystem.rm(pathJoin(parentFolder, file.name));
-                    };
-                    let clickEvent = (evt) => { if (evt.target.id !== renamer.id) rename(); };
-                    renamer.oninput = (e) => {
-                        // Rename the file if the user presses enter
-                        if (["insertParagraph", "insertLineBreak"].includes(e.inputType)) {
-                            rename();
-                            document.documentElement.addEventListener('click', clickEvent, true);
-                        }
-                    };
-                    // Remove the renamer if the user clicks outside of it and cancel the rename
-                    document.documentElement.addEventListener('click', clickEvent, true);
-                },
-                // Remove the file
-                remove: () => {
-                    // Check if the user has permission to remove the file
-                    if (!file.permission.includes(Perms.WRITE)) {
-                        showDialog("Permission Denied", "You do not have permission to remove this file!");
-                        return;
-                    }
-                    // Remove the file from the file system
-                    masterFileSystem.rm(pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""), file.name));
-                }
-            });
+    // eslint-disable-next-line react/no-unknown-property
+    return <div key={fileName + "-File"} id={fileName + "-File"} className="sidebarItem sidebarLink w3-row" linkPath={linkPath} onContextMenu={(e) => {
+            createContextMenu(e, {rename: () => renameCustom(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
             // Prevent the default context menu from appearing
             e.preventDefault();
         }}>
         <img className='htmlIcon'/>
-        <a id={name + "-FileLink"} className="lightText" href={urlPath}>{file.name}</a>
+        <a id={fileName + "-FileLink"} className="lightText" href={urlPath}>{file.name}</a>
         {editIcon}
     </div>;
 }
@@ -169,11 +209,11 @@ function buildSidebar() {
     let subTreeCopy = [...publicFolder.subTree];
     let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
     let homeFile = spliceFromSubTree(subTreeCopy, "home.html");
+    let aboutFolder = spliceFromSubTree(subTreeCopy, "about");
     let researchFolder = spliceFromSubTree(subTreeCopy, "research");
     let hackFolder = spliceFromSubTree(subTreeCopy, "hackathons");
     let customFolder = spliceFromSubTree(subTreeCopy, "custom");
-    let aboutFolder = spliceFromSubTree(subTreeCopy, "about");
-    subTreeCopy = [homeFile, helpFile, researchFolder, ...subTreeCopy, hackFolder, aboutFolder, customFolder];
+    subTreeCopy = [homeFile, helpFile, aboutFolder, researchFolder, ...subTreeCopy, hackFolder, customFolder];
     publicFolder.subTree = subTreeCopy;
     return buildHierarchy(publicFolder);
 }
@@ -217,4 +257,4 @@ function setSidebarState(openState =! sidebarOpen, animate = true){
     sidebarOpen = openState;
 }
 
-export {buildSidebar, setSidebarState};
+export {buildSidebar, setSidebarState, renameCustom, removeCustom};

@@ -9,7 +9,7 @@ import {showDialog, SysEnv} from "./utils";
 import $ from "jquery";
 import {newCustomFile} from "./fileSystem/fileSystemGUI";
 import PropTypes from "prop-types";
-import {buildSidebar, setSidebarState} from "./sidebar";
+import {buildSidebar, setSidebarState, renameCustom, removeCustom} from "./sidebar";
 
 
 /**
@@ -79,12 +79,35 @@ async function savePage(currentPath) {
  */
 function editPage(currentPath) {
     let filePath = new URLSearchParams(window.location.search).get("file");
+    let file = masterFileSystem.getItem(filePath);
+    if (!file) {
+        showDialog("File Not Found", "The file that you are attempting to edit does not exist!");
+        return;
+    }
+
     // Cancel if already editing
     if(currentPath.endsWith("edit")) return;
     // If the current path is not a custom file, show a dialog box error
     if(filePath === null || !currentPath.endsWith("display"))
         showDialog("Permission Denied", "You do not have permission to edit this file!");
     else window.location.replace(`/edit?file=${filePath}`);
+
+}
+
+
+/**
+ * Rename the current page if it is a custom file
+ * @param currentPath {string} The current path of the page
+ */
+function renamePage(currentPath) {
+    let filePath = new URLSearchParams(window.location.search).get("file");
+    // If the current path is not a custom file, show a dialog box error
+    if(filePath === null || (!currentPath.endsWith("display") && !currentPath.endsWith("edit")))
+        showDialog("Permission Denied", "You do not have permission to edit this file!");
+    else {
+        let file = masterFileSystem.getItem(filePath);
+        renameCustom(file, filePath.substring(0, filePath.lastIndexOf("/")));
+    }
 
 }
 
@@ -102,7 +125,7 @@ function resetFileSystem() {
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({children, pageName}) => {
-    const [explorerTree,   setExplorerTree] = useState(buildSidebar());
+    const [explorerTree, setExplorerTree] = useState(buildSidebar());
     const [currentPath, setCurrentPath] = useState(null);
 
     // Update the sidebar when the file system is updated
@@ -149,12 +172,16 @@ const Wrapper = ({children, pageName}) => {
                 document.getElementById("terminalHeader").click();
             }
         });
+
+    }, []);
+
+    // Highlight current file once sidebar is loaded
+    useEffect(() => {
         let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
         if (pagePath.endsWith("display") || pagePath.endsWith("edit")) pagePath = window.location.search.split("file=")[1];
         let selectedLink = document.querySelectorAll(`.sidebarItem[linkPath="${pagePath}"]`)[0];
         if (selectedLink) selectedLink.style.backgroundColor = "#6a6a6a";
-
-    }, []);
+    }, [explorerTree]);
 
     let pStats = getPageStats(currentPath);
     return (
@@ -189,7 +216,11 @@ const Wrapper = ({children, pageName}) => {
                     </div>
                     <div id="editDropdown" className="menuDropdown w3-col">
                         <button id="editCurrentAction" className="w3-button lightText menuDropItem"
-                            onClick={() => editPage(currentPath)}>Edit Current Page</button>
+                                onClick={() => editPage(currentPath)}>Edit Current Page
+                        </button>
+                        <button id="renameCurrentAction" className="w3-button lightText menuDropItem"
+                                onClick={() => renamePage(currentPath)}>Rename Current Page
+                        </button>
                     </div>
                     <div id="terminalDropdown" className="menuDropdown w3-col">
                         <button id="showTerminal" className="w3-button lightText menuDropItem"
@@ -212,7 +243,7 @@ const Wrapper = ({children, pageName}) => {
                     </div>
                     <div id="contactDropdown" className="menuDropdown w3-col">
                         <p className="lightText menuDropItem">Phone: +1 (845)-706-0677</p>
-                        <p className="lightText menuDropItem">Email: matthewplisano14@gmail.com</p>
+                        <p className="lightText menuDropItem">Email: matthewpisano14@gmail.com</p>
                         <a className="lightText menuDropItem" style={{display: "block"}} href='https://www.linkedin.com/in/matthew-pisano' 
                             target={"_blank"} rel="noreferrer">LinkedIn</a>
                     </div>

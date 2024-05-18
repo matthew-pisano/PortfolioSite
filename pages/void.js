@@ -6,6 +6,8 @@ function Void() {
     useEffect(() => {
         document.body.style.height = "100%";
         document.getElementById("__next").style.height = "100%";
+        // Set window title
+        document.title = "How did we get here?";
     }, []);
 
     /* View in fullscreen */
