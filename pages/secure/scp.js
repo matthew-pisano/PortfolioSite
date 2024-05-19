@@ -82,11 +82,11 @@ function SCP() {
         )
     ];
     let pageInfo = new PageInfo(
-        "scp", "SCP-672<span style='color: black'>██</span>",
+        "scp", "SCP-672██",
         "", {backgroundColor: "#ba3a3a"},
         ["keter", "research", "ai"],
-        "https://scp-wiki.wikidot.com/scp-672--",
-        "██████ Entry ███"
+        "https://scp-wiki.wikidot.com/scp-redacted",
+        "██████ Entry"
     );
     return (<Wrapper pageName={pageInfo.pageName}>
         <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">

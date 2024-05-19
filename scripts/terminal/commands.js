@@ -2,7 +2,7 @@ import { Perms, SysEnv } from '../utils';
 import { pathJoin } from '../fileSystem/fileSystem';
 import { masterFileSystem, pageRegistry } from '../fileSystem/buildfs';
 import {resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer, rmRootMsg, toVoid} from './commandResources';
-import {tfLogo, neofetch, system32, letoucan, pacerTest} from './strings';
+import {tfLogo, neofetch, system32, letoucan, pacerTest, theMissile} from './strings';
 import {Directory, File} from "../fileSystem/fileSystemObjects";
 
 
@@ -361,10 +361,10 @@ class Commands {
             let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
             window.open(relPath.replace(".html", ""), '_self', false);
         }
-        else if (!masterFileSystem.exists(pagePath)) throw new Error(`Cannot open file.  File at ${args[0]} does not exist!`);
+        else if (!masterFileSystem.exists(pagePath)) throw new Error(`Cannot open file.  File at ${pagePath} does not exist!`);
         else if (currentFile.constructor === Directory) throw new Error(`Cannot open a directory!`);
         else if (currentFile.permission.includes(Perms.EXECUTE)) window.open(`/display?file=${pagePath}`, '_self', false);
-        else throw new Error(`Insufficient permissions to open ${args[0]}!`);
+        else throw new Error(`Insufficient permissions to open ${pagePath}!`);
     }
 
     /**
@@ -379,10 +379,10 @@ class Commands {
 
         let pagePath = this.resolvePath(args[0]);
         let currentFile = masterFileSystem.getItem(pagePath);
-        if (!masterFileSystem.exists(pagePath)) throw new Error(`Cannot edit file.  File at ${args[0]} does not exist!`);
+        if (!masterFileSystem.exists(pagePath)) throw new Error(`Cannot edit file.  File at ${pagePath} does not exist!`);
         else if (currentFile.constructor === Directory) throw new Error(`Cannot edit a directory!`);
         else if (currentFile.permission.includes(Perms.WRITE)) window.location.replace(`/edit?file=${pagePath}`);
-        else throw new Error(`Insufficient permissions to edit ${args[0]}!`);
+        else throw new Error(`Insufficient permissions to edit ${pagePath}!`);
     }
 
     /**
@@ -558,6 +558,11 @@ class Commands {
         if (isNaN(parseInt(args[0])) || isNaN(parseFloat(args[1])) || isNaN(parseFloat(args[2])))
             throw new Error("Error: Invalid coordinates or warhead ID.  Please provide numerical values for the coordinates or ID.");
 
+        if (Math.random() < 0.2) {
+            yield theMissile;
+            return;
+        }
+
         throw new Error("Error: Insufficient permissions to cause armageddon (Did you try 'sudo'?)");
     }
 
@@ -606,10 +611,17 @@ class Commands {
     static async *eightball(tokens) {
         let {args, options} = this._parseArgs(tokens);
         if (options.includes("--help")) {yield Help.eightball; return;}
-        let valResult = this._validateArgs(args, options, [1], [0], []);
-        if (valResult) throw new Error(valResult);
 
-        yield eightBall();
+        let question = tokens.join(" ");
+        if (question === "") throw new Error("You need to give me a question to answer :/");
+        if (!question.endsWith("?")) throw new Error("That doesn't look like a question to me...try adding a '?' at the end");
+        let spaces = (question.match(/ /g) || []).length;
+        if (spaces < 1) throw new Error("You dare ask me such a trivial question?  I need something longer, something more complex...");
+        if (spaces < 2 && Math.random() < 0.3) throw new Error("I'm getting tired of these simple questions...try again with something longer and more interesting!");
+        if ((question.match(/meaning of life/g) || []).length > 0 || (question.match(/answer to life/g) || []).length)
+            throw new Error("That's pretty played out...don't you think?");
+
+        yield eightBall(question);
     }
 
     /**

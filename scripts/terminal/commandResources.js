@@ -16,13 +16,13 @@ class Help {
     static cd = "cd [path] - changes the current working directory to the given path";
     static ls = "ls [-l|-a] [path] - gives information on the file or folder that matches the given path";
     static mkdir = "mkdir <path> - Creates a directory at the given path";
-    static touch = "touch <fileName> - creates a file with the name given in the argument";
+    static touch = "touch <filePath> - creates a file with the path given in the argument";
     static cp = "cp <oldPath> <newPath> - copies an existing file or directory to the new path";
     static mv = "mv <oldPath> <newPath> - moves an existing file or directory to the new path";
     static rm = "rm [-r|-f] <path> - removes the file or directory with the given path";
     static cat = "cat <filePath> - prints our the contents of the given file";
-    static open = "open <fileName> - opens the file with the given name.  Only files with the execute permission can be opened";
-    static edit = "edit <fileName> - opens the file with the given name for editing.  Only files with the write permission can be edited";
+    static open = "open <filePath> - opens the file with the given path.  Only files with the execute permission can be opened";
+    static edit = "edit <filePath> - opens the file with the given path for editing.  Only files with the write permission can be edited";
     static color = "color [color] - sets the terminal text color to the given hex color in the form #rrggbb or #rgb.  For example: #ff0000 or #f00";
     static resize = "resize <size> - resizes the terminal to the given height in pixels";
     static exit = "exit [code] - clears the terminal and closes it";
@@ -130,13 +130,21 @@ async function *haltingProblem(){
 }
 
 
+let eightballQuestions = [];
+
 /**
  * Generates a random response for the eightball command
+ * @param question {string} The question to generate a response for
  * @return {string} The random eightball response
  */
-function eightBall(){
-    let result = Math.floor(Math.random()*eightballResponses.length);
-    return eightballResponses[result];
+function eightBall(question=""){
+    if (question && eightballQuestions.includes(question) && Math.random() < 0.1) return "That question seems...oddly familiar...";
+    if (question) eightballQuestions.push(question);
+
+    let resultIndex = Math.floor(Math.random()*eightballResponses.length);
+    let answer = eightballResponses[resultIndex];
+    if (!question && (answer.includes("\n") || answer.length > 70)) return "Your one-stop shop for all your fortune-telling needs!";
+    return answer;
 }
 
 
@@ -227,7 +235,7 @@ async function *rmRootMsg() {
 
 
 async function *toVoid() {
-    let voidStr = "I T - C O N S U M E S - A L L";
+    let voidStr = "I T - C O N S U M E S - A L L".replace(/ /g, "\xa0");
     await new Promise(resolve => setTimeout(resolve, 500));
 
     // Slowly print the void string
