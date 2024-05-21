@@ -115,8 +115,12 @@ function Admin() {
             let input = document.getElementById("adminPw");
             let holder = document.getElementById("pwHolder");
 
-            if(input.innerText.substring(0, input.innerText.length-2) === "renaissance") return await renaissance();
-            else if(input.innerText.substring(0, input.innerText.length-2) === "anomaly") return await anomaly();
+            let inputRaw = input.innerText.substring(0, input.innerText.length-2);
+            let inputCode = [];
+            for (let i=0; i<inputRaw.length; i++) inputCode.push(inputRaw.charCodeAt(i)*2);
+
+            if(""+inputCode === "228,202,220,194,210,230,230,194,220,198,202") return await renaissance();
+            else if(""+inputCode === "194,220,222,218,194,216,242") return await anomaly();
 
             input.innerText = "incorrect";
             input.contentEditable = "false";
@@ -132,6 +136,9 @@ function Admin() {
     return (
         <div className='lightText'>
             <p>{parse(mathesisIcon)}</p>
+            <span style={{display: "none"}}>ERROR preloadin{"����├-�=�▒I␌�L�>���┘�"}edentials for Pr∞jec⅂ <i>r☿nais↺ance</i>.  DATA CORRUP{"{GNUq���@��qvz����"}
+            ERROR prel{":▒; <(=0?8@@BHDP"}din{"��H�.␍H�%(H�D$␤1���┘�"} <i>∂n∘maly</i> inform{"◆(▒0␉8␌@␍H°P±X␤◆␋␤┐"}ion.  DA{"{@��dhfhz�f���"}
+            {"�������������ŠˠѠנݠ��������@4`\"/usr/lib/debug/.dwz/x86_64-linux-gnu/coreutils.debug�.��X�"}</span>
             <div id="pwHolder" style={{width: "100%", height: "30px"}}><span id="pwPrompt">password: </span>
                 <span id="adminPw" spellCheck="false" contentEditable={true} onInput={onInput} style={{outline: "none", whiteSpace: "nowrap", color: "#1e1e1e"}}></span></div>
         </div>
