@@ -1,4 +1,4 @@
-import { Perms, SysEnv } from '../utils';
+import {ANSI, Perms, SysEnv} from '../utils';
 import { pathJoin } from '../fileSystem/fileSystem';
 import { masterFileSystem, pageRegistry } from '../fileSystem/buildfs';
 import {resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer, rmRootMsg, toVoid} from './commandResources';
@@ -203,8 +203,8 @@ class Commands {
 
                 let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
                 modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-                if (showDetails) list.push([`d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${child.name}`, child.name]);
-                else list.push([child.name, child.name]);
+                if (showDetails) list.push([`d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}${child.name}${ANSI.DEFAULT}`, child.name]);
+                else list.push([`${ANSI.CYAN}${child.name}${ANSI.DEFAULT}`, child.name]);
             }
 
             list.sort((a, b) => a[1].localeCompare(b[1]));
@@ -215,10 +215,10 @@ class Commands {
             if (path !== "/") {
                 let modStr = new Date(Date.now()).toISOString().split("T").join(" ");
                 modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-                if (showDetails) list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}.`, "."]);
-                else list.unshift([".", "."]);
-                if (showDetails) list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}..`, ".."]);
+                if (showDetails) list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}..${ANSI.DEFAULT}`, ".."]);
                 else list.unshift(["..", ".."]);
+                if (showDetails) list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}.${ANSI.DEFAULT}`, "."]);
+                else list.unshift([".", "."]);
             }
 
             // Add the information for each file and directory to the list
@@ -231,8 +231,12 @@ class Commands {
             modStr = modStr.substring(0, modStr.lastIndexOf(":"));
             if (!lsObj.permission.includes(Perms.READ)) paddedSize = "?".padStart(6, "\xa0");
 
-            if (showDetails) yield `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${lsObj.name}`;
-            else yield lsObj.name;
+            let objName = lsObj.name;
+            if (lsObj.permission === "--x")
+                objName = ANSI.GREEN + objName + ANSI.DEFAULT;
+
+            if (showDetails) yield `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${objName}`;
+            else yield objName;
         }
     }
     static async *ll(tokens) {yield* await this.ls(["-l", ...tokens]);}
@@ -393,7 +397,7 @@ class Commands {
     static async *color(tokens) {
         let {args, options} = this._parseArgs(tokens);
         if (options.includes("--help")) {yield Help.color; return;}
-        let valResult = this._validateArgs(args, options, [1], [0], []);
+        let valResult = this._validateArgs(args, options, [0, 1], [0], []);
         if (valResult) throw new Error(valResult);
 
         if (args.length === 0) {
@@ -514,7 +518,14 @@ class Commands {
         let {args, options} = this._parseArgs(tokens);
         if (options.includes("--help")) {yield Help.halsay; return;}
 
-        yield hal(tokens.length > 0 ? tokens.join(" ") : "I'm sorry Dave..." );
+        let defaultMsg = "I'm sorry Dave, I'm afraid I can't do that...";
+        let colorEye = false;
+
+        if (Math.random() < 0.2) {
+            defaultMsg = ANSI.RED+"Soon..."+ANSI.DEFAULT;
+            colorEye = true;
+        }
+        yield hal(tokens.length > 0 ? tokens.join(" ") : defaultMsg, colorEye);
     }
 
     /**

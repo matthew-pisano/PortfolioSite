@@ -1,4 +1,4 @@
-import {SysEnv} from "../utils";
+import {ANSI, SysEnv} from "../utils";
 import {eightballResponses, hal9000, pacerTest, rmRoot} from "./strings";
 
 
@@ -151,10 +151,13 @@ function eightBall(question=""){
 /**
  * Generates a message from Hal-9000
  * @param msg {string} The message to display
+ * @param colorEye {boolean} Whether to color the eye red
  * @return {string} The message from Hal-9000
  */
-function hal(msg) {
-    return hal9000.replace("{msg}", msg.replace("\n", " "));
+function hal(msg, colorEye = false) {
+    let asciiArt = hal9000;
+    if(colorEye) asciiArt = asciiArt.replace("(o)", ANSI.RED+"(o)"+ANSI.DEFAULT);
+    return asciiArt.replace("{msg}", msg.replace("\n", " "));
 }
 
 

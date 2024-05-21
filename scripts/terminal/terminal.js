@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import React, { useState, useEffect } from 'react';
-import { SysEnv } from '../utils';
+import {ANSI, SysEnv} from '../utils';
 import { Commands } from './commands';
 
 
@@ -20,14 +20,20 @@ const TerminalDiv = () => {
     /**
      * Generates the prompt string
      * @param cwd {string} The current working directory
+     * @param colored {boolean} Whether to color the prompt
      * @return {string} The prompt string
      */
-    function genPrompt (cwd) {
+    function genPrompt (cwd, colored) {
         if (cwd.startsWith(SysEnv.HOME_FOLDER)) cwd = cwd.replace(SysEnv.HOME_FOLDER, "~");
+        let rawTest;
+        if (colored) {
+            rawTest = `[${ANSI.GREEN}${SysEnv.USER}${ANSI.DEFAULT}]-(${ANSI.CYAN}${cwd}${ANSI.DEFAULT})$\xa0`;
+            return ANSI.colorText(rawTest).elems.map(e => e.outerHTML).join("");
+        }
         return `[${SysEnv.USER}]-(${cwd})$\xa0`;
     }
 
-    const [prompt, setPrompt] = useState(genPrompt(SysEnv.HOME_FOLDER));
+    const [prompt, setPrompt] = useState(genPrompt(SysEnv.HOME_FOLDER, false));
 
     useEffect(() => {
         // Show the terminal thumb and add event listeners
@@ -56,14 +62,18 @@ const TerminalDiv = () => {
         document.getElementById("terminalInput").addEventListener("submit", (evt) => {
             submit();
         });
+
+        setPrompt(genPrompt(ENV.CWD, true));
     }, []);
 
     useEffect(() => {
         // Set the prompt and color
         let terminalHolder = document.getElementById("terminalHolder");
         if(!terminalHolder) return;
-        setPrompt(genPrompt(ENV.CWD));
+        let newPrompt = genPrompt(ENV.CWD, true);
+        setPrompt(newPrompt);
         terminalHolder.style.color = ENV.COLOR;
+        document.getElementById("terminalPrompt").innerHTML = newPrompt;
     });
 
     /**
@@ -120,14 +130,31 @@ const TerminalDiv = () => {
         setDraftCommand("");
         setCommandIndex(-1);
 
-        if (!terminalOutput.innerText.endsWith("\n") && terminalOutput.innerText) terminalOutput.innerText += "\n";
-        terminalOutput.innerText += prompt + command + "\n";
+        if (!terminalOutput.innerHTML.endsWith("<br>") && terminalOutput.innerHTML) terminalOutput.innerHTML += "<br>";
+        terminalOutput.innerHTML += `<span>${prompt + command}</span><br>`;
+
+        let lastColor;
 
         // Parse the command and update the environment
-        for await (let line of Commands.parseCommand(command, ENV)) {
+        for await (let partial of Commands.parseCommand(command.replace(/\\e/g, "\u001b"), ENV)) {
             setENV(Commands.ENV);
-            // Update the terminal output with next line
-            terminalOutput.innerText += line;
+
+            // Carry over the last color to the next line
+            if (lastColor) partial = lastColor + partial;
+
+            // Update the terminal output with text segment
+            if (ANSI.isColored(partial)) {
+                let coloredResult = ANSI.colorText(partial);
+                lastColor = coloredResult.lastColor;
+                for (let element of coloredResult.elems)
+                    terminalOutput.appendChild(element);
+            }
+            else {
+                let span = document.createElement('span');
+                span.innerText = partial;
+                terminalOutput.appendChild(span);
+            }
+
             terminal.scrollTop = terminal.scrollHeight;
         }
 
@@ -207,7 +234,7 @@ const TerminalDiv = () => {
             }}>
                 <div id="terminalOutput"></div>
                 <div id="terminalBottom">
-                    <div id="terminalPrompt">{prompt}</div>
+                    <div id="terminalPrompt"></div>
                     <div id="terminalInput" contentEditable="true" onInput={onInput} onKeyDown={onKeyDown}></div>
                 </div>
             </div>

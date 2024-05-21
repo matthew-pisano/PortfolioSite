@@ -1,22 +1,22 @@
-import {SysEnv} from "../utils";
+import {ANSI, SysEnv} from "../utils";
 
 const neofetch = `
-   lWMMMMMMMMMWl        lWMMMMMMMMMWl       guest@mathesisConsole
- ,;kWMMMMMMMMMWk;,,  ,,;kWMMMMMMMMMWk;,     ---------------------
-WWWMMMMMMMMMMMMMWWW  WWWMMMMMMMMMMMMMWWW    OS: ${SysEnv.OS} ${SysEnv.ARCH}
-MMMMMMWKkkkKMMMMMMMMMMMMMMMMKkkkKWMMMMMM    Host: ████████
-MMMMMMWl   lWMMMMMMMMMMMMMMWl   lWMMMMMM    kernel: ${SysEnv.KERNEL}
-MMMMMMWl   ,xkkKMMMMMMMMKkkx,   lWMMMMMM    Uptime: █████
-MMMMMMWl       lWMMMMMMWl       lWMMMMMM    Packages: 443 (████), 24 (██)
-MMMMMMWl       ,xkkkkkkx,       lWMMMMMM    Shell: ${SysEnv.SHELL}
-MMMMMMWl                        lWMMMMMM    Terminal: cloudTerminal
-MMMMMMWl       .,,,,,,,,.       lWMMMMMM    CPU: ██th Gen ██████ █-██
-MMMMMMWl       lNWWWWWWNl       lWMMMMMM    Memory: ██████TiB / ██████TiB
-MMMMMMWl       lWM    MWl       lWMMMMMM
-MMMMMMWl       lWMMMMMMWl       lWMMMMMM
-  kKMMWl       lWM    MWl       lWMMKk
-   lWMWl       lWM    MWl       lWMWl   
-   lWMWl       lWM    MWl       lWMWl`;
+${ANSI.GREEN}   lWMMMMMMMMMWl        lWMMMMMMMMMWl   ${ANSI.DEFAULT}    ${ANSI.GREEN}guest${ANSI.DEFAULT}@${ANSI.CYAN}mathesisConsole${ANSI.GREEN}
+${ANSI.GREEN} ,;kWMMMMMMMMMWk;,,  ,,;kWMMMMMMMMMWk;, ${ANSI.DEFAULT}    ---------------------
+${ANSI.GREEN}WWWMMMMMMMMMMMMMWWW  WWWMMMMMMMMMMMMMWWW${ANSI.DEFAULT}    ${ANSI.CYAN}OS:${ANSI.DEFAULT} ${SysEnv.OS} ${SysEnv.ARCH}
+${ANSI.GREEN}MMMMMMWKkkkKMMMMMMMMMMMMMMMMKkkkKWMMMMMM${ANSI.DEFAULT}    ${ANSI.CYAN}Host:${ANSI.DEFAULT} ████████
+${ANSI.GREEN}MMMMMMWl   lWMMMMMMMMMMMMMMWl   lWMMMMMM${ANSI.DEFAULT}    ${ANSI.CYAN}kernel:${ANSI.DEFAULT} ${SysEnv.KERNEL}
+${ANSI.GREEN}MMMMMMWl   ,xkkKMMMMMMMMKkkx,   lWMMMMMM${ANSI.DEFAULT}    ${ANSI.CYAN}Uptime:${ANSI.DEFAULT} █████
+${ANSI.GREEN}MMMMMMWl       lWMMMMMMWl       lWMMMMMM${ANSI.DEFAULT}    ${ANSI.CYAN}Packages:${ANSI.DEFAULT} 443 (████), 24 (██)
+${ANSI.GREEN}MMMMMMWl       ,xkkkkkkx,       lWMMMMMM${ANSI.DEFAULT}    ${ANSI.CYAN}Shell:${ANSI.DEFAULT} ${SysEnv.SHELL}
+${ANSI.GREEN}MMMMMMWl                        lWMMMMMM${ANSI.DEFAULT}    ${ANSI.CYAN}Terminal:${ANSI.DEFAULT} cloudTerminal
+${ANSI.GREEN}MMMMMMWl       .,,,,,,,,.       lWMMMMMM${ANSI.DEFAULT}    ${ANSI.CYAN}CPU:${ANSI.DEFAULT} ██th Gen ██████ █-██
+${ANSI.GREEN}MMMMMMWl       lNWWWWWWNl       lWMMMMMM${ANSI.DEFAULT}    ${ANSI.CYAN}Memory:${ANSI.DEFAULT} ██████TiB / ██████TiB
+${ANSI.GREEN}MMMMMMWl       lWM    MWl       lWMMMMMM${ANSI.DEFAULT}
+${ANSI.GREEN}MMMMMMWl       lWMMMMMMWl       lWMMMMMM${ANSI.DEFAULT}
+${ANSI.GREEN}  kKMMWl       lWM    MWl       lWMMKk  ${ANSI.DEFAULT}
+${ANSI.GREEN}   lWMWl       lWM    MWl       lWMWl   ${ANSI.DEFAULT}
+${ANSI.GREEN}   lWMWl       lWM    MWl       lWMWl`;
 
 
 const rmRoot = `cannot remove /sys/module/printk/parameters/time': Operation not permitted
@@ -80,7 +80,7 @@ removing '/usr/local/lib': Operation succeeded
 [    4.397197] kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000h
 [    4.397199]
 [    4.397228] CPU: 0 PID: 1 Comm: init Not tainted 4.13.0-38-generic #43~${SysEnv.OS}
-[    4.397252] Hardware name: ${SysEnv.ARCH} E6520/0CVFY9, BIOS A20 05/12/2017
+[    4.397252] Hardware name: ${SysEnv.ARCH} E6520/0CVFY9, BIOS A20 05/12/2026
 [    4.397274] Call Trace:
 [    4.397290]  dump_stack+0x63/0x8b
 [    4.397305]  panic+0xd4/0x24d
