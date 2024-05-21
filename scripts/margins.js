@@ -5,6 +5,8 @@ import {showDialog, SysEnv} from "./utils";
 import {masterFileSystem, pageRegistry} from "./fileSystem/buildfs";
 import {renameCustom} from "./sidebar";
 import {pathJoin} from "./fileSystem/fileSystem";
+import PropTypes from "prop-types";
+import Wrapper from "./wrapper";
 
 
 /**
@@ -167,7 +169,6 @@ function HeaderMenu() {
  * @param currentPath {string} The current path of the page
  * @return {JSX.Element} The drop down menu
  */
-// eslint-disable-next-line react/prop-types
 function MenuDrop({currentPath}) {
     return (
         <div id="menuDropHolder">
@@ -229,6 +230,10 @@ function MenuDrop({currentPath}) {
     );
 }
 
+MenuDrop.propTypes = {
+    currentPath: PropTypes.string.isRequired
+};
+
 
 /**
  * Footer for the site that contains the language, encoding, lines, size, and file name status
@@ -236,7 +241,6 @@ function MenuDrop({currentPath}) {
  * @param pageName {string} The name of the page
  * @return {JSX.Element} The footer status
  */
-// eslint-disable-next-line react/prop-types
 function StatusFooter({currentPath, pageName}) {
 
     let pStats = getPageStats(currentPath);
@@ -250,5 +254,10 @@ function StatusFooter({currentPath, pageName}) {
         </footer>
     );
 }
+
+StatusFooter.propTypes = {
+    currentPath: PropTypes.string.isRequired,
+    pageName: PropTypes.string.isRequired
+};
 
 export {HeaderMenu, MenuDrop, StatusFooter, savePage};

@@ -2,7 +2,7 @@ import {pathJoin} from "./fileSystem/fileSystem";
 import {masterFileSystem, pageRegistry} from './fileSystem/buildfs';
 import {Perms, showDialog, SysEnv} from "./utils";
 import {createContextMenu} from "./fileSystem/fileSystemGUI";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Directory, File} from "./fileSystem/fileSystemObjects";
 import $ from "jquery";
 
@@ -257,4 +257,39 @@ function setSidebarState(openState =! sidebarOpen, animate = true){
     sidebarOpen = openState;
 }
 
-export {buildSidebar, setSidebarState, renameCustom, removeCustom};
+
+function Sidebar() {
+
+    const [explorerTree, setExplorerTree] = useState(buildSidebar());
+
+    useEffect(() => {
+        // Close the sidebar on mobile
+        if(window.innerWidth < 600) setSidebarState(false);
+
+        // Update the sidebar when the file system is updated
+        masterFileSystem.registerCallback((updateTime) => {
+            setExplorerTree(buildSidebar());
+        });
+
+    }, []);
+
+    useEffect(() => {
+        // Highlight the current page in the sidebar
+        let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
+        if (pagePath.endsWith("display") || pagePath.endsWith("edit")) pagePath = window.location.search.split("file=")[1];
+        let selectedLink = document.querySelectorAll(`.sidebarItem[linkPath="${pagePath}"]`)[0];
+        if (selectedLink) selectedLink.style.backgroundColor = "#6a6a6a";
+    }, [explorerTree]);
+
+    return (
+        <div id="sidebar" className="w3-col openSidebar">
+            <div id="collapseHolder" className="w3-cell-row openSidebar">
+                <button id="collapseSidebar" className="w3-button w3-cell" onClick={() => setSidebarState()}></button>
+                <h4 id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</h4>
+            </div>
+            <div id="sidebarContent" className="w3-display-container w3-row">{explorerTree}</div>
+        </div>
+    );
+}
+
+export {renameCustom, Sidebar};
