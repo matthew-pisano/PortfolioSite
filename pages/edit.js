@@ -17,10 +17,15 @@ function Edit() {
     useEffect(() => {
         let errorMsg = null;
         let filePath = new URLSearchParams(window.location.search).get("file");
-        let currentFile = masterFileSystem.getItem(filePath ? filePath : "/");
-        if(!currentFile) errorMsg = `Cannot find file at ${filePath}!`;
-        else if(currentFile.constructor === Directory) errorMsg = "Cannot open a directory!";
-        else if(!currentFile.permission.includes(Perms.WRITE)) errorMsg = `Insufficient permissions to write ${filePath}!`;
+        let currentFile;
+
+        if (!filePath) errorMsg = "No file specified!";
+        else {
+            currentFile = masterFileSystem.getItem(filePath);
+            if (!currentFile) errorMsg = `Cannot find file at ${filePath}!`;
+            else if (currentFile.constructor === Directory) errorMsg = "Cannot open a directory!";
+            else if (!currentFile.permission.includes(Perms.WRITE)) errorMsg = `Insufficient permissions to write ${filePath}!`;
+        }
 
         if(errorMsg){
             let errElem = document.createElement("p");

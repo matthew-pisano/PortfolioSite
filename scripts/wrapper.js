@@ -134,6 +134,7 @@ const Wrapper = ({children, pageName}) => {
     });
     // Initialize the sidebar state and load the saved hierarchy
     useEffect(() => {
+
         // Close the sidebar on mobile
         if(window.innerWidth < 600) setSidebarState(false);
         // Remove the dehydrated info from the page
@@ -172,6 +173,22 @@ const Wrapper = ({children, pageName}) => {
                 document.getElementById("terminalHeader").click();
             }
         });
+
+        // If a command is passed in the URL, execute it in the terminal
+        let execCmd = new URLSearchParams(window.location.search).get("exe");
+        if(execCmd) {
+            let terminal = document.getElementById('terminal');
+            // Open the terminal to a specific size if specified in the URL
+            let termSize = parseInt(new URLSearchParams(window.location.search).get("ts"));
+            if(termSize && !isNaN(termSize)) terminal.dispatchEvent(new CustomEvent("openTo", {detail: termSize}));
+            else terminal.dispatchEvent(new CustomEvent("openTo", {detail: 550}));
+            // Set the font size if specified in the URL
+            let fontSize = parseInt(new URLSearchParams(window.location.search).get("fs"));
+            if(fontSize && !isNaN(fontSize)) terminal.style.fontSize = `${fontSize}px`;
+            // Execute the command
+            document.getElementById('terminalInput').innerText = execCmd;
+            document.getElementById('terminalInput').dispatchEvent(new Event("submit"));
+        }
 
     }, []);
 
