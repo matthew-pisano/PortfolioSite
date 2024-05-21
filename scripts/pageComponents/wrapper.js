@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import '../scripts/globalListeners';
-
+import '../globalListeners';
 import Head from 'next/head';
-import {dehydratedInfo, masterFileSystem, setMasterFileSystem, setPageRegistry} from './fileSystem/buildfs';
-import TerminalDiv from './terminal/terminal';
+import {dehydratedInfo, masterFileSystem, setMasterFileSystem, setPageRegistry} from '../fileSystem/buildfs';
+import TerminalDiv from '../terminal/terminal';
 import PropTypes from "prop-types";
 import {Sidebar} from "./sidebar";
 import {HeaderMenu, MenuDrop, savePage, StatusFooter} from "./margins";

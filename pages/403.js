@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {buildPage, PageInfo, Tile} from '../scripts/pageBuilder';
-import Wrapper from '../scripts/wrapper';
+import Wrapper from '../scripts/pageComponents/wrapper';
 
 
 const authQuotes = ["You appear to have been misinformed.", "You're not from around here, ain't ya?",

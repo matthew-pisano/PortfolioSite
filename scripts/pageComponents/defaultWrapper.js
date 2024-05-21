@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import {buildPage} from "./pageBuilder";
+import {buildPage} from "../pageBuilder";
 import Wrapper from "./wrapper";
 import React from "react";
 

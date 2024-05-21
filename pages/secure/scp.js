@@ -1,6 +1,6 @@
 import React from 'react';
 import {buildPage, PageInfo, Tile} from '../../scripts/pageBuilder';
-import Wrapper from '../../scripts/wrapper';
+import Wrapper from '../../scripts/pageComponents/wrapper';
 
 
 function SCP() {

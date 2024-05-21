@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {masterFileSystem} from "../scripts/fileSystem/buildfs";
-import Wrapper from "../scripts/wrapper";
+import Wrapper from "../scripts/pageComponents/wrapper";
 import {lineNumbers} from "@codemirror/view";
 import {EditorState, Compartment} from "@codemirror/state";
 import {basicSetup, EditorView} from "codemirror";

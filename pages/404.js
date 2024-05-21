@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {PageInfo, Tile} from '../scripts/pageBuilder';
-import DefaultWrapper from "../scripts/defaultWrapper";
+import DefaultWrapper from "../scripts/pageComponents/defaultWrapper";
 
 
 const lostQuotes = ['How did we get here?', 'Not all who wander are lost...', 

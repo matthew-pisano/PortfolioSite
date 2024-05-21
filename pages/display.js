@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {masterFileSystem} from "../scripts/fileSystem/buildfs";
-import Wrapper from "../scripts/wrapper";
+import Wrapper from "../scripts/pageComponents/wrapper";
 import parse from "html-react-parser";
 import {Perms} from "../scripts/utils";
 import {Directory} from "../scripts/fileSystem/fileSystemObjects";

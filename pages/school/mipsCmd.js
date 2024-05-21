@@ -1,6 +1,6 @@
 import React from 'react';
 import {PageInfo, Tile} from '../../scripts/pageBuilder';
-import DefaultWrapper from "../../scripts/defaultWrapper";
+import DefaultWrapper from "../../scripts/pageComponents/defaultWrapper";
 
 
 function MipsCmd() {

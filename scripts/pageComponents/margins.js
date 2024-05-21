@@ -1,10 +1,10 @@
 import $ from "jquery";
 import React from "react";
-import {newCustomFile} from "./fileSystem/fileSystemGUI";
-import {showDialog, SysEnv} from "./utils";
-import {masterFileSystem, pageRegistry} from "./fileSystem/buildfs";
+import {newCustomFile} from "../fileSystem/fileSystemGUI";
+import {showDialog, SysEnv} from "../utils";
+import {masterFileSystem, pageRegistry} from "../fileSystem/buildfs";
 import {renameCustom} from "./sidebar";
-import {pathJoin} from "./fileSystem/fileSystem";
+import {pathJoin} from "../fileSystem/fileSystem";
 import PropTypes from "prop-types";
 import Wrapper from "./wrapper";
 

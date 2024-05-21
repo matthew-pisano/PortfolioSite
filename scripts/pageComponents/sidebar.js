@@ -1,9 +1,9 @@
-import {pathJoin} from "./fileSystem/fileSystem";
-import {masterFileSystem, pageRegistry} from './fileSystem/buildfs';
-import {Perms, showDialog, SysEnv} from "./utils";
-import {createContextMenu} from "./fileSystem/fileSystemGUI";
+import {pathJoin} from "../fileSystem/fileSystem";
+import {masterFileSystem, pageRegistry} from '../fileSystem/buildfs';
+import {Perms, showDialog, SysEnv} from "../utils";
+import {createContextMenu} from "../fileSystem/fileSystemGUI";
 import React, {useEffect, useState} from "react";
-import {Directory, File} from "./fileSystem/fileSystemObjects";
+import {Directory, File} from "../fileSystem/fileSystemObjects";
 import $ from "jquery";
 
 
