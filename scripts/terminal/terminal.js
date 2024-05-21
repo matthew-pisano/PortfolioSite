@@ -8,7 +8,7 @@ import { Commands } from './commands';
  * The terminal div component
  * @return {JSX.Element} The terminal div
  */
-const TerminalDiv = () => {
+function TerminalDiv() {
 
     const [initialPos, setInitialPos] = useState(null);
     const [initialSize, setInitialSize] = useState(null);
@@ -241,6 +241,6 @@ const TerminalDiv = () => {
         </div>
     );
 
-};
+}
 
 export default TerminalDiv;

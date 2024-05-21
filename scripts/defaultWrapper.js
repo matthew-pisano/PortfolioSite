@@ -9,7 +9,7 @@ import React from "react";
  * @param tiles {Tile[]} Tiles to be displayed on the page
  * @return {JSX.Element} The page wrapped in the default wrapper
  */
-const DefaultWrapper = ({pageInfo, tiles}) => {
+function DefaultWrapper({pageInfo, tiles}) {
     return (
         <Wrapper pageName={pageInfo.pageName}>
             <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
@@ -21,7 +21,7 @@ const DefaultWrapper = ({pageInfo, tiles}) => {
             </div>
         </Wrapper>
     );
-};
+}
 
 DefaultWrapper.propTypes = {
     pageInfo: PropTypes.any,
