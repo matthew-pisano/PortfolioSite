@@ -118,6 +118,9 @@ function getPageStats(currentPath){
         }
     }
 
+    if (fileSize === undefined) fileSize = 0;
+    if (fileLines === undefined) fileLines = 0;
+
     return {lines: fileLines, size: fileSize};
 }
 

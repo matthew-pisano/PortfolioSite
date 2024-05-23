@@ -1,9 +1,19 @@
 .openSidebar {
     width: 240px;
+    background-color: #313131;
 }
 
 .closeSidebar {
     width: 50px;
+    background-color: #313131;
+}
+
+.openSidebarPage {
+    margin-left: 240px;
+}
+
+.closeSidebarPage {
+    margin-left: 50px;
 }
 
 #sidebar {
@@ -18,13 +28,12 @@
 #collapseHolder {
     position: fixed;
     z-index: 3;
-    width: 0px;
-    background-color: #313131;
 }
 
 #sidebarContent {
     width: 100%;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .sidebarItem {

@@ -32,7 +32,8 @@ function slideTilesOnScroll() {
         // If the tile is in view and offset, slide it into view
         if(top <= window.innerHeight && tilePositions[tileElement.id].isOffset){
             jTile.animate({"margin-left": tilePositions[tileElement.id].default+"%"}, {duration: 700, queue: false});
-            jTile.animate({"margin-right": "20px"}, {duration: 700, queue: false});
+            let rightMargin = window.innerWidth < 600 ? 0 : 20;
+            jTile.animate({"margin-right": rightMargin+"px"}, {duration: 700, queue: false});
             tilePositions[tileElement.id].isOffset = false;
         }
         // Sides the tile off screen if it is out of view as the page initially loads

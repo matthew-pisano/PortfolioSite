@@ -232,28 +232,31 @@ let sidebarOpen = true;
  * @param animate {boolean} Whether to animate the sidebar state change
  */
 function setSidebarState(openState =! sidebarOpen, animate = true){
-    let sidebarMax = 240;
-    let sidebarMin = 50;
+    let pageElement = document.getElementsByClassName("page")[0];
     if(!openState){
-        $(".sidebarItem").invisible();
+        // Close the sidebar
         document.getElementById("sidebarContent").style.display = "none";
         document.getElementById("sidebar").classList.replace("openSidebar", "closeSidebar");
         document.getElementById("explorerTitle").style.display = "none";
-        document.getElementById("collapseHolder").classList.replace("openSidebar", "closeSidebar");
-        document.getElementsByClassName("page")[0].classList.remove("sidebarOpenPage");
+
+        pageElement.classList.add("closeSidebarPage");
+        pageElement.classList.remove("openSidebarPage");
+
         $("#sidebarContent").animate({"width": "0px"}, animate ? 200 : 0);
     }
     else{
+        // Open the sidebar
         document.getElementById("sidebarContent").style.display = "block";
         $("#sidebarContent").animate({"width": "100%"}, animate ? 200 : 0);
         document.getElementById("sidebar").classList.replace("closeSidebar", "openSidebar");
-        document.getElementById("collapseHolder").classList.replace("closeSidebar", "openSidebar");
-        document.getElementsByClassName("page")[0].classList.add("sidebarOpenPage");
+        pageElement.classList.remove("closeSidebarPage");
+
+        pageElement.classList.add("openSidebarPage");
+
         document.getElementById("explorerTitle").style.display = "";
         $(".sidebarItem").visible();
     }
 
-    $(".page").animate({"margin-left": (openState ? sidebarMax : sidebarMin )+"px"}, animate ? 200 : 0);
     sidebarOpen = openState;
 }
 
@@ -264,7 +267,8 @@ function Sidebar() {
 
     useEffect(() => {
         // Close the sidebar on mobile
-        if(window.innerWidth < 600) setSidebarState(false);
+        if(window.innerWidth < 600)
+            setSidebarState(false);
 
         // Update the sidebar when the file system is updated
         masterFileSystem.registerCallback((updateTime) => {
@@ -283,7 +287,7 @@ function Sidebar() {
 
     return (
         <div id="sidebar" className="w3-col openSidebar">
-            <div id="collapseHolder" className="w3-cell-row openSidebar">
+            <div id="collapseHolder" className="w3-cell-row">
                 <button id="collapseSidebar" className="w3-button w3-cell" onClick={() => setSidebarState()}></button>
                 <h4 id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</h4>
             </div>
