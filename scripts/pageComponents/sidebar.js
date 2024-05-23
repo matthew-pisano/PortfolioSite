@@ -237,6 +237,7 @@ function setSidebarState(openState =! sidebarOpen, animate = true){
         // Close the sidebar
         document.getElementById("sidebarContent").style.display = "none";
         document.getElementById("sidebar").classList.replace("openSidebar", "closeSidebar");
+        document.getElementById("collapseHolder").classList.replace("openSidebar", "closeSidebar");
         document.getElementById("explorerTitle").style.display = "none";
 
         pageElement.classList.add("closeSidebarPage");
@@ -249,6 +250,7 @@ function setSidebarState(openState =! sidebarOpen, animate = true){
         document.getElementById("sidebarContent").style.display = "block";
         $("#sidebarContent").animate({"width": "100%"}, animate ? 200 : 0);
         document.getElementById("sidebar").classList.replace("closeSidebar", "openSidebar");
+        document.getElementById("collapseHolder").classList.replace("closeSidebar", "openSidebar");
         pageElement.classList.remove("closeSidebarPage");
 
         pageElement.classList.add("openSidebarPage");
@@ -287,7 +289,7 @@ function Sidebar() {
 
     return (
         <div id="sidebar" className="w3-col openSidebar">
-            <div id="collapseHolder" className="w3-cell-row">
+            <div id="collapseHolder" className="w3-cell-row openSidebar">
                 <button id="collapseSidebar" className="w3-button w3-cell" onClick={() => setSidebarState()}></button>
                 <h4 id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</h4>
             </div>
