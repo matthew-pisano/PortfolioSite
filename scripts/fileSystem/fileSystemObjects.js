@@ -69,12 +69,30 @@ class Directory {
     constructor(name, subTree = null, permission = Perms.ALLOW) {
 
         Perms.validate(permission);
+        subTree = subTree ? subTree : [];
+
+        // Check for duplicate child names
+        this.childNames = new Set();
+        for (let child of subTree) {
+            if (this.childNames.has(child.name)) throw Error(`Duplicate child name ${child.name} in directory ${name}!`);
+            this.childNames.add(child.name);
+        }
 
         this.name = name.replace(/\//g, "");
-        this.subTree = subTree ? subTree : [];
+        this.subTree = subTree;
         this.permission = permission;
         this.created = Date.now();
         this.modified = Date.now();
+    }
+
+    /**
+     * Adds a child to the directory and checks for duplicate names
+     * @param child {Directory | File} The child to be added
+     */
+    addChild(child) {
+        if (this.childNames.has(child.name)) throw Error(`Duplicate child name ${child.name} in directory ${this.name}!`);
+        this.childNames.add(child.name);
+        this.subTree.push(child);
     }
 
     /**

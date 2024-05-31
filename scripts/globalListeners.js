@@ -71,10 +71,28 @@ function onGlobalContextMenu(evt) {
             elem.remove();
 }
 
+/**
+ * Prevents the default behavior of dragging and dropping
+ * @param evt {DragEvent} The drag event
+ */
+function onGlobalDrop(evt) {
+    evt.preventDefault();
+}
+
+/**
+ * Prevents the default behavior of dragging over
+ * @param evt {DragEvent} The drag event
+ */
+function onGlobalDragOver(evt) {
+    evt.preventDefault();
+}
+
 
 // Add the global listeners to the document
 if (typeof window !== "undefined") {
     document.documentElement.addEventListener('click', onGlobalClick, true);
     document.body.addEventListener('contextmenu', onGlobalContextMenu, true);
+    document.body.addEventListener('drop', onGlobalDrop, false);
+    document.body.addEventListener('dragover', onGlobalDragOver, false);
     window.onscroll = (event) => {slideTilesOnScroll();};
 }

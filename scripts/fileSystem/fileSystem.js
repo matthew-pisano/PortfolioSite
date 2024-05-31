@@ -94,7 +94,7 @@ class FileSystem {
             throw new Error(`Cannot make directory under ${parentPath}.  Permission denied!`);
 
         let childDir = new Directory(childName);
-        parent.subTree.push(childDir);
+        parent.addChild(childDir);
 
         this.update();
         return childDir;
@@ -118,7 +118,7 @@ class FileSystem {
             throw new Error(`Cannot make file under ${parentPath}.  Permission denied!`);
 
         let childFile = new File(childName, "", permission);
-        parent.subTree.push(childFile);
+        parent.addChild(childFile);
 
         this.update();
         return childFile;
@@ -159,7 +159,7 @@ class FileSystem {
         else copied = new File(oldObj.name, oldObj.text, oldObj.permission);
         copied.name = newChildName;
         copied.modified = oldObj.modified;
-        newParentObj.subTree.push(copied);
+        newParentObj.addChild(copied);
 
         this.update();
         return copied;

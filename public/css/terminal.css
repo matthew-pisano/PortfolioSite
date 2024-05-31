@@ -53,6 +53,26 @@
     overscroll-behavior-y: contain;
 }
 
+#terminalFileHandler {
+    z-index: 3;
+    position: fixed;
+    bottom: 30px;
+    left:0px;
+    right: 0px;
+    display: none;
+    background-color: rgba(128, 128, 128, 0.25) !important;
+    pointer-events: none;
+    text-align: center;
+}
+
+#terminalFileIndicator {
+    background-color: #3e3e3e;
+    padding: 10px;
+    border-radius: 6px;
+    border-color: azure;
+    border-style: solid;
+}
+
 #terminalThumb{
     background: #838383;
     border-bottom: 1px solid black;

@@ -23,14 +23,7 @@ let initialHierarchy = new Directory("", [
             new Directory("bin", [
                 new File("icrypt", "", Perms.DENY)
             ]),
-            new Directory("mnt", [
-                new File("DO_NOT_REMOVE_SYS32", "Do NOT rm C:/Windows/System32"),
-                new Directory("C:", [
-                    new Directory("Windows", [
-                        new Directory("System32", [], Perms.NO_EXECUTE),
-                    ], Perms.NO_EXECUTE),
-                ], Perms.NO_EXECUTE)
-            ]),
+            new Directory("mnt", []),
             new Directory("public", []),
             new Directory("src", []),
             new Directory("tmp", []),
@@ -42,7 +35,14 @@ let initialHierarchy = new Directory("", [
     new Directory("dev", [], Perms.DENY),
     new Directory("etc", [], Perms.DENY),
     new Directory("lib", [], Perms.DENY),
-    new Directory("mnt", [], Perms.DENY),
+    new Directory("mnt", [
+        new File("DO_NOT_REMOVE_SYS32", "Do NOT rm C:/Windows/System32"),
+        new Directory("C:", [
+            new Directory("Windows", [
+                new Directory("System32", [], Perms.NO_EXECUTE),
+            ], Perms.NO_EXECUTE),
+        ], Perms.NO_EXECUTE)
+    ]),
     new Directory("opt", [], Perms.DENY),
     new Directory("proc", [], Perms.DENY),
     new Directory("usr", [], Perms.DENY),

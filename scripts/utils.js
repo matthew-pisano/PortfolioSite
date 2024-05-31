@@ -16,6 +16,7 @@ class SysEnv {
     static USER = "guest";
     static HOME_FOLDER = "/home/"+this.USER;
     static PUBLIC_FOLDER = `${this.HOME_FOLDER}/public`;
+    static MOUNT_FOLDER = `${this.HOME_FOLDER}/mnt`;
 
     static SHELL = "GRU mash, version 5.1.16(1)-release";
     static ARCH = "x86_64-cloud-manix-gru";

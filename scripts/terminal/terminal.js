@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import React, { useState, useEffect } from 'react';
-import {ANSI, SysEnv} from '../utils';
+import {ANSI, showDialog, SysEnv} from '../utils';
 import { Commands } from './commands';
+import {masterFileSystem} from "../fileSystem/buildfs";
 
 
 /**
@@ -92,6 +93,7 @@ function TerminalDiv() {
      */
     function resize(height) {
         let terminal = document.getElementById('terminal');
+        let terminalFileHandler = document.getElementById('terminalFileHandler');
         // Ensure the terminal is not too tall
         if (height > window.innerHeight - 120)
             height = window.innerHeight - 120;
@@ -101,6 +103,9 @@ function TerminalDiv() {
         // Resize the terminal to the given height
         terminal.style.height = `${height}px`;
         terminal.style.display = "block";
+        terminalFileHandler.style.height = `${height}px`;
+        terminalFileHandler.style.display = "block";
+        terminalFileHandler.style.visibility = "hidden";
         document.getElementById('terminalInput').focus();
         document.getElementById('terminalClose').style.visibility = "visible";
         ENV.CLOSED = false;
@@ -204,6 +209,60 @@ function TerminalDiv() {
         }
     }
 
+    let enterEvents = 0;
+    let leaveEvents = 0;
+
+    /**
+     * Handles the drag enter event for the terminal
+     * @param e {DragEvent} The drag event
+     */
+    function onDragEnter(e) {
+        enterEvents += 1;
+        e.preventDefault();
+
+        if (!e.dataTransfer.items || e.dataTransfer.items.length === 0 || e.dataTransfer.items[0].kind !== "file") return;
+
+        document.getElementById('terminalFileHandler').style.visibility = "visible";
+    }
+
+    /**
+     * Handles the drag leave event for the terminal
+     * @param e {DragEvent} The drag event
+     */
+    function onDragLeave(e) {
+        leaveEvents += 1;
+        e.preventDefault();
+
+        if (leaveEvents < enterEvents) return;
+
+        document.getElementById('terminalFileHandler').style.visibility = "hidden";
+    }
+
+    /**
+     * Handles the drop event for the terminal
+     * @param e {DragEvent} The drag event
+     */
+    function onDrop(e) {
+        enterEvents = 0;
+        leaveEvents = 0;
+        e.preventDefault();
+
+        let files = e.dataTransfer.files;
+        for (let file of files) {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                let text = e.target.result;
+                let mntPath = SysEnv.MOUNT_FOLDER + "/" + file.name;
+                masterFileSystem.writeText(mntPath, text);
+
+                showDialog("Copied File", `Copied to '${mntPath}'`);
+            };
+            reader.readAsText(file);
+        }
+
+        document.getElementById('terminalFileHandler').style.visibility = "hidden";
+    }
+
     /**
      * Exits the terminal
      */
@@ -215,6 +274,9 @@ function TerminalDiv() {
 
     return (
         <div id="terminalHolder" className='w3-row gone'>
+            <div id='terminalFileHandler'>
+                <span id="terminalFileIndicator">Drag Files Here</span>
+            </div>
             <div id='terminalThumb'
                  draggable='true'
                  onDragStart={dragStart}
@@ -231,7 +293,7 @@ function TerminalDiv() {
                 // Ensure the user is not selecting text, and it is a single click
                 if (e.detail === 1 && window.getSelection().isCollapsed)
                     document.getElementById('terminalInput').focus();
-            }}>
+            }} onDragEnter={onDragEnter} onDragLeave={onDragLeave} onDrop={onDrop}>
                 <div id="terminalOutput"></div>
                 <div id="terminalBottom">
                     <div id="terminalPrompt"></div>

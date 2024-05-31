@@ -203,8 +203,9 @@ class Commands {
 
                 let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
                 modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-                if (showDetails) list.push([`d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}${child.name}${ANSI.DEFAULT}`, child.name]);
-                else list.push([`${ANSI.CYAN}${child.name}${ANSI.DEFAULT}`, child.name]);
+                let displayName = child.name.includes(" ") ? `'${child.name}'` : child.name;
+                if (showDetails) list.push([`d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}${displayName}${ANSI.DEFAULT}`, child.name]);
+                else list.push([`${ANSI.CYAN}${displayName}${ANSI.DEFAULT}`, child.name]);
             }
 
             list.sort((a, b) => a[1].localeCompare(b[1]));
@@ -231,12 +232,12 @@ class Commands {
             modStr = modStr.substring(0, modStr.lastIndexOf(":"));
             if (!lsObj.permission.includes(Perms.READ)) paddedSize = "?".padStart(6, "\xa0");
 
-            let objName = lsObj.name;
+            let displayName = lsObj.name.includes(" ") ? `'${lsObj.name}'` : lsObj.name;
             if (lsObj.permission === "--x")
-                objName = ANSI.GREEN + objName + ANSI.DEFAULT;
+                displayName = ANSI.GREEN + displayName + ANSI.DEFAULT;
 
-            if (showDetails) yield `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${objName}`;
-            else yield objName;
+            if (showDetails) yield `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${displayName}`;
+            else yield displayName;
         }
     }
     static async *ll(tokens) {yield* await this.ls(["-l", ...tokens]);}
@@ -322,7 +323,7 @@ class Commands {
         let pathArg = args[0];
         let path = this.resolvePath(pathArg);
         // Prevent the user from deleting the system32 directory
-        if (pathArg.replace(/\\/g, "/") === "C:/Windows/System32" || path === SysEnv.HOME_FOLDER+"/mnt/C:/Windows/System32")
+        if (pathArg.replace(/\\/g, "/") === "C:/Windows/System32" || path === "/mnt/C:/Windows/System32")
             throw new Error(system32);
 
         // Check if the root directory is being removed and if the -rf option is used
