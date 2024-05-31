@@ -247,6 +247,9 @@ MenuDrop.propTypes = {
 function StatusFooter({currentPath, pageName}) {
 
     let pStats = getPageStats(currentPath);
+    if (pStats.lines === undefined) pStats.lines = 0;
+    if (pStats.size === undefined) pStats.size = 0;
+
     return (
         <footer className="commandBar w3-row" style={{bottom: '0px'}}>
             <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>

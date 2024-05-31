@@ -51,6 +51,13 @@ function Help() {
                 standard HTML, and CSS.`
         ),
         new Tile(
+            "File Storage Location",
+            `All files and other data are stored within your browser's local storage.  This means that
+                all files created or modified will be saved even if the page is refreshed or closed.  This
+                also means that any information saved here will not be accessible to myself, other users, or devices.
+                This site also contains no telemetry or tracking of any kind.`
+        ),
+        new Tile(
             "File Editor",
             `All user-created files are editable and can be renamed or deleted.  These are usually
                 located within the <code>custom/</code> folder if created using the GUI.
@@ -71,10 +78,13 @@ function Help() {
             "Terminal",
             `For browsers with larger screen sizes, a terminal emulator is available at the bottom of
                 the screen.  This serves as a tool similar to the menu bar.  Files can be created, renamed
-                or deleted from here, along with other standard commands.  Further information can
-                be gathered by the <code>help</code> command in the terminal.  Feel free to explor the available
-                commands for managing files, gathering information about this mock system, and even a few secrets
-                and hidden features!`
+                or deleted from here, along with other standard commands.  The terminal can be opened by clicking
+                on it (at the bottom of the screen) or by dragging upwards on its gray thumb.  Further information can
+                be gathered by the <code>help</code> command in the terminal or by using the <code>Help > Terminal Help</code>
+                option in the top menu bar.  Feel free to explore the available commands for managing files, 
+                gathering information about this mock system, and even a few secrets and hidden features!
+                Additionally, the terminal supports drag-and-drop functionality for files.  These files will appear in the
+                <code>~/mnt/</code> folder.`
         ),
     ];
     let pageInfo = new PageInfo(
