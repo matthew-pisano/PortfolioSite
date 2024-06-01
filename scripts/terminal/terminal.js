@@ -247,15 +247,27 @@ function TerminalDiv() {
         leaveEvents = 0;
         e.preventDefault();
 
+        console.log(e);
         let files = e.dataTransfer.files;
         for (let file of files) {
+
+            if (!file.type.startsWith("text")) {
+                showDialog("Invalid File", `'${file.name}' is not a text file`);
+                continue;
+            }
+
             let reader = new FileReader();
             reader.onload = (e) => {
-                let text = e.target.result;
-                let mntPath = SysEnv.MOUNT_FOLDER + "/" + file.name;
-                masterFileSystem.writeText(mntPath, text);
+                try {
+                    let text = e.target.result;
 
-                showDialog("Copied File", `Copied to '${mntPath}'`);
+                    let mntPath = SysEnv.MOUNT_FOLDER + "/" + file.name;
+                    masterFileSystem.writeText(mntPath, text);
+
+                    showDialog("Copied File", `Copied to '${mntPath}'`);
+                }catch (e) {
+                    showDialog("Error", e.message);
+                }
             };
             reader.readAsText(file);
         }
@@ -281,7 +293,7 @@ function TerminalDiv() {
                  draggable='true'
                  onDragStart={dragStart}
                  onDragEnd={(e) => resize(initialSize + initialPos - e.clientY)}
-            />
+            ><span id='terminalThumbDots'>• • •</span></div>
             <div id="terminalHeader" onClick={() => {
                 if (ENV.CLOSED && Date.now() - ENV.CLOSE_TIME > 500) resize(210);
             }}>

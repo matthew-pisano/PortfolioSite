@@ -79,7 +79,18 @@
     border-right: 1px solid black;
     border-top: 1px solid black;
     cursor: row-resize;
-    height: 10px;
+    height: 12px;
+}
+
+#terminalThumbDots {
+    text-align: center;
+    font-weight: bold;
+    color: #515151;
+    display: block;
+    user-select: none;
+    margin: -5px auto auto;
+    height: 12px;
+    width: 50px;
 }
 
 .void {

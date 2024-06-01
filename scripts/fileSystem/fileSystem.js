@@ -1,5 +1,6 @@
 import {Perms} from "../utils";
 import {Directory, File} from "./fileSystemObjects";
+import {number} from "prop-types";
 
 
 /**
@@ -90,6 +91,8 @@ class FileSystem {
         let childName = path.substring(path.lastIndexOf("/") + 1);
         let parent = this.getItem(parentPath);
 
+        if (!parent) throw new Error(`Cannot make directory.  Parent directory at ${parentPath} does not exist!`);
+
         if (!parent.permission.includes(Perms.WRITE))
             throw new Error(`Cannot make directory under ${parentPath}.  Permission denied!`);
 
@@ -114,6 +117,8 @@ class FileSystem {
         let childName = path.substring(path.lastIndexOf("/") + 1);
         let parent = this.getItem(parentPath);
 
+        if (!parent) throw new Error(`Cannot create file.  Parent directory at ${parentPath} does not exist!`);
+
         if (!parent.permission.includes(Perms.WRITE))
             throw new Error(`Cannot make file under ${parentPath}.  Permission denied!`);
 
@@ -132,10 +137,11 @@ class FileSystem {
      */
     cp(oldPath, newPath) {
 
-        if (newPath === oldPath) throw new Error(`${oldPath} and ${newPath} are at the same location!`);
-
+        if (newPath === oldPath)
+            throw new Error(`${oldPath} and ${newPath} are at the same location!`);
         if (!this.exists(oldPath))
             throw new Error(`Cannot copy file or directory.  File or directory at ${oldPath} does not exist!`);
+
         let newObj = this.getItem(newPath);
         if (newObj && newObj.constructor === File)
             throw new Error(`File at ${newPath} already exists!`);
@@ -191,12 +197,12 @@ class FileSystem {
                 // Recursively remove directories if the -r option is used
                 if (target.constructor === Directory && options.includes("-r"))
                     for (let child of target.subTree)
-                        this.rm(pathJoin(path, child.name));
+                        this.rm(pathJoin(path, child.name), options);
                 else if (target.constructor === Directory)
                     throw new Error(`Cannot remove directory ${path}: is a directory.  Use -r to remove directories!`);
 
                 // Remove the file or directory from the parent directory
-                parentDir.subTree.splice(i, 1);
+                parentDir.subTree.splice(parseInt(i), 1);
 
                 this.update();
                 return target;

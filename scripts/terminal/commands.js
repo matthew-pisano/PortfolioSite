@@ -321,6 +321,8 @@ class Commands {
         if (valResult) throw new Error(valResult);
 
         let pathArg = args[0];
+        if (pathArg === "." || pathArg === "..") throw new Error(`Refusing to remove '.' or '..' directory: skipping '${pathArg}'`);
+
         let path = this.resolvePath(pathArg);
         // Prevent the user from deleting the system32 directory
         if (pathArg.replace(/\\/g, "/") === "C:/Windows/System32" || path === "/mnt/C:/Windows/System32")

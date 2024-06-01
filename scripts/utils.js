@@ -137,17 +137,54 @@ String.prototype.hashCode = function() {
 
 
 /**
- * Show a dialog box with a title and body for a certain duration.
+ * Class to hold the dialog queue and lock for the dialog box.
+ * @type {{title: string, body: string, duration: number}[]}
+ */
+let dialogQueue = [];
+/**
+ * Lock to prevent multiple dialogs from being shown at once.
+ * @type {boolean}
+ */
+let dialogLock = false;
+
+/**
+ * Adds a dialog box to the queue to be shown with the specified title, body, and duration.
  * @param title {string} The title of the dialog box
  * @param body {string} The body of the dialog box
  * @param duration {number} The duration to show the dialog box util it is faded out
  */
 function showDialog(title, body, duration = 2000) {
-    document.getElementById("dialogBoxTitle").innerText = title;
-    document.getElementById("dialogBoxBody").innerText = body;
+    dialogQueue.push({title: title, body: body, duration: duration});
+    if(!dialogLock) {
+        dialogLock = true;
+        showNextDialog();
+    }
+}
+
+
+/**
+ * Recursively shows all the dialogs in the queue in order.
+ */
+function showNextDialog() {
+    // If there are no more dialogs to show, release the lock
+    if(dialogQueue.length === 0) {
+        dialogLock = false;
+        return;
+    }
+
+    let dialog = dialogQueue.shift();
+    document.getElementById("dialogBoxTitle").innerText = dialog.title;
+    document.getElementById("dialogBoxBody").innerText = dialog.body;
     document.getElementById("dialogBox").style.display = "block";
+
     // Fade out the dialog box after a certain duration
-    setTimeout(() => $("#dialogBox").fadeOut("slow"), duration);
+    setTimeout(() => {
+        $("#dialogBox").fadeOut("slow", () => {
+            // Recursively show the next dialog after the current one fades out
+            showNextDialog();
+        });
+    }, dialog.duration);
+
 }
 
 
