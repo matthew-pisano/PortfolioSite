@@ -7,6 +7,20 @@ import $ from 'jquery';
  */
 let tilePositions = {};
 
+/**
+ * Whether the menu bar is primed for animation by clicking it
+ * @type {boolean}
+ */
+let primedMenuBar = false;
+
+function setMenuBarPrimed(newStatus) {
+    primedMenuBar = newStatus;
+}
+
+function isMenuBarPrimed() {
+    return primedMenuBar;
+}
+
 
 /**
  * Slides the tiles into view as the user scrolls down the page
@@ -54,6 +68,7 @@ function slideTilesOnScroll() {
 function onGlobalClick(evt) {
     for(let elem of document.getElementsByClassName("menuDropdown"))
         elem.style.display = "none";
+    primedMenuBar = false;
 
     if(!evt.target.className.includes("contextMenu"))
         for(let elem of document.getElementsByClassName("contextMenu"))
@@ -96,3 +111,5 @@ if (typeof window !== "undefined") {
     document.body.addEventListener('dragover', onGlobalDragOver, false);
     window.onscroll = (event) => {slideTilesOnScroll();};
 }
+
+export {setMenuBarPrimed, isMenuBarPrimed};

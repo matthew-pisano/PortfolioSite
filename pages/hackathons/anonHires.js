@@ -45,7 +45,7 @@ function AnonHires() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Anon Hires",
         "A Web-based hiring platform with anonymity",
-        {backgroundColor: "#3eab3c"},
+        {backgroundColor: "#4c8e4b"},
         ["hack", "collab", "js", "python", "html"],
         "https://github.com/OpenHubHackathonGreen/Anonymous-Hires",
         "Anon Hires"

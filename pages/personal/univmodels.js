@@ -35,7 +35,7 @@ function UnivModels() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Universal Models",
         "An adapter between Huggingface transformers and several different APIs",
-        {backgroundColor: "#38af70"},
+        {backgroundColor: "#47af78"},
         ["personal", "ai", "python"],
         "https://github.com/matthew-pisano/UniversalModels",
         "UniversalModels",

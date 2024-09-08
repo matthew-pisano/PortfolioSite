@@ -138,7 +138,7 @@ function ChipFiring() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Chip Firing",
         "A research project to examine patterns in chip firing games",
-        {backgroundColor: "#a24f67"},
+        {backgroundColor: "#855160"},
         ["research", "academic", "python"],
         "https://github.com/matthew-pisano/ChipFiring",
         "Chip Firing",

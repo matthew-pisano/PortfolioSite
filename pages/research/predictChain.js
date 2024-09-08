@@ -84,7 +84,7 @@ function PredictChain() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "PredictChain",
         "Empowering collaboration and data accessibility for AI in a decentralized blockchain-based marketplace",
-        {backgroundColor: "#3b6098"},
+        {backgroundColor: "#3b5783"},
         ["research", "academic", "ai", "python", "hack"],
         "https://github.com/predict-chain/predict-chain",
         "PredictChain",

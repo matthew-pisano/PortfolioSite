@@ -43,7 +43,7 @@ function Imperium() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Imperium",
         "A historical grand strategy game for android devices",
-        {backgroundColor: "#babd93"},
+        {backgroundColor: "#c4c889"},
         ["personal", "java", "android"],
         "https://github.com/matthew-pisano/Imperium",
         "Imperium",

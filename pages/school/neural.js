@@ -139,7 +139,7 @@ function Neural() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Neural",
         "A research project for comparing training methods of neural networks",
-        {backgroundColor: "#3c8aab"},
+        {backgroundColor: "#4e95b3"},
         ["research", "academic", "ai", "python"],
         "https://github.com/matthew-pisano/NuralPy",
         "Neural",

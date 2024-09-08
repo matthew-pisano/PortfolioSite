@@ -56,7 +56,7 @@ function Simplex() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Simplex",
         "A math-oriented interpreted scripting language built in Java",
-        {backgroundColor: "#824ab6"},
+        {backgroundColor: "#8461a5"},
         ["personal", "java", "android"],
         "https://github.com/matthew-pisano/SimplexIDE",
         "Simplex"

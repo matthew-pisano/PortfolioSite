@@ -4,34 +4,41 @@ import Wrapper from '../scripts/pageComponents/wrapper';
 
 
 /**
- * The saturation of the background color
- * @type {number}
- */
-let grayState = 30;
-/**
- * The direction of the background color change (dark to light or light to dark)
- * @type {number}
- */
-let grayDirection = 2;
-
-
-/**
  * Generate a random string of text
  * @param len {number} Length of the string to generate
  * @return {string} Random string of text
  */
 function randText(len){
     let randStr = "";
-    let alphabet = "aaaaabcdeeeeeefghhhiiiijklmnnnopqrsttttttuvwxyz         ";
+    let alphabet = "aaaaabcdeeeeeefghhhiiiijklmnnnopqrsttttttuvwxyz         '";
     while(randStr.length < len) randStr += alphabet[Math.floor(Math.random()*alphabet.length)];
     return randStr;
+}
+
+
+
+async function backgroundGradient() {
+    let grayDirection = 2;
+    let grayState = 0;
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+        // Update background with red bias
+        let redBias = Math.log(grayState) + 20;
+        document.getElementById("wrapperContent").style.backgroundColor = "rgba(" + (grayState + redBias) + ", " + (grayState - redBias) + ", " + (grayState - redBias) + ")";
+
+        // Update the brightness of the background
+        grayState += grayDirection;
+        if (grayState >= 40) grayDirection = -2;
+        else if (grayState <= 0) grayDirection = 2;
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
 }
 
 
 /**
  * Babbler function to generate random text and update the page tiles with it in an infinite loop
  */
-async function babbler(){
+async function babelTilesStep(){
     // Update the title card with random text
     document.getElementsByClassName("titleCard")[0].children[0].children[0].innerText = randText(Math.floor(Math.random()*5)+10);
 
@@ -50,18 +57,10 @@ async function babbler(){
         // Add random text to the tile
         titleElem.innerHTML = randText(Math.floor(Math.random()*20)+10);
         contentElem.innerHTML = randText(Math.floor(Math.random()*300)+100);
+        titleElem.style.fontSize = Math.floor(Math.random()*15)+15 + "px";
+        contentElem.style.fontSize = Math.floor(Math.random()*10)+10 + "px";
         for (let i =0; i < Math.floor(Math.random()*5); i++)
             contentElem.innerHTML += "<br><br>&nbsp;" + randText(Math.floor(Math.random()*400)+100);
-
-        // Update background with red bias
-        let redBias = Math.log(grayState)+20;
-        document.body.style.backgroundColor = "rgb("+(grayState+redBias)+", "+(grayState-redBias)+", "+(grayState-redBias)+")";
-
-        // Update the brightness of the background
-        grayState += grayDirection;
-        if(grayState >= 200) grayDirection = -2;
-        else if(grayState <= 30) grayDirection = 2;
-        await new Promise(resolve => setTimeout(resolve, 500));
         tileIndex++;
     }
 }
@@ -71,10 +70,10 @@ async function babbler(){
  * Infinite loop to update the page with random text
  */
 async function babbleLoop() {
-    await new Promise(resolve => setTimeout(resolve, 200));
+    backgroundGradient();
     // eslint-disable-next-line no-constant-condition
     while(true){
-        babbler();
+        await babelTilesStep();
         await new Promise(resolve => setTimeout(resolve, 2000));
     }
 }

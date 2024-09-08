@@ -232,7 +232,7 @@ async function *rmRootMsg() {
     await new Promise(resolve => setTimeout(resolve, 1000));
     pageElem.innerHTML = `<p style="color: red">ERROR: File not found</p>`;
     await new Promise(resolve => setTimeout(resolve, 1000));
-    window.document.documentElement.style.backgroundColor = "#010082";
+    window.document.documentElement.style.backgroundColor = "#020183";
     window.document.body.innerHTML = '<img src="/media/image/bsod.png" alt="bsod" style="width: 100%;"/>';
 }
 

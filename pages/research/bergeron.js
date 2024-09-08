@@ -15,12 +15,12 @@ function Bergeron() {
                 any time-consuming fine-tuning or hard-coded filtering.`,
             "/media/image/bergeron.png"
         ),
-        new Tile(
-            `NOTE: This research is currently undergoing a blind review.  Thus, identifying
-                information has been omitted and data may be more recent than in preprint versions.`,
-            "", "", false, {}, [], "", "", [], [], "",
-            {backgroundColor: "rgba(255,219,55,0.63)"}
-        ),
+        // new Tile(
+        //     `NOTE: This research is currently undergoing a blind review.  Thus, identifying
+        //         information has been omitted and data may be more recent than in preprint versions.`,
+        //     "", "", false, {}, [], "", "", [], [], "",
+        //     {backgroundColor: "rgba(255,219,55,0.63)"}
+        // ),
         new Tile(
             "Abstract",
             `Research into AI alignment has grown considerably since the recent introduction of increasingly capable Large Language 
@@ -133,7 +133,7 @@ function Bergeron() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Bergeron",
         "A conscience-based alignment framework",
-        {backgroundColor: "#38af70"},
+        {backgroundColor: "#309c63"},
         ["research", "academic", "ai", "alignment", "python"],
         "",
         "",

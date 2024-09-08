@@ -68,7 +68,7 @@ function Destiny() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Manifest Destiny",
         "A cellular automata population growth simulator",
-        {backgroundColor: "#4db6bf"},
+        {backgroundColor: "#5cafb6"},
         ["academic", "clang", "cuda", "collab"],
         "https://github.com/matthew-pisano/ManifestDestiny",
         "ManifestDestiny",

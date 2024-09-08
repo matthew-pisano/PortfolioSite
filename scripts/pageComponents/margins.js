@@ -5,8 +5,8 @@ import {showDialog, SysEnv} from "../utils";
 import {masterFileSystem, pageRegistry} from "../fileSystem/buildfs";
 import {renameCustom} from "./sidebar";
 import {pathJoin} from "../fileSystem/fileSystem";
+import {isMenuBarPrimed, setMenuBarPrimed} from "../globalListeners";
 import PropTypes from "prop-types";
-import Wrapper from "./wrapper";
 
 
 /**
@@ -125,6 +125,48 @@ function getPageStats(currentPath){
 }
 
 
+function clearMenuDrops() {
+    for(let elem of document.getElementsByClassName("menuDropdown"))
+        elem.style.display = "none";
+}
+
+
+function focusFileButton() {
+    clearMenuDrops();
+    let leftEdge = document.getElementById("fileButton").getBoundingClientRect().left;
+    document.getElementById("fileDropdown").style.marginLeft = leftEdge+"px";
+    document.getElementById("fileDropdown").style.display = "block";
+}
+
+function focusEditButton() {
+    clearMenuDrops();
+    let leftEdge = document.getElementById("editButton").getBoundingClientRect().left;
+    document.getElementById("editDropdown").style.marginLeft = leftEdge+"px";
+    document.getElementById("editDropdown").style.display = "block";
+}
+
+function focusTerminalButton() {
+    clearMenuDrops();
+    let leftEdge = document.getElementById("terminalButton").getBoundingClientRect().left;
+    document.getElementById("terminalDropdown").style.marginLeft = leftEdge+"px";
+    document.getElementById("terminalDropdown").style.display = "block";
+}
+
+function focusHelpButton() {
+    clearMenuDrops();
+    let leftEdge = document.getElementById("helpButton").getBoundingClientRect().left;
+    document.getElementById("helpDropdown").style.marginLeft = leftEdge+"px";
+    document.getElementById("helpDropdown").style.display = "block";
+}
+
+function focusContactButton() {
+    clearMenuDrops();
+    let leftEdge = document.getElementById("contactButton").getBoundingClientRect().left;
+    document.getElementById("contactDropdown").style.marginLeft = leftEdge+"px";
+    document.getElementById("contactDropdown").style.display = "block";
+}
+
+
 /**
  * Header menu for the site that contains the file, edit, terminal, help, and contact info buttons
  * @return {JSX.Element} The header menu
@@ -133,34 +175,24 @@ function HeaderMenu() {
     return (
         <header className="menuBar w3-row" style={{top: '0px'}}>
             <button id="fileButton" className="menuItem lightText w3-button w3-col"
-                    onClick={async () => {
-                        await new Promise(r => setTimeout(r, 20));
-                        $("#fileDropdown").fadeToggle();
-                    }}>File
+                    onClick={() => {setMenuBarPrimed(true); focusFileButton();}}
+                    onMouseOver={() => {if (isMenuBarPrimed()) focusFileButton();}}>File
             </button>
             <button id="editButton" className="menuItem lightText w3-button w3-col"
-                    onClick={async () => {
-                        await new Promise(r => setTimeout(r, 20));
-                        $("#editDropdown").fadeToggle();
-                    }}>Edit
+                    onClick={() => {setMenuBarPrimed(true); focusEditButton();}}
+                    onMouseOver={() => {if (isMenuBarPrimed()) focusEditButton();}}>Edit
             </button>
             <button id="terminalButton" className="menuItem lightText w3-button w3-col gone"
-                    onClick={async () => {
-                        await new Promise(r => setTimeout(r, 20));
-                        $("#terminalDropdown").fadeToggle();
-                    }}>Terminal
+                    onClick={() => {setMenuBarPrimed(true); focusTerminalButton();}}
+                    onMouseOver={() => {if (isMenuBarPrimed()) focusTerminalButton();}}>Terminal
             </button>
             <button id="helpButton" className="menuItem lightText w3-button w3-col"
-                    onClick={async () => {
-                        await new Promise(r => setTimeout(r, 20));
-                        $("#helpDropdown").fadeToggle();
-                    }}>Help
+                    onClick={() => {setMenuBarPrimed(true); focusHelpButton();}}
+                    onMouseOver={() => {if (isMenuBarPrimed()) focusHelpButton();}}>Help
             </button>
             <button id="contactButton" className="menuItem lightText w3-button w3-col"
-                    onClick={async () => {
-                        await new Promise(r => setTimeout(r, 20));
-                        $("#contactDropdown").fadeToggle();
-                    }}>Contact Info
+                    onClick={() => {setMenuBarPrimed(true); focusContactButton();}}
+                    onMouseOver={() => {if (isMenuBarPrimed()) focusContactButton();}}>Contact Info
             </button>
         </header>
     );
@@ -177,9 +209,7 @@ function MenuDrop({currentPath}) {
         <div id="menuDropHolder">
             <div id="fileDropdown" className="menuDropdown w3-col">
                 <button id="newAction" className="w3-button lightText menuDropItem"
-                        onClick={() => {
-                            newCustomFile();
-                        }}>New
+                        onClick={() => {newCustomFile();}}>New
                 </button>
                 <button id="saveAction" className="w3-button lightText menuDropItem"
                         onClick={() => savePage(currentPath)}>Save
@@ -209,7 +239,6 @@ function MenuDrop({currentPath}) {
                 </button>
             </div>
             <div id="helpDropdown" className="menuDropdown w3-col">
-
                 <button id="helpAction" className="w3-button lightText menuDropItem"
                         onClick={() => window.location.replace("/help")}>help.html
                 </button>
@@ -224,8 +253,8 @@ function MenuDrop({currentPath}) {
                 </button>
             </div>
             <div id="contactDropdown" className="menuDropdown w3-col">
-                <p className="lightText menuDropItem">Phone: +1 (845)-706-0677</p>
-                <p className="lightText menuDropItem">Email: matthewpisano14@gmail.com</p>
+                <span className="lightText menuDropItem">Phone: +1 (845)-706-0677</span>
+                <span className="lightText menuDropItem">Email: matthewpisano14@gmail.com</span>
                 <a className="lightText menuDropItem" style={{display: "block"}} href='https://www.linkedin.com/in/matthew-pisano'
                    target={"_blank"} rel="noreferrer">LinkedIn</a>
             </div>
@@ -251,12 +280,12 @@ function StatusFooter({currentPath, pageName}) {
     if (pStats.size === undefined) pStats.size = 0;
 
     return (
-        <footer className="commandBar w3-row" style={{bottom: '0px'}}>
-            <div id="langStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>HTML</div>
-            <div id="encodingStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>
-            <div id="linesStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pStats.lines + " Lines"}</div>
-            <div id="sizeStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pStats.size <= 1024 ? pStats.size + "B" : Math.round(pStats.size / 102.4) / 10 + "kB"}</div>
-            <div id="itemStatus" className="commandItem lightText w3-col" style={{float: 'right'}}>{pageName + ".html"}</div>
+        <footer className="infoBar w3-row" style={{bottom: '0px'}}>
+            <div id="langStatus" className="infoBarItem lightText w3-col" style={{float: 'right'}}>HTML</div>
+            <div id="encodingStatus" className="infoBarItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>
+            <div id="linesStatus" className="infoBarItem lightText w3-col" style={{float: 'right'}}>{pStats.lines + " Lines"}</div>
+            <div id="sizeStatus" className="infoBarItem lightText w3-col" style={{float: 'right'}}>{pStats.size <= 1024 ? pStats.size + "B" : Math.round(pStats.size / 102.4) / 10 + "kB"}</div>
+            <div id="itemStatus" className="infoBarItem lightText w3-col" style={{float: 'right'}}>{pageName + ".html"}</div>
         </footer>
     );
 }

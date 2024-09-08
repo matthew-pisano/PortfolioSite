@@ -41,7 +41,7 @@ function Videntium() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Videntium",
         "Online map viewer for Imperium written in PHP",
-        {backgroundColor: "#876eba"},
+        {backgroundColor: "#6f63a6"},
         ["academic", "php", "js", "html"],
         "https://github.com/matthew-pisano/Videntium",
         "Videntium"

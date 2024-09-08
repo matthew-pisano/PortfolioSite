@@ -26,7 +26,7 @@ function MipsCmd() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "MIPS Terminal",
         "A simple command processor written in the MIPS assembly language",
-        {backgroundColor: "#bf564d"},
+        {backgroundColor: "#b3645d"},
         ["academic", "assembly"],
         "https://github.com/matthew-pisano/MIPS-Command-Processor",
         "MIPS Cmd"

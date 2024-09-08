@@ -188,7 +188,7 @@ function Home() {
         "home",
         "Matthew Pisano",
         "Language Model and Artificial Intelligence Alignment Researcher",
-        {},
+        {backgroundColor: "#345b8f"},
         [],
         "https://github.com/matthew-pisano/",
         "GitHub",

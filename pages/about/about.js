@@ -80,7 +80,7 @@ function About() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "About",
         "Extra information on me as a developer, student, researcher and person",
-        {backgroundColor: "#14a343"},
+        {backgroundColor: "#339f56"},
         [],
         "https://github.com/matthew-pisano/",
         "GitHub",

@@ -91,7 +91,7 @@ function Help() {
         "help",
         "Help Menu",
         "In case you'd like some assistance",
-        {backgroundColor: "#919ba8"},
+        {backgroundColor: "#778291"},
         ["help"]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;

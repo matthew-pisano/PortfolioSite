@@ -1,19 +1,19 @@
 .menuBar {
     position: fixed;
     width: 100%;
-    background-color: #33383f;
+    background-color: #35353a;
     z-index: 3;
 }
 
-.commandBar {
+.infoBar {
     position: fixed;
     width: 100%;
-    background-color: #3b71bb;
+    background-color: #2b3137;
     z-index: 3;
     height: 30px;
 }
 
-.menuItem, .commandItem {
+.menuItem, .infoBarItem {
     width: auto;
     padding: 2px 8px;
 }
@@ -26,9 +26,11 @@
 }
 
 .menuDropdown {
-    background-color: #2a2b2c;
+    background-color: #35353a;
     border-style: solid;
     border-color: rgb(219, 224, 224);
+    min-width: 200px;
+    max-width: 350px;
     border-width: 1px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -37,15 +39,18 @@
 
 .menuDropItem {
     display: block;
-    min-width: 200px;
+    width: 100%;
     padding: 2px 3px;
-    margin-left: 5px;
-    margin-right: 5px;
     text-align: left;
 }
 
-.commandItem:hover, .menuDropItem:hover {
-    background-color: #77a6e9 !important;
+.menuDropItem:hover {
+    background-color: #4a5058 !important;
+    color: azure !important;
+}
+
+.infoBarItem:hover {
+    background-color: #34414e !important;
 }
 
 .menuItem:hover {

@@ -36,7 +36,7 @@ let initialHierarchy = new Directory("", [
     new Directory("etc", [], Perms.DENY),
     new Directory("lib", [], Perms.DENY),
     new Directory("mnt", [
-        new File("DO_NOT_REMOVE_SYS32", "Do NOT rm C:/Windows/System32"),
+        new File("IMPORTANT_README.txt", "Do NOT rm C:/Windows/System32"),
         new Directory("C:", [
             new Directory("Windows", [
                 new Directory("System32", [], Perms.NO_EXECUTE),

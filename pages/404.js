@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {PageInfo, Tile} from '../scripts/pageBuilder';
-import DefaultWrapper from "../scripts/pageComponents/defaultWrapper";
+import {PageInfo} from '../scripts/pageBuilder';
+import Wrapper from "../scripts/pageComponents/wrapper";
 
 
 const lostQuotes = ['How did we get here?', 'Not all who wander are lost...', 
@@ -29,28 +29,6 @@ function PageNotFound() {
         return "/babble";
     }
 
-    let tiles = [
-        new Tile(
-            "Something's Not Right",
-            `The page <i style="background-color: #454545; border-radius: 4px">'${location}'</i>
-            does not seem to exist.  These are uncharted waters, it would be wise to return home.<br><br>
-            ...This your last chance.  After this there is no turning back.  You take the blue pill, the story ends.
-            You wake up in your bed and believe whatever you want to. You take the red pill, you stay in Wonderland, 
-            and I show you how deep the rabbit hole goes.  Remember, all I'm offering is the truth.  Nothing more.`
-        ),
-        new Tile(
-            "Back to Safety",
-            "", "", false, {}, [], "", "", [], [],
-            "home",
-            {backgroundColor: "#225799", textAlign: "center", fontSize: "20px"}
-        ),
-        new Tile(
-            "Continue Onwards",
-            "", "", false, {}, [], "", "", [], [],
-            nextLink(),
-            {backgroundColor: "#9e1111", backgroundImage: 'url("/matrix.gif")', textAlign: "center", fontSize: "20px"}
-        ),
-    ];
     let pageInfo = new PageInfo(
         "404",
         "Page Not Found",
@@ -58,8 +36,33 @@ function PageNotFound() {
         {backgroundColor: "#000000"},
         ["help"]
     );
-    
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
+
+    return (<Wrapper pageName={pageInfo.pageName}>
+        <div id={pageInfo.pageName + "Page"} className="page container w3-rest lightText">
+            <div className="inner titleCard">
+                <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>{pageInfo.title}</b></h1><br/>
+                <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
+            </div>
+            <div className="tileHolder inner w3-display-container" style={{backgroundColor: "#000000"}}>
+                <div className="displayTile w3-container w3-row">
+                    <h3><b>Something&apos;s Not Right</b></h3>
+                    <span style={{margin: "15px 0px", display: "block"}}>
+                        The page <i style={{backgroundColor: "#454545", borderRadius: "4px"}}>{location}</i> does
+                        not seem to exist.  These are uncharted waters, it would be wise to return home.<br/><br/>
+                        ...this your last chance.  After this there is no turning back.  You click the blue link, the story ends.
+                        You wake up in your bed and believe whatever you want to. You click the red link, you stay in Wonderland,
+                        and I show you how deep the rabbit hole goes.  Remember, all I&apos;m offering is the truth.  Nothing more.
+                    </span>
+                </div>
+                <a id="confirmTile" className="displayTile choiceTile w3-container w3-row" href="/home">
+                    <b>Back to Safety</b>
+                </a>
+                <a id="denyTile" className="displayTile choiceTile w3-container w3-row" href={nextLink()}>
+                    <b>Continue Onwards</b>
+                </a>
+            </div>
+        </div>
+    </Wrapper>);
 }
 
 

@@ -100,7 +100,7 @@ function HighGround() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Moral High Ground",
         "A conversational benchmark for LLM moral alignment",
-        {backgroundColor: "#3749a1"},
+        {backgroundColor: "#429797"},
         ["research", "academic", "ai", "python", "hack"],
         "",
         "",

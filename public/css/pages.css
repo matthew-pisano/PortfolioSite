@@ -2,7 +2,7 @@
 #wrapperContent{
     margin-bottom: 30px;
     margin-top: 30px;
-    background-color: #1e1e1e;
+    background-color: #1a2329;
 }
 
 .inner {
@@ -10,7 +10,7 @@
 }
 
 .page {
-    margin-left: 240px;
+    margin-left: 250px;
     margin-bottom: 100px;
 }
 
@@ -22,7 +22,7 @@
 
 .tileHolder {
     width: 100%;
-    background-color: #2b40a1;
+    background-color: #1a2329;
     margin-top: 250px;
     min-height: 500px;
     padding-top: 50px;
@@ -41,7 +41,6 @@
     bottom: 0;
     right: 0;
     left: 0;
-    border-radius: 25px;
 }
 
 #editPage {
@@ -163,4 +162,22 @@ code {
     font-weight: bold;
     font-size: large;
     margin-left: 10px;
+}
+
+.choiceTile {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: azure;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#confirmTile {
+    background-color: #2b5873;
+}
+
+#denyTile {
+    background-color: #000000;
+    background-image: url("/matrix.gif");
 }

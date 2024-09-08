@@ -20,7 +20,7 @@ let contentHtml = `
         background-color: #3a3a3a;
     }
     body{
-        background-color: #4e61b8;
+        background-color: #5d699f;
     }
 </style>
 </head>
@@ -33,7 +33,7 @@ let contentHtml = `
             <p>I am passionate about teaching others what I already know.
             I enjoy showing others how my projects work and how all of its components come together.</p>
             <p>In my opinion, the most effective way of learning programming is for one to program for themselves.
-            This is the purpose of this editor, to now only showcase my abilities, but to allow anyone who views this
+            This is the purpose of this editor, to not only showcase my abilities, but to allow anyone who views this
             site to try out the same skills that built this website in the first place, albeit much simpler.</p>
         </li>
         <li><h3>Getting Started</h3>

@@ -96,7 +96,7 @@ function ImageCrypt() {
         typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
         "Image-Crypt",
         "An image-based document encoder",
-        {backgroundColor: "#63beca"},
+        {backgroundColor: "#62a8a2"},
         ["personal", "cpp"],
         "https://github.com/matthew-pisano/ImageCrypt",
         "ImageCrypt"

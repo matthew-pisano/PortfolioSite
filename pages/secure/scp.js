@@ -83,7 +83,7 @@ function SCP() {
     ];
     let pageInfo = new PageInfo(
         "scp", "SCP-672██",
-        "", {backgroundColor: "#ba3a3a"},
+        "", {backgroundColor: "#872929"},
         ["keter", "research", "ai"],
         "https://scp-wiki.wikidot.com/scp-redacted",
         "██████ Entry"
