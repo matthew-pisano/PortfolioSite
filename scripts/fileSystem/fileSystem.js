@@ -1,6 +1,5 @@
-import {Perms} from "../utils";
 import {Directory, File} from "./fileSystemObjects";
-import {number} from "prop-types";
+import {Perms} from "./fileSystemMeta";
 
 
 /**
@@ -16,9 +15,8 @@ function pathJoin(...paths) {
         if (path[0] === "/") totalPath = [''];
         let split = path.split('/');
         for (let elem of split) {
-            if (elem === '.' || elem === '');
-            else if (elem === '..') totalPath.pop();
-            else totalPath.push(elem);
+            if (elem === '..') totalPath.pop();
+            else if (elem !== '.' && elem !== '') totalPath.push(elem);
         }
     }
 
@@ -38,7 +36,6 @@ class FileSystem {
      * @param pageRegistry {{string: Page}} The registry of preset, viewable HTML pages
      */
     constructor(hierarchy, pageRegistry) {
-
         this.hierarchy = hierarchy;
         this.pageRegistry = pageRegistry;
         this.lastUpdateTime = Date.now();
@@ -297,9 +294,9 @@ class FileSystem {
             }
             if (!foundPath) return null;
         }
-
         return current;
     }
 }
+
 
 export {FileSystem, pathJoin};

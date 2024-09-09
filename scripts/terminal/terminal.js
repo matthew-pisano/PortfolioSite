@@ -1,8 +1,9 @@
 import $ from 'jquery';
-import React, { useState, useEffect } from 'react';
-import {ANSI, showDialog, SysEnv} from '../utils';
-import { Commands } from './commands';
+import React, {useEffect, useState} from 'react';
+import {showDialog} from '../utils';
+import {Commands} from './commands';
 import {masterFileSystem} from "../fileSystem/buildfs";
+import {ANSI, SysEnv} from "../fileSystem/fileSystemMeta";
 
 
 /**
@@ -17,6 +18,17 @@ function TerminalDiv() {
     const [draftCommand, setDraftCommand] = useState("");
     const [commandIndex, setCommandIndex] = useState(-1);
     const [ENV, setENV] = useState({ CWD: SysEnv.HOME_FOLDER, HOME: SysEnv.HOME_FOLDER, COLOR: "#ffffff", CLOSED: true, CLOSE_TIME: 0 });
+
+    /**
+     * The number of file drag enter events
+     * @type {number}
+     */
+    let enterEvents = 0;
+    /**
+     * The number of file drag leave events
+     * @type {number}
+     */
+    let leaveEvents = 0;
 
     /**
      * Generates the prompt string
@@ -44,7 +56,7 @@ function TerminalDiv() {
             resize(evt.detail ? evt.detail: 210);
         });
 
-        document.getElementById("terminal").addEventListener("close", (evt) => {
+        document.getElementById("terminal").addEventListener("close", () => {
             exit();
         });
 
@@ -60,7 +72,7 @@ function TerminalDiv() {
             }
         });
 
-        document.getElementById("terminalInput").addEventListener("submit", (evt) => {
+        document.getElementById("terminalInput").addEventListener("submit", () => {
             submit();
         });
 
@@ -209,9 +221,6 @@ function TerminalDiv() {
         }
     }
 
-    let enterEvents = 0;
-    let leaveEvents = 0;
-
     /**
      * Handles the drag enter event for the terminal
      * @param e {DragEvent} The drag event
@@ -314,7 +323,7 @@ function TerminalDiv() {
             </div>
         </div>
     );
-
 }
+
 
 export default TerminalDiv;

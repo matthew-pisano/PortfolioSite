@@ -60,7 +60,7 @@ function slideTilesOnScroll() {
 function DefaultWrapper({pageInfo, tiles}) {
 
     useEffect(() => {
-        window.onscroll = (event) => {slideTilesOnScroll();};
+        window.onscroll = slideTilesOnScroll;
     }, []);
 
     return (
@@ -75,11 +75,7 @@ function DefaultWrapper({pageInfo, tiles}) {
         </Wrapper>
     );
 }
-
-DefaultWrapper.propTypes = {
-    pageInfo: PropTypes.any,
-    tiles: PropTypes.array
-};
+DefaultWrapper.propTypes = { pageInfo: PropTypes.any, tiles: PropTypes.array };
 
 
 export default DefaultWrapper;

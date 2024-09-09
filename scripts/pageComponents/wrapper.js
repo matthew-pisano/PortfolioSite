@@ -1,10 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
-import {dehydratedInfo, masterFileSystem, setMasterFileSystem, setPageRegistry} from '../fileSystem/buildfs';
+import {buildClientside, buildServerside} from '../fileSystem/buildfs';
 import TerminalDiv from '../terminal/terminal';
 import PropTypes from "prop-types";
 import {Sidebar} from "./sidebar";
 import {HeaderMenu, MenuDrop, savePage, StatusFooter} from "./margins";
+
+let dehydratedInfo;
+if (typeof window === 'undefined') dehydratedInfo = buildServerside();
+else dehydratedInfo = buildClientside();
 
 
 /**
@@ -23,17 +27,6 @@ function Wrapper({children, pageName}) {
         if(document.getElementById("dehydrateInfo")) document.getElementById("dehydrateInfo").remove();
 
         setCurrentPath(window.location.pathname);
-
-        // Load the saved hierarchy from local storage
-        let savedHierarchy = localStorage.getItem("hierarchy");
-        if(savedHierarchy) {
-            console.log("Loading saved hierarchy!");
-            let hydratedInfo = JSON.parse(savedHierarchy);
-            
-            setPageRegistry(hydratedInfo.pageRegistry);
-            setMasterFileSystem(hydratedInfo.hierarchy);
-            masterFileSystem.update();
-        }
 
         // Add the terminal button to the menu bar
         document.getElementById("terminalButton").classList.remove("gone");
@@ -77,6 +70,8 @@ function Wrapper({children, pageName}) {
 
     }, []);
 
+
+
     return (
         <div id="wrapper" className="w3-display-container">
             <Head><title id="siteTitle">{pageName.substring(pageName.lastIndexOf("/") + 1) + ".html"}</title></Head>
@@ -90,7 +85,7 @@ function Wrapper({children, pageName}) {
             </div>
 
             <div id="dialogBox">
-                <img src="/assets/personal.png" style={{width: '20px'}}/>
+                <img src="/assets/personal.png" style={{width: '20px'}} alt=''/>
                 <span id="dialogBoxTitle">Message Title</span>
                 <p id="dialogBoxBody">Message Body</p>
             </div>
@@ -102,11 +97,7 @@ function Wrapper({children, pageName}) {
         </div>
     );
 }
-
-Wrapper.propTypes = {
-    children: PropTypes.element,
-    pageName: PropTypes.string
-};
+Wrapper.propTypes = { children: PropTypes.element, pageName: PropTypes.string};
 
 
 export default Wrapper;

@@ -1,4 +1,4 @@
-import {Perms} from "../utils";
+import {Perms} from "./fileSystemMeta";
 
 
 /**
@@ -12,7 +12,6 @@ class File {
      * @param permission {string} The permission of the file
      */
     constructor(name, text = "", permission = Perms.ALLOW) {
-
         Perms.validate(permission);
 
         this.name = name;
@@ -67,7 +66,6 @@ class Directory {
      * @param permission {string} The permission of the directory
      */
     constructor(name, subTree = null, permission = Perms.ALLOW) {
-
         Perms.validate(permission);
         subTree = subTree ? subTree : [];
 
@@ -156,5 +154,6 @@ class Page {
         this.size = size;
     }
 }
+
 
 export {Directory, File, Page};

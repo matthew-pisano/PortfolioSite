@@ -3,6 +3,9 @@ import HTMLReactParser from 'html-react-parser';
 import Latex from 'react-latex-next';
 
 
+/**
+ * A class for creating a tile to display on a page
+ */
 class Tile {
 
     /**
@@ -38,6 +41,9 @@ class Tile {
 }
 
 
+/**
+ * Metadata for a page
+ */
 class PageInfo {
 
     /**
@@ -149,5 +155,6 @@ function buildPage(pageInfo, tiles){
         }
     </div>;
 }
+
 
 export { buildPage, PageInfo, Tile };

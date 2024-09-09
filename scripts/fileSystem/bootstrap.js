@@ -1,10 +1,11 @@
-import {readdirSync, statSync} from "fs";
+import {readdirSync, readFileSync, statSync} from "fs";
 import {resolve} from "path";
 import {Directory, File} from "./fileSystemObjects";
 import {FileSystem, pathJoin} from "./fileSystem";
 import {bashrc, keyArt} from "../terminal/strings";
-import {Perms, SysEnv} from "../utils";
-import contentHtml from "../readme";
+
+import {Perms, SysEnv} from "./fileSystemMeta";
+
 
 /**
  * The initial hierarchy of the file system
@@ -51,24 +52,11 @@ let initialHierarchy = new Directory("", [
 
 
 /**
- * The registry of preset, viewable HTML pages
- * @type {{string: Page}}
- */
-let pageRegistry = {};
-
-/**
- * The master file system of the program
- * @type {FileSystem}
- */
-let masterFileSystem;
-
-
-/**
  * Builds the file system on the server side by walking through the pages directory and using the initial hierarchy
  */
-function buildServerside() {
+function bootstrapServerside() {
 
-    masterFileSystem = new FileSystem(initialHierarchy, pageRegistry);
+    let masterFileSystem = new FileSystem(initialHierarchy, {});
 
     /**
      * Walks through the pages directory and adds the files to the file system
@@ -93,7 +81,7 @@ function buildServerside() {
                     if(name[0] === "/") name = name.substring(1);
 
                     let fullPath = pathJoin(hierarchyPath, fileName + ".html");
-                    pageRegistry[fullPath] = {name: pathJoin(name, fileName + ".html"), size: fileStats.size};
+                    masterFileSystem.pageRegistry[fullPath] = {name: pathJoin(name, fileName + ".html"), size: fileStats.size};
                     let newFile = masterFileSystem.touch(fullPath, "--" + Perms.EXECUTE);
                     newFile.modified = fileStats.mtimeMs;
                 }
@@ -114,11 +102,14 @@ function buildServerside() {
             }
         }
     }
-
     walkPages();
 
     masterFileSystem.mkdir(pathJoin(SysEnv.PUBLIC_FOLDER, "custom"));
-    masterFileSystem.writeText(pathJoin(SysEnv.PUBLIC_FOLDER, "custom", "readme.html"), contentHtml);
+    let readmeContents = readFileSync("public/readme.html");
+    masterFileSystem.writeText(pathJoin(SysEnv.PUBLIC_FOLDER, "custom", "readme.html"), readmeContents.toString());
+
+    return masterFileSystem;
 }
 
-export { masterFileSystem, pageRegistry, buildServerside };
+
+export { bootstrapServerside };

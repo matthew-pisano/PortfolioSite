@@ -1,5 +1,11 @@
-import {ANSI, SysEnv} from "../utils";
 import {eightballResponses, hal9000, pacerTest, rmRoot} from "./strings";
+import {ANSI, SysEnv} from "../fileSystem/fileSystemMeta";
+
+/**
+ * A list of all previous eightball questions
+ * @type {string[]}
+ */
+let prevEightballQuestions = [];
 
 
 /**
@@ -130,16 +136,14 @@ async function *haltingProblem(){
 }
 
 
-let eightballQuestions = [];
-
 /**
  * Generates a random response for the eightball command
  * @param question {string} The question to generate a response for
  * @return {string} The random eightball response
  */
 function eightBall(question=""){
-    if (question && eightballQuestions.includes(question) && Math.random() < 0.1) return "That question seems...oddly familiar...";
-    if (question) eightballQuestions.push(question);
+    if (question && prevEightballQuestions.includes(question) && Math.random() < 0.1) return "That question seems...oddly familiar...";
+    if (question) prevEightballQuestions.push(question);
 
     let resultIndex = Math.floor(Math.random()*eightballResponses.length);
     let answer = eightballResponses[resultIndex];
@@ -237,6 +241,10 @@ async function *rmRootMsg() {
 }
 
 
+/**
+ * Replace the current page with the void page
+ * @returns {AsyncGenerator<string, void, *>}
+ */
 async function *toVoid() {
     let voidStr = "I T - C O N S U M E S - A L L".replace(/ /g, "\xa0");
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -320,5 +328,6 @@ function resolveTokens(env, tokens) {
         }
     }
 }
+
 
 export { resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer, rmRootMsg, toVoid };

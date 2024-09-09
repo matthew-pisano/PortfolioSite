@@ -1,10 +1,18 @@
 import {pathJoin} from "../fileSystem/fileSystem";
-import {masterFileSystem, pageRegistry} from '../fileSystem/buildfs';
-import {Perms, showDialog, SysEnv} from "../utils";
+import {masterFileSystem} from '../fileSystem/buildfs';
+import {showDialog} from "../utils";
 import {createContextMenu, destroyContextMenu} from "../fileSystem/fileSystemGUI";
 import React, {useEffect, useState} from "react";
 import {Directory, File} from "../fileSystem/fileSystemObjects";
 import $ from "jquery";
+import {Perms, SysEnv} from "../fileSystem/fileSystemMeta";
+
+
+/**
+ * The persistent state of the sidebar
+ * @type {boolean}
+ */
+let sidebarOpen = true;
 
 
 /**
@@ -18,7 +26,7 @@ function buildDirectory(directory, path) {
     let dirStyle = directory.name === "public" ? {borderStyle: "none"} : {};
     return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row" style={dirStyle}>
             <div className="sidebarFolderHeader">
-                <img className='folderIcon'/>
+                <img className='folderIcon' alt=''/>
                 <span className="lightText">{directory.name}</span>
             </div>
 
@@ -30,11 +38,64 @@ function buildDirectory(directory, path) {
 
 
 /**
+ * Create a file element in the sidebar
+ * @param file {File} The file to create
+ * @param path {string} The path of the file
+ * @return {JSX.Element} The file element
+ */
+function buildFile(file, path) {
+    let editIcon = null;
+    let fileName = file.name.split(".")[0];
+
+    let urlPath;
+    let linkPath;
+    // Link to the file if it is a page, otherwise link to the display page to show a custom file
+    if (masterFileSystem.pageRegistry[pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)]) {
+        urlPath = pathJoin(path.replace("public", ""), fileName);
+        linkPath = urlPath;
+    }
+    else {
+        urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
+        linkPath = `${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
+        editIcon = <img className='editButton' alt='' onClick={() => {
+            window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`);
+        }}/>;
+    }
+
+    let parentFolder = pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""));
+
+    // eslint-disable-next-line react/no-unknown-property
+    return <div key={fileName + "-File"} id={fileName + "-File"} className="sidebarItem sidebarLink w3-row" linkpath={linkPath} onContextMenu={(e) => {
+        createContextMenu(e, file, {rename: () => renameFile(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
+        // Prevent the default context menu from appearing
+        e.preventDefault();
+    }}>
+        <img className='htmlIcon' alt=''/>
+        <a id={fileName + "-FileLink"} className="lightText" href={urlPath}>{file.name}</a>
+        {editIcon}
+    </div>;
+}
+
+
+/**
+ * Build the hierarchy of the file system
+ * @param tree {Directory|File} The tree to build
+ * @param path {string} The path of the tree
+ * @return {JSX.Element} The tree element
+ */
+function buildHierarchy(tree, path = "") {
+    // Create a directory if the tree is a directory, otherwise create a file
+    if (tree.constructor === Directory) return buildDirectory(tree, path);
+    else return buildFile(tree, path);
+}
+
+
+/**
  * Rename a file in the file system
  * @param file {File} The file to rename
  * @param parentPath {string} The parentPath of the file
  */
-function renameCustom(file, parentPath) {
+function renameFile(file, parentPath) {
 
     if (!file || !parentPath) {
         showDialog("File Not Found", "The file that you are attempting to rename does not exist!");
@@ -112,60 +173,7 @@ function removeCustom(file, parentPath) {
 
 
 /**
- * Create a file element in the sidebar
- * @param file {File} The file to create
- * @param path {string} The path of the file
- * @return {JSX.Element} The file element
- */
-function buildFile(file, path) {
-    let editIcon = null;
-    let fileName = file.name.split(".")[0];
-
-    let urlPath;
-    let linkPath;
-    // Link to the file if it is a page, otherwise link to the display page to show a custom file
-    if (pageRegistry[pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)]) {
-        urlPath = pathJoin(path.replace("public", ""), fileName);
-        linkPath = urlPath;
-    }
-    else {
-        urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
-        linkPath = `${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
-        editIcon = <img className='editButton' alt='' onClick={() => {
-            window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`);
-        }}/>;
-    }
-
-    let parentFolder = pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""));
-
-    // eslint-disable-next-line react/no-unknown-property
-    return <div key={fileName + "-File"} id={fileName + "-File"} className="sidebarItem sidebarLink w3-row" linkPath={linkPath} onContextMenu={(e) => {
-            createContextMenu(e, file, {rename: () => renameCustom(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
-            // Prevent the default context menu from appearing
-            e.preventDefault();
-        }}>
-        <img className='htmlIcon'/>
-        <a id={fileName + "-FileLink"} className="lightText" href={urlPath}>{file.name}</a>
-        {editIcon}
-    </div>;
-}
-
-
-/**
- * Build the hierarchy of the file system
- * @param tree {Directory|File} The tree to build
- * @param path {string} The path of the tree
- * @return {JSX.Element} The tree element
- */
-function buildHierarchy(tree, path = "") {
-    // Create a directory if the tree is a directory, otherwise create a file
-    if (tree.constructor === Directory) return buildDirectory(tree, path);
-    else return buildFile(tree, path);
-}
-
-
-/**
- * Splice the file or directory from a directory's subTree
+ * Splice the file or directory from a directory's subTree.  Used for manually ordering the sidebar items
  * @param subTree {(Directory|File)[]} The subTree to splice from
  * @param name {string} The name of the file or directory to splice
  * @return {File|Directory} The spliced file or directory
@@ -182,7 +190,6 @@ function spliceFromSubTree(subTree, name) {
  * @return {JSX.Element} The ordered sidebar
  */
 function buildSidebar() {
-
     let publicFolder = masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER).copy();
     let subTreeCopy = [...publicFolder.subTree];
     let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
@@ -195,13 +202,6 @@ function buildSidebar() {
     publicFolder.subTree = subTreeCopy;
     return buildHierarchy(publicFolder);
 }
-
-
-/**
- * The persistent state of the sidebar
- * @type {boolean}
- */
-let sidebarOpen = true;
 
 
 /**
@@ -241,8 +241,11 @@ function setSidebarState(openState =! sidebarOpen, animate = true){
 }
 
 
+/**
+ * The sidebar component that displays the file system hierarchy, used for navigation and file management
+ * @returns {JSX.Element} The sidebar component
+ */
 function Sidebar() {
-
     const [explorerTree, setExplorerTree] = useState(buildSidebar());
 
     useEffect(() => {
@@ -251,9 +254,7 @@ function Sidebar() {
             setSidebarState(false);
 
         // Update the sidebar when the file system is updated
-        masterFileSystem.registerCallback((updateTime) => {
-            setExplorerTree(buildSidebar());
-        });
+        masterFileSystem.registerCallback(() => {setExplorerTree(buildSidebar());});
 
         let destroyContextMenuEvent = (evt) => { if(!evt.target.className.includes("contextMenu")) destroyContextMenu(); };
         document.documentElement.addEventListener('click', destroyContextMenuEvent, true);
@@ -265,7 +266,7 @@ function Sidebar() {
         // Highlight the current page in the sidebar
         let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
         if (pagePath.endsWith("display") || pagePath.endsWith("edit")) pagePath = window.location.search.split("file=")[1];
-        let selectedLink = document.querySelectorAll(`.sidebarItem[linkPath="${pagePath}"]`)[0];
+        let selectedLink = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`)[0];
         if (selectedLink) selectedLink.classList.add("selectedSidebarLink");
     }, [explorerTree]);
 
@@ -280,4 +281,5 @@ function Sidebar() {
     );
 }
 
-export {renameCustom, Sidebar};
+
+export {renameFile, Sidebar};

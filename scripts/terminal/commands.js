@@ -1,9 +1,9 @@
-import {ANSI, Perms, SysEnv} from '../utils';
-import { pathJoin } from '../fileSystem/fileSystem';
-import { masterFileSystem, pageRegistry } from '../fileSystem/buildfs';
-import {resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer, rmRootMsg, toVoid} from './commandResources';
-import {tfLogo, neofetch, system32, letoucan, pacerTest, theMissile} from './strings';
+import {pathJoin} from '../fileSystem/fileSystem';
+import {masterFileSystem} from '../fileSystem/buildfs';
+import {eightBall, hal, haltingProblem, Help, resolveTokens, rmRootMsg, runPacer, tokenizeCommand, toVoid} from './commandResources';
+import {letoucan, neofetch, system32, tfLogo, theMissile} from './strings';
 import {Directory, File} from "../fileSystem/fileSystemObjects";
+import {ANSI, Perms, SysEnv} from "../fileSystem/fileSystemMeta";
 
 
 /**
@@ -130,9 +130,9 @@ class Commands {
         else if (args.length === 0) {yield Help.helpMenu; return;}
 
         // Help for a specific command
-        if (Object.getOwnPropertyNames(this).includes(args[0]) && args[0] in Help) {yield Help[args[0]]; return;}
-        else if(Object.getOwnPropertyNames(this).includes(args[0])) {yield "No help information available"; return;}
-        else {yield `Command '${args[0]}' not found`; return;}
+        if (Object.getOwnPropertyNames(this).includes(args[0]) && args[0] in Help) {yield Help[args[0]];}
+        else if(Object.getOwnPropertyNames(this).includes(args[0])) {yield "No help information available";}
+        else {yield `help: command '${args[0]}' not found`;}
     }
 
     /**
@@ -364,7 +364,7 @@ class Commands {
 
         let pagePath = this.resolvePath(args[0]);
         let currentFile = masterFileSystem.getItem(pagePath);
-        if (pageRegistry[pagePath]) {
+        if (masterFileSystem.pageRegistry[pagePath]) {
             let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
             window.open(relPath.replace(".html", ""), '_self', false);
         }
@@ -408,11 +408,16 @@ class Commands {
             return;
         }
 
-        if (args[0].match(/#[0-9|a-f|A-F]{6}/) || args[0].match(/#[0-9|a-f|A-F]{3}/))
+        if (args[0].match(/#[0-9a-fA-F]{6}/) || args[0].match(/#[0-9a-fA-F]{3}/))
             this.ENV.COLOR = args[0];
         else throw new Error(`${args[0]} is not a valid color.  Use --help for more information.`);
     }
 
+    /**
+     * Resizes the terminal to a specific height
+     * @param tokens
+     * @returns {AsyncGenerator<string, void, *>}
+     */
     static async *resize(tokens) {
         let {args, options} = this._parseArgs(tokens);
         if (options.includes("--help")) {yield Help.resize; return;}
@@ -778,10 +783,10 @@ class Commands {
         }
     }
 }
-
 // Add aliases for commands
 Commands.cls = Commands.clear;
 Commands.man = Commands.help;
 Commands.nuke = Commands.reset;
+
 
 export {Commands};

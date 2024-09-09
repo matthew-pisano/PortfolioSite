@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import {masterFileSystem} from "../scripts/fileSystem/buildfs";
 import Wrapper from "../scripts/pageComponents/wrapper";
 import parse from "html-react-parser";
-import {Perms} from "../scripts/utils";
 import {Directory} from "../scripts/fileSystem/fileSystemObjects";
 import {PageInfo} from "../scripts/pageBuilder";
+import {Perms} from "../scripts/fileSystem/fileSystemMeta";
 
 
 function Display() {

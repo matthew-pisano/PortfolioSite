@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import parse from 'html-react-parser';
-import {SysEnv} from "../scripts/utils";
+
+import {SysEnv} from "../scripts/fileSystem/fileSystemMeta";
 
 
 let mathesisIcon = `${SysEnv.OS} ${SysEnv.ARCH}

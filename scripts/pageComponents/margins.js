@@ -1,10 +1,11 @@
 import React, {useEffect} from "react";
 import {newCustomFile} from "../fileSystem/fileSystemGUI";
-import {showDialog, SysEnv} from "../utils";
-import {masterFileSystem, pageRegistry} from "../fileSystem/buildfs";
-import {renameCustom} from "./sidebar";
+import {showDialog} from "../utils";
+import {masterFileSystem} from "../fileSystem/buildfs";
+import {renameFile} from "./sidebar";
 import {pathJoin} from "../fileSystem/fileSystem";
 import PropTypes from "prop-types";
+import {SysEnv} from "../fileSystem/fileSystemMeta";
 
 
 /**
@@ -53,7 +54,7 @@ function editPage(currentPath) {
 
     let filePath = new URLSearchParams(window.location.search).get("file");
     let file = masterFileSystem.getItem(filePath);
-    let isPage = "/home/guest/public"+(window.location.pathname === "/" ? "/home" : window.location.pathname)+".html" in pageRegistry;
+    let isPage = "/home/guest/public"+(window.location.pathname === "/" ? "/home" : window.location.pathname)+".html" in masterFileSystem.pageRegistry;
 
     // If the current path is not a custom file and the file is not a page, show a dialog box error
     if (!isPage && !file)
@@ -78,9 +79,8 @@ function renamePage(currentPath) {
         showDialog("Permission Denied", "You do not have permission to edit this file!");
     else {
         let file = masterFileSystem.getItem(filePath);
-        renameCustom(file, filePath.substring(0, filePath.lastIndexOf("/")));
+        renameFile(file, filePath.substring(0, filePath.lastIndexOf("/")));
     }
-
 }
 
 
@@ -117,8 +117,8 @@ function getPageStats(currentPath){
     else if(currentPath !== null) {
         let fullCurrentPath = pathJoin(SysEnv.PUBLIC_FOLDER, currentPath !== "/" ? currentPath.substring(1): "home.html");
         fullCurrentPath = fullCurrentPath.endsWith(".html") ? fullCurrentPath : fullCurrentPath+".html";
-        if(Object.keys(pageRegistry).includes(fullCurrentPath)){
-            fileSize = pageRegistry[fullCurrentPath].size;
+        if(Object.keys(masterFileSystem.pageRegistry).includes(fullCurrentPath)){
+            fileSize = masterFileSystem.pageRegistry[fullCurrentPath].size;
             fileLines = Math.round(fileSize/140.6);
         }
     }
@@ -260,7 +260,7 @@ function MenuDrop({currentPath}) {
         </div>
     );
 }
-MenuDrop.propTypes = { currentPath: PropTypes.string.isRequired };
+MenuDrop.propTypes = { currentPath: PropTypes.string };
 
 
 /**
@@ -285,10 +285,7 @@ function StatusFooter({currentPath, pageName}) {
         </footer>
     );
 }
+StatusFooter.propTypes = { currentPath: PropTypes.string, pageName: PropTypes.string };
 
-StatusFooter.propTypes = {
-    currentPath: PropTypes.string.isRequired,
-    pageName: PropTypes.string.isRequired
-};
 
 export {HeaderMenu, MenuDrop, StatusFooter, savePage};

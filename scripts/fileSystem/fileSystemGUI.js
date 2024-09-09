@@ -1,9 +1,15 @@
 import {pathJoin} from './fileSystem';
 import {masterFileSystem} from './buildfs';
-import {SysEnv} from "../utils";
+
+import {SysEnv} from "./fileSystemMeta";
 
 
+/**
+ * The currently selected file in the context menu
+ * @type {File}
+ */
 let curSelectedFile = null;
+
 
 /**
  * Creates a new custom file in the public/custom folder
@@ -59,6 +65,7 @@ function createContextMenu(mouseEvent, selectedFile, actions) {
     document.documentElement.appendChild(contextMenu);
 }
 
+
 /**
  * Destroys the context menu and removes the selected file styling
  */
@@ -71,5 +78,6 @@ function destroyContextMenu() {
         curSelectedFile = null;
     }
 }
+
 
 export { newCustomFile, createContextMenu, destroyContextMenu };

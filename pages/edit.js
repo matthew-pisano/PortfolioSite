@@ -5,9 +5,9 @@ import {lineNumbers} from "@codemirror/view";
 import {EditorState, Compartment} from "@codemirror/state";
 import {basicSetup, EditorView} from "codemirror";
 import {html} from "@codemirror/lang-html";
-import {Perms} from "../scripts/utils";
 import {Directory} from "../scripts/fileSystem/fileSystemObjects";
 import {PageInfo} from "../scripts/pageBuilder";
+import {Perms} from "../scripts/fileSystem/fileSystemMeta";
 
 
 function Edit() {
