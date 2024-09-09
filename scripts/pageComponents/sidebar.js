@@ -16,30 +16,8 @@ import $ from "jquery";
 function buildDirectory(directory, path) {
     let name = directory.name + "-Folder";
     let dirStyle = directory.name === "public" ? {borderStyle: "none"} : {};
-    let langStatus, encodingStatus, linesStatus, sizeStatus, itemStatus;
     return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row" style={dirStyle}>
-            <div className="sidebarFolderHeader" onMouseEnter={() => {
-                    // Save the current status information and update the status bar with the directory information
-                    langStatus = document.getElementById("langStatus").innerText;
-                    encodingStatus = document.getElementById("encodingStatus").innerText;
-                    linesStatus = document.getElementById("linesStatus").innerText;
-                    sizeStatus = document.getElementById("sizeStatus").innerText;
-                    itemStatus = document.getElementById("itemStatus").innerText;
-
-                    document.getElementById("langStatus").innerText = "";
-                    document.getElementById("encodingStatus").innerText = "";
-                    document.getElementById("linesStatus").innerText = "";
-                    document.getElementById("sizeStatus").innerText = directory.subTree.length > 1 ? `${directory.subTree.length} Children` : `${directory.subTree.length} Child`;
-                    document.getElementById("itemStatus").innerText = directory.name+"/";
-                }}
-                onMouseLeave={() => {
-                    // Restore the status bar to its previous state
-                    document.getElementById("langStatus").innerText = langStatus;
-                    document.getElementById("encodingStatus").innerText = encodingStatus;
-                    document.getElementById("linesStatus").innerText = linesStatus;
-                    document.getElementById("sizeStatus").innerText = sizeStatus;
-                    document.getElementById("itemStatus").innerText = itemStatus;
-                }}>
+            <div className="sidebarFolderHeader">
                 <img className='folderIcon'/>
                 <span className="lightText">{directory.name}</span>
             </div>
@@ -153,7 +131,7 @@ function buildFile(file, path) {
     else {
         urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
         linkPath = `${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
-        editIcon = <img className='editButton' alt='edit' onClick={() => {
+        editIcon = <img className='editButton' alt='' onClick={() => {
             window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`);
         }}/>;
     }
@@ -284,7 +262,7 @@ function Sidebar() {
         let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
         if (pagePath.endsWith("display") || pagePath.endsWith("edit")) pagePath = window.location.search.split("file=")[1];
         let selectedLink = document.querySelectorAll(`.sidebarItem[linkPath="${pagePath}"]`)[0];
-        if (selectedLink) selectedLink.style.backgroundColor = "#6a6a6a";
+        if (selectedLink) selectedLink.classList.add("selectedSidebarLink");
     }, [explorerTree]);
 
     return (

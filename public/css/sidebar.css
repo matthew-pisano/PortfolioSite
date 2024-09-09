@@ -67,12 +67,16 @@
     display: flex;
 }
 
-.sidebarLink a:hover {
-    background-color: #3e4146 !important;
+.sidebarFolderHeader:hover, .sidebarLink:hover{
+    background-color: #384755 !important;
 }
 
-.sidebarFolderHeader:hover, .sidebarLink:hover{
-    background-color: #3e4146 !important;
+.selectedSidebarLink {
+    background-color: #465d71 !important;
+}
+
+.selectedSidebarLink:hover {
+    background-color: #465d71 !important;
 }
 
 .sidebarItem img{
@@ -133,17 +137,18 @@
 .fileRenamer {
     max-width: 100px;
     max-height: 30px;
-    background-color: #414141;
+    background-color: #2b3137;
     color: azure;
 }
 .contextMenu {
     width: 200px;
     border-style: solid;
     border-color: azure;
-    border-width: 2px;
+    border-width: 1px;
+    border-radius: 2px;
     z-index: 100;
     position: fixed;
-    background-color: #414141;
+    background-color: #35353a;
     color: azure;
 }
 
@@ -151,7 +156,10 @@
     display: block;
     width: 100%;
     text-align: left;
-    border-bottom: solid;
-    border-color: azure;
-    border-width: 1px;
+    padding: 2px 3px;
+}
+
+.contextMenuItem:hover {
+    background-color: #4a5058 !important;
+    color: azure !important;
 }
