@@ -1,12 +1,18 @@
 import $ from "jquery";
-import React from "react";
+import React, {useEffect} from "react";
 import {newCustomFile} from "../fileSystem/fileSystemGUI";
 import {showDialog, SysEnv} from "../utils";
 import {masterFileSystem, pageRegistry} from "../fileSystem/buildfs";
 import {renameCustom} from "./sidebar";
 import {pathJoin} from "../fileSystem/fileSystem";
-import {isMenuBarPrimed, setMenuBarPrimed} from "../globalListeners";
 import PropTypes from "prop-types";
+
+
+/**
+ * Whether the menu bar is primed for animation by clicking it
+ * @type {boolean}
+ */
+let primedMenuBar = false;
 
 
 /**
@@ -128,11 +134,13 @@ function getPageStats(currentPath){
 function clearMenuDrops() {
     for(let elem of document.getElementsByClassName("menuDropdown"))
         elem.style.display = "none";
+    primedMenuBar = false;
 }
 
 
 function focusFileButton() {
     clearMenuDrops();
+    primedMenuBar = true;
     let leftEdge = document.getElementById("fileButton").getBoundingClientRect().left;
     document.getElementById("fileDropdown").style.marginLeft = leftEdge+"px";
     document.getElementById("fileDropdown").style.display = "block";
@@ -140,6 +148,7 @@ function focusFileButton() {
 
 function focusEditButton() {
     clearMenuDrops();
+    primedMenuBar = true;
     let leftEdge = document.getElementById("editButton").getBoundingClientRect().left;
     document.getElementById("editDropdown").style.marginLeft = leftEdge+"px";
     document.getElementById("editDropdown").style.display = "block";
@@ -147,6 +156,7 @@ function focusEditButton() {
 
 function focusTerminalButton() {
     clearMenuDrops();
+    primedMenuBar = true;
     let leftEdge = document.getElementById("terminalButton").getBoundingClientRect().left;
     document.getElementById("terminalDropdown").style.marginLeft = leftEdge+"px";
     document.getElementById("terminalDropdown").style.display = "block";
@@ -154,6 +164,7 @@ function focusTerminalButton() {
 
 function focusHelpButton() {
     clearMenuDrops();
+    primedMenuBar = true;
     let leftEdge = document.getElementById("helpButton").getBoundingClientRect().left;
     document.getElementById("helpDropdown").style.marginLeft = leftEdge+"px";
     document.getElementById("helpDropdown").style.display = "block";
@@ -161,6 +172,7 @@ function focusHelpButton() {
 
 function focusContactButton() {
     clearMenuDrops();
+    primedMenuBar = true;
     let leftEdge = document.getElementById("contactButton").getBoundingClientRect().left;
     document.getElementById("contactDropdown").style.marginLeft = leftEdge+"px";
     document.getElementById("contactDropdown").style.display = "block";
@@ -172,27 +184,34 @@ function focusContactButton() {
  * @return {JSX.Element} The header menu
  */
 function HeaderMenu() {
+
+    useEffect(() => {
+        document.documentElement.addEventListener('click', clearMenuDrops, true);
+        document.documentElement.addEventListener('contextmenu', clearMenuDrops, true);
+    }, []);
+
+
     return (
         <header className="menuBar w3-row" style={{top: '0px'}}>
             <button id="fileButton" className="menuItem lightText w3-button w3-col"
-                    onClick={() => {setMenuBarPrimed(true); focusFileButton();}}
-                    onMouseOver={() => {if (isMenuBarPrimed()) focusFileButton();}}>File
+                    onClick={focusFileButton}
+                    onMouseOver={() => {if (primedMenuBar) focusFileButton();}}>File
             </button>
             <button id="editButton" className="menuItem lightText w3-button w3-col"
-                    onClick={() => {setMenuBarPrimed(true); focusEditButton();}}
-                    onMouseOver={() => {if (isMenuBarPrimed()) focusEditButton();}}>Edit
+                    onClick={focusEditButton}
+                    onMouseOver={() => {if (primedMenuBar) focusEditButton();}}>Edit
             </button>
             <button id="terminalButton" className="menuItem lightText w3-button w3-col gone"
-                    onClick={() => {setMenuBarPrimed(true); focusTerminalButton();}}
-                    onMouseOver={() => {if (isMenuBarPrimed()) focusTerminalButton();}}>Terminal
+                    onClick={focusTerminalButton}
+                    onMouseOver={() => {if (primedMenuBar) focusTerminalButton();}}>Terminal
             </button>
             <button id="helpButton" className="menuItem lightText w3-button w3-col"
-                    onClick={() => {setMenuBarPrimed(true); focusHelpButton();}}
-                    onMouseOver={() => {if (isMenuBarPrimed()) focusHelpButton();}}>Help
+                    onClick={focusHelpButton}
+                    onMouseOver={() => {if (primedMenuBar) focusHelpButton();}}>Help
             </button>
             <button id="contactButton" className="menuItem lightText w3-button w3-col"
-                    onClick={() => {setMenuBarPrimed(true); focusContactButton();}}
-                    onMouseOver={() => {if (isMenuBarPrimed()) focusContactButton();}}>Contact Info
+                    onClick={focusContactButton}
+                    onMouseOver={() => {if (primedMenuBar) focusContactButton();}}>Contact Info
             </button>
         </header>
     );

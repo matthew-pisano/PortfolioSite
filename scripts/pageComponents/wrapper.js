@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import '../globalListeners';
 import Head from 'next/head';
 import {dehydratedInfo, masterFileSystem, setMasterFileSystem, setPageRegistry} from '../fileSystem/buildfs';
 import TerminalDiv from '../terminal/terminal';
@@ -72,6 +71,9 @@ function Wrapper({children, pageName}) {
             document.getElementById('terminalInput').innerText = execCmd;
             document.getElementById('terminalInput').dispatchEvent(new Event("submit"));
         }
+
+        document.body.addEventListener('drop', (evt) => evt.preventDefault(), false);
+        document.body.addEventListener('dragover', (evt) => evt.preventDefault(), false);
 
     }, []);
 
