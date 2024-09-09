@@ -3,6 +3,8 @@ import {masterFileSystem} from './buildfs';
 import {SysEnv} from "../utils";
 
 
+let curSelectedFile = null;
+
 /**
  * Creates a new custom file in the public/custom folder
  */
@@ -26,25 +28,19 @@ function newCustomFile() {
 
 
 /**
- * Handles the click event of an item in the context menu
- * @param itemFunction {function} The function to be executed when the item is clicked
- */
-function itemClick(itemFunction) {
-    itemFunction();
-    // Remove all context menus after the item is clicked
-    for (let elem of document.getElementsByClassName("contextMenu")) elem.remove();
-}
-
-
-/**
  * Creates a context menu at the mouse event location
  * @param mouseEvent {MouseEvent} The right-click mouse event
- * @param items {object} The items to be displayed in the context menu
+ * @param selectedFile {File} The file that was right-clicked
+ * @param actions {object} The actions to be displayed in the context menu
  */
-function createContextMenu(mouseEvent, items) {
+function createContextMenu(mouseEvent, selectedFile, actions) {
+    curSelectedFile = selectedFile;
 
     // Remove any existing context menus
     for(let elem of document.getElementsByClassName("contextMenu")) elem.remove();
+
+    let fileName = selectedFile.name.split(".")[0];
+    document.getElementById(fileName + "-File").classList.add("selectedSidebarLink");
 
     let contextMenu = document.createElement("div");
     contextMenu.className = "contextMenu";
@@ -52,15 +48,28 @@ function createContextMenu(mouseEvent, items) {
     contextMenu.style.top = mouseEvent.pageY + 'px';
 
     // Create a button for each item in the context menu
-    for(let itemName of Object.keys(items)){
+    for(let itemName of Object.keys(actions)){
         let itemButton = document.createElement("button");
         itemButton.className = "contextMenuItem w3-button";
         itemButton.innerText = itemName;
-        itemButton.onclick = () => itemClick(items[itemName]);
+        itemButton.onclick = () => {actions[itemName](); destroyContextMenu();};
         contextMenu.appendChild(itemButton);
     }
 
     document.documentElement.appendChild(contextMenu);
 }
 
-export { newCustomFile, createContextMenu };
+/**
+ * Destroys the context menu and removes the selected file styling
+ */
+function destroyContextMenu() {
+    for (let elem of document.getElementsByClassName("contextMenu"))
+        elem.remove();
+    if (curSelectedFile !== null) {
+        let fileName = curSelectedFile.name.split(".")[0];
+        document.getElementById(fileName + "-File").classList.remove("selectedSidebarLink");
+        curSelectedFile = null;
+    }
+}
+
+export { newCustomFile, createContextMenu, destroyContextMenu };

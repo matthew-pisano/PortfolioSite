@@ -1,7 +1,7 @@
 import {pathJoin} from "../fileSystem/fileSystem";
 import {masterFileSystem, pageRegistry} from '../fileSystem/buildfs';
 import {Perms, showDialog, SysEnv} from "../utils";
-import {createContextMenu} from "../fileSystem/fileSystemGUI";
+import {createContextMenu, destroyContextMenu} from "../fileSystem/fileSystemGUI";
 import React, {useEffect, useState} from "react";
 import {Directory, File} from "../fileSystem/fileSystemObjects";
 import $ from "jquery";
@@ -140,7 +140,7 @@ function buildFile(file, path) {
 
     // eslint-disable-next-line react/no-unknown-property
     return <div key={fileName + "-File"} id={fileName + "-File"} className="sidebarItem sidebarLink w3-row" linkPath={linkPath} onContextMenu={(e) => {
-            createContextMenu(e, {rename: () => renameCustom(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
+            createContextMenu(e, file, {rename: () => renameCustom(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
             // Prevent the default context menu from appearing
             e.preventDefault();
         }}>
@@ -254,6 +254,10 @@ function Sidebar() {
         masterFileSystem.registerCallback((updateTime) => {
             setExplorerTree(buildSidebar());
         });
+
+        let destroyContextMenuEvent = (evt) => { if(!evt.target.className.includes("contextMenu")) destroyContextMenu(); };
+        document.documentElement.addEventListener('click', destroyContextMenuEvent, true);
+        document.body.addEventListener('contextmenu', destroyContextMenuEvent, true);
 
     }, []);
 

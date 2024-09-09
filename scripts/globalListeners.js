@@ -69,21 +69,6 @@ function onGlobalClick(evt) {
     for(let elem of document.getElementsByClassName("menuDropdown"))
         elem.style.display = "none";
     primedMenuBar = false;
-
-    if(!evt.target.className.includes("contextMenu"))
-        for(let elem of document.getElementsByClassName("contextMenu"))
-            elem.remove();
-}
-
-
-/**
- * Closes all context menus when the user right-clicks outside of them
- * @param evt {MouseEvent} The context menu event
- */
-function onGlobalContextMenu(evt) {
-    if (!evt.target.className.includes("contextMenu"))
-        for (let elem of document.getElementsByClassName("contextMenu"))
-            elem.remove();
 }
 
 /**
@@ -106,7 +91,6 @@ function onGlobalDragOver(evt) {
 // Add the global listeners to the document
 if (typeof window !== "undefined") {
     document.documentElement.addEventListener('click', onGlobalClick, true);
-    document.body.addEventListener('contextmenu', onGlobalContextMenu, true);
     document.body.addEventListener('drop', onGlobalDrop, false);
     document.body.addEventListener('dragover', onGlobalDragOver, false);
     window.onscroll = (event) => {slideTilesOnScroll();};
