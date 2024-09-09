@@ -1,4 +1,3 @@
-import $ from "jquery";
 import React, {useEffect} from "react";
 import {newCustomFile} from "../fileSystem/fileSystemGUI";
 import {showDialog, SysEnv} from "../utils";
@@ -131,6 +130,9 @@ function getPageStats(currentPath){
 }
 
 
+/**
+ * Clears all menu dropdowns
+ */
 function clearMenuDrops() {
     for(let elem of document.getElementsByClassName("menuDropdown"))
         elem.style.display = "none";
@@ -138,44 +140,17 @@ function clearMenuDrops() {
 }
 
 
-function focusFileButton() {
+/**
+ * Focuses the menu button and displays the menu dropdown
+ * @param menuButtonId The id of the menu button
+ * @param menuDropdownId The id of the menu dropdown
+ */
+function focusMenuButton(menuButtonId, menuDropdownId) {
     clearMenuDrops();
     primedMenuBar = true;
-    let leftEdge = document.getElementById("fileButton").getBoundingClientRect().left;
-    document.getElementById("fileDropdown").style.marginLeft = leftEdge+"px";
-    document.getElementById("fileDropdown").style.display = "block";
-}
-
-function focusEditButton() {
-    clearMenuDrops();
-    primedMenuBar = true;
-    let leftEdge = document.getElementById("editButton").getBoundingClientRect().left;
-    document.getElementById("editDropdown").style.marginLeft = leftEdge+"px";
-    document.getElementById("editDropdown").style.display = "block";
-}
-
-function focusTerminalButton() {
-    clearMenuDrops();
-    primedMenuBar = true;
-    let leftEdge = document.getElementById("terminalButton").getBoundingClientRect().left;
-    document.getElementById("terminalDropdown").style.marginLeft = leftEdge+"px";
-    document.getElementById("terminalDropdown").style.display = "block";
-}
-
-function focusHelpButton() {
-    clearMenuDrops();
-    primedMenuBar = true;
-    let leftEdge = document.getElementById("helpButton").getBoundingClientRect().left;
-    document.getElementById("helpDropdown").style.marginLeft = leftEdge+"px";
-    document.getElementById("helpDropdown").style.display = "block";
-}
-
-function focusContactButton() {
-    clearMenuDrops();
-    primedMenuBar = true;
-    let leftEdge = document.getElementById("contactButton").getBoundingClientRect().left;
-    document.getElementById("contactDropdown").style.marginLeft = leftEdge+"px";
-    document.getElementById("contactDropdown").style.display = "block";
+    let leftEdge = document.getElementById(menuButtonId).getBoundingClientRect().left;
+    document.getElementById(menuDropdownId).style.marginLeft = leftEdge+"px";
+    document.getElementById(menuDropdownId).style.display = "block";
 }
 
 
@@ -194,24 +169,29 @@ function HeaderMenu() {
     return (
         <header className="menuBar w3-row" style={{top: '0px'}}>
             <button id="fileButton" className="menuItem lightText w3-button w3-col"
-                    onClick={focusFileButton}
-                    onMouseOver={() => {if (primedMenuBar) focusFileButton();}}>File
+                    onClick={() => focusMenuButton("fileButton", "fileDropdown")}
+                    onMouseOver={() => {if (primedMenuBar) focusMenuButton("fileButton", "fileDropdown");}}>
+                File
             </button>
             <button id="editButton" className="menuItem lightText w3-button w3-col"
-                    onClick={focusEditButton}
-                    onMouseOver={() => {if (primedMenuBar) focusEditButton();}}>Edit
+                    onClick={() => focusMenuButton("editButton", "editDropdown")}
+                    onMouseOver={() => {if (primedMenuBar) focusMenuButton("editButton", "editDropdown");}}>
+                Edit
             </button>
             <button id="terminalButton" className="menuItem lightText w3-button w3-col gone"
-                    onClick={focusTerminalButton}
-                    onMouseOver={() => {if (primedMenuBar) focusTerminalButton();}}>Terminal
+                    onClick={() => focusMenuButton("terminalButton", "terminalDropdown")}
+                    onMouseOver={() => {if (primedMenuBar) focusMenuButton("terminalButton", "terminalDropdown");}}>
+                Terminal
             </button>
             <button id="helpButton" className="menuItem lightText w3-button w3-col"
-                    onClick={focusHelpButton}
-                    onMouseOver={() => {if (primedMenuBar) focusHelpButton();}}>Help
+                    onClick={() => focusMenuButton("helpButton", "helpDropdown")}
+                    onMouseOver={() => {if (primedMenuBar) focusMenuButton("helpButton", "helpDropdown");}}>
+                Help
             </button>
             <button id="contactButton" className="menuItem lightText w3-button w3-col"
-                    onClick={focusContactButton}
-                    onMouseOver={() => {if (primedMenuBar) focusContactButton();}}>Contact Info
+                    onClick={() => focusMenuButton("contactButton", "contactDropdown")}
+                    onMouseOver={() => {if (primedMenuBar) focusMenuButton("contactButton", "contactDropdown");}}>
+                Contact
             </button>
         </header>
     );
@@ -280,10 +260,7 @@ function MenuDrop({currentPath}) {
         </div>
     );
 }
-
-MenuDrop.propTypes = {
-    currentPath: PropTypes.string.isRequired
-};
+MenuDrop.propTypes = { currentPath: PropTypes.string.isRequired };
 
 
 /**
