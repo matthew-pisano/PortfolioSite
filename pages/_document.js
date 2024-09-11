@@ -13,7 +13,7 @@ export default function Document() {
                 <link href="/css/pages.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/terminal.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/sidebar.css" rel="stylesheet" type="text/css"/>
-                <link href="/css/toolbars.css" rel="stylesheet" type="text/css"/>
+                <link href="/css/margins.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/tags.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/App.css" rel="stylesheet" type="text/css"/>
 

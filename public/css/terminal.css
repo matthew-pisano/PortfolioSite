@@ -5,7 +5,7 @@
 }
 
 #terminalClose:hover{
-    background-color: #313131 !important;
+    background-color: #384450 !important;
     color: azure !important;
 }
 
@@ -14,7 +14,7 @@
 }
 
 #terminalHolder{
-    background-color: #1e1e1e;
+    background-color: #2b3137;
     color: azure;
     position: fixed;
     bottom: 30px;
@@ -66,7 +66,7 @@
 }
 
 #terminalFileIndicator {
-    background-color: #3e3e3e;
+    background-color: #384450;
     padding: 10px;
     border-radius: 6px;
     border-color: azure;
@@ -74,7 +74,7 @@
 }
 
 #terminalThumb{
-    background: #838383;
+    background: #4a6785;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     border-top: 1px solid black;
@@ -85,7 +85,7 @@
 #terminalThumbDots {
     text-align: center;
     font-weight: bold;
-    color: #515151;
+    color: #436a91;
     display: block;
     user-select: none;
     margin: -5px auto auto;

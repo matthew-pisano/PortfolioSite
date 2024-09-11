@@ -18,6 +18,10 @@
     padding: 2px 8px;
 }
 
+.infoBarItem {
+    cursor: default;
+}
+
 #menuDropHolder {
     display: table;
     position: fixed;

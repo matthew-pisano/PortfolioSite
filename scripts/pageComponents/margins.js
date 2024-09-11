@@ -136,7 +136,6 @@ function getPageStats(currentPath){
 function clearMenuDrops() {
     for(let elem of document.getElementsByClassName("menuDropdown"))
         elem.style.display = "none";
-    primedMenuBar = false;
 }
 
 
@@ -161,35 +160,42 @@ function focusMenuButton(menuButtonId, menuDropdownId) {
 function HeaderMenu() {
 
     useEffect(() => {
-        document.documentElement.addEventListener('click', clearMenuDrops, true);
+        document.documentElement.addEventListener('click', (evt) => {
+            if (!evt.target.className.includes("menuItem")) primedMenuBar = false;
+            clearMenuDrops();
+        }, true);
         document.documentElement.addEventListener('contextmenu', clearMenuDrops, true);
     }, []);
 
+    function clickMenuButton(menuButtonId, menuDropdownId) {
+        if (!primedMenuBar) return focusMenuButton(menuButtonId, menuDropdownId);
+        primedMenuBar = false;
+    }
 
     return (
         <header className="menuBar w3-row" style={{top: '0px'}}>
             <button id="fileButton" className="menuItem lightText w3-button w3-col"
-                    onClick={() => focusMenuButton("fileButton", "fileDropdown")}
+                    onClick={() => clickMenuButton("fileButton", "fileDropdown")}
                     onMouseOver={() => {if (primedMenuBar) focusMenuButton("fileButton", "fileDropdown");}}>
                 File
             </button>
             <button id="editButton" className="menuItem lightText w3-button w3-col"
-                    onClick={() => focusMenuButton("editButton", "editDropdown")}
+                    onClick={() => clickMenuButton("editButton", "editDropdown")}
                     onMouseOver={() => {if (primedMenuBar) focusMenuButton("editButton", "editDropdown");}}>
                 Edit
             </button>
             <button id="terminalButton" className="menuItem lightText w3-button w3-col gone"
-                    onClick={() => focusMenuButton("terminalButton", "terminalDropdown")}
+                    onClick={() => clickMenuButton("terminalButton", "terminalDropdown")}
                     onMouseOver={() => {if (primedMenuBar) focusMenuButton("terminalButton", "terminalDropdown");}}>
                 Terminal
             </button>
             <button id="helpButton" className="menuItem lightText w3-button w3-col"
-                    onClick={() => focusMenuButton("helpButton", "helpDropdown")}
+                    onClick={() => clickMenuButton("helpButton", "helpDropdown")}
                     onMouseOver={() => {if (primedMenuBar) focusMenuButton("helpButton", "helpDropdown");}}>
                 Help
             </button>
             <button id="contactButton" className="menuItem lightText w3-button w3-col"
-                    onClick={() => focusMenuButton("contactButton", "contactDropdown")}
+                    onClick={() => clickMenuButton("contactButton", "contactDropdown")}
                     onMouseOver={() => {if (primedMenuBar) focusMenuButton("contactButton", "contactDropdown");}}>
                 Contact
             </button>

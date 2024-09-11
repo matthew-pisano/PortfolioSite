@@ -274,7 +274,7 @@ function Sidebar() {
         <div id="sidebar" className="w3-col openSidebar">
             <div id="collapseHolder" className="w3-cell-row openSidebar">
                 <button id="collapseSidebar" className="w3-button w3-cell" onClick={() => setSidebarState()}></button>
-                <h4 id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</h4>
+                <span id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</span>
             </div>
             <div id="sidebarContent" className="w3-display-container w3-row">{explorerTree}</div>
         </div>
