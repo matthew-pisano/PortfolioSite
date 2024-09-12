@@ -4,6 +4,7 @@ import {eightBall, hal, haltingProblem, Help, resolveTokens, rmRootMsg, runPacer
 import {letoucan, neofetch, system32, tfLogo, theMissile} from './strings';
 import {Directory, File} from "../fileSystem/fileSystemObjects";
 import {ANSI, Perms, SysEnv} from "../fileSystem/fileSystemMeta";
+import {setTheme, themes} from "../themes";
 
 
 /**
@@ -411,6 +412,27 @@ class Commands {
         if (args[0].match(/#[0-9a-fA-F]{6}/) || args[0].match(/#[0-9a-fA-F]{3}/))
             this.ENV.COLOR = args[0];
         else throw new Error(`${args[0]} is not a valid color.  Use --help for more information.`);
+    }
+
+    static *theme(tokens) {
+        let {args, options} = this._parseArgs(tokens);
+        if (options.includes("--help")) {yield Help.theme; return;}
+        let valResult = this._validateArgs(args, options, [0, 1], [0, 1], ['-l', '--list']);
+        if (valResult) throw new Error(valResult);
+
+        if (options.includes("-l") || options.includes("--list")) {
+            let themeList = Object.keys(themes).join(", ");
+            yield `Available themes: ${themeList}`;
+            return;
+        }
+
+        if (args.length === 0) {
+            setTheme("default");
+            return;
+        }
+
+        if (themes[args[0]]) setTheme(args[0]);
+        else throw new Error(`Theme '${args[0]}' not found.`);
     }
 
     /**

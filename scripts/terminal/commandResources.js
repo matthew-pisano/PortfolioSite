@@ -30,6 +30,7 @@ class Help {
     static open = "open <filePath> - opens the file with the given path.  Only files with the execute permission can be opened";
     static edit = "edit <filePath> - opens the file with the given path for editing.  Only files with the write permission can be edited";
     static color = "color [color] - sets the terminal text color to the given hex color in the form #rrggbb or #rgb.  For example: #ff0000 or #f00";
+    static theme = "theme [theme] - sets the site theme to the given theme name.  Use -l or --list to list available themes";
     static resize = "resize <size> - resizes the terminal to the given height in pixels";
     static exit = "exit [code] - clears the terminal and closes it";
     static restart = "restart - Reloads the page";

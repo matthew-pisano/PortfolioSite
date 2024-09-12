@@ -17,7 +17,7 @@
     border-color: var(--theme-accent);
     border-width: 2px;
     white-space: nowrap;
-    background-color: var(--theme-3);
+    background-color: var(--theme-color-3);
 }
 
 .cm-scroller {
@@ -25,7 +25,7 @@
 }
 
 .cm-tooltip, .cm-tooltip-autocomplete{
-    background-color: var(--theme-3-hover) !important;
+    background-color: var(--theme-color-3-hover) !important;
 }
 
 .cm-cursor {
@@ -37,7 +37,7 @@
 }
 
 .CodeMirror-gutters {
-    background-color: var(--theme-3-hover);
+    background-color: var(--theme-color-3-hover);
 }
 
 .tab{
@@ -47,7 +47,7 @@
 }
 
 code {
-    background-color: var(--theme-3-hover);
+    background-color: var(--theme-color-3-hover);
     padding: 5px;
     border-radius: 5px;
 }

@@ -1,7 +1,7 @@
 
 .openSidebar {
     width: 240px;
-    background-color: var(--theme-2);
+    background-color: var(--theme-color-2);
 }
 
 .closeSidebar {
@@ -22,7 +22,7 @@
     position: fixed;
     z-index: 2;
     overflow-y: auto;
-    background-color: var(--theme-2);
+    background-color: var(--theme-color-2);
 }
 
 #collapseHolder {
@@ -70,15 +70,15 @@
 }
 
 .sidebarFolderHeader:hover, .sidebarLink:hover{
-    background-color: var(--theme-2-hover) !important;
+    background-color: var(--theme-color-2-hover) !important;
 }
 
 .selectedSidebarLink {
-    background-color: var(--theme-2-selected) !important;
+    background-color: var(--theme-color-2-selected) !important;
 }
 
 .selectedSidebarLink:hover {
-    background-color: var(--theme-2-selected) !important;
+    background-color: var(--theme-color-2-selected) !important;
 }
 
 .sidebarItem img{
@@ -113,7 +113,7 @@
     width: 40px;
     height: 40px;
     padding: 1px;
-    background-color: var(--theme-2-selected);
+    background-color: var(--theme-color-2-selected);
     border-style: none none none solid;
     border-color: var(--theme-accent);
     border-width: 2px;
@@ -124,7 +124,7 @@
 }
 
 #collapseSidebar:hover {
-    background-color: var(--theme-2-hover) !important;
+    background-color: var(--theme-color-2-hover) !important;
 }
 
 .editButton{
@@ -137,7 +137,7 @@
 .fileRenamer {
     max-width: 100px;
     max-height: 30px;
-    background-color: var(--theme-2);
+    background-color: var(--theme-color-2);
 }
 
 .contextMenu {
@@ -148,7 +148,7 @@
     border-radius: 2px;
     z-index: 100;
     position: fixed;
-    background-color: var(--theme-3);
+    background-color: var(--theme-color-3);
 }
 
 .contextMenuItem {
@@ -159,6 +159,6 @@
 }
 
 .contextMenuItem:hover {
-    background-color: var(--theme-3-hover) !important;
+    background-color: var(--theme-color-3-hover) !important;
     color: var(--theme-text) !important;
 }

@@ -2,7 +2,7 @@ html, body {
     padding: 0;
     margin: 0;
     font-family: Consolas,monaco,monospace;
-    background-color: var(--theme-1);
+    background-color: var(--theme-color-1);
     color: var(--theme-text);
 }
 

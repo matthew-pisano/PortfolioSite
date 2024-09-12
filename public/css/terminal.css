@@ -5,7 +5,7 @@
 }
 
 #terminalClose:hover{
-    background-color: var(--theme-3-hover) !important;
+    background-color: var(--theme-color-3-hover) !important;
     color: var(--theme-text) !important;
 }
 
@@ -14,7 +14,7 @@
 }
 
 #terminalHolder{
-    background-color: var(--theme-3);
+    background-color: var(--theme-color-3);
     position: fixed;
     bottom: 30px;
     left:0px;
@@ -65,7 +65,7 @@
 }
 
 #terminalFileIndicator {
-    background-color: var(--theme-3-hover);
+    background-color: var(--theme-color-3-hover);
     padding: 10px;
     border-radius: 6px;
     border-color: var(--theme-accent);
@@ -73,7 +73,7 @@
 }
 
 #terminalThumb{
-    background-color: var(--theme-3-hover);
+    background-color: var(--theme-color-3-hover);
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     border-top: 1px solid black;
@@ -84,7 +84,7 @@
 #terminalThumbDots {
     text-align: center;
     font-weight: bold;
-    color: var(--theme-3);
+    color: var(--theme-color-3);
     display: block;
     user-select: none;
     margin: -5px auto auto;

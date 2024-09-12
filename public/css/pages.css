@@ -2,7 +2,7 @@
 #wrapperContent{
     margin-bottom: 30px;
     margin-top: 30px;
-    background-color: var(--theme-1);
+    background-color: var(--theme-color-1);
 }
 
 .inner {
@@ -23,7 +23,7 @@
 
 .tileHolder {
     width: 100%;
-    background-color: var(--theme-1);
+    background-color: var(--theme-color-1);
     margin-top: 250px;
     min-height: 500px;
     padding-top: 50px;
@@ -48,7 +48,7 @@
     border-style: none solid none none;
     border-color: var(--theme-accent);
     border-width: 5px;
-    background-color: var(--theme-4);
+    background-color: var(--theme-color-4);
     border-radius: 10px;
     margin: 50px 20px 20px 3%;
     padding: 10px;
@@ -80,7 +80,7 @@
 }
 
 #dialogBox {
-    background-color: var(--theme-4-hover);
+    background-color: var(--theme-color-4-hover);
     border-radius: 10px;
     position: fixed;
     bottom: 40px;
@@ -108,7 +108,7 @@
 }
 
 #confirmTile {
-    background-color: var(--theme-2-selected);
+    background-color: var(--theme-color-2-selected);
 }
 
 #denyTile {
