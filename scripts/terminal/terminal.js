@@ -7,17 +7,28 @@ import {ANSI, SysEnv} from "../fileSystem/fileSystemMeta";
 
 
 /**
+ * Whether the terminal is being dragged.  Needs to be global to be accessed by the event listeners
+ * @type {boolean}
+ */
+let isDragging = false;
+
+
+/**
  * The terminal div component
  * @return {JSX.Element} The terminal div
  */
 function TerminalDiv() {
 
-    const [initialPos, setInitialPos] = useState(null);
-    const [initialSize, setInitialSize] = useState(null);
     const [prevCommands, setPrevCommands] = useState([""]);
     const [draftCommand, setDraftCommand] = useState("");
     const [commandIndex, setCommandIndex] = useState(-1);
     const [ENV, setENV] = useState({ CWD: SysEnv.HOME_FOLDER, HOME: SysEnv.HOME_FOLDER, COLOR: "#ffffff", CLOSED: true, CLOSE_TIME: 0 });
+
+    /**
+     * The height of the terminal
+     * @type {number}
+     */
+    let terminalHeight = 0;
 
     /**
      * The number of file drag enter events
@@ -77,6 +88,9 @@ function TerminalDiv() {
         });
 
         setPrompt(genPrompt(ENV.CWD, true));
+        // Listeners need to be global to avoid losing track of the thumb
+        document.addEventListener("mousemove", thumbDrag);
+        document.addEventListener("mouseup", thumbDragEnd);
     }, []);
 
     useEffect(() => {
@@ -90,13 +104,28 @@ function TerminalDiv() {
     });
 
     /**
-     * Handles the drag start event
-     * @param e {DragEvent} The drag event
+     * Initiates the terminal thumb drag
      */
-    function dragStart(e) {
-        let resizable = document.getElementById('terminal');
-        setInitialPos(e.clientY);
-        setInitialSize(resizable.offsetHeight);
+    function thumbDragStart() {
+        isDragging = true;
+    }
+
+    /**
+     * Handles the drag event for the terminal thumb
+     * @param e {MouseEvent} The mouse move event
+     */
+    function thumbDrag(e) {
+        if (!isDragging) return;
+        let thumb = document.getElementById('terminalThumb');
+        let newHeight = thumb.getBoundingClientRect().top - e.clientY + terminalHeight;
+        resize(newHeight);
+    }
+
+    /**
+     * Terminates the terminal thumb drag
+     */
+    function thumbDragEnd() {
+        isDragging = false;
     }
 
     /**
@@ -122,6 +151,7 @@ function TerminalDiv() {
         document.getElementById('terminalClose').style.visibility = "visible";
         ENV.CLOSED = false;
         setENV(ENV);
+        terminalHeight = height;
     }
 
     /**
@@ -298,11 +328,7 @@ function TerminalDiv() {
             <div id='terminalFileHandler'>
                 <span id="terminalFileIndicator">Drag Files Here</span>
             </div>
-            <div id='terminalThumb'
-                 draggable='true'
-                 onDragStart={dragStart}
-                 onDragEnd={(e) => resize(initialSize + initialPos - e.clientY)}
-            ><span id='terminalThumbDots'>• • •</span></div>
+            <div id='terminalThumb' onMouseDown={thumbDragStart}><span id='terminalThumbDots'>• • •</span></div>
             <div id="terminalHeader" onClick={() => {
                 if (ENV.CLOSED && Date.now() - ENV.CLOSE_TIME > 500) resize(210);
             }}>
