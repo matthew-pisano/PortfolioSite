@@ -74,8 +74,12 @@ function destroyContextMenu() {
         elem.remove();
     if (curSelectedFile !== null) {
         let fileName = curSelectedFile.name.split(".")[0];
-        document.getElementById(fileName + "-File").classList.remove("selectedSidebarLink");
         curSelectedFile = null;
+
+        let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
+        let selectedLink = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`)[0];
+        if (selectedLink.id !== fileName + "-File")
+            document.getElementById(fileName + "-File").classList.remove("selectedSidebarLink");
     }
 }
 
