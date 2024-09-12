@@ -76,7 +76,7 @@ const themes = {
         "#ffffff",
         new ThemeColor("#efefef", "#c1daff", "#c3c3c3"),
         new ThemeColor("#beddff", "#95c7ff", "#c8d6e4"),
-        new ThemeColor("#39568e", "#3864ba", "#6a86bc"),
+        new ThemeColor("#596887", "#6f89bc", "#afb7c6"),
         new ThemeColor("#e5eeff", "#b4ceff", "#d4dbea")
     ),
 };
