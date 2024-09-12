@@ -1,3 +1,4 @@
+
 .openSidebar {
     width: 240px;
     background-color: var(--theme-2);
@@ -140,6 +141,7 @@
     background-color: var(--theme-2);
     color: azure;
 }
+
 .contextMenu {
     width: 200px;
     border-style: solid;

@@ -1,3 +1,4 @@
+
 .tag{
     width: 160px !important;
     padding: 2px 5px;
@@ -6,11 +7,13 @@
     border-radius: 10px;
     color: azure;
 }
+
 .tag img{
     width: 10%;
     min-width: 20px;
     margin-right: 5px;
 }
+
 .tag span{
     float: right;
     width: 80%;
@@ -28,12 +31,14 @@
 .gitLink a, .extraLink a{
     width: 70%;
 }
+
 .gitLink img, .extraLink img{
     width: 10%;
     min-width: 20px;
     max-width: 30px;
     margin-right: 5px;
 }
+
 .gitLink img{
     content:url("../assets/github.png");
 }
@@ -58,72 +63,84 @@
 .personalTag span::after{
     content: "Personal";
 }
+
 .academicTag img{
     content:url("../assets/academic.png");
 }
 .academicTag span::after{
     content: "Academic";
 }
+
 .javaTag img{
     content:url("../assets/java.png");
 }
 .javaTag span::after{
     content: "Java";
 }
+
 .androidTag img{
     content:url("../assets/android.png");
 }
 .androidTag span::after{
     content: "Android";
 }
+
 .pythonTag img{
     content:url("../assets/python.png");
 }
 .pythonTag span::after{
     content: "Python";
 }
+
 .assemblyTag img{
     content:url("../assets/assembly.png");
 }
 .assemblyTag span::after{
     content: "Assembly";
 }
+
 .phpTag img{
     content:url("../assets/php.png");
 }
 .phpTag span::after{
     content: "PHP";
 }
+
 .htmlTag img{
     content:url("../assets/html.png");
 }
 .htmlTag span::after{
     content: "HTML";
 }
+
 .jsTag img{
     content:url("../assets/js.png");
 }
 .jsTag span::after{
     content: "JavaScript";
 }
+
 .collabTag img{
     content:url("../assets/collab.png");
 }
 .collabTag span::after{
     content: "Collaboration";
 }
+
 .hackTag img{
     content:url("../assets/hackathon.png");
 }
 .hackTag span::after{
     content: "Hackathon";
 }
+
 .researchTag img{
     content:url("../assets/research.png");
 }
 .researchTag span::after{
     content: "Research";
 }
+
 .aiTag img{
     content:url("../assets/ai.png");
 }
@@ -172,4 +189,3 @@
 .cudaTag span::after{
     content: "CUDA";
 }
-

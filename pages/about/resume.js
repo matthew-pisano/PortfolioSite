@@ -7,13 +7,14 @@ import {PageInfo} from "../../scripts/pageBuilder";
 function Resume() {
 
     let pageInfo = new PageInfo(
-        typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
+        "resume",
         "Resume",
         "A brief overview of my resume",
     );
 
+    let style = {borderRadius: "5px", "position": "fixed", top: "100px", left: "0", "bottom": "0", right: "0"};
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div id="resumePage" className="page container w3-rest lightText" style={{borderRadius: "10px"}}>
+        <div id="resumePage" className="page container w3-rest lightText" style={style}>
             <embed id="resumeEmbed" type="application/pdf" src={Constants.resumeUrl+"#zoom=FitH"}/>
         </div>
     </Wrapper>);
