@@ -1,14 +1,14 @@
 .menuBar {
     position: fixed;
     width: 100%;
-    background-color: #35353a;
+    background-color: var(--theme-3);
     z-index: 3;
 }
 
 .infoBar {
     position: fixed;
     width: 100%;
-    background-color: #2b3137;
+    background-color: var(--theme-1);
     z-index: 3;
     height: 30px;
 }
@@ -30,9 +30,9 @@
 }
 
 .menuDropdown {
-    background-color: #35353a;
+    background-color: var(--theme-3);
     border-style: solid;
-    border-color: rgb(219, 224, 224);
+    border-color: azure;
     min-width: 200px;
     max-width: 350px;
     border-width: 1px;
@@ -49,15 +49,15 @@
 }
 
 .menuDropItem:hover {
-    background-color: #4a5058 !important;
+    background-color: var(--theme-3-hover) !important;
     color: azure !important;
 }
 
 .infoBarItem:hover {
-    background-color: #34414e !important;
+    background-color: var(--theme-1-hover) !important;
 }
 
 .menuItem:hover {
-    background-color: #4a5058 !important;
+    background-color: var(--theme-3-hover) !important;
     color: azure !important;
 }

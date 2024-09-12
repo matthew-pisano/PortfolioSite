@@ -5,7 +5,7 @@ html, body {
 }
 
 html {
-    background-color: #1a2329;
+    background-color: var(--theme-1);
 }
 
 .it{

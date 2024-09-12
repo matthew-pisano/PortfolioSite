@@ -2,7 +2,7 @@
     width: 160px !important;
     padding: 2px 5px;
     margin: 3px 5px;
-    background-color: #414141;
+    background-color: var(--theme-4-hover);
     border-radius: 10px;
     color: azure;
 }
@@ -20,7 +20,7 @@
     width: 200px;
     padding: 2px 5px;
     margin: 3px 5px;
-    background-color: #414141;
+    background-color: var(--theme-4-hover);
     border-radius: 10px;
     color: azure;
 }
@@ -43,7 +43,7 @@
 }
 
 .darkTag {
-    background-color: #313131;
+    background-color: var(--theme-4);
 }
 
 /*Tags*/

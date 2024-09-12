@@ -2,7 +2,7 @@
 #wrapperContent{
     margin-bottom: 30px;
     margin-top: 30px;
-    background-color: #1a2329;
+    background-color: var(--theme-1);
 }
 
 .inner {
@@ -22,7 +22,7 @@
 
 .tileHolder {
     width: 100%;
-    background-color: #1a2329;
+    background-color: var(--theme-1);
     margin-top: 250px;
     min-height: 500px;
     padding-top: 50px;
@@ -63,7 +63,7 @@
     border-style: none solid none none;
     border-color: azure;
     border-width: 5px;
-    background-color: #313131;
+    background-color: var(--theme-4);
     border-radius: 10px;
     margin: 50px 20px 20px 3%;
     padding: 10px;
@@ -95,7 +95,7 @@
 }
 #editorLines {
     width: 20px;
-    background-color: #313131;
+    background-color: var(--theme-4);
 }
 .cm-editor {
     width: 100%;
@@ -107,7 +107,7 @@
     border-width: 2px;
     white-space: nowrap;
     color: azure;
-    background-color: #414141;
+    background-color: var(--theme-4-hover);
 }
 
 .cm-scroller {
@@ -115,7 +115,7 @@
 }
 
 .cm-tooltip, .cm-tooltip-autocomplete{
-    background-color: #414141 !important;
+    background-color: var(--theme-4-hover) !important;
 }
 
 .cm-cursor {
@@ -127,7 +127,7 @@
 }
 
 .CodeMirror-gutters {
-    background-color: #33383f
+    background-color: var(--theme-4-hover);
 }
 
 .tab{
@@ -138,13 +138,13 @@
 
 code {
     color: azure;
-    background-color: #414141;
+    background-color: var(--theme-4-hover);
     padding: 5px;
     border-radius: 5px;
 }
 
 #dialogBox {
-    background-color: #4c4c4c;
+    background-color: var(--theme-4-hover);
     color: azure;
     border-radius: 10px;
     position: fixed;
@@ -174,7 +174,7 @@ code {
 }
 
 #confirmTile {
-    background-color: #2b5873;
+    background-color: var(--theme-2-selected);
 }
 
 #denyTile {

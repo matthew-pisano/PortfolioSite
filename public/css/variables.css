@@ -1,0 +1,11 @@
+:root {
+    --theme-1: #1a2329;
+    --theme-1-hover: #315167;
+    --theme-2: #2f3c45;
+    --theme-2-selected: #375468;
+    --theme-2-hover: #475863;
+    --theme-3: #2a3135;
+    --theme-3-hover: #3f505a;
+    --theme-4: #313131;
+    --theme-4-hover: #3b3e40;
+}
