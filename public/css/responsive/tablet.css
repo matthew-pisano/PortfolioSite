@@ -15,6 +15,11 @@
     .page {
         margin-bottom: 70px;
         margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    #collapseSidebar {
+        border: var(--theme-accent) 2px solid;
     }
 
     .openSidebar {
