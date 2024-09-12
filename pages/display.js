@@ -32,7 +32,7 @@ function Display() {
     }, []);
 
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div id={pageInfo.pageName+"Page"} className="page container w3-rest lightText">
+        <div id={pageInfo.pageName+"Page"} className="page container w3-rest">
             {parse(pageText)}
         </div>
     </Wrapper>);

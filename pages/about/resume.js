@@ -14,7 +14,7 @@ function Resume() {
 
     let style = {borderRadius: "5px", "position": "fixed", top: "100px", left: "0", "bottom": "0", right: "0"};
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div id="resumePage" className="page container w3-rest lightText" style={style}>
+        <div id="resumePage" className="page container w3-rest" style={style}>
             <embed id="resumeEmbed" type="application/pdf" src={Constants.resumeUrl+"#zoom=FitH"}/>
         </div>
     </Wrapper>);

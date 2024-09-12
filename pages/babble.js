@@ -102,7 +102,7 @@ function Babble() {
     }, []);
 
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div className="page container w3-rest lightText">
+        <div className="page container w3-rest">
             <div className="inner titleCard">
                 <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b></b></h1><br/>
             </div>

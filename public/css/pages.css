@@ -45,7 +45,7 @@
 
 .displayTile {
     border-style: none solid none none;
-    border-color: azure;
+    border-color: var(--theme-accent);
     border-width: 5px;
     background-color: var(--theme-4);
     border-radius: 10px;
@@ -80,7 +80,6 @@
 
 #dialogBox {
     background-color: var(--theme-4-hover);
-    color: azure;
     border-radius: 10px;
     position: fixed;
     bottom: 40px;
@@ -89,7 +88,7 @@
     width: 400px;
     height: 100px;
     padding: 10px;
-    border-right: azure 5px solid;
+    border-right: var(--theme-accent) 5px solid;
     display: none;
 }
 
@@ -103,7 +102,6 @@
     display: block;
     text-align: center;
     text-decoration: none;
-    color: azure;
     margin-left: 20%;
     margin-right: 20%;
 }

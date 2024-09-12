@@ -135,7 +135,7 @@ function Admin() {
     }
 
     return (
-        <div className='lightText'>
+        <div>
             <p>{parse(mathesisIcon)}</p>
             <span style={{display: "none"}}>ERROR preloadin{"����├-�=�▒I␌�L�>���┘�"}edentials for Pr∞jec⅂ <i>r☿nais↺ance</i>.  DATA CORRUP{"{GNUq���@��qvz����"}
             ERROR prel{":▒; <(=0?8@@BHDP"}din{"��H�.␍H�%(H�D$␤1���┘�"} <i>∂n∘maly</i> inform{"◆(▒0␉8␌@␍H°P±X␤◆␋␤┐"}ion.  DA{"{@��dhfhz�f���"}

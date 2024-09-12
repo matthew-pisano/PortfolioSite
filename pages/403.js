@@ -25,7 +25,7 @@ function Unauthorized() {
         {backgroundColor: "#000000"}
     );
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div id={pageInfo.pageName + "Page"} className="page container w3-rest lightText">
+        <div id={pageInfo.pageName + "Page"} className="page container w3-rest">
             <div className="inner titleCard">
                 <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>{pageInfo.title}</b></h1><br/>
                 <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>

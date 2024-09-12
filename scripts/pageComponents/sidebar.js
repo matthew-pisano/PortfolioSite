@@ -27,7 +27,7 @@ function buildDirectory(directory, path) {
     return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row" style={dirStyle}>
             <div className="sidebarFolderHeader">
                 <img className='folderIcon' alt=''/>
-                <span className="lightText">{directory.name}</span>
+                <span>{directory.name}</span>
             </div>
 
             <div id={directory.name + "Content"} className="w3-row sidebarContent">
@@ -71,7 +71,7 @@ function buildFile(file, path) {
         e.preventDefault();
     }}>
         <img className='htmlIcon' alt=''/>
-        <a id={fileName + "-FileLink"} className="lightText" href={urlPath}>{file.name}</a>
+        <a id={fileName + "-FileLink"} href={urlPath}>{file.name}</a>
         {editIcon}
     </div>;
 }
@@ -274,7 +274,7 @@ function Sidebar() {
         <div id="sidebar" className="w3-col openSidebar">
             <div id="collapseHolder" className="w3-cell-row openSidebar">
                 <button id="collapseSidebar" className="w3-button w3-cell" onClick={() => setSidebarState()}></button>
-                <span id="explorerTitle" className="sidebarItem lightText w3-cell">Explorer</span>
+                <span id="explorerTitle" className="sidebarItem w3-cell">Explorer</span>
             </div>
             <div id="sidebarContent" className="w3-display-container w3-row">{explorerTree}</div>
         </div>

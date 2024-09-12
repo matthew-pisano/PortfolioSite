@@ -1,5 +1,9 @@
 
 :root {
+    --theme-text: azure;
+    --theme-link: #add3ee;
+    --theme-accent: azure;
+
     --theme-1: #1a2329;
     --theme-1-hover: #315167;
     --theme-2: #2f3c45;

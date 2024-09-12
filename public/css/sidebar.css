@@ -38,7 +38,7 @@
 
 .sidebarItem {
     border-style: none none none solid;
-    border-color: azure;
+    border-color: var(--theme-accent);
     border-width: 2px;
 }
 
@@ -62,6 +62,7 @@
     padding: 0px;
     text-decoration: none;
     flex-grow: 1;
+    color: var(--theme-text);
 }
 
 .sidebarLink {
@@ -112,10 +113,9 @@
     width: 40px;
     height: 40px;
     padding: 1px;
-    color: azure;
     background-color: var(--theme-2-selected);
     border-style: none none none solid;
-    border-color: azure;
+    border-color: var(--theme-accent);
     border-width: 2px;
     background-image: url("../assets/explorerIcon.png");
     background-size: cover;
@@ -125,7 +125,6 @@
 
 #collapseSidebar:hover {
     background-color: var(--theme-2-hover) !important;
-    color: azure !important;
 }
 
 .editButton{
@@ -139,19 +138,17 @@
     max-width: 100px;
     max-height: 30px;
     background-color: var(--theme-2);
-    color: azure;
 }
 
 .contextMenu {
     width: 200px;
     border-style: solid;
-    border-color: azure;
+    border-color: var(--theme-accent);
     border-width: 1px;
     border-radius: 2px;
     z-index: 100;
     position: fixed;
     background-color: var(--theme-3);
-    color: azure;
 }
 
 .contextMenuItem {
@@ -163,5 +160,5 @@
 
 .contextMenuItem:hover {
     background-color: var(--theme-3-hover) !important;
-    color: azure !important;
+    color: var(--theme-text) !important;
 }

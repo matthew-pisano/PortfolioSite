@@ -33,7 +33,7 @@
 .menuDropdown {
     background-color: var(--theme-3);
     border-style: solid;
-    border-color: azure;
+    border-color: var(--theme-accent);
     min-width: 200px;
     max-width: 350px;
     border-width: 1px;
@@ -51,7 +51,7 @@
 
 .menuDropItem:hover {
     background-color: var(--theme-3-hover) !important;
-    color: azure !important;
+    color: var(--theme-text) !important;
 }
 
 .infoBarItem:hover {
@@ -60,5 +60,5 @@
 
 .menuItem:hover {
     background-color: var(--theme-3-hover) !important;
-    color: azure !important;
+    color: var(--theme-text) !important;
 }

@@ -174,27 +174,27 @@ function HeaderMenu() {
 
     return (
         <header className="menuBar w3-row" style={{top: '0px'}}>
-            <button id="fileButton" className="menuItem lightText w3-button w3-col"
+            <button id="fileButton" className="menuItem w3-button w3-col"
                     onClick={() => clickMenuButton("fileButton", "fileDropdown")}
                     onMouseOver={() => {if (primedMenuBar) focusMenuButton("fileButton", "fileDropdown");}}>
                 File
             </button>
-            <button id="editButton" className="menuItem lightText w3-button w3-col"
+            <button id="editButton" className="menuItem w3-button w3-col"
                     onClick={() => clickMenuButton("editButton", "editDropdown")}
                     onMouseOver={() => {if (primedMenuBar) focusMenuButton("editButton", "editDropdown");}}>
                 Edit
             </button>
-            <button id="terminalButton" className="menuItem lightText w3-button w3-col gone"
+            <button id="terminalButton" className="menuItem w3-button w3-col gone"
                     onClick={() => clickMenuButton("terminalButton", "terminalDropdown")}
                     onMouseOver={() => {if (primedMenuBar) focusMenuButton("terminalButton", "terminalDropdown");}}>
                 Terminal
             </button>
-            <button id="helpButton" className="menuItem lightText w3-button w3-col"
+            <button id="helpButton" className="menuItem w3-button w3-col"
                     onClick={() => clickMenuButton("helpButton", "helpDropdown")}
                     onMouseOver={() => {if (primedMenuBar) focusMenuButton("helpButton", "helpDropdown");}}>
                 Help
             </button>
-            <button id="contactButton" className="menuItem lightText w3-button w3-col"
+            <button id="contactButton" className="menuItem w3-button w3-col"
                     onClick={() => clickMenuButton("contactButton", "contactDropdown")}
                     onMouseOver={() => {if (primedMenuBar) focusMenuButton("contactButton", "contactDropdown");}}>
                 Contact
@@ -213,43 +213,43 @@ function MenuDrop({currentPath}) {
     return (
         <div id="menuDropHolder">
             <div id="fileDropdown" className="menuDropdown w3-col">
-                <button id="newAction" className="w3-button lightText menuDropItem"
+                <button id="newAction" className="w3-button menuDropItem"
                         onClick={() => {newCustomFile();}}>New
                 </button>
-                <button id="saveAction" className="w3-button lightText menuDropItem"
+                <button id="saveAction" className="w3-button menuDropItem"
                         onClick={() => savePage(currentPath)}>Save
                 </button>
-                <button id="resetAction" className="w3-button lightText menuDropItem"
+                <button id="resetAction" className="w3-button menuDropItem"
                         onClick={() => resetFileSystem()}>Reset
                 </button>
             </div>
             <div id="editDropdown" className="menuDropdown w3-col">
-                <button id="editCurrentAction" className="w3-button lightText menuDropItem"
+                <button id="editCurrentAction" className="w3-button menuDropItem"
                         onClick={() => editPage(currentPath)}>Edit Current Page
                 </button>
-                <button id="renameCurrentAction" className="w3-button lightText menuDropItem"
+                <button id="renameCurrentAction" className="w3-button menuDropItem"
                         onClick={() => renamePage(currentPath)}>Rename Current Page
                 </button>
             </div>
             <div id="terminalDropdown" className="menuDropdown w3-col">
-                <button id="showTerminal" className="w3-button lightText menuDropItem"
+                <button id="showTerminal" className="w3-button menuDropItem"
                         onClick={() => {
                             document.getElementById("terminalHeader").click();
                         }}>Open Terminal
                 </button>
-                <button id="hideTerminal" className="w3-button lightText menuDropItem"
+                <button id="hideTerminal" className="w3-button menuDropItem"
                         onClick={() => {
                             document.getElementById("terminal").dispatchEvent(new CustomEvent("close"));
                         }}>Close Terminal
                 </button>
             </div>
             <div id="helpDropdown" className="menuDropdown w3-col">
-                <button id="helpAction" className="w3-button lightText menuDropItem"
+                <button id="helpAction" className="w3-button menuDropItem"
                         onClick={() => window.location.replace("/help")}>help.html
                 </button>
-                <a className="lightText menuDropItem" style={{display: "block"}} href='https://github.com/matthew-pisano/PortfolioSite#readme'
+                <a className="menuDropItem" style={{display: "block"}} href='https://github.com/matthew-pisano/PortfolioSite#readme'
                    target={"_blank"} rel="noreferrer">README</a>
-                <button id="terminalHelpAction" className="w3-button lightText menuDropItem"
+                <button id="terminalHelpAction" className="w3-button menuDropItem"
                         onClick={() => {
                             document.getElementById('terminal').dispatchEvent(new CustomEvent("openTo", {detail: 550}));
                             document.getElementById('terminalInput').innerText = "help";
@@ -258,9 +258,9 @@ function MenuDrop({currentPath}) {
                 </button>
             </div>
             <div id="contactDropdown" className="menuDropdown w3-col">
-                <span className="lightText menuDropItem">Phone: +1 (845)-706-0677</span>
-                <span className="lightText menuDropItem">Email: matthewpisano14@gmail.com</span>
-                <a className="lightText menuDropItem" style={{display: "block"}} href='https://www.linkedin.com/in/matthew-pisano'
+                <span className="menuDropItem">Phone: +1 (845)-706-0677</span>
+                <span className="menuDropItem">Email: matthewpisano14@gmail.com</span>
+                <a className="menuDropItem" style={{display: "block"}} href='https://www.linkedin.com/in/matthew-pisano'
                    target={"_blank"} rel="noreferrer">LinkedIn</a>
             </div>
         </div>
@@ -283,11 +283,11 @@ function StatusFooter({currentPath, pageName}) {
 
     return (
         <footer className="infoBar w3-row" style={{bottom: '0px'}}>
-            <div id="langStatus" className="infoBarItem lightText w3-col" style={{float: 'right'}}>HTML</div>
-            <div id="encodingStatus" className="infoBarItem lightText w3-col" style={{float: 'right'}}>UTF-8</div>
-            <div id="linesStatus" className="infoBarItem lightText w3-col" style={{float: 'right'}}>{pStats.lines + " Lines"}</div>
-            <div id="sizeStatus" className="infoBarItem lightText w3-col" style={{float: 'right'}}>{pStats.size <= 1024 ? pStats.size + "B" : Math.round(pStats.size / 102.4) / 10 + "kB"}</div>
-            <div id="itemStatus" className="infoBarItem lightText w3-col" style={{float: 'right'}}>{pageName + ".html"}</div>
+            <div id="langStatus" className="infoBarItem w3-col" style={{float: 'right'}}>HTML</div>
+            <div id="encodingStatus" className="infoBarItem w3-col" style={{float: 'right'}}>UTF-8</div>
+            <div id="linesStatus" className="infoBarItem w3-col" style={{float: 'right'}}>{pStats.lines + " Lines"}</div>
+            <div id="sizeStatus" className="infoBarItem w3-col" style={{float: 'right'}}>{pStats.size <= 1024 ? pStats.size + "B" : Math.round(pStats.size / 102.4) / 10 + "kB"}</div>
+            <div id="itemStatus" className="infoBarItem w3-col" style={{float: 'right'}}>{pageName + ".html"}</div>
         </footer>
     );
 }

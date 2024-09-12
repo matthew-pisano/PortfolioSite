@@ -7,7 +7,7 @@
 
 #terminalClose:hover{
     background-color: var(--theme-3-hover) !important;
-    color: azure !important;
+    color: var(--theme-text) !important;
 }
 
 #terminalBottom {
@@ -16,7 +16,6 @@
 
 #terminalHolder{
     background-color: var(--theme-3);
-    color: azure;
     position: fixed;
     bottom: 30px;
     left:0px;
@@ -70,7 +69,7 @@
     background-color: var(--theme-3-hover);
     padding: 10px;
     border-radius: 6px;
-    border-color: azure;
+    border-color: var(--theme-accent);
     border-style: solid;
 }
 
@@ -109,7 +108,6 @@
     background-color: black;
     position: fixed;
     bottom: 0px;
-    color: azure;
     text-align: center;
     cursor: pointer
 }
