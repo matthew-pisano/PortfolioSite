@@ -1,4 +1,4 @@
-import {pathJoin} from '../fileSystem/fileSystem';
+import {FileSystemError, pathJoin} from '../fileSystem/fileSystem';
 import {masterFileSystem} from '../fileSystem/buildfs';
 import {eightBall, hal, haltingProblem, rmRoot, runPacer, toVoid} from './easterEggs';
 import {letoucan, neofetch, system32, tfLogo, theMissile} from './strings';
@@ -832,7 +832,7 @@ class Commands {
                 }
             } catch (e) {
                 // Append the error message to the command output
-                if (e instanceof CommandError) yield e.message;
+                if (e instanceof CommandError || e instanceof FileSystemError) yield e.message;
                 else {
                     console.error(e);
                     yield "\nUnexpected Error: "+e.message;
