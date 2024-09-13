@@ -101,7 +101,7 @@ function TerminalDiv() {
         setPrompt(newPrompt);
         terminalHolder.style.color = ENV.COLOR;
         document.getElementById("terminalPrompt").innerHTML = newPrompt;
-    });
+    }, [ENV]);
 
     /**
      * Initiates the terminal thumb drag
@@ -177,11 +177,12 @@ function TerminalDiv() {
         setDraftCommand("");
         setCommandIndex(-1);
 
-        if (!terminalOutput.innerHTML.endsWith("<br>") && terminalOutput.innerHTML) terminalOutput.innerHTML += "<br>";
+        if (terminalOutput.innerHTML && !terminalOutput.innerHTML.replaceAll("</span>", "").endsWith("<br>"))
+            terminalOutput.innerHTML += "<br>";
         terminalOutput.innerHTML += `<span>${prompt + command}</span><br>`;
 
         let lastColor;
-        Commands.ENV = ENV;
+        Commands.ENV = {...ENV};  // Deconstruction required to ensure state properly records update
 
         // Parse the command and update the environment
         for await (let partial of Commands.parseCommand(command.replace(/\\e/g, "\u001b"))) {
