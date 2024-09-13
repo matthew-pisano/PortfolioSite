@@ -1,11 +1,24 @@
 import {pathJoin} from '../fileSystem/fileSystem';
 import {masterFileSystem} from '../fileSystem/buildfs';
-import {CommandError, eightBall, hal, haltingProblem, Help, rmRootMsg, runPacer, toVoid} from './commandResources';
+import {eightBall, hal, haltingProblem, rmRoot, runPacer, toVoid} from './easterEggs';
 import {letoucan, neofetch, system32, tfLogo, theMissile} from './strings';
 import {Directory, File} from "../fileSystem/fileSystemObjects";
 import {ANSI, Perms, SysEnv} from "../fileSystem/fileSystemMeta";
 import {setTheme, themes} from "../themes";
 import {insertVars, processAssignment, tokenizeCommand} from "./processTokens";
+import {Help} from "./helpMenu";
+
+
+/**
+ * Custom error for when a command expectedly exits
+ */
+class CommandError extends Error {
+    constructor(message, code=1) {
+        super(message);
+        this.code = code;
+        this.name = "CommandError";
+    }
+}
 
 
 /**
@@ -332,7 +345,7 @@ class Commands {
 
         // Check if the root directory is being removed and if the -rf option is used
         if (path === "/" && options.includes("-f") && options.includes("-r")) {
-            yield* await rmRootMsg();
+            yield* await rmRoot();
             return;
         } else if (path === "/")
             throw new CommandError(`Permission denied for path '/'!  Use -rf to force.`);

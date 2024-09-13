@@ -40,15 +40,6 @@ function Wrapper({children, pageName}) {
             }
         });
 
-        // Capture CTRL + ALT + T
-        document.addEventListener('keydown', e => {
-            if (e.ctrlKey && e.altKey && e.key === 't' && !e.shiftKey) {
-                // Prevent the Save dialog to open
-                e.preventDefault();
-                document.getElementById("terminalHeader").click();
-            }
-        });
-
         // If a command is passed in the URL, execute it in the terminal
         let execCmd = new URLSearchParams(window.location.search).get("exe");
         if(execCmd) {
@@ -64,13 +55,7 @@ function Wrapper({children, pageName}) {
             document.getElementById('terminalInput').innerText = execCmd;
             document.getElementById('terminalInput').dispatchEvent(new Event("submit"));
         }
-
-        document.body.addEventListener('drop', (evt) => evt.preventDefault(), false);
-        document.body.addEventListener('dragover', (evt) => evt.preventDefault(), false);
-
     }, []);
-
-
 
     return (
         <div id="wrapper" className="w3-display-container">

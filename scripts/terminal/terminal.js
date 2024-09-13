@@ -91,6 +91,16 @@ function TerminalDiv() {
         // Listeners need to be global to avoid losing track of the thumb
         document.addEventListener("mousemove", thumbDrag);
         document.addEventListener("mouseup", thumbDragEnd);
+        document.body.addEventListener('drop', (evt) => evt.preventDefault(), false);
+        document.body.addEventListener('dragover', (evt) => evt.preventDefault(), false);
+        // Capture ALT + SHIFT + `
+        document.addEventListener('keydown', e => {
+            if (e.shiftKey && e.altKey && e.key === '`' && !e.shiftKey) {
+                // Prevent the Save dialog to open
+                e.preventDefault();
+                document.getElementById("terminalHeader").click();
+            }
+        });
     }, []);
 
     useEffect(() => {

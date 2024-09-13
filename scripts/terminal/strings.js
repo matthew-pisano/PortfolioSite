@@ -20,7 +20,7 @@ ${ANSI.GREEN}   lWMWl       lWM    MWl       lWMWl   ${ANSI.DEFAULT}
 ${ANSI.GREEN}   lWMWl       lWM    MWl       lWMWl`;
 
 
-const rmRoot = `cannot remove /sys/module/printk/parameters/time': Operation not permitted
+const rmRootMessage = `cannot remove /sys/module/printk/parameters/time': Operation not permitted
 cannot remove '/sys/module/printk/parameters/console_suspend': Operation not permitted
 cannot remove '/sys/module/printk/parameters/disable_printk_persistence': Operation not permitted
 cannot remove '/sys/module/printk/parameters/ignore_loglevel': Operation not permitted
@@ -241,4 +241,4 @@ const keyArt = `oh it's public alright:
 const pacerTest = `The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly, but gets faster each minute after you hear this signal. [beep] A single lap should be completed each time you hear this sound. [ding] Remember to run in a straight line, and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark, get ready, start.`;
 
 
-export {neofetch, rmRoot, bashrc, eightballResponses, tfLogo, hal9000, system32, letoucan, pacerTest, keyArt, theMissile};
+export {neofetch, rmRootMessage, bashrc, eightballResponses, tfLogo, hal9000, system32, letoucan, pacerTest, keyArt, theMissile};
