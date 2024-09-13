@@ -181,10 +181,10 @@ function TerminalDiv() {
         terminalOutput.innerHTML += `<span>${prompt + command}</span><br>`;
 
         let lastColor;
+        Commands.ENV = ENV;
 
         // Parse the command and update the environment
-        for await (let partial of Commands.parseCommand(command.replace(/\\e/g, "\u001b"), ENV)) {
-            setENV(Commands.ENV);
+        for await (let partial of Commands.parseCommand(command.replace(/\\e/g, "\u001b"))) {
 
             // Carry over the last color to the next line
             if (lastColor) partial = lastColor + partial;
@@ -204,7 +204,7 @@ function TerminalDiv() {
 
             terminal.scrollTop = terminal.scrollHeight;
         }
-
+        setENV(Commands.ENV);
         terminalBottom.style.visibility = "visible";
         document.getElementById('terminalInput').focus();
     }
@@ -286,7 +286,6 @@ function TerminalDiv() {
         leaveEvents = 0;
         e.preventDefault();
 
-        console.log(e);
         let files = e.dataTransfer.files;
         for (let file of files) {
 

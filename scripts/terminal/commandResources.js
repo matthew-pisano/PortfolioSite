@@ -8,6 +8,15 @@ import {ANSI, SysEnv} from "../fileSystem/fileSystemMeta";
 let prevEightballQuestions = [];
 
 
+class CommandError extends Error {
+    constructor(message, code=1) {
+        super(message);
+        this.code = code;
+        this.name = "CommandError";
+    }
+}
+
+
 /**
  * Class containing all the help information for the shell commands and a general help menu
  */
@@ -261,74 +270,4 @@ async function *toVoid() {
 }
 
 
-/**
- * Tokenizes a command string into an array of tokens
- * @param command {string} The command string to tokenize
- * @return {string[]} The array of tokens
- */
-function tokenizeCommand(command){
-    let tokens = [];
-    let activeToken = "";
-    let quoteType = null;
-
-    for(let i=0; i<command.length; i++){
-        // Check to see if a quoted string has begun
-        if(quoteType === null){
-            if(`"'`.includes(command[i]))
-                quoteType = command[i];
-
-            if(`"' `.includes(command[i])){
-                if(activeToken !== "") tokens.push(activeToken);
-                activeToken = "";
-                continue;
-            }
-        }
-        // Complete string and push token when string terminates
-        else if(command[i] === quoteType){
-            if(activeToken !== "") tokens.push(activeToken);
-            activeToken = "";
-            quoteType = null;
-            continue;
-        }
-        // If string is active, add to the string
-        if(command[i] !== quoteType)
-            activeToken += command[i];
-    }
-    // Add new token to list
-    if(activeToken !== "") tokens.push(activeToken);
-
-    return tokens;
-}
-
-
-/**
- * Resolves any environment variables or assignments in the tokens
- * @param env {object} The environment object
- * @param tokens {string[]} The array of tokens to resolve
- */
-function resolveTokens(env, tokens) {
-    for(let i=0; i<tokens.length; i++) {
-        if(tokens[i][0] === "$") {
-            let envVar = env[tokens[i].substring(1)];
-            tokens[i] = envVar ? envVar : "";
-        }
-        else if(i === 0 && tokens[i].includes("=")) {
-            let assignTokens = tokens[i].split("=");
-            if(!assignTokens[0]) throw new Error("Assignment requires a variable name before '='!");
-            else if(assignTokens[0][0] === "$") throw new Error("Assignment requires naked variables (no '$')!");
-            else if(!assignTokens[1]) delete env[assignTokens[0]];
-            else {
-                // Resolve any environment variables in the assignment
-                let assigned = [assignTokens[1]];
-                resolveTokens(env, assigned);
-                env[assignTokens[0]] = assigned[0];
-            }
-
-            tokens.splice(i, 1);
-            i --;
-        }
-    }
-}
-
-
-export { resolveTokens, tokenizeCommand, Help, eightBall, haltingProblem, hal, runPacer, rmRootMsg, toVoid };
+export { Help, CommandError, eightBall, haltingProblem, hal, runPacer, rmRootMsg, toVoid };
