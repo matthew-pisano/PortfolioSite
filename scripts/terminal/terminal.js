@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {Commands} from './commands';
 import {ANSI, SysEnv} from "../fileSystem/fileSystemMeta";
 import {EventHandlers} from "./eventHandlers";
+import {Constants} from "../utils";
 
 
 /**
@@ -38,7 +39,6 @@ function TerminalDiv() {
         document.getElementById("terminal").addEventListener("openTo", (evt) => {
             resize(evt.detail ? evt.detail: 210);
         });
-
         document.getElementById("terminal").addEventListener("close", exit);
 
         // Add zoom functionality to the terminal
@@ -68,29 +68,53 @@ function TerminalDiv() {
     }, [ENV]);
 
     /**
+     * Closes/hides the terminal components and updates the environment
+     */
+    function exit() {
+        let terminal = document.getElementById('terminal');
+        terminal.style.display = "none";
+        terminal.style.height = `${Constants.minTerminalHeight}px`;
+        document.getElementById("terminalFileHandler").style.height = `${Constants.minTerminalHeight}px`;
+        document.getElementById("terminalOutput").innerText = "";
+        document.getElementById("terminalClose").style.visibility = "hidden";
+        EventHandlers.terminalHeight = Constants.minTerminalHeight;
+
+        ENV.CLOSED = true;
+        ENV.CLOSE_TIME = Date.now();
+        setENV(ENV);
+    }
+
+    /**
      * Resizes the terminal to the given height
      * @param height {number} The height to resize to
      */
     function resize(height) {
+        console.log("Resizing terminal to", height, ENV.CLOSED);
         let terminal = document.getElementById('terminal');
         let terminalFileHandler = document.getElementById('terminalFileHandler');
         // Ensure the terminal is not too tall
         if (height > window.innerHeight - 120)
             height = window.innerHeight - 120;
-        else if (height < 70)
-            height = 70;
+        else if (height < Constants.minTerminalHeight)
+            height = Constants.minTerminalHeight;
+        EventHandlers.terminalHeight = height;
 
         // Resize the terminal to the given height
         terminal.style.height = `${height}px`;
-        terminal.style.display = "block";
         terminalFileHandler.style.height = `${height}px`;
-        terminalFileHandler.style.display = "block";
-        terminalFileHandler.style.visibility = "hidden";
+
+        // If the terminal was closed, show its components
+        if (ENV.CLOSED) {
+            terminal.style.display = "block";
+            terminalFileHandler.style.display = "block";
+            terminalFileHandler.style.visibility = "hidden";
+            document.getElementById('terminalClose').style.visibility = "visible";
+
+            ENV.CLOSED = false;
+            setENV(ENV);
+        }
+
         document.getElementById('terminalInput').focus();
-        document.getElementById('terminalClose').style.visibility = "visible";
-        ENV.CLOSED = false;
-        setENV(ENV);
-        EventHandlers.terminalHeight = height;
     }
 
     /**
@@ -158,15 +182,6 @@ function TerminalDiv() {
 
             terminal.scrollTop = terminal.scrollHeight;
         }
-    }
-
-    /**
-     * Exits the terminal
-     */
-    async function exit() {
-        Commands.ENV = ENV;
-        await Commands.exit([]).next();
-        setENV(Commands.ENV);
     }
 
     return (

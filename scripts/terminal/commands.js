@@ -7,6 +7,8 @@ import {ANSI, Perms, SysEnv} from "../fileSystem/fileSystemMeta";
 import {setTheme, themes} from "../themes";
 import {insertVars, processAssignment, tokenizeCommand} from "./processTokens";
 import {Help} from "./helpMenu";
+import {Constants} from "../utils";
+import {EventHandlers} from "./eventHandlers";
 
 
 /**
@@ -478,12 +480,7 @@ class Commands {
 
         if (args.length > 0 && isNaN(parseInt(args[0]))) throw new CommandError(`Invalid exit code: ${args[0]}`);
 
-        document.getElementById('terminal').style.display = "none";
-        document.getElementById("terminalOutput").innerText = "";
-        document.getElementById("terminalClose").style.visibility = "hidden";
-
-        this.ENV.CLOSED = true;
-        this.ENV.CLOSE_TIME = Date.now();
+        document.getElementById('terminal').dispatchEvent(new CustomEvent("close"));
     }
 
     /**
