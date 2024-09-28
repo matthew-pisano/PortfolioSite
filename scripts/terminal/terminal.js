@@ -77,8 +77,8 @@ function TerminalDiv() {
         // Ensure the terminal is not too tall
         if (height > window.innerHeight - 120)
             height = window.innerHeight - 120;
-        else if (height < 90)
-            height = 90;
+        else if (height < 70)
+            height = 70;
 
         // Resize the terminal to the given height
         terminal.style.height = `${height}px`;
@@ -97,7 +97,6 @@ function TerminalDiv() {
      * Submits the command in the terminal input
      */
     async function submit() {
-        let terminal = document.getElementById('terminal');
         let terminalInput = document.getElementById('terminalInput');
         let terminalBottom = document.getElementById('terminalBottom');
         let terminalOutput = document.getElementById('terminalOutput');
@@ -112,15 +111,35 @@ function TerminalDiv() {
         // Add the command to the history
         EventHandlers.submitCommand(command);
 
+        // Add new line to the terminal output if the last line does not end with a new line (avoiding extra new lines)
         if (terminalOutput.innerHTML && !terminalOutput.innerHTML.replaceAll("</span>", "").endsWith("<br>"))
             terminalOutput.innerHTML += "<br>";
         terminalOutput.innerHTML += `<span>${prompt + command}</span><br>`;
+        // Replace escape characters with the actual escape character
+        command = command.replace(/\\e/g, "\u001b");
 
-        let lastColor;
         Commands.ENV = {...ENV};  // Deconstruction required to ensure state properly records update
 
         // Parse the command and update the environment
-        for await (let partial of Commands.parseCommand(command.replace(/\\e/g, "\u001b"))) {
+        let outputGen = Commands.parseCommand(command);
+        await processCommandOutput(outputGen);
+
+        setENV(Commands.ENV);
+        terminalBottom.style.visibility = "visible";
+        document.getElementById('terminalInput').focus();
+    }
+
+    /**
+     * Processes the output generated from a command and updates the terminal output
+     * @param outputGen {AsyncGenerator<string>} The output generator from the command
+     * @returns {Promise<void>}
+     */
+    async function processCommandOutput(outputGen) {
+        let terminal = document.getElementById('terminal');
+        let terminalOutput = document.getElementById('terminalOutput');
+
+        let lastColor = null;
+        for await (let partial of outputGen) {
 
             // Carry over the last color to the next line
             if (lastColor) partial = lastColor + partial;
@@ -131,8 +150,7 @@ function TerminalDiv() {
                 lastColor = coloredResult.lastColor;
                 for (let element of coloredResult.elems)
                     terminalOutput.appendChild(element);
-            }
-            else {
+            } else {
                 let span = document.createElement('span');
                 span.innerText = partial;
                 terminalOutput.appendChild(span);
@@ -140,9 +158,6 @@ function TerminalDiv() {
 
             terminal.scrollTop = terminal.scrollHeight;
         }
-        setENV(Commands.ENV);
-        terminalBottom.style.visibility = "visible";
-        document.getElementById('terminalInput').focus();
     }
 
     /**
