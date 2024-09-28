@@ -12,7 +12,10 @@ import {Constants} from "../utils";
  */
 function TerminalDiv() {
 
-    const [ENV, setENV] = useState({ CWD: SysEnv.HOME_FOLDER, HOME: SysEnv.HOME_FOLDER, COLOR: "#ffffff", CLOSED: true, CLOSE_TIME: 0 });
+    const [cwd, setCwd] = useState(Commands.ENV.CWD);
+    const [termColor, setTermColor] = useState(Commands.ENV.COLOR);
+    const [closed, setClosed] = useState(true);
+    const [closeTime, setCloseTime] = useState(Date.now());
 
     /**
      * Generates the prompt string
@@ -53,7 +56,7 @@ function TerminalDiv() {
             }
         });
 
-        setPrompt(genPrompt(ENV.CWD, true));
+        setPrompt(genPrompt(cwd, true));
         EventHandlers.addEventListeners(resize);
     }, []);
 
@@ -61,11 +64,11 @@ function TerminalDiv() {
         // Set the prompt and color
         let terminalHolder = document.getElementById("terminalHolder");
         if(!terminalHolder) return;
-        let newPrompt = genPrompt(ENV.CWD, true);
+        let newPrompt = genPrompt(cwd, true);
         setPrompt(newPrompt);
-        terminalHolder.style.color = ENV.COLOR;
+        terminalHolder.style.color = termColor;
         document.getElementById("terminalPrompt").innerHTML = newPrompt;
-    }, [ENV]);
+    }, [cwd, termColor]);
 
     /**
      * Closes/hides the terminal components and updates the environment
@@ -79,9 +82,8 @@ function TerminalDiv() {
         document.getElementById("terminalClose").style.visibility = "hidden";
         EventHandlers.terminalHeight = Constants.minTerminalHeight;
 
-        ENV.CLOSED = true;
-        ENV.CLOSE_TIME = Date.now();
-        setENV(ENV);
+        setClosed(true);
+        setCloseTime(Date.now());
     }
 
     /**
@@ -89,7 +91,6 @@ function TerminalDiv() {
      * @param height {number} The height to resize to
      */
     function resize(height) {
-        console.log("Resizing terminal to", height, ENV.CLOSED);
         let terminal = document.getElementById('terminal');
         let terminalFileHandler = document.getElementById('terminalFileHandler');
         // Ensure the terminal is not too tall
@@ -104,14 +105,13 @@ function TerminalDiv() {
         terminalFileHandler.style.height = `${height}px`;
 
         // If the terminal was closed, show its components
-        if (ENV.CLOSED) {
+        if (closed) {
             terminal.style.display = "block";
             terminalFileHandler.style.display = "block";
             terminalFileHandler.style.visibility = "hidden";
             document.getElementById('terminalClose').style.visibility = "visible";
 
-            ENV.CLOSED = false;
-            setENV(ENV);
+            setClosed(false);
         }
 
         document.getElementById('terminalInput').focus();
@@ -142,13 +142,15 @@ function TerminalDiv() {
         // Replace escape characters with the actual escape character
         command = command.replace(/\\e/g, "\u001b");
 
-        Commands.ENV = {...ENV};  // Deconstruction required to ensure state properly records update
+        Commands.ENV.CWD = cwd;
+        Commands.ENV.COLOR = termColor;
 
         // Parse the command and update the environment
         let outputGen = Commands.parseCommand(command);
         await processCommandOutput(outputGen);
 
-        setENV(Commands.ENV);
+        setCwd(Commands.ENV.CWD);
+        setTermColor(Commands.ENV.COLOR);
         terminalBottom.style.visibility = "visible";
         document.getElementById('terminalInput').focus();
     }
@@ -191,7 +193,7 @@ function TerminalDiv() {
             </div>
             <div id='terminalThumb' onMouseDown={EventHandlers.thumbDragStart}><span id='terminalThumbDots'>• • •</span></div>
             <div id="terminalHeader" onClick={() => {
-                if (ENV.CLOSED && Date.now() - ENV.CLOSE_TIME > 500) resize(210);
+                if (closed && Date.now() - closeTime > 500) resize(210);
             }}>
                 <span>/bin/mash</span>
                 <button id="terminalClose" className='w3-button' onClick={exit}>X</button>

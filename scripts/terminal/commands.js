@@ -7,8 +7,6 @@ import {ANSI, Perms, SysEnv} from "../fileSystem/fileSystemMeta";
 import {setTheme, themes} from "../themes";
 import {insertVars, processAssignment, tokenizeCommand} from "./processTokens";
 import {Help} from "./helpMenu";
-import {Constants} from "../utils";
-import {EventHandlers} from "./eventHandlers";
 
 
 /**
@@ -32,7 +30,7 @@ class Commands {
      * The environment object that contains the current working directory and other environment variables
      * @type {object}
      */
-    static ENV = {};
+    static ENV = {CWD: SysEnv.HOME_FOLDER, HOME: SysEnv.HOME_FOLDER, COLOR: "#ffffff"};
 
     /**
      * Resolves a path to an absolute path
@@ -421,7 +419,7 @@ class Commands {
         if (valResult) throw new CommandError(valResult);
 
         if (args.length === 0) {
-            this.ENV.COLOR = "azure";
+            this.ENV.COLOR = "#f0ffff";
             return;
         }
 
