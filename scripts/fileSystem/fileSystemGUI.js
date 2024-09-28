@@ -50,8 +50,8 @@ function createContextMenu(mouseEvent, selectedFile, actions) {
 
     let contextMenu = document.createElement("div");
     contextMenu.className = "contextMenu";
-    contextMenu.style.left = mouseEvent.pageX + 'px';
-    contextMenu.style.top = mouseEvent.pageY + 'px';
+    contextMenu.style.left = mouseEvent.clientX + 'px';
+    contextMenu.style.top = mouseEvent.clientY + 'px';
 
     // Create a button for each item in the context menu
     for(let itemName of Object.keys(actions)){
