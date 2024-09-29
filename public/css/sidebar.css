@@ -135,9 +135,12 @@
 }
 
 .fileRenamer {
-    max-width: 100px;
     max-height: 30px;
     background-color: var(--theme-color-2);
+    color: var(--theme-text);
+    resize: none;
+    border-radius: 5px;
+    white-space: nowrap;
 }
 
 .contextMenu {
@@ -145,16 +148,17 @@
     border-style: solid;
     border-color: var(--theme-accent);
     border-width: 1px;
-    border-radius: 8px;
+    border-radius: 5px;
     z-index: 100;
     position: fixed;
     background-color: var(--theme-color-3);
+    padding: 5px;
 }
 
 .contextMenuItem {
     display: block;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 5px;
     text-align: left;
     padding: 2px 3px;
 }

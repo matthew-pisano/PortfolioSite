@@ -37,8 +37,8 @@
     min-width: 200px;
     max-width: 350px;
     border-width: 1px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
     display: none;
 }
 
@@ -47,6 +47,7 @@
     width: 100%;
     padding: 2px 3px;
     text-align: left;
+    border-radius: 5px;
 }
 
 .menuDropItem:hover {
