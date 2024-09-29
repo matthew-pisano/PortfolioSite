@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import {newCustomFile} from "../fileSystem/fileSystemGUI";
 import {showDialog} from "../utils";
 import {masterFileSystem} from "../fileSystem/buildfs";
 import {renameFile} from "./sidebar";
@@ -13,6 +12,29 @@ import {SysEnv} from "../fileSystem/fileSystemMeta";
  * @type {boolean}
  */
 let primedMenuBar = false;
+
+
+/**
+ * Creates a new custom file in the public/custom folder
+ */
+function newCustomFile() {
+
+    let customFolder = masterFileSystem.getItem(pathJoin(SysEnv.PUBLIC_FOLDER, "custom"));
+    let newFileName = "newFile";
+    let newFileIndex = 0;
+
+    // Check if the file name already exists and increment the copy number if it does
+    for(let file of customFolder.subTree)
+        if(file.name.includes(newFileName)) newFileIndex++;
+
+    // Append the copy number to the file name
+    newFileName += newFileIndex !== 0 ? newFileIndex : "";
+    let newFilePath = pathJoin(SysEnv.PUBLIC_FOLDER, "custom", newFileName+".html");
+    // Create the new file
+    masterFileSystem.touch(newFilePath);
+    // Redirect to the new file
+    window.location.href = "/edit?file="+newFilePath;
+}
 
 
 /**
