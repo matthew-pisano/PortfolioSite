@@ -160,11 +160,12 @@ function focusMenuButton(menuButtonId, menuDropdownId) {
 function HeaderMenu() {
 
     useEffect(() => {
-        document.documentElement.addEventListener('click', (evt) => {
+        let handleClick = (evt) => {
             if (!evt.target.className.includes("menuItem")) primedMenuBar = false;
             clearMenuDrops();
-        }, true);
-        document.documentElement.addEventListener('contextmenu', clearMenuDrops, true);
+        };
+        document.documentElement.addEventListener('click', handleClick, true);
+        document.documentElement.addEventListener('contextmenu', handleClick, true);
     }, []);
 
     function clickMenuButton(menuButtonId, menuDropdownId) {
