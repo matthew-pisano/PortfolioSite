@@ -52,7 +52,7 @@ const themes = {
         new ThemeColor("#2a3135", "#3f505a", "#3f505a"),
         new ThemeColor("#313131", "#3b3e40", "#3b3e40")
     ),
-    "greyscale": new Theme(
+    "classic": new Theme(
         "#f0ffff",
         "#add3ee",
         "#f0ffff",

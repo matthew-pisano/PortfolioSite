@@ -5,6 +5,7 @@ import {renameFile} from "./sidebar";
 import {pathJoin} from "../fileSystem/fileSystem";
 import PropTypes from "prop-types";
 import {SysEnv} from "../fileSystem/fileSystemMeta";
+import {setTheme} from "../themes";
 
 
 /**
@@ -199,27 +200,44 @@ function HeaderMenu() {
         <header className="menuBar w3-row" style={{top: '0px'}}>
             <button id="fileButton" className="menuItem w3-button w3-col"
                     onClick={() => clickMenuButton("fileButton", "fileDropdown")}
-                    onMouseOver={() => {if (primedMenuBar) focusMenuButton("fileButton", "fileDropdown");}}>
+                    onMouseOver={() => {
+                        if (primedMenuBar) focusMenuButton("fileButton", "fileDropdown");
+                    }}>
                 File
             </button>
             <button id="editButton" className="menuItem w3-button w3-col"
                     onClick={() => clickMenuButton("editButton", "editDropdown")}
-                    onMouseOver={() => {if (primedMenuBar) focusMenuButton("editButton", "editDropdown");}}>
+                    onMouseOver={() => {
+                        if (primedMenuBar) focusMenuButton("editButton", "editDropdown");
+                    }}>
                 Edit
+            </button>
+            <button id="viewButton" className="menuItem w3-button w3-col"
+                    onClick={() => clickMenuButton("viewButton", "viewDropdown")}
+                    onMouseOver={() => {
+                        if (primedMenuBar) focusMenuButton("viewButton", "viewDropdown");
+                    }}>
+                View
             </button>
             <button id="terminalButton" className="menuItem w3-button w3-col gone"
                     onClick={() => clickMenuButton("terminalButton", "terminalDropdown")}
-                    onMouseOver={() => {if (primedMenuBar) focusMenuButton("terminalButton", "terminalDropdown");}}>
+                    onMouseOver={() => {
+                        if (primedMenuBar) focusMenuButton("terminalButton", "terminalDropdown");
+                    }}>
                 Terminal
             </button>
             <button id="helpButton" className="menuItem w3-button w3-col"
                     onClick={() => clickMenuButton("helpButton", "helpDropdown")}
-                    onMouseOver={() => {if (primedMenuBar) focusMenuButton("helpButton", "helpDropdown");}}>
+                    onMouseOver={() => {
+                        if (primedMenuBar) focusMenuButton("helpButton", "helpDropdown");
+                    }}>
                 Help
             </button>
             <button id="contactButton" className="menuItem w3-button w3-col"
                     onClick={() => clickMenuButton("contactButton", "contactDropdown")}
-                    onMouseOver={() => {if (primedMenuBar) focusMenuButton("contactButton", "contactDropdown");}}>
+                    onMouseOver={() => {
+                        if (primedMenuBar) focusMenuButton("contactButton", "contactDropdown");
+                    }}>
                 Contact
             </button>
         </header>
@@ -235,7 +253,7 @@ function HeaderMenu() {
 function MenuDrop({currentPath}) {
     return (
         <div id="menuDropHolder">
-            <div id="fileDropdown" className="menuDropdown w3-col">
+        <div id="fileDropdown" className="menuDropdown w3-col">
                 <button id="newAction" className="w3-button menuDropItem"
                         onClick={() => {newCustomFile();}}>New
                 </button>
@@ -252,6 +270,20 @@ function MenuDrop({currentPath}) {
                 </button>
                 <button id="renameCurrentAction" className="w3-button menuDropItem"
                         onClick={() => renamePage(currentPath)}>Rename Current Page
+                </button>
+            </div>
+            <div id="viewDropdown" className="menuDropdown w3-col">
+                <button id="setThemeDefault" className="w3-button menuDropItem"
+                        onClick={() => setTheme("default")}>Default
+                </button>
+                <button id="setThemeClassic" className="w3-button menuDropItem"
+                        onClick={() => setTheme("classic")}>Classic
+                </button>
+                <button id="setThemeMonochrome" className="w3-button menuDropItem"
+                        onClick={() => setTheme("monochrome")}>Monochrome
+                </button>
+                <button id="setThemeLight" className="w3-button menuDropItem"
+                        onClick={() => setTheme("light")}>Light
                 </button>
             </div>
             <div id="terminalDropdown" className="menuDropdown w3-col">
