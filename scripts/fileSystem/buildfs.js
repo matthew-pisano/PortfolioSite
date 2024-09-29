@@ -57,7 +57,7 @@ function buildServerside() {
     setMasterFileSystem(serverSideFS.hierarchy, serverSideFS.pageRegistry);
     // Create the dehydrated info from the server file system and page registry
     return JSON.stringify({
-        hierarchy: Directory.toDict(serverSideFS.hierarchy),
+        hierarchy: serverSideFS.hierarchy.toDict(),
         pageRegistry: serverSideFS.pageRegistry
     });
 }

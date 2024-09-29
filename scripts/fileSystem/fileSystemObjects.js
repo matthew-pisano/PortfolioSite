@@ -35,11 +35,10 @@ class File {
 
     /**
      * Serializes the file to a dictionary
-     * @param file {File} The file to be serialized
      * @return {{name: string, modified: number, permission: string, text: string}}
      */
-    static toDict(file) {
-        return {name: file.name, text: file.text, permission: file.permission, modified: file.modified};
+    toDict() {
+        return {name: this.name, text: this.text, permission: this.permission, modified: this.modified};
     }
 
     /**
@@ -111,15 +110,11 @@ class Directory {
 
     /**
      * Serializes the directory to a dictionary
-     * @param directory {Directory} The directory to be serialized
      * @return {{name: string, modified: number, permission: string, subTree: (Directory[] | File[])}} The serialized directory
      */
-    static toDict(directory) {
-        let dict = {name: directory.name, permission: directory.permission, modified: directory.modified, subTree: []};
-
-        for (let child of directory.subTree)
-            dict.subTree.push(child.constructor.toDict(child));
-
+    toDict() {
+        let dict = {name: this.name, permission: this.permission, modified: this.modified, subTree: []};
+        for (let child of this.subTree) dict.subTree.push(child.toDict());
         return dict;
     }
 

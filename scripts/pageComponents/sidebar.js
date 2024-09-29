@@ -1,7 +1,7 @@
 import {pathJoin} from "../fileSystem/fileSystem";
 import {masterFileSystem} from '../fileSystem/buildfs';
 import {showDialog} from "../utils";
-import {createContextMenu, destroyContextMenu} from "../fileSystem/fileSystemGUI";
+import {createContextMenu, destroyContextMenu} from "./contextMenu";
 import React, {useEffect, useState} from "react";
 import {Directory, File} from "../fileSystem/fileSystemObjects";
 import $ from "jquery";
@@ -66,7 +66,7 @@ function buildFile(file, path) {
 
     // eslint-disable-next-line react/no-unknown-property
     return <div key={fileName + "-File"} id={fileName + "-File"} className="sidebarItem sidebarLink w3-row" linkpath={linkPath} onContextMenu={(e) => {
-        createContextMenu(e, file, {rename: () => renameFile(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
+        createContextMenu(e.clientY, e.clientX, file, {rename: () => renameFile(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
         // Prevent the default context menu from appearing
         e.preventDefault();
     }}>

@@ -79,6 +79,8 @@ function Wrapper({children, pageName}) {
 
             <StatusFooter currentPath={currentPath} pageName={pageName}/>
             <span id="dehydrateInfo" style={{display: "none"}}>{dehydratedInfo}</span>
+
+            <div id="contextMenuHolder"></div>
         </div>
     );
 }
