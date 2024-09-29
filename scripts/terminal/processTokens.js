@@ -1,3 +1,4 @@
+
 /**
  * Tokenizes a command string into an array of tokens
  * @param command {string} The command string to tokenize
@@ -8,39 +9,27 @@ function tokenizeCommand(command) {
     let activeToken = "";
     let quoteType = null;
 
-    for (let i = 0; i < command.length; i++) {
-        // Check to see if a quoted string has begun
+    for (let char of command) {
         if (quoteType === null) {
-            if (`"'`.includes(command[i]))
-                quoteType = command[i];
-
-            if (`"' `.includes(command[i])) {
-                if (activeToken !== "") tokens[tokens.length-1].push(activeToken);
+            if (`'"`.includes(char)) {  // Open a quote
+                quoteType = char;
+                continue;
+            }
+            if (` ;`.includes(char)) {  // End the token/command
+                if (activeToken !== "") tokens[tokens.length - 1].push(activeToken);
                 activeToken = "";
+                if (char === ";") tokens.push([]);  // Start a new command
                 continue;
             }
         }
-        // Complete string and push token when string terminates
-        else if (command[i] === quoteType) {
-            if (activeToken !== "") tokens[tokens.length-1].push(activeToken);
-            activeToken = "";
+        if (quoteType !== null && char === quoteType) {  // Close a quote
             quoteType = null;
             continue;
         }
 
-        if (quoteType === null && command[i] === ";") {
-            if (activeToken !== "") tokens[tokens.length-1].push(activeToken);
-            activeToken = "";
-            tokens.push([]);
-            continue;
-        }
-
-        // If string is active, add to the string
-        if (command[i] !== quoteType)
-            activeToken += command[i];
+        activeToken += char;
     }
-    // Add new token to list
-    if (activeToken !== "") tokens[tokens.length-1].push(activeToken);
+    if (activeToken !== "") tokens[tokens.length-1].push(activeToken);  // Add the last token
 
     return tokens;
 }
@@ -55,20 +44,22 @@ function tokenizeCommand(command) {
 function insertVars(env, token) {
     let varStart = null;
     for (let i = 0; i < token.length; i++) {
+        // Terminate the variable if it's not a valid variable character or the end of the token
         if (varStart !== null && (!token[i].match(/[a-zA-Z0-9_]/) || i === token.length - 1)) {
             if (i === token.length - 1 && token[i].match(/[a-zA-Z0-9_]/)) i++;  // Include the token's last character if it's a valid variable character
             if (i === varStart + 1) {
                 varStart = null;
-                i--;
+                i--;  // Start the next loop at the same character (handles cases like $$var)
                 continue;
             }
 
             let varName = token.substring(varStart + 1, i);
             let varValue = env[varName] ? env[varName] : "";
-            token = token.replace("$" + varName, varValue);
+            token = token.replace("$" + varName, varValue);  // Replace the variable with its value
             i = varStart + varValue.length;  // Set to the end of the inserted variable
             varStart = null;
         }
+        // Start a new variable if the character is a $
         if (token[i] === "$") varStart = i;
     }
     return token;
@@ -79,23 +70,18 @@ function insertVars(env, token) {
  * Processes an assignment token and updates the environment
  * @param env {object} The environment object
  * @param token {string} The token to process
- * @param nextToken {string} The next token in the command
- * @returns {{newEnv: object, remove: boolean, removeNext: boolean}} The updated environment and whether to remove the token and next token
+ * @returns newEnv: object The updated environment
  */
-function processAssignment(env, token, nextToken) {
+function processAssignment(env, token) {
     let newEnv = {...env};
     let variable = token.substring(0, token.indexOf("="));
     let value = token.substring(token.indexOf("=") + 1);
-    if (!variable) return {newEnv: newEnv, remove: false, removeNext: false};
-    else if (!value) {
-        if (!nextToken) delete newEnv[variable];
-        else {
-            newEnv[variable] = nextToken;
-            return {newEnv: newEnv, remove: true, removeNext: true};
-        }
-    } else newEnv[variable] = value;
+    if (!variable) return newEnv;  // Invalid assignment, fail silently
 
-    return {newEnv: newEnv, remove: true, removeNext: false};
+    if (!value) delete newEnv[variable];  // Unset the variable
+    else newEnv[variable] = value;  // Set the variable
+
+    return newEnv;
 }
 
 export { processAssignment, insertVars, tokenizeCommand };

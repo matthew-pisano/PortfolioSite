@@ -764,14 +764,10 @@ class Commands {
         for(let i=0; i<tokens.length; i++) {
             tokens[i] = insertVars(this.ENV, tokens[i]);
 
-            if(i === 0 && tokens[i].includes("=")) {
-                let { newEnv, remove, removeNext} = processAssignment(this.ENV, tokens[i], tokens[i+1]);
-                this.ENV = newEnv;
-                if (remove) {
-                    tokens.splice(i, 1);
-                    i--;
-                }
-                if (removeNext) tokens.splice(i+1, 1);
+            if(i === 0 && tokens[i].includes("=") && tokens[i][0] !== "=") {
+                this.ENV = processAssignment(this.ENV, tokens[i]);  // Update the environment with the assignment/unassignment
+                tokens.splice(i, 1);
+                i--;
             }
         }
         return tokens;
