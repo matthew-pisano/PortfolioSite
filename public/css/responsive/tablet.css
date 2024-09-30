@@ -12,6 +12,10 @@
         background-color: transparent;
     }
 
+    .hideOnMobile {
+        display: none;
+    }
+
     .page {
         margin-bottom: 70px;
         margin-left: 0px;

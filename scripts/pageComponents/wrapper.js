@@ -28,9 +28,6 @@ function Wrapper({children, pageName}) {
 
         setCurrentPath(window.location.pathname);
 
-        // Add the terminal button to the menu bar
-        document.getElementById("terminalButton").classList.remove("gone");
-
         // Capture CTRL + S
         document.addEventListener('keydown', e => {
             if (e.ctrlKey && e.key === 's' && !e.shiftKey && !e.altKey) {

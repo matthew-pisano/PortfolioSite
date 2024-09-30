@@ -16,9 +16,54 @@ let primedMenuBar = false;
 
 
 /**
+ * The header menu for the site that contains the file, edit, view, terminal, help, and contact info buttons
+ * @type object[]
+ */
+let headerMenu = [
+    {name: "File", hideOnMobile: true, items: [
+            {name: "New", action: newPage},
+            {name: "Save", action: savePage, useCurrentPath: true},
+            {name: "Reset", action: resetFileSystem},
+        ]},
+    {name: "Edit", hideOnMobile: true, items: [
+            {name: "Edit Current Page", action: editPage, useCurrentPath: true},
+            {name: "Rename Current Page", action: renamePage, useCurrentPath: true},
+        ]},
+    {name: "View", hideOnMobile: true, items: [
+            {name: "Default", action: () => setTheme("default")},
+            {name: "Classic", action: () => setTheme("classic")},
+            {name: "Monochrome", action: () => setTheme("monochrome")},
+            {name: "Light", action: () => setTheme("light")},
+        ]},
+    {name: "Terminal", hideOnMobile: true, items: [
+            {name: "Open Terminal", action: () => {
+                    document.getElementById("terminalHeader").click();
+                }},
+            {name: "Close Terminal", action: () => {
+                    document.getElementById("terminal").dispatchEvent(new CustomEvent("close"));
+                }},
+        ]},
+    {name: "Help", items: [
+            {name: "help.html", link: "/help"},
+            {name: "README", link: "https://github.com/matthew-pisano/PortfolioSite#readme"},
+            {name: "Terminal Help", hideOnMobile: true, action: () => {
+                    document.getElementById('terminal').dispatchEvent(new CustomEvent("openTo", {detail: 700}));
+                    document.getElementById('terminalInput').innerText = "help";
+                    document.getElementById('terminalInput').dispatchEvent(new Event("submit"));
+                }},
+        ]},
+    {name: "Contact", items: [
+            {name: "Phone: +1 (845)-706-0677"},
+            {name: "Email: matthewpisano14@gmail.com"},
+            {name: "LinkedIn", link: "https://www.linkedin.com/in/matthew-pisano"},
+        ]},
+];
+
+
+/**
  * Creates a new custom file in the public/custom folder
  */
-function newCustomFile() {
+function newPage() {
 
     let customFolder = masterFileSystem.getItem(pathJoin(SysEnv.PUBLIC_FOLDER, "custom"));
     let newFileName = "newFile";
@@ -164,15 +209,14 @@ function clearMenuDrops() {
 
 /**
  * Focuses the menu button and displays the menu dropdown
- * @param menuButtonId The id of the menu button
- * @param menuDropdownId The id of the menu dropdown
+ * @param menuName {string} The name of the menu button
  */
-function focusMenuButton(menuButtonId, menuDropdownId) {
+function focusMenuButton(menuName) {
     clearMenuDrops();
     primedMenuBar = true;
-    let leftEdge = document.getElementById(menuButtonId).getBoundingClientRect().left;
-    document.getElementById(menuDropdownId).style.marginLeft = leftEdge+"px";
-    document.getElementById(menuDropdownId).style.display = "block";
+    let leftEdge = document.getElementById(menuName+"Menu").getBoundingClientRect().left;
+    document.getElementById(menuName+"MenuDropdown").style.marginLeft = leftEdge+"px";
+    document.getElementById(menuName+"MenuDropdown").style.display = "block";
 }
 
 
@@ -191,55 +235,29 @@ function HeaderMenu() {
         document.documentElement.addEventListener('contextmenu', handleClick, true);
     }, []);
 
-    function clickMenuButton(menuButtonId, menuDropdownId) {
-        if (!primedMenuBar) return focusMenuButton(menuButtonId, menuDropdownId);
+    function clickMenuButton(menuName) {
+        if (!primedMenuBar) return focusMenuButton(menuName);
         primedMenuBar = false;
+    }
+    function mouseOverMenuButton(menuName) {
+        if (primedMenuBar) return focusMenuButton(menuName);
     }
 
     return (
         <header className="menuBar w3-row" style={{top: '0px'}}>
-            <button id="fileButton" className="menuItem w3-button w3-col"
-                    onClick={() => clickMenuButton("fileButton", "fileDropdown")}
-                    onMouseOver={() => {
-                        if (primedMenuBar) focusMenuButton("fileButton", "fileDropdown");
-                    }}>
-                File
-            </button>
-            <button id="editButton" className="menuItem w3-button w3-col"
-                    onClick={() => clickMenuButton("editButton", "editDropdown")}
-                    onMouseOver={() => {
-                        if (primedMenuBar) focusMenuButton("editButton", "editDropdown");
-                    }}>
-                Edit
-            </button>
-            <button id="viewButton" className="menuItem w3-button w3-col"
-                    onClick={() => clickMenuButton("viewButton", "viewDropdown")}
-                    onMouseOver={() => {
-                        if (primedMenuBar) focusMenuButton("viewButton", "viewDropdown");
-                    }}>
-                View
-            </button>
-            <button id="terminalButton" className="menuItem w3-button w3-col gone"
-                    onClick={() => clickMenuButton("terminalButton", "terminalDropdown")}
-                    onMouseOver={() => {
-                        if (primedMenuBar) focusMenuButton("terminalButton", "terminalDropdown");
-                    }}>
-                Terminal
-            </button>
-            <button id="helpButton" className="menuItem w3-button w3-col"
-                    onClick={() => clickMenuButton("helpButton", "helpDropdown")}
-                    onMouseOver={() => {
-                        if (primedMenuBar) focusMenuButton("helpButton", "helpDropdown");
-                    }}>
-                Help
-            </button>
-            <button id="contactButton" className="menuItem w3-button w3-col"
-                    onClick={() => clickMenuButton("contactButton", "contactDropdown")}
-                    onMouseOver={() => {
-                        if (primedMenuBar) focusMenuButton("contactButton", "contactDropdown");
-                    }}>
-                Contact
-            </button>
+            {
+                headerMenu.map((menu, index) => {
+                    let className = "menuItem w3-button w3-col";
+                    if(menu.hideOnMobile) className += " hideOnMobile";
+                    return (
+                        <button key={index} id={menu.name.toLowerCase()+"Menu"} className={className}
+                                onClick={() => clickMenuButton(menu.name.toLowerCase())}
+                                onMouseOver={() => mouseOverMenuButton(menu.name.toLowerCase())}>
+                            {menu.name}
+                        </button>
+                    );
+                })
+            }
         </header>
     );
 }
@@ -253,71 +271,40 @@ function HeaderMenu() {
 function MenuDrop({currentPath}) {
     return (
         <div id="menuDropHolder">
-        <div id="fileDropdown" className="menuDropdown w3-col">
-                <button id="newAction" className="w3-button menuDropItem"
-                        onClick={() => {newCustomFile();}}>New
-                </button>
-                <button id="saveAction" className="w3-button menuDropItem"
-                        onClick={() => savePage(currentPath)}>Save
-                </button>
-                <button id="resetAction" className="w3-button menuDropItem"
-                        onClick={() => resetFileSystem()}>Reset
-                </button>
-            </div>
-            <div id="editDropdown" className="menuDropdown w3-col">
-                <button id="editCurrentAction" className="w3-button menuDropItem"
-                        onClick={() => editPage(currentPath)}>Edit Current Page
-                </button>
-                <button id="renameCurrentAction" className="w3-button menuDropItem"
-                        onClick={() => renamePage(currentPath)}>Rename Current Page
-                </button>
-            </div>
-            <div id="viewDropdown" className="menuDropdown w3-col">
-                <button id="setThemeDefault" className="w3-button menuDropItem"
-                        onClick={() => setTheme("default")}>Default
-                </button>
-                <button id="setThemeClassic" className="w3-button menuDropItem"
-                        onClick={() => setTheme("classic")}>Classic
-                </button>
-                <button id="setThemeMonochrome" className="w3-button menuDropItem"
-                        onClick={() => setTheme("monochrome")}>Monochrome
-                </button>
-                <button id="setThemeLight" className="w3-button menuDropItem"
-                        onClick={() => setTheme("light")}>Light
-                </button>
-            </div>
-            <div id="terminalDropdown" className="menuDropdown w3-col">
-                <button id="showTerminal" className="w3-button menuDropItem"
-                        onClick={() => {
-                            document.getElementById("terminalHeader").click();
-                        }}>Open Terminal
-                </button>
-                <button id="hideTerminal" className="w3-button menuDropItem"
-                        onClick={() => {
-                            document.getElementById("terminal").dispatchEvent(new CustomEvent("close"));
-                        }}>Close Terminal
-                </button>
-            </div>
-            <div id="helpDropdown" className="menuDropdown w3-col">
-                <button id="helpAction" className="w3-button menuDropItem"
-                        onClick={() => window.location.replace("/help")}>help.html
-                </button>
-                <a className="menuDropItem" style={{display: "block"}} href='https://github.com/matthew-pisano/PortfolioSite#readme'
-                   target={"_blank"} rel="noreferrer">README</a>
-                <button id="terminalHelpAction" className="w3-button menuDropItem"
-                        onClick={() => {
-                            document.getElementById('terminal').dispatchEvent(new CustomEvent("openTo", {detail: 550}));
-                            document.getElementById('terminalInput').innerText = "help";
-                            document.getElementById('terminalInput').dispatchEvent(new Event("submit"));
-                        }}>Terminal Help
-                </button>
-            </div>
-            <div id="contactDropdown" className="menuDropdown w3-col">
-                <span className="menuDropItem">Phone: +1 (845)-706-0677</span>
-                <span className="menuDropItem">Email: matthewpisano14@gmail.com</span>
-                <a className="menuDropItem" style={{display: "block"}} href='https://www.linkedin.com/in/matthew-pisano'
-                   target={"_blank"} rel="noreferrer">LinkedIn</a>
-            </div>
+            {
+                headerMenu.map((menu, index) => {
+                    return (
+                        <div key={index} id={menu.name.toLowerCase()+"MenuDropdown"} className="menuDropdown w3-col">
+                            {
+                                menu.items.map((item, index) => {
+                                    let className = "menuDropItem w3-button";
+                                    if(menu.hideOnMobile) className += " hideOnMobile";
+                                    if (Object.keys(item).includes("action")) return (
+                                        <button key={index} id={menu.name.toLowerCase().replace(/" "/g, "")+"Action"}
+                                                className={className}
+                                                onClick={() => {
+                                                    if(item.useCurrentPath) item.action(currentPath);
+                                                    else item.action();
+                                                }}>
+                                            {item.name}
+                                        </button>
+                                    );
+                                    else if (Object.keys(item).includes("link")) {
+                                        let target = item.link.startsWith("http") ? "_blank" : "_self";
+                                        return (
+                                            <a key={index} className="menuDropItem" style={{display: "block"}}
+                                               href={item.link} target={target} rel="noreferrer">{item.name}</a>
+                                        );
+                                    }
+                                    else return (
+                                        <span key={index} className="menuDropItem">{item.name}</span>
+                                    );
+                                })
+                            }
+                        </div>
+                    );
+                })
+            }
         </div>
     );
 }
