@@ -43,6 +43,7 @@ function TerminalDiv() {
             resize(evt.detail ? evt.detail: 210);
         });
         document.getElementById("terminal").addEventListener("close", exit);
+        document.getElementById("terminalInput").addEventListener("submit", submit);
 
         // Add zoom functionality to the terminal
         $("#terminal").bind('mousewheel DOMMouseScroll', (evt) => {
