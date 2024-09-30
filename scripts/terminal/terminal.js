@@ -42,7 +42,8 @@ function TerminalDiv() {
         document.getElementById("terminal").addEventListener("openTo", (evt) => {
             resize(evt.detail ? evt.detail: 210);
         });
-        document.getElementById("terminal").addEventListener("close", exit);
+        document.getElementById("terminal").addEventListener("open", open);
+        document.getElementById("terminal").addEventListener("close", close);
         document.getElementById("terminalInput").addEventListener("submit", submit);
 
         // Add zoom functionality to the terminal
@@ -71,10 +72,18 @@ function TerminalDiv() {
         document.getElementById("terminalPrompt").innerHTML = newPrompt;
     }, [cwd, termColor]);
 
+
+    /**
+     * Opens/shows the terminal components
+     */
+    function open() {
+        if (closed /*&& Date.now() - closeTime > 500*/) resize(210);
+    }
+
     /**
      * Closes/hides the terminal components and updates the environment
      */
-    function exit() {
+    function close() {
         let terminal = document.getElementById('terminal');
         terminal.style.display = "none";
         terminal.style.height = `${Constants.minTerminalHeight}px`;
@@ -193,11 +202,9 @@ function TerminalDiv() {
                 <span id="terminalFileIndicator">Drag Files Here</span>
             </div>
             <div id='terminalThumb' onMouseDown={EventHandlers.thumbDragStart}><span id='terminalThumbDots'>• • •</span></div>
-            <div id="terminalHeader" onClick={() => {
-                if (closed && Date.now() - closeTime > 500) resize(210);
-            }}>
+            <div id="terminalHeader" onClick={open}>
                 <span>/bin/mash</span>
-                <button id="terminalClose" className='w3-button' onClick={exit}>X</button>
+                <button id="terminalClose" className='w3-button' onClick={close}>X</button>
             </div>
             <div id='terminal' onClick={(e) => {
                 // Focus the terminal input if the user clicks on the terminal

@@ -16,47 +16,79 @@ let primedMenuBar = false;
 
 
 /**
- * The header menu for the site that contains the file, edit, view, terminal, help, and contact info buttons
- * @type object[]
+ * A menu that exists in the header bar and contains items
  */
-let headerMenu = [
-    {name: "File", hideOnMobile: true, items: [
-            {name: "New", action: newPage},
-            {name: "Save", action: savePage, useCurrentPath: true},
-            {name: "Reset", action: resetFileSystem},
-        ]},
-    {name: "Edit", hideOnMobile: true, items: [
-            {name: "Edit Current Page", action: editPage, useCurrentPath: true},
-            {name: "Rename Current Page", action: renamePage, useCurrentPath: true},
-        ]},
-    {name: "View", hideOnMobile: true, items: [
-            {name: "Default", action: () => setTheme("default")},
-            {name: "Classic", action: () => setTheme("classic")},
-            {name: "Monochrome", action: () => setTheme("monochrome")},
-            {name: "Light", action: () => setTheme("light")},
-        ]},
-    {name: "Terminal", hideOnMobile: true, items: [
-            {name: "Open Terminal", action: () => {
-                    document.getElementById("terminalHeader").click();
-                }},
-            {name: "Close Terminal", action: () => {
-                    document.getElementById("terminal").dispatchEvent(new CustomEvent("close"));
-                }},
-        ]},
-    {name: "Help", items: [
-            {name: "help.html", link: "/help"},
-            {name: "README", link: "https://github.com/matthew-pisano/PortfolioSite#readme"},
-            {name: "Terminal Help", hideOnMobile: true, action: () => {
-                    document.getElementById('terminal').dispatchEvent(new CustomEvent("openTo", {detail: 700}));
-                    document.getElementById('terminalInput').innerText = "help";
-                    document.getElementById('terminalInput').dispatchEvent(new Event("submit"));
-                }},
-        ]},
-    {name: "Contact", items: [
-            {name: "Phone: +1 (845)-706-0677"},
-            {name: "Email: matthewpisano14@gmail.com"},
-            {name: "LinkedIn", link: "https://www.linkedin.com/in/matthew-pisano"},
-        ]},
+class Menu {
+    /**
+     * @param name {string} The name of the menu
+     * @param items {MenuItem[]} The items in the menu
+     * @param hideOnMobile {boolean} Whether the menu should be hidden on mobile
+     */
+    constructor(name, items, hideOnMobile = false) {
+        this.name = name;
+        this.items = items;
+        this.hideOnMobile = hideOnMobile;
+    }
+}
+
+
+/**
+ * An item in a menu that can be an action, link, or text
+ */
+class MenuItem {
+    /**
+     * @param name {string} The name of the item
+     * @param itemType {string} The type of item: "action", "link", or "text"
+     * @param data {object} The data of the item
+     * @param usesCurrentPath {boolean} Whether the item uses the current path
+     */
+    constructor(name, itemType, data, usesCurrentPath = false) {
+        this.name = name;
+        this.itemType = itemType;
+        this.data = data;
+        this.usesCurrentPath = usesCurrentPath;
+    }
+}
+
+
+/**
+ * The header menu for the site that contains the file, edit, view, terminal, help, and contact info buttons
+ * @type {Menu[]}
+ */
+let headerMenus = [
+    new Menu("File", [
+        new MenuItem("New", "action", newPage),
+        new MenuItem("Save", "action", savePage, true),
+        new MenuItem("Reset", "action", resetFileSystem),
+    ], true),
+    new Menu("Edit", [
+        new MenuItem("Edit Current Page", "action", editPage, true),
+        new MenuItem("Rename Current Page", "action", renamePage, true),
+    ], true),
+    new Menu("View", [
+        new MenuItem("Default", "action", () => setTheme("default")),
+        new MenuItem("Classic", "action", () => setTheme("classic")),
+        new MenuItem("Monochrome", "action", () => setTheme("monochrome")),
+        new MenuItem("Light", "action", () => setTheme("light")),
+    ], true),
+    new Menu("Terminal", [
+        new MenuItem("Open Terminal", "action", () => document.getElementById("terminal").dispatchEvent(new CustomEvent("open"))),
+        new MenuItem("Close Terminal", "action", () => document.getElementById("terminal").dispatchEvent(new CustomEvent("close"))),
+    ], true),
+    new Menu("Help", [
+        new MenuItem("help.html", "link", "/help"),
+        new MenuItem("README", "link", "https://github.com/matthew-pisano/PortfolioSite#readme"),
+        new MenuItem("Terminal Help", "action", () => {
+            document.getElementById('terminal').dispatchEvent(new CustomEvent("openTo", {detail: 700}));
+            document.getElementById('terminalInput').innerText = "help";
+            document.getElementById('terminalInput').dispatchEvent(new Event("submit"));
+        }, true),
+    ]),
+    new Menu("Contact", [
+        new MenuItem("Phone", "text", "+1 (845)-706-0677"),
+        new MenuItem("Email", "text", "matthewpisano14@gmail.com"),
+        new MenuItem("LinkedIn", "link", "https://www.linkedin.com/in/matthew-pisano"),
+    ]),
 ];
 
 
@@ -246,7 +278,7 @@ function HeaderMenu() {
     return (
         <header className="menuBar w3-row" style={{top: '0px'}}>
             {
-                headerMenu.map((menu, index) => {
+                headerMenus.map((menu, index) => {
                     let className = "menuItem w3-button w3-col";
                     if(menu.hideOnMobile) className += " hideOnMobile";
                     return (
@@ -272,28 +304,28 @@ function MenuDrop({currentPath}) {
     return (
         <div id="menuDropHolder">
             {
-                headerMenu.map((menu, index) => {
+                headerMenus.map((menu, index) => {
                     return (
                         <div key={index} id={menu.name.toLowerCase()+"MenuDropdown"} className="menuDropdown w3-col">
                             {
                                 menu.items.map((item, index) => {
                                     let className = "menuDropItem w3-button";
                                     if(menu.hideOnMobile) className += " hideOnMobile";
-                                    if (Object.keys(item).includes("action")) return (
+                                    if (item.itemType === "action") return (
                                         <button key={index} id={menu.name.toLowerCase().replace(/" "/g, "")+"Action"}
                                                 className={className}
                                                 onClick={() => {
-                                                    if(item.useCurrentPath) item.action(currentPath);
-                                                    else item.action();
+                                                    if(item.usesCurrentPath) item.data(currentPath);
+                                                    else item.data();
                                                 }}>
                                             {item.name}
                                         </button>
                                     );
-                                    else if (Object.keys(item).includes("link")) {
-                                        let target = item.link.startsWith("http") ? "_blank" : "_self";
+                                    else if (item.itemType === "link") {
+                                        let target = item.data.startsWith("http") ? "_blank" : "_self";
                                         return (
                                             <a key={index} className="menuDropItem" style={{display: "block"}}
-                                               href={item.link} target={target} rel="noreferrer">{item.name}</a>
+                                               href={item.data} target={target} rel="noreferrer">{item.name}</a>
                                         );
                                     }
                                     else return (
