@@ -49,7 +49,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     display: none;
-    overscroll-behavior-y: contain;
+    overscroll-behavior: contain;
 }
 
 #terminalFileHandler {

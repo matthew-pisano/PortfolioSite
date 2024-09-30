@@ -64,30 +64,27 @@ class ANSI {
     /**
      * Converts raw text with ANSI color codes to HTML span elements with color styling
      * @param rawText {string} The text to color
-     * @return {{elems: HTMLElement[], lastColor: string}} The colored elements and the last color used for overflowing to other lines
+     * @return {{text: string, lastColor: string}} The colored text and the last color code used
      */
     static colorText(rawText) {
         let segments = rawText.split("\u001b[");
-        let coloredElements = [];
+        let coloredText = "";
         let color;
 
         for (let i = 0; i < segments.length; i++) {
-
-            let span = document.createElement("span");
-
             color = "\u001b[" + segments[i].substring(0, 3);
             let text = segments[i].substring(3);
             let HTMLColor = this.asHTML(color);
-            // Print either the text after the color code or the text verbatim if no color code is present
-            span.innerText = (HTMLColor || color === this.DEFAULT) ? text : segments[i];
-            if (HTMLColor) span.style.color = HTMLColor;
 
-            coloredElements.push(span);
+            // Print either the text after the color code or the text verbatim if no color code is present
+            let innerText = (HTMLColor || color === this.DEFAULT) ? text : segments[i];
+            if (HTMLColor) coloredText += `<span style="color: ${HTMLColor}">${innerText}</span>`;
+            else coloredText += `<span>${innerText}</span>`;
         }
 
         if (color === this.WHITE) color = undefined;
 
-        return {elems: coloredElements, lastColor: color};
+        return {text: coloredText, lastColor: color};
     }
 
     /**

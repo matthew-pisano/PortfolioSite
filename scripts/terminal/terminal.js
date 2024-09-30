@@ -28,29 +28,36 @@ function TerminalDiv() {
         let rawTest;
         if (colored) {
             rawTest = `[${ANSI.GREEN}${SysEnv.USER}${ANSI.DEFAULT}]-(${ANSI.CYAN}${cwd}${ANSI.DEFAULT})$\xa0`;
-            return ANSI.colorText(rawTest).elems.map(e => e.outerHTML).join("");
+            return ANSI.colorText(rawTest).text;
         }
         return `[${SysEnv.USER}]-(${cwd})$\xa0`;
     }
 
-    const [prompt, setPrompt] = useState(genPrompt(SysEnv.HOME_FOLDER, false));
+    const [prompt, setPrompt] = useState(genPrompt(SysEnv.HOME_FOLDER, true));
 
     useEffect(() => {
         // Show the terminal thumb and add event listeners
         document.getElementById("terminalHolder").classList.remove('gone');
 
-        document.getElementById("terminal").addEventListener("openTo", (evt) => {
+        let terminal = document.getElementById('terminal');
+        terminal.addEventListener("openTo", (evt) => {
             resize(evt.detail ? evt.detail: 210);
         });
-        document.getElementById("terminal").addEventListener("open", open);
-        document.getElementById("terminal").addEventListener("close", close);
+        terminal.addEventListener("open", open);
+        terminal.addEventListener("close", close);
+        terminal.addEventListener('wheel', function(evt) {
+            const canScrollDown = terminal.scrollTop + terminal.clientHeight < terminal.scrollHeight;
+            const canScrollUp = terminal.scrollTop > 0;
+            const scrollingDown = evt.deltaY > 0;
+            // If there is no more content to scroll in the div, prevent default scrolling
+            if (!canScrollDown && scrollingDown || !canScrollUp && !scrollingDown) evt.preventDefault();
+        });
         document.getElementById("terminalInput").addEventListener("submit", submit);
 
         // Add zoom functionality to the terminal
         $("#terminal").bind('mousewheel DOMMouseScroll', (evt) => {
             if(evt.ctrlKey === true) {
                 evt.preventDefault();
-                let terminal = document.getElementById('terminal');
                 let fontSize = parseFloat(window.getComputedStyle(terminal).fontSize);
 
                 if(evt.originalEvent.detail > 0) terminal.style.fontSize = `${fontSize - 1}px`;
@@ -179,18 +186,16 @@ function TerminalDiv() {
 
             // Carry over the last color to the next line
             if (lastColor) partial = lastColor + partial;
+            // Sanitize the output to avoid accidental HTML injection
+            partial = partial.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
             // Update the terminal output with text segment
             if (ANSI.isColored(partial)) {
                 let coloredResult = ANSI.colorText(partial);
                 lastColor = coloredResult.lastColor;
-                for (let element of coloredResult.elems)
-                    terminalOutput.appendChild(element);
-            } else {
-                let span = document.createElement('span');
-                span.innerText = partial;
-                terminalOutput.appendChild(span);
+                partial = coloredResult.text;
             }
+            terminalOutput.innerHTML += `<span>${partial}</span>`.replace(/\n/g, "<br>");
 
             terminal.scrollTop = terminal.scrollHeight;
         }
