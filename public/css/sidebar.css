@@ -69,16 +69,19 @@
     display: flex;
 }
 
-.sidebarFolderHeader:hover, .sidebarLink:hover{
+.sidebarFolderHeader:hover, .sidebarLink:hover, .sidebarLink:hover a{
     background-color: var(--theme-color-2-hover) !important;
+    color: var(--theme-text-hover) !important;
 }
 
-.selectedSidebarLink {
+.selectedSidebarLink, .selectedSidebarLink a {
     background-color: var(--theme-color-2-selected) !important;
+    color: var(--theme-text-hover) !important;
 }
 
-.selectedSidebarLink:hover {
+.selectedSidebarLink:hover, .selectedSidebarLink:hover a {
     background-color: var(--theme-color-2-selected) !important;
+    color: var(--theme-text-hover) !important;
 }
 
 .sidebarItem img{
@@ -165,5 +168,5 @@
 
 .contextMenuItem:hover {
     background-color: var(--theme-color-3-hover) !important;
-    color: var(--theme-text) !important;
+    color: var(--theme-text-hover) !important;
 }

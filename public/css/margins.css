@@ -52,14 +52,15 @@
 
 .menuDropItem:hover {
     background-color: var(--theme-color-3-hover) !important;
-    color: var(--theme-text) !important;
+    color: var(--theme-text-hover) !important;
 }
 
 .infoBarItem:hover {
     background-color: var(--theme-color-1-hover) !important;
+    color: var(--theme-text-hover) !important;
 }
 
 .menuItem:hover {
     background-color: var(--theme-color-3-hover) !important;
-    color: var(--theme-text) !important;
+    color: var(--theme-text-hover) !important;
 }

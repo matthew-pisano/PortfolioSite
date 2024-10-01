@@ -18,6 +18,7 @@ class Theme {
     /**
      * Creates a new Theme object
      * @param textColor {string} The hex color of the text
+     * @param textHoverColor {string} The hex color of the text when hovered
      * @param linkColor {string} The hex color of the links
      * @param accentColor {string} The hex color of the accent
      * @param color1 {ThemeColor} The ThemeColor object for the first color
@@ -25,9 +26,10 @@ class Theme {
      * @param color3 {ThemeColor} The ThemeColor object for the third color
      * @param color4 {ThemeColor} The ThemeColor object for the fourth color
      */
-    constructor(textColor, linkColor, accentColor,
+    constructor(textColor, textHoverColor, linkColor, accentColor,
                 color1, color2, color3, color4) {
         this.textColor = textColor;
+        this.textHoverColor = textHoverColor;
         this.linkColor = linkColor;
         this.accentColor = accentColor;
         this.color1 = color1;
@@ -45,6 +47,7 @@ class Theme {
 const themes = {
     "default": new Theme(
         "#f0ffff",
+        "#f0ffff",
         "#add3ee",
         "#f0ffff",
         new ThemeColor("#1a2329", "#315167", "#315167"),
@@ -53,6 +56,7 @@ const themes = {
         new ThemeColor("#313131", "#3b3e40", "#3b3e40")
     ),
     "classic": new Theme(
+        "#f0ffff",
         "#f0ffff",
         "#add3ee",
         "#f0ffff",
@@ -63,14 +67,16 @@ const themes = {
     ),
     "monochrome": new Theme(
         "#ffffff",
+        "#000000",
         "#ffffff",
         "#ffffff",
         new ThemeColor("#000000", "#000000", "#ffffff"),
-        new ThemeColor("#000000", "#000000", "#ffffff"),
+        new ThemeColor("#000000", "#ffffff", "#ffffff"),
         new ThemeColor("#000000", "#000000", "#ffffff"),
         new ThemeColor("#000000", "#000000", "#ffffff")
     ),
     "light": new Theme(
+        "#171717",
         "#171717",
         "#5070ff",
         "#ffffff",
@@ -90,6 +96,7 @@ function setTheme(themeName) {
     let theme = themes[themeName];
     let root = document.querySelector(':root');
     root.style.setProperty('--theme-text', theme.textColor);
+    root.style.setProperty('--theme-text-hover', theme.textHoverColor);
     root.style.setProperty('--theme-link', theme.linkColor);
     root.style.setProperty('--theme-accent', theme.accentColor);
 
