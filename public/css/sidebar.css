@@ -93,11 +93,11 @@
 }
 
 .folderIcon{
-    content:url("../assets/folder.png");
+    content:url("../assets/folderIcon.svg");
 }
 
 .htmlIcon{
-    content:url("../assets/htmlFile.png");
+    content:url("../assets/htmlIcon.svg");
 }
 
 .sidebarContent{
@@ -120,7 +120,7 @@
     border-style: none none none solid;
     border-color: var(--theme-accent);
     border-width: 2px;
-    background-image: url("../assets/explorerIcon.png");
+    background-image: url("../assets/explorerIcon.svg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -131,7 +131,7 @@
 }
 
 .editButton{
-    content:url("../assets/edit.png");
+    content:url("../assets/editIcon.svg");
     cursor: pointer;
     margin-left: 5px;
     margin-right: 10px;
