@@ -78,11 +78,11 @@ const themes = {
     "light": new Theme(
         "#171717",
         "#171717",
-        "#5070ff",
-        "#ffffff",
-        new ThemeColor("#efefef", "#c1daff", "#c3c3c3"),
-        new ThemeColor("#beddff", "#95c7ff", "#c8d6e4"),
-        new ThemeColor("#596887", "#6f89bc", "#afb7c6"),
+        "#546acc",
+        "#bac8ff",
+        new ThemeColor("#efefef", "#c1daff", "#e0edff"),
+        new ThemeColor("#e2eeff", "#95c7ff", "#cfe8ff"),
+        new ThemeColor("#5d85d8", "#719ffb", "#bacef6"),
         new ThemeColor("#e5eeff", "#b4ceff", "#d4dbea")
     ),
 };
@@ -113,9 +113,17 @@ function setTheme(themeName) {
     root.style.setProperty('--theme-color-4-selected', theme.color4.selected);
     root.style.setProperty('--theme-color-4-hover', theme.color4.hover);
 
-    if (["monochrome", "light"].includes(themeName))
+    // Set the sidebar collapse icon based on the theme
+    if (["monochrome", "light"].includes(themeName)){  // Dark icon
         document.getElementById("collapseSidebar").style.backgroundImage = "url('/assets/explorerIconDark.svg')";
-    else document.getElementById("collapseSidebar").style.backgroundImage = "";
+        for (let editorButton of document.getElementsByClassName("editorButton"))
+            editorButton.style.content = "url('/assets/editIconDark.svg')";
+    }
+    else {  // Light icon
+        document.getElementById("collapseSidebar").style.backgroundImage = "";
+        for (let editorButton of document.getElementsByClassName("editorButton"))
+            editorButton.style.content = "";
+    }
 
 }
 

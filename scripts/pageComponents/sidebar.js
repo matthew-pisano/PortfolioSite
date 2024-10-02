@@ -57,7 +57,7 @@ function buildFile(file, path) {
     else {
         urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
         linkPath = `${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
-        editIcon = <img className='editButton' alt='' onClick={() => {
+        editIcon = <img className='editorButton' alt='' onClick={() => {
             window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`);
         }}/>;
     }
