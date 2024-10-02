@@ -1,7 +1,6 @@
 
 .openSidebar {
     width: 240px;
-    background-color: var(--theme-color-2);
 }
 
 .closeSidebar {
@@ -23,6 +22,7 @@
     z-index: 2;
     overflow-y: auto;
     background-color: var(--theme-color-2);
+    border-right: var(--theme-accent) 2px solid;
 }
 
 #collapseHolder {
@@ -130,7 +130,7 @@
     background-color: var(--theme-color-2-hover) !important;
 }
 
-.editButton{
+.editorButton {
     content:url("../assets/editIcon.svg");
     cursor: pointer;
     margin-left: 5px;

@@ -70,7 +70,7 @@ let headerMenus = [
         new MenuItem("Classic", "action", () => setTheme("classic")),
         new MenuItem("Monochrome", "action", () => setTheme("monochrome")),
         new MenuItem("Light", "action", () => setTheme("light")),
-    ], true),
+    ], false),
     new Menu("Terminal", [
         new MenuItem("Open Terminal", "action", () => document.getElementById("terminal").dispatchEvent(new CustomEvent("open"))),
         new MenuItem("Close Terminal", "action", () => document.getElementById("terminal").dispatchEvent(new CustomEvent("close"))),

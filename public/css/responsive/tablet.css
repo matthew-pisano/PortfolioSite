@@ -9,7 +9,7 @@
     }
 
     #sidebar {
-        background-color: transparent;
+        border: none;
     }
 
     .hideOnMobile {
@@ -28,7 +28,6 @@
 
     .openSidebar {
         width: 100% !important;
-        background-color: #313131 !important;
     }
 
     .closeSidebar {
@@ -44,7 +43,7 @@
         margin-left: 0px;
     }
 
-    .editButton {
+    .editorButton {
         display: none;
     }
 
