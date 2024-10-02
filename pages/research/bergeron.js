@@ -135,8 +135,8 @@ function Bergeron() {
         "A conscience-based alignment framework",
         {backgroundColor: "#309c63"},
         ["research", "academic", "ai", "alignment", "python"],
-        "",
-        "",
+        "https://github.com/matthew-pisano/Bergeron",
+        "Bergeron",
         ["https://arxiv.org/abs/2312.00029"],
         ["Research Paper"]
     );
