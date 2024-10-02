@@ -112,6 +112,11 @@ function setTheme(themeName) {
     root.style.setProperty('--theme-color-4', theme.color4.color);
     root.style.setProperty('--theme-color-4-selected', theme.color4.selected);
     root.style.setProperty('--theme-color-4-hover', theme.color4.hover);
+
+    if (["monochrome", "light"].includes(themeName))
+        document.getElementById("collapseSidebar").style.backgroundImage = "url('/assets/explorerIconDark.svg')";
+    else document.getElementById("collapseSidebar").style.backgroundImage = "";
+
 }
 
 export {themes, setTheme};
