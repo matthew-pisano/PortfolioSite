@@ -42,11 +42,12 @@ class MenuItem {
      * @param data {object} The data of the item
      * @param usesCurrentPath {boolean} Whether the item uses the current path
      */
-    constructor(name, itemType, data, usesCurrentPath = false) {
+    constructor(name, itemType, data, usesCurrentPath = false, hideOnMobile = false) {
         this.name = name;
         this.itemType = itemType;
         this.data = data;
         this.usesCurrentPath = usesCurrentPath;
+        this.hideOnMobile = hideOnMobile;
     }
 }
 
@@ -82,7 +83,7 @@ let headerMenus = [
             document.getElementById('terminal').dispatchEvent(new CustomEvent("openTo", {detail: 700}));
             document.getElementById('terminalInput').innerText = "help";
             document.getElementById('terminalInput').dispatchEvent(new Event("submit"));
-        }, true),
+        }, true, true),
     ]),
     new Menu("Contact", [
         new MenuItem("Phone", "text", "+1 (845)-706-0677"),
@@ -248,7 +249,7 @@ function focusMenuButton(menuName) {
     primedMenuBar = true;
     let leftEdge = document.getElementById(menuName+"Menu").getBoundingClientRect().left;
     document.getElementById(menuName+"MenuDropdown").style.marginLeft = leftEdge+"px";
-    document.getElementById(menuName+"MenuDropdown").style.display = "block";
+    document.getElementById(menuName+"MenuDropdown").style.display = "inline-block";
 }
 
 
@@ -309,11 +310,11 @@ function MenuDrop({currentPath}) {
             {
                 headerMenus.map((menu, index) => {
                     return (
-                        <div key={index} id={menu.name.toLowerCase()+"MenuDropdown"} className="menuDropdown w3-col">
+                        <div key={index} id={menu.name.toLowerCase()+"MenuDropdown"} className="menuDropdown">
                             {
                                 menu.items.map((item, index) => {
                                     let className = "menuDropItem w3-button";
-                                    if(menu.hideOnMobile) className += " hideOnMobile";
+                                    if(item.hideOnMobile) className += " hideOnMobile";
                                     if (item.itemType === "action") return (
                                         <button key={index} id={menu.name.toLowerCase().replace(/" "/g, "")+"Action"}
                                                 className={className}

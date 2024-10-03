@@ -24,9 +24,10 @@
 }
 
 #menuDropHolder {
-    display: table;
     position: fixed;
     top: 27px;
+    right: 0;
+    left: 0;
     z-index: 3;
 }
 
@@ -34,17 +35,15 @@
     background-color: var(--theme-color-3);
     border-style: solid;
     border-color: var(--theme-accent);
-    min-width: 200px;
-    max-width: 350px;
     border-width: 1px;
-    padding: 5px;
+    padding: 5px 70px 5px 5px;
+    min-width: 150px;
     border-radius: 5px;
     display: none;
 }
 
 .menuDropItem {
     display: block;
-    width: 100%;
     padding: 2px 3px;
     text-align: left;
     border-radius: 5px;
