@@ -57,6 +57,8 @@ function TerminalDiv() {
             }
         });
 
+        Commands.ENV.COLOR = window.getComputedStyle(document.documentElement).getPropertyValue('--theme-text');
+        setTermColor(Commands.ENV.COLOR);
         setPrompt(genPrompt(cwd, true));
         EventHandlers.initProperties();
         EventHandlers.addEventListeners(resize);
