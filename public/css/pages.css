@@ -8,10 +8,19 @@
     margin-bottom: 100px;
 }
 
+.openSidebarPage {
+    margin-left: 250px !important;
+}
+
+.closeSidebarPage {
+    margin-left: 50px !important;
+}
+
 .titleCard {
     position: fixed;
     height: 300px;
     top: 50px;
+    pointer-events: none;
 }
 
 #tileHolder {

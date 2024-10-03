@@ -16,7 +16,7 @@
         display: none;
     }
 
-    .page {
+    #page {
         margin-bottom: 70px;
         margin-left: 0px;
         margin-right: 0px;
@@ -35,12 +35,12 @@
     }
 
     .openSidebarPage {
-        margin-left: 0px;
+        margin-left: 0px !important;
         display: none;
     }
 
     .closeSidebarPage {
-        margin-left: 0px;
+        margin-left: 0px !important;
     }
 
     .editorButton {
