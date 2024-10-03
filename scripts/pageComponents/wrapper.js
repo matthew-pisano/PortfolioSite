@@ -60,9 +60,9 @@ function Wrapper({children, pageName, pageStyle}) {
             <Head><title id="siteTitle">{pageName.substring(pageName.lastIndexOf("/") + 1) + ".html"}</title></Head>
 
             <HeaderMenu/>
+            <MenuDrop currentPath={currentPath}/>
 
             <div id="wrapperContent" className="w3-display-container w3-row">
-                <MenuDrop currentPath={currentPath}/>
                 <Sidebar/>
                 <div id="page" className="page container w3-rest" style={pageStyle}>
                     {children}
