@@ -5,7 +5,7 @@ import {letoucan, neofetch, system32, tfLogo, theMissile} from './strings';
 import {Directory, File} from "../fileSystem/fileSystemObjects";
 import {ANSI, Perms, SysEnv} from "../fileSystem/fileSystemMeta";
 import {setTheme, themes} from "../themes";
-import {insertVars, processAssignment, tokenizeCommand} from "./processTokens";
+import {resolveTokens, tokenizeCommand} from "./processTokens";
 import {Help} from "./helpMenu";
 import {EventHandlers} from "./eventHandlers";
 
@@ -783,24 +783,6 @@ class Commands {
     }
 
     /**
-     * Resolves any environment variables or assignments in the tokens
-     * @param rawTokens {string[]} The array of tokens to resolve
-     */
-    static resolveTokens(rawTokens) {
-        let tokens = [...rawTokens];
-        for(let i=0; i<tokens.length; i++) {
-            tokens[i] = insertVars(this.ENV, tokens[i]);
-
-            if(i === 0 && tokens[i].includes("=") && tokens[i][0] !== "=") {
-                this.ENV = processAssignment(this.ENV, tokens[i]);  // Update the environment with the assignment/unassignment
-                tokens.splice(i, 1);
-                i--;
-            }
-        }
-        return tokens;
-    }
-
-    /**
      * Parses a raw string as a command and arguments, executes them, then yields the output and updated environment
      * @param rawString {string} The raw command string
      * @yield {Promise<{result: string, env: object}>} The command output and updated environment
@@ -814,7 +796,9 @@ class Commands {
             if (!commandTokens) continue;
 
             try {
-                let resolvedTokens = this.resolveTokens(commandTokens);
+                let result = resolveTokens(commandTokens, this.ENV);
+                let resolvedTokens = result.tokens;
+                this.ENV = result.env;
 
                 // Split the command string into the command and its arguments
                 let command = resolvedTokens[0];

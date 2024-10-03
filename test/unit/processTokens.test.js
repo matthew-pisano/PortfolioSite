@@ -81,4 +81,11 @@ describe('Test tokenizeCommand', () => {
         expect(tokenizeCommand("   ls ; cd ")).toStrictEqual([["ls"], ["cd"]]);
         expect(tokenizeCommand("echo '; ls'")).toStrictEqual([["echo", "; ls"]]);
     });
+    test('Test Comments', () => {
+        expect(tokenizeCommand("ls #cd")).toStrictEqual([["ls"]]);
+        expect(tokenizeCommand("ls; cd#echo\n")).toStrictEqual([["ls"], ["cd"]]);
+        expect(tokenizeCommand("echo hello#there")).toStrictEqual([["echo", "hello"]]);
+        expect(tokenizeCommand("echo 'hello#there'")).toStrictEqual([["echo", "hello#there"]]);
+        expect(tokenizeCommand('echo "hello;#  there"')).toStrictEqual([["echo", "hello;#  there"]]);
+    });
 });

@@ -11,6 +11,8 @@ function tokenizeCommand(command) {
 
     for (let char of command) {
         if (quoteType === null) {
+            if (char === "#") break;  // Ignore comments
+
             if (`'"`.includes(char)) {  // Open a quote
                 quoteType = char;
                 continue;
@@ -32,6 +34,26 @@ function tokenizeCommand(command) {
     if (activeToken !== "") tokens[tokens.length-1].push(activeToken);  // Add the last token
 
     return tokens;
+}
+
+
+/**
+ * Resolves any environment variables or assignments in the tokens
+ * @param rawTokens {string[]} The array of tokens to resolve
+ * @param env {object} The environment object
+ */
+function resolveTokens(rawTokens, env) {
+    let tokens = [...rawTokens];
+    for(let i=0; i<tokens.length; i++) {
+        tokens[i] = insertVars(env, tokens[i]);
+
+        if(i === 0 && tokens[i].includes("=") && tokens[i][0] !== "=") {
+            env = processAssignment(env, tokens[i]);  // Update the environment with the assignment/unassignment
+            tokens.splice(i, 1);
+            i--;
+        }
+    }
+    return {tokens: tokens, env: env};
 }
 
 
@@ -84,4 +106,4 @@ function processAssignment(env, token) {
     return newEnv;
 }
 
-export { processAssignment, insertVars, tokenizeCommand };
+export { processAssignment, insertVars, tokenizeCommand, resolveTokens };
