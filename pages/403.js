@@ -25,25 +25,23 @@ function Unauthorized() {
         {backgroundColor: "#000000"}
     );
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div id={pageInfo.pageName + "Page"} className="page container w3-rest">
-            <div className="inner titleCard">
-                <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>{pageInfo.title}</b></h1><br/>
-                <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
+        <div className="inner titleCard">
+            <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>{pageInfo.title}</b></h1><br/>
+            <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
+        </div>
+        <div className="tileHolder inner w3-display-container" style={{backgroundColor: "#000000"}}>
+            <div className="displayTile w3-container w3-row">
+                <h3><b>We have detected an unauthorized access attempt</b></h3>
+                <span style={{margin: "15px 0px", display: "block"}}>
+                    You either do not have the permissions to view the requested page or your authorization
+                    token has expired.  If the latter is the case, attempt to re-authenticate and access the
+                    path through the original means.  If the former is the case, you do not belong here.
+                    Searching in areas that you are not meant to go serves the good of nobody.
+                </span>
             </div>
-            <div className="tileHolder inner w3-display-container" style={{backgroundColor: "#000000"}}>
-                <div className="displayTile w3-container w3-row">
-                    <h3><b>We have detected an unauthorized access attempt</b></h3>
-                    <span style={{margin: "15px 0px", display: "block"}}>
-                        You either do not have the permissions to view the requested page or your authorization
-                        token has expired.  If the latter is the case, attempt to re-authenticate and access the
-                        path through the original means.  If the former is the case, you do not belong here.
-                        Searching in areas that you are not meant to go serves the good of nobody.
-                    </span>
-                </div>
-                <a id="confirmTile" className="displayTile choiceTile w3-container w3-row" href="/home">
-                    <b>Back to Safety</b>
-                </a>
-            </div>
+            <a id="confirmTile" className="displayTile choiceTile w3-container w3-row" href="/home">
+                <b>Back to Safety</b>
+            </a>
         </div>
     </Wrapper>);
 }

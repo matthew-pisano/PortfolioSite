@@ -30,7 +30,7 @@ function Edit() {
         if(errorMsg){
             let errElem = document.createElement("p");
             errElem.innerText = errorMsg;
-            document.getElementById(pageInfo.pageName+"Page").appendChild(errElem);
+            document.getElementById("page").appendChild(errElem);
             return;
         }
 
@@ -64,7 +64,7 @@ function Edit() {
             ]
         });
         let editor = new EditorView({
-            state, parent: document.getElementById(pageInfo.pageName+"Page"),
+            state, parent: document.getElementById("page"),
         });
 
         document.getElementsByClassName("cm-editor")[0].minHeight = `${Math.round(window.innerHeight*0.7)}px`;
@@ -74,9 +74,7 @@ function Edit() {
         document.codeEditor = editor;
     }, []);
 
-    return (<Wrapper pageName={pageInfo.pageName}>
-        <div id={pageInfo.pageName+"Page"} className="page container w3-rest"/>
-    </Wrapper>);
+    return (<Wrapper pageName={pageInfo.pageName}/>);
 }
 
 

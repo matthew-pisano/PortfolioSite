@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import React, {useEffect, useState} from 'react';
 import {Commands} from './commands';
 import {ANSI, SysEnv} from "../fileSystem/fileSystemMeta";
@@ -45,23 +44,16 @@ function TerminalDiv() {
         });
         terminal.addEventListener("open", open);
         terminal.addEventListener("close", close);
-        terminal.addEventListener('wheel', function(evt) {
-            const canScrollDown = terminal.scrollTop + terminal.clientHeight < terminal.scrollHeight;
-            const canScrollUp = terminal.scrollTop > 0;
-            const scrollingDown = evt.deltaY > 0;
-            // If there is no more content to scroll in the div, prevent default scrolling
-            if (!canScrollDown && scrollingDown || !canScrollUp && !scrollingDown) evt.preventDefault();
-        });
+
         document.getElementById("terminalInput").addEventListener("submit", submit);
 
         // Add zoom functionality to the terminal
-        $("#terminal").bind('mousewheel DOMMouseScroll', (evt) => {
+        terminal.addEventListener("wheel", (evt) => {
             if(evt.ctrlKey === true) {
                 evt.preventDefault();
                 let fontSize = parseFloat(window.getComputedStyle(terminal).fontSize);
-
-                if(evt.originalEvent.detail > 0) terminal.style.fontSize = `${fontSize - 1}px`;
-                else terminal.style.fontSize = `${fontSize + 1}px`;
+                if(evt.deltaY > 0 && fontSize > 11) terminal.style.fontSize = `${fontSize - 1}px`;
+                else if (evt.deltaY < 0 && fontSize < 40) terminal.style.fontSize = `${fontSize + 1}px`;
             }
         });
 

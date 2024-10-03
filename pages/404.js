@@ -38,29 +38,27 @@ function PageNotFound() {
     );
 
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div id={pageInfo.pageName + "Page"} className="page container w3-rest">
-            <div className="inner titleCard">
-                <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>{pageInfo.title}</b></h1><br/>
-                <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
+        <div className="inner titleCard">
+            <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>{pageInfo.title}</b></h1><br/>
+            <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
+        </div>
+        <div className="tileHolder inner w3-display-container" style={{backgroundColor: "#000000"}}>
+            <div className="displayTile w3-container w3-row">
+                <h3><b>Something&apos;s Not Right</b></h3>
+                <span style={{margin: "15px 0px", display: "block"}}>
+                    The page <i style={{backgroundColor: "#454545", borderRadius: "4px"}}>{location}</i> does
+                    not seem to exist.  These are uncharted waters, it would be wise to return home.<br/><br/>
+                    ...this your last chance.  After this there is no turning back.  You click the blue link, the story ends.
+                    You wake up in your bed and believe whatever you want to. You click the red link, you stay in Wonderland,
+                    and I show you how deep the rabbit hole goes.  Remember, all I&apos;m offering is the truth.  Nothing more.
+                </span>
             </div>
-            <div className="tileHolder inner w3-display-container" style={{backgroundColor: "#000000"}}>
-                <div className="displayTile w3-container w3-row">
-                    <h3><b>Something&apos;s Not Right</b></h3>
-                    <span style={{margin: "15px 0px", display: "block"}}>
-                        The page <i style={{backgroundColor: "#454545", borderRadius: "4px"}}>{location}</i> does
-                        not seem to exist.  These are uncharted waters, it would be wise to return home.<br/><br/>
-                        ...this your last chance.  After this there is no turning back.  You click the blue link, the story ends.
-                        You wake up in your bed and believe whatever you want to. You click the red link, you stay in Wonderland,
-                        and I show you how deep the rabbit hole goes.  Remember, all I&apos;m offering is the truth.  Nothing more.
-                    </span>
-                </div>
-                <a id="confirmTile" className="displayTile choiceTile w3-container w3-row" href="/home">
-                    <b>Back to Safety</b>
-                </a>
-                <a id="denyTile" className="displayTile choiceTile w3-container w3-row" href={nextLink()}>
-                    <b>Continue Onwards</b>
-                </a>
-            </div>
+            <a id="confirmTile" className="displayTile choiceTile w3-container w3-row" href="/home">
+                <b>Back to Safety</b>
+            </a>
+            <a id="denyTile" className="displayTile choiceTile w3-container w3-row" href={nextLink()}>
+                <b>Continue Onwards</b>
+            </a>
         </div>
     </Wrapper>);
 }

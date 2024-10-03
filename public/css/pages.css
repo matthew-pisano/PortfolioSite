@@ -9,7 +9,7 @@
     grid-area: inner-div;
 }
 
-.page {
+#page {
     margin-left: 250px;
     margin-right: 10px;
     margin-bottom: 100px;

@@ -145,13 +145,11 @@ function Renaissance() {
         ["research", "ai"]
     );
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div id={pageInfo.pageName+"Page"} className="page container w3-rest">
-            <div className="inner titleCard">
-                <h1 style={{margin: "auto", width: "auto", textAlign: "center", color: "#37a85b"}}><b>{pageInfo.title}</b></h1><br/>
-                <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
-            </div>
-            {buildPage(pageInfo, tiles)}
+        <div className="inner titleCard">
+            <h1 style={{margin: "auto", width: "auto", textAlign: "center", color: "#37a85b"}}><b>{pageInfo.title}</b></h1><br/>
+            <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
         </div>
+        {buildPage(pageInfo, tiles)}
     </Wrapper>);
 }
 

@@ -15,9 +15,10 @@ else dehydratedInfo = buildClientside();
  * The wrapper for all pages on the site.  This component is the parent of all other components, containing the main page content along with the margin menus and the terminal.
  * @param children {JSX.Element} The page content tiles and other elements
  * @param pageName {string} The name of the page
+ * @param pageStyle {object} The style of the page element
  * @return {JSX.Element} The wrapper for the page
  */
-function Wrapper({children, pageName}) {
+function Wrapper({children, pageName, pageStyle}) {
     const [currentPath, setCurrentPath] = useState(null);
 
     // Initialize the sidebar state and load the saved hierarchy
@@ -29,10 +30,10 @@ function Wrapper({children, pageName}) {
         setCurrentPath(window.location.pathname);
 
         // Capture CTRL + S
-        document.addEventListener('keydown', e => {
-            if (e.ctrlKey && e.key === 's' && !e.shiftKey && !e.altKey) {
+        document.addEventListener('keydown', evt => {
+            if (evt.ctrlKey && evt.key === 's' && !evt.shiftKey && !evt.altKey) {
                 // Prevent the Save dialog to open
-                e.preventDefault();
+                evt.preventDefault();
                 savePage(window.location.pathname);
             }
         });
@@ -63,7 +64,9 @@ function Wrapper({children, pageName}) {
             <div id="wrapperContent" className="w3-display-container w3-row">
                 <MenuDrop currentPath={currentPath}/>
                 <Sidebar/>
-                {children}
+                <div id="page" className="page container w3-rest" style={pageStyle}>
+                    {children}
+                </div>
             </div>
 
             <div id="dialogBox">
@@ -81,7 +84,7 @@ function Wrapper({children, pageName}) {
         </div>
     );
 }
-Wrapper.propTypes = { children: PropTypes.element, pageName: PropTypes.string};
+Wrapper.propTypes = { children: PropTypes.element, pageName: PropTypes.string, pageStyle: PropTypes.object };
 
 
 export default Wrapper;

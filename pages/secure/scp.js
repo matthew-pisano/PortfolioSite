@@ -89,12 +89,10 @@ function SCP() {
         "██████ Entry"
     );
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div id={pageInfo.pageName+"Page"} className="page container w3-rest">
-            <div className="inner titleCard">
-                <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1><br/>
-            </div>
-            {buildPage(pageInfo, tiles)}
+        <div className="inner titleCard">
+            <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1><br/>
         </div>
+        {buildPage(pageInfo, tiles)}
     </Wrapper>);
 
 }
