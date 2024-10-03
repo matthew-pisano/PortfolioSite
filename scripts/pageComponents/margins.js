@@ -254,9 +254,10 @@ function focusMenuButton(menuName) {
 
 /**
  * Header menu for the site that contains the file, edit, terminal, help, and contact info buttons
+ * @param currentPath {string} The current path of the page
  * @return {JSX.Element} The header menu
  */
-function HeaderMenu() {
+function HeaderMenu({currentPath}) {
 
     useEffect(() => {
         let handleClick = (evt) => {
@@ -290,9 +291,11 @@ function HeaderMenu() {
                     );
                 })
             }
+            <MenuDrop currentPath={currentPath}/>
         </header>
     );
 }
+HeaderMenu.propTypes = { currentPath: PropTypes.string };
 
 
 /**
