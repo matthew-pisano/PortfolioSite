@@ -7,6 +7,7 @@ import {ANSI, Perms, SysEnv} from "../fileSystem/fileSystemMeta";
 import {setTheme, themes} from "../themes";
 import {insertVars, processAssignment, tokenizeCommand} from "./processTokens";
 import {Help} from "./helpMenu";
+import {EventHandlers} from "./eventHandlers";
 
 
 /**
@@ -467,6 +468,32 @@ class Commands {
     }
 
     /**
+     * Prints the command history or clears it
+     * @param tokens {string[]} The tokens passed to the command
+     * @returns {AsyncGenerator<string, void, *>}
+     */
+    static async *history(tokens) {
+        let {args, options} = this._parseArgs(tokens);
+        if (options.includes("--help")) {yield Help.history; return;}
+        let valResult = this._validateArgs(args, options, [0, 1], [0, 1], ['-c']);
+        if (valResult) throw new CommandError(valResult);
+
+        if (options.includes("-c") || args.includes("clear")) {
+            EventHandlers.clearHistory();
+            return;
+        }
+
+        let history = JSON.parse(localStorage.getItem("terminalHistory"));
+        if (!history) throw new CommandError("No history available.");
+
+        let limit = history.length;
+        if (args && !isNaN(args[0]) && parseInt(args[0]) > 0) limit = parseInt(args[0]);
+
+        for (let i = history.length - 1; i >= history.length - limit; i--)
+            yield history[i] +"\n";
+    }
+
+    /**
      * Clears the terminal and exits the terminal
      * @param tokens {string[]} The tokens passed to the command
      */
@@ -836,6 +863,7 @@ class Commands {
 Commands.cls = Commands.clear;
 Commands.man = Commands.help;
 Commands.nuke = Commands.reset;
+Commands.reboot = Commands.restart;
 
 
 export {Commands};

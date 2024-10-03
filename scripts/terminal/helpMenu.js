@@ -25,6 +25,7 @@ class Help {
     static color = "color [color] - sets the terminal text color to the given hex color in the form #rrggbb or #rgb.  For example: #ff0000 or #f00";
     static theme = "theme [theme] - sets the site theme to the given theme name.  Use -l or --list to list available themes";
     static resize = "resize <size> - resizes the terminal to the given height in pixels";
+    static history = "history [-c] [clear|<num_commands>] - prints the command history or clears it";
     static exit = "exit [code] - clears the terminal and closes it";
     static restart = "restart - Reloads the page";
     static reset = "reset | nuke - Resets all persistent page data";

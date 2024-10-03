@@ -187,6 +187,14 @@ export class EventHandlers {
     }
 
     /**
+     * Clears the terminal history
+     */
+    static clearHistory() {
+        this.prevCommands = [""];
+        localStorage.setItem("terminalHistory", JSON.stringify(this.prevCommands));
+    }
+
+    /**
      * Adds the command to the terminal history
      * @param command {string} The command to add
      */
