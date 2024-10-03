@@ -16,7 +16,7 @@ let tilePositions = {};
  * Slides the tiles into view as the user scrolls down the page
  */
 function slideTilesOnScroll() {
-    let tileHolder = document.getElementsByClassName("tileHolder")[0];
+    let tileHolder = document.getElementById("tileHolder");
     if(!tileHolder) return;
 
     let tiles = tileHolder.children;

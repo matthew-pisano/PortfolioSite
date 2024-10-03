@@ -63,7 +63,7 @@
         width: 80%;
     }
 
-    .tileHolder {
+    #tileHolder {
         margin-top: 300px;
         padding-right: 10px;
     }

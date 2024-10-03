@@ -42,7 +42,7 @@ function PageNotFound() {
             <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>{pageInfo.title}</b></h1><br/>
             <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
         </div>
-        <div className="tileHolder inner w3-display-container" style={{backgroundColor: "#000000"}}>
+        <div id="tileHolder" className="inner w3-display-container" style={{backgroundColor: "#000000"}}>
             <div className="displayTile w3-container w3-row">
                 <h3><b>Something&apos;s Not Right</b></h3>
                 <span style={{margin: "15px 0px", display: "block"}}>
