@@ -81,26 +81,6 @@
     white-space: normal;
 }
 
-#dialogBox {
-    background-color: var(--theme-color-4-hover);
-    border-radius: 10px;
-    position: fixed;
-    bottom: 40px;
-    right: 5px;
-    z-index: 3;
-    width: 400px;
-    height: 100px;
-    padding: 10px;
-    border-right: var(--theme-accent) 5px solid;
-    display: none;
-}
-
-#dialogBoxTitle {
-    font-weight: bold;
-    font-size: large;
-    margin-left: 10px;
-}
-
 .choiceTile {
     display: block;
     text-align: center;

@@ -29,6 +29,7 @@
 #terminalHeader {
     cursor: pointer;
     height: 40px;
+    user-select: none;
 }
 
 #terminalPrompt{
@@ -49,6 +50,8 @@
     overflow-y: scroll;
     overflow-x: hidden;
     display: none;
+    border-top: var(--theme-color-3-hover) 1px solid;
+    padding-top: 10px;
     overscroll-behavior: contain;
 }
 

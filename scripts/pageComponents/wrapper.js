@@ -81,9 +81,9 @@ function Wrapper({children, pageName, pageStyle}) {
             </div>
 
             <div id="dialogBox">
-                <img src="/assets/personal.png" style={{width: '20px'}} alt=''/>
-                <span id="dialogBoxTitle">Message Title</span>
-                <p id="dialogBoxBody">Message Body</p>
+                <img id="dialogBoxIcon" src="/assets/personal.png" alt=''/>
+                <span id="dialogBoxTitle"></span>
+                <p id="dialogBoxBody"></p>
             </div>
 
             <TerminalDiv/>

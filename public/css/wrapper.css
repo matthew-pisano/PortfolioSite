@@ -14,3 +14,26 @@
     background-color: var(--theme-color-1);
     overflow-y: scroll;
 }
+
+#dialogBox {
+    background-color: var(--theme-color-2);
+    border-radius: 5px;
+    position: fixed;
+    bottom: 40px;
+    right: 5px;
+    z-index: 3;
+    width: 400px;
+    height: 100px;
+    padding: 10px;
+    border-right: var(--theme-accent) 5px solid;
+    display: none;
+}
+
+#dialogBoxTitle {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#dialogBoxIcon {
+    width: 20px;
+}
