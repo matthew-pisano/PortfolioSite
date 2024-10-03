@@ -509,7 +509,7 @@ class Commands {
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
-        delete localStorage.hierarchy;
+        localStorage.clear();
 
         yield "Re-provisioning system (clearing state).  Standby...";
 

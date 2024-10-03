@@ -60,7 +60,7 @@ let headerMenus = [
     new Menu("File", [
         new MenuItem("New", "action", newPage),
         new MenuItem("Save", "action", savePage, true),
-        new MenuItem("Reset", "action", resetFileSystem),
+        new MenuItem("Reset", "action", resetLocalStorage),
     ], true),
     new Menu("Edit", [
         new MenuItem("Edit Current Page", "action", editPage, true),
@@ -186,11 +186,11 @@ function renamePage(currentPath) {
 
 
 /**
- * Reset the file system to its default state by deleting the hierarchy from local storage
+ * Reset the local storage of the site, deleting all custom files and resetting the site to its default state
  */
-function resetFileSystem() {
+function resetLocalStorage() {
     if(confirm("Do you really want to reset the system?  This will delete all custom files and reset the site to its default state!")) {
-        delete localStorage.hierarchy;
+        localStorage.clear();
         window.location.replace("/");
     }
 }

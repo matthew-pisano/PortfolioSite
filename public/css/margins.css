@@ -36,7 +36,7 @@
     border-style: solid;
     border-color: var(--theme-accent);
     border-width: 1px;
-    padding: 5px 70px 5px 5px;
+    padding: 5px;
     min-width: 150px;
     border-radius: 5px;
     display: none;
@@ -44,9 +44,10 @@
 
 .menuDropItem {
     display: block;
-    padding: 2px 3px;
+    padding: 2px 20px 2px 3px;
     text-align: left;
     border-radius: 5px;
+    width: 100%;
 }
 
 .menuDropItem:hover {

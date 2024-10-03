@@ -58,6 +58,7 @@ function TerminalDiv() {
         });
 
         setPrompt(genPrompt(cwd, true));
+        EventHandlers.initProperties();
         EventHandlers.addEventListeners(resize);
     }, []);
 

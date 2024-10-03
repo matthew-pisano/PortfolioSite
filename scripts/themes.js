@@ -93,6 +93,8 @@ const themes = {
  * @param themeName {string} The name of the theme to set
  */
 function setTheme(themeName) {
+    if (!themeName) return;
+
     let theme = themes[themeName];
     let root = document.querySelector(':root');
     root.style.setProperty('--theme-text', theme.textColor);
@@ -125,6 +127,7 @@ function setTheme(themeName) {
             editorButton.style.content = "";
     }
 
+    localStorage.setItem("theme", themeName);
 }
 
 export {themes, setTheme};

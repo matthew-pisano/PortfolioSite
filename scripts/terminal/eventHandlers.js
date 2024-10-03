@@ -47,6 +47,12 @@ export class EventHandlers {
      */
     static terminalHeight = 0;
 
+    static initProperties() {
+        // Load the terminal history
+        let history = localStorage.getItem("terminalHistory");
+        if (history) this.prevCommands = JSON.parse(history);
+    }
+
     static addEventListeners(resizeTerminal) {
         // Listeners need to be global to avoid losing track of the thumb
         document.addEventListener("mousemove", (evt) => this.thumbDrag(evt, resizeTerminal));
@@ -190,6 +196,7 @@ export class EventHandlers {
             this.prevCommands = ([command, ...this.prevCommands.slice(1)]);
         else if (this.prevCommands[this.prevCommands.length - 1] !== command && command.length > 0)
             this.prevCommands = [...this.prevCommands, command];
+        localStorage.setItem("terminalHistory", JSON.stringify(this.prevCommands));
         this.draftCommand = "";
         this.commandIndex = -1;
     }

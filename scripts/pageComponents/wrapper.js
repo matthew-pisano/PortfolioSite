@@ -5,6 +5,7 @@ import TerminalDiv from '../terminal/terminal';
 import PropTypes from "prop-types";
 import {Sidebar} from "./sidebar";
 import {HeaderMenu, MenuDrop, savePage, StatusFooter} from "./margins";
+import {setTheme} from "../themes";
 
 let dehydratedInfo;
 if (typeof window === 'undefined') dehydratedInfo = buildServerside();
@@ -64,6 +65,7 @@ function Wrapper({children, pageName, pageStyle}) {
         addWrapperListeners();
         // If a command is passed in the URL, execute it in the terminal
         if(new URLSearchParams(window.location.search).get("exe")) executeCommand();
+        setTheme(localStorage.getItem("theme"));
     }, []);
 
     return (
