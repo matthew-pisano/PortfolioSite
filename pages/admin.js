@@ -71,7 +71,11 @@ function Admin() {
     }, []);
 
     async function accessGranted() {
-        localStorage.setItem("adminAccess", "granted");
+        let authToken = "screwball";
+        let authTokenName = "mathesisAdminAuth";
+        let date = new Date();
+        date.setTime(date.getTime() + 10000);
+        document.cookie = authTokenName + "=" + authToken + "; expires=" + date.toUTCString() + "; path=/";
 
         let holder = document.getElementById("pwHolder");
         document.getElementById("adminPw").remove();
@@ -97,7 +101,7 @@ function Admin() {
         window.scrollTo(0, document.body.scrollHeight);
         await new Promise(r => setTimeout(r, 2000));
 
-        window.location.replace("/secure/renaissance?auth="+(localStorage.getItem("adminAccess")+Math.floor(Date.now()/10000)).hashCode());
+        window.location.replace("/secure/renaissance");
     }
 
     async function anomaly() {
@@ -107,7 +111,7 @@ function Admin() {
         window.scrollTo(0, document.body.scrollHeight);
         await new Promise(r => setTimeout(r, 2000));
 
-        window.location.replace("/secure/scp?auth="+(localStorage.getItem("adminAccess")+Math.floor(Date.now()/10000)).hashCode());
+        window.location.replace("/secure/scp");
     }
 
     async function onInput(e) {

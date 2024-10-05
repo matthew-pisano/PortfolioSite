@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server';
-import './scripts/utils';
+import {cookies} from "next/headers";
 
 export function middleware(request) {
 
-    let validAuth = ""+("granted"+Math.floor(Date.now()/10000)).hashCode();
-    let givenAuth = new URLSearchParams(request.url.split("?")[1]).get("auth");
+    const cookieStore = cookies();
+    const authToken = cookieStore.get("mathesisAdminAuth");
+    let hasAdminAuth = authToken && authToken.value === "screwball";
 
-    if (request.nextUrl.pathname.startsWith("/secure") && validAuth !== givenAuth)
+    if (request.nextUrl.pathname.startsWith("/secure") && !hasAdminAuth)
         return NextResponse.redirect(new URL('/403', request.url));
 
 }
