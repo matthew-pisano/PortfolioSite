@@ -333,7 +333,14 @@ function MenuDrop({currentPath}) {
                                         );
                                     }
                                     else return (
-                                        <span key={index} className="menuDropItem">{item.name}</span>
+                                        <button key={index} className="menuDropItem w3-button"
+                                                onClick={() => {
+                                                    navigator.clipboard.writeText(item.data);
+                                                    showDialog("Copied to Clipboard", item.data);
+                                                }}>
+                                            {item.name+" | " + item.data + " "}
+                                            <img src="/assets/explorerIcon.svg" alt='' width="15px"/>
+                                        </button>
                                     );
                                 })
                             }
