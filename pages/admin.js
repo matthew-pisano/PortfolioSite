@@ -71,10 +71,11 @@ function Admin() {
     }, []);
 
     async function accessGranted() {
+        const authTTL = 60000;
         let authToken = "screwball";
         let authTokenName = "mathesisAdminAuth";
         let date = new Date();
-        date.setTime(date.getTime() + 10000);
+        date.setTime(date.getTime() + authTTL);
         document.cookie = authTokenName + "=" + authToken + "; expires=" + date.toUTCString() + "; path=/";
 
         let holder = document.getElementById("pwHolder");
