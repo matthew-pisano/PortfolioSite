@@ -38,7 +38,9 @@
 }
 
 #terminalInput{
-    height: 40px;
+    min-height: 40px;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
 }
 
 #terminalInput:focus-visible{
@@ -49,6 +51,7 @@
     cursor: text;
     overflow-y: scroll;
     overflow-x: hidden;
+    overflow-wrap: break-word;
     display: none;
     border-top: var(--theme-color-3-hover) 1px solid;
     padding-top: 10px;
