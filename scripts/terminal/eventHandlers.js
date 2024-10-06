@@ -74,7 +74,7 @@ export class EventHandlers {
      * @param e {DragEvent} The drag event
      */
     static onDragEnter(e) {
-        this.enterEvents += 1;
+        EventHandlers.enterEvents += 1;
         e.preventDefault();
 
         if (!e.dataTransfer.items || e.dataTransfer.items.length === 0 || e.dataTransfer.items[0].kind !== "file") return;
@@ -87,10 +87,10 @@ export class EventHandlers {
      * @param e {DragEvent} The drag event
      */
     static onDragLeave(e) {
-        this.leaveEvents += 1;
+        EventHandlers.leaveEvents += 1;
         e.preventDefault();
 
-        if (this.leaveEvents < this.enterEvents) return;
+        if (EventHandlers.leaveEvents < EventHandlers.enterEvents) return;
 
         document.getElementById('terminalFileHandler').style.visibility = "hidden";
     }
@@ -100,8 +100,8 @@ export class EventHandlers {
      * @param e {DragEvent} The drag event
      */
     static onDrop(e) {
-        this.enterEvents = 0;
-        this.leaveEvents = 0;
+        EventHandlers.enterEvents = 0;
+        EventHandlers.leaveEvents = 0;
         e.preventDefault();
 
         let files = e.dataTransfer.files;
