@@ -209,9 +209,9 @@ function getPageStats(currentPath){
     if(currentPath !== null && (currentPath.endsWith("display") || currentPath.endsWith("edit"))) {
         let filePath = new URLSearchParams(window.location.search).get("file");
         let customFile = masterFileSystem.getItem(filePath);
-        if(customFile !== null && customFile.text !== undefined){
-            fileSize = customFile.text.length;
-            fileLines = customFile.text.split(/\r\n|\r|\n/).length;
+        if(customFile !== null && customFile.text() !== undefined){
+            fileSize = customFile.text().length;
+            fileLines = customFile.text().split(/\r\n|\r|\n/).length;
         }
     }
     // If the current path is a page, get the size and estimated line count from the page registry

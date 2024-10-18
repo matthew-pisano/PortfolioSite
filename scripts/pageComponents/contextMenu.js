@@ -12,7 +12,7 @@ function ContextMenu({top, left, selectedFile, actions}) {
         document.getElementById(fileName + "-File").classList.add("selectedSidebarLink");
     }, []);
 
-    return <div className={"contextMenu"} style={{top: top, left: left}} data-refdata={JSON.stringify(selectedFile.toDict())}>
+    return <div className={"contextMenu"} style={{top: top, left: left}} data-refdata={JSON.stringify(selectedFile.serialize())}>
         {
             Object.keys(actions).map((itemName, index) => {
                 return <button key={index} className={"contextMenuItem w3-button"}

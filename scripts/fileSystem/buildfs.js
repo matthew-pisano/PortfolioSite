@@ -17,7 +17,8 @@ let masterFileSystem;
  * @param copyCallbacks {boolean} Whether to copy the callbacks from the old file system
  */
 function setMasterFileSystem(hierarchyDict, pageRegistry, copyCallbacks = true) {
-    let newMaster = new FileSystem(Directory.fromDict(hierarchyDict), pageRegistry);
+    console.log("Setting master file system", hierarchyDict, pageRegistry);
+    let newMaster = new FileSystem(Directory.deserialize(hierarchyDict), pageRegistry);
     if (masterFileSystem !== undefined && copyCallbacks) newMaster.callbacks = masterFileSystem.callbacks;
     masterFileSystem = newMaster;
 }
@@ -54,10 +55,10 @@ function buildClientside() {
  */
 function buildServerside() {
     let serverSideFS = bootstrapServerside();
-    setMasterFileSystem(serverSideFS.hierarchy, serverSideFS.pageRegistry);
+    setMasterFileSystem(serverSideFS.hierarchy.serialize(), serverSideFS.pageRegistry);
     // Create the dehydrated info from the server file system and page registry
     return JSON.stringify({
-        hierarchy: serverSideFS.hierarchy.toDict(),
+        hierarchy: serverSideFS.hierarchy.serialize(),
         pageRegistry: serverSideFS.pageRegistry
     });
 }

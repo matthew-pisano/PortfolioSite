@@ -84,6 +84,7 @@ function bootstrapServerside() {
                     masterFileSystem.pageRegistry[fullPath] = {name: pathJoin(name, fileName + ".html"), size: fileStats.size};
                     let newFile = masterFileSystem.touch(fullPath, "--" + Perms.EXECUTE);
                     newFile.modified = fileStats.mtimeMs;
+                    newFile.spoofSize(fileStats.size);  // Set the file's size without actually setting the text
                 }
             }
         }

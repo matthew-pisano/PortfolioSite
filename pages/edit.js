@@ -69,7 +69,7 @@ function Edit() {
 
         document.getElementsByClassName("cm-editor")[0].minHeight = `${Math.round(window.innerHeight*0.7)}px`;
 
-        editor.update([editor.state.update({changes: {from: 0, to: state.doc.length, insert: currentFile.text}})]);
+        editor.update([editor.state.update({changes: {from: 0, to: state.doc.length, insert: currentFile.text()}})]);
         // Save the editor to the document object for later use
         document.codeEditor = editor;
     }, []);

@@ -69,7 +69,7 @@ class FileSystem {
 
         if (typeof window !== 'undefined') localStorage.setItem("hierarchy", JSON.stringify({
             pageRegistry: this.pageRegistry,
-            hierarchy: this.hierarchy
+            hierarchy: this.hierarchy.serialize()
         }));
 
         // Update the last update time and call all registered callbacks
@@ -169,9 +169,7 @@ class FileSystem {
         if (!oldObj.permission.includes(Perms.READ))
             throw new FileSystemError(`Cannot make copy from ${oldPath}.  Permission denied!`);
 
-        let copied;
-        if (oldObj.constructor === Directory) copied = new Directory(oldObj.name, oldObj.subTree, oldObj.permission);
-        else copied = new File(oldObj.name, oldObj.text, oldObj.permission);
+        let copied = oldObj.copy();
         copied.name = newChildName;
         copied.modified = oldObj.modified;
         newParentObj.addChild(copied);
@@ -244,9 +242,7 @@ class FileSystem {
         if (!file.permission.includes(Perms.WRITE))
             throw new FileSystemError(`Cannot write to ${path}.  Permission denied!`);
 
-        if (!append) file.text = "";
-        file.text += text;
-        file.modified = Date.now();
+        file.write(text, append);
 
         this.update();
         return file;
@@ -266,7 +262,7 @@ class FileSystem {
         if (!file.permission.includes(Perms.READ))
             throw new FileSystemError(`Cannot read from ${path}.  Permission denied!`);
 
-        return file.text;
+        return file.text();
     }
 
     /** Navigates the filesystem hierarchy given a valid path and returns the object at that path
@@ -295,9 +291,7 @@ class FileSystem {
                 return current;
 
             for (let i = 0; i < current.subTree.length; i++) {
-
                 if (current.subTree[i].name === tokens[0]) {
-
                     current = current.subTree[i];
                     tokens.shift();
                     foundPath = true;

@@ -26,7 +26,7 @@ function Display() {
         else if(!currentFile.permission.includes(Perms.READ)) setPageText(`Insufficient permissions to access source of ${filePath}!`);
         else {
             // Load the file text into the page
-            let pageText = filePath.endsWith(".html") ? currentFile.text : currentFile.text.replaceAll("\n", "<br>");
+            let pageText = currentFile.text();
             setPageText(pageText ? pageText : "<h3><i>[Empty file]</i></h3>");
         }
     }, []);
