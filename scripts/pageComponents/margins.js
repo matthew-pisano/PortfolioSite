@@ -4,7 +4,7 @@ import {masterFileSystem} from "../fileSystem/buildfs";
 import {renameFile} from "./sidebar";
 import {pathJoin} from "../fileSystem/fileSystem";
 import PropTypes from "prop-types";
-import {SysEnv} from "../fileSystem/fileSystemMeta";
+import {Perms, SysEnv} from "../fileSystem/fileSystemMeta";
 import {setTheme} from "../themes";
 
 
@@ -94,6 +94,20 @@ let headerMenus = [
 
 
 /**
+ * Get the current page path from the URL, regardless of is it is a custom file or a page
+ * @returns {string} The current page path
+ */
+function getCurrentPagePath() {
+    let filePath = new URLSearchParams(window.location.search).get("file");
+    if (!filePath) {
+        let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
+        filePath = pathJoin(SysEnv.PUBLIC_FOLDER, pagePath.substring(1)+".html");
+    }
+    return filePath;
+}
+
+
+/**
  * Creates a new custom file in the public/custom folder
  */
 function newPage() {
@@ -153,15 +167,13 @@ function editPage(currentPath) {
     // Cancel if already editing
     if(currentPath.endsWith("edit")) return;
 
-    let filePath = new URLSearchParams(window.location.search).get("file");
+    let filePath = getCurrentPagePath();
     let file = masterFileSystem.getItem(filePath);
-    let isPage = "/home/guest/public"+(window.location.pathname === "/" ? "/home" : window.location.pathname)+".html" in masterFileSystem.pageRegistry;
 
     // If the current path is not a custom file and the file is not a page, show a dialog box error
-    if (!isPage && !file)
-        showDialog("File Not Found", "The file that you are attempting to edit does not exist!");
+    if (!file) showDialog("File Not Found", "The file that you are attempting to edit does not exist!");
     // If the current path is not a custom file, show a dialog box error
-    else if(isPage)
+    else if(!file.permission.includes(Perms.WRITE))
         showDialog("Permission Denied", "You do not have permission to edit this file!");
     // Open the editor
     else window.location.replace(`/edit?file=${filePath}`);
@@ -202,32 +214,25 @@ function resetLocalStorage() {
  * @return {{size: number, lines: number}} The size and line count of the page
  */
 function getPageStats(currentPath){
-    let fileSize = 0;
-    let fileLines = 0;
+    if (!currentPath) return {lines: 0, size: 0};
+
+    let pageFile;
 
     // If the current path is a custom file, get the size and line count from the custom file
-    if(currentPath !== null && (currentPath.endsWith("display") || currentPath.endsWith("edit"))) {
-        let filePath = new URLSearchParams(window.location.search).get("file");
-        let customFile = masterFileSystem.getItem(filePath);
-        if(customFile !== null && customFile.text() !== undefined){
-            fileSize = customFile.text().length;
-            fileLines = customFile.text().split(/\r\n|\r|\n/).length;
-        }
-    }
+    if((currentPath.endsWith("display") || currentPath.endsWith("edit")))
+        pageFile = masterFileSystem.getItem(new URLSearchParams(window.location.search).get("file"));
     // If the current path is a page, get the size and estimated line count from the page registry
-    else if(currentPath !== null) {
-        let fullCurrentPath = pathJoin(SysEnv.PUBLIC_FOLDER, currentPath !== "/" ? currentPath.substring(1): "home.html");
-        fullCurrentPath = fullCurrentPath.endsWith(".html") ? fullCurrentPath : fullCurrentPath+".html";
-        if(Object.keys(masterFileSystem.pageRegistry).includes(fullCurrentPath)){
-            fileSize = masterFileSystem.pageRegistry[fullCurrentPath].size;
-            fileLines = Math.round(fileSize/140.6);
-        }
+    else {
+        let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
+        pageFile = masterFileSystem.getItem(pathJoin(SysEnv.PUBLIC_FOLDER, pagePath.substring(1)+".html"));
     }
 
-    if (fileSize === undefined) fileSize = 0;
-    if (fileLines === undefined) fileLines = 0;
+    if (!pageFile) return {lines: 0, size: 0};
 
-    return {lines: fileLines, size: fileSize};
+    let fileLines = pageFile.text().split(/\r\n|\r|\n/).length;
+    if (!pageFile.text()) fileLines = Math.round(pageFile.size() / 140.6);
+
+    return {lines: fileLines, size: pageFile.size()};
 }
 
 

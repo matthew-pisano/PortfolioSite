@@ -8,6 +8,7 @@ class File {
 
     #text;
     #size;
+    #isPage;
 
     /**
      * @param name {string} The name of the file
@@ -23,6 +24,7 @@ class File {
         this.created = Date.now();
         this.modified = Date.now();
         this.#size = this.#text.length;
+        this.#isPage = false;
     }
 
     /**
@@ -63,12 +65,23 @@ class File {
     copy() { return new File(this.name, this.text(), this.permission); }
 
     /**
+     * Marks the file as a page
+     */
+    markAsPage() { this.#isPage = true; }
+
+    /**
+     * Checks if the file is a page
+     * @returns {boolean} Whether the file is a page
+     */
+    isPage() { return this.#isPage; }
+
+    /**
      * Serializes the file to a dictionary
      * @return {object}
      */
     serialize() {
         return {objType: "file", name: this.name, text: this.#text, permission: this.permission,
-            created: this.created, modified: this.modified, size: this.#size};
+            created: this.created, modified: this.modified, size: this.#size, isPage: this.#isPage};
     }
 
     /**
@@ -81,6 +94,7 @@ class File {
         newFile.modified = dict.modified;
         newFile.created = dict.created;
         newFile.#size = dict.size;
+        newFile.#isPage = dict.isPage;
         return newFile;
     }
 }
@@ -99,6 +113,11 @@ class Directory {
     constructor(name, subTree = null, permission = Perms.ALLOW) {
         Perms.validate(permission);
         subTree = subTree ? subTree : [];
+
+        /**
+         * The sub-tree of the directory
+         * @type {Directory[] | File[]}
+         */
         this.subTree = [];
 
         // Check for duplicate child names
@@ -164,20 +183,4 @@ class Directory {
 }
 
 
-/**
- * Represents a page in the filesystem and in the page registry
- */
-class Page {
-
-    /**
-     * @param name {string} The name of the page
-     * @param size {number} The size of the page
-     */
-    constructor(name, size) {
-        this.name = name;
-        this.size = size;
-    }
-}
-
-
-export {Directory, File, Page};
+export {Directory, File};

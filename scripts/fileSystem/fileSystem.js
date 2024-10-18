@@ -3,6 +3,13 @@ import {Perms} from "./fileSystemMeta";
 
 
 /**
+ * The version of the filesystem.  Used for compatibility checking
+ * @type {string} The version of the filesystem
+ */
+const FS_VERSION = "1.0.0";
+
+
+/**
  * Custom error for when a filesystem operation fails
  */
 class FileSystemError extends Error {
@@ -45,11 +52,9 @@ class FileSystem {
 
     /**
      * @param {Directory} hierarchy The root directory of the filesystem
-     * @param pageRegistry {{string: Page}} The registry of preset, viewable HTML pages
      */
-    constructor(hierarchy, pageRegistry) {
+    constructor(hierarchy) {
         this.hierarchy = hierarchy;
-        this.pageRegistry = pageRegistry;
         this.lastUpdateTime = Date.now();
         this.callbacks = [];
     }
@@ -66,16 +71,11 @@ class FileSystem {
      * Updates the filesystem and calls all registered callbacks
      */
     update() {
-
-        if (typeof window !== 'undefined') localStorage.setItem("hierarchy", JSON.stringify({
-            pageRegistry: this.pageRegistry,
-            hierarchy: this.hierarchy.serialize()
-        }));
-
         // Update the last update time and call all registered callbacks
         this.lastUpdateTime = Date.now();
-        for (let callback of this.callbacks)
-            callback(this.lastUpdateTime);
+        if (typeof window !== 'undefined') localStorage.setItem("hierarchy", JSON.stringify(this.serialize()));
+
+        for (let callback of this.callbacks) callback(this.lastUpdateTime);
     }
 
     /**
@@ -218,15 +218,6 @@ class FileSystem {
     }
 
     /**
-     * Gets a file or directory at the given path
-     * @param path {string} The path to get the file or directory from
-     * @return {Directory | File} The file or directory at the given path
-     */
-    getItem(path) {
-        return this._navHierarchy(path);
-    }
-
-    /**
      * Writes text to a file at the given path
      * @param path {string} The path to write to
      * @param text {string} The text to write to the file
@@ -265,13 +256,12 @@ class FileSystem {
         return file.text();
     }
 
-    /** Navigates the filesystem hierarchy given a valid path and returns the object at that path
-     * @param {string} path The path to navigate to
-     * @returns {Directory | File} The object at the given path
-     * @private
+    /**
+     * Gets a file or directory at the given path; returns null if the path does not exist
+     * @param path {string} The path to get the file or directory from
+     * @return {Directory | File} The file or directory at the given path
      */
-    _navHierarchy(path) {
-
+    getItem(path) {
         if (!path) return null;
 
         let tokens = path.split("/");
@@ -301,6 +291,23 @@ class FileSystem {
             if (!foundPath) return null;
         }
         return current;
+    }
+
+    serialize() {
+        return {
+            objType: "filesystem",
+            hierarchy: this.hierarchy.serialize(),
+            metadata: {
+                lastUpdateTime: this.lastUpdateTime,
+                version: FS_VERSION
+            }
+        };
+    }
+
+    static deserialize(dict) {
+        let newFS = new FileSystem(Directory.deserialize(dict.hierarchy));
+        newFS.lastUpdateTime = dict.metadata.lastUpdateTime;
+        return newFS;
     }
 }
 

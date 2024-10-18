@@ -1,4 +1,4 @@
-import {Directory, Page} from "./fileSystemObjects";
+import {Directory} from "./fileSystemObjects";
 import {FileSystem} from "./fileSystem";
 import {bootstrapServerside} from "./bootstrap";
 
@@ -13,24 +13,12 @@ let masterFileSystem;
 /**
  * Sets the master file system to a new file system
  * @param hierarchyDict {object} The dictionary representation of the new hierarchy
- * @param pageRegistry {string: Page} The new page registry
- * @param copyCallbacks {boolean} Whether to copy the callbacks from the old file system
  */
-function setMasterFileSystem(hierarchyDict, pageRegistry, copyCallbacks = true) {
-    console.log("Setting master file system", hierarchyDict, pageRegistry);
-    let newMaster = new FileSystem(Directory.deserialize(hierarchyDict), pageRegistry);
-    if (masterFileSystem !== undefined && copyCallbacks) newMaster.callbacks = masterFileSystem.callbacks;
+function setMasterFileSystem(hierarchyDict) {
+    console.log("Setting master file system", hierarchyDict);
+    let newMaster = new FileSystem(Directory.deserialize(hierarchyDict));
+    if (masterFileSystem !== undefined) newMaster.callbacks = masterFileSystem.callbacks;
     masterFileSystem = newMaster;
-}
-
-
-/**
- * Rehydrates the file system from a dehydrated info string
- * @param dehydratedInfo {string} The dehydrated info string
- */
-function rehydrateFilesystem(dehydratedInfo) {
-    let hydratedInfo = JSON.parse(dehydratedInfo);
-    setMasterFileSystem(hydratedInfo.hierarchy, hydratedInfo.pageRegistry);
     masterFileSystem.update();
 }
 
@@ -44,7 +32,7 @@ function buildClientside() {
     // The dehydrated info is stored in a hidden element on the page
     let savedHierarchy = localStorage.getItem("hierarchy");
     let dehydratedInfo = savedHierarchy ? savedHierarchy : dehydrateElem.innerText;
-    rehydrateFilesystem(dehydratedInfo);
+    setMasterFileSystem(JSON.parse(dehydratedInfo).hierarchy);
     return dehydrateElem.innerText;
 }
 
@@ -55,12 +43,9 @@ function buildClientside() {
  */
 function buildServerside() {
     let serverSideFS = bootstrapServerside();
-    setMasterFileSystem(serverSideFS.hierarchy.serialize(), serverSideFS.pageRegistry);
+    setMasterFileSystem(serverSideFS.hierarchy.serialize());
     // Create the dehydrated info from the server file system and page registry
-    return JSON.stringify({
-        hierarchy: serverSideFS.hierarchy.serialize(),
-        pageRegistry: serverSideFS.pageRegistry
-    });
+    return JSON.stringify(serverSideFS.serialize());
 }
 
 

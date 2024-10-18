@@ -7,6 +7,9 @@ import {bashrc, keyArt} from "../terminal/strings";
 import {Perms, SysEnv} from "./fileSystemMeta";
 
 
+const NON_INDEXED_PAGES = ["admin", "index", "404", "display", "edit", "babble", "403", "void", "_document"];
+
+
 /**
  * The initial hierarchy of the file system
  * @type {Directory}
@@ -53,9 +56,9 @@ let initialHierarchy = new Directory("", [
 
 /**
  * Builds the file system on the server side by walking through the pages directory and using the initial hierarchy
+ * @returns {FileSystem} The file system
  */
 function bootstrapServerside() {
-
     let masterFileSystem = new FileSystem(initialHierarchy, {});
 
     /**
@@ -74,18 +77,16 @@ function bootstrapServerside() {
             if (!dirent.isDirectory()) {
                 let fileStats = statSync(res);
                 let fileName = res.substring(res.lastIndexOf("/") + 1).replace(".js", "");
-                if (["admin", "index", "404", "display", "edit", "babble", "403", "void"].includes(fileName)) continue;
-                // Add the file to the file system and the page registry if it is not hidden
-                if (fileName[0] !== "_") {
-                    let name = hierarchyPath.replace(SysEnv.PUBLIC_FOLDER, "");
-                    if(name[0] === "/") name = name.substring(1);
+                if (NON_INDEXED_PAGES.includes(fileName)) continue;  // Skip non-indexed pages
+                // Add the file to the file system and the page registry
+                let name = hierarchyPath.replace(SysEnv.PUBLIC_FOLDER, "");
+                if(name[0] === "/") name = name.substring(1);  // Remove the leading slash
 
-                    let fullPath = pathJoin(hierarchyPath, fileName + ".html");
-                    masterFileSystem.pageRegistry[fullPath] = {name: pathJoin(name, fileName + ".html"), size: fileStats.size};
-                    let newFile = masterFileSystem.touch(fullPath, "--" + Perms.EXECUTE);
-                    newFile.modified = fileStats.mtimeMs;
-                    newFile.spoofSize(fileStats.size);  // Set the file's size without actually setting the text
-                }
+                let fullPath = pathJoin(hierarchyPath, fileName + ".html");
+                let newFile = masterFileSystem.touch(fullPath, "--" + Perms.EXECUTE);
+                newFile.modified = fileStats.mtimeMs;
+                newFile.spoofSize(fileStats.size);  // Set the file's size without actually setting the text
+                newFile.markAsPage();
             }
         }
 

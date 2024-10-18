@@ -246,7 +246,6 @@ class Commands {
         } else {
             let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
             modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-            if (!lsObj.permission.includes(Perms.READ)) paddedSize = "?".padStart(6, "\xa0");
 
             let displayName = lsObj.name.includes(" ") ? `'${lsObj.name}'` : lsObj.name;
             if (lsObj.permission === "--x")
@@ -380,12 +379,13 @@ class Commands {
 
         let pagePath = this.resolvePath(args[0]);
         let currentFile = masterFileSystem.getItem(pagePath);
-        if (masterFileSystem.pageRegistry[pagePath]) {
+
+        if (!currentFile) throw new CommandError(`Cannot open file.  File at ${pagePath} does not exist!`);
+        else if (currentFile.constructor === Directory) throw new CommandError(`Cannot open a directory!`);
+        else if (currentFile.isPage()) {
             let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
             window.open(relPath.replace(".html", ""), '_self', false);
         }
-        else if (!masterFileSystem.exists(pagePath)) throw new CommandError(`Cannot open file.  File at ${pagePath} does not exist!`);
-        else if (currentFile.constructor === Directory) throw new CommandError(`Cannot open a directory!`);
         else if (currentFile.permission.includes(Perms.EXECUTE)) window.open(`/display?file=${pagePath}`, '_self', false);
         else throw new CommandError(`Insufficient permissions to open ${pagePath}!`);
     }

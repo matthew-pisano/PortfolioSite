@@ -50,7 +50,7 @@ function buildFile(file, path) {
     let urlPath;
     let linkPath;
     // Link to the file if it is a page, otherwise link to the display page to show a custom file
-    if (masterFileSystem.pageRegistry[pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)]) {
+    if (masterFileSystem.getItem(pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)).isPage()) {
         urlPath = pathJoin(path.replace("public", ""), fileName);
         linkPath = urlPath;
     }

@@ -6,6 +6,15 @@ import PropTypes from "prop-types";
 let contentMenuRoot = null;
 
 
+/**
+ * The context menu component
+ * @param top {number} The top position of the context menu
+ * @param left {number} The left position of the context menu
+ * @param selectedFile {File} The file that was right-clicked
+ * @param actions {object} The actions to be displayed in the context menu
+ * @returns {JSX.Element} The context menu
+ * @constructor
+ */
 function ContextMenu({top, left, selectedFile, actions}) {
     useEffect(() => {
         let fileName = selectedFile.name.split(".")[0];
