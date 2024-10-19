@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {buildPage, PageInfo, Tile} from '../scripts/pageBuilder';
 import Wrapper from '../scripts/pageComponents/wrapper';
 

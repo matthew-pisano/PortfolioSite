@@ -49,8 +49,7 @@ function buildClientside() {
  */
 function buildServerside() {
     masterFileSystem = bootstrapServerside();
-    // Create the dehydrated info from the server file system and page registry
-    return JSON.stringify(masterFileSystem.serialize());
+    return JSON.stringify(masterFileSystem.serialize());  // Make dehydrated info from the server file system
 }
 
 

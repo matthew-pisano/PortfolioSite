@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import parse from 'html-react-parser';
 
 import {SysEnv} from "../scripts/fileSystem/fileSystemMeta";

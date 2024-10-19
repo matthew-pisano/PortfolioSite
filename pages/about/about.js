@@ -1,7 +1,7 @@
 import React from 'react';
 import {PageInfo, Tile} from '../../scripts/pageBuilder';
 import DefaultWrapper from "../../scripts/pageComponents/defaultWrapper";
-import { Constants } from "../../scripts/utils";
+import {Constants} from "../../scripts/utils";
 
 
 function About() {

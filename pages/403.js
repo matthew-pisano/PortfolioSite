@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {PageInfo} from '../scripts/pageBuilder';
 import Wrapper from '../scripts/pageComponents/wrapper';
 
