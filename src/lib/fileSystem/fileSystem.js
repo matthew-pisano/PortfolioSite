@@ -45,7 +45,7 @@ function buildClientside() {
  * @returns {string} The dehydrated info
  */
 function buildServerside() {
-    masterFileSystem = bootstrapServerside();
+    if (!masterFileSystem) masterFileSystem = bootstrapServerside();
     return JSON.stringify(masterFileSystem.serialize());  // Make dehydrated info from the server file system
 }
 

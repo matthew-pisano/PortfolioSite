@@ -13,16 +13,16 @@ import {setTheme} from "@/lib/themes";
  */
 function executeCommand() {
     let terminal = document.getElementById('terminal');
+    let urlParams = new URLSearchParams(window.location.search);
     // Open the terminal to a specific size if specified in the URL
-    let termSize = parseInt(new URLSearchParams(window.location.search).get("ts"));
+    let termSize = parseInt(urlParams.get("ts"));
     if(termSize && !isNaN(termSize)) terminal.dispatchEvent(new CustomEvent("openTo", {detail: termSize}));
     else terminal.dispatchEvent(new CustomEvent("openTo", {detail: 550}));
     // Set the font size if specified in the URL
-    let fontSize = parseInt(new URLSearchParams(window.location.search).get("fs"));
+    let fontSize = parseInt(urlParams.get("fs"));
     if(fontSize && !isNaN(fontSize)) terminal.style.fontSize = `${fontSize}px`;
     // Execute the command
-    let command = new URLSearchParams(window.location.search).get("exe");
-    document.getElementById('terminalInput').innerText = command;
+    document.getElementById('terminalInput').innerText = urlParams.get("exe");
     document.getElementById('terminalInput').dispatchEvent(new Event("submit"));
 }
 
@@ -53,13 +53,13 @@ function Wrapper({children, pageName, pageStyle}) {
 
     let dehydratedInfo;
     if (typeof window === 'undefined') dehydratedInfo = buildServerside();
-    else dehydratedInfo = buildClientside();
+    else if (document.getElementById("dehydrateInfo")) dehydratedInfo = buildClientside();
 
     // Initialize the sidebar state and load the saved hierarchy
     useEffect(() => {
 
         // Remove the dehydrated info from the page
-        // if(document.getElementById("dehydrateInfo")) document.getElementById("dehydrateInfo").remove();
+        if(document.getElementById("dehydrateInfo")) document.getElementById("dehydrateInfo").remove();
 
         setCurrentPath(window.location.pathname);
         addWrapperListeners();
