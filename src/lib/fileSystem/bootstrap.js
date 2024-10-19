@@ -59,7 +59,7 @@ let initialHierarchy = new Directory("", [
  * @returns {FileSystem} The file system
  */
 function bootstrapServerside() {
-    let masterFileSystem = new FileSystem(initialHierarchy, {});
+    let masterFileSystem = new FileSystem(initialHierarchy);
 
     /**
      * Walks through the pages directory and adds the files to the file system

@@ -98,7 +98,7 @@ function Admin() {
     }
 
     async function renaissance() {
-        let holder = await accessGranted();
+        await accessGranted();
         window.scrollTo(0, document.body.scrollHeight);
         await new Promise(r => setTimeout(r, 2000));
 

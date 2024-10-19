@@ -100,7 +100,7 @@ async function removeStyles(el, delay){
     el.style.display = "";
 
     for (const x of el.childNodes) {
-        if(x.nodeType === 1) await removeStyles(x);
+        if(x.nodeType === 1) await removeStyles(x, 0);
     }
 }
 

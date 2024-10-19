@@ -14,7 +14,6 @@ function TerminalDiv() {
     const [cwd, setCwd] = useState(Commands.ENV.CWD);
     const [termColor, setTermColor] = useState(Commands.ENV.COLOR);
     const [closed, setClosed] = useState(true);
-    const [closeTime, setCloseTime] = useState(Date.now());
 
     /**
      * Generates the prompt string
@@ -79,7 +78,7 @@ function TerminalDiv() {
      * Opens/shows the terminal pageComponents
      */
     function open() {
-        if (closed /*&& Date.now() - closeTime > 500*/) resize(210);
+        if (closed) resize(210);
     }
 
     /**
@@ -95,7 +94,6 @@ function TerminalDiv() {
         EventHandlers.terminalHeight = Constants.minTerminalHeight;
 
         setClosed(true);
-        setCloseTime(Date.now());
     }
 
     /**

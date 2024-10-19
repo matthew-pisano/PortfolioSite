@@ -46,6 +46,8 @@ class Tile {
  */
 class PageInfo {
 
+    pageName;
+
     /**
      * @param pageName {string} The name of the page
      * @param title {string} The title of the page

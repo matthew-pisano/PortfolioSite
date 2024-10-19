@@ -383,9 +383,9 @@ class Commands {
         else if (currentFile.constructor === Directory) throw new CommandError(`Cannot open a directory!`);
         else if (currentFile.isPage()) {
             let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
-            window.open(relPath.replace(".html", ""), '_self', false);
+            window.open(relPath.replace(".html", ""), '_self');
         }
-        else if (currentFile.permission.includes(Perms.EXECUTE)) window.open(`/display?file=${pagePath}`, '_self', false);
+        else if (currentFile.permission.includes(Perms.EXECUTE)) window.open(`/display?file=${pagePath}`, '_self');
         else throw new CommandError(`Insufficient permissions to open ${pagePath}!`);
     }
 

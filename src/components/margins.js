@@ -40,6 +40,7 @@ class MenuItem {
      * @param itemType {string} The type of item: "action", "link", or "text"
      * @param data {object} The data of the item
      * @param usesCurrentPath {boolean} Whether the item uses the current path
+     * @param hideOnMobile {boolean} Whether the item should be hidden on mobile
      */
     constructor(name, itemType, data, usesCurrentPath = false, hideOnMobile = false) {
         this.name = name;
