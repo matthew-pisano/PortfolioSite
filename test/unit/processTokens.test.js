@@ -1,6 +1,6 @@
 import {describe, expect, test} from '@jest/globals';
 
-import {insertVars, processAssignment, tokenizeCommand} from "../../scripts/terminal/processTokens";
+import {insertVars, processAssignment, tokenizeCommand} from "../../src/lib/terminal/processTokens";
 
 
 describe('Test insertVars', () => {

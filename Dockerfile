@@ -2,12 +2,12 @@ FROM node:latest
 
 EXPOSE 3000
 
-COPY pages /app/pages
-COPY scripts /app/scripts
+COPY src/pages /app/pages
+COPY src/lib /app/scripts
 COPY public /app/public
 COPY package.json /app/package.json
-COPY next.config.js /app/next.config.js
-COPY middleware.js /app/middleware.js
+COPY next.config.mjs /app/next.config.mjs
+COPY src/middleware.js /app/middleware.js
 
 WORKDIR /app
 
