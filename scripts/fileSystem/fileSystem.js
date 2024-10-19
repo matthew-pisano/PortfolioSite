@@ -35,10 +35,7 @@ class FileSystemError extends Error {
  */
 function buildClientside() {
     let dehydrateElem = document.getElementById("dehydrateInfo");
-    // The dehydrated info is stored in a hidden element on the page
-    let savedHierarchy = localStorage.getItem("hierarchy");
-    let dehydratedInfo = savedHierarchy ? savedHierarchy : dehydrateElem.innerText;
-    masterFileSystem = FileSystem.deserialize(JSON.parse(dehydratedInfo));
+    masterFileSystem = FileSystem.deserialize(JSON.parse(dehydrateElem.innerText));
     return dehydrateElem.innerText;
 }
 

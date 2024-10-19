@@ -133,10 +133,18 @@ class Directory {
     /**
      * Adds a child to the directory and checks for duplicate names
      * @param child {Directory | File} The child to be added
+     * @param overwrite {boolean} Whether to allow overwriting of existing children
      */
-    addChild(child) {
-        if (this.childNames.has(child.name)) throw Error(`Duplicate child name ${child.name} in directory ${this.name}!`);
+    addChild(child, overwrite = false) {
+        if (!overwrite && this.childNames.has(child.name)) throw Error(`Duplicate child name ${child.name} in directory ${this.name}!`);
         this.childNames.add(child.name);
+
+        for (let i = 0; i < this.subTree.length; i++) {
+            if (this.subTree[i].name === child.name) {
+                this.subTree[i] = child;
+                return;
+            }
+        }
         this.subTree.push(child);
     }
 

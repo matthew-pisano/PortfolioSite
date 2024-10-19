@@ -1,4 +1,4 @@
-import {masterFileSystem, pathJoin} from "../fileSystem/fileSystem";
+import {FileSystem, masterFileSystem, pathJoin} from "../fileSystem/fileSystem";
 import {showDialog} from "../utils";
 import {createContextMenu, destroyContextMenu} from "./contextMenu";
 import React, {useEffect, useState} from "react";
@@ -241,6 +241,21 @@ function setSidebarState(openState =! sidebarOpen, animate = true){
 
 
 /**
+ * Merge the custom hierarchy with the hierarchy from the server, keeping custom files and updating from the server
+ * @param serverFS The initial file system from the server
+ * @param customFS The custom file system from the client
+ */
+function mergeCachedPages(serverFS, customFS) {
+    let cachedCustomObjects = customFS.subTree.filter(obj => obj instanceof File && !obj.isPage());
+    for (let customObj of cachedCustomObjects) serverFS.addChild(customObj, true);
+    for (let dir of serverFS.subTree.filter(obj => obj instanceof Directory)) {
+        let customDir = customFS.subTree.find(obj => obj.name === dir.name && obj instanceof Directory);
+        if (customDir) mergeCachedPages(dir, customDir);
+    }
+}
+
+
+/**
  * The sidebar component that displays the file system hierarchy, used for navigation and file management
  * @returns {JSX.Element} The sidebar component
  */
@@ -251,6 +266,15 @@ function Sidebar() {
         // Close the sidebar on mobile
         if(window.innerWidth < 600)
             setSidebarState(false);
+
+        // Load the custom hierarchy from local storage
+        let savedHierarchy = localStorage.getItem("hierarchy");
+        if (savedHierarchy) {
+            let customFileSystem = FileSystem.deserialize(JSON.parse(savedHierarchy));
+            mergeCachedPages(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER), customFileSystem.getItem(SysEnv.PUBLIC_FOLDER));
+        }
+
+        setExplorerTree(buildSidebar());
 
         // Update the sidebar when the file system is updated
         masterFileSystem.registerCallback(() => {setExplorerTree(buildSidebar());});
