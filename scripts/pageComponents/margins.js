@@ -1,8 +1,7 @@
 import React, {useEffect} from "react";
 import {showDialog} from "../utils";
-import {masterFileSystem} from "../fileSystem/buildfs";
 import {renameFile} from "./sidebar";
-import {pathJoin} from "../fileSystem/fileSystem";
+import {masterFileSystem, pathJoin} from "../fileSystem/fileSystem";
 import PropTypes from "prop-types";
 import {Perms, SysEnv} from "../fileSystem/fileSystemMeta";
 import {setTheme} from "../themes";

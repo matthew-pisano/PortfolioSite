@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
-import {buildClientside, buildServerside} from '../fileSystem/buildfs';
+import {buildClientside, buildServerside} from '../fileSystem/fileSystem';
 import TerminalDiv from '../terminal/terminal';
 import PropTypes from "prop-types";
 import {Sidebar} from "./sidebar";
-import {HeaderMenu, MenuDrop, savePage, StatusFooter} from "./margins";
+import {HeaderMenu, savePage, StatusFooter} from "./margins";
 import {setTheme} from "../themes";
+
 
 let dehydratedInfo;
 if (typeof window === 'undefined') dehydratedInfo = buildServerside();

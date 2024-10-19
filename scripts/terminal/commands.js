@@ -1,5 +1,4 @@
-import {FileSystemError, pathJoin} from '../fileSystem/fileSystem';
-import {masterFileSystem} from '../fileSystem/buildfs';
+import {FileSystemError, masterFileSystem, pathJoin} from '../fileSystem/fileSystem';
 import {eightBall, hal, haltingProblem, rmRoot, runPacer, toVoid} from './easterEggs';
 import {letoucan, neofetch, system32, tfLogo, theMissile} from './strings';
 import {Directory, File} from "../fileSystem/fileSystemObjects";

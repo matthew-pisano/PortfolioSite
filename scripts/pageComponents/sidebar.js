@@ -1,5 +1,4 @@
-import {pathJoin} from "../fileSystem/fileSystem";
-import {masterFileSystem} from '../fileSystem/buildfs';
+import {masterFileSystem, pathJoin} from "../fileSystem/fileSystem";
 import {showDialog} from "../utils";
 import {createContextMenu, destroyContextMenu} from "./contextMenu";
 import React, {useEffect, useState} from "react";

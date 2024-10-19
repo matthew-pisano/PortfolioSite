@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {masterFileSystem} from "../scripts/fileSystem/buildfs";
 import Wrapper from "../scripts/pageComponents/wrapper";
 import parse from "html-react-parser";
 import {Directory} from "../scripts/fileSystem/fileSystemObjects";
 import {PageInfo} from "../scripts/pageBuilder";
 import {Perms} from "../scripts/fileSystem/fileSystemMeta";
+import {masterFileSystem} from "../scripts/fileSystem/fileSystem";
 
 
 function Display() {

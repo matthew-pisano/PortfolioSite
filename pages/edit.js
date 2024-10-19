@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import {masterFileSystem} from "../scripts/fileSystem/buildfs";
 import Wrapper from "../scripts/pageComponents/wrapper";
 import {lineNumbers} from "@codemirror/view";
 import {EditorState, Compartment} from "@codemirror/state";
@@ -8,6 +7,7 @@ import {html} from "@codemirror/lang-html";
 import {Directory} from "../scripts/fileSystem/fileSystemObjects";
 import {PageInfo} from "../scripts/pageBuilder";
 import {Perms} from "../scripts/fileSystem/fileSystemMeta";
+import {masterFileSystem} from "../scripts/fileSystem/fileSystem";
 
 
 function Edit() {
