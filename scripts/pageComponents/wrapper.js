@@ -96,7 +96,7 @@ function Wrapper({children, pageName, pageStyle}) {
         </div>
     );
 }
-Wrapper.propTypes = { children: PropTypes.element, pageName: PropTypes.string, pageStyle: PropTypes.object };
+Wrapper.propTypes = { children: PropTypes.arrayOf(PropTypes.element), pageName: PropTypes.string, pageStyle: PropTypes.object };
 
 
 export default Wrapper;
