@@ -3,6 +3,7 @@ import {Commands} from '@/lib/terminal/commands';
 import {ANSI, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
 import {EventHandlers} from "@/lib/terminal/eventHandlers";
 import {Constants} from "@/lib/utils";
+import styles from '@/styles/Terminal.module.css';
 
 
 /**
@@ -195,25 +196,27 @@ function TerminalDiv() {
     }
 
     return (
-        <div id="terminalHolder" className='w3-row gone'>
-            <div id='terminalFileHandler'>
-                <span id="terminalFileIndicator">Drag Files Here</span>
+        <div id="terminalHolder" className={`w3-row gone ${styles.terminalHolder}`}>
+            <div id='terminalFileHandler' className={styles.terminalFileHandler}>
+                <span id="terminalFileIndicator" className={styles.terminalFileIndicator}>Drag Files Here</span>
             </div>
-            <div id='terminalThumb' onMouseDown={EventHandlers.thumbDragStart}><span id='terminalThumbDots'>• • •</span></div>
-            <div id="terminalHeader" onClick={open}>
+            <div id='terminalThumb' className={styles.terminalThumb} onMouseDown={EventHandlers.thumbDragStart}>
+                <span id='terminalThumbDots' className={styles.terminalThumbDots}>• • •</span>
+            </div>
+            <div id="terminalHeader" className={styles.terminalHeader} onClick={open}>
                 <span>/bin/mash</span>
-                <button id="terminalClose" className='w3-button' onClick={close}>X</button>
+                <button id="terminalClose" className={`w3-button ${styles.terminalClose}`} onClick={close}>X</button>
             </div>
-            <div id='terminal' onClick={(e) => {
+            <div id='terminal' className={styles.terminal} onClick={(e) => {
                 // Focus the terminal input if the user clicks on the terminal
                 // Ensure the user is not selecting text, and it is a single click
                 if (e.detail === 1 && window.getSelection().isCollapsed)
                     document.getElementById('terminalInput').focus();
             }} onDragEnter={EventHandlers.onDragEnter} onDragLeave={EventHandlers.onDragLeave} onDrop={EventHandlers.onDrop}>
-                <div id="terminalOutput"></div>
-                <div id="terminalBottom">
-                    <div id="terminalPrompt"></div>
-                    <div id="terminalInput" contentEditable="true"
+                <div id="terminalOutput" className={styles.terminalOutput}></div>
+                <div id="terminalBottom" className={styles.terminalBottom}>
+                    <div id="terminalPrompt" className={styles.terminalPrompt}></div>
+                    <div id="terminalInput" className={styles.terminalInput} contentEditable="true"
                          onKeyDown={(e) => EventHandlers.onKeyDown(e, submit)}></div>
                 </div>
             </div>
