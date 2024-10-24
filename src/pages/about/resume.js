@@ -1,6 +1,6 @@
 import React from 'react';
 import {Constants} from '@/lib/utils';
-import Wrapper from '@/components/wrapper';
+import Wrapper from '@/components/Wrapper';
 import {PageInfo} from "@/lib/pageBuilder";
 
 

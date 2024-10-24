@@ -1,23 +1,4 @@
-
-#wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#wrapperContent {
-    bottom: 30px;
-    top: 30px;
-    left: 0px;
-    right: 0px;
-    position: fixed;
-    background-color: var(--theme-color-1);
-    overflow-y: scroll;
-}
-
-#dialogBox {
+.dialogBox {
     background-color: var(--theme-color-2);
     border-radius: 5px;
     position: fixed;
@@ -31,11 +12,11 @@
     display: none;
 }
 
-#dialogBoxTitle {
+.dialogBoxTitle {
     font-weight: bold;
     margin-left: 10px;
 }
 
-#dialogBoxIcon {
+.dialogBoxIcon {
     width: 20px;
 }

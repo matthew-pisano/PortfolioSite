@@ -1,6 +1,7 @@
+import styles from "@/styles/Wrapper.module.css";
 import React, {useEffect} from 'react';
 import {buildPage, PageInfo, Tile} from '@/lib/pageBuilder';
-import Wrapper from '@/components/wrapper';
+import Wrapper from '@/components/Wrapper';
 
 
 /**
@@ -102,7 +103,7 @@ function Babble() {
     }, []);
 
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div className="inner titleCard">
+        <div className={`${styles.titleCard}`}>
             <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b></b></h1><br/>
         </div>
         {buildPage(pageInfo, tiles)}

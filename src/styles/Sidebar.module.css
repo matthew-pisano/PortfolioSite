@@ -7,7 +7,7 @@
     width: 40px;
 }
 
-#sidebar {
+.sidebar {
     bottom: 30px;
     top: 27px;
     position: fixed;
@@ -17,12 +17,12 @@
     border-right: var(--theme-accent) 2px solid;
 }
 
-#collapseHolder {
+.collapseHolder {
     position: fixed;
     z-index: 3;
 }
 
-#sidebarContent {
+.sidebarContent {
     width: 100%;
     margin-top: 50px;
     margin-bottom: 50px;
@@ -85,18 +85,18 @@
 }
 
 .folderIcon{
-    content:url("../assets/folderIcon.svg");
+    content:url("/assets/folderIcon.svg");
 }
 
 .htmlIcon{
-    content:url("../assets/htmlIcon.svg");
+    content:url("/assets/htmlIcon.svg");
 }
 
-.sidebarContent{
+.sidebarItemContent{
     padding-left: 15px;
 }
 
-#explorerTitle{
+.explorerTitle{
     text-align: left;
     border-style: none;
     vertical-align: middle;
@@ -104,7 +104,7 @@
     cursor: default;
 }
 
-#collapseSidebar {
+.collapseSidebar {
     width: 40px;
     height: 40px;
     padding: 1px;
@@ -112,18 +112,18 @@
     border-style: none none none solid;
     border-color: var(--theme-accent);
     border-width: 2px;
-    background-image: url("../assets/explorerIcon.svg");
+    background-image: url("/assets/explorerIcon.svg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-#collapseSidebar:hover {
+.collapseSidebar:hover {
     background-color: var(--theme-color-2-hover) !important;
 }
 
 .editorButton {
-    content:url("../assets/editIcon.svg");
+    content:url("/assets/editIcon.svg");
     cursor: pointer;
     margin-left: 5px;
     margin-right: 10px;

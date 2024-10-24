@@ -1,6 +1,7 @@
+import styles from "@/styles/Wrapper.module.css";
 import PropTypes from "prop-types";
 import {buildPage} from "@/lib/pageBuilder";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/Wrapper";
 import React, {useEffect} from "react";
 import $ from 'jquery';
 
@@ -65,7 +66,7 @@ function DefaultWrapper({pageInfo, tiles}) {
 
     return (
         <Wrapper pageName={pageInfo.pageName}>
-            <div className="inner titleCard">
+            <div className={`${styles.titleCard}`}>
                 <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1><br/>
                 <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
             </div>

@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {PageInfo} from '@/lib/pageBuilder';
-import Wrapper from '@/components/wrapper';
+import Wrapper from '@/components/Wrapper';
+
+import styles from '@/styles/Wrapper.module.css';
 
 
 const authQuotes = ["You appear to have been misinformed.", "You're not from around here, ain't ya?",
@@ -25,11 +27,11 @@ function Unauthorized() {
         {backgroundColor: "#000000"}
     );
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div className="inner titleCard">
+        <div className={`${styles.titleCard}`}>
             <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>{pageInfo.title}</b></h1><br/>
             <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
         </div>
-        <div id="tileHolder" className="inner w3-display-container" style={{backgroundColor: "#000000"}}>
+        <div id="tileHolder" className="w3-display-container" style={{backgroundColor: "#000000"}}>
             <div className="displayTile w3-container w3-row">
                 <h3><b>We have detected an unauthorized access attempt</b></h3>
                 <span style={{margin: "15px 0px", display: "block"}}>

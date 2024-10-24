@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/Wrapper";
 import {lineNumbers} from "@codemirror/view";
 import {Compartment, EditorState} from "@codemirror/state";
 import {basicSetup, EditorView} from "codemirror";

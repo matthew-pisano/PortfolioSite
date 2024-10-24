@@ -1,6 +1,7 @@
+import styles from "@/styles/Wrapper.module.css";
 import React from 'react';
 import {buildPage, PageInfo, Tile} from '@/lib/pageBuilder';
-import Wrapper from '@/components/wrapper';
+import Wrapper from '@/components/Wrapper';
 
 
 function SCP() {
@@ -89,7 +90,7 @@ function SCP() {
         "██████ Entry"
     );
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div className="inner titleCard">
+        <div className={`${styles.titleCard}`}>
             <h1 style={{margin: 'auto', width: '100%', textAlign: 'center'}}>{pageInfo.title}</h1><br/>
         </div>
         {buildPage(pageInfo, tiles)}

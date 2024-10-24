@@ -119,7 +119,7 @@ function buildTags(tile, dark = false){
 function buildPage(pageInfo, tiles){
 
     pageInfo.pageName = pageInfo.pageName.split("/").join("");
-    return <div id="tileHolder" className="inner w3-display-container" style={pageInfo.holderStyle}>
+    return <div id="tileHolder" className="w3-display-container" style={pageInfo.holderStyle}>
         {buildTags(pageInfo, true)}
         {
             tiles.map((tile, i) =>{

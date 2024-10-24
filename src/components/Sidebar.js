@@ -1,10 +1,11 @@
 import {FileSystem, masterFileSystem, pathJoin} from "@/lib/fileSystem/fileSystem";
 import {showDialog} from "@/lib/utils";
-import {createContextMenu, destroyContextMenu} from "@/components/contextMenu";
+import {createContextMenu, destroyContextMenu} from "@/components/ContextMenu";
 import React, {useEffect, useState} from "react";
 import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
 import $ from "jquery";
 import {Perms, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
+import styles from '@/styles/Sidebar.module.css';
 
 
 /**
@@ -23,13 +24,13 @@ let sidebarOpen = true;
 function buildDirectory(directory, path) {
     let name = directory.name + "-Folder";
     let dirStyle = directory.name === "public" ? {borderStyle: "none"} : {};
-    return <div key={name} id={name} className="sidebarItem sidebarFolder w3-row" style={dirStyle}>
-            <div className="sidebarFolderHeader">
-                <img className='folderIcon' alt=''/>
+    return <div key={name} id={name} className={`sidebarItem sidebarFolder w3-row ${styles.sidebarItem}`} style={dirStyle}>
+            <div className={`${styles.sidebarFolderHeader}`}>
+                <img className={`${styles.folderIcon}`} alt=''/>
                 <span>{directory.name}</span>
             </div>
 
-            <div id={directory.name + "Content"} className="w3-row sidebarContent">
+            <div id={directory.name + "Content"} className={`w3-row ${styles.sidebarItemContent}`}>
                 {directory.subTree.map(child => buildHierarchy(child, path + "/" + directory.name))}
             </div>
         </div>;
@@ -56,7 +57,7 @@ function buildFile(file, path) {
     else {
         urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
         linkPath = `${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
-        editIcon = <img className='editorButton' alt='' onClick={() => {
+        editIcon = <img className={`editorButton ${styles.editorButton}`} alt='' onClick={() => {
             window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`);
         }}/>;
     }
@@ -64,12 +65,12 @@ function buildFile(file, path) {
     let parentFolder = pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""));
 
     // eslint-disable-next-line react/no-unknown-property
-    return <div key={fileName + "-File"} id={fileName + "-File"} className="sidebarItem sidebarLink w3-row" linkpath={linkPath} onContextMenu={(e) => {
+    return <div key={fileName + "-File"} id={fileName + "-File"} className={`sidebarItem sidebarLink w3-row ${styles.sidebarItem} ${styles.sidebarLink}`} linkpath={linkPath} onContextMenu={(e) => {
         createContextMenu(e.clientY, e.clientX, file, {rename: () => renameFile(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
         // Prevent the default context menu from appearing
         e.preventDefault();
     }}>
-        <img className='htmlIcon' alt=''/>
+        <img className={`${styles.htmlIcon}`} alt=''/>
         <a id={fileName + "-FileLink"} href={urlPath}>{file.name}</a>
         {editIcon}
     </div>;
@@ -209,12 +210,12 @@ function buildSidebar() {
  * @param animate {boolean} Whether to animate the sidebar state change
  */
 function setSidebarState(openState =! sidebarOpen, animate = true){
-    let pageElement = document.getElementsByClassName("page")[0];
+    let pageElement = document.getElementById("page");
     if(!openState){
         // Close the sidebar
         document.getElementById("sidebarContent").style.display = "none";
-        document.getElementById("sidebar").classList.replace("openSidebar", "closeSidebar");
-        document.getElementById("collapseHolder").classList.replace("openSidebar", "closeSidebar");
+        document.getElementById("sidebar").classList.replace(styles.openSidebar, styles.closeSidebar);
+        document.getElementById("collapseHolder").classList.replace(styles.openSidebar, styles.closeSidebar);
         document.getElementById("explorerTitle").style.display = "none";
 
         pageElement.classList.add("closeSidebarPage");
@@ -226,10 +227,10 @@ function setSidebarState(openState =! sidebarOpen, animate = true){
         // Open the sidebar
         document.getElementById("sidebarContent").style.display = "block";
         $("#sidebarContent").animate({"width": "100%"}, animate ? 200 : 0);
-        document.getElementById("sidebar").classList.replace("closeSidebar", "openSidebar");
-        document.getElementById("collapseHolder").classList.replace("closeSidebar", "openSidebar");
-        pageElement.classList.remove("closeSidebarPage");
+        document.getElementById("sidebar").classList.replace(styles.closeSidebar, styles.openSidebar);
+        document.getElementById("collapseHolder").classList.replace(styles.closeSidebar, styles.openSidebar);
 
+        pageElement.classList.remove("closeSidebarPage");
         pageElement.classList.add("openSidebarPage");
 
         document.getElementById("explorerTitle").style.display = "";
@@ -294,12 +295,12 @@ function Sidebar() {
     }, [explorerTree]);
 
     return (
-        <div id="sidebar" className="w3-col openSidebar">
-            <div id="collapseHolder" className="w3-cell-row openSidebar">
-                <button id="collapseSidebar" className="w3-button w3-cell" onClick={() => setSidebarState()}></button>
-                <span id="explorerTitle" className="sidebarItem w3-cell">Explorer</span>
+        <div id="sidebar" className={`w3-col ${styles.openSidebar} ${styles.sidebar}`}>
+            <div id="collapseHolder" className={`w3-cell-row ${styles.openSidebar} ${styles.collapseHolder}`}>
+                <button id="collapseSidebar" className={`w3-button w3-cell ${styles.collapseSidebar}`} onClick={() => setSidebarState()}></button>
+                <span id="explorerTitle" className={`w3-cell ${styles.sidebarItem} ${styles.explorerTitle}`}>Explorer</span>
             </div>
-            <div id="sidebarContent" className="w3-display-container w3-row">{explorerTree}</div>
+            <div id="sidebarContent" className={`w3-display-container w3-row ${styles.sidebarContent}`}>{explorerTree}</div>
         </div>
     );
 }

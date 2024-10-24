@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/Wrapper";
 import parse from "html-react-parser";
 import {Directory} from "@/lib/fileSystem/fileSystemObjects";
 import {PageInfo} from "@/lib/pageBuilder";

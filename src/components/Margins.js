@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {showDialog} from "@/lib/utils";
-import {renameFile} from "./sidebar";
+import {renameFile} from "./Sidebar";
 import {masterFileSystem, pathJoin} from "@/lib/fileSystem/fileSystem";
 import PropTypes from "prop-types";
 import {Perms, SysEnv} from "@/lib/fileSystem/fileSystemMeta";

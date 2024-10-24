@@ -1,6 +1,7 @@
+import styles from "@/styles/Wrapper.module.css";
 import React, {useEffect, useState} from 'react';
 import {PageInfo} from '@/lib/pageBuilder';
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/Wrapper";
 
 
 const lostQuotes = ['How did we get here?', 'Not all who wander are lost...', 
@@ -38,11 +39,11 @@ function PageNotFound() {
     );
 
     return (<Wrapper pageName={pageInfo.pageName}>
-        <div className="inner titleCard">
+        <div className={`${styles.titleCard}`}>
             <h1 style={{margin: "auto", width: "auto", textAlign: "center"}}><b style={{color: "#ff0000"}}>{pageInfo.title}</b></h1><br/>
             <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
         </div>
-        <div id="tileHolder" className="inner w3-display-container" style={{backgroundColor: "#000000"}}>
+        <div id="tileHolder" className="w3-display-container" style={{backgroundColor: "#000000"}}>
             <div className="displayTile w3-container w3-row">
                 <h3><b>Something&apos;s Not Right</b></h3>
                 <span style={{margin: "15px 0px", display: "block"}}>

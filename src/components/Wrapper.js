@@ -1,11 +1,14 @@
+import DialogBox from "@/components/DialogBox";
 import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
 import {buildClientside, buildServerside} from '@/lib/fileSystem/fileSystem';
 import PropTypes from "prop-types";
-import TerminalDiv from '@/components/terminal';
-import {Sidebar} from "@/components/sidebar";
-import {HeaderMenu, savePage, StatusFooter} from "./margins";
+import TerminalDiv from '@/components/Terminal';
+import {Sidebar} from "@/components/Sidebar";
+import {HeaderMenu, savePage, StatusFooter} from "./Margins";
 import {setTheme} from "@/lib/themes";
+
+import styles from '@/styles/Wrapper.module.css';
 
 
 /**
@@ -69,25 +72,19 @@ function Wrapper({children, pageName, pageStyle}) {
     }, []);
 
     return (
-        <div id="wrapper" className="w3-display-container">
+        <div id="wrapper" className={`w3-display-container ${styles.wrapper}`}>
             <Head><title>{pageName.substring(pageName.lastIndexOf("/") + 1) + ".html"}</title></Head>
             <HeaderMenu currentPath={currentPath}/>
 
-            <div id="wrapperContent" className="w3-display-container w3-row">
+            <div id="wrapperContent" className={`w3-display-container w3-row ${styles.wrapperContent}`}>
                 <Sidebar/>
-                <div id="page" className="page container w3-rest" style={pageStyle}>
+                <div id="page" className={`w3-rest ${styles.page}`} style={pageStyle}>
                     {children}
                 </div>
             </div>
 
-            <div id="dialogBox">
-                <img id="dialogBoxIcon" src="/assets/personal.png" alt=''/>
-                <span id="dialogBoxTitle"></span>
-                <p id="dialogBoxBody"></p>
-            </div>
-
+            <DialogBox/>
             <TerminalDiv/>
-
             <StatusFooter currentPath={currentPath} pageName={pageName}/>
             <span id="dehydrateInfo" style={{display: "none"}}>{dehydratedInfo}</span>
 

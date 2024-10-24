@@ -1,6 +1,6 @@
 import React from 'react';
 import {PageInfo, Tile} from '@/lib/pageBuilder';
-import DefaultWrapper from "@/components/defaultWrapper";
+import DefaultWrapper from "@/components/DefaultWrapper";
 import {Constants} from '@/lib/utils';
 
 
