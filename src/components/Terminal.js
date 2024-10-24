@@ -198,12 +198,12 @@ function TerminalDiv() {
     return (
         <div id="terminalHolder" className={`w3-row gone ${styles.terminalHolder}`}>
             <div id='terminalFileHandler' className={styles.terminalFileHandler}>
-                <span id="terminalFileIndicator" className={styles.terminalFileIndicator}>Drag Files Here</span>
+                <span className={styles.terminalFileIndicator}>Drag Files Here</span>
             </div>
             <div id='terminalThumb' className={styles.terminalThumb} onMouseDown={EventHandlers.thumbDragStart}>
-                <span id='terminalThumbDots' className={styles.terminalThumbDots}>• • •</span>
+                <span className={styles.terminalThumbDots}>• • •</span>
             </div>
-            <div id="terminalHeader" className={styles.terminalHeader} onClick={open}>
+            <div className={styles.terminalHeader} onClick={open}>
                 <span>/bin/mash</span>
                 <button id="terminalClose" className={`w3-button ${styles.terminalClose}`} onClick={close}>X</button>
             </div>

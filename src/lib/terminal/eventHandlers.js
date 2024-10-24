@@ -60,14 +60,6 @@ export class EventHandlers {
         document.addEventListener("mouseup", this.thumbDragEnd);
         document.body.addEventListener('drop', (evt) => evt.preventDefault(), false);
         document.body.addEventListener('dragover', (evt) => evt.preventDefault(), false);
-        // Capture ALT + SHIFT + `
-        document.addEventListener('keydown', e => {
-            if (e.shiftKey && e.altKey && e.key === '`' && !e.shiftKey) {
-                // Prevent the Save dialog to open
-                e.preventDefault();
-                document.getElementById("terminalHeader").click();
-            }
-        });
     }
 
     /**
