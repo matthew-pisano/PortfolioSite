@@ -26,3 +26,10 @@ a {
     border: 1px solid;
     padding: 5px;
 }
+
+
+@media (max-width: 600px) {
+    .katex {
+        white-space: normal;
+    }
+}

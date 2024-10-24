@@ -162,3 +162,32 @@
     background-color: var(--theme-color-3-hover) !important;
     color: var(--theme-text-hover) !important;
 }
+
+
+@media (max-width: 600px) {
+    .explorerTitle {
+        visibility: hidden;
+    }
+
+    .sidebar {
+        border: none;
+    }
+
+    .collapseSidebar {
+        border: var(--theme-accent) 2px solid;
+    }
+
+    .openSidebar {
+        width: 100% !important;
+    }
+
+    .closeSidebar {
+        background-color: transparent !important;
+    }
+
+    .editorButton {
+        display: none;
+    }
+
+
+}

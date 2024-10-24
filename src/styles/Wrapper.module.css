@@ -30,6 +30,15 @@
 .titleCard {
     position: fixed;
     height: 300px;
-    top: 50px;
+    top: 70px;
     pointer-events: none;
+}
+
+
+@media (max-width: 600px) {
+    .page {
+        margin-bottom: 70px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }

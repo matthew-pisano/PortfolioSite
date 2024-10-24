@@ -4,6 +4,7 @@
     width: 100%;
     background-color: var(--theme-color-3);
     z-index: 3;
+    top: 0px;
 }
 
 .infoBar {
@@ -12,6 +13,7 @@
     background-color: var(--theme-color-1);
     z-index: 3;
     height: 30px;
+    bottom: 0px;
 }
 
 .menuItem, .infoBarItem {
@@ -21,9 +23,10 @@
 
 .infoBarItem {
     cursor: default;
+    float: right;
 }
 
-#menuDropHolder {
+.menuDropHolder {
     position: fixed;
     top: 27px;
     right: 0;
@@ -63,4 +66,18 @@
 .menuItem:hover {
     background-color: var(--theme-color-3-hover) !important;
     color: var(--theme-text-hover) !important;
+}
+
+
+@media (max-width: 600px) {
+    .hideOnMobile {
+        display: none;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .encodingStatus{
+        display: none;
+    }
 }

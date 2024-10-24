@@ -187,3 +187,14 @@
 .cudaTag span::after{
     content: "CUDA";
 }
+
+
+@media (max-width: 400px) {
+    .tag {
+        width: 100% !important;
+    }
+
+    .gitLink a, .extraLink a {
+        float: right;
+    }
+}

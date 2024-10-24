@@ -14,12 +14,7 @@ export default function Document() {
                 <link href="/css/pages.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/editor.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/terminal.css" rel="stylesheet" type="text/css"/>
-                <link href="/css/margins.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/tags.css" rel="stylesheet" type="text/css"/>
-
-                <link href="/css/responsive/desktop.css" rel="stylesheet" type="text/css"/>
-                <link href="/css/responsive/tablet.css" rel="stylesheet" type="text/css"/>
-                <link href="/css/responsive/mobile.css" rel="stylesheet" type="text/css"/>
             </Head>
             <body>
             <Main/>

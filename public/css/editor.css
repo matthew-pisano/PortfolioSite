@@ -1,5 +1,6 @@
 
 .cm-editor {
+    margin-top: 80px;
     overflow: auto;
     border-style: solid;
     border-color: var(--theme-accent);

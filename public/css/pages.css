@@ -73,3 +73,38 @@
     background-color: #000000;
     background-image: url("/assets/matrix.gif");
 }
+
+
+@media (max-width: 1500px) {
+    .displayTile > div {
+        width: 100%;
+    }
+
+    .displayTile > img {
+        width: 100%;
+        display: block;
+        float: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .openSidebarPage {
+        margin-left: 0px !important;
+        display: none;
+    }
+
+    .closeSidebarPage {
+        margin-left: 0px !important;
+    }
+
+    #tileHolder {
+        margin-top: 300px;
+        padding-right: 10px;
+    }
+
+    .displayTile {
+        margin-right: 0px;
+        margin-left: 3%;
+    }
+}

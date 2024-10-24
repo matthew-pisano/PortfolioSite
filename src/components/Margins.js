@@ -5,6 +5,7 @@ import {masterFileSystem, pathJoin} from "@/lib/fileSystem/fileSystem";
 import PropTypes from "prop-types";
 import {Perms, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
 import {setTheme} from "@/lib/themes";
+import styles from "@/styles/Margins.module.css";
 
 
 /**
@@ -177,7 +178,6 @@ function editPage(currentPath) {
         showDialog("Permission Denied", "You do not have permission to edit this file!");
     // Open the editor
     else window.location.replace(`/edit?file=${filePath}`);
-
 }
 
 
@@ -240,7 +240,7 @@ function getPageStats(currentPath){
  * Clears all menu dropdowns
  */
 function clearMenuDrops() {
-    for(let elem of document.getElementsByClassName("menuDropdown"))
+    for(let elem of document.getElementsByClassName(styles.menuDropdown))
         elem.style.display = "none";
 }
 
@@ -267,7 +267,7 @@ function HeaderMenu({currentPath}) {
 
     useEffect(() => {
         let handleClick = (evt) => {
-            if (!evt.target.className.includes("menuItem")) primedMenuBar = false;
+            if (!evt.target.className.includes(styles.menuItem)) primedMenuBar = false;
             clearMenuDrops();
         };
         document.documentElement.addEventListener('click', handleClick, true);
@@ -283,11 +283,11 @@ function HeaderMenu({currentPath}) {
     }
 
     return (
-        <header className="menuBar w3-row" style={{top: '0px'}}>
+        <header className={`w3-row ${styles.menuBar}`}>
             {
                 headerMenus.map((menu, index) => {
-                    let className = "menuItem w3-button w3-col";
-                    if(menu.hideOnMobile) className += " hideOnMobile";
+                    let className = `w3-button w3-col ${styles.menuItem}`;
+                    if(menu.hideOnMobile) className += ` ${styles.hideOnMobile}`;
                     return (
                         <button key={index} id={menu.name.toLowerCase()+"Menu"} className={className}
                                 onClick={() => clickMenuButton(menu.name.toLowerCase())}
@@ -311,15 +311,15 @@ HeaderMenu.propTypes = { currentPath: PropTypes.string };
  */
 function MenuDrop({currentPath}) {
     return (
-        <div id="menuDropHolder">
+        <div id="menuDropHolder" className={styles.menuDropHolder}>
             {
                 headerMenus.map((menu, index) => {
                     return (
-                        <div key={index} id={menu.name.toLowerCase()+"MenuDropdown"} className="menuDropdown">
+                        <div key={index} id={menu.name.toLowerCase()+"MenuDropdown"} className={styles.menuDropdown}>
                             {
                                 menu.items.map((item, index) => {
-                                    let className = "menuDropItem w3-button";
-                                    if(item.hideOnMobile) className += " hideOnMobile";
+                                    let className = `w3-button ${styles.menuDropItem}`;
+                                    if(item.hideOnMobile) className += ` ${styles.hideOnMobile}`;
                                     if (item.itemType === "action") return (
                                         <button key={index} id={menu.name.toLowerCase().replace(/" "/g, "")+"Action"}
                                                 className={className}
@@ -333,12 +333,12 @@ function MenuDrop({currentPath}) {
                                     else if (item.itemType === "link") {
                                         let target = item.data.startsWith("http") ? "_blank" : "_self";
                                         return (
-                                            <a key={index} className="menuDropItem" style={{display: "block"}}
+                                            <a key={index} className={styles.menuDropItem} style={{display: "block"}}
                                                href={item.data} target={target} rel="noreferrer">{item.name}</a>
                                         );
                                     }
                                     else return (
-                                        <button key={index} className="menuDropItem w3-button"
+                                        <button key={index} className={`w3-button ${styles.menuDropItem}`}
                                                 onClick={() => {
                                                     navigator.clipboard.writeText(item.data);
                                                     showDialog("Copied to Clipboard", item.data);
@@ -372,12 +372,12 @@ function StatusFooter({currentPath, pageName}) {
     if (pStats.size === undefined) pStats.size = 0;
 
     return (
-        <footer className="infoBar w3-row" style={{bottom: '0px'}}>
-            <div id="langStatus" className="infoBarItem w3-col" style={{float: 'right'}}>HTML</div>
-            <div id="encodingStatus" className="infoBarItem w3-col" style={{float: 'right'}}>UTF-8</div>
-            <div id="linesStatus" className="infoBarItem w3-col" style={{float: 'right'}}>{pStats.lines + " Lines"}</div>
-            <div id="sizeStatus" className="infoBarItem w3-col" style={{float: 'right'}}>{pStats.size <= 1024 ? pStats.size + "B" : Math.round(pStats.size / 102.4) / 10 + "kB"}</div>
-            <div id="itemStatus" className="infoBarItem w3-col" style={{float: 'right'}}>{pageName + ".html"}</div>
+        <footer className={`w3-row ${styles.infoBar}`}>
+            <div id="langStatus" className={`w3-col ${styles.infoBarItem}`}>HTML</div>
+            <div id="encodingStatus" className={`w3-col ${styles.infoBarItem} ${styles.encodingStatus}`}>UTF-8</div>
+            <div id="linesStatus" className={`w3-col ${styles.infoBarItem}`}>{pStats.lines + " Lines"}</div>
+            <div id="sizeStatus" className={`w3-col ${styles.infoBarItem}`}>{pStats.size <= 1024 ? pStats.size + "B" : Math.round(pStats.size / 102.4) / 10 + "kB"}</div>
+            <div id="itemStatus" className={`w3-col ${styles.infoBarItem}`}>{pageName + ".html"}</div>
         </footer>
     );
 }
