@@ -8,14 +8,8 @@
 }
 
 .tag img{
-    width: 10%;
-    min-width: 20px;
+    width: 25px;
     margin-right: 5px;
-}
-
-.tag span{
-    float: right;
-    width: 80%;
 }
 
 .gitLink, .extraLink{
@@ -26,14 +20,14 @@
     border-radius: 10px;
 }
 
-.gitLink a, .extraLink a{
-    width: 70%;
+.gitLink div a, .extraLink div a{
+    width: 100%;
+    display: block;
+    text-align: center;
 }
 
 .gitLink img, .extraLink img{
-    width: 10%;
-    min-width: 20px;
-    max-width: 30px;
+    width: 25px;
     margin-right: 5px;
 }
 
@@ -58,143 +52,150 @@
 .personalTag img{
     content:url("../assets/personal.png");
 }
-.personalTag span::after{
+.personalTag div::after{
     content: "Personal";
 }
 
 .academicTag img{
     content:url("../assets/academic.png");
 }
-.academicTag span::after{
+.academicTag div::after{
     content: "Academic";
 }
 
 .javaTag img{
     content:url("../assets/java.png");
 }
-.javaTag span::after{
+.javaTag div::after{
     content: "Java";
 }
 
 .androidTag img{
     content:url("../assets/android.png");
 }
-.androidTag span::after{
+.androidTag div::after{
     content: "Android";
 }
 
 .pythonTag img{
     content:url("../assets/python.png");
 }
-.pythonTag span::after{
+.pythonTag div::after{
     content: "Python";
 }
 
 .assemblyTag img{
     content:url("../assets/assembly.png");
 }
-.assemblyTag span::after{
+.assemblyTag div::after{
     content: "Assembly";
 }
 
 .phpTag img{
     content:url("../assets/php.png");
 }
-.phpTag span::after{
+.phpTag div::after{
     content: "PHP";
 }
 
 .htmlTag img{
     content:url("../assets/html.png");
 }
-.htmlTag span::after{
+.htmlTag div::after{
     content: "HTML";
 }
 
 .jsTag img{
     content:url("../assets/js.png");
 }
-.jsTag span::after{
+.jsTag div::after{
     content: "JavaScript";
 }
 
 .collabTag img{
     content:url("../assets/collab.png");
 }
-.collabTag span::after{
+.collabTag div::after{
     content: "Collaboration";
 }
 
 .hackTag img{
     content:url("../assets/hackathon.png");
 }
-.hackTag span::after{
+.hackTag div::after{
     content: "Hackathon";
 }
 
 .researchTag img{
     content:url("../assets/research.png");
 }
-.researchTag span::after{
+.researchTag div::after{
     content: "Research";
 }
 
 .aiTag img{
     content:url("../assets/ai.png");
 }
-.aiTag span::after{
+.aiTag div::after{
     content: "AI";
 }
 
 .helpTag img{
     content:url("../assets/help.png");
 }
-.helpTag span::after{
+.helpTag div::after{
     content: "Help";
 }
 
 .keterTag img{
     content:url("../assets/keter.png");
 }
-.keterTag span::after{
+.keterTag div::after{
     content: "Keter";
 }
 
 .alignmentTag img{
     content:url("../assets/alignment.png");
 }
-.alignmentTag span::after{
+.alignmentTag div::after{
     content: "Alignment";
 }
 
 .clangTag img{
     content:url("../assets/c.png");
 }
-.clangTag span::after{
+.clangTag div::after{
     content: "C";
 }
 
 .cppTag img{
     content:url("../assets/cpp.png");
 }
-.cppTag span::after{
+.cppTag div::after{
     content: "C++";
 }
 
 .cudaTag img{
     content:url("../assets/cuda.png");
 }
-.cudaTag span::after{
+.cudaTag div::after{
     content: "CUDA";
+}
+
+
+@media (max-width: 600px) {
+    .gitLink img, .extraLink img{
+        width: 30px;
+    }
+
+    .gitLink div a, .extraLink div a{
+        font-size: 1.3em;
+    }
 }
 
 
 @media (max-width: 400px) {
     .tag {
         width: 100% !important;
-    }
-
-    .gitLink a, .extraLink a {
-        float: right;
     }
 }
