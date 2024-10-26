@@ -4,7 +4,6 @@ import {createContextMenu, destroyContextMenu} from "@/components/ContextMenu";
 import PropTypes from "prop-types";
 import React, {useEffect, useState} from "react";
 import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
-import $ from "jquery";
 import {Perms, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
 import styles from '@/styles/Sidebar.module.css';
 

@@ -1,11 +1,14 @@
-import React, {useEffect} from "react";
+import React from "react";
 import ReactDOM from 'react-dom/client';
 import PropTypes from "prop-types";
 import styles from "@/styles/ContextMenu.module.css";
 import sidebarStyles from "@/styles/Sidebar.module.css";
 
 
-let contentMenuRoot = null;
+/**
+ * The root element of the context menu
+ */
+let contentMenuRoot;
 
 
 /**
@@ -42,7 +45,7 @@ ContextMenu.propTypes = { top: PropTypes.number, left: PropTypes.number, selecte
  * @param actions {object} The actions to be displayed in the context menu
  */
 function createContextMenu(top, left, selectedFile, actions) {
-    if (contentMenuRoot !== null) contentMenuRoot.unmount(); // Unmount the previous context menu
+    if (contentMenuRoot !== undefined) contentMenuRoot.unmount(); // Unmount the previous context menu
 
     let fileName = selectedFile.name.split(".")[0];
     document.getElementById(fileName + "-File").classList.add(sidebarStyles.selectedSidebarLink);
@@ -55,13 +58,13 @@ function createContextMenu(top, left, selectedFile, actions) {
  * Destroys the context menu and removes the selected file styling
  */
 function destroyContextMenu() {
-    if (contentMenuRoot === null) return;
+    if (contentMenuRoot === undefined) return;
 
     let curSelectedFile = JSON.parse(document.getElementById("contextMenuHolder").childNodes[0].getAttribute("data-refdata"));
     let fileName = curSelectedFile.name.split(".")[0];
 
     contentMenuRoot.unmount();
-    contentMenuRoot = null;
+    contentMenuRoot = undefined;
 
     let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
     let selectedLink = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`)[0];
