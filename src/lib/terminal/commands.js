@@ -689,11 +689,13 @@ class Commands {
         if (options.includes("--help")) {yield Help.eightball; return;}
 
         let question = tokens.join(" ");
+
         if (question === "") throw new CommandError("You need to give me a question to answer :/");
         if (!question.endsWith("?")) throw new CommandError("That doesn't look like a question to me...try adding a '?' at the end");
         let spaces = (question.match(/ /g) || []).length;
         if (spaces < 1) throw new CommandError("You dare ask me such a trivial question?  I need something longer, something more complex...");
         if (spaces < 2 && Math.random() < 0.3) throw new CommandError("I'm getting tired of these simple questions...try again with something longer and more interesting!");
+
         if ((question.match(/meaning of life/g) || []).length > 0 || (question.match(/answer to life/g) || []).length)
             throw new CommandError("That's pretty played out...don't you think?");
 

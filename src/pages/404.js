@@ -11,7 +11,8 @@ const lostQuotes = ['How did we get here?', 'Not all who wander are lost...',
         '"Only those who will risk going too far can possibly know how far one can go." -T.S. Eliot',
         "I'm not taking myself too seriously, you're taking my seriousness too seriously.",
         "I have a feeling that you're ... right where you want to be", "It's dangerous to go alone, take this: 🗡️",
-        "Nobody expects the Spanish Inquisition!!", "Lerroooyyyyy Jeeennnkkkinnnssss!", "What did Ilya see...?"];
+        "Nobody expects the Spanish Inquisition!!", "Lerroooyyyyy Jeeennnkkkinnnssss!", "What did Ilya see...?",
+        "You know, I used to be an adventurer like you, but then I took an arrow to the knee"];
 
 
 function PageNotFound() {

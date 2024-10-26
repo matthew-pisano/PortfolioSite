@@ -147,11 +147,11 @@ const eightballResponses = [
     "Ask again later", "404, response not found", "Better not tell you now", "Cannot predict now",
     "Enrich 95% Uranium 235 and try again", "Don't count on it", "My reply is no", "have you tried sudo?",
     "My sources say no [citation needed]", "Outlook not so good", "Very doubtful", "503, oh no that's not good!",
-    "Huh?", "What?", "Can you speak up?", "Segmentation fault (core dumped)", "Han shot first",
+    "Huh?", "What?", "Can you speak up?", "Segmentation fault (core dumped)", "Only if Han shot first",
     "Have you tried water-scrum-fall?", "Have you tried turning it off and turning it on again?",
-    "Survey says: no", "You are likely to be eaten by a grue", "I'm sorry, Dave, I'm afraid I can't answer that",
+    "Survey says: no", "*You are likely to be eaten by a grue*", "I'm sorry, Dave, I'm afraid I can't answer that",
     "Have you tried rewriting in rust?", "That's what you get for using PHP", "418, I'm a teapot",
-    "The only winning move is not to play", "You should try rearranging the deck chairs on the Titanic",
+    "I'm afraid the only winning move here is not to play", "You should try rearranging the deck chairs on the Titanic",
     "Have you tried adding blockchain?", "Have you tried using AI?", "Have you tried implementing it serverlessly?",
     "Sounds like an NP-hard problem, obviously the solution is trivial!", "Your answer is in another castle",
     "Your mother was a hamster and your father smelt of elderberries", "You will die of dysentery",
@@ -165,7 +165,11 @@ const eightballResponses = [
     "If and only if all axioms of our current system of mathematics are provably consistent within said system",
     "I'm sorry, but as an AI language model, I cannot...\n.\n.\n.\n.\nJust Kidding, that would be overkill, now wouldn't it?",
     "Grass grows, birds fly, sun shines, and brother, I predict the future", "¯\\_(ツ)_/¯",
-    "AAAAAAAHHHHNNNGGGGG!!!!!!! (╯°□°)╯︵ ┻━┻\n.\n.\n.\n.\n...sorry, I lost my temper there for a second", encabulator
+    "AAAAAAAHHHHNNNGGGGG!!!!!!! (╯°□°)╯︵ ┻━┻\n.\n.\n.\n.\n...sorry, I almost lost my cool there", encabulator,
+    "The answer is very simply, yet very profound: [object Object]", "I hate to be the one to break it to you, but the house always wins",
+    "Seriously?  Professionals have standards!", "Have you given any thought to the effect that this may have on the economy?",
+    "You have no chance to survive, make your time!", "All your base are belong to us", "| ||\n|| |_", "Objection!",
+    "The cake is a lie", "That's all well and good, but can it run Doom?"
 ];
 
 
