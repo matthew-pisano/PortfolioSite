@@ -19,7 +19,8 @@ let contentMenuRoot = null;
  */
 function ContextMenu({top, left, selectedFile, actions}) {
     return <div className={`contextMenu ${styles.contextMenu}`} style={{top: top, left: left}}
-                data-refdata={JSON.stringify(selectedFile.serialize())}>
+                data-refdata={JSON.stringify(selectedFile.serialize())}
+                onContextMenu={(e) => e.preventDefault()}>
         {
             Object.keys(actions).map((itemName, index) => {
                 return <button key={index} className={`w3-button ${styles.contextMenuItem}`}
