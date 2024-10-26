@@ -1,3 +1,5 @@
+import sidebarStyles from "../styles/Sidebar.module.css";
+
 
 class ThemeColor {
     /**
@@ -118,12 +120,12 @@ function setTheme(themeName) {
     // Set the sidebar collapse icon based on the theme
     if (["monochrome", "light"].includes(themeName)){  // Dark icon
         document.getElementById("collapseSidebar").style.backgroundImage = "url('/assets/explorerIconDark.svg')";
-        for (let editorButton of document.getElementsByClassName("editorButton"))
+        for (let editorButton of document.getElementsByClassName(sidebarStyles.editorButton))
             editorButton.style.content = "url('/assets/editIconDark.svg')";
     }
     else {  // Light icon
         document.getElementById("collapseSidebar").style.backgroundImage = "";
-        for (let editorButton of document.getElementsByClassName("editorButton"))
+        for (let editorButton of document.getElementsByClassName(sidebarStyles.editorButton))
             editorButton.style.content = "";
     }
 

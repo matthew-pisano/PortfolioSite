@@ -1,13 +1,15 @@
-import styles from "@/styles/Wrapper.module.css";
 import React, {useEffect} from 'react';
 import {buildPage, PageInfo, Tile} from '@/lib/pageBuilder';
 import Wrapper from '@/components/Wrapper';
+
+import styles from "@/styles/Wrapper.module.css";
+import tileStyles from "@/styles/pageTiles.module.css";
 
 
 function Renaissance() {
 
     useEffect(() => {
-        for( let elem of document.getElementsByClassName("displayTile"))
+        for( let elem of document.getElementsByClassName(tileStyles.displayTile))
             elem.style.backgroundColor = "#1e1e1e";
     }, []);
 

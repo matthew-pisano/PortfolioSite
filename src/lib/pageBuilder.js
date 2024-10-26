@@ -1,7 +1,8 @@
 import React from "react";
 import HTMLReactParser from 'html-react-parser';
 import Latex from 'react-latex-next';
-import styles from '../styles/tags.module.css';
+import tagStyles from '../styles/tags.module.css';
+import tileStyles from '../styles/pageTiles.module.css';
 
 
 /**
@@ -82,11 +83,11 @@ class PageInfo {
  */
 function buildTags(tile, dark = false){
 
-    let tagClasses = `w3-mobile w3-row w3-col ${dark ? styles.darkTag : ""}`;
+    let tagClasses = `w3-mobile w3-row w3-col ${dark ? tagStyles.darkTag : ""}`;
     return (
         <div className="w3-row">
             {tile.gitLink ?
-                <div className={`${tagClasses} ${styles.gitLink}`}>
+                <div className={`${tagClasses} ${tagStyles.gitLink}`}>
                     <img className="w3-col" alt='gitLink'/>
                     <div className="w3-rest">
                         <a href={tile.gitLink} target="_blank" rel="noreferrer">
@@ -97,7 +98,7 @@ function buildTags(tile, dark = false){
             }
             {tile.extraLinks ?
                 tile.extraLinks.map((extraLink, i) => {
-                return <div className={`${tagClasses} ${styles.extraLink}`} key={'extraLink'+tile.extraTitles[i]}>
+                return <div className={`${tagClasses} ${tagStyles.extraLink}`} key={'extraLink'+tile.extraTitles[i]}>
                     <img className="w3-col" alt='extraLink'/>
                     <div className="w3-rest">
                         <a href={extraLink} target="_blank" rel="noreferrer">{tile.extraTitles[i]}</a>
@@ -106,7 +107,7 @@ function buildTags(tile, dark = false){
                 }) : null
             }
             {(tile.tags ? tile.tags : []).map((tagName, i) =>
-                <div className={`w3-col w3-mobile ${styles.tag} ${styles[tagName+'Tag']}`} key={tagName}>
+                <div className={`w3-col w3-mobile ${tagStyles.tag} ${tagStyles[tagName+'Tag']}`} key={tagName}>
                     <img className="w3-col" alt={tagName}/>
                     <div className="w3-rest"></div>
                 </div>
@@ -126,7 +127,7 @@ function buildTags(tile, dark = false){
 function buildPage(pageInfo, tiles){
 
     pageInfo.pageName = pageInfo.pageName.split("/").join("");
-    return <div id="tileHolder" className="w3-display-container" style={pageInfo.holderStyle}>
+    return <div id="tileHolder" className={`w3-display-container ${tileStyles.tileHolder}`} style={pageInfo.holderStyle}>
         {buildTags(pageInfo, true)}
         {
             tiles.map((tile, i) =>{
@@ -143,12 +144,11 @@ function buildPage(pageInfo, tiles){
                 if(tile.title.startsWith("#")) titleElement = <h2><b id={titleId}>{HTMLReactParser(tile.title.substring(1))}</b></h2>;
                 else titleElement = <b id={titleId} style={titleStyle}>{HTMLReactParser(tile.title)}</b>;
 
-                if(tile.titleLink)
-                    titleElement = <a href={tile.titleLink}><u>{titleElement}</u></a>;
+                if(tile.titleLink) titleElement = <a href={tile.titleLink}><u>{titleElement}</u></a>;
 
                 let titleContent = tile.content && tile.latex ? <Latex>{tile.content}</Latex> : tile.content ? HTMLReactParser(tile.content) : "";
-                let tileContentElem = tile.content ? <span id={pageInfo.pageName+"Tile"+i+"Content"} style={{margin: "15px 0px", display: "block"}}>{titleContent}</span> : <></>;
-                let className = "displayTile w3-container w3-row"+(tile.gallery ? " galleryTile" : "");
+                let tileContentElem = tile.content ? <span id={pageInfo.pageName+"Tile"+i+"Content"} style={{margin: "15px 0px", display: "block"}}>{titleContent}</span> : null;
+                let className = `w3-container w3-row ${tileStyles.displayTile} ${tile.gallery ? tileStyles.galleryTile : ""}`;
 
                 return <div id={pageInfo.pageName+"Tile"+i} className={className} key={pageInfo.pageName+"Tile"+i} style={tileStyle}>
                     

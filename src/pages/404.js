@@ -1,7 +1,9 @@
-import styles from "@/styles/Wrapper.module.css";
 import React, {useEffect, useState} from 'react';
 import {PageInfo} from '@/lib/pageBuilder';
 import Wrapper from "@/components/Wrapper";
+
+import styles from "@/styles/Wrapper.module.css";
+import tileStyles from '@/styles/pageTiles.module.css';
 
 
 const lostQuotes = ['How did we get here?', 'Not all who wander are lost...', 
@@ -45,7 +47,7 @@ function PageNotFound() {
             <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
         </div>
         <div id="tileHolder" className="w3-display-container" style={{backgroundColor: "#000000"}}>
-            <div className="displayTile w3-container w3-row">
+            <div className={`w3-container w3-row ${tileStyles.displayTile}`}>
                 <h3><b>Something&apos;s Not Right</b></h3>
                 <span style={{margin: "15px 0px", display: "block"}}>
                     The page <i style={{backgroundColor: "#454545", borderRadius: "4px"}}>{location}</i> does
@@ -55,10 +57,10 @@ function PageNotFound() {
                     and I show you how deep the rabbit hole goes.  Remember, all I&apos;m offering is the truth.  Nothing more.
                 </span>
             </div>
-            <a id="confirmTile" className="displayTile choiceTile w3-container w3-row" href="/home">
+            <a className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.confirmTile}`} href="/home">
                 <b>Back to Safety</b>
             </a>
-            <a id="denyTile" className="displayTile choiceTile w3-container w3-row" href={nextLink()}>
+            <a className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.denyTile}`} href={nextLink()}>
                 <b>Continue Onwards</b>
             </a>
         </div>

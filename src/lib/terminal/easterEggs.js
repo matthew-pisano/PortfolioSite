@@ -115,7 +115,7 @@ async function *rmRoot() {
         yield lines[i]+"\n";
         await new Promise(resolve => setTimeout(resolve, 20));
     }
-    let pageElem = document.getElementsByClassName("page")[0];
+    let pageElem = document.getElementById("page");
     document.getElementById("menuDropHolder").remove();
     for (let statusElem of ["langStatus", "encodingStatus", "linesStatus", "sizeStatus", "itemStatus"]) {
         document.getElementById(statusElem).innerText = "???";

@@ -1,5 +1,5 @@
 
-#tileHolder {
+.tileHolder {
     width: 100%;
     background-color: var(--theme-color-1);
     margin-top: 250px;
@@ -7,11 +7,6 @@
     padding-top: 50px;
     padding-bottom: 10px;
     border-radius: 10px;
-}
-
-#resumeEmbed {
-    width: 100%;
-    height: 100%;
 }
 
 .displayTile {
@@ -57,11 +52,11 @@
     margin-right: 20%;
 }
 
-#confirmTile {
+.confirmTile {
     background-color: var(--theme-color-2-selected);
 }
 
-#denyTile {
+.denyTile {
     background-color: #000000;
     background-image: url("/assets/matrix.gif");
 }
@@ -90,7 +85,7 @@
         margin-left: 10px !important;
     }
 
-    #tileHolder {
+    .tileHolder {
         margin-top: 300px;
         padding-right: 10px;
     }

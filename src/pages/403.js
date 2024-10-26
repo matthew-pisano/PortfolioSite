@@ -3,6 +3,7 @@ import {PageInfo} from '@/lib/pageBuilder';
 import Wrapper from '@/components/Wrapper';
 
 import styles from '@/styles/Wrapper.module.css';
+import tileStyles from '@/styles/pageTiles.module.css';
 
 
 const authQuotes = ["You appear to have been misinformed.", "You're not from around here, ain't ya?",
@@ -32,7 +33,7 @@ function Unauthorized() {
             <h3 style={{margin: "auto", width: "auto", textAlign: "center"}}>{pageInfo.summary}</h3>
         </div>
         <div id="tileHolder" className="w3-display-container" style={{backgroundColor: "#000000"}}>
-            <div className="displayTile w3-container w3-row">
+            <div className={`w3-container w3-row ${tileStyles.displayTile}`}>
                 <h3><b>We have detected an unauthorized access attempt</b></h3>
                 <span style={{margin: "15px 0px", display: "block"}}>
                     You either do not have the permissions to view the requested page or your authorization
@@ -41,7 +42,7 @@ function Unauthorized() {
                     Searching in areas that you are not meant to go serves the good of nobody.
                 </span>
             </div>
-            <a id="confirmTile" className="displayTile choiceTile w3-container w3-row" href="/home">
+            <a className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.confirmTile}`} href="/home">
                 <b>Back to Safety</b>
             </a>
         </div>

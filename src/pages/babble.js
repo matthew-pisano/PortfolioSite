@@ -1,7 +1,8 @@
-import styles from "@/styles/Wrapper.module.css";
 import React, {useEffect} from 'react';
 import {buildPage, PageInfo, Tile} from '@/lib/pageBuilder';
 import Wrapper from '@/components/Wrapper';
+
+import styles from "@/styles/Wrapper.module.css";
 
 
 /**
@@ -41,7 +42,7 @@ async function backgroundGradient() {
  */
 async function babelTilesStep(){
     // Update the title card with random text
-    document.getElementsByClassName("titleCard")[0].children[0].children[0].innerText = randText(Math.floor(Math.random()*5)+10);
+    document.getElementsByClassName(styles.titleCard)[0].children[0].children[0].innerText = randText(Math.floor(Math.random()*5)+10);
 
     let radii = ["10px", "20px", "50px"];
     let tileIndex = 0;
