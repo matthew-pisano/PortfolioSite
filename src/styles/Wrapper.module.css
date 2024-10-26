@@ -49,4 +49,13 @@
         margin-left: 10px;
         margin-right: 10px;
     }
+
+    .openSidebarPage {
+        margin-left: 10px !important;
+    }
+
+    .closeSidebarPage {
+        margin-left: 10px !important;
+    }
+
 }

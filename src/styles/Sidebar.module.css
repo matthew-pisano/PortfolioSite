@@ -20,6 +20,11 @@
 .collapseHolder {
     position: fixed;
     z-index: 3;
+    background-color: var(--theme-color-2);
+    border-style: none solid none none;
+    border-color: var(--theme-accent);
+    border-width: 2px;
+
 }
 
 .sidebarContent {
@@ -105,7 +110,7 @@
 }
 
 .collapseSidebar {
-    width: 40px;
+    width: 38px;
     height: 40px;
     padding: 1px;
     background-color: var(--theme-color-2-selected);
@@ -162,6 +167,10 @@
 
     .editorButton {
         display: none;
+    }
+
+    .collapseHolder {
+        border-style: none;
     }
 
 

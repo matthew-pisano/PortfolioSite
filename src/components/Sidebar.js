@@ -110,7 +110,7 @@ function renameFile(file, parentPath) {
     // Create a text area to rename the file
     let renamer = document.createElement("textarea");
     renamer.id = fileName + "-FileRenamer";
-    renamer.className = "fileRenamer";
+    renamer.className = styles.fileRenamer;
     renamer.value = file.name;
     // Replace the file link with the renamer
     let fileLink = document.getElementById(fileName + "-FileLink");
