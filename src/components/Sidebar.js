@@ -1,6 +1,7 @@
 import {FileSystem, masterFileSystem, pathJoin} from "@/lib/fileSystem/fileSystem";
 import {showDialog} from "@/lib/utils";
 import {createContextMenu, destroyContextMenu} from "@/components/ContextMenu";
+import PropTypes from "prop-types";
 import React, {useEffect, useState} from "react";
 import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
 import $ from "jquery";
@@ -12,7 +13,7 @@ import styles from '@/styles/Sidebar.module.css';
  * The persistent state of the sidebar
  * @type {boolean}
  */
-let sidebarOpen = true;
+// let sidebarOpen = true;
 
 
 /**
@@ -64,12 +65,16 @@ function buildFile(file, path) {
 
     let parentFolder = pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""));
 
-    // eslint-disable-next-line react/no-unknown-property
-    return <div key={fileName + "-File"} id={fileName + "-File"} className={`sidebarItem sidebarLink w3-row ${styles.sidebarItem} ${styles.sidebarLink}`} linkpath={linkPath} onContextMenu={(e) => {
-        createContextMenu(e.clientY, e.clientX, file, {rename: () => renameFile(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
+    let onContextMenu = (e) => {
+        createContextMenu(e.clientY, e.clientX, file,
+            {rename: () => renameFile(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
         // Prevent the default context menu from appearing
         e.preventDefault();
-    }}>
+    };
+
+    // eslint-disable-next-line react/no-unknown-property
+    return <div key={fileName + "-File"} id={fileName + "-File"} linkpath={linkPath} onContextMenu={onContextMenu}
+                className={`sidebarItem sidebarLink w3-row ${styles.sidebarItem} ${styles.sidebarLink}`}>
         <img className={`${styles.htmlIcon}`} alt=''/>
         <a id={fileName + "-FileLink"} href={urlPath}>{file.name}</a>
         {editIcon}
@@ -205,43 +210,6 @@ function buildSidebar() {
 
 
 /**
- * Set the state of the sidebar
- * @param openState {boolean} The state to set the sidebar to, toggles state if not explicitly provided
- * @param animate {boolean} Whether to animate the sidebar state change
- */
-function setSidebarState(openState =! sidebarOpen, animate = true){
-    let pageElement = document.getElementById("page");
-    if(!openState){
-        // Close the sidebar
-        document.getElementById("sidebarContent").style.display = "none";
-        document.getElementById("sidebar").classList.replace(styles.openSidebar, styles.closeSidebar);
-        document.getElementById("collapseHolder").classList.replace(styles.openSidebar, styles.closeSidebar);
-        document.getElementById("explorerTitle").style.display = "none";
-
-        pageElement.classList.add("closeSidebarPage");
-        pageElement.classList.remove("openSidebarPage");
-
-        $("#sidebarContent").animate({"width": "0px"}, animate ? 200 : 0);
-    }
-    else{
-        // Open the sidebar
-        document.getElementById("sidebarContent").style.display = "block";
-        $("#sidebarContent").animate({"width": "100%"}, animate ? 200 : 0);
-        document.getElementById("sidebar").classList.replace(styles.closeSidebar, styles.openSidebar);
-        document.getElementById("collapseHolder").classList.replace(styles.closeSidebar, styles.openSidebar);
-
-        pageElement.classList.remove("closeSidebarPage");
-        pageElement.classList.add("openSidebarPage");
-
-        document.getElementById("explorerTitle").style.display = "";
-        $(".sidebarItem").visible();
-    }
-
-    sidebarOpen = openState;
-}
-
-
-/**
  * Merge the custom hierarchy with the hierarchy from the server, keeping custom files and updating from the server
  * @param serverFS The initial file system from the server
  * @param customFS The custom file system from the client
@@ -258,15 +226,17 @@ function mergeCachedPages(serverFS, customFS) {
 
 /**
  * The sidebar component that displays the file system hierarchy, used for navigation and file management
+ * @param changeSidebarState {function} The callback function to change the sidebar state
  * @returns {JSX.Element} The sidebar component
  */
-function Sidebar() {
+function Sidebar({changeSidebarState}) {
     const [explorerTree, setExplorerTree] = useState(buildSidebar());
+    const [sidebarOpen, setSidebarOpen] = useState(true);
 
     useEffect(() => {
         // Close the sidebar on mobile
         if(window.innerWidth < 600)
-            setSidebarState(false);
+            setSidebarOpen(false);
 
         // Load the custom hierarchy from local storage
         let savedHierarchy = localStorage.getItem("hierarchy");
@@ -287,23 +257,38 @@ function Sidebar() {
     }, []);
 
     useEffect(() => {
+        changeSidebarState(sidebarOpen);
+        if (sidebarOpen) $("#sidebarContent").animate({"width": "100%"}, 200);
+        else $("#sidebarContent").animate({"width": "0px"}, 0);
+    }, [sidebarOpen]);
+
+    useEffect(() => {
         // Highlight the current page in the sidebar
         let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
         if (pagePath.endsWith("display") || pagePath.endsWith("edit")) pagePath = window.location.search.split("file=")[1];
         let selectedLink = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`)[0];
-        if (selectedLink) selectedLink.classList.add("selectedSidebarLink");
+        if (selectedLink) selectedLink.classList.add(styles.selectedSidebarLink);
     }, [explorerTree]);
 
+    let sidebarStateCls = sidebarOpen ? styles.openSidebar : styles.closeSidebar;
     return (
-        <div id="sidebar" className={`w3-col ${styles.openSidebar} ${styles.sidebar}`}>
-            <div id="collapseHolder" className={`w3-cell-row ${styles.openSidebar} ${styles.collapseHolder}`}>
-                <button id="collapseSidebar" className={`w3-button w3-cell ${styles.collapseSidebar}`} onClick={() => setSidebarState()}></button>
-                <span id="explorerTitle" className={`w3-cell ${styles.sidebarItem} ${styles.explorerTitle}`}>Explorer</span>
+        <div id="sidebar" className={`w3-col ${sidebarStateCls} ${styles.sidebar}`}>
+            <div id="collapseHolder" className={`w3-cell-row ${sidebarStateCls} ${styles.collapseHolder}`}>
+                <button id="collapseSidebar" className={`w3-button w3-cell ${styles.collapseSidebar}`}
+                        onClick={() => setSidebarOpen(!sidebarOpen)}></button>
+                <span id="explorerTitle" className={`w3-cell ${styles.sidebarItem} ${styles.explorerTitle}`}
+                      style={{display: sidebarOpen ? "inline" : "none"}}>
+                    Explorer
+                </span>
             </div>
-            <div id="sidebarContent" className={`w3-display-container w3-row ${styles.sidebarContent}`}>{explorerTree}</div>
+            <div id="sidebarContent" className={`w3-display-container w3-row ${styles.sidebarContent}`}
+                 style={{display: sidebarOpen ? "block" : "none"}}>
+                {explorerTree}
+            </div>
         </div>
     );
 }
+Sidebar.propTypes = { changeSidebarState: PropTypes.func };
 
 
 export {renameFile, Sidebar};

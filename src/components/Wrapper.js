@@ -53,6 +53,9 @@ function addWrapperListeners() {
  */
 function Wrapper({children, pageName, pageStyle}) {
     const [currentPath, setCurrentPath] = useState(null);
+    const [sidebarOpen, setSidebarOpen] = useState(true);
+
+    const changeSidebarState = (newState) => {setSidebarOpen(newState);};
 
     let dehydratedInfo;
     if (typeof window === 'undefined') dehydratedInfo = buildServerside();
@@ -71,14 +74,15 @@ function Wrapper({children, pageName, pageStyle}) {
         setTheme(localStorage.getItem("theme"));
     }, []);
 
+    let pageStateCls = sidebarOpen ? styles.openSidebarPage : styles.closeSidebarPage;
     return (
         <div id="wrapper" className={`w3-display-container ${styles.wrapper}`}>
             <Head><title>{pageName.substring(pageName.lastIndexOf("/") + 1) + ".html"}</title></Head>
             <HeaderMenu currentPath={currentPath}/>
 
             <div id="wrapperContent" className={`w3-display-container w3-row ${styles.wrapperContent}`}>
-                <Sidebar/>
-                <div id="page" className={`w3-rest ${styles.page}`} style={pageStyle}>
+                <Sidebar changeSidebarState={changeSidebarState}/>
+                <div id="page" className={`w3-rest ${styles.page} ${pageStateCls}`} style={pageStyle}>
                     {children}
                 </div>
             </div>

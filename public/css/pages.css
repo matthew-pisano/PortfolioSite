@@ -1,12 +1,4 @@
 
-.openSidebarPage {
-    margin-left: 250px !important;
-}
-
-.closeSidebarPage {
-    margin-left: 50px !important;
-}
-
 #tileHolder {
     width: 100%;
     background-color: var(--theme-color-1);

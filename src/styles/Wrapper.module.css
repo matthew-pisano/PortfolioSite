@@ -34,6 +34,14 @@
     pointer-events: none;
 }
 
+.openSidebarPage {
+    margin-left: 250px !important;
+}
+
+.closeSidebarPage {
+    margin-left: 50px !important;
+}
+
 
 @media (max-width: 600px) {
     .page {
