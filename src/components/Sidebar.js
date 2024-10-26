@@ -10,13 +10,6 @@ import styles from '@/styles/Sidebar.module.css';
 
 
 /**
- * The persistent state of the sidebar
- * @type {boolean}
- */
-// let sidebarOpen = true;
-
-
-/**
  * Create a directory element in the sidebar
  * @param directory {Directory} The directory to create
  * @param path {string} The path of the directory
@@ -256,11 +249,7 @@ function Sidebar({changeSidebarState}) {
 
     }, []);
 
-    useEffect(() => {
-        changeSidebarState(sidebarOpen);
-        if (sidebarOpen) $("#sidebarContent").animate({"width": "100%"}, 200);
-        else $("#sidebarContent").animate({"width": "0px"}, 0);
-    }, [sidebarOpen]);
+    useEffect(() => {changeSidebarState(sidebarOpen);}, [sidebarOpen]);
 
     useEffect(() => {
         // Highlight the current page in the sidebar
