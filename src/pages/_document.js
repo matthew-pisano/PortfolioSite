@@ -13,7 +13,6 @@ export default function Document() {
                 <link href="/css/common.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/pages.css" rel="stylesheet" type="text/css"/>
                 <link href="/css/editor.css" rel="stylesheet" type="text/css"/>
-                <link href="/css/tags.css" rel="stylesheet" type="text/css"/>
             </Head>
             <body>
             <Main/>

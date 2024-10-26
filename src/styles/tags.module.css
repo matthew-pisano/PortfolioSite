@@ -32,11 +32,11 @@
 }
 
 .gitLink img{
-    content:url("../assets/github.png");
+    content:url("/assets/github.png");
 }
 
 .extraLink img{
-    content:url("../assets/paper.png");
+    content:url("/assets/paper.png");
 }
 
 .darkTag {
@@ -46,137 +46,137 @@
 /*Tags*/
 
 .paperTag img{
-    content:url("../assets/paper.png");
+    content:url("/assets/paper.png");
 }
 
 .personalTag img{
-    content:url("../assets/personal.png");
+    content:url("/assets/personal.png");
 }
 .personalTag div::after{
     content: "Personal";
 }
 
 .academicTag img{
-    content:url("../assets/academic.png");
+    content:url("/assets/academic.png");
 }
 .academicTag div::after{
     content: "Academic";
 }
 
 .javaTag img{
-    content:url("../assets/java.png");
+    content:url("/assets/java.png");
 }
 .javaTag div::after{
     content: "Java";
 }
 
 .androidTag img{
-    content:url("../assets/android.png");
+    content:url("/assets/android.png");
 }
 .androidTag div::after{
     content: "Android";
 }
 
 .pythonTag img{
-    content:url("../assets/python.png");
+    content:url("/assets/python.png");
 }
 .pythonTag div::after{
     content: "Python";
 }
 
 .assemblyTag img{
-    content:url("../assets/assembly.png");
+    content:url("/assets/assembly.png");
 }
 .assemblyTag div::after{
     content: "Assembly";
 }
 
 .phpTag img{
-    content:url("../assets/php.png");
+    content:url("/assets/php.png");
 }
 .phpTag div::after{
     content: "PHP";
 }
 
 .htmlTag img{
-    content:url("../assets/html.png");
+    content:url("/assets/html.png");
 }
 .htmlTag div::after{
     content: "HTML";
 }
 
 .jsTag img{
-    content:url("../assets/js.png");
+    content:url("/assets/js.png");
 }
 .jsTag div::after{
     content: "JavaScript";
 }
 
 .collabTag img{
-    content:url("../assets/collab.png");
+    content:url("/assets/collab.png");
 }
 .collabTag div::after{
     content: "Collaboration";
 }
 
 .hackTag img{
-    content:url("../assets/hackathon.png");
+    content:url("/assets/hackathon.png");
 }
 .hackTag div::after{
     content: "Hackathon";
 }
 
 .researchTag img{
-    content:url("../assets/research.png");
+    content:url("/assets/research.png");
 }
 .researchTag div::after{
     content: "Research";
 }
 
 .aiTag img{
-    content:url("../assets/ai.png");
+    content:url("/assets/ai.png");
 }
 .aiTag div::after{
     content: "AI";
 }
 
 .helpTag img{
-    content:url("../assets/help.png");
+    content:url("/assets/help.png");
 }
 .helpTag div::after{
     content: "Help";
 }
 
 .keterTag img{
-    content:url("../assets/keter.png");
+    content:url("/assets/keter.png");
 }
 .keterTag div::after{
     content: "Keter";
 }
 
 .alignmentTag img{
-    content:url("../assets/alignment.png");
+    content:url("/assets/alignment.png");
 }
 .alignmentTag div::after{
     content: "Alignment";
 }
 
 .clangTag img{
-    content:url("../assets/c.png");
+    content:url("/assets/c.png");
 }
 .clangTag div::after{
     content: "C";
 }
 
 .cppTag img{
-    content:url("../assets/cpp.png");
+    content:url("/assets/cpp.png");
 }
 .cppTag div::after{
     content: "C++";
 }
 
 .cudaTag img{
-    content:url("../assets/cuda.png");
+    content:url("/assets/cuda.png");
 }
 .cudaTag div::after{
     content: "CUDA";

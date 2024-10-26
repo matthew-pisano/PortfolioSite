@@ -1,6 +1,7 @@
 import React from "react";
 import HTMLReactParser from 'html-react-parser';
 import Latex from 'react-latex-next';
+import styles from '../styles/tags.module.css';
 
 
 /**
@@ -81,30 +82,32 @@ class PageInfo {
  */
 function buildTags(tile, dark = false){
 
-    let tagClasses = (dark ? "darkTag ": "") + "w3-mobile w3-row w3-col";
+    let tagClasses = `w3-mobile w3-row w3-col ${dark ? styles.darkTag : ""}`;
     return (
         <div className="w3-row">
             {tile.gitLink ?
-                <div className={"gitLink "+tagClasses}>
+                <div className={`${tagClasses} ${styles.gitLink}`}>
                     <img className="w3-col" alt='gitLink'/>
-                    <div className="w3-rest"><a href={tile.gitLink} target="_blank" rel="noreferrer">
-                        {tile.gitTitle ? tile.gitTitle : tile.title}
-                    </a></div>
+                    <div className="w3-rest">
+                        <a href={tile.gitLink} target="_blank" rel="noreferrer">
+                            {tile.gitTitle ? tile.gitTitle : tile.title}
+                        </a>
+                    </div>
                 </div> : null
             }
             {tile.extraLinks ?
                 tile.extraLinks.map((extraLink, i) => {
-                return  <div className={"extraLink "+tagClasses} key={'extraLink'+tile.extraTitles[i]}>
-                        <img className="w3-col" alt='extraLink'/>
-                    <div className="w3-rest"><a href={extraLink} target="_blank" rel="noreferrer">
-                        {tile.extraTitles[i]}
-                    </a></div>
+                return <div className={`${tagClasses} ${styles.extraLink}`} key={'extraLink'+tile.extraTitles[i]}>
+                    <img className="w3-col" alt='extraLink'/>
+                    <div className="w3-rest">
+                        <a href={extraLink} target="_blank" rel="noreferrer">{tile.extraTitles[i]}</a>
+                    </div>
                 </div>;
                 }) : null
             }
-            {(tile.tags ? tile.tags : []).map((tag, i) =>
-                <div className={"w3-col tag "+tag+"Tag w3-mobile"} key={tag}>
-                    <img className="w3-col" alt={tag}/>
+            {(tile.tags ? tile.tags : []).map((tagName, i) =>
+                <div className={`w3-col w3-mobile ${styles.tag} ${styles[tagName+'Tag']}`} key={tagName}>
+                    <img className="w3-col" alt={tagName}/>
                     <div className="w3-rest"></div>
                 </div>
                 )
