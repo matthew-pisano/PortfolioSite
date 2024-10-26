@@ -1,0 +1,24 @@
+.contextMenu {
+    width: 200px;
+    border-style: solid;
+    border-color: var(--theme-accent);
+    border-width: 1px;
+    border-radius: 5px;
+    z-index: 100;
+    position: fixed;
+    background-color: var(--theme-color-3);
+    padding: 5px;
+}
+
+.contextMenuItem {
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    text-align: left;
+    padding: 2px 3px;
+}
+
+.contextMenuItem:hover {
+    background-color: var(--theme-color-3-hover) !important;
+    color: var(--theme-text-hover) !important;
+}

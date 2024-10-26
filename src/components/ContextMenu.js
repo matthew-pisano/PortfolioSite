@@ -1,6 +1,8 @@
 import React, {useEffect} from "react";
 import ReactDOM from 'react-dom/client';
 import PropTypes from "prop-types";
+import styles from "@/styles/ContextMenu.module.css";
+import sidebarStyles from "@/styles/Sidebar.module.css";
 
 
 let contentMenuRoot = null;
@@ -16,15 +18,11 @@ let contentMenuRoot = null;
  * @constructor
  */
 function ContextMenu({top, left, selectedFile, actions}) {
-    useEffect(() => {
-        let fileName = selectedFile.name.split(".")[0];
-        document.getElementById(fileName + "-File").classList.add("selectedSidebarLink");
-    }, []);
-
-    return <div className={"contextMenu"} style={{top: top, left: left}} data-refdata={JSON.stringify(selectedFile.serialize())}>
+    return <div className={`contextMenu ${styles.contextMenu}`} style={{top: top, left: left}}
+                data-refdata={JSON.stringify(selectedFile.serialize())}>
         {
             Object.keys(actions).map((itemName, index) => {
-                return <button key={index} className={"contextMenuItem w3-button"}
+                return <button key={index} className={`w3-button ${styles.contextMenuItem}`}
                                onClick={() => {actions[itemName](); destroyContextMenu();}}>
                     {itemName}
                 </button>;
@@ -44,6 +42,9 @@ ContextMenu.propTypes = { top: PropTypes.number, left: PropTypes.number, selecte
  */
 function createContextMenu(top, left, selectedFile, actions) {
     if (contentMenuRoot !== null) contentMenuRoot.unmount(); // Unmount the previous context menu
+
+    let fileName = selectedFile.name.split(".")[0];
+    document.getElementById(fileName + "-File").classList.add(sidebarStyles.selectedSidebarLink);
 
     contentMenuRoot = ReactDOM.createRoot(document.getElementById("contextMenuHolder"));
     contentMenuRoot.render(<ContextMenu top={top} left={left} selectedFile={selectedFile} actions={actions}/>);
@@ -65,7 +66,7 @@ function destroyContextMenu() {
     let selectedLink = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`)[0];
     let fileElement = document.getElementById(fileName + "-File");
     if (selectedLink.id !== fileName + "-File" && fileElement)
-        fileElement.classList.remove("selectedSidebarLink");
+        fileElement.classList.remove(sidebarStyles.selectedSidebarLink);
 }
 
 export {createContextMenu, destroyContextMenu};
