@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -39,7 +39,7 @@ function PredictChain() {
         ),
         new Tile(
             "<h2>Project Details</h2>",
-            "", "", [], null, [], "",
+            "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -86,10 +86,8 @@ function PredictChain() {
         "Empowering collaboration and data accessibility for AI in a decentralized blockchain-based marketplace",
         {backgroundColor: "#3b5783"},
         ["research", "academic", "ai", "python", "hack"],
-        "https://github.com/predict-chain/predict-chain",
-        "PredictChain",
-        ["https://arxiv.org/abs/2307.15168"],
-        ["Research Paper"]
+        [ new GitLink("https://github.com/predict-chain/predict-chain", "PredictChain"),
+            new TileLink("https://arxiv.org/abs/2307.15168", "Research Paper")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

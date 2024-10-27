@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -47,8 +47,7 @@ function AnonHires() {
         "A Web-based hiring platform with anonymity",
         {backgroundColor: "#4c8e4b"},
         ["hack", "collab", "js", "python", "html"],
-        "https://github.com/OpenHubHackathonGreen/Anonymous-Hires",
-        "Anon Hires"
+        [new GitLink("https://github.com/OpenHubHackathonGreen/Anonymous-Hires", "Anon Hires")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

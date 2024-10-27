@@ -5,7 +5,6 @@ import tagStyles from '../styles/tags.module.css';
 import tileStyles from '../styles/pageTiles.module.css';
 
 
-// TODO: Add gitlink subclass
 class TileLink {
 
     /**
@@ -13,11 +12,24 @@ class TileLink {
      * @param link {string} The link to the page
      * @param title {string} The title of the link
      */
-    constructor(link, title = ""){
+    constructor(link, title){
         this.link = link;
         this.title = title;
     }
 
+}
+
+
+class GitLink extends TileLink {
+
+        /**
+        * A class for creating a link to a git repository
+        * @param link {string} The link to the git repository
+        * @param title {string} The title of the git repository
+        */
+        constructor(link, title){
+            super(link, title);
+        }
 }
 
 
@@ -31,14 +43,13 @@ class Tile {
      * @param content {string} The content of the tile
      * @param thumbnail {string} The thumbnail image for the tile
      * @param tags {string[]} The tags for the tile
-     * @param gitLink {TileLink} The link to the git repository
-     * @param extraLinks {TileLink[]} Extra links to display
+     * @param links {TileLink[]} Links to display
      * @param titleLink {string} The link that the title should go to
      * @param style {object} The style of the tile
      * @param latex {boolean} Whether the content should be rendered as latex
      */
-    constructor(title, content, thumbnail = "", tags = [], gitLink = null,
-                extraLinks = [], titleLink = "", style = {}, latex = false){
+    constructor(title, content, thumbnail = "", tags = [],
+                links = [], titleLink = "", style = {}, latex = false){
         this.title = title;
         this.content = content;
         this.tags = tags;
@@ -46,8 +57,7 @@ class Tile {
         this.style = style;
         this.titleLink = titleLink;
         this.latex = latex;
-        this.gitLink = gitLink;
-        this.extraLinks = extraLinks;
+        this.links = links;
         this.gallery = false;
     }
 }
@@ -59,15 +69,14 @@ class GalleryTile extends Tile {
      * @param content {string} The content of the tile
      * @param thumbnail {string} The thumbnail image for the tile
      * @param tags {string[]} The tags for the tile
-     * @param gitLink {TileLink} The link to the git repository
-     * @param extraLinks {TileLink[]} Extra links to display
+     * @param links {TileLink[]} Links to display
      * @param titleLink {string} The link that the title should go to
      * @param style {object} The style of the tile
      * @param latex {boolean} Whether the content should be rendered as latex
      */
-    constructor(title, content, thumbnail = "", tags = [], gitLink = null,
-                extraLinks = [], titleLink = "", style = {}, latex = false){
-        super(title, content, thumbnail, tags, gitLink, extraLinks, titleLink, style, latex);
+    constructor(title, content, thumbnail = "", tags = [],
+                links = [], titleLink = "", style = {}, latex = false){
+        super(title, content, thumbnail, tags, links, titleLink, style, latex);
         this.gallery = true;
     }
 }
@@ -86,21 +95,14 @@ class PageInfo {
      * @param summary {string} A brief summary of the page
      * @param holderStyle {object} The style of the page holder
      * @param tags {string[]} The tags for the page
-     * @param gitLink {string} The link to the git repository
-     * @param gitTitle {string} The title of the git repository link
-     * @param extraLinks {string[]} Extra links to display
-     * @param extraTitles {string[]} The titles of the extra links
+     * @param links {TileLink[]} Links to display at the top of the page
      */
-    constructor(pageName, title, summary, holderStyle = {}, tags = [],
-                gitLink = "", gitTitle = "", extraLinks = [], extraTitles = []){
+    constructor(pageName, title, summary, holderStyle = {}, tags = [], links = []){
         this.pageName = pageName;
         this.title = title;
         this.summary = summary;
         this.holderStyle = holderStyle;
-        this.gitLink = gitLink;
-        this.gitTitle = gitTitle;
-        this.extraLinks = extraLinks;
-        this.extraTitles = extraTitles;
+        this.links = links;
         this.tags = tags;
     }
 }
@@ -113,30 +115,18 @@ class PageInfo {
  * @return {JSX.Element} The tags JSX DIV element
  */
 function buildTags(tile, dark = false){
-    console.log(tile);
     let tagClasses = `w3-mobile w3-row w3-col ${dark ? tagStyles.darkTag : ""}`;
     return (
         <div className="w3-row">
-            {tile.gitLink ?
-                <div className={`${tagClasses} ${tagStyles.gitLink}`}>
-                    <img className="w3-col" alt='gitLink'/>
+            {(tile.links || []).map((tileLink, i) => {
+                tagClasses += " " + (tileLink instanceof GitLink ? tagStyles.gitLink : tagStyles.extraLink);
+                return <div className={`${tagClasses}`} key={'tileLink'+tileLink.title}>
+                    <img className="w3-col" alt='tileLink'/>
                     <div className="w3-rest">
-                        <a href={tile.gitLink.link} target="_blank" rel="noreferrer">
-                            {tile.gitLink.title ? tile.gitLink.title : tile.title}
-                        </a>
-                    </div>
-                </div> : null
-            }
-            {tile.extraLinks ?
-                tile.extraLinks.map((extraLink, i) => {
-                return <div className={`${tagClasses} ${tagStyles.extraLink}`} key={'extraLink'+extraLink.title}>
-                    <img className="w3-col" alt='extraLink'/>
-                    <div className="w3-rest">
-                        <a href={extraLink.link} target="_blank" rel="noreferrer">{extraLink.title}</a>
+                        <a href={tileLink.link} target="_blank" rel="noreferrer">{tileLink.title}</a>
                     </div>
                 </div>;
-                }) : null
-            }
+            })}
             {(tile.tags || []).map((tagName, i) =>
                 <div className={`w3-col w3-mobile ${tagStyles.tag} ${tagStyles[tagName+'Tag']}`} key={tagName}>
                     <img className="w3-col" alt={tagName}/>
@@ -191,4 +181,4 @@ function buildPage(pageInfo, tiles){
 }
 
 
-export {buildPage, PageInfo, Tile, GalleryTile, TileLink};
+export {buildPage, PageInfo, Tile, GalleryTile, TileLink, GitLink};

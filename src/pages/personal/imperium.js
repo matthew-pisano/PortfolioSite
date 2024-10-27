@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -45,8 +45,7 @@ function Imperium() {
         "A historical grand strategy game for android devices",
         {backgroundColor: "#c4c889"},
         ["personal", "java", "android"],
-        "https://github.com/matthew-pisano/Imperium",
-        "Imperium",
+        [new GitLink("https://github.com/matthew-pisano/Imperium", "Imperium")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {GalleryTile, PageInfo, Tile} from '@/lib/pageBuilder';
+import {GalleryTile, GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -68,10 +68,8 @@ function Destiny() {
         "A cellular automata population growth simulator",
         {backgroundColor: "#5cafb6"},
         ["academic", "clang", "cuda", "collab"],
-        "https://github.com/matthew-pisano/ManifestDestiny",
-        "ManifestDestiny",
-        ["https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf"],
-        ["Research Paper"]
+        [new GitLink("https://github.com/matthew-pisano/ManifestDestiny", "ManifestDestiny"),
+            new TileLink("https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf", "Research Paper")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

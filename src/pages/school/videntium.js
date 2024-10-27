@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -43,8 +43,7 @@ function Videntium() {
         "Online map viewer for Imperium written in PHP",
         {backgroundColor: "#6f63a6"},
         ["academic", "php", "js", "html"],
-        "https://github.com/matthew-pisano/Videntium",
-        "Videntium"
+        [new GitLink("https://github.com/matthew-pisano/Videntium", "Videntium")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

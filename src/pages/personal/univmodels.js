@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -37,10 +37,8 @@ function UnivModels() {
         "An adapter between Huggingface transformers and several different APIs",
         {backgroundColor: "#47af78"},
         ["personal", "ai", "python"],
-        "https://github.com/matthew-pisano/UniversalModels",
-        "UniversalModels",
-        ["https://pypi.org/project/universalmodels/"],
-        ["PyPi Project"]
+        [new GitLink("https://github.com/matthew-pisano/UniversalModels", "UniversalModels"),
+            new TileLink("https://pypi.org/project/universalmodels/", "PyPi Project")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

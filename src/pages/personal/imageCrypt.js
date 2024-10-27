@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -19,7 +19,7 @@ function ImageCrypt() {
             `CAUTION: This program is not cryptographically secure and should not be used to
                 encode sensitive information. If security is a concern, use a more secure encryption 
                 method before encoding the text into an image.`,
-            "", "", [], null, [], "",
+            "", "", [], [], "",
             {backgroundColor: "rgba(255,55,55,0.68)"}
         ),
         new Tile(
@@ -98,8 +98,7 @@ function ImageCrypt() {
         "An image-based document encoder",
         {backgroundColor: "#62a8a2"},
         ["personal", "cpp"],
-        "https://github.com/matthew-pisano/ImageCrypt",
-        "ImageCrypt"
+        [new GitLink("https://github.com/matthew-pisano/ImageCrypt", "ImageCrypt")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {GalleryTile, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GalleryTile, GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -29,7 +29,7 @@ function Bergeron() {
         ),
         new Tile(
             "<h2>Project Details</h2>",
-            "", "", [], null, [], "",
+            "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -121,10 +121,8 @@ function Bergeron() {
         "A conscience-based alignment framework",
         {backgroundColor: "#309c63"},
         ["research", "academic", "ai", "alignment", "python"],
-        "https://github.com/matthew-pisano/Bergeron",
-        "Bergeron",
-        ["https://arxiv.org/abs/2312.00029"],
-        ["Research Paper"]
+        [new GitLink("https://github.com/matthew-pisano/Bergeron", "Bergeron"),
+            new TileLink("https://arxiv.org/abs/2312.00029", "Research Paper")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

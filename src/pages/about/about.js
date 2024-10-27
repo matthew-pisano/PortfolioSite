@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 import {Constants} from "@/lib/utils";
 
@@ -82,10 +82,9 @@ function About() {
         "Extra information on me as a developer, student, researcher and person",
         {backgroundColor: "#339f56"},
         [],
-        "https://github.com/matthew-pisano/",
-        "GitHub",
-        [Constants.resumeUrl, "https://www.linkedin.com/in/matthew-pisano"],
-        ["Résumé", "LinkedIn"]
+        [new GitLink("https://github.com/matthew-pisano/", "GitHub"),
+            new TileLink(Constants.resumeUrl, "Résumé"),
+            new TileLink("https://www.linkedin.com/in/matthew-pisano", "LinkedIn")],
     );
 
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;

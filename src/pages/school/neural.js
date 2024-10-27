@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -17,12 +17,12 @@ function Neural() {
                 developed the presentation much further into a research paper under the guidance of our professor.  I used this as an opportunity
                 to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
                 The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
-            "", [], null,
+            "", [],
             [new TileLink("https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf", "Research Paper")],
         ),
         new Tile(
             "<h2>Training Methods</h2>",
-            "", "", [], null, [], "",
+            "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -55,7 +55,7 @@ function Neural() {
         ),
         new Tile(
             "<h2>Results</h2>",
-            "", "", [], null, [], "",
+            "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -140,10 +140,8 @@ function Neural() {
         "A research project for comparing training methods of neural networks",
         {backgroundColor: "#4e95b3"},
         ["research", "academic", "ai", "python"],
-        "https://github.com/matthew-pisano/NuralPy",
-        "Neural",
-        ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
-        ["Research Paper"]
+        [new GitLink("https://github.com/matthew-pisano/NuralPy", "Neural"),
+            new TileLink("https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf", "Research Paper")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

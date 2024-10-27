@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -58,8 +58,7 @@ function Simplex() {
         "A math-oriented interpreted scripting language built in Java",
         {backgroundColor: "#8461a5"},
         ["personal", "java", "android"],
-        "https://github.com/matthew-pisano/SimplexIDE",
-        "Simplex"
+        [new GitLink("https://github.com/matthew-pisano/SimplexIDE", "Simplex")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

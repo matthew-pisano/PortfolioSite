@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -28,8 +28,7 @@ function MipsCmd() {
         "A simple command processor written in the MIPS assembly language",
         {backgroundColor: "#b3645d"},
         ["academic", "assembly"],
-        "https://github.com/matthew-pisano/MIPS-Command-Processor",
-        "MIPS Cmd"
+        [new GitLink("https://github.com/matthew-pisano/MIPS-Command-Processor", "MIPS Cmd")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

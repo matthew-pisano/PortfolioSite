@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 import {Constants} from '@/lib/utils';
 
@@ -9,7 +9,7 @@ function Home() {
     let tiles = [
         new Tile(
             "<h2>Featured Research</h2>",
-            "", "", [], null, [], "",
+            "", "", [], [], "",
             {backgroundColor: "#41414155"}
         ),
         new Tile(
@@ -21,8 +21,8 @@ function Home() {
                 <br><br>This can be thought of attaching a conscience to these models to help guide them toward aligned responses.`,
             "/media/image/bergeron.png",
             ["research", "academic", "ai", "alignment", "python"],
-            new TileLink("https://github.com/matthew-pisano/Bergeron", "Bergeron"),
-            [new TileLink("https://arxiv.org/abs/2312.00029", "Research Paper")],
+            [new GitLink("https://github.com/matthew-pisano/Bergeron", "Bergeron"),
+                new TileLink("https://arxiv.org/abs/2312.00029", "Research Paper")],
             "research/bergeron",
         ),
         new Tile(
@@ -32,9 +32,7 @@ function Home() {
                 <i>Microsoft's</i> TextWorld environment.  We use both fine-tuning and instruction-tuning methods to use these games to improve 
                 the moral reasoning abilities of several LLMs.`,
             "/media/image/tw-llm.png",
-            ["research", "academic", "ai", "alignment", "python"],
-            null, [],
-            "research/highGround",
+            ["research", "academic", "ai", "alignment", "python"], [], "research/highGround",
         ),
         new Tile(
             "PredictChain",
@@ -44,8 +42,8 @@ function Home() {
                 Won 1st place in the 2023 Mega-Ace hackathon.`,
             "/media/image/predictChain.png",
             ["research", "academic", "ai", "python", "hack"],
-            new TileLink("https://github.com/predict-chain/predict-chain"),
-            [new TileLink("https://arxiv.org/abs/2307.15168", "Research Paper")],
+            [new GitLink("https://github.com/predict-chain/predict-chain", "PredictChain"),
+                new TileLink("https://arxiv.org/abs/2307.15168", "Research Paper")],
             "research/predictChain",
         ),
         new Tile(
@@ -53,11 +51,11 @@ function Home() {
             `Improving the performance of modern ASM models by using a variety of techniques such as model fine-tuning and corrector LLMs.`,
             "",
             ["research", "academic", "ai", "python"],
-            new TileLink("https://github.com/AIRC-ASR/AIRC-ASR-Experimental", "AIRC ASR"),
+            [new GitLink("https://github.com/AIRC-ASR/AIRC-ASR-Experimental", "AIRC ASR")]
         ),
         new Tile(
             "<h2>Featured Projects</h2>",
-            "", "", [], null,[], "",
+            "", "", [],[], "",
             {backgroundColor: "#41414155"}
         ),
         new Tile(
@@ -68,8 +66,8 @@ function Home() {
                 for the easy integration of these models into projects that need generation from models from different sources.`,
             "",
             ["personal", "ai", "python"],
-            new TileLink("https://github.com/matthew-pisano/UniversalModels", "UniversalModels"),
-            [new TileLink("https://pypi.org/project/universalmodels/", "PyPi Project")],
+            [new GitLink("https://github.com/matthew-pisano/UniversalModels", "UniversalModels"),
+                new TileLink("https://pypi.org/project/universalmodels/", "PyPi Project")],
             "personal/univmodels",
         ),
         new Tile(
@@ -79,8 +77,8 @@ function Home() {
                 expansion from 1763 to 1863.`,
             "/media/image/1763-timelapse.gif",
             ["academic", "clang", "cuda", "collab"],
-            new TileLink("https://github.com/matthew-pisano/ManifestDestiny", "ManifestDestiny"),
-            [new TileLink("https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf", "Research Paper")],
+            [new GitLink("https://github.com/matthew-pisano/ManifestDestiny", "ManifestDestiny"),
+                new TileLink("https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf", "Research Paper")],
             "school/destiny",
         ),
         new Tile(
@@ -88,8 +86,7 @@ function Home() {
             `A image-based document encoder and decoder that stores text within an image using small amounts of noise.`,
             "/media/image/secret-message.png",
             ["personal", "cpp"],
-            new TileLink("https://github.com/matthew-pisano/ImageCrypt"),
-            [],
+            [new GitLink("https://github.com/matthew-pisano/ImageCrypt", "ImageCrypt")],
             "personal/imageCrypt",
         ),
         new Tile(
@@ -98,7 +95,7 @@ function Home() {
                 retrieved results through query expansion, term re-weighting, and document re-ranking.`,
             "",
             ["academic", "ai", "python"],
-            new TileLink("https://github.com/matthew-pisano/LLMRetrieval", "LLM Retrieval"),
+            [new GitLink("https://github.com/matthew-pisano/LLMRetrieval", "LLM Retrieval")]
         ),
         new Tile(
             "Mathesis",
@@ -106,7 +103,7 @@ function Home() {
                 use of the technology between instructor and student to create a more active and participatory learning environment.`,
             "/assets/mathesis.png",
             ["research", "academic", "ai", "python"],
-            new TileLink("https://github.com/GPT-Pedagogy/GPT-Pedagogy"),
+            [new GitLink("https://github.com/GPT-Pedagogy/GPT-Pedagogy", "Mathesis")]
         ),
         new Tile(
             "Simplex",
@@ -116,8 +113,7 @@ function Home() {
                 Simplex also features an IDE to both help programming and educate users on how programming languages work.`,
             "/media/image/simplexCode.jpg",
             ["personal", "java", "android"],
-            new TileLink("https://github.com/matthew-pisano/SimplexIDE"),
-            [],
+            [new GitLink("https://github.com/matthew-pisano/SimplexIDE", "Simplex")],
             "personal/simplex",
         ),
         new Tile(
@@ -127,13 +123,12 @@ function Home() {
                 settings within Europe or blank maps with game play more similar to the <i>RISK</i> board game.`,
             "/media/image/imperiumLogo.png",
             ["personal", "java", "android"],
-            new TileLink("https://github.com/matthew-pisano/Imperium"),
-            [],
+            [new GitLink("https://github.com/matthew-pisano/Imperium", "Imperium")],
             "personal/imperium",
         ),
         new Tile(
             "<h2>Hackathons</h2>",
-            "", "", [], null, [], "",
+            "", "", [], [], "",
             {backgroundColor: "#41414155"}
         ),
         new Tile(
@@ -144,8 +139,8 @@ function Home() {
                 Won 1st place in the 2023 Mega-Ace hackathon.`,
             "/media/image/predictChain.png",
             ["research", "academic", "ai", "python", "hack"],
-            new TileLink("https://github.com/predict-chain/predict-chain", "PredictChain"),
-            [new TileLink("https://arxiv.org/abs/2307.15168", "Research Paper")],
+            [new GitLink("https://github.com/predict-chain/predict-chain", "PredictChain"),
+                new TileLink("https://arxiv.org/abs/2307.15168", "Research Paper")],
             "research/predictChain",
         ),
         new Tile(
@@ -155,8 +150,7 @@ function Home() {
                 Through this project the team hopes of tackling racial discrimination and gender biases in the hiring process.`,
             "",
             ["hack", "collab", "js", "python", "html"],
-            new TileLink("https://github.com/OpenHubHackathonGreen/Anonymous-Hires", "Anon Hires"),
-            [],
+            [new GitLink("https://github.com/OpenHubHackathonGreen/Anonymous-Hires", "Anon Hires")],
             "anonHires",
         ),
     ];
@@ -166,10 +160,9 @@ function Home() {
         "Language Model and Artificial Intelligence Alignment Researcher",
         {backgroundColor: "#345b8f"},
         [],
-        "https://github.com/matthew-pisano/",
-        "GitHub",
-        [Constants.resumeUrl, "https://www.linkedin.com/in/matthew-pisano"],
-        ["Résumé", "LinkedIn"]
+        [new GitLink("https://github.com/matthew-pisano/", "GitHub"),
+            new TileLink(Constants.resumeUrl, "Résumé"),
+            new TileLink("https://www.linkedin.com/in/matthew-pisano", "LinkedIn")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }

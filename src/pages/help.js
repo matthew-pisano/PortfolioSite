@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -17,11 +17,11 @@ function Help() {
             `As with the vast majority of my projects, this website is fully open-source!  All system pages,
                 terminal emulation code, and build scripts can be found in a GitHub repository.`,
             "", [],
-            new TileLink("https://github.com/matthew-pisano/PortfolioSite", "Source Code")
+            [new GitLink("https://github.com/matthew-pisano/PortfolioSite", "Source Code")]
         ),
         new Tile(
             "<h2>Features</h2>",
-            "", "", [], null, [], "",
+            "", "", [], [], "",
             {backgroundColor: "#41414155"}
         ),
         new Tile(

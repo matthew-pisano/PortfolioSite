@@ -1,6 +1,6 @@
 import styles from "@/styles/Wrapper.module.css";
 import React from 'react';
-import {buildPage, PageInfo, Tile} from '@/lib/pageBuilder';
+import {buildPage, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import Wrapper from '@/components/Wrapper';
 
 
@@ -86,8 +86,7 @@ function SCP() {
         "scp", "SCP-672██",
         "", {backgroundColor: "#872929"},
         ["keter", "research", "ai"],
-        "https://scp-wiki.wikidot.com/scp-redacted",
-        "██████ Entry"
+        [new TileLink("https://scp-wiki.wikidot.com/scp-redacted", "██████ Entry")]
     );
     return (<Wrapper pageName={pageInfo.pageName}>
         <div className={`${styles.titleCard}`}>

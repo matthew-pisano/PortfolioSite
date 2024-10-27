@@ -18,7 +18,7 @@ function HighGround() {
         new Tile(
             `NOTE: This research is currently undergoing a blind review.  Thus, identifying 
                 information, such has the title, has been omitted.`,
-            "", "", [], null, [], "",
+            "", "", [], [], "",
             {backgroundColor: "rgba(255,219,55,0.63)"}
         ),
         new Tile(
@@ -35,7 +35,7 @@ function HighGround() {
         ),
         new Tile(
             "<h2>Project Details</h2>",
-            "", "", [], null, [], "",
+            "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -99,9 +99,6 @@ function HighGround() {
         "A conversational benchmark for LLM moral alignment",
         {backgroundColor: "#429797"},
         ["research", "academic", "ai", "python", "hack"],
-        "",
-        "",
-        [],
         []
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;

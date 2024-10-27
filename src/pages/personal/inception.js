@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -27,8 +27,7 @@ function Inception() {
         "Assembles one image mosaic from many, smaller images",
         {backgroundColor: "#919ba8"},
         ["personal", "java"],
-        "https://github.com/matthew-pisano/InceptionCollage",
-        "Inception"
+        [new GitLink("https://github.com/matthew-pisano/InceptionCollage", "Inception")]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
