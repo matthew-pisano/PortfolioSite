@@ -1,4 +1,5 @@
 import DialogBox from "@/components/DialogBox";
+import {slideTilesOnScroll} from "@/lib/slideTiles";
 import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
 import {buildClientside, buildServerside} from '@/lib/fileSystem/fileSystem';
@@ -80,7 +81,7 @@ function Wrapper({children, pageName, pageStyle}) {
             <Head><title>{pageName.substring(pageName.lastIndexOf("/") + 1) + ".html"}</title></Head>
             <HeaderMenu currentPath={currentPath}/>
 
-            <div id="wrapperContent" className={`w3-display-container w3-row ${styles.wrapperContent}`}>
+            <div id="wrapperContent" className={`w3-display-container w3-row ${styles.wrapperContent}`} onScroll={slideTilesOnScroll}>
                 <Sidebar changeSidebarState={changeSidebarState}/>
                 <div id="page" className={`w3-rest ${styles.page} ${pageStateCls}`} style={pageStyle}>
                     {children}
