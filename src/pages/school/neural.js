@@ -1,5 +1,5 @@
 import React from 'react';
-import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -20,10 +20,8 @@ function Neural() {
             "", [],
             [new TileLink("https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf", "Research Paper")],
         ),
-        new Tile(
+        new SectionTile(
             "<h2>Training Methods</h2>",
-            "", "", [], [], "",
-            {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
             "Backpropagation",
@@ -53,10 +51,8 @@ function Neural() {
                 of correctly identified diagnoses divided by the time it took for the trial to
                 complete. The higher the score, the better the performance of the algorithm.`,
         ),
-        new Tile(
+        new SectionTile(
             "<h2>Results</h2>",
-            "", "", [], [], "",
-            {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
             "Backpropagation Results",

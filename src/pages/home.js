@@ -1,5 +1,5 @@
 import React from 'react';
-import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 import {Constants} from '@/lib/utils';
 
@@ -7,10 +7,8 @@ import {Constants} from '@/lib/utils';
 function Home() {
 
     let tiles = [
-        new Tile(
+        new SectionTile(
             "<h2>Featured Research</h2>",
-            "", "", [], [], "",
-            {backgroundColor: "#41414155"}
         ),
         new Tile(
             "Bergeron",
@@ -53,10 +51,8 @@ function Home() {
             ["research", "academic", "ai", "python"],
             [new GitLink("https://github.com/AIRC-ASR/AIRC-ASR-Experimental", "AIRC ASR")]
         ),
-        new Tile(
+        new SectionTile(
             "<h2>Featured Projects</h2>",
-            "", "", [],[], "",
-            {backgroundColor: "#41414155"}
         ),
         new Tile(
             "Universal Models",
@@ -126,10 +122,8 @@ function Home() {
             [new GitLink("https://github.com/matthew-pisano/Imperium", "Imperium")],
             "personal/imperium",
         ),
-        new Tile(
+        new SectionTile(
             "<h2>Hackathons</h2>",
-            "", "", [], [], "",
-            {backgroundColor: "#41414155"}
         ),
         new Tile(
             "PredictChain",

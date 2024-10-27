@@ -1,5 +1,5 @@
 import React from 'react';
-import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -19,10 +19,8 @@ function Help() {
             "", [],
             [new GitLink("https://github.com/matthew-pisano/PortfolioSite", "Source Code")]
         ),
-        new Tile(
+        new SectionTile(
             "<h2>Features</h2>",
-            "", "", [], [], "",
-            {backgroundColor: "#41414155"}
         ),
         new Tile(
             "Explorer",

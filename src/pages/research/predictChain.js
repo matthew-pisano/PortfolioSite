@@ -1,5 +1,5 @@
 import React from 'react';
-import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -37,10 +37,8 @@ function PredictChain() {
                 At the local competition, PredictChain won the 'Most Innovative Use of Technology' award and 3rd place overall.  At
                 the global competition, our project won 1st place overall!`,
         ),
-        new Tile(
+        new SectionTile(
             "<h2>Project Details</h2>",
-            "", "", [], [], "",
-            {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
             "Background",

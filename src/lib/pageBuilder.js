@@ -16,7 +16,6 @@ class TileLink {
         this.link = link;
         this.title = title;
     }
-
 }
 
 
@@ -27,9 +26,7 @@ class GitLink extends TileLink {
         * @param link {string} The link to the git repository
         * @param title {string} The title of the git repository
         */
-        constructor(link, title){
-            super(link, title);
-        }
+        constructor(link, title){super(link, title);}
 }
 
 
@@ -45,11 +42,11 @@ class Tile {
      * @param tags {string[]} The tags for the tile
      * @param links {TileLink[]} Links to display
      * @param titleLink {string} The link that the title should go to
-     * @param style {object} The style of the tile
      * @param latex {boolean} Whether the content should be rendered as latex
+     * @param style {object} The style of the tile
      */
     constructor(title, content, thumbnail = "", tags = [],
-                links = [], titleLink = "", style = {}, latex = false){
+                links = [], titleLink = "", latex = false, style = {}){
         this.title = title;
         this.content = content;
         this.tags = tags;
@@ -58,7 +55,6 @@ class Tile {
         this.titleLink = titleLink;
         this.latex = latex;
         this.links = links;
-        this.gallery = false;
     }
 }
 
@@ -71,14 +67,24 @@ class GalleryTile extends Tile {
      * @param tags {string[]} The tags for the tile
      * @param links {TileLink[]} Links to display
      * @param titleLink {string} The link that the title should go to
-     * @param style {object} The style of the tile
      * @param latex {boolean} Whether the content should be rendered as latex
      */
     constructor(title, content, thumbnail = "", tags = [],
-                links = [], titleLink = "", style = {}, latex = false){
-        super(title, content, thumbnail, tags, links, titleLink, style, latex);
-        this.gallery = true;
+                links = [], titleLink = "", latex = false){
+        super(title, content, thumbnail, tags, links, titleLink, latex);
     }
+}
+
+
+class SectionTile extends Tile {
+
+        /**
+        * @param title {string} The title of the tile
+        * @param style {object} The style of the tile
+        */
+        constructor(title, style = {backgroundColor: "rgba(139,166,175,0.45)"}){
+            super(title, "", "", [], [], "", false, style);
+        }
 }
 
 
@@ -132,8 +138,7 @@ function buildTags(tile, dark = false){
                     <img className="w3-col" alt={tagName}/>
                     <div className="w3-rest"></div>
                 </div>
-                )
-            }
+            )}
         </div>
     );
 }
@@ -152,26 +157,29 @@ function buildPage(pageInfo, tiles){
         {buildTags(pageInfo, true)}
         {
             tiles.map((tile, i) =>{
-                let contentTypeClass = tile.gallery ? tileStyles.galleryTileContent :
-                    !tile.thumbnail ? tileStyles.textOnlyTileContent : "";
                 let className = `w3-container w3-row ${tileStyles.displayTile}`;
-                let titleClass = `${tileStyles.displayTileTitle} ${tile.gallery ? tileStyles.galleryTileTitle : ""}`;
-                let imageClass = tile.gallery ? tileStyles.galleryTileThumbnail : "";
+                let titleClass = `${tileStyles.displayTileTitle} ${tile instanceof GalleryTile ? tileStyles.galleryTileTitle : ""}`;
+                let imageClass = tile instanceof GalleryTile ? tileStyles.galleryTileThumbnail : "";
+                let contentTypeClass = tile instanceof GalleryTile ? tileStyles.galleryTileContent :
+                    !tile.thumbnail ? tileStyles.textOnlyTileContent : "";
 
                 return <div className={className} key={pageInfo.pageName+"Tile"+i} style={tile.style}>
                     {tile.thumbnail ?
                         <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail} ${imageClass}`}>
                             <img src={tile.thumbnail} alt='gitLogo'/>
                         </div> : null}
+
                     <div className={`w3-mobile ${tileStyles.displayTileContent} ${contentTypeClass}`}>
                         {tile.titleLink ?
                             <a className={titleClass} href={tile.titleLink}><u>{HTMLReactParser(tile.title)}</u></a> :
                             <b className={titleClass}>{HTMLReactParser(tile.title)}</b>}
                         <br/>
+
                         {tile.content ?
                             <span>
                                 {tile.latex ? <Latex>{tile.content}</Latex> : HTMLReactParser(tile.content)}
                             </span> : null}
+
                         {buildTags(tile)}
                     </div>
                 </div>;
@@ -181,4 +189,4 @@ function buildPage(pageInfo, tiles){
 }
 
 
-export {buildPage, PageInfo, Tile, GalleryTile, TileLink, GitLink};
+export {buildPage, PageInfo, Tile, GalleryTile, SectionTile, TileLink, GitLink};

@@ -1,5 +1,5 @@
 import React from 'react';
-import {GalleryTile, PageInfo, Tile} from '@/lib/pageBuilder';
+import {GalleryTile, PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -15,11 +15,9 @@ function HighGround() {
                 variety of situations and topics, creating a well-rounded benchmark.`,
             "/media/image/tw-llm.png"
         ),
-        new Tile(
+        new SectionTile(
             `NOTE: This research is currently undergoing a blind review.  Thus, identifying 
                 information, such has the title, has been omitted.`,
-            "", "", [], [], "",
-            {backgroundColor: "rgba(255,219,55,0.63)"}
         ),
         new Tile(
             "Abstract (Abridged)",
@@ -33,10 +31,8 @@ function HighGround() {
                 framework, we hope to expand upon the diverse area of alignment techniques to help ensure future models grasp the often nuanced 
                 topics of moral and ethical values.`,
         ),
-        new Tile(
+        new SectionTile(
             "<h2>Project Details</h2>",
-            "", "", [], [], "",
-            {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
             "Background",

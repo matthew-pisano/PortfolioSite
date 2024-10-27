@@ -1,5 +1,5 @@
 import React from 'react';
-import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -15,11 +15,10 @@ function ImageCrypt() {
                 the same key file.`,
             "/media/image/secret-message.png",
         ),
-        new Tile(
+        new SectionTile(
             `CAUTION: This program is not cryptographically secure and should not be used to
                 encode sensitive information. If security is a concern, use a more secure encryption 
                 method before encoding the text into an image.`,
-            "", "", [], [], "",
             {backgroundColor: "rgba(255,55,55,0.68)"}
         ),
         new Tile(

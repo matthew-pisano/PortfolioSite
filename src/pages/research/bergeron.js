@@ -1,5 +1,5 @@
 import React from 'react';
-import {GalleryTile, GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import {GalleryTile, GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -27,10 +27,8 @@ function Bergeron() {
                 complement models with existing alignment training, we can improve the robustness and safety of multiple, commonly used 
                 commercial and open-source LLMs.`,
         ),
-        new Tile(
-            "<h2>Project Details</h2>",
-            "", "", [], [], "",
-            {backgroundColor: "rgba(139,166,175,0.45)"}
+        new SectionTile(
+            "<h2>Project Details</h2>"
         ),
         new Tile(
             "Background",
