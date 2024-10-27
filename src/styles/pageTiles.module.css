@@ -17,6 +17,7 @@
     border-radius: 10px;
     margin: 50px 20px 20px 3%;
     padding: 10px;
+    transition: all 700ms;
 }
 
 .displayTileTitle > *{
@@ -75,6 +76,12 @@
 .forceWrap{
     word-break: break-word;
     white-space: normal;
+}
+
+.hiddenTile {
+    margin-left: 90%;
+    margin-right: -87%;
+    transition: none;
 }
 
 .choiceTile {

@@ -1,15 +1,15 @@
 import DialogBox from "@/components/DialogBox";
-import {slideTilesOnScroll} from "@/lib/slideTiles";
-import React, {useEffect, useState} from 'react';
-import Head from 'next/head';
-import {buildClientside, buildServerside} from '@/lib/fileSystem/fileSystem';
-import PropTypes from "prop-types";
-import TerminalDiv from '@/components/Terminal';
 import {Sidebar} from "@/components/Sidebar";
-import {HeaderMenu, savePage, StatusFooter} from "./Margins";
+import TerminalDiv from '@/components/Terminal';
+import {buildClientside, buildServerside} from '@/lib/fileSystem/fileSystem';
 import {setTheme} from "@/lib/themes";
+import pageStyles from "@/styles/pageTiles.module.css";
 
 import styles from '@/styles/Wrapper.module.css';
+import Head from 'next/head';
+import PropTypes from "prop-types";
+import React, {useEffect, useState} from 'react';
+import {HeaderMenu, savePage, StatusFooter} from "./Margins";
 
 
 /**
@@ -43,6 +43,24 @@ function addWrapperListeners() {
             savePage(window.location.pathname);
         }
     });
+}
+
+/**
+ * Slides the tiles into view as the user scrolls down the page
+ */
+function slideTilesOnScroll() {
+    let tileHolder = document.getElementById("tileHolder");
+    for (let tileElement of tileHolder ? tileHolder.children : []) {  // For each tile, check if it is in view
+        if (tileElement.id === "") continue;
+
+        if (tileElement.getBoundingClientRect().top <= window.innerHeight - 100) {  // If the tile is in view and offset, slide it into view
+            tileElement.classList.remove(pageStyles.hiddenTile);
+            tileElement.setAttribute("data-refdata", "slid");
+        } else if (tileElement.getAttribute("data-refdata") === "unslid") {
+            tileElement.classList.add(pageStyles.hiddenTile);  // Sides the tile off-screen if it is out of view as the page initially loads
+            tileElement.setAttribute("data-refdata", "slid");
+        }
+    }
 }
 
 /**

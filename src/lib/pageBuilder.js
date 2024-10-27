@@ -163,7 +163,7 @@ function buildPage(pageInfo, tiles){
                 let contentTypeClass = tile instanceof GalleryTile ? tileStyles.galleryTileContent :
                     !tile.thumbnail ? tileStyles.textOnlyTileContent : "";
 
-                return <div id={"pageTile"+i} className={className} key={"pageTile"+i} style={tile.style}>
+                return <div id={"pageTile"+i} className={className} key={"pageTile"+i} style={tile.style} data-refdata={"unslid"}>
                     {tile.thumbnail ?
                         <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail} ${imageClass}`}>
                             <img src={tile.thumbnail} alt='gitLogo'/>

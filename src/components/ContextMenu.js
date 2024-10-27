@@ -60,7 +60,7 @@ function createContextMenu(top, left, selectedFile, actions) {
 function destroyContextMenu() {
     if (contentMenuRoot === undefined) return;
 
-    let curSelectedFile = JSON.parse(document.getElementById("contextMenuHolder").childNodes[0].getAttribute("data-refdata"));
+    let curSelectedFile = JSON.parse(document.getElementById("contextMenuHolder").children[0].getAttribute("data-refdata"));
     let fileName = curSelectedFile.name.split(".")[0];
 
     contentMenuRoot.unmount();
