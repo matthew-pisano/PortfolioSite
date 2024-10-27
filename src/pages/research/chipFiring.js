@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -27,7 +27,7 @@ function ChipFiring() {
         ),
         new Tile(
             "<h2>Background</h2>",
-            "", "", false, [], "", "", [], [], "",
+            "", "", [], null, [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -47,8 +47,7 @@ function ChipFiring() {
                 finite series of lending or borrowing moves $D_1 \\sim D_2 \\xleftrightarrow{} (D_1 \\xleftrightarrow{\\text{moves}} D_2)$.
                 An <u>equivalence class</u> <i>[D]</i> is the set of all divisors that are equivalent to each other,
                 $[D] = \\{D_i~|~D_i \\sim D\\}$.`,
-            "", false, [], "", "", [], [], "", {},
-            true
+            "", [], null, [], "", {}, true
         ),
         new Tile(
             "The Picard Group and The Jacobian",
@@ -58,8 +57,7 @@ function ChipFiring() {
                 If a divisor is in one of the Jacobian's classes, it can be made winning after a finite series of moves.  The Picard group of a graph
                 is often written in the structure of $Pic(G) = Jac(G) \\times \\mathbb{Z}^n$ where $n$ is the rank of the Picard group.
                 Finding both the Jacobian and the rank is sufficient to construct the Picard group.`,
-            "", false, [], "", "", [], [], "", {},
-            true
+            "", [], null, [], "", {}, true
         ),
         new Tile(
             "The Laplacian",
@@ -78,12 +76,11 @@ function ChipFiring() {
                 to a given divisor will result in a divisor that has had those specific lending or borrowing moves preformed on it.  Through use of the
                 laplacian, both the picard group and jacobian can be calculated.  As the nature of a graph changes through changing the number of vertices,
                 making edges directed or undirected, the valid solutions to a game can change greatly.`,
-            "", false, [], "", "", [], [], "", {},
-            true
+            "", [], null, [], "", {}, true
         ),
         new Tile(
             "<h2>Project Details</h2>",
-            "", "", false, [], "", "", [], [], "",
+            "", "", [], null, [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -116,8 +113,7 @@ function ChipFiring() {
                 for sizes of graphs smaller than size fifteen.  We suspect that, for very large graphs, the behavior of four or more paths approaches that of
                 two paths.<br><br>
                 The rank of a cycle's Picard group is similar to that of a tree.  Is also the number of terminal-strong-components.`,
-            "", false, [], "", "", [], [], "", {},
-            true
+            "", [], null, [], "", {}, true
         ),
         new Tile(
             "Wheel Graphs",
@@ -130,8 +126,7 @@ function ChipFiring() {
                 when the size was even where $\\beta \\approxeq 0.618035$. In both of these patterns,
                 $\\phi$ represents the golden ratio.<br><br>
                 The rank of a wheel graph is also the number of terminal-strong-components in the graph.`,
-            "", false, [], "", "", [], [], "", {},
-            true
+            "", [], null, [], "", {}, true
         ),
     ];
     let pageInfo = new PageInfo(

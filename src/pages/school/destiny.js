@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GalleryTile, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -14,7 +14,7 @@ function Destiny() {
                 processing and parallel I/O. Additionally, it uses CUDA to leverage the power of 
                 GPUs for the simulation.`
         ),
-        new Tile(
+        new GalleryTile(
             "Simulation Details",
             `Our simulation uses a 2D cellular automata model of the United States.
                 Each cell represents a square area of land about 3 square miles in size, splitting
@@ -23,10 +23,9 @@ function Destiny() {
                 iterations to represent the 100 years of expansion.  Each cell's new population is
                 calculated using a combination of the current population, the population of neighboring
                 cells, a cell's surrounding resources, and a random factor.`,
-            "/media/image/1763-timelapse.gif",
-            true
+            "/media/image/1763-timelapse.gif"
         ),
-        new Tile(
+        new GalleryTile(
             "Cell Resources",
             `Each cell represents an 8 dimensional vector of attributes.  These are a cell's
                 elevation, surface gradient, water attractiveness, temperature, annual precipitation,
@@ -34,8 +33,7 @@ function Destiny() {
                 and neighboring water attractiveness is taken into account.  We preprocessed visual map data
                 to obtain each of these static attributes, excluding population, which is the only 
                 dynamically calculated attribute.`,
-            "/media/image/manifest-preprocessing.png",
-            true
+            "/media/image/manifest-preprocessing.png"
         ),
         new Tile(
             "Comparison to Census Data",

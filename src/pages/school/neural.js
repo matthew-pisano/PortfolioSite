@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -17,13 +17,12 @@ function Neural() {
                 developed the presentation much further into a research paper under the guidance of our professor.  I used this as an opportunity
                 to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
                 The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
-            "", false, [], "", "",
-            ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
-            ["Research Paper"]
+            "", [], null,
+            [new TileLink("https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf", "Research Paper")],
         ),
         new Tile(
             "<h2>Training Methods</h2>",
-            "", "", false, [], "", "", [], [], "",
+            "", "", [], null, [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -56,7 +55,7 @@ function Neural() {
         ),
         new Tile(
             "<h2>Results</h2>",
-            "", "", false, [], "", "", [], [], "",
+            "", "", [], null, [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(

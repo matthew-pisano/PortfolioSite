@@ -39,7 +39,7 @@ function PredictChain() {
         ),
         new Tile(
             "<h2>Project Details</h2>",
-            "", "", false, [], "", "", [], [], "",
+            "", "", [], null, [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(

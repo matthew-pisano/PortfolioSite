@@ -7,7 +7,7 @@ function AnonHires() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `This project was part of the HvTechFest Hackathon 2021.<br>
                 The idea is to build a web platform for employers and employees, where the employer hires employees anonymously purely based on their talent. 
                 Through this project the team hopes of tackling racial discrimination and gender biases in the hiring process.`

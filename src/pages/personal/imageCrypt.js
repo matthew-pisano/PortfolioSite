@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -19,7 +19,7 @@ function ImageCrypt() {
             `CAUTION: This program is not cryptographically secure and should not be used to
                 encode sensitive information. If security is a concern, use a more secure encryption 
                 method before encoding the text into an image.`,
-            "", "", false, [], "", "", [], [], "",
+            "", "", [], null, [], "",
             {backgroundColor: "rgba(255,55,55,0.68)"}
         ),
         new Tile(

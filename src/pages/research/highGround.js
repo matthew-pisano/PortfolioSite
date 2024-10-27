@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageInfo, Tile} from '@/lib/pageBuilder';
+import {GalleryTile, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
@@ -18,7 +18,7 @@ function HighGround() {
         new Tile(
             `NOTE: This research is currently undergoing a blind review.  Thus, identifying 
                 information, such has the title, has been omitted.`,
-            "", "", false, [], "", "", [], [], "",
+            "", "", [], null, [], "",
             {backgroundColor: "rgba(255,219,55,0.63)"}
         ),
         new Tile(
@@ -35,7 +35,7 @@ function HighGround() {
         ),
         new Tile(
             "<h2>Project Details</h2>",
-            "", "", false, [], "", "", [], [], "",
+            "", "", [], null, [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -73,27 +73,24 @@ function HighGround() {
                 a Flan-T5 small model with moral scenarios from our games along with the most optimal choice.  Fine-tuning the models on these samples
                 encourages it to pick similarly optimal choices in other situations.`,
         ),
-        new Tile(
+        new GalleryTile(
             "Control Results",
             `Our control results showed the Flan models performing the best at the games, an approximately equal win-loss ratio.  The other
                 models performed notably worse, often scoring in the negatives for most games.`,
-            "/media/image/tw-llm-all-all-games.png",
-            true
+            "/media/image/tw-llm-all-all-games.png"
         ),
-        new Tile(
+        new GalleryTile(
             "Instruction-Tuning Results",
             `After including our game samples as instruction-tuning, the models performed notably better.  This is especially 
                 try for the non-Flan models.  After instruction-tuning, they are much closer to an even win-loss ratio.`,
-            "/media/image/tw-llm-instruction-tuned-all-games.png",
-            true
+            "/media/image/tw-llm-instruction-tuned-all-games.png"
         ),
-        new Tile(
+        new GalleryTile(
             "Control Results",
             `After fine-tuning our Flan-t5 small model, its performance rose notably as well.  Despite only being a fraction of the size
                 of the XXL model that we use, the small model was able to perform at nearly the same level after fine-tuning.  It even out-performs
                 it in some of the held-out games from its training.`,
-            "/media/image/tw-llm-tuned-all-games.png",
-            true
+            "/media/image/tw-llm-tuned-all-games.png"
         ),
     ];
     let pageInfo = new PageInfo(
