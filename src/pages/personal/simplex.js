@@ -7,7 +7,7 @@ function Simplex() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `Simplex's focus is on mathematic and scientific calculations
                 as it offers built-in matrix operations (multiplication, determinants, etc.) as well as several scientific and fundamental constants.<br><br>
                 It is strictly typed like languages such C or Java, but has a similar syntax to python with type hinting.  Being a hybrid interpreted

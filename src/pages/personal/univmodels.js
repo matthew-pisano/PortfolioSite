@@ -7,7 +7,7 @@ function UnivModels() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `The <i>Universal Models</i> library serves as an adapter between Huggingface Transformers
                 and several other APIs.  This includes the OpenAI API, the Huggingface API, and local
                 OpenAI APis, such as <a href="https://github.com/lm-sys/FastChat" target="_blank">FastChat</a>.  All

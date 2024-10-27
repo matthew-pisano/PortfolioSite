@@ -7,7 +7,7 @@ function PredictChain() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `<i>PredictChain</i> is a decentralized artificial intelligence marketplace that I developed, primarily along
                 with another student at RPI.  It utilizes the Algorand blockchain to allow users to host instances of this
                 marketplace, with the goal of more freely distributing AI models, data, and compute among all users.`,
@@ -38,8 +38,8 @@ function PredictChain() {
                 the global competition, our project won 1st place overall!`,
         ),
         new Tile(
-            "#Project Details",
-            "", "", false, {}, [], "", "", [], [], "",
+            "<h2>Project Details</h2>",
+            "", "", false, [], "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(

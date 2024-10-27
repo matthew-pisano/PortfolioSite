@@ -7,7 +7,7 @@ function MipsCmd() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `The MIPS command processor processes commands and displays their outputs using the 
                 <a href='https://courses.missouristate.edu/kenvollmar/mars/download.htm' target='_blank'>Mars simulator</a>.
                 Developed as part of a college assembly course, the command processor leverages the low-level

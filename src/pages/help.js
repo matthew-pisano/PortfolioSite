@@ -7,7 +7,7 @@ function Help() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `This website is modeled after Visual Studio Code, the IDE that I write many of my projects in. 
                 This site features many of the navigation and editing characteristics of VS Code and other IDEs that
                 I use regularly.`
@@ -16,13 +16,13 @@ function Help() {
             "Source",
             `As with the vast majority of my projects, this website is fully open-source!  All system pages,
                 terminal emulation code, and build scripts can be found in a GitHub repository.`,
-            "", false, {}, [],
+            "", false, [],
             "https://github.com/matthew-pisano/PortfolioSite",
             "Source Code",
         ),
         new Tile(
-            "#Features",
-            "", "", false, {}, [], "", "", [], [], "",
+            "<h2>Features</h2>",
+            "", "", false, [], "", "", [], [], "",
             {backgroundColor: "#41414155"}
         ),
         new Tile(

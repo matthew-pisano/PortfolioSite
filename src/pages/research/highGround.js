@@ -7,7 +7,7 @@ function HighGround() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `Here, I developed a text-based games benchmark, based on Microsoft's TextWorld environment.  As part of
                 my employment with <i>IBM Research</i>, I created this dataset of 30 games with the aim of using them to more effectively
                 align LLMs with human moral values.  Each game in this dataset is a conversation between the player and the system on some
@@ -18,7 +18,7 @@ function HighGround() {
         new Tile(
             `NOTE: This research is currently undergoing a blind review.  Thus, identifying 
                 information, such has the title, has been omitted.`,
-            "", "", false, {}, [], "", "", [], [], "",
+            "", "", false, [], "", "", [], [], "",
             {backgroundColor: "rgba(255,219,55,0.63)"}
         ),
         new Tile(
@@ -34,8 +34,8 @@ function HighGround() {
                 topics of moral and ethical values.`,
         ),
         new Tile(
-            "#Project Details",
-            "", "", false, {}, [], "", "", [], [], "",
+            "<h2>Project Details</h2>",
+            "", "", false, [], "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(

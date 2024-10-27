@@ -8,7 +8,7 @@ function About() {
 
     let tiles = [
         new Tile(
-            "#Introduction",
+            "<h2>Introduction</h2>",
              `My name is Matthew Pisano.  I am a researcher and software developer.  I am pursuing a graduate education
                 while working on researching methods of artificial intelligence alignment.
                 <br><br>My research centers around language model alignment; enforcing safety without hampering its cognitive 

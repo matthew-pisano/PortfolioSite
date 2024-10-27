@@ -6,7 +6,7 @@ import DefaultWrapper from "@/components/DefaultWrapper";
 function Imperium() {
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `Imperium is an application developed for android without any game engines or development 
                 frameworks.<br>
                 Its motivations are twofold: to develop a genuinely enjoyable Android emulation of the 

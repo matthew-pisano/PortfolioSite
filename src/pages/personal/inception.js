@@ -7,7 +7,7 @@ function Inception() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `Inception Collage uses Java's built in graphics libraries, AWT and Swing, to allow users to
                 create picture mosaics using a GUI.`
         ),

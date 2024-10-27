@@ -7,7 +7,7 @@ function Destiny() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `<i>Manifest Destiny</i> is a population growth simulator. It is based on 
                 a cellular automata model of the United States during its period of rapid Westward 
                 expansion from 1763 to 1863. It is implemented in C and uses MPI for both parallel 

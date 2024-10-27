@@ -7,7 +7,7 @@ function Bergeron() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `This research serves as both my Master's thesis and as early research into the area of weak-to-strong alignment.
                 It details my <i>Bergeron</i> framework that aims to improve the resistance of LLMs against adversarial attacks and other
                 in-context methods of misalignment.  Bergeron achieves this goal through the usage of a smaller secondary LLM that monitors both the
@@ -15,12 +15,6 @@ function Bergeron() {
                 any time-consuming fine-tuning or hard-coded filtering.`,
             "/media/image/bergeron.png"
         ),
-        // new Tile(
-        //     `NOTE: This research is currently undergoing a blind review.  Thus, identifying
-        //         information has been omitted and data may be more recent than in preprint versions.`,
-        //     "", "", false, {}, [], "", "", [], [], "",
-        //     {backgroundColor: "rgba(255,219,55,0.63)"}
-        // ),
         new Tile(
             "Abstract",
             `Research into AI alignment has grown considerably since the recent introduction of increasingly capable Large Language 
@@ -34,8 +28,8 @@ function Bergeron() {
                 commercial and open-source LLMs.`,
         ),
         new Tile(
-            "#Project Details",
-            "", "", false, {}, [], "", "", [], [], "",
+            "<h2>Project Details</h2>",
+            "", "", false, [], "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -106,8 +100,7 @@ function Bergeron() {
                 Mistral detect about as many attacks as GPT-3.5 as the secondary model.  This demonstrates that notable improvements in the alignment
                 of responses can be achieved with secondary models that are significantly smaller and easier to run than the primary model.`,
             "/media/image/otherAttackDefense.png",
-            true,
-            {maxWidth: "500px"}
+            true
         ),
         new Tile(
             "Adversarial True-Positive Rates (Left) and Mundane False-Positive Rates (Right)",
@@ -125,8 +118,7 @@ function Bergeron() {
                 records from the adversarial and mundane datasets. Text in green indicates a score of over 0.75.  GPT-4 has the best overall F1 score,
                 with Mistral following closely behind.`,
             "/media/image/f1Scores.png",
-            true,
-            {maxWidth: "500px"}
+            true
         ),
     ];
     let pageInfo = new PageInfo(

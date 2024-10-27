@@ -7,7 +7,7 @@ function ImageCrypt() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `<i>Image-Crypt</i> encodes documents into a target image file. Documents 
                 are encoded based off of noise inserted into a target image. The noise may 
                 optionally be generated based off of a key file to further obfuscate it using 
@@ -19,7 +19,7 @@ function ImageCrypt() {
             `CAUTION: This program is not cryptographically secure and should not be used to
                 encode sensitive information. If security is a concern, use a more secure encryption 
                 method before encoding the text into an image.`,
-            "", "", false, {}, [], "", "", [], [], "",
+            "", "", false, [], "", "", [], [], "",
             {backgroundColor: "rgba(255,55,55,0.68)"}
         ),
         new Tile(

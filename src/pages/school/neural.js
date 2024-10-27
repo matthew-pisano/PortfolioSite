@@ -7,7 +7,7 @@ function Neural() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `The objective of this project was to analyze the differences between backpropagation, a genetic algorithm method,
                 and the decision tree optimization on the training and execution of a neural network.`
         ),
@@ -17,13 +17,13 @@ function Neural() {
                 developed the presentation much further into a research paper under the guidance of our professor.  I used this as an opportunity
                 to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
                 The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
-            "", false, {}, [], "", "",
+            "", false, [], "", "",
             ["https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"],
             ["Research Paper"]
         ),
         new Tile(
-            "#Training Methods",
-            "", "", false, {}, [], "", "", [], [], "",
+            "<h2>Training Methods</h2>",
+            "", "", false, [], "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -55,8 +55,8 @@ function Neural() {
                 complete. The higher the score, the better the performance of the algorithm.`,
         ),
         new Tile(
-            "#Results",
-            "", "", false, {}, [], "", "", [], [], "",
+            "<h2>Results</h2>",
+            "", "", false, [], "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(

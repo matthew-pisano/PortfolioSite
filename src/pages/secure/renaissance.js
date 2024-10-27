@@ -15,7 +15,7 @@ function Renaissance() {
 
     let tiles = [
         new Tile(
-            "Overview",
+            "<h2>Overview</h2>",
             `The following is a collection of relevant sources, both internal and external, converning the failed
                 project renaissance and the incident on <span style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.
                 The following information should be shared as a warning to all of those with sufficent security clearance.

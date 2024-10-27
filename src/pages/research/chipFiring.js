@@ -7,7 +7,7 @@ function ChipFiring() {
 
     let tiles = [
         new Tile(
-            "#Overview",
+            "<h2>Overview</h2>",
             `In our research, we focused on the study of Chip-Firing games and how different combinations of 
                 directed and undirected edges affect its winning strategies.`,
             "/media/image/chipfiring.png"
@@ -26,8 +26,8 @@ function ChipFiring() {
                 We also plan to submit this paper to the Journal of Experimental Mathematics and the Journal of Combinatorial Theory.`,
         ),
         new Tile(
-            "#Background",
-            "", "", false, {}, [], "", "", [], [], "",
+            "<h2>Background</h2>",
+            "", "", false, [], "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -47,7 +47,7 @@ function ChipFiring() {
                 finite series of lending or borrowing moves $D_1 \\sim D_2 \\xleftrightarrow{} (D_1 \\xleftrightarrow{\\text{moves}} D_2)$.
                 An <u>equivalence class</u> <i>[D]</i> is the set of all divisors that are equivalent to each other,
                 $[D] = \\{D_i~|~D_i \\sim D\\}$.`,
-            "", false, {}, [], "", "", [], [], "", {},
+            "", false, [], "", "", [], [], "", {},
             true
         ),
         new Tile(
@@ -58,7 +58,7 @@ function ChipFiring() {
                 If a divisor is in one of the Jacobian's classes, it can be made winning after a finite series of moves.  The Picard group of a graph
                 is often written in the structure of $Pic(G) = Jac(G) \\times \\mathbb{Z}^n$ where $n$ is the rank of the Picard group.
                 Finding both the Jacobian and the rank is sufficient to construct the Picard group.`,
-            "", false, {}, [], "", "", [], [], "", {},
+            "", false, [], "", "", [], [], "", {},
             true
         ),
         new Tile(
@@ -78,12 +78,12 @@ function ChipFiring() {
                 to a given divisor will result in a divisor that has had those specific lending or borrowing moves preformed on it.  Through use of the
                 laplacian, both the picard group and jacobian can be calculated.  As the nature of a graph changes through changing the number of vertices,
                 making edges directed or undirected, the valid solutions to a game can change greatly.`,
-            "", false, {}, [], "", "", [], [], "", {},
+            "", false, [], "", "", [], [], "", {},
             true
         ),
         new Tile(
-            "#Project Details",
-            "", "", false, {}, [], "", "", [], [], "",
+            "<h2>Project Details</h2>",
+            "", "", false, [], "", "", [], [], "",
             {backgroundColor: "rgba(139,166,175,0.45)"}
         ),
         new Tile(
@@ -116,7 +116,7 @@ function ChipFiring() {
                 for sizes of graphs smaller than size fifteen.  We suspect that, for very large graphs, the behavior of four or more paths approaches that of
                 two paths.<br><br>
                 The rank of a cycle's Picard group is similar to that of a tree.  Is also the number of terminal-strong-components.`,
-            "", false, {}, [], "", "", [], [], "", {},
+            "", false, [], "", "", [], [], "", {},
             true
         ),
         new Tile(
@@ -130,7 +130,7 @@ function ChipFiring() {
                 when the size was even where $\\beta \\approxeq 0.618035$. In both of these patterns,
                 $\\phi$ represents the golden ratio.<br><br>
                 The rank of a wheel graph is also the number of terminal-strong-components in the graph.`,
-            "", false, {}, [], "", "", [], [], "", {},
+            "", false, [], "", "", [], [], "", {},
             true
         ),
     ];
