@@ -52,9 +52,10 @@ export default function PageNotFound() {
                 <span style={{margin: "15px 0px", display: "block"}}>
                     The page <i style={{backgroundColor: "#454545", borderRadius: "4px"}}>{location}</i> does
                     not seem to exist.  These are uncharted waters, it would be wise to return home.<br/><br/>
-                    ...this your last chance.  After this there is no turning back.  You click the blue link, the story ends.
-                    You wake up in your bed and believe whatever you want to. You click the red link, you stay in Wonderland,
-                    and I show you how deep the rabbit hole goes.  Remember, all I&apos;m offering is the truth.  Nothing more.
+                    ...this your last chance.  After this there is no turning back.  You click the
+                    blue link, the story ends.  You wake up in your bed and believe whatever you want
+                    to.  You click the red link, you stay in Wonderland, and I show you how deep the
+                    rabbit hole goes.  Remember, all I&apos;m offering is the truth.  Nothing more.
                 </span>
             </div>
             <a className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.confirmTile}`} href="/home">

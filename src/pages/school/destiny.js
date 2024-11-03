@@ -30,10 +30,10 @@ export default function Destiny() {
             "Cell Resources",
             `Each cell represents an 8 dimensional vector of attributes.  These are a cell's
                 elevation, surface gradient, water attractiveness, temperature, annual precipitation,
-                mineral wealth, biome, and population.  When calculating a cell's new growth, the population
-                and neighboring water attractiveness is taken into account.  We preprocessed visual map data
-                to obtain each of these static attributes, excluding population, which is the only 
-                dynamically calculated attribute.`,
+                mineral wealth, biome, and population.  When calculating a cell's new growth, the 
+                population and neighboring water attractiveness is taken into account.  We preprocessed 
+                visual map data to obtain each of these static attributes, excluding population, 
+                which is the only dynamically calculated attribute.`,
             "/media/image/manifest-preprocessing.png"
         ),
         new Tile(
@@ -52,8 +52,8 @@ export default function Destiny() {
                 <br>
                 Notably, the significant population deficits shown in coastal cities like New York and 
                 San Francisco can be almost entirely accounted for by large waves of immigration occurring
-                between 1850 and 1863, namely the Irish Potato Famine and the sudden influx of Chinese immigrants
-                during the Qing dynasty's internal crisis of that time.`,
+                between 1850 and 1863, namely the Irish Potato Famine and the sudden influx of Chinese 
+                immigrants during the Qing dynasty's internal crisis of that time.`,
         ),
         new Tile(
             "Parallelization",

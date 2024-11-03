@@ -9,15 +9,18 @@ export default function Neural() {
     let tiles = [
         new Tile(
             "<h2>Overview</h2>",
-            `The objective of this project was to analyze the differences between backpropagation, a genetic algorithm method,
-                and the decision tree optimization on the training and execution of a neural network.`
+            `The objective of this project was to analyze the differences between backpropagation, 
+                a genetic algorithm method, and the decision tree optimization on the training and 
+                execution of a neural network.`
         ),
         new Tile(
             "Research Paper",
-            `While the paper originally intended to only be a short presentation of the project, my classmate and I 
-                developed the presentation much further into a research paper under the guidance of our professor.  I used this as an opportunity
-                to both practice my research skills and to gain a deeper understanding of neural networks than was presented in class.
-                The paper shows our findings, our methods, and the underlying theory and algorithms that we utilized.`,
+            `While the paper originally intended to only be a short presentation of the project, 
+                my classmate and I developed the presentation much further into a research paper under 
+                the guidance of our professor.  I used this as an opportunity to both practice my 
+                research skills and to gain a deeper understanding of neural networks than was 
+                presented in class.  The paper shows our findings, our methods, and the underlying 
+                theory and algorithms that we utilized.`,
             "", [],
             [new TileLink("https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf", "Research Paper")],
         ),
@@ -26,27 +29,29 @@ export default function Neural() {
         ),
         new Tile(
             "Backpropagation",
-            `The backpropagation algorithm is one of the most widely used in neural networks today, with many applicable
-                situations.  This method acted similar to a control for this project, being compared to the other two algorithms in
-                its performance and accuracy.`
+            `The backpropagation algorithm is one of the most widely used in neural networks 
+                today, with many applicable situations.  This method acted similar to a control for 
+                this project, being compared to the other two algorithms in its performance and accuracy.`
         ),
         new Tile(
             "Decision Tree",
-            `For this project, a decision tree was used to decrease the number of inputs to the neural network.  
-                This was used in conjunction with backpropagation, resulting in fewer of the matrix-heavy calculations that can make
-                backpropagation very resource intensive to train.`
+            `For this project, a decision tree was used to decrease the number of inputs to 
+                the neural network.  This was used in conjunction with backpropagation, resulting in 
+                fewer of the matrix-heavy calculations that can make backpropagation very resource 
+                intensive to train.`
         ),
         new Tile(
             "Genetic Algorithm",
-            `The genetic algorithm used for this project is the most different from backpropagation.  The genome of each
-                individual in the population was composed of a section of the weights in the network.  These individuals were then bred
-                and passed on their combined genomes to the next generation.`
+            `The genetic algorithm used for this project is the most different from backpropagation.
+                The genome of each individual in the population was composed of a section of the weights 
+                in the network.  These individuals were then bred and passed on their combined genomes 
+                to the next generation.`
         ),
         new Tile(
             "Testing",
-            `For training, each one of the three networks was given the same 80% proportion of the original data set and 
-                trained for 150 epochs and three independent trials. The loss function for each network is given by the 
-                sum of squared errors for every sample. 
+            `For training, each one of the three networks was given the same 80% proportion of 
+                the original data set and trained for 150 epochs and three independent trials. The 
+                loss function for each network is given by the sum of squared errors for every sample. 
                 
                 Each trial was given a score for comparison. The score is given by the percent
                 of correctly identified diagnoses divided by the time it took for the trial to
@@ -57,8 +62,8 @@ export default function Neural() {
         ),
         new Tile(
             "Backpropagation Results",
-            `For the backpropagation network, a learning rate ($\\alpha$) of 0.18 was used. Across
-                three trials, training over the data set for the 150 epochs, the network trained
+            `For the backpropagation network, a learning rate ($\\alpha$) of 0.18 was used. 
+                Across three trials, training over the data set for the 150 epochs, the network trained
                 after 0.82 seconds on average. The average loss for the testing set was 0.125,
                 correctly predicting 85.9% of diagnoses in the testing set and 95.1% withing
                 the training set. Its overall score was 0.96.

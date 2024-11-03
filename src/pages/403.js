@@ -37,9 +37,9 @@ export default function Unauthorized() {
                 <h3><b>We have detected an unauthorized access attempt</b></h3>
                 <span style={{margin: "15px 0px", display: "block"}}>
                     You either do not have the permissions to view the requested page or your authorization
-                    token has expired.  If the latter is the case, attempt to re-authenticate and access the
-                    path through the original means.  If the former is the case, you do not belong here.
-                    Searching in areas that you are not meant to go serves the good of nobody.
+                    token has expired.  If the latter is the case, attempt to re-authenticate and access
+                    the path through the original means.  If the former is the case, you do not belong
+                    here.  Searching in areas that you are not meant to go serves the good of nobody.
                 </span>
             </div>
             <a className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.confirmTile}`} href="/home">
