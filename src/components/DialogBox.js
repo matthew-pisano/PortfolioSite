@@ -1,5 +1,6 @@
-import styles from "@/styles/DialogBox.module.css";
 import React from "react";
+
+import styles from "@/styles/DialogBox.module.css";
 
 
 function DialogBox () {

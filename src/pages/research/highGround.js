@@ -1,7 +1,8 @@
-import {genPageTitle} from "@/lib/utils";
 import React from 'react';
-import {GalleryTile, PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
+
 import DefaultWrapper from "@/components/DefaultWrapper";
+import {GalleryTile, PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
+import {genPageTitle} from "@/lib/utils";
 
 
 export default function HighGround() {

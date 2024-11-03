@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Commands} from '@/lib/terminal/commands';
+
 import {ANSI, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
+import {Commands} from '@/lib/terminal/commands';
 import {EventHandlers} from "@/lib/terminal/eventHandlers";
 import {Constants} from "@/lib/utils";
 import styles from '@/styles/Terminal.module.css';

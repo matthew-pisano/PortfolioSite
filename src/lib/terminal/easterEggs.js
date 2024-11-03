@@ -1,5 +1,5 @@
-import {eightballResponses, hal9000, pacerTest, rmRootMessage} from "./strings";
-import {ANSI, SysEnv} from "../fileSystem/fileSystemMeta";
+import {ANSI, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
+import {eightballResponses, hal9000, pacerTest, rmRootMessage} from "@/lib/terminal/strings";
 
 
 /**

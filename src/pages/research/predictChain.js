@@ -1,7 +1,8 @@
-import {genPageTitle} from "@/lib/utils";
 import React from 'react';
-import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder';
+
 import DefaultWrapper from "@/components/DefaultWrapper";
+import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder';
+import {genPageTitle} from "@/lib/utils";
 
 
 export default function PredictChain() {

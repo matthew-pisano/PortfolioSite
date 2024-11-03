@@ -1,4 +1,4 @@
-import sidebarStyles from "../styles/Sidebar.module.css";
+import sidebarStyles from "@/styles/Sidebar.module.css";
 
 
 class ThemeColor {

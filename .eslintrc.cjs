@@ -6,6 +6,8 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
         "plugin:react/recommended"
     ],
     "parserOptions": {
@@ -16,11 +18,32 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "import"
     ],
     "rules": {
         "semi": ["warn", "always"],
         "no-unused-vars": "warn",
-        "no-control-regex": "off"
-    }
+        "no-control-regex": "off",
+        "import/no-unresolved": "off",
+        "import/order": [
+            "warn",
+            {
+                "groups": ["builtin", "external", "internal"],
+                "pathGroups": [
+                    {
+                        "pattern": "react",
+                        "group": "external",
+                        "position": "before"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": ["react"],
+                "newlines-between": "always",
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ],
+    },
 };

@@ -1,15 +1,18 @@
+import React, {useEffect, useState} from 'react';
+
+import Head from 'next/head';
+import PropTypes from "prop-types";
+
 import DialogBox from "@/components/DialogBox";
+import {HeaderMenu, savePage, StatusFooter} from "@/components/Margins";
 import Sidebar from "@/components/Sidebar";
 import Terminal from '@/components/Terminal';
 import {buildClientside, buildServerside} from '@/lib/fileSystem/fileSystem';
 import {setTheme} from "@/lib/themes";
 import pageStyles from "@/styles/pageTiles.module.css";
-
 import styles from '@/styles/Wrapper.module.css';
-import Head from 'next/head';
-import PropTypes from "prop-types";
-import React, {useEffect, useState} from 'react';
-import {HeaderMenu, savePage, StatusFooter} from "./Margins";
+
+
 
 
 /**

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {PageInfo} from '@/lib/pageBuilder';
-import Wrapper from '@/components/Wrapper';
 
-import styles from '@/styles/Wrapper.module.css';
+import Wrapper from '@/components/Wrapper';
+import {PageInfo} from '@/lib/pageBuilder';
 import tileStyles from '@/styles/pageTiles.module.css';
+import styles from '@/styles/Wrapper.module.css';
 
 
 const authQuotes = ["You appear to have been misinformed.", "You're not from around here, ain't ya?",

@@ -1,8 +1,10 @@
+import React from "react";
+
+import PropTypes from "prop-types";
+
 import Wrapper from "@/components/Wrapper";
 import {buildPage} from "@/lib/pageBuilder";
 import styles from "@/styles/Wrapper.module.css";
-import PropTypes from "prop-types";
-import React from "react";
 
 
 /**

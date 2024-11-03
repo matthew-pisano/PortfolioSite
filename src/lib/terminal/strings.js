@@ -1,4 +1,4 @@
-import {ANSI, SysEnv} from "../fileSystem/fileSystemMeta";
+import {ANSI, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
 
 
 const neofetch = `

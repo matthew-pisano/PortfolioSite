@@ -1,12 +1,12 @@
-import {FileSystemError, masterFileSystem, pathJoin} from '../fileSystem/fileSystem';
-import {eightBall, hal, haltingProblem, rmRoot, runPacer, toVoid} from './easterEggs';
-import {letoucan, neofetch, system32, tfLogo, theMissile} from './strings';
-import {Directory, File} from "../fileSystem/fileSystemObjects";
-import {ANSI, Perms, SysEnv} from "../fileSystem/fileSystemMeta";
-import {setTheme, themes} from "../themes";
-import {resolveTokens, tokenizeCommand} from "./processTokens";
-import {Help} from "./helpMenu";
-import {EventHandlers} from "./eventHandlers";
+import {FileSystemError, masterFileSystem, pathJoin} from '@/lib/fileSystem/fileSystem';
+import {ANSI, Perms, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
+import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
+import {eightBall, hal, haltingProblem, rmRoot, runPacer, toVoid} from '@/lib/terminal/easterEggs';
+import {EventHandlers} from "@/lib/terminal/eventHandlers";
+import {Help} from "@/lib/terminal/helpMenu";
+import {resolveTokens, tokenizeCommand} from "@/lib/terminal/processTokens";
+import {letoucan, neofetch, system32, tfLogo, theMissile} from '@/lib/terminal/strings';
+import {setTheme, themes} from "@/lib/themes";
 
 
 /**

@@ -1,6 +1,6 @@
-import {Directory, File} from "./fileSystemObjects";
-import {Perms} from "./fileSystemMeta";
-import {bootstrapServerside} from "./bootstrap";
+import {bootstrapServerside} from "@/lib/fileSystem/bootstrap";
+import {Perms} from "@/lib/fileSystem/fileSystemMeta";
+import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
 
 
 /**

@@ -1,5 +1,6 @@
 import $ from "jquery";
 
+
 /**
  * Class to hold constants used throughout the site.
  */

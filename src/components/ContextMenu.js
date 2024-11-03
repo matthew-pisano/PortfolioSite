@@ -1,6 +1,8 @@
 import React from "react";
-import ReactDOM from 'react-dom/client';
+
 import PropTypes from "prop-types";
+import ReactDOM from 'react-dom/client';
+
 import styles from "@/styles/ContextMenu.module.css";
 import sidebarStyles from "@/styles/Sidebar.module.css";
 

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {buildPage, PageInfo, Tile} from '@/lib/pageBuilder';
-import Wrapper from '@/components/Wrapper';
 
+import Wrapper from '@/components/Wrapper';
+import {buildPage, PageInfo, Tile} from '@/lib/pageBuilder';
 import styles from "@/styles/Wrapper.module.css";
 
 

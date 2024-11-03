@@ -1,5 +1,5 @@
-import {SysEnv} from "../fileSystem/fileSystemMeta";
-import {eightBall} from "./easterEggs";
+import {SysEnv} from "@/lib/fileSystem/fileSystemMeta";
+import {eightBall} from "@/lib/terminal/easterEggs";
 
 /**
  * Class containing all the help information for the shell commands and a general help menu

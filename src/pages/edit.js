@@ -1,13 +1,15 @@
 import React, {useEffect} from 'react';
-import Wrapper from "@/components/Wrapper";
-import {lineNumbers} from "@codemirror/view";
-import {Compartment, EditorState} from "@codemirror/state";
-import {basicSetup, EditorView} from "codemirror";
+
 import {html} from "@codemirror/lang-html";
+import {Compartment, EditorState} from "@codemirror/state";
+import {lineNumbers} from "@codemirror/view";
+import {basicSetup, EditorView} from "codemirror";
+
+import Wrapper from "@/components/Wrapper";
+import {masterFileSystem} from "@/lib/fileSystem/fileSystem";
+import {Perms} from "@/lib/fileSystem/fileSystemMeta";
 import {Directory} from "@/lib/fileSystem/fileSystemObjects";
 import {PageInfo} from "@/lib/pageBuilder";
-import {Perms} from "@/lib/fileSystem/fileSystemMeta";
-import {masterFileSystem} from "@/lib/fileSystem/fileSystem";
 
 
 export default function Edit() {

@@ -1,10 +1,12 @@
 import React, {useEffect} from "react";
-import {showDialog} from "@/lib/utils";
-import {renameFile} from "./Sidebar";
-import {masterFileSystem, pathJoin} from "@/lib/fileSystem/fileSystem";
+
 import PropTypes from "prop-types";
+
+import {renameFile} from "@/components/Sidebar";
+import {masterFileSystem, pathJoin} from "@/lib/fileSystem/fileSystem";
 import {Perms, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
 import {setTheme} from "@/lib/themes";
+import {showDialog} from "@/lib/utils";
 import styles from "@/styles/Margins.module.css";
 
 

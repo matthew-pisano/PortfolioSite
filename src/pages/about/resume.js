@@ -1,7 +1,8 @@
 import React from 'react';
-import {Constants} from '@/lib/utils';
+
 import Wrapper from '@/components/Wrapper';
 import {PageInfo} from "@/lib/pageBuilder";
+import {Constants} from '@/lib/utils';
 
 
 export default function Resume() {

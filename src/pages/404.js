@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {PageInfo} from '@/lib/pageBuilder';
-import Wrapper from "@/components/Wrapper";
 
-import styles from "@/styles/Wrapper.module.css";
+import Wrapper from "@/components/Wrapper";
+import {PageInfo} from '@/lib/pageBuilder';
 import tileStyles from '@/styles/pageTiles.module.css';
+import styles from "@/styles/Wrapper.module.css";
 
 
 const lostQuotes = ['How did we get here?', 'Not all who wander are lost...', 

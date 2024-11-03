@@ -1,4 +1,4 @@
-import {Perms} from "./fileSystemMeta";
+import {Perms} from "@/lib/fileSystem/fileSystemMeta";
 
 
 /**

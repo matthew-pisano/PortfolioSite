@@ -1,6 +1,7 @@
 import React from 'react';
-import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder';
+
 import DefaultWrapper from "@/components/DefaultWrapper";
+import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder';
 import {Constants} from '@/lib/utils';
 
 

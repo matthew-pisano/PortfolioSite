@@ -1,7 +1,8 @@
-import styles from "@/styles/Wrapper.module.css";
 import React from 'react';
-import {buildPage, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+
 import Wrapper from '@/components/Wrapper';
+import {buildPage, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
+import styles from "@/styles/Wrapper.module.css";
 
 
 export default function SCP() {

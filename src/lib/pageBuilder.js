@@ -1,8 +1,10 @@
 import React from "react";
+
 import HTMLReactParser from 'html-react-parser';
 import Latex from 'react-latex-next';
-import tagStyles from '../styles/tags.module.css';
-import tileStyles from '../styles/pageTiles.module.css';
+
+import tileStyles from '@/styles/pageTiles.module.css';
+import tagStyles from '@/styles/tags.module.css';
 
 
 class TileLink {

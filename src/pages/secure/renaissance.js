@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import {buildPage, PageInfo, Tile} from '@/lib/pageBuilder';
-import Wrapper from '@/components/Wrapper';
 
-import styles from "@/styles/Wrapper.module.css";
+import Wrapper from '@/components/Wrapper';
+import {buildPage, PageInfo, Tile} from '@/lib/pageBuilder';
 import tileStyles from "@/styles/pageTiles.module.css";
+import styles from "@/styles/Wrapper.module.css";
 
 
 export default function Renaissance() {

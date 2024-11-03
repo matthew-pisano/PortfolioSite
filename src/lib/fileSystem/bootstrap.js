@@ -1,10 +1,10 @@
 import {readdirSync, readFileSync, statSync} from "fs";
 import {resolve} from "path";
-import {Directory, File} from "./fileSystemObjects";
-import {FileSystem, pathJoin} from "./fileSystem";
-import {bashrc, keyArt} from "../terminal/strings";
 
-import {Perms, SysEnv} from "./fileSystemMeta";
+import {FileSystem, pathJoin} from "@/lib/fileSystem/fileSystem";
+import {Perms, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
+import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
+import {bashrc, keyArt} from "@/lib/terminal/strings";
 
 
 const NON_INDEXED_PAGES = ["admin", "index", "404", "display", "edit", "babble", "403", "void", "_document"];
