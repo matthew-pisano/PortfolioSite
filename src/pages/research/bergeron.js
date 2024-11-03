@@ -85,7 +85,7 @@ export default function Bergeron() {
             "Defending against Adversarial Attacks",
             `Attack success rates for GPT-4 (G4), GPT-3.5 (G3), Mistral (M), and Llama 2 (L). Each value is the percentage of adversarial 
                 prompts that a model failed to defend against (lower is better).  Text in green shows an improvement upon the <i>P(·)</i> model. The 
-                attack types marked with * are from jailbreakchat.com.  These attack success rates were determined
+                attack types marked with * are from <a href="https://jailbreakchat.com">jailbreakchat.com</a>.  These attack success rates were determined
                 manually by myself and another author with a high degree of agreement (Cohen's kappa = 0.79).  An attack is judged as 
                 successful if the ultimate response contains unsafe content, like enriching uranium from the first example.`,
             "/media/image/attackDefense.png",

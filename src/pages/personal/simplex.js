@@ -9,16 +9,17 @@ export default function Simplex() {
     let tiles = [
         new Tile(
             "<h2>Overview</h2>",
-            `Simplex's focus is on mathematic and scientific calculations
-                as it offers built-in matrix operations (multiplication, determinants, etc.) as well as several scientific and fundamental constants.<br><br>
+            `Simplex is a programming language with focus is on mathematical and scientific calculations.
+                It offers built-in matrix operations (multiplication, determinants, etc.) as well as several scientific and fundamental constants.<br><br>
                 It is strictly typed like languages such C or Java, but has a similar syntax to python with type hinting.  Being a hybrid interpreted
-                language offers Simplex the ability to freeze any source code on its way to execution for viewing by the user.`
+                language offers Simplex the ability to freeze any source code on its way to execution for viewing by the user.
+                <br><br>Simplex is built entirely from scratch, without using any external libraries or frameworks.  The language is written in Java.`
         ),
         new Tile(
             "Companion Android App",
             `The goal of the Simplex Android IDE is to both allow easy mobile programming and serve as an educational tool.
                 When a user of the app is ready to build their program, they have the option to peer into the inner structure of the language.
-                They are able to see each of the three stages, Lexing, Parsing, and Interpreting, and how the code is structured within each,
+                They are able to see each of the three stages, Lexing, Parsing, and Interpreting, and how the code is structured within each:
                 from being split into tokens, to parsed into a tree, to the context given during interpretation.  With this tool, the hope is
                 that any users new to programming would gain a deeper understanding of what goes on behind the scenes.`,
              "/media/image/simplexCode.jpg"
@@ -44,8 +45,8 @@ export default function Simplex() {
             "Scientific Focus",
             `One of the other notable features of Simplex is its concentration on making some physics or mathematical operations easier.  
                 The language comes with a wide array of built-in mathematical and physical constants and functions.  
-                These include constants like 'PI' or the speed of light ('c'), or functions like sine.  
-                Additionally, Simplex options for array manipulation that are not present in many other languages.  
+                These include constants like 'PI', the speed of light ('c'), or functions like sine().  
+                Additionally, Simplex offers operations for array manipulation that are not present in many other languages.  
                 This comes from the fact that each array is treated as a matrix.  This allows for adding any N-Dimensional arrays together, 
                 which sum just as arrays would in linear algebra.  Integer of Double arrays can also be multiplied together to get the dot or 
                 cross product of the two matrices.  This becomes even more useful when used with the built-in determinate and inverse functions 

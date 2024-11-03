@@ -56,7 +56,7 @@ export default function Home() {
         ),
         new Tile(
             "Universal Models",
-            `The <i>Universal Models</i> library serves as an adapter between Huggingface Transformers
+            `The <i>Universal Models</i> library serves as an adapter between Hugging Face Transformers
                 and several other APIs.  All models from these different sources can be instantiated and 
                 interacted with in the same way as regular, local <i>Transformers</i> models.  This allows
                 for the easy integration of these models into projects that need generation from models from different sources.`,
@@ -104,7 +104,7 @@ export default function Home() {
         new Tile(
             "Simplex",
             `A math-oriented interpreted scripting language built in Java.<br>
-                Simplex's focus is on mathematic and scientific calculations as it offers built-in matrix operations 
+                Simplex's focus is on mathematical and scientific calculations as it offers built-in matrix operations 
                 (multiplication, determinants, etc.) as well as many scientific and fundamental constants.<br><br>
                 Simplex also features an IDE to both help programming and educate users on how programming languages work.`,
             "/media/image/simplexCode.jpg",

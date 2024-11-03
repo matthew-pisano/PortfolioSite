@@ -47,7 +47,7 @@ export default function PredictChain() {
                 Over the course of the semester, we worked on this project.  It was a collaborative effort as me and my partner worked
                 to prepare our project for both the end of the class and the 2023 Mega-Ace hackathon.  My responsibility was developing 
                 the models, blockchain communication protocol, and backend, while my partner was tasked with the front-end 
-                and user management systems.  Minor contributions to classwork also came from a third student that sporadically aided us.`,
+                and user management systems.`,
         ),
         new Tile(
             "Architecture",

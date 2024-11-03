@@ -9,7 +9,7 @@ export default function AnonHires() {
     let tiles = [
         new Tile(
             "<h2>Overview</h2>",
-            `This project was part of the HvTechFest Hackathon 2021.<br>
+            `This project was part of the <a href="https://hvtechfest.com/">Hudson Valley TechFest Hackathon</a> 2021.<br>
                 The idea is to build a web platform for employers and employees, where the employer hires employees anonymously purely based on their talent. 
                 Through this project the team hopes of tackling racial discrimination and gender biases in the hiring process.`
         ),
@@ -34,11 +34,11 @@ export default function AnonHires() {
                 Through the <a href="https://www.onetcenter.org/dictionary/26.0/excel/knowledge.html">O*Net Resource Center</a>, we analyzed the feedback
                 from employees and executive on how important various skills are for a job.  Based on this data, the <i>Pandas</i> Python library
                 was used to process the data from O*Net to provide job recommendations to potential candidates.  This functionality increased the
-                usefulness of the service by providing candidates with jobs that were more fit to the badges they has earned.`,
+                usefulness of the service by providing candidates with jobs that were more fit to the badges they had earned.`,
         ),
         new Tile(
             "Forward",
-            `If the project has continues into further development, planned features include support for third party certifications, such as
+            `If the project had continued into further development, planned features included support for third party certifications, such as
                 LinkedIn badges, and collaborating with other services, such as Leet Code or HackerRank, to add more depth to the assessment system.`,
         ),
     ];

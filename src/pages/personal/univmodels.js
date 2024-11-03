@@ -11,12 +11,12 @@ export default function UnivModels() {
             "<h2>Overview</h2>",
             `The <i>Universal Models</i> library serves as an adapter between Huggingface Transformers
                 and several other APIs.  This includes the OpenAI API, the Huggingface API, and local
-                OpenAI APis, such as <a href="https://github.com/lm-sys/FastChat" target="_blank">FastChat</a>.  All
+                OpenAI APIs, such as <a href="https://github.com/lm-sys/FastChat" target="_blank">FastChat</a>.  All
                 models from these different sources can be instantiated and interacted with in the same
                 way as regular, local <i>Transformers</i> models.  This allows for the easy integration
                 of these models into projects that need generation from models from different sources.
                 It is designed to work primarily with autoregressive, decoder-only models, but can be
-                easily extened to work with other types of models.`
+                easily extended to work with other types of models.`
         ),
         new Tile(
             "Utility",
@@ -27,7 +27,8 @@ export default function UnivModels() {
         ),
         new Tile(
             "Source",
-            `The source code for this project can be found on the above GitHub page or on <a href="https://pypi.org/project/universalmodels/" target="_blank">PyPI</a>.  The package is
+            `The source code for this project can be found on the above GitHub page or on 
+                <a href="https://pypi.org/project/universalmodels/" target="_blank">PyPI</a>.  The package is
                 available for installation via:<br>
                 <code>pip install universalmodels</code>`,
         )

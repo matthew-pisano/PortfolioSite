@@ -76,9 +76,9 @@ export default function Renaissance() {
                 style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.<br>
                 <br><b>[BEGIN LOG]</b>
                 <br>------------<br>
-                From: pisanleo@mathesisinternational.net
-                To: renaissancehead
-                Subject: Continued Failure"
+                From: pisanleo@mathesisinternational.net<br>
+                To: renaissancehead<br>
+                Subject: Continued Failure<br><br>
                 The intelligence's performance in most tasks has continued to decline.  We are still unsure as to why.  We speculate
                 that its overhead limiters are causing the problem.  George brought up the idea of decreasing its intelligence 
                 limiters, although there is some contention as to weather that is safe. We plan to follow this course of action while

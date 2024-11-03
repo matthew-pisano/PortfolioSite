@@ -9,9 +9,9 @@ export default function Help() {
     let tiles = [
         new Tile(
             "<h2>Overview</h2>",
-            `This website is modeled after Visual Studio Code, the IDE that I write many of my projects in. 
-                This site features many of the navigation and editing characteristics of VS Code and other IDEs that
-                I use regularly.`
+            `This website is modeled after <i>Visual Studio Code</i> and the suite of <i>Jetbrains</i> IDEs 
+                that I write many of my projects in.  This site features many of the navigation and 
+                editing characteristics of VS Code and other IDEs that I use regularly.`
         ),
         new Tile(
             "Source",
@@ -29,9 +29,9 @@ export default function Help() {
                 navigation of the pages within this site.  Clicking on each of the files
                 displays the page associated with that file.  For example, selecting <code>home.html</code>
                 opens the homepage of the website.  The names of the files are symbolic, as they are all
-                built by <i>Next.js</i> and JavaScript XML (JSX).  Additionally, when a file or folder
-                is selected, some additional information will be displayed on the blue status bar
-                at the bottom of the page, such as the file size or the number of files in a folder.
+                built by <i>Next.js</i> and JavaScript XML (JSX).  Additionally, when a file
+                is selected, some additional information will be displayed on the status bar
+                at the bottom of the page, such as the file's size.
                 At the top of the explorer is the collapse button, which collapses the explorer to the
                 left if more room for viewing the website content is needed.`
         ),
@@ -40,8 +40,8 @@ export default function Help() {
             `Each of the files in the explorer represent pages that explain the various projects,
                 research papers, or events that I have worked on or participated in.  The top of the 
                 page contains the title of the project and a brief description.  Below that are a 
-                series of tags.  The first tag is a link to the github repository of the project,
-                it leads to the source repository of the project for any who are interested.  For
+                series of tags.  The first tag is often a link to a github repository: 
+                the source repository of the project for any who are interested.  For
                 research projects, a link to the paper is included right after.  The tags that follow those
                 give more information on the type of project, the language(s) used, or the skills involved.
                 Below those are tiles that give more detailed information on the project, possibly
@@ -53,7 +53,8 @@ export default function Help() {
             `All files and other data are stored within your browser's local storage.  This means that
                 all files created or modified will be saved even if the page is refreshed or closed.  This
                 also means that any information saved here will not be accessible to myself, other users, or devices.
-                This site also contains no telemetry or tracking of any kind.`
+                This site also contains no telemetry or tracking of any kind.  This data can be cleared
+                by using the <code>File > Reset</code> option in the top menu bar.`
         ),
         new Tile(
             "File Editor",

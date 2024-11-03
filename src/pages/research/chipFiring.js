@@ -9,13 +9,15 @@ export default function ChipFiring() {
     let tiles = [
         new Tile(
             "<h2>Overview</h2>",
-            `In our research, we focused on the study of Chip-Firing games and how different combinations of 
-                directed and undirected edges affect its winning strategies.`,
+            `This research was performed by myself, an advisor at SUNY New Paltz, and one of his colleagues.
+                In this research, we focused on the study of Chip-Firing games and how different combinations of 
+                directed and undirected edges affect its winning strategies.  THis falls primarily within the fields
+                of linear algebra, graph theory, and combinatorics.`,
             "/media/image/chipfiring.png"
         ),
         new Tile(
             "Abstract",
-            `The Picard group of an undirected graph is a finitely generated abelian group, and the Jacobian is the 
+            `The Picard group of an undirected graph is a finitely generated Abelian group, and the Jacobian is the 
                 torsion subgroup of the Picard group. These groups can be computed by using the Smith normal form of the 
                 Laplacian matrix of the graph or by using chip-firing games associated with the graph. One may consider 
                 its generalization to directed graphs based on the Laplacian matrix. We compute Picard groups and Jacobians 
@@ -31,7 +33,7 @@ export default function ChipFiring() {
         ),
         new Tile(
             "The Chip Firing Game",
-            `A Chip Firing Game is a game played on a the graph structure in mathematics.  Each vertex on the graph is
+            `A Chip Firing Game is a game played on a graph structure in mathematics.  Each vertex on the graph is
                 assigned a positive or negative integer, representing the number of 'chips' that vertex has.  Each vertex has two moves, borrowing and lending.
                 When a vertex borrows, all of its neighboring vertices transfer one 'chip' to the borrowing vertex.  Lending is the opposite,
                 where the lending vertex donates one 'chip' to all neighboring vertices.  For directed graphs, each vertex can only lend or borrow from
@@ -103,7 +105,7 @@ export default function ChipFiring() {
             `Cycle graphs are another simple graph that we study, although their Picard groups are more complex.  The Jacobian of a cycle graph depends
                 on the number of paths that it has.  A path, in this case, is a region of the graph where all edges are either oriented in one direction or
                 are bidirectional.  For zero paths (all edges are bidirectional), the Jacobian is $\\mathbb{Z}_n$ and for one path, it is always
-                trivial.  For two paths, the Jacobian is more complex, but also well defined.  The Jacobian is $\\mathbb{Z}_{x-2}$, where $x$
+                trivial.  For two paths, the Jacobian is more complex, but also well-defined.  The Jacobian is $\\mathbb{Z}_{x-2}$, where $x$
                 is the number of bidirectional paths counter-clockwise from the clockwise path and clockwise from the counter-clockwise path with no yet noted exceptions.
                 For all other numbers of paths, we have not yet discovered a complete description as we have with two paths.  However, we have noticed that
                 there is also always a single invariant factor and this invariant factor is almost always $\\mathbb{Z}_2 \\dots \\mathbb{Z}_4$
@@ -116,7 +118,7 @@ export default function ChipFiring() {
             "Wheel Graphs",
             `Wheel graphs are similar to cycles in their construction, but not in their playable configurations, represented by the Picard group.
                 The Jacobian of a wheel graphs can be split into four broad categories when the 'rim' of the wheel is always directed a single way and
-                when the 'spokes' are also directed a single way.  Notably, when all of the edges of a graph are bidirectional, an interesting patter
+                when the 'spokes' are also directed a single way.  Notably, when all the edges of a graph are bidirectional, an interesting patter
                 emerges between the Jacobians of wheels of different sizes.  The Jacobian of a wheel graph of size $n$ is equal to
                 $\\mathbb{Z}_{\\alpha\\phi^{n}} \\times \\mathbb{Z}_{5\\alpha\\phi^{n}}$ when the size
                 was odd where $\\alpha \\approxeq 0.27555$ and $\\mathbb{Z}_{\\beta\\phi^{n}} \\times \\mathbb{Z}_{\\beta\\phi^{n}}$

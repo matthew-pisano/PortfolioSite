@@ -50,7 +50,7 @@ export default function Destiny() {
                     <tr> <td class="tabCell">San Francisco Bay</td> <td class="tabCell">68,714</td> <td class="tabCell">21,735</td> <td class="tabCell">-68.37%</td> </tr> 
                 </table>
                 <br>
-                Notably, the significant population deficits shown in costal cities like New York and 
+                Notably, the significant population deficits shown in coastal cities like New York and 
                 San Francisco can be almost entirely accounted for by large waves of immigration occurring
                 between 1850 and 1863, namely the Irish Potato Famine and the sudden influx of Chinese immigrants
                 during the Qing dynasty's internal crisis of that time.`,

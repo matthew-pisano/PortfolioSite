@@ -57,7 +57,7 @@ export default function Neural() {
         ),
         new Tile(
             "Backpropagation Results",
-            `For the backpropagation network, a learning rate (\\alpha) of 0.18 was used. Across
+            `For the backpropagation network, a learning rate ($\\alpha$) of 0.18 was used. Across
                 three trials, training over the data set for the 150 epochs, the network trained
                 after 0.82 seconds on average. The average loss for the testing set was 0.125,
                 correctly predicting 85.9% of diagnoses in the testing set and 95.1% withing
@@ -66,12 +66,12 @@ export default function Neural() {
                 The training loss curve for backpropagation follows closely to a curve of 1/x
                 This signifies a good loss curve with minimal over-fitting. The loss declines
                 sharply and the accuracy rises rapidly over successive epochs of training.`,
-            "/media/image/backproplosses.png"
+            "/media/image/backproplosses.png", [], [], "", true
         ),
         new Tile(
             "Decision Tree Results",
             `For the backpropagation network with the decision tree optimization, a learning 
-                rate (\\alpha) of 0.18 was also used. The decision tree was able to eliminate the
+                rate ($\\alpha$) of 0.18 was also used. The decision tree was able to eliminate the
                 attributes of weight as least impactful and glucose levels as second to least
                 impactful. For this experiment, only weight was eliminated. This brought
                 the total number of inputs down to ten input nodes. Across three trials,
@@ -85,7 +85,7 @@ export default function Neural() {
                 loss declines sharply and the accuracy rises rapidly over successive epochs of
                 training. Compared to raw backpropagation, this algorithm converges on an
                 optimal solution approximately twice as fast.`,
-            "/media/image/decisionlosses.png"
+            "/media/image/decisionlosses.png", [], [], "", true
         ),
         new Tile(
             "Genetic Algorithm Results",

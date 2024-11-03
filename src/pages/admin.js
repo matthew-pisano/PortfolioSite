@@ -144,7 +144,7 @@ export default function Admin() {
             <p>{parse(mathesisIcon)}</p>
             <span style={{display: "none"}}>ERROR preloadin{"����├-�=�▒I␌�L�>���┘�"}edentials for Pr∞jec⅂ <i>r☿nais↺ance</i>.  DATA CORRUP{"{GNUq���@��qvz����"}
             ERROR prel{":▒; <(=0?8@@BHDP"}din{"��H�.␍H�%(H�D$␤1���┘�"} <i>∂n∘maly</i> inform{"◆(▒0␉8␌@␍H°P±X␤◆␋␤┐"}ion.  DA{"{@��dhfhz�f���"}
-            {"�������������ŠˠѠנݠ��������@4`\"/usr/lib/debug/.dwz/x86_64-linux-gnu/coreutils.debug�.��X�"}</span>
+            {"�������������ŠˠѠנݠ��������@4`\"/usr/lib/debug/.dwz/x86_64/coreutils.debug�.��X�"}</span>
             <div id="pwHolder" style={{width: "100%", height: "30px"}}><span id="pwPrompt">password: </span>
                 <span id="adminPw" spellCheck="false" contentEditable={true} onInput={onInput} style={{outline: "none", whiteSpace: "nowrap", color: "#1e1e1e"}}></span></div>
         </div>

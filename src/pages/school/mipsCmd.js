@@ -17,7 +17,7 @@ export default function MipsCmd() {
         new Tile(
             "Features and Function",
             `This command processor in input from the <i>Mars</i> console emulator, and outputs to that
-                same interface.  It has the ability to preform mathematical operations, bi-directional decimal and hexadecimal
+                same interface.  It has the ability to preform mathematical operations, bidirectional decimal and hexadecimal
                 conversions, produce MIDI audio output, and display sections of its memory to the user.  It also has the ability
                 to draw using one of <i>Mars</i>'s virtual screens.`,
             "/media/image/mipscmd.png"

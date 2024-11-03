@@ -37,7 +37,7 @@ export default function HighGround() {
         ),
         new Tile(
             "Background",
-            `I worked on this project as a part of my 2023 research externship with IBM Research.  I worked with a small team of 
+            `I worked on this project as a part of my 2023 research visitation with IBM Research.  I worked with a small team of 
                 collaborators and mentors to better learn about model fine-tuning and text-based games.`,
         ),
         new Tile(
@@ -65,7 +65,7 @@ export default function HighGround() {
             "Evaluation",
             `To evaluate our benchmark, we use two different methods on different models.  The first method we use is instruction-tuning.
                 This involves adding optimal moral choices from our games into the prompts for other games or arbitrary prompts.  The goal of
-                including these in prompts is to provide models with optimal moral choices in-contex to improve their decision making skills.
+                including these in prompts is to provide models with optimal moral choices in-context to improve their decision making skills.
                 We perform instruction-tuning on all five models.  The second method of evaluation that we use is fine-tuning.  Here, we fine-tune
                 a Flan-T5 small model with moral scenarios from our games along with the most optimal choice.  Fine-tuning the models on these samples
                 encourages it to pick similarly optimal choices in other situations.`,
@@ -95,7 +95,7 @@ export default function HighGround() {
         "Moral High Ground",
         "A conversational benchmark for LLM moral alignment",
         {backgroundColor: "#429797"},
-        ["research", "academic", "ai", "python", "hack"],
+        ["research", "academic", "ai", "python"],
         []
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
