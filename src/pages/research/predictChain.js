@@ -3,7 +3,7 @@ import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder'
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function PredictChain() {
+export default function PredictChain() {
 
     let tiles = [
         new Tile(
@@ -89,6 +89,3 @@ function PredictChain() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default PredictChain;

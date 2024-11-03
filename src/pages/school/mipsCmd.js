@@ -3,7 +3,7 @@ import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function MipsCmd() {
+export default function MipsCmd() {
 
     let tiles = [
         new Tile(
@@ -32,6 +32,3 @@ function MipsCmd() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default MipsCmd;

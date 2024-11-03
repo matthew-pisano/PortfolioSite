@@ -3,7 +3,7 @@ import {GalleryTile, GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function Bergeron() {
+export default function Bergeron() {
 
     let tiles = [
         new Tile(
@@ -124,6 +124,3 @@ function Bergeron() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default Bergeron;

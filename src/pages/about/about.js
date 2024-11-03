@@ -4,7 +4,7 @@ import DefaultWrapper from "@/components/DefaultWrapper";
 import {Constants} from "@/lib/utils";
 
 
-function About() {
+export default function About() {
 
     let tiles = [
         new Tile(
@@ -89,6 +89,3 @@ function About() {
 
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default About;

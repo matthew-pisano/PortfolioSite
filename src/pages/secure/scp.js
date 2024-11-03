@@ -4,7 +4,7 @@ import {buildPage, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import Wrapper from '@/components/Wrapper';
 
 
-function SCP() {
+export default function SCP() {
 
     let tiles = [
         new Tile(
@@ -96,6 +96,3 @@ function SCP() {
     </Wrapper>);
 
 }
-
-
-export default SCP;

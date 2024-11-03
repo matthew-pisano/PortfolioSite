@@ -1,6 +1,6 @@
 import DialogBox from "@/components/DialogBox";
-import {Sidebar} from "@/components/Sidebar";
-import TerminalDiv from '@/components/Terminal';
+import Sidebar from "@/components/Sidebar";
+import Terminal from '@/components/Terminal';
 import {buildClientside, buildServerside} from '@/lib/fileSystem/fileSystem';
 import {setTheme} from "@/lib/themes";
 import pageStyles from "@/styles/pageTiles.module.css";
@@ -107,7 +107,7 @@ function Wrapper({children, pageName, pageStyle}) {
             </div>
 
             <DialogBox/>
-            <TerminalDiv/>
+            <Terminal/>
             <StatusFooter currentPath={currentPath} pageName={pageName}/>
             <span id="dehydrateInfo" style={{display: "none"}}>{dehydratedInfo}</span>
 

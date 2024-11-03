@@ -3,7 +3,7 @@ import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder'
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function Neural() {
+export default function Neural() {
 
     let tiles = [
         new Tile(
@@ -141,6 +141,3 @@ function Neural() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default Neural;

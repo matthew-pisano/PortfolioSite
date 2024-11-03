@@ -3,7 +3,7 @@ import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function AnonHires() {
+export default function AnonHires() {
 
     let tiles = [
         new Tile(
@@ -51,6 +51,3 @@ function AnonHires() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default AnonHires;

@@ -4,7 +4,7 @@ import DefaultWrapper from "@/components/DefaultWrapper";
 import {Constants} from '@/lib/utils';
 
 
-function Home() {
+export default function Home() {
 
     let tiles = [
         new SectionTile(
@@ -160,6 +160,3 @@ function Home() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default Home;

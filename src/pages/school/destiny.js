@@ -3,7 +3,7 @@ import {GalleryTile, GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder'
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function Destiny() {
+export default function Destiny() {
 
     let tiles = [
         new Tile(
@@ -73,6 +73,3 @@ function Destiny() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default Destiny;

@@ -3,7 +3,7 @@ import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder'
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function ImageCrypt() {
+export default function ImageCrypt() {
 
     let tiles = [
         new Tile(
@@ -101,6 +101,3 @@ function ImageCrypt() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default ImageCrypt;

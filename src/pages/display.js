@@ -7,7 +7,7 @@ import {Perms} from "@/lib/fileSystem/fileSystemMeta";
 import {masterFileSystem} from "@/lib/fileSystem/fileSystem";
 
 
-function Display() {
+export default function Display() {
 
     const [pageText,  setPageText] = useState("");
     let pageInfo = new PageInfo("display", "Display", "Displaying the contents of a file");
@@ -35,6 +35,3 @@ function Display() {
         {parse(pageText)}
     </Wrapper>);
 }
-
-
-export default Display;

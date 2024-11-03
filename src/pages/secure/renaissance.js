@@ -6,7 +6,7 @@ import styles from "@/styles/Wrapper.module.css";
 import tileStyles from "@/styles/pageTiles.module.css";
 
 
-function Renaissance() {
+export default function Renaissance() {
 
     useEffect(() => {
         for( let elem of document.getElementsByClassName(tileStyles.displayTile))
@@ -155,6 +155,3 @@ function Renaissance() {
         {buildPage(pageInfo, tiles)}
     </Wrapper>);
 }
-
-
-export default Renaissance;

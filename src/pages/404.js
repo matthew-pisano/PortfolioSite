@@ -17,7 +17,7 @@ const lostQuotes = ['How did we get here?', 'Not all who wander are lost...',
         "You know, I used to be an adventurer like you, but then I took an arrow to the knee"];
 
 
-function PageNotFound() {
+export default function PageNotFound() {
 
     const [quote, setQuote] = useState("");
     const [location, setLocation] = useState("");
@@ -66,6 +66,3 @@ function PageNotFound() {
         </div>
     </Wrapper>);
 }
-
-
-export default PageNotFound;

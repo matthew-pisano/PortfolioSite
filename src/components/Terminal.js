@@ -8,9 +8,9 @@ import styles from '@/styles/Terminal.module.css';
 
 /**
  * The terminal div component
- * @return {JSX.Element} The terminal div
+ * @return {JSX.Element} The terminal component
  */
-function TerminalDiv() {
+function Terminal() {
 
     const [cwd, setCwd] = useState(Commands.ENV.CWD);
     const [termColor, setTermColor] = useState(Commands.ENV.COLOR);
@@ -225,4 +225,4 @@ function TerminalDiv() {
 }
 
 
-export default TerminalDiv;
+export default Terminal;

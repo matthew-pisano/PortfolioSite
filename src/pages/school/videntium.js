@@ -3,7 +3,7 @@ import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function Videntium() {
+export default function Videntium() {
 
     let tiles = [
         new Tile(
@@ -47,6 +47,3 @@ function Videntium() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default Videntium;

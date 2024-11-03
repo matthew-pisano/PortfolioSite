@@ -32,6 +32,8 @@
     height: 300px;
     top: 70px;
     pointer-events: none;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .openSidebarPage {

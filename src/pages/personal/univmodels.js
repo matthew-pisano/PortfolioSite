@@ -3,7 +3,7 @@ import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function UnivModels() {
+export default function UnivModels() {
 
     let tiles = [
         new Tile(
@@ -42,6 +42,3 @@ function UnivModels() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default UnivModels;

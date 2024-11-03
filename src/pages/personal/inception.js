@@ -3,7 +3,7 @@ import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function Inception() {
+export default function Inception() {
 
     let tiles = [
         new Tile(
@@ -31,6 +31,3 @@ function Inception() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default Inception;

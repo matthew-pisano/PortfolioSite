@@ -3,7 +3,7 @@ import {GalleryTile, PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function HighGround() {
+export default function HighGround() {
 
     let tiles = [
         new Tile(
@@ -99,6 +99,3 @@ function HighGround() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default HighGround;

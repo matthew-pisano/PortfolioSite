@@ -3,7 +3,7 @@ import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function Simplex() {
+export default function Simplex() {
 
     let tiles = [
         new Tile(
@@ -62,6 +62,3 @@ function Simplex() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default Simplex;

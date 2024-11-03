@@ -10,7 +10,7 @@ import {Perms} from "@/lib/fileSystem/fileSystemMeta";
 import {masterFileSystem} from "@/lib/fileSystem/fileSystem";
 
 
-function Edit() {
+export default function Edit() {
 
     let pageInfo = new PageInfo("edit", "Edit", "Edit the contents of a file");
 
@@ -76,6 +76,3 @@ function Edit() {
 
     return (<Wrapper pageName={pageInfo.pageName}/>);
 }
-
-
-export default Edit;

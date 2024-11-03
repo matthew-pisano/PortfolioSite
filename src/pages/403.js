@@ -13,7 +13,7 @@ const authQuotes = ["You appear to have been misinformed.", "You're not from aro
         "There is a way out planned for you.", "All your base are belong to us", "I'm sorry, Dave.  I'm afraid I can't do that.",];
 
 
-function Unauthorized() {
+export default function Unauthorized() {
 
     const [quote, setQuote] = useState("");
 
@@ -48,6 +48,3 @@ function Unauthorized() {
         </div>
     </Wrapper>);
 }
-
-
-export default Unauthorized;

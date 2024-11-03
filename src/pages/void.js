@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 
 
-function Void() {
+export default function Void() {
 
     useEffect(() => {
         document.body.style.height = "100%";
@@ -45,6 +45,3 @@ function Void() {
         </div>
     </div>);
 }
-
-
-export default Void;

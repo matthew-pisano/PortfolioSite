@@ -3,7 +3,7 @@ import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function Imperium() {
+export default function Imperium() {
     let tiles = [
         new Tile(
             "<h2>Overview</h2>",
@@ -49,6 +49,3 @@ function Imperium() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default Imperium;

@@ -3,7 +3,7 @@ import {GitLink, PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function Help() {
+export default function Help() {
 
     let tiles = [
         new Tile(
@@ -93,6 +93,3 @@ function Help() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default Help;

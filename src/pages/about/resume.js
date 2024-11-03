@@ -4,7 +4,7 @@ import Wrapper from '@/components/Wrapper';
 import {PageInfo} from "@/lib/pageBuilder";
 
 
-function Resume() {
+export default function Resume() {
 
     let pageInfo = new PageInfo(
         "resume",
@@ -18,6 +18,3 @@ function Resume() {
                type="application/pdf" src={Constants.resumeUrl+"#zoom=FitH"}/>
     </Wrapper>);
 }
-
-
-export default Resume;

@@ -279,4 +279,5 @@ function Sidebar({changeSidebarState}) {
 Sidebar.propTypes = { changeSidebarState: PropTypes.func };
 
 
-export {renameFile, Sidebar};
+export default Sidebar;
+export {renameFile};

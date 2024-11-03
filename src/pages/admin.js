@@ -61,7 +61,7 @@ let scpIcon = `<span>
 <p>loading fallback archive [INTERNAL]...</p>`.replace(/\n/g, "<br>").replace(/ /g, '&nbsp;');
 
 
-function Admin() {
+export default function Admin() {
 
     useEffect(() => {
         document.getElementById("adminPw").focus();
@@ -150,6 +150,3 @@ function Admin() {
         </div>
     );
 }
-
-
-export default Admin;

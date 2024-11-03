@@ -3,7 +3,7 @@ import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder'
 import DefaultWrapper from "@/components/DefaultWrapper";
 
 
-function ChipFiring() {
+export default function ChipFiring() {
 
     let tiles = [
         new Tile(
@@ -136,6 +136,3 @@ function ChipFiring() {
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles}/>;
 }
-
-
-export default ChipFiring;
