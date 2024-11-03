@@ -1,3 +1,4 @@
+import {genPageTitle} from "@/lib/utils";
 import React from 'react';
 import {GalleryTile, PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -90,7 +91,7 @@ export default function HighGround() {
         ),
     ];
     let pageInfo = new PageInfo(
-        typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
+        genPageTitle(__filename),
         "Moral High Ground",
         "A conversational benchmark for LLM moral alignment",
         {backgroundColor: "#429797"},

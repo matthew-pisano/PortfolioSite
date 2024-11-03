@@ -36,9 +36,3 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
-
-code {
-    background-color: var(--theme-color-3-selected);
-    padding: 5px;
-    border-radius: 5px;
-}

@@ -78,6 +78,16 @@ function showNextDialog() {
 }
 
 
+/**
+ * Generates a page title based on the local file path.
+ * @param localFile The path to the local file
+ * @returns {string} The page title
+ */
+function genPageTitle(localFile) {
+    return typeof window !== 'undefined' ? window.location.pathname.substring(1) : localFile.split("pages/")[1].split(".js")[0];
+}
+
+
 // Add a visible and invisible function to the jQuery prototype
 if(typeof window !== 'undefined'){
     let $ = require("jquery");
@@ -86,4 +96,4 @@ if(typeof window !== 'undefined'){
 }
 
 
-export { Constants, showDialog };
+export { Constants, showDialog, genPageTitle };

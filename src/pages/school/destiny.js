@@ -1,3 +1,4 @@
+import {genPageTitle} from "@/lib/utils";
 import React from 'react';
 import {GalleryTile, GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -63,7 +64,7 @@ export default function Destiny() {
         ),
     ];
     let pageInfo = new PageInfo(
-        typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
+        genPageTitle(__filename),
         "Manifest Destiny",
         "A cellular automata population growth simulator",
         {backgroundColor: "#5cafb6"},

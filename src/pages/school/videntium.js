@@ -1,3 +1,4 @@
+import {genPageTitle} from "@/lib/utils";
 import React from 'react';
 import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -38,7 +39,7 @@ export default function Videntium() {
         ),
     ];
     let pageInfo = new PageInfo(
-        typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
+        genPageTitle(__filename),
         "Videntium",
         "Online map viewer for Imperium written in PHP",
         {backgroundColor: "#6f63a6"},

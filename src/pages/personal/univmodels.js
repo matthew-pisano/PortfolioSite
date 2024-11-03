@@ -1,3 +1,4 @@
+import {genPageTitle} from "@/lib/utils";
 import React from 'react';
 import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -32,7 +33,7 @@ export default function UnivModels() {
         )
     ];
     let pageInfo = new PageInfo(
-        typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
+        genPageTitle(__filename),
         "Universal Models",
         "An adapter between Huggingface transformers and several different APIs",
         {backgroundColor: "#47af78"},

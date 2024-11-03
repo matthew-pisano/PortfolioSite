@@ -1,7 +1,7 @@
 import React from 'react';
 import {GitLink, PageInfo, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
-import {Constants} from "@/lib/utils";
+import {Constants, genPageTitle} from "@/lib/utils";
 
 
 export default function About() {
@@ -77,7 +77,7 @@ export default function About() {
         ),
     ];
     let pageInfo = new PageInfo(
-        typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
+        genPageTitle(__filename),
         "About",
         "Extra information on me as a developer, student, researcher and person",
         {backgroundColor: "#339f56"},

@@ -1,3 +1,4 @@
+import {genPageTitle} from "@/lib/utils";
 import React from 'react';
 import {GitLink, PageInfo, SectionTile, Tile, TileLink} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -92,7 +93,7 @@ export default function ImageCrypt() {
         ),
     ];
     let pageInfo = new PageInfo(
-        typeof window !== 'undefined' ? window.location.pathname.substring(1) : __filename.split("pages/")[1].split(".js")[0],
+        genPageTitle(__filename),
         "Image-Crypt",
         "An image-based document encoder",
         {backgroundColor: "#62a8a2"},

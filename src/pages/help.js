@@ -1,3 +1,4 @@
+import {genPageTitle} from "@/lib/utils";
 import React from 'react';
 import {GitLink, PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -85,7 +86,7 @@ export default function Help() {
         ),
     ];
     let pageInfo = new PageInfo(
-        "help",
+        genPageTitle(__filename),
         "Help Menu",
         "In case you'd like some assistance",
         {backgroundColor: "#778291"},
