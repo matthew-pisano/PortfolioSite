@@ -147,6 +147,40 @@ function buildTags(tile, dark = false){
 
 
 /**
+ * Builds the tiles for a page
+ * @param tiles {Tile[]} The tiles to build
+ * @returns {JSX.Element[]} The tiles JSX DIV elements
+ */
+function buildTiles(tiles){
+    return tiles.map((tile, i) => {
+        let className = `w3-container w3-row ${tileStyles.displayTile}`;
+        let titleClass = `${tileStyles.displayTileTitle} ${tile instanceof GalleryTile ? tileStyles.galleryTileTitle : ""}`;
+        let imageClass = tile instanceof GalleryTile ? tileStyles.galleryTileThumbnail : "";
+        let contentTypeClass = tile instanceof GalleryTile ? tileStyles.galleryTileContent :
+            !tile.thumbnail ? tileStyles.textOnlyTileContent : "";
+
+        return <div id={"pageTile"+i} className={className} key={"pageTile"+i} style={tile.style} data-refdata={"unslid"}>
+            {tile.thumbnail ?
+                <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail} ${imageClass}`}>
+                    <img src={tile.thumbnail} alt='gitLogo'/>
+                </div> : null}
+
+            <div className={`w3-mobile ${tileStyles.displayTileContent} ${contentTypeClass}`}>
+                {tile.titleLink ?
+                    <h4><a className={titleClass} href={tile.titleLink}><u>{HTMLReactParser(tile.title)}</u></a></h4> :
+                            <h4><b className={titleClass}>{HTMLReactParser(tile.title)}</b></h4>}
+
+                {tile.content ?
+                    <span>{tile.latex ? <Latex>{tile.content}</Latex> : HTMLReactParser(tile.content)}</span> : null}
+
+                {buildTags(tile)}
+            </div>
+        </div>;
+    });
+}
+
+
+/**
  * Builds a page from the given pageInfo and tiles
  * @param pageInfo {PageInfo} The page information for making the title and page-level tags
  * @param tiles {Tile[]} The tiles to display on the page
@@ -157,36 +191,7 @@ function buildPage(pageInfo, tiles){
     pageInfo.pageName = pageInfo.pageName.split("/").join("");
     return <div id="tileHolder" className={`w3-display-container ${tileStyles.tileHolder}`} style={pageInfo.holderStyle}>
         {buildTags(pageInfo, true)}
-        {
-            tiles.map((tile, i) =>{
-                let className = `w3-container w3-row ${tileStyles.displayTile}`;
-                let titleClass = `${tileStyles.displayTileTitle} ${tile instanceof GalleryTile ? tileStyles.galleryTileTitle : ""}`;
-                let imageClass = tile instanceof GalleryTile ? tileStyles.galleryTileThumbnail : "";
-                let contentTypeClass = tile instanceof GalleryTile ? tileStyles.galleryTileContent :
-                    !tile.thumbnail ? tileStyles.textOnlyTileContent : "";
-
-                return <div id={"pageTile"+i} className={className} key={"pageTile"+i} style={tile.style} data-refdata={"unslid"}>
-                    {tile.thumbnail ?
-                        <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail} ${imageClass}`}>
-                            <img src={tile.thumbnail} alt='gitLogo'/>
-                        </div> : null}
-
-                    <div className={`w3-mobile ${tileStyles.displayTileContent} ${contentTypeClass}`}>
-                        {tile.titleLink ?
-                            <a className={titleClass} href={tile.titleLink}><u>{HTMLReactParser(tile.title)}</u></a> :
-                            <b className={titleClass}>{HTMLReactParser(tile.title)}</b>}
-                        <br/>
-
-                        {tile.content ?
-                            <span>
-                                {tile.latex ? <Latex>{tile.content}</Latex> : HTMLReactParser(tile.content)}
-                            </span> : null}
-
-                        {buildTags(tile)}
-                    </div>
-                </div>;
-            })
-        }
+        {buildTiles(tiles)}
     </div>;
 }
 
