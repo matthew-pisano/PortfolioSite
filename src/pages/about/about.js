@@ -46,13 +46,15 @@ export default function About() {
             "Recent Employment",
             `After graduating in 2024, I have continued my research in AI safety through a 
                 continued partnership with my Alma Mater.<hr>
-
+                
+                <p><i>IBM Research</i></p>
                 Over the course of Summer 2023, I worked as a Visiting Researcher at IBM's research 
                 facility in Yorktown as part of their extern program.  During this time, I researched 
                 new techniques of model alignment using text-based game for safety training on 
                 moral and ethical principles.  More information can be found in the 
                 <a href="/research/highGround">Moral High Ground</a> page<hr>
                 
+                <p><i>FileScience</i></p>
                 As a founding member of the <a href="https://filescience.io/">FileScience</a> team, 
                 I have personally worked with small team to develop a seamless and reliable 
                 Cloud-to-Cloud backup service.  As this is geared towards enterprise clients, one of 
@@ -60,16 +62,19 @@ export default function About() {
                 and fault-tolerant.  This has given me invaluable experience with architecting highly 
                 distributed and parallelized software and infrastructure.<hr>
                 
+                <p><i>Cyber Guardian Consulting Group</i></p>
                 Through my employment at <a href="https://cgcg.biz/">Cyber Guardian Consulting Group</a>, 
                 I have developed a variety of proprietary business solutions using a variety of languages 
                 and web services, primarily AWS.  These often involved custom SaaS solutions for clients, 
                 writing distributed and asynchronous backup software from scratch, database management, 
                 and many full-stack web applications.<hr>
                 
+                <p><i>Rensselaer Polytechnic Institute</i></p>
                 Throughout my graduate education, I had been employed at Rensselaer Polytechnic 
                 Institute as a teaching assistant.  In this position, I hold office hours, aid the 
                 professor in grading, and help students to better grasp relevant course material.<hr>
-
+                
+                <p><i>SUNY New Paltz</i></p>
                 During the Summer of 2022, I had worked for SUNY New Paltz through their summer 
                 undergraduate research experience, details about this can be found in the 
                 <a href="/research/chipFiring">Chip Firing</a> page and in the 
