@@ -235,8 +235,13 @@ function Sidebar({changeSidebarState}) {
         // Load the custom hierarchy from local storage
         let savedHierarchy = localStorage.getItem("hierarchy");
         if (savedHierarchy) {
-            let customFileSystem = FileSystem.deserialize(JSON.parse(savedHierarchy));
-            mergeCachedPages(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER), customFileSystem.getItem(SysEnv.PUBLIC_FOLDER));
+            try {
+                let customFileSystem = FileSystem.deserialize(JSON.parse(savedHierarchy));
+                mergeCachedPages(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER), customFileSystem.getItem(SysEnv.PUBLIC_FOLDER));
+            } catch (e) {  // Remove the hierarchy from local storage if it fails to load
+                console.error("Failed to load custom hierarchy from local storage: " + e);
+                localStorage.removeItem("hierarchy");
+            }
         }
 
         setExplorerTree(buildSidebar());

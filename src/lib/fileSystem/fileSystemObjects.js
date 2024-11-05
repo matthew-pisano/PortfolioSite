@@ -184,7 +184,7 @@ class Directory {
         for (let child of dict.subTree)
             if (child.objType === "directory") directory.addChild(Directory.deserialize(child));
             else if (child.objType === "file") directory.addChild(File.deserialize(child));
-            else throw Error(`Unknown child type ${child.objType} in object ${dict.name}!`);  // TODO: Invalidate local storage if this happens
+            else throw Error(`Unknown child type ${child.objType} in object ${dict.name}!`);  // Propagate to the caller
 
         return directory;
     }
