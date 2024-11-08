@@ -191,13 +191,14 @@ function spliceFromSubTree(subTree, name) {
 function buildSidebar() {
     let publicFolder = masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER).copy();
     let subTreeCopy = [...publicFolder.subTree];
-    let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
     let homeFile = spliceFromSubTree(subTreeCopy, "home.html");
+    let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
+    let readingListFile = spliceFromSubTree(subTreeCopy, "readingList.html");
     let aboutFolder = spliceFromSubTree(subTreeCopy, "about");
     let researchFolder = spliceFromSubTree(subTreeCopy, "research");
     let hackFolder = spliceFromSubTree(subTreeCopy, "hackathons");
     let customFolder = spliceFromSubTree(subTreeCopy, "custom");
-    subTreeCopy = [homeFile, helpFile, aboutFolder, researchFolder, ...subTreeCopy, hackFolder, customFolder];
+    subTreeCopy = [homeFile, helpFile, readingListFile, aboutFolder, researchFolder, ...subTreeCopy, hackFolder, customFolder];
     publicFolder.subTree = subTreeCopy;
     return buildHierarchy(publicFolder);
 }

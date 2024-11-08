@@ -165,7 +165,7 @@ function buildTiles(tiles){
                     <img src={tile.thumbnail} alt='gitLogo'/>
                 </div> : null}
 
-            <div className={`w3-mobile ${tileStyles.displayTileContent} ${contentTypeClass}`}>
+            <div className={`w3-mobile w3-rest ${tileStyles.displayTileContent} ${contentTypeClass}`}>
                 {tile.titleLink ?
                     <h4><a className={titleClass} href={tile.titleLink}><u>{HTMLReactParser(tile.title)}</u></a></h4> :
                             <h4><b className={titleClass}>{HTMLReactParser(tile.title)}</b></h4>}
