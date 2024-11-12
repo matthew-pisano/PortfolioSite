@@ -54,6 +54,10 @@ export class EventHandlers {
         if (history) this.prevCommands = JSON.parse(history);
     }
 
+    /**
+     * Add the event listeners for the terminal
+     * @param resizeTerminal {function} The function to resize the terminal
+     */
     static addEventListeners(resizeTerminal) {
         // Listeners need to be global to avoid losing track of the thumb
         document.addEventListener("mousemove", (evt) => this.thumbDrag(evt, resizeTerminal));

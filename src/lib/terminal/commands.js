@@ -6,6 +6,7 @@ import {EventHandlers} from "@/lib/terminal/eventHandlers";
 import {Help} from "@/lib/terminal/helpMenu";
 import {resolveTokens, tokenizeCommand} from "@/lib/terminal/processTokens";
 import {letoucan, neofetch, system32, tfLogo, theMissile} from '@/lib/terminal/strings';
+import {addTerminalSprite} from "@/lib/terminal/terminalSprites";
 import {setTheme, themes} from "@/lib/themes";
 
 
@@ -781,6 +782,11 @@ class Commands {
         if (valResult) throw new CommandError(valResult);
 
         window.location.href = "/admin";
+    }
+
+    static async *sprite(tokens) {
+        addTerminalSprite();
+        yield "";
     }
 
     /**
