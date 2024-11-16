@@ -192,7 +192,20 @@ export default function ReadingList() {
                 a bounty hunter tasked with "retiring" rogue androids, and John Isidore, a man of 
                 limited intelligence due to radiation exposure who empathizes with the fugitive androids.`,
             ``,
-            ``,
+            `One of the most striking aspects of this book is how Dick describes his androids,
+                specifically the Nexus-6 models.  Instead of being sentient machines made of circuit
+                boards and metal substructures, they are much more like artificial, biological humans.
+                This further strengthens the book's central moral conflict concerning the difference
+                between humans and these 'andys'.  In addition to behaving like humans outwardly,
+                they also poses similar biology to humans internally.
+                <br>This blurred distinction between humans and androids in the book is increasingly
+                becoming applicable to the ethics of real-world artificial intelligences.  While I
+                do not foresee the development biological humanoid assistants, the book remains relevant 
+                to how we interact with our increasingly intelligent and embodied assistants.  This
+                progression too is addressed within the book as Rick Deckard describes how he becomes 
+                more empathetic to the more advanced androids that he is tasked with retiring.  With
+                his story, Dick asks us where the line between ourselves and our creations lies; this
+                is a question we should begin to ask ourselves as AI research continues to advance.`,
             "https://images3.penguinrandomhouse.com/cover/9780345404473"
         ),
         new BookTile(
