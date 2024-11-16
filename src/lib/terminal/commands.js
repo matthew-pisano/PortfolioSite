@@ -6,7 +6,7 @@ import {EventHandlers} from "@/lib/terminal/eventHandlers";
 import {Help} from "@/lib/terminal/helpMenu";
 import {resolveTokens, tokenizeCommand} from "@/lib/terminal/processTokens";
 import {letoucan, neofetch, system32, tfLogo, theMissile} from '@/lib/terminal/strings';
-import {addTerminalSprite} from "@/lib/terminal/terminalSprites";
+import {Sprite} from "@/lib/terminal/terminalSprites";
 import {setTheme, themes} from "@/lib/themes";
 
 
@@ -784,8 +784,12 @@ class Commands {
         window.location.href = "/admin";
     }
 
-    static async *sprite(tokens) {
-        addTerminalSprite();
+    static async *sprites(tokens) {
+        for (let sprite  of [Sprite.SCRMLN, Sprite.SCRBLN]) {
+            sprite.mount();
+            sprite.animationLoop();
+            await new Promise(r => setTimeout(r, 500));
+        }
         yield "";
     }
 

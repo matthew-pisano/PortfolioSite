@@ -198,6 +198,7 @@ function Terminal() {
 
     return (
         <div id="terminalHolder" className={`w3-row gone ${styles.terminalHolder}`}>
+            <div id='spriteContainer' className={`${styles.terminalSpriteContainer}`}></div>
             <div id='terminalFileHandler' className={styles.terminalFileHandler}>
                 <span className={styles.terminalFileIndicator}>Drag Files Here</span>
             </div>

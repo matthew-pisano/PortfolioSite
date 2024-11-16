@@ -118,12 +118,20 @@
 }
 
 .terminalSprite {
-    position: fixed;
-    bottom: 0px;
-    right: 50px;
-    z-index: 100;
     width: auto;
     height: 100px;
+    position: relative;
+    top: 0px;
+    margin-left: 10px;
+}
+
+
+.terminalSpriteContainer {
+    display: flex;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+    right: 50px;
 }
 
 
