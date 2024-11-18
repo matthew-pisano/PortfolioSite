@@ -5,7 +5,7 @@ import $ from "jquery";
  * Class to hold constants used throughout the site.
  */
 class Constants {
-    static resumeUrl = "/assets/resume.pdf";
+    static resumeUrl = "/media/documents/resume.pdf";
     static minTerminalHeight = 70;
 }
 
