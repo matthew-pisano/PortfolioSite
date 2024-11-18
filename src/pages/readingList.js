@@ -176,8 +176,7 @@ export default function ReadingList() {
                 within public discourse.
                 <br>Another interesting detail is what Clarke gets wrong.  Namely, his prediction that
                 Marvin Minsky and Irving John Good would play a pivotal role in designing neural
-                networks that could effectively learn (see <a href="" target="_blank"></a>).  
-                While this exact sequence of events did not
+                networks that could effectively learn.  While this exact sequence of events did not
                 play out in reality, it is closely reflected in the real achievements of the two
                 scientists and thw AI boom of the 1980s.`,
             "https://m.media-amazon.com/images/I/71WoWlyQKtL._AC_UF1000,1000_QL80_.jpg"
@@ -287,6 +286,43 @@ export default function ReadingList() {
                 out to me primarily because it was able to take an observed phenomena that could already
                 be described in terms of quantum field theory, and re-frame it using string theory.`,
             "https://pup-assets.imgix.net/onix/images/9780691142890.jpg?w=410&auto=format"
+        ),
+        new BookTile(
+            "The Order of Time",
+            "Carlo Rovelli",
+            `<u>The Order of Time</u> explores the nature of time and its relationship to
+                the universe.  Within its pages, Rovelli argues that time is not a fundamental aspect 
+                of the universe, but rather an emergent consequence of the most basic properties of
+                the universe.  The book is broken into three parts: "The Crumbling of Time", 
+                "The World Without Time", and "The Sources of Time".  The first part explores the most
+                basic attributes of time and how, when you look closely at our best theories of
+                the universe, they begin to break down.  The second part explores how the most
+                fundamental theories of the universe, especially quantum mechanics, do not require a
+                privileged 'time' variable to function.  The final part explores how our apparent
+                experience of time emerges from a blurred perception of irreversible processes.`,
+            ``,
+            `Rovelli manages to cover an impressive amount of theory and conjecture within
+                just over 200 pages.  As a part of his discussion on the breakdown of <i>classical</i>
+                time, the book explains how special relativity the lack of a universal ground-truth
+                for time.  He also describes one's <i>local time</i> as a member of a partially
+                ordered set.  In other words, the time experiences be two observers can only be compared
+                after they causally interact with each other.  Otherwise, such a measurement is 
+                meaningless.  In the second part of the book, Rovelli describes how quantum interactions
+                do not need to be governed by some local time value, rather they are only determined
+                by other quantum events, the ordering of which is often asymmetric.  This creates a
+                sort of web of quantum events that evolve w.r.t. other events, rather than the passage
+                of time.
+                <br>These ideas work to void the idea of a rigid <i>Block Universe</i> where the entire
+                universe can be resolved to a single state at every given instant.  In such a universe
+                all past states are both fully resolved and static.  To me, this idea seemed quite
+                sensible until I read Rovelli's well-crafter arguments as to why it does not fit with
+                our current theories.  The book also argues quite convincingly in favor of 
+                <i>loop quantum gravity</i>, a theory which Rovelli himself is a pioneer of.  I have
+                also noticed that the notions presented within this book seem (in a very rough sense) 
+                compatible with Stephen Wolfram's conjectures on 
+                <a href="https://writings.stephenwolfram.com/2020/04/finally-we-may-have-a-path-to-the-fundamental-theory-of-physics-and-its-beautiful/" target="_blank">
+                <i>Hypergraphs</i></a>.`,
+            "https://m.media-amazon.com/images/I/61ctwcJg5dL._AC_UF1000,1000_QL80_.jpg"
         ),
         new SectionTile(
             "<h2>Futurism</h2>",
