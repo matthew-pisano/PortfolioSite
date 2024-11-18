@@ -3,11 +3,13 @@ import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 
 import {createContextMenu, destroyContextMenu} from "@/components/ContextMenu";
-import {FileSystem, masterFileSystem, pathJoin} from "@/lib/fileSystem/fileSystem";
+import {FileSystem, masterFileSystem, pathJoin, mergeClientDirectory} from "@/lib/fileSystem/fileSystem";
 import {Perms, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
 import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
 import {showDialog} from "@/lib/utils";
 import styles from '@/styles/Sidebar.module.css';
+
+
 
 
 /**
@@ -205,21 +207,6 @@ function buildSidebar() {
 
 
 /**
- * Merge the custom hierarchy with the hierarchy from the server, keeping custom files and updating from the server
- * @param serverFS The initial file system from the server
- * @param customFS The custom file system from the client
- */
-function mergeCachedPages(serverFS, customFS) {
-    let cachedCustomObjects = customFS.subTree.filter(obj => obj instanceof File && !obj.isPage());
-    for (let customObj of cachedCustomObjects) serverFS.addChild(customObj, true);
-    for (let dir of serverFS.subTree.filter(obj => obj instanceof Directory)) {
-        let customDir = customFS.subTree.find(obj => obj.name === dir.name && obj instanceof Directory);
-        if (customDir) mergeCachedPages(dir, customDir);
-    }
-}
-
-
-/**
  * The sidebar component that displays the file system hierarchy, used for navigation and file management
  * @param changeSidebarState {function} The callback function to change the sidebar state
  * @returns {JSX.Element} The sidebar component
@@ -237,8 +224,8 @@ function Sidebar({changeSidebarState}) {
         let savedHierarchy = localStorage.getItem("hierarchy");
         if (savedHierarchy) {
             try {
-                let customFileSystem = FileSystem.deserialize(JSON.parse(savedHierarchy));
-                mergeCachedPages(masterFileSystem.getItem(SysEnv.PUBLIC_FOLDER), customFileSystem.getItem(SysEnv.PUBLIC_FOLDER));
+                let clientFileSystem = FileSystem.deserialize(JSON.parse(savedHierarchy));
+                mergeClientDirectory(masterFileSystem.getItem(SysEnv.HOME_FOLDER), clientFileSystem.getItem(SysEnv.HOME_FOLDER));
             } catch (e) {  // Remove the hierarchy from local storage if it fails to load
                 console.error("Failed to load custom hierarchy from local storage: " + e);
                 localStorage.removeItem("hierarchy");

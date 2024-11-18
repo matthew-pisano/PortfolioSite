@@ -121,7 +121,7 @@ function newPage() {
 
     // Check if the file name already exists and increment the copy number if it does
     for(let file of customFolder.subTree)
-        if(file.name.includes(newFileName)) newFileIndex++;
+        if(file.name.includes(newFileName)) newFileIndex++;  // TODO: More robust version naming method
 
     // Append the copy number to the file name
     newFileName += newFileIndex !== 0 ? newFileIndex : "";

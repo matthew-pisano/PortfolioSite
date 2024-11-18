@@ -341,4 +341,25 @@ class FileSystem {
 }
 
 
-export {FileSystem, FileSystemError, pathJoin, masterFileSystem, buildServerside, buildClientside};
+/**
+ * Merge the client directory into the matching server directory, adding in new files, but leaving server files untouched
+ * @param serverDir {Directory} The initial directory from the server
+ * @param customDir {Directory} The potentially modified directory from the client
+ */
+function mergeClientDirectory(serverDir, customDir) {
+    // Add any custom files to the file system
+    for (let customFile of customDir.subTree.filter(obj => obj instanceof File && !obj.isPage()))
+        serverDir.addChild(customFile, true);
+    // Add any custom directories to the file system
+    for (let customSubDir of customDir.subTree.filter(obj => obj instanceof Directory))
+        if (!serverDir.subTree.find(obj => obj.name === customSubDir.name && obj instanceof Directory))
+            serverDir.addChild(customSubDir);
+
+    // Recurse for any shared directories between the server and custom file system
+    for (let dir of serverDir.subTree.filter(obj => obj instanceof Directory)) {
+        let customSubDir = customDir.subTree.find(obj => obj.name === dir.name && obj instanceof Directory);
+        if (customSubDir) mergeClientDirectory(dir, customSubDir);
+    }
+}
+
+export {FileSystem, FileSystemError, pathJoin, masterFileSystem, buildServerside, buildClientside, mergeClientDirectory};
