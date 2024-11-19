@@ -31,14 +31,11 @@
 
 .displayTileThumbnail > img {
     max-width: 100%;
-    height: 100%;
     object-fit: contain;
     border-radius: 10px;
 }
 
-.displayTileContent {
-
-}
+.displayTileContent {}
 
 .displayTileContent > span {
     margin: 15px 0px;
