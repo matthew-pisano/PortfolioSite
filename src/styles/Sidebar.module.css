@@ -63,11 +63,8 @@
 }
 
 .sidebarLink {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
+    max-height: 25px;
 }
 
 .sidebarFolderHeader:hover, .sidebarLink:hover, .sidebarLink:hover a{
