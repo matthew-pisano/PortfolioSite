@@ -1,3 +1,4 @@
+import tileStyles from '@/styles/pageTiles.module.css';
 import sidebarStyles from "@/styles/Sidebar.module.css";
 
 
@@ -91,6 +92,22 @@ const themes = {
 
 
 /**
+ * Sets the theme of all dynamic icons
+ * @param isLightTheme Whether the selected theme is light mode or drak mode
+ */
+function setIconTheme(isLightTheme) {
+    let iconMap = {};
+    iconMap[sidebarStyles.editorButton] = ["/assets/editIcon.svg", "/assets/editIconDark.svg"];
+    iconMap[tileStyles.anchorIcon] = ["/assets/anchorIcon.svg", "/assets/anchorIconDark.svg"];
+
+    for (const [styleCls, iconPair] of Object.entries(iconMap)) {
+        for (let element of document.getElementsByClassName(styleCls))
+            element.style.content = `url('${iconPair[isLightTheme ? 1 : 0]}')`;
+    }
+}
+
+
+/**
  * Sets the theme to the given theme name
  * @param themeName {string} The name of the theme to set
  */
@@ -118,16 +135,10 @@ function setTheme(themeName) {
     root.style.setProperty('--theme-color-4-hover', theme.color4.hover);
 
     // Set the sidebar collapse icon based on the theme
-    if (["monochrome", "light"].includes(themeName)){  // Dark icon
-        document.getElementById("collapseSidebar").style.backgroundImage = "url('/assets/explorerIconDark.svg')";
-        for (let editorButton of document.getElementsByClassName(sidebarStyles.editorButton))
-            editorButton.style.content = "url('/assets/editIconDark.svg')";
-    }
-    else {  // Light icon
-        document.getElementById("collapseSidebar").style.backgroundImage = "";
-        for (let editorButton of document.getElementsByClassName(sidebarStyles.editorButton))
-            editorButton.style.content = "";
-    }
+    let isLightTheme = ["monochrome", "light"].includes(themeName);
+    document.getElementById("collapseSidebar").style.backgroundImage =
+        isLightTheme ? "url('/assets/explorerIconDark.svg')" : "";
+    setIconTheme(isLightTheme);
 
     localStorage.setItem("theme", themeName);
 }

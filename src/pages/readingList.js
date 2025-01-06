@@ -17,14 +17,15 @@ class BookTile extends Tile {
      * @param synopsis_source {string} The source of the synopsis
      * @param thoughts {string} My thoughts on the book
      * @param thumbnail {string} The thumbnail image/cover for the book
+     * @param anchor {string} The name of the anchor link to the tile
      */
-    constructor(title, author, synopsis, synopsis_source, thoughts, thumbnail) {
+    constructor(title, author, synopsis, synopsis_source, thoughts, thumbnail, anchor = "") {
         let source_elem = synopsis_source ?
             `<i>Source: <a href="${synopsis_source}" target="_blank">${new URL(synopsis_source).hostname}</a></i>` : ``;
         let content = `<p><i>Author:</i> ${author}</p>
                 <p><i>Synopsis:</i> ${synopsis} ${source_elem}</p>
                 <p><i>Thoughts:</i> ${thoughts}</p>`;
-        super(title, content, thumbnail);
+        super(title, content, thumbnail, [], [], "", false, {}, anchor);
     }
 }
 
@@ -42,7 +43,7 @@ export default function ReadingList() {
                 into my field of study and my own personal interests.`,
         ),
         new SectionTile(
-            "<h2>Artificial Intelligence and Cognitive Science</h2>",
+            "Artificial Intelligence and Cognitive Science", "ai_and_cog_sci"
         ),
         new BookTile(
             "Superintelligence: Paths, Dangers, Strategies",
@@ -190,7 +191,8 @@ export default function ReadingList() {
                 who we are most likely to learn from and why.  This book was a significant inspiration
                 behind my <a href="/research/bergeron">Bergeron</a> thesis, which is built around
                 a multi-model implementation of a simple actor-critic architecture.`,
-            "https://m.media-amazon.com/images/I/71qtkdlcqIS.jpg"
+            "https://m.media-amazon.com/images/I/71qtkdlcqIS.jpg",
+            "emotion_machine"
         ),
         new SectionTile(
             "<h2>Historical and Hard Science Fiction</h2>",

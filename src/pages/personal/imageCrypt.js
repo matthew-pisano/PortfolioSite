@@ -20,7 +20,7 @@ export default function ImageCrypt() {
         new SectionTile(
             `CAUTION: This program is not cryptographically secure and should not be used to
                 encode sensitive information. If security is a concern, use a more secure encryption 
-                method before encoding secrets into an image.`,
+                method before encoding secrets into an image.`, "",
             {backgroundColor: "rgba(255,55,55,0.68)"}
         ),
         new Tile(

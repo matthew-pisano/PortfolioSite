@@ -1,6 +1,8 @@
+
 import React from "react";
 
 import HTMLReactParser from 'html-react-parser';
+import Link from "next/link";
 import Latex from 'react-latex-next';
 
 import tileStyles from '@/styles/pageTiles.module.css';
@@ -46,9 +48,10 @@ class Tile {
      * @param titleLink {string} The link that the title should go to
      * @param latex {boolean} Whether the content should be rendered as latex
      * @param style {object} The style of the tile
+     * @param anchor {string} The name of the anchor link to the tile
      */
     constructor(title, content, thumbnail = "", tags = [],
-                links = [], titleLink = "", latex = false, style = {}){
+                links = [], titleLink = "", latex = false, style = {}, anchor = ""){
         this.title = title;
         this.content = content;
         this.tags = tags;
@@ -57,6 +60,7 @@ class Tile {
         this.titleLink = titleLink;
         this.latex = latex;
         this.links = links;
+        this.anchor = anchor;
     }
 }
 
@@ -70,10 +74,11 @@ class GalleryTile extends Tile {
      * @param links {TileLink[]} Links to display
      * @param titleLink {string} The link that the title should go to
      * @param latex {boolean} Whether the content should be rendered as latex
+     * @param anchor {string} The name of the anchor link to the tile
      */
     constructor(title, content, thumbnail = "", tags = [],
-                links = [], titleLink = "", latex = false){
-        super(title, content, thumbnail, tags, links, titleLink, latex);
+                links = [], titleLink = "", latex = false, anchor = ""){
+        super(title, content, thumbnail, tags, links, titleLink, latex, {}, anchor);
     }
 }
 
@@ -83,9 +88,10 @@ class SectionTile extends Tile {
         /**
         * @param title {string} The title of the tile
         * @param style {object} The style of the tile
+         * @param anchor {string} The name of the anchor link to the tile
         */
-        constructor(title, style = {backgroundColor: "rgba(139,166,175,0.45)"}){
-            super(title, "", "", [], [], "", false, style);
+        constructor(title, anchor = "", style = {backgroundColor: "rgba(139,166,175,0.45)", fontSize: "30px"}){
+            super(title, "", "", [], [], "", false, style, anchor);
         }
 }
 
@@ -159,16 +165,22 @@ function buildTiles(tiles){
         let contentTypeClass = tile instanceof GalleryTile ? tileStyles.galleryTileContent :
             !tile.thumbnail ? tileStyles.textOnlyTileContent : "";
 
-        return <div id={"pageTile"+i} className={className} key={"pageTile"+i} style={tile.style} data-refdata={"unslid"}>
+        let anchorElem = tile.anchor ? <Link href={`#${tile.anchor}`} className={`${tileStyles.anchorLink}`}>
+            <img className={`${tileStyles.anchorIcon}`} alt=''/></Link> : null;
+        let titleElem = tile.titleLink ?
+                <a className={titleClass} href={tile.titleLink}><u>{HTMLReactParser(tile.title)}</u></a> :
+                <b className={titleClass}>{HTMLReactParser(tile.title)}</b>;
+
+        let tileId = tile.anchor ? tile.anchor : null;
+
+        return <div id={tileId} className={className} key={"pageTile"+i} style={tile.style} data-refdata={"unslid"}>
             {tile.thumbnail ?
                 <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail} ${imageClass}`}>
                     <img src={tile.thumbnail} alt='gitLogo'/>
                 </div> : null}
 
             <div className={`w3-mobile w3-rest ${tileStyles.displayTileContent} ${contentTypeClass}`}>
-                {tile.titleLink ?
-                    <h4><a className={titleClass} href={tile.titleLink}><u>{HTMLReactParser(tile.title)}</u></a></h4> :
-                            <h4><b className={titleClass}>{HTMLReactParser(tile.title)}</b></h4>}
+                {<h4>{titleElem}{anchorElem}</h4>}
 
                 {tile.content ?
                     <span>{tile.latex ? <Latex>{tile.content}</Latex> : HTMLReactParser(tile.content)}</span> : null}

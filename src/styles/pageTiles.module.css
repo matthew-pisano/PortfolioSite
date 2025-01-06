@@ -96,6 +96,18 @@
     background-image: url("/assets/matrix.gif");
 }
 
+.anchorLink img{
+    width: 15px;
+    max-width: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    object-fit: contain;
+}
+
+.anchorIcon {
+    content:url("/assets/anchorIcon.svg");
+}
+
 
 @media (max-width: 1300px) {
     .displayTileContent{
