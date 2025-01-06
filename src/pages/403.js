@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, {useEffect, useState} from 'react';
 
 import Wrapper from '@/components/Wrapper';
@@ -42,9 +43,9 @@ export default function Unauthorized() {
                     here.  Searching in areas that you are not meant to go serves the good of nobody.
                 </span>
             </div>
-            <a className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.confirmTile}`} href="/home">
+            <Link className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.confirmTile}`} href="/home">
                 <b>Back to Safety</b>
-            </a>
+            </Link>
         </div>
     </Wrapper>);
 }

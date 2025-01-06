@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, {useEffect, useState} from "react";
 
 import PropTypes from "prop-types";
@@ -72,7 +73,7 @@ function buildFile(file, path) {
     return <div key={fileName + "-File"} id={fileName + "-File"} linkpath={linkPath} onContextMenu={onContextMenu}
                 className={`sidebarItem sidebarLink w3-row ${styles.sidebarItem} ${styles.sidebarLink}`}>
         <img className={`${styles.htmlIcon}`} alt=''/>
-        <a id={fileName + "-FileLink"} href={urlPath}>{file.name}</a>
+        <Link id={fileName + "-FileLink"} href={urlPath}>{file.name}</Link>
         {editIcon}
     </div>;
 }

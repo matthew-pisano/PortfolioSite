@@ -140,7 +140,7 @@ function buildTags(tile, dark = false){
                 return <div className={`${tagClasses}`} key={'tileLink'+tileLink.title}>
                     <img className="w3-col" alt='tileLink'/>
                     <div className="w3-rest">
-                        <a href={tileLink.link} target="_blank" rel="noreferrer">{tileLink.title}</a>
+                        <Link href={tileLink.link} target="_blank" rel="noreferrer">{tileLink.title}</Link>
                     </div>
                 </div>;
             })}
@@ -171,7 +171,7 @@ function buildTiles(tiles){
         let anchorElem = tile.anchor ? <Link href={`#${tile.anchor}`} className={`${tileStyles.anchorLink}`}>
             <img className={`${tileStyles.anchorIcon}`} alt=''/></Link> : null;
         let titleElem = tile.titleLink ?
-                <a className={titleClass} href={tile.titleLink}><u>{HTMLReactParser(tile.title)}</u></a> :
+                <Link className={titleClass} href={tile.titleLink}><u>{HTMLReactParser(tile.title)}</u></Link> :
                 <b className={titleClass}>{HTMLReactParser(tile.title)}</b>;
 
         let tileId = tile.anchor ? tile.anchor : null;

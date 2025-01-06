@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, {useEffect, useState} from 'react';
 
 import Wrapper from "@/components/Wrapper";
@@ -58,12 +59,12 @@ export default function PageNotFound() {
                     rabbit hole goes.  Remember, all I&apos;m offering is the truth.  Nothing more.
                 </span>
             </div>
-            <a className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.confirmTile}`} href="/home">
+            <Link className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.confirmTile}`} href="/home">
                 <b>Back to Safety</b>
-            </a>
-            <a className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.denyTile}`} href={nextLink()}>
+            </Link>
+            <Link className={`w3-container w3-row ${tileStyles.displayTile} ${tileStyles.choiceTile} ${tileStyles.denyTile}`} href={nextLink()}>
                 <b>Continue Onwards</b>
-            </a>
+            </Link>
         </div>
     </Wrapper>);
 }

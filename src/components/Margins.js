@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, {useEffect} from "react";
 
 import PropTypes from "prop-types";
@@ -335,8 +336,8 @@ function MenuDrop({currentPath}) {
                                     else if (item.itemType === "link") {
                                         let target = item.data.startsWith("http") ? "_blank" : "_self";
                                         return (
-                                            <a key={index} className={styles.menuDropItem} style={{display: "block"}}
-                                               href={item.data} target={target} rel="noreferrer">{item.name}</a>
+                                            <Link key={index} className={styles.menuDropItem} style={{display: "block"}}
+                                               href={item.data} target={target} rel="noreferrer">{item.name}</Link>
                                         );
                                     }
                                     else return (
