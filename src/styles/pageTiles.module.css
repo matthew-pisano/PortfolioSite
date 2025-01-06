@@ -97,11 +97,9 @@
 }
 
 .anchorLink img{
-    width: 15px;
-    max-width: 15px;
-    margin-right: 5px;
-    margin-left: 5px;
-    object-fit: contain;
+    width: 20px;
+    max-width: 20px;
+    margin-left: 10px;
 }
 
 .anchorIcon {

@@ -43,7 +43,7 @@ export default function ReadingList() {
                 into my field of study and my own personal interests.`,
         ),
         new SectionTile(
-            "Artificial Intelligence and Cognitive Science", "ai_and_cog_sci"
+            "Artificial Intelligence and Cognitive Science", "ai-cog-sci"
         ),
         new BookTile(
             "Superintelligence: Paths, Dangers, Strategies",
@@ -66,7 +66,8 @@ export default function ReadingList() {
                 threat to humanity.<br>
                 As may be evident in the make, this work also heavily inspired me to create
                 <a href="https://github.com/matthew-pisano/Superintelligent" target="_blank">Superintelligent</a>.`,
-            "https://m.media-amazon.com/images/I/71UvMcdcE9L._AC_UF1000,1000_QL80_.jpg"
+            "https://m.media-amazon.com/images/I/71UvMcdcE9L._AC_UF1000,1000_QL80_.jpg",
+            "superintelligence"
         ),
         new BookTile(
             "The Alignment Problem",
@@ -91,7 +92,8 @@ export default function ReadingList() {
                 <br>Christian's chapters on reward systems and curiosity also helped to cement my
                 understanding of the role these concepts play in learning, both natural and artificial.
                 A common theme with this book was how well its concepts complemented my more formal education.`,
-            "https://m.media-amazon.com/images/I/71buTbF1YDL._AC_UF1000,1000_QL80_.jpg"
+            "https://m.media-amazon.com/images/I/71buTbF1YDL._AC_UF1000,1000_QL80_.jpg",
+            "alignment-problem"
         ),
         new BookTile(
             "Human Compatible: Artificial Intelligence and the Problem of Control",
@@ -120,7 +122,8 @@ export default function ReadingList() {
                 <br>The later chapters of the book introduce some learning techniques that I personally
                 find interesting, such as inverse reinforcement learning and how that may be applicable
                 for aligning an AI with the ill-defined preferences of humans.`,
-            "https://m.media-amazon.com/images/I/81nhGK0DNLL._UF1000,1000_QL80_.jpg"
+            "https://m.media-amazon.com/images/I/81nhGK0DNLL._UF1000,1000_QL80_.jpg",
+            "human-compatible"
         ),
         new BookTile(
             "Determined: A Science of Life Without Free Will",
@@ -164,7 +167,8 @@ export default function ReadingList() {
                 a worth-while read.  If not for the interesting facts, experiments, and history, then
                 hopefully such a reader would attend to his thoughts on empathy, justice, and how we
                 currently organize our society (and, hearteningly, how far we have already come).`,
-            "https://m.media-amazon.com/images/I/712fJVnVAkL._SY466_.jpg"
+            "https://m.media-amazon.com/images/I/712fJVnVAkL._SY466_.jpg",
+            "determined"
         ),
         new BookTile(
             "The Emotion Machine",
@@ -192,10 +196,10 @@ export default function ReadingList() {
                 behind my <a href="/research/bergeron">Bergeron</a> thesis, which is built around
                 a multi-model implementation of a simple actor-critic architecture.`,
             "https://m.media-amazon.com/images/I/71qtkdlcqIS.jpg",
-            "emotion_machine"
+            "emotion-machine"
         ),
         new SectionTile(
-            "<h2>Historical and Hard Science Fiction</h2>",
+            "Historical and Hard Science Fiction", "hifi-sifi"
         ),
         new BookTile(
             "2001: A Space Odyssey",
@@ -225,7 +229,8 @@ export default function ReadingList() {
                 networks that could effectively learn.  While this exact sequence of events did not
                 play out in reality, it is closely reflected in the real achievements of the two
                 scientists and thw AI boom of the 1980s.`,
-            "https://m.media-amazon.com/images/I/71WoWlyQKtL._AC_UF1000,1000_QL80_.jpg"
+            "https://m.media-amazon.com/images/I/71WoWlyQKtL._AC_UF1000,1000_QL80_.jpg",
+            "space-odyssey"
         ),
         new BookTile(
             "Do Androids Dream of Electric Sheep?",
@@ -251,7 +256,8 @@ export default function ReadingList() {
                 more empathetic to the more advanced androids that he is tasked with retiring.  With
                 his story, Dick asks us where the line between ourselves and our creations lies; this
                 is a question we should begin to ask ourselves as AI research continues to advance.`,
-            "https://images3.penguinrandomhouse.com/cover/9780345404473"
+            "https://images3.penguinrandomhouse.com/cover/9780345404473",
+            "electric-sheep"
         ),
         new BookTile(
             "The Maniac",
@@ -284,10 +290,11 @@ export default function ReadingList() {
                 and game theory.  It also gave me a much better understanding of John von Neumann,
                 as his achievements are often less emphasized than those from Turing or Gödel during
                 undergraduate education.`,
-            "https://m.media-amazon.com/images/I/71LWaPy3gjL._SL1500_.jpg"
+            "https://m.media-amazon.com/images/I/71LWaPy3gjL._SL1500_.jpg",
+            "maniac"
         ),
         new SectionTile(
-            "<h2>Physics</h2>",
+            "Physics", "physics"
         ),
         new BookTile(
             "QED: The Strange Theory of Light and Matter",
@@ -309,7 +316,8 @@ export default function ReadingList() {
                 and virtual photons.  I also found the logic behind his Feynman diagrams interesting
                 and how they can represent the infinite possibilities of particle interactions within
                 a series of simple lines.`,
-            "https://pup-assets.imgix.net/onix/images/9780691164090.jpg?w=410&auto=format"
+            "https://pup-assets.imgix.net/onix/images/9780691164090.jpg?w=410&auto=format",
+            "quantum-electrodynamics"
         ),
         new BookTile(
             "The Little Book of String Theory",
@@ -331,7 +339,8 @@ export default function ReadingList() {
                 quark-gluon plasma after being created by the collision of heavy gold nuclei.  It stood
                 out to me primarily because it was able to take an observed phenomena that could already
                 be described in terms of quantum field theory, and re-frame it using string theory.`,
-            "https://pup-assets.imgix.net/onix/images/9780691142890.jpg?w=410&auto=format"
+            "https://pup-assets.imgix.net/onix/images/9780691142890.jpg?w=410&auto=format",
+            "string-theory"
         ),
         new BookTile(
             "The Order of Time",
@@ -368,10 +377,11 @@ export default function ReadingList() {
                 compatible with Stephen Wolfram's conjectures on 
                 <a href="https://writings.stephenwolfram.com/2020/04/finally-we-may-have-a-path-to-the-fundamental-theory-of-physics-and-its-beautiful/" target="_blank">
                 <i>Hypergraphs</i></a>.`,
-            "https://m.media-amazon.com/images/I/61ctwcJg5dL._AC_UF1000,1000_QL80_.jpg"
+            "https://m.media-amazon.com/images/I/61ctwcJg5dL._AC_UF1000,1000_QL80_.jpg",
+            "order-of-time"
         ),
         new SectionTile(
-            "<h2>Futurism</h2>",
+            "Futurism", "futurism"
         ),
         new BookTile(
             "The Inevitable: Understanding the 12 technological forces that will shape our future",
@@ -400,7 +410,8 @@ export default function ReadingList() {
                 <br>Reading this book helped to shape my attitude on the future of technological
                 progress and societal trends.  Kelly's optimism is still contagious, even in the
                 face of ever-potent click-through algorithms and the decreasing emphasis of digital ownership.`,
-            "https://m.media-amazon.com/images/I/71uehq9SkLL._SL1500_.jpg"
+            "https://m.media-amazon.com/images/I/71uehq9SkLL._SL1500_.jpg",
+            "inevitable"
         ),
         new BookTile(
             "Physics of the Impossible",
@@ -418,7 +429,8 @@ export default function ReadingList() {
                 in a modified form.  One of the sections that I found most interesting was on
                 Psychokinesis and how Kaku explored how it may actually be implemented, although
                 through brain-computer interfaces, rather than reality warping abilities.`,
-            "https://images2.penguinrandomhouse.com/cover/9780307278821"
+            "https://images2.penguinrandomhouse.com/cover/9780307278821",
+            "physics-impossible"
         ),
     ];
     let pageInfo = new PageInfo(
