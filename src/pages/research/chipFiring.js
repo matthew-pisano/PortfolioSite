@@ -33,7 +33,7 @@ export default function ChipFiring() {
                 Mathematics and the Journal of Combinatorial Theory.`,
         ),
         new SectionTile(
-            "<h2>Background</h2>"
+            "Background"
         ),
         new Tile(
             "The Chip Firing Game",
@@ -95,7 +95,7 @@ export default function ChipFiring() {
             "", [], [], "", true
         ),
         new SectionTile(
-            "<h2>Project Details</h2>"
+            "Project Details"
         ),
         new Tile(
             "Goal",

@@ -9,6 +9,9 @@ import tileStyles from '@/styles/pageTiles.module.css';
 import tagStyles from '@/styles/tags.module.css';
 
 
+const TRANSLUCENT = "rgba(139,166,175,0.45)";
+
+
 class TileLink {
 
     /**
@@ -90,7 +93,7 @@ class SectionTile extends Tile {
         * @param style {object} The style of the tile
          * @param anchor {string} The name of the anchor link to the tile
         */
-        constructor(title, anchor = "", style = {backgroundColor: "rgba(139,166,175,0.45)", fontSize: "30px"}){
+        constructor(title, anchor = "", style = {backgroundColor: TRANSLUCENT}){
             super(title, "", "", [], [], "", false, style, anchor);
         }
 }
@@ -180,7 +183,7 @@ function buildTiles(tiles){
                 </div> : null}
 
             <div className={`w3-mobile w3-rest ${tileStyles.displayTileContent} ${contentTypeClass}`}>
-                {<h4>{titleElem}{anchorElem}</h4>}
+                {tile instanceof SectionTile ? <h2>{titleElem}{anchorElem}</h2> : <h4>{titleElem}{anchorElem}</h4>}
 
                 {tile.content ?
                     <span>{tile.latex ? <Latex>{tile.content}</Latex> : HTMLReactParser(tile.content)}</span> : null}
@@ -208,4 +211,4 @@ function buildPage(pageInfo, tiles){
 }
 
 
-export {buildPage, PageInfo, Tile, GalleryTile, SectionTile, TileLink, GitLink};
+export {buildPage, PageInfo, Tile, GalleryTile, SectionTile, TileLink, GitLink, TRANSLUCENT};

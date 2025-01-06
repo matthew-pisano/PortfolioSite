@@ -26,7 +26,7 @@ export default function Neural() {
             [new TileLink("https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf", "Research Paper")],
         ),
         new SectionTile(
-            "<h2>Training Methods</h2>",
+            "Training Methods",
         ),
         new Tile(
             "Backpropagation",
@@ -59,7 +59,7 @@ export default function Neural() {
                 complete. The higher the score, the better the performance of the algorithm.`,
         ),
         new SectionTile(
-            "<h2>Results</h2>",
+            "Results",
         ),
         new Tile(
             "Backpropagation Results",

@@ -9,7 +9,7 @@ export default function Home() {
 
     let tiles = [
         new SectionTile(
-            "<h2>Featured Research</h2>",
+            "Featured Research",
         ),
         new Tile(
             "Bergeron",
@@ -56,7 +56,7 @@ export default function Home() {
             [new GitLink("https://github.com/AIRC-ASR/AIRC-ASR-Experimental", "AIRC ASR")]
         ),
         new SectionTile(
-            "<h2>Featured Projects</h2>",
+            "Featured Projects",
         ),
         new Tile(
             "Universal Models",
@@ -135,7 +135,7 @@ export default function Home() {
             "personal/imperium",
         ),
         new SectionTile(
-            "<h2>Hackathons</h2>",
+            "Hackathons",
         ),
         new Tile(
             "PredictChain",

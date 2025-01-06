@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import {GitLink, PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, SectionTile, Tile, TRANSLUCENT} from '@/lib/pageBuilder';
 import {genPageTitle} from "@/lib/utils";
 
 
@@ -17,11 +17,11 @@ export default function ImageCrypt() {
                 the same key file.`,
             "/media/image/secret-message.png",
         ),
-        new SectionTile(
+        new Tile(
             `CAUTION: This program is not cryptographically secure and should not be used to
                 encode sensitive information. If security is a concern, use a more secure encryption 
-                method before encoding secrets into an image.`, "",
-            {backgroundColor: "rgba(255,55,55,0.68)"}
+                method before encoding secrets into an image.`, ``, "",
+            [], [], "", false, {backgroundColor: "rgba(255,55,55,0.68)"}
         ),
         new Tile(
             "Data Preprocessing",

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import {GalleryTile, PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
+import {GalleryTile, PageInfo, SectionTile, Tile, TRANSLUCENT} from '@/lib/pageBuilder';
 import {genPageTitle} from "@/lib/utils";
 
 
@@ -19,9 +19,10 @@ export default function HighGround() {
                 and topics, creating a well-rounded benchmark.`,
             "/media/image/tw-llm.png"
         ),
-        new SectionTile(
+        new Tile(
             `NOTE: This research is currently undergoing a blind review.  Thus, identifying 
-                information, such has the title, has been omitted.`,
+                information, such has the title, has been omitted.`, ``, "",
+            [], [], "", false, {backgroundColor: TRANSLUCENT}
         ),
         new Tile(
             "Abstract (Abridged)",
@@ -39,7 +40,7 @@ export default function HighGround() {
                 ensure future models grasp the often nuanced topics of moral and ethical values.`,
         ),
         new SectionTile(
-            "<h2>Project Details</h2>",
+            "Project Details",
         ),
         new Tile(
             "Background",

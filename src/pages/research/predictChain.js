@@ -44,7 +44,7 @@ export default function PredictChain() {
                 award and 3rd place overall.  At the global competition, our project won 1st place overall!`,
         ),
         new SectionTile(
-            "<h2>Project Details</h2>",
+            "Project Details",
         ),
         new Tile(
             "Background",

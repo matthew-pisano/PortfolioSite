@@ -36,7 +36,7 @@ export default function Bergeron() {
                 commercial and open-source LLMs.`,
         ),
         new SectionTile(
-            "<h2>Project Details</h2>"
+            "Project Details"
         ),
         new Tile(
             "Background",

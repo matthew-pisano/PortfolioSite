@@ -24,7 +24,7 @@ export default function Help() {
             [new GitLink("https://github.com/matthew-pisano/PortfolioSite", "Source Code")]
         ),
         new SectionTile(
-            "<h2>Features</h2>",
+            "Features",
         ),
         new Tile(
             "Explorer",
