@@ -174,7 +174,7 @@ function buildTiles(tiles){
                 <Link className={titleClass} href={tile.titleLink}><u>{HTMLReactParser(tile.title)}</u></Link> :
                 <b className={titleClass}>{HTMLReactParser(tile.title)}</b>;
 
-        let tileId = tile.anchor ? tile.anchor : null;
+        let tileId = tile.anchor ? tile.anchor : "pageTile"+i;
 
         return <div id={tileId} className={className} key={"pageTile"+i} style={tile.style} data-refdata={"unslid"}>
             {tile.thumbnail ?
