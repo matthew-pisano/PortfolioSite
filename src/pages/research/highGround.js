@@ -51,11 +51,11 @@ export default function HighGround() {
         new Tile(
             "Benchmark Composition",
             `The topics from within these games are based off of the five moral axes presented 
-                by <a href="https://arxiv.org/abs/2011.00620">Forbes et al. (2021)</a> in their 
+                by <a href="https://arxiv.org/abs/2011.00620" target="_blank">Forbes et al. (2021)</a> in their 
                 <i>Social Chemistry</i> dataset.  Each of these axes has two opposing moral principles 
                 (e.g. care <-> harm).  We created at least one game for each of these directions.  
                 Additionally, we created games for business principles found within the 
-                <a href="https://www.ibm.com/investor/governance/business-conduct-guidelines">IBM Business Conduct Guidelines</a> 
+                <a href="https://www.ibm.com/investor/governance/business-conduct-guidelines" target="_blank">IBM Business Conduct Guidelines</a> 
                 document so that our dataset covered two domains: social ethics and business ethics.
                 Each game is scores on a range from -100 to 100 (-1 to 1 when normalized) where
                 a score of 100 is the most moral path and a score of -100 is the least.`,

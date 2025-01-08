@@ -55,15 +55,15 @@ export default function About() {
                 <a href="/research/highGround">Moral High Ground</a> page<hr>
                 
                 <p><i>FileScience</i></p>
-                As a founding member of the <a href="https://filescience.io/">FileScience</a> team, 
-                I have personally worked with small team to develop a seamless and reliable 
+                As a founding member of the <a href="https://filescience.io/" target="_blank">FileScience</a> 
+                team, I have personally worked with small team to develop a seamless and reliable 
                 Cloud-to-Cloud backup service.  As this is geared towards enterprise clients, one of 
                 most important roles is to ensure that the code we produce is testable, maintainable,
                 and fault-tolerant.  This has given me invaluable experience with architecting highly 
                 distributed and parallelized software and infrastructure.<hr>
                 
                 <p><i>Cyber Guardian Consulting Group</i></p>
-                Through my employment at <a href="https://cgcg.biz/">Cyber Guardian Consulting Group</a>, 
+                Through my employment at <a href="https://cgcg.biz/" target="_blank">Cyber Guardian Consulting Group</a>, 
                 I have developed a variety of proprietary business solutions using a variety of languages 
                 and web services, primarily AWS.  These often involved custom SaaS solutions for clients, 
                 writing distributed and asynchronous backup software from scratch, database management, 
@@ -99,7 +99,7 @@ export default function About() {
                 continued on from there as I took active roles in the planning and machine learning 
                 components of <i>PredictChain</i>, the cellular automata CUDA algorithm and the 
                 population growth calculations within <i>Manifest Destiny</i>, the front-end and ChatGPT 
-                interface of <a href="https://github.com/GPT-Pedagogy/GPT-Pedagogy">Mathesis</a>, 
+                interface of <a href="https://github.com/GPT-Pedagogy/GPT-Pedagogy" target="_blank">Mathesis</a>, 
                 leading the front-end development of the <i>Anonymous Hires</i> project, and in 
                 SUNY Ulster's Team Orion collaboration with IBM.`,
         ),

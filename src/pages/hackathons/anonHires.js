@@ -10,7 +10,7 @@ export default function AnonHires() {
     let tiles = [
         new Tile(
             "<h2>Overview</h2>",
-            `This project was part of the <a href="https://hvtechfest.com/">Hudson Valley TechFest Hackathon</a> 2021.<br>
+            `This project was part of the <a href="https://hvtechfest.com/" target="_blank">Hudson Valley TechFest Hackathon</a> 2021.<br>
                 The idea is to build a web platform for employers and employees, where the employer 
                 hires employees anonymously purely based on their talent.  Through this project the 
                 team hopes of tackling racial discrimination and gender biases in the hiring process.`
@@ -36,7 +36,7 @@ export default function AnonHires() {
         new Tile(
             "Big Data Recommendation Engine",
             `The theme of this Hackathon was the usage of 'Big Data' in the projects.  
-                Through the <a href="https://www.onetcenter.org/dictionary/26.0/excel/knowledge.html">O*Net Resource Center</a>, 
+                Through the <a href="https://www.onetcenter.org/dictionary/26.0/excel/knowledge.html" target="_blank">O*Net Resource Center</a>, 
                 we analyzed the feedback from employees and executive on how important various skills 
                 are for a job.  Based on this data, the <i>Pandas</i> Python library was used to 
                 process the data from O*Net to provide job recommendations to potential candidates.  
