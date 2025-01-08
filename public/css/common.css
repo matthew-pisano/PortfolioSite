@@ -29,7 +29,8 @@ a {
 
 code {
     background-color: var(--theme-color-3-selected);
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     border-radius: 5px;
 }
 

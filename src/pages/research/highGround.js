@@ -20,7 +20,7 @@ export default function HighGround() {
             "/media/image/tw-llm.png"
         ),
         new Tile(
-            `NOTE: This research is currently undergoing a blind review.  Thus, identifying 
+            `NOTE: This research has not yet reached its final revision.  Thus, identifying 
                 information, such has the title, has been omitted.`, ``, "",
             [], [], "", false, {backgroundColor: TRANSLUCENT}
         ),
