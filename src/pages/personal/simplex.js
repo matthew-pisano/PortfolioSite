@@ -11,15 +11,16 @@ export default function Simplex() {
         new Tile(
             <h2>Overview</h2>,
             <>Simplex is a programming language with focus is on mathematical and scientific
-                calculations.  It offers built-in matrix operations (multiplication, determinants, etc.) 
+                calculations. It offers built-in matrix operations (multiplication, determinants, etc.)
                 as well as several scientific and fundamental constants.
                 <br/><br/>
-                It is strictly typed like languages such C or Java, but has a similar syntax to python 
-                with type hinting.  Being a hybrid interpreted language offers Simplex the ability to 
-                freeze any source code on its way to execution for viewing by the user.
+                It is strictly typed like languages such <code>C</code> or <code>Java</code>, but has a
+                similar syntax to <code>Python</code> with type hinting. Being a hybrid interpreted language
+                offers Simplex the ability to freeze any source code on its way to execution for
+                viewing by the user.
                 <br/><br/>
                 Simplex is built entirely from scratch, without using any external libraries
-                or frameworks.  The language is written in Java.</>
+                or frameworks. The language is written in <code>Java</code>.</>
         ),
         new Tile(
             <>Companion Android App</>,
@@ -59,10 +60,10 @@ export default function Simplex() {
             <>One of the other notable features of Simplex is its concentration on making some
                 physics or mathematical operations easier.  The language comes with a wide array of 
                 built-in mathematical and physical constants and functions.  These include constants 
-                like 'PI', the speed of light ('c'), or functions like sine().  Additionally, Simplex 
-                offers operations for array manipulation that are not present in many other languages.  
-                This comes from the fact that each array is treated as a matrix.  This allows for 
-                adding any N-Dimensional arrays together, which sum just as arrays would in linear 
+                like 'PI', the speed of light ('c'), or functions like <code>sine()</code>.  Additionally,
+                Simplex offers operations for array manipulation that are not present in many other
+                languages.  This comes from the fact that each array is treated as a matrix.  This allows
+                for adding any N-Dimensional arrays together, which sum just as arrays would in linear
                 algebra.  Integer of Double arrays can also be multiplied together to get the dot or 
                 cross product of the two matrices.  This becomes even more useful when used with the 
                 built-in determinate and inverse functions that can be used on the arrays.</>,

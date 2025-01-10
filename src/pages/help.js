@@ -68,8 +68,8 @@ export default function Help() {
                 renamed by right-clicking on them and selecting the <code>Rename</code> button in 
                 the context menu.
                 <br/><br/>
-                These files will initially appear blank, all except for the <code>custom/readme.html</code> 
-                file, which offers further explanation on how to use the editor.  To add or edit the
+                These files will initially appear blank, all except for the <code>custom/readme.html</code> file,
+                which offers further explanation on how to use the editor.  To add or edit the
                 content of these files, click the pencil icon to the right of the file.  This will
                 open the editor; whatever valid HTML or CSS that is typed here will
                 be interpreted and shown on screen whenever you select the main file itself once again.
@@ -84,8 +84,8 @@ export default function Help() {
                 bottom of the screen.  This serves as a tool similar to the menu bar.  Files can be 
                 created, renamed or deleted from here, along with other standard commands.  The 
                 terminal can be opened by clicking on it (at the bottom of the screen) or by dragging 
-                upwards on its gray thumb.  Further information can be gathered by the <code>help</code>
-                command in the terminal or by using the <code>Help {'>'} Terminal Help</code> option in
+                upwards on its gray thumb.  Further information can be gathered by the <code>help</code> command
+                in the terminal or by using the <code>Help {'>'} Terminal Help</code> option in
                 the top menu bar.  Feel free to explore the available commands for managing files, 
                 gathering information about this mock system, and even a few secrets and hidden features!
                 Additionally, the terminal supports drag-and-drop functionality for files.  

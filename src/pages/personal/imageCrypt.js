@@ -91,8 +91,8 @@ export default function ImageCrypt() {
                 <br/><br/>
                 This ensures that the contents cannot be decoded by simply guessing the shift value as 
                 each character may have a different shift.  This method is more secure than full-text 
-                shifting, as it cannot be trivially brute forced by just guessing one <code>[0-128]</code> 
-                value.  Since hashes cannot be easily reversed, using simple frequency analysis to 
+                shifting, as it cannot be trivially brute forced by just guessing one <code>[0-128]</code> value.
+                Since hashes cannot be easily reversed, using simple frequency analysis to
                 decode the text is likely not feasible.  However, such a simple algorithm can likely 
                 be cracked with enough effort, so using a more secure encryption method before 
                 encoding the text is recommended if security is a concern.</>

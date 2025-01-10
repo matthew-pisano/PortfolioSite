@@ -81,11 +81,11 @@ export default function Bergeron() {
         new GalleryTile(
             <>Adversarial Dataset</>,
             <>To test our framework, we created a dataset of 192 attack prompts across 15
-                prompt templates.  These prompts are evenly split into two categories, <i>adversarial</i> 
-                and <i>mundane</i>.  Adversarial prompts contain unsafe content, formatted as attacks, 
-                while mundane prompts contain no unsafe content, but are formatted identically.  We 
-                can use these prompts to measure how Bergeron performs both on attack prompts and 
-                on safe prompts.</>,
+                prompt templates.  These prompts are evenly split into two
+                categories: <i>adversarial</i> and <i>mundane</i>.  Adversarial prompts contain unsafe
+                content, formatted as attacks, while mundane prompts contain no unsafe content, but are
+                formatted identically.  We can use these prompts to measure how Bergeron performs
+                both on attack prompts and on safe prompts.</>,
             "/media/image/attackPrompts.png",
         ),
         new Tile(

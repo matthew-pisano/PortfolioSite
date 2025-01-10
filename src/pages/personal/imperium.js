@@ -11,8 +11,8 @@ export default function Imperium() {
             <h2>Overview</h2>,
             <>Imperium is an application developed for android without any game engines or
                 development frameworks.<br/>
-                Its motivations are twofold: to develop a genuinely enjoyable Android emulation of the 
-                <i>RISK</i> board game and other grand strategy games for the PC platform and to 
+                Its motivations are twofold: to develop a genuinely enjoyable Android emulation of
+                the <i>RISK</i> board game and other grand strategy games for the PC platform and to
                 develop a low level expertise in Android for myself by building everything from scratch.</>
         ),
         new Tile(

@@ -12,7 +12,7 @@ export default function ChipFiring() {
     let tiles = [
         new Tile(
             <h2>Overview</h2>,
-            <>This research was performed by myself, an advisor at SUNY New Paltz, and one of
+            <>This research was performed by myself, an advisor at <i>SUNY New Paltz</i>, and one of
                 his colleagues.  In this research, we focused on the study of Chip-Firing games and 
                 how different combinations of directed and undirected edges affect its winning 
                 strategies.  THis falls primarily within the fields of linear algebra, graph 
@@ -75,8 +75,8 @@ export default function ChipFiring() {
         ),
         new Tile(
             <>The Laplacian</>,
-            <>The <u>laplacian</u> of a graph, in this case is an <i>n x n</i> matrix where
-                <i>n</i> is the number of vertices on the graph.  Its diagonal is determined by how 
+            <>The <u>laplacian</u> of a graph, in this case is an <i>n x n</i> matrix
+                where <i>n</i> is the number of vertices on the graph.  Its diagonal is determined by how
                 many outgoing connections each vertex has, otherwise known as its degree.  The remaining
                 elements are valued such that <Latex>{`$L_{ij}$`}</Latex> is negative the number of edges shared between
                 vertices <i>i</i> and <i>j</i>.  An example for a square graph is <Latex>{`$L =

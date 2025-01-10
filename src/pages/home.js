@@ -30,8 +30,8 @@ export default function Home() {
             <>Moral High Ground</>,
             <>As part of my employment with <i>IBM Research</i>, this research aims to better
                 instill moral values and principles into LLMs through the usage of text-based games.
-                Here, we develop a benchmark of these games in conversational format that run using 
-                <i>Microsoft's</i> TextWorld environment.  We use both fine-tuning and instruction-tuning 
+                Here, we develop a benchmark of these games in conversational format that run
+                using <i>Microsoft's</i> TextWorld environment.  We use both fine-tuning and instruction-tuning
                 methods to use these games to improve the moral reasoning abilities of several LLMs.</>,
             "/media/image/tw-llm.png",
             ["research", "academic", "ai", "alignment", "python"], [], "research/highGround",

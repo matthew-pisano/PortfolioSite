@@ -17,7 +17,7 @@ export default function Videntium() {
         ),
         new Tile(
             <>Features and Function</>,
-            <>Built using AWS Cloud9, Videntium is served to the user through PHP from AWS servers.
+            <>Built using <i>AWS Cloud9</i>, Videntium is served to the user through PHP from AWS servers.
                 The two MySQL databases that Videntium uses as storage are created and managed by 
                 PHPMyAdmin for easier management.  The map viewer allows the user to toggle between 
                 different views of their map using colored filters and text boxes to show information 

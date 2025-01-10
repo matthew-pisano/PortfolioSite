@@ -13,13 +13,14 @@ export default function About() {
     let tiles = [
         new Tile(
             <h2>Introduction</h2>,
-             <>My name is Matthew Pisano.  I am an Artificial Intelligence researcher and
+            <>My name is Matthew Pisano.  I am an Artificial Intelligence researcher and
                 software developer.  I have a Master's degree in Computer Science from Rensselaer 
                 Polytechnic Institute.
-                <br/><br/>My research centers around language model alignment; enforcing safety without
+                <br/><br/>
+                My research centers around language model alignment; enforcing safety without
                 hampering its cognitive abilities. I often draw inspiration from biological intelligences 
                 to aid im my work with artificial ones.  I enjoy learning about how the mind works 
-                    and the cognitive principles that can be applied to it.</>,
+                and the cognitive principles that can be applied to it.</>,
              "/media/image/headshot"
         ),
         new Tile(
@@ -90,13 +91,15 @@ export default function About() {
             <>A key attribute of someone who can work well with a team, whether the focus is
                 software development or research, is leadership.  Many of my leadership skills
                 come from my participation in research projects and my time in scouting.
-                <br/><br/>I have worked on numerous different academic and research projects.  In many
+                <br/><br/>
+                I have worked on numerous different academic and research projects.  In many
                 of these, I was the primary organizer of the project and in charge of delegating 
                 tasks to collaborators or teammates.  This is evident in my projects
                 like <Link href="/research/predictChain">Predict Chain</Link>
                 , <Link href="/hackathons/anonHires">Anonymous Hiring</Link>, or my Master's
                 thesis, <Link href="/research/bergeron">Bergeron</Link>.
-                <br/><br/>I spent 10 years in the Boy Scouts of America program learning the attributes
+                <br/><br/>
+                I spent 10 years in the Boy Scouts of America program learning the attributes
                 of good leaders and good team players.  This culminated in my Eagle Scout project where 
                 I preformed renovations on my community's local recreation center.  My experience has 
                 continued on from there as I took active roles in the planning and machine learning 

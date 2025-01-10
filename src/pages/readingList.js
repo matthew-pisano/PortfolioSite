@@ -204,7 +204,7 @@ export default function ReadingList() {
             "emotion-machine"
         ),
         new SectionTile(
-            <>Historical and Hard Science Fiction</>, "hifi-sifi"
+            <>Historical and Science Fiction</>, "hifi-sifi"
         ),
         new BookTile(
             <>2001: A Space Odyssey</>,

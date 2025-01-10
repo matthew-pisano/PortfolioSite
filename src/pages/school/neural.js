@@ -80,9 +80,9 @@ export default function Neural() {
         new Tile(
             <>Decision Tree Results</>,
             <>For the backpropagation network with the decision tree optimization, a learning
-                rate (<Latex>{`$\\alpha$`}</Latex>) of 0.18 was also used. The decision tree was able to eliminate the
-                attributes of weight as least impactful and glucose levels as second to least
-                impactful. For this experiment, only weight was eliminated. This brought
+                rate (<Latex>{`$\\alpha$`}</Latex>) of 0.18 was also used. The decision tree was able to
+                eliminate the attributes of weight as least impactful and glucose levels as second
+                to least impactful. For this experiment, only weight was eliminated. This brought
                 the total number of inputs down to ten input nodes. Across three trials,
                 training over the data set for the 150 epochs, the network trained after 0.78
                 seconds on average. The average loss for the testing set was 0.125, correctly
