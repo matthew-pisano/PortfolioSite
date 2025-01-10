@@ -25,6 +25,7 @@ module.exports = {
         "semi": ["warn", "always"],
         "no-unused-vars": "warn",
         "no-control-regex": "off",
+        "react/no-unescaped-entities": "off",
         "import/no-unresolved": "off",
         "import/order": [
             "warn",

@@ -18,7 +18,9 @@ function randText(len){
 }
 
 
-
+/**
+ * Pulses the background between different shades of red
+ */
 async function backgroundGradient() {
     let grayDirection = 2;
     let grayState = 0;
@@ -84,11 +86,11 @@ async function babbleLoop() {
 export default function Babble() {
 
     let tiles = [
-        new Tile("_", ""),
-        new Tile("_", ""),
-        new Tile("_", ""),
-        new Tile("_", ""),
-        new Tile("_", ""),
+        new Tile(<>_</>, <></>),
+        new Tile(<>_</>, <></>),
+        new Tile(<>_</>, <></>),
+        new Tile(<>_</>, <></>),
+        new Tile(<>_</>, <></>),
     ];
     let pageInfo = new PageInfo(
         "babble",
@@ -99,9 +101,7 @@ export default function Babble() {
     );
 
     // Start the babble loop when the page loads
-    useEffect(() => {
-        babbleLoop();
-    }, []);
+    useEffect(() => {babbleLoop();}, []);
 
     return (<Wrapper pageName={pageInfo.pageName}>
         <div className={`${styles.titleCard}`}>

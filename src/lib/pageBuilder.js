@@ -1,9 +1,7 @@
 
 import React from "react";
 
-import HTMLReactParser from 'html-react-parser';
 import Link from "next/link";
-import Latex from 'react-latex-next';
 
 import tileStyles from '@/styles/pageTiles.module.css';
 import tagStyles from '@/styles/tags.module.css';
@@ -43,25 +41,23 @@ class GitLink extends TileLink {
 class Tile {
 
     /**
-     * @param title {string} The title of the tile
-     * @param content {string} The content of the tile
+     * @param title {JSXElement} The title of the tile
+     * @param content {JSXElement} The content of the tile
      * @param thumbnail {string} The thumbnail image for the tile
      * @param tags {string[]} The tags for the tile
      * @param links {TileLink[]} Links to display
      * @param titleLink {string} The link that the title should go to
-     * @param latex {boolean} Whether the content should be rendered as latex
      * @param style {object} The style of the tile
      * @param anchor {string} The name of the anchor link to the tile
      */
     constructor(title, content, thumbnail = "", tags = [],
-                links = [], titleLink = "", latex = false, style = {}, anchor = ""){
+                links = [], titleLink = "", style = {}, anchor = ""){
         this.title = title;
         this.content = content;
         this.tags = tags;
         this.thumbnail = thumbnail;
         this.style = style;
         this.titleLink = titleLink;
-        this.latex = latex;
         this.links = links;
         this.anchor = anchor;
     }
@@ -70,18 +66,17 @@ class Tile {
 
 class GalleryTile extends Tile {
     /**
-     * @param title {string} The title of the tile
-     * @param content {string} The content of the tile
+     * @param title {JSXElement} The title of the tile
+     * @param content {JSXElement} The content of the tile
      * @param thumbnail {string} The thumbnail image for the tile
      * @param tags {string[]} The tags for the tile
      * @param links {TileLink[]} Links to display
      * @param titleLink {string} The link that the title should go to
-     * @param latex {boolean} Whether the content should be rendered as latex
      * @param anchor {string} The name of the anchor link to the tile
      */
     constructor(title, content, thumbnail = "", tags = [],
-                links = [], titleLink = "", latex = false, anchor = ""){
-        super(title, content, thumbnail, tags, links, titleLink, latex, {}, anchor);
+                links = [], titleLink = "", anchor = ""){
+        super(title, content, thumbnail, tags, links, titleLink, {}, anchor);
     }
 }
 
@@ -89,12 +84,12 @@ class GalleryTile extends Tile {
 class SectionTile extends Tile {
 
         /**
-        * @param title {string} The title of the tile
+        * @param title {JSXElement} The title of the tile
         * @param style {object} The style of the tile
          * @param anchor {string} The name of the anchor link to the tile
         */
         constructor(title, anchor = "", style = {backgroundColor: TRANSLUCENT}){
-            super(title, "", "", [], [], "", false, style, anchor);
+            super(title, "", "", [], [], "", style, anchor);
         }
 }
 
@@ -171,8 +166,8 @@ function buildTiles(tiles){
         let anchorElem = tile.anchor ? <Link href={`#${tile.anchor}`} className={`${tileStyles.anchorLink}`}>
             <img className={`${tileStyles.anchorIcon}`} alt=''/></Link> : null;
         let titleElem = tile.titleLink ?
-                <Link className={titleClass} href={tile.titleLink}><u>{HTMLReactParser(tile.title)}</u></Link> :
-                <b className={titleClass}>{HTMLReactParser(tile.title)}</b>;
+                <Link className={titleClass} href={tile.titleLink}><u>{tile.title}</u></Link> :
+                <b className={titleClass}>{tile.title}</b>;
 
         let tileId = tile.anchor ? tile.anchor : "pageTile"+i;
 
@@ -185,8 +180,7 @@ function buildTiles(tiles){
             <div className={`w3-mobile w3-rest ${tileStyles.displayTileContent} ${contentTypeClass}`}>
                 {tile instanceof SectionTile ? <h2>{titleElem}{anchorElem}</h2> : <h4>{titleElem}{anchorElem}</h4>}
 
-                {tile.content ?
-                    <span>{tile.latex ? <Latex>{tile.content}</Latex> : HTMLReactParser(tile.content)}</span> : null}
+                {tile.content ? <span>{tile.content}</span> : null}
 
                 {buildTags(tile)}
             </div>
