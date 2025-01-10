@@ -24,7 +24,6 @@
     border-style: none solid none none;
     border-color: var(--theme-accent);
     border-width: 2px;
-
 }
 
 .sidebarContent {
@@ -50,13 +49,14 @@
 }
 
 .sidebarItem {
-    padding: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
     width: 100%;
     border-radius: 0px 5px 5px 0px;
 }
 
 .sidebarItem a {
-    padding: 0px;
+    padding: 1px;
     text-decoration: none;
     flex-grow: 1;
     color: var(--theme-text);
@@ -67,7 +67,7 @@
     max-height: 25px;
 }
 
-.sidebarFolderHeader:hover, .sidebarLink:hover, .sidebarLink:hover a{
+.sidebarFolderHeader:hover, .sidebarLink:hover, .sidebarLink:hover a {
     background-color: var(--theme-color-2-hover) !important;
     color: var(--theme-text-hover) !important;
 }
@@ -82,7 +82,7 @@
     color: var(--theme-text-hover) !important;
 }
 
-.sidebarItem img{
+.sidebarItem img {
     width: 15px;
     max-width: 15px;
     margin-right: 5px;
@@ -90,15 +90,15 @@
     object-fit: contain;
 }
 
-.folderIcon{
+.folderIcon {
     content:url("/assets/folderIcon.svg");
 }
 
-.htmlIcon{
+.htmlIcon {
     content:url("/assets/htmlIcon.svg");
 }
 
-.sidebarItemContent{
+.sidebarItemContent {
     padding-left: 15px;
 }
 
@@ -173,6 +173,4 @@
     .collapseHolder {
         border-style: none;
     }
-
-
 }
