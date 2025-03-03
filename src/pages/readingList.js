@@ -43,8 +43,8 @@ export default function ReadingList() {
             <>Below is a collection of books I have read and would recommend to others.  The
                 following may be useful for gaining foundational knowledge in the field of AI and the
                 Cognitive Sciences, may have had a significant impact on my own world model, or I may
-                just find them interesting.  Some of these have also been personally recommended to 
-                me by colleagues and mentors.  Through this collection, I hope to provide some insight 
+                just find them interesting.  Some of these have also been personally recommended to
+                me by colleagues and mentors.  Through this collection, I hope to provide some insight
                 into my field of study and my own personal interests.</>,
         ),
         new SectionTile(
@@ -54,10 +54,10 @@ export default function ReadingList() {
             <>Superintelligence: Paths, Dangers, Strategies</>,
             "Nick Bostrom",
             <><u>Superintelligence: Paths, Dangers, Strategies</u> explores how superintelligence
-                could be created and what its features and motivations might be. It argues that 
-                superintelligence, if created, would be difficult to control, and that it could 
-                take over the world in order to accomplish its goals. The book also presents 
-                strategies to help make superintelligences whose goals benefit humanity. It was 
+                could be created and what its features and motivations might be. It argues that
+                superintelligence, if created, would be difficult to control, and that it could
+                take over the world in order to accomplish its goals. The book also presents
+                strategies to help make superintelligences whose goals benefit humanity. It was
                 particularly influential for raising concerns about existential risk from artificial
                 intelligence.</>,
             `https://en.wikipedia.org/wiki/Superintelligence:_Paths,_Dangers,_Strategies`,
@@ -78,10 +78,10 @@ export default function ReadingList() {
             <>The Alignment Problem</>,
             "Brian Christian",
             <><u>The Alignment Problem: Machine Learning and Human Values</u> compiles and analyzes
-                numerous interviews with experts trying to build artificial intelligence systems, 
-                particularly machine learning systems, that are aligned with human values.  The book 
-                is divided into three sections: Prophecy, Agency, and Normativity. Each section 
-                covers researchers and engineers working on different challenges in the alignment 
+                numerous interviews with experts trying to build artificial intelligence systems,
+                particularly machine learning systems, that are aligned with human values.  The book
+                is divided into three sections: Prophecy, Agency, and Normativity. Each section
+                covers researchers and engineers working on different challenges in the alignment
                 of artificial intelligence with human values.</>,
             `https://en.wikipedia.org/wiki/The_Alignment_Problem`,
             <>While this book concentrates on similar themes to Nick Bostrom's <u>Superintelligence</u>,
@@ -89,8 +89,8 @@ export default function ReadingList() {
                 involve much less existential, albeit still harmful, examples of misalignment.  Much
                 of its length is devoted to addressing the ethical implications of implementing
                 machine learning algorithms without proper planning.  For example, he cites how AI
-                criminal risk assessment / recidivism prediction tools, like <i>COMPAS</i>, often exhibit 
-                biases toward minority groups.  One of the most interesting insights along this vein was 
+                criminal risk assessment / recidivism prediction tools, like <i>COMPAS</i>, often exhibit
+                biases toward minority groups.  One of the most interesting insights along this vein was
                 on the fact that ML algorithms can accidentally infer data that was held-out from training
                 (for example, an 'unbiased' algorithm can accidentally condition itself on someone's
                 race or gender, despite only having names or neighborhoods in its dataset.).
@@ -104,18 +104,18 @@ export default function ReadingList() {
             <>Human Compatible: Artificial Intelligence and the Problem of Control</>,
             "Stuart Russell",
             <><u>Human Compatible: Artificial Intelligence and the Problem of Control</u>
-                asserts that the risk to humanity from advanced artificial intelligence is a serious 
-                concern despite the uncertainty surrounding future progress in AI. It also proposes 
-                an approach to the AI control problem.  Russell asserts that the standard model of AI 
-                research, in which the primary definition of success is getting better and better at 
-                achieving rigid human-specified goals, is dangerously misguided. If an AI developed 
-                in this manner were to become superintelligent, it would likely not fully reflect 
-                human values and could be catastrophic to humanity. Russell further asserts that 
-                safety research should be begun as soon as possible, as it is also highly uncertain 
+                asserts that the risk to humanity from advanced artificial intelligence is a serious
+                concern despite the uncertainty surrounding future progress in AI. It also proposes
+                an approach to the AI control problem.  Russell asserts that the standard model of AI
+                research, in which the primary definition of success is getting better and better at
+                achieving rigid human-specified goals, is dangerously misguided. If an AI developed
+                in this manner were to become superintelligent, it would likely not fully reflect
+                human values and could be catastrophic to humanity. Russell further asserts that
+                safety research should be begun as soon as possible, as it is also highly uncertain
                 how long it would take to complete such research.</>,
             `https://en.wikipedia.org/wiki/Human_Compatible`,
             <>In this book, Russell both introduces technical topics to the reader and challenges
-                some conventional thinking about artificial intelligence in a concrete and understandable 
+                some conventional thinking about artificial intelligence in a concrete and understandable
                 manner.  He covers a wide variety of topics, ranging from how AI may (and should) behave
                 when interacting with the real world, to common misconceptions and criticisms of
                 alignment research, and more concrete learning techniques.
@@ -137,13 +137,13 @@ export default function ReadingList() {
                 of the most fundamental notions of the human condition: <i>the ability to freely choose</i>.
                 The book is split into two major parts.  In the first part, he uses our modern understandings
                 of psychology, sociology, neuroscience, genetics, and even quantum physics, to gradually
-                chip away at all the places that our commonplace notions of <i>free will</i> could be 
+                chip away at all the places that our commonplace notions of <i>free will</i> could be
                 sourced from.  His main argument posits that we live in a deterministic, albeit unpredictable,
                 universe; within such a mechanistic universe, there are no cracks from which a
                 dualistic <i>self</i> may emerge.  He further asserts that the outcomes of our lives are
                 largely, if not completely, determined by our environment, our hormones, our socioeconomic
-                status, culture, genetics, and so on.  In other words, our decisions at each 
-                instant are <u>fully determined</u> by what we experienced 'one second before, 
+                status, culture, genetics, and so on.  In other words, our decisions at each
+                instant are <u>fully determined</u> by what we experienced 'one second before,
                 one hour before, one month before, ...'.  Turtles all the way down, as he frames it.
                 Within all of this, he touches on some truly interesting psychological experiments,
                 chaos within systems, complexity, emergence, and the ways in which quantum effects do
@@ -159,9 +159,9 @@ export default function ReadingList() {
                 views on <i>free will</i>, I both found his arguments to be both unique and thought-provoking.
                 He is able to masterfully bring together many disparate scientific disciplines and follows
                 their findings to their natural conclusions about us and what really determines our
-                behavior.  From the behavior of slime molds and the quantum effects on microtubules 
-                to seemingly random dumps of neurotransmitters and the well-studied consequences of 
-                childhood adversity, he effectively argues that there is a mechanistic and (broadly) 
+                behavior.  From the behavior of slime molds and the quantum effects on microtubules
+                to seemingly random dumps of neurotransmitters and the well-studied consequences of
+                childhood adversity, he effectively argues that there is a mechanistic and (broadly)
                 deterministic explanation for all the phenomena we usually attribute to ourselves.
                 <br/>In essence, we do not choose how to play the hand that we are dealt in life, rather
                 we <i>are</i> the hand that we are dealt; the cards play themselves.
@@ -179,14 +179,14 @@ export default function ReadingList() {
             <>The Emotion Machine</>,
             "Marvin Minsky",
             <><u>The Emotion Machine</u> offers a fascinating new model for how our minds work.
-                Minsky argues persuasively that emotions, intuitions, and feelings are not distinct 
-                things, but different ways of thinking.  By examining these different forms of mind 
-                activity, Minsky says, we can explain why our thought sometimes takes the form 
-                of carefully reasoned analysis and at other times turns to emotion. He shows how our 
-                minds progress from simple, instinctive kinds of thought to more complex forms, 
-                such as consciousness or self-awareness. Indeed, says Minsky, if thinking can be 
-                understood as the step-by-step process that it is, then we can build machines -- 
-                artificial intelligences -- that not only can assist with our thinking by thinking 
+                Minsky argues persuasively that emotions, intuitions, and feelings are not distinct
+                things, but different ways of thinking.  By examining these different forms of mind
+                activity, Minsky says, we can explain why our thought sometimes takes the form
+                of carefully reasoned analysis and at other times turns to emotion. He shows how our
+                minds progress from simple, instinctive kinds of thought to more complex forms,
+                such as consciousness or self-awareness. Indeed, says Minsky, if thinking can be
+                understood as the step-by-step process that it is, then we can build machines --
+                artificial intelligences -- that not only can assist with our thinking by thinking
                 as we do but have the potential to be as conscious as we are.</>,
             `https://www.simonandschuster.com/books/The-Emotion-Machine/Marvin-Minsky/9780743276641`,
             <>This book was my first real introduction to Marvin Minsky and his unique concepts
@@ -224,10 +224,10 @@ export default function ReadingList() {
                 for being written before even the first moon landing.
                 <br/>Of course, one of the most impactful details to me was how <i>HAL</i> behaves and
                 how his internal world model motivates his actions.  He (it?) serves as an excellent
-                example of how seemingly virtuous terminal goals, such as investigating <i>TMA-2</i>, 
+                example of how seemingly virtuous terminal goals, such as investigating <i>TMA-2</i>,
                 can lead to unforeseen instrumental goals, such as self-preservation at all costs,
                 as <i>HAL</i> does not have a real understanding about what shutting down will really
-                mean for him.  All of this comes decades before alignment, or even AI, became popular 
+                mean for him.  All of this comes decades before alignment, or even AI, became popular
                 within public discourse.
                 <br/>Another interesting detail is what Clarke gets wrong.  Namely, his prediction that
                 Marvin Minsky and Irving John Good would play a pivotal role in designing neural
@@ -242,9 +242,9 @@ export default function ReadingList() {
             "Philip K. Dick",
             <><u>Do Androids Dream of Electric Sheep?</u> explores themes of humanity, empathy,
                 and the nature of consciousness set in a post-apocalyptic world after most humans
-                have fled to off-world colonies. Amid this bleak landscape, Dick examines what it 
-                means to be human and the ethics of artificial life.  The novel follows Rick Deckard, 
-                a bounty hunter tasked with "retiring" rogue androids, and John Isidore, a man of 
+                have fled to off-world colonies. Amid this bleak landscape, Dick examines what it
+                means to be human and the ethics of artificial life.  The novel follows Rick Deckard,
+                a bounty hunter tasked with "retiring" rogue androids, and John Isidore, a man of
                 limited intelligence due to radiation exposure who empathizes with the fugitive androids.</>,
             ``,
             <>One of the most striking aspects of this book is how Dick describes his androids,
@@ -255,9 +255,9 @@ export default function ReadingList() {
                 they also poses similar biology to humans internally.
                 <br/>This blurred distinction between humans and androids in the book is increasingly
                 becoming applicable to the ethics of real-world artificial intelligences.  While I
-                do not foresee the development biological humanoid assistants, the book remains relevant 
+                do not foresee the development biological humanoid assistants, the book remains relevant
                 to how we interact with our increasingly intelligent and embodied assistants.  This
-                progression too is addressed within the book as Rick Deckard describes how he becomes 
+                progression too is addressed within the book as Rick Deckard describes how he becomes
                 more empathetic to the more advanced androids that he is tasked with retiring.  With
                 his story, Dick asks us where the line between ourselves and our creations lies; this
                 is a question we should begin to ask ourselves as AI research continues to advance.</>,
@@ -281,7 +281,7 @@ export default function ReadingList() {
                 to instill a sense of awe within the reader and contextualize historical events with
                 a sense of gravity that traditional history books may struggle to convey.  Much of the
                 book takes place during the 1920s and 1930s.  These chapters explore how some of Europe's
-                most brilliant minds coped with existential threats to the established order of Science 
+                most brilliant minds coped with existential threats to the established order of Science
                 and Mathematics in the forms of quantum mechanics, relativity, and Gödel's incompleteness
                 theorems.  For some, this is compounded by the rapid rise of the Nazis, anti-semitism,
                 and distrust in the sciences on the continent.  In later chapters, Labatut details the
@@ -297,6 +297,74 @@ export default function ReadingList() {
                 undergraduate education.</>,
             "https://m.media-amazon.com/images/I/71LWaPy3gjL._SL1500_.jpg",
             "maniac"
+        ),
+        new BookTile(
+            <>When We Cease to Understand the World</>,
+            "Benjamín Labatut",
+            <><u>When We Cease to Understand the World</u> reads very similarly to another of
+                Labatut's books, <u>The Maniac</u>.  It is a fictionalized account of some major
+                developments in theoretical physics and mathematics during the 20th century.  Based
+                on real, historical events, the book examines the struggles, moral quandaries, and
+                often madness that accompanies groundbreaking discoveries.  It briefly follows scientists
+                such as Fritz Haber, Werner Heisenberg, and Erwin Schrödinger as they face the
+                consequences of their discoveries and their own personal struggles.  It also ties in
+                the mathematicians Alexander Grothendieck and Shinichi Mochizuki as they both grapple
+                with isolation and the danger of their own discoveries at the heart of mathematics.
+            </>,
+            ``,
+            <>Through his use of fiction to fill in details that remain absent from the historical
+                record, Labatut explores the consequences of several foundational discoveries and
+                the physical and psychological consequences that befell their creators.  The first chapter,
+                <i>Prussian Blue</i>, focuses on Fritz Haber, a Jewish German chemist who invented a synthetic
+                process of creating ammonia from nitrogen and hydrogen gas in addition to heavier-than-air
+                chlorine gas. The former revolutionized the production of rich fertilizer, potentially saving
+                hundreds of millions from starvation; the latter was used in the trenches of World War One, killing
+                hundreds of thousands.  Haber also discovered a powerful pesticide, dubbed <i>Zyklon A</i>,
+                a derivative of which would later be used by the Nazis to murder millions.  During use,
+                the <i>Zyklon B</i> derivative breaks down into several chemical byproducts, one of which
+                often stained chamber walls a distinctive shade of <i>Prussian Blue</i>.  At the core
+                of Fritz Haber's legacy is the concept of dual-use.  Just as the <i>Haber-Bosch</i>
+                process and <i>Zyklon A</i> have yielded nearly incalculable benefits through their
+                civilian use, chlorine gas and <i>Zkylon B</i> gave rise to untold suffering through
+                their military usage.  This concept similarly applies to many other technologies,
+                ranging from Artificial Intelligence to Nuclear Fission.<br/>
+                The next chapter examines Karl Schwarzschild and his equations that lead to the first
+                theoretical description of a black hole.  From the trenches of World War One's Eastern
+                front, the German scientist worked tirelessly on developing the first exact solution
+                to Einsteins field equations.  His solutions described how a region of space that
+                contained a sufficient, finite mass could warp and tear the fabric of space-time itself,
+                leaving a point of infinite density and frozen time.  Here, Labatut examines how
+                the darkness of those theoretical black holes began to consume Schwarzschild and
+                how it was among the first cracks to form in our understanding of fundamental reality.<br/>
+                <i>The Heart of the Heart</i> explores the discoveries of the mathematicians
+                Alexander Grothendieck as his discoveries in algebraic geometry, topology, and vector
+                spaces began to shed light on a more fundamental mathematical truth, a concept he
+                referenced as <i>The Heart of the Heart</i>.  After this revelation, Grothendieck
+                retreated into hermitage, refusing to entertain any further concepts related to mathematics
+                out of fear of the potential consequences of his discovery.  We also see the story of
+                Shinichi Mochizuki, a Japanese mathematician whose work on the <i>ABC Conjecture</i>
+                and investigation into Grothendieck's work earned him a similar, self-imposed fate.<br/>
+                The last section of the book follows Werner Heisenberg and Erwin Schrödinger as their
+                discoveries at the core of quantum mechanics marked the collapse of the final pillar
+                of our classical understanding of the world.  Heisenberg, through isolation, used
+                hand-written matrix calculations to show a strange property of quantum particles:
+                the more finely you were able to pin down their position, the less you could be
+                certain of their momenta.  Similarly, the better you are able to measure a particle's
+                momentum, the less certain you could be of its position.  This result is heavily
+                intertwined with the <i>Observer Effect</i> by which observations of a quantum ofject
+                are not commutable.  At first in opposition to Heisenberg's theories were those of
+                Erwin Schrödinger.  By his calculations, quantum objects could best be described as
+                waves, without a single, well-defined position of momentum.  By the end of the book,
+                Heisenberg realizes that these two notions are compatible, resulting in a world where
+                quantum particles exist in an indeterminate state, best described by Schrödinger's
+                wave functions.  Upon observation, however, this wave function collapses, resolving
+                the particle to a more well-defined position or momentum.  The consequence of this
+                discovery was a world that does not have a predictable, fundamental description.  It is
+                "fuzzy", random, and uncertain at its core.  Our world of definite, commutable, and
+                observable phenomena is merely an illusion build on the true, quantum reality.
+            </>,
+            "https://m.media-amazon.com/images/I/81Wodz8m5vL._SL1500_.jpg",
+            "cease-to-understand-the-world"
         ),
         new SectionTile(
             <>Physics</>, "physics"
@@ -328,10 +396,10 @@ export default function ReadingList() {
             <>The Little Book of String Theory</>,
             "Steven Gubser",
             <><u>The Little Book of String Theory</u> offers a short, accessible, and
-                entertaining introduction to one of the most talked-about areas of physics today. 
-                String theory has been called the "theory of everything". It seeks to describe all 
-                the fundamental forces of nature. It encompasses gravity and quantum mechanics in 
-                one unifying theory. But it is unproven and fraught with controversy. After reading 
+                entertaining introduction to one of the most talked-about areas of physics today.
+                String theory has been called the "theory of everything". It seeks to describe all
+                the fundamental forces of nature. It encompasses gravity and quantum mechanics in
+                one unifying theory. But it is unproven and fraught with controversy. After reading
                 this book, you’ll be able to draw your own conclusions about string theory.</>,
             `https://press.princeton.edu/books/hardcover/9780691142890/the-little-book-of-string-theory`,
             <>Similarly to <u>QED</u>, this served as my first semi-serious introduction
@@ -343,7 +411,7 @@ export default function ReadingList() {
                 he explains how the addition of a fifth dimension can help to explain the behavior of
                 quark-gluon plasma after being created by the collision of heavy gold nuclei.  It stood
                 out to me primarily because it was able to take an observed phenomena that could already
-                    be described in terms of quantum field theory, and re-frame it using string theory.</>,
+                be described in terms of quantum field theory, and re-frame it using string theory.</>,
             "https://pup-assets.imgix.net/onix/images/9780691142890.jpg?w=410&auto=format",
             "string-theory"
         ),
@@ -351,9 +419,9 @@ export default function ReadingList() {
             <>The Order of Time</>,
             "Carlo Rovelli",
             <><u>The Order of Time</u> explores the nature of time and its relationship to
-                the universe.  Within its pages, Rovelli argues that time is not a fundamental aspect 
+                the universe.  Within its pages, Rovelli argues that time is not a fundamental aspect
                 of the universe, but rather an emergent consequence of the most basic properties of
-                the universe.  The book is broken into three parts: "The Crumbling of Time", 
+                the universe.  The book is broken into three parts: "The Crumbling of Time",
                 "The World Without Time", and "The Sources of Time".  The first part explores the most
                 basic attributes of time and how, when you look closely at our best theories of
                 the universe, they begin to break down.  The second part explores how the most
@@ -366,7 +434,7 @@ export default function ReadingList() {
                 the book explains how special relativity the lack of a universal ground-truth
                 for time.  He also describes one's <i>local time</i> as a member of a partially
                 ordered set.  In other words, the time experiences be two observers can only be compared
-                after they causally interact with each other.  Otherwise, such a measurement is 
+                after they causally interact with each other.  Otherwise, such a measurement is
                 meaningless.  In the second part of the book, Rovelli describes how quantum interactions
                 do not need to be governed by some local time value, rather they are only determined
                 by other quantum events, the ordering of which is often asymmetric.  This creates a
@@ -378,10 +446,10 @@ export default function ReadingList() {
                 sensible until I read Rovelli's well-crafter arguments as to why it does not fit with
                 our current theories.  The book also argues quite convincingly in favor
                 of <i>loop quantum gravity</i>, a theory which Rovelli himself is a pioneer of.  I have
-                also noticed that the notions presented within this book seem (in a very rough sense) 
-                compatible with Stephen Wolfram's conjectures on 
+                also noticed that the notions presented within this book seem (in a very rough sense)
+                compatible with Stephen Wolfram's conjectures on
                 <Link href="https://writings.stephenwolfram.com/2020/04/finally-we-may-have-a-path-to-the-fundamental-theory-of-physics-and-its-beautiful/" target="_blank">
-                <i>Hypergraphs</i></Link>.</>,
+                    <i>Hypergraphs</i></Link>.</>,
             "https://m.media-amazon.com/images/I/61ctwcJg5dL._AC_UF1000,1000_QL80_.jpg",
             "order-of-time"
         ),
@@ -392,21 +460,21 @@ export default function ReadingList() {
             <>The Inevitable: Understanding the 12 technological forces that will shape our future</>,
             "Kevin Kelly",
             <><u>The Inevitable: Understanding the 12 technological forces that will shape our future</u>
-                asserts that much of what will happen in the next thirty years is inevitable, driven 
-                by technological trends that are already in motion. In this book, Kevin Kelly provides 
-                an optimistic road map for the future, showing how the coming changes in our 
-                lives—from virtual reality in the home to an on-demand economy to artificial 
-                intelligence embedded in everything we manufacture—can be understood as the result 
-                of a few long-term, accelerating forces. These larger forces will completely revolutionize 
-                the way we buy, work, learn, and communicate with each other.  Kelly’s bright, hopeful 
-                book will be indispensable to anyone who seeks guidance on where their business, 
-                industry, or life is heading—what to invent, where to work, in what to invest, 
+                asserts that much of what will happen in the next thirty years is inevitable, driven
+                by technological trends that are already in motion. In this book, Kevin Kelly provides
+                an optimistic road map for the future, showing how the coming changes in our
+                lives—from virtual reality in the home to an on-demand economy to artificial
+                intelligence embedded in everything we manufacture—can be understood as the result
+                of a few long-term, accelerating forces. These larger forces will completely revolutionize
+                the way we buy, work, learn, and communicate with each other.  Kelly’s bright, hopeful
+                book will be indispensable to anyone who seeks guidance on where their business,
+                industry, or life is heading—what to invent, where to work, in what to invest,
                 how to better reach customers, and what to begin to put into place—as this new world emerges.</>,
             `https://www.amazon.com/Inevitable-Understanding-Technological-Forces-Future/dp/0143110373`,
             <>I first read this book back when it originally came out.  At that point, it was
                 entirely uncertain if some, or if even any, or Kelly's predictions would materialize.
-                Looking back nearly 10 years after publication, his theories have proven remarkably 
-                prescient.  Out of his twelve points (Becoming, Cognifying, Flowing, Screening, 
+                Looking back nearly 10 years after publication, his theories have proven remarkably
+                prescient.  Out of his twelve points (Becoming, Cognifying, Flowing, Screening,
                 Accessing, Sharing, Filtering, Remixing, Interacting, Tracking, Questioning, Beginning),
                 I found his points on Becoming, Cognifying, and Accessing to be the mode relevant.
                 In short, these points describe a world where information is increasingly streamed
@@ -429,7 +497,7 @@ export default function ReadingList() {
                 behind each of the theoretical concepts that he presents.</>,
             ``,
             <>While many of the technologies discusses in the book may very well be impossible,
-                I found it especially interesting how all of them could either be loosely tied back 
+                I found it especially interesting how all of them could either be loosely tied back
                 to real scientific theories or where actually possible with modern technology, albeit
                 in a modified form.  One of the sections that I found most interesting was on
                 Psychokinesis and how Kaku explored how it may actually be implemented, although
