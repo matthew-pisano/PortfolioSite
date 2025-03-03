@@ -40,6 +40,7 @@ class Sprite {
         if (this.spriteElem === null) throw new Error("Sprite not mounted");
         let terminalThumb = document.getElementById('terminalThumb');
 
+        // eslint-disable-next-line no-constant-condition
         while (true) {
             let targetTop = terminalThumb.getBoundingClientRect().top - this.spriteHeight;
             let scrmlnTop = this.spriteElem.getBoundingClientRect().top;

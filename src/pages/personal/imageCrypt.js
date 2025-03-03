@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import {GitLink, PageInfo, SectionTile, Tile, TRANSLUCENT} from '@/lib/pageBuilder';
+import {GitLink, PageInfo, Tile} from '@/lib/pageBuilder';
 import {genPageTitle} from "@/lib/utils";
 
 

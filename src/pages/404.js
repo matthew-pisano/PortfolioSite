@@ -1,5 +1,6 @@
-import Link from "next/link";
 import React, {useEffect, useState} from 'react';
+
+import Link from "next/link";
 
 import Wrapper from "@/components/Wrapper";
 import {PageInfo} from '@/lib/pageBuilder';
