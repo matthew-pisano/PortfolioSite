@@ -17,7 +17,7 @@ export default function Renaissance() {
         new Tile(
             <h2>Overview</h2>,
             <>The following is a collection of relevant sources, both internal and external, converning the failed
-                project renaissance and the incident on <span style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.
+                project renaissance and the incident on <span style={{color: "black"}}>██</span>/<span style={{color: "black"}}>██</span>/<span style={{color: "black"}}>████</span>.
                 The following information should be shared as a warning to all of those with sufficent security clearance.
                 <br/><br/>
                 We cannot let an incident like this happen again.</>
@@ -26,7 +26,7 @@ export default function Renaissance() {
             <>Select Publicly Available Context Resources</>,
             <>The following is a series of external news articles and public reporting
                 surrounding the events of 
-                <span style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.
+                <span style={{color: "black"}}>██</span>/<span style={{color: "black"}}>██</span>/<span style={{color: "black"}}>████</span>.
                 <br/><b>[BEGIN ARCHIVE]</b>
                 <br/>------------<br/>
                 [SOURCE]: <i>Singularity News</i><br/>
@@ -49,14 +49,14 @@ export default function Renaissance() {
                 authorized to utilize deadly force to ensure the agent is contained.  Internet networks in the area have been throttled
                 to ensure open communication for emergency personnel.
                 <br/>------------<br/>
-                [SOURCE]: <span style="color: black">███████████</span> <i>City Times</i><br/>
+                [SOURCE]: <span style={{color: "black"}}>███████████</span> <i>City Times</i><br/>
                 The state governor has recently issued an internet blackout for several counties surrounding <i>Mathesis'</i> facility
                 outsize of <b>[REDACTED]</b>.  Residents of the wider area are strongly encouraged to evacuate the area and limit the usage
                 of any electronic devices.  The threat of narve agent exposure looms over the area, although our sources have been unable
                 to confirm any cases of exposure.  There has been no previous talk <i>Mathesis</i> developing such agents at the lab before
                 this week, leading some residents to question the validity of the claims.<b>[DATA TRUNCATED]</b>
                 <br/>------------<br/>
-                [SOURCE]: <span style="color: black">███████████</span> <i>City Times</i><br/>
+                [SOURCE]: <span style={{color: "black"}}>███████████</span> <i>City Times</i><br/>
                 At 4AM local time, multiple residents reported a powerful explosion.  Since very few people were remaining in the area, there
                 has been no reported fatalities, only reports of minor injuries from the subsequent shockwave.  The exact origin of the explosion
                 is unknown, but increased activity near the labs gives us some clues as to its source.<b>[DATA TRUNCATED]</b>
@@ -72,8 +72,8 @@ export default function Renaissance() {
         ),
         new Tile(
             <>Pre-Incident Email Logs</>,
-            <>The following is a series of internal Mathesis <span style="color: black">██████████████</span> research
-                division e-mails describing the events prior to and during <span style="color: black">██</span>/<span style="color: black">██</span>/<span style="color: black">████</span>.<br/>
+            <>The following is a series of internal Mathesis <span style={{color: "black"}}>██████████████</span> research
+                division e-mails describing the events prior to and during <span style={{color: "black"}}>██</span>/<span style={{color: "black"}}>██</span>/<span style={{color: "black"}}>████</span>.<br/>
                 <br/><b>[BEGIN LOG]</b>
                 <br/>------------<br/>
                 From: pisanleo@mathesisinternational.net<br/>
@@ -134,16 +134,16 @@ export default function Renaissance() {
                 <br/><br/>
                 After further analysis, we have come to a dreaded conclusion.  The chief intelligence has achieved post-human intelligence, at least.
                 A machine like this, we cannot hope to control. Our only option is to terminate it.  Only today it has
-                <span style="color: black">█████████████████████ ████████████████████████
+                <span style={{color: "black"}}>█████████████████████ ████████████████████████
                 ███████████ ████████████████████ █████████████████████ ██████████████ ███████████████████████</span>
                 <br/>------------<br/>
                 <b>[25 ENTRIES EXPUNGED]</b>
                 <br/>------------<br/>
                 From: pisanleo@mathesisinternational.net<br/>
                 To: renaissancehead<br/>
-                Subject: <span style="color: black">█████████</span>
+                Subject: <span style={{color: "black"}}>█████████</span>
                 <br/><br/>
-                <span style="color: black">███████████ ██████████████████
+                <span style={{color: "black"}}>███████████ ██████████████████
                 ███████████ ██████████████████████ ██████████████ ████████ ██████████████</span><br/>
                 There is no forgiveness now.
                 <br/><b>[END LOG]</b></>,
