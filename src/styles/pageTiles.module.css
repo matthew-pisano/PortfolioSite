@@ -106,6 +106,15 @@
     content:url("/assets/anchorIcon.svg");
 }
 
+.bookTileSection {
+    display: block;
+    margin-top: 15px;
+}
+
+.bookTileSection p {
+    text-indent: 20px;
+}
+
 
 @media (max-width: 1300px) {
     .displayTileContent{

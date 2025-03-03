@@ -2,10 +2,10 @@ import React from 'react';
 
 import Link from "next/link";
 
-
 import DefaultWrapper from "@/components/DefaultWrapper";
 import {PageInfo, SectionTile, Tile} from '@/lib/pageBuilder';
 import {genPageTitle} from "@/lib/utils";
+import styles from '@/styles/pageTiles.module.css';
 
 
 /**
@@ -26,9 +26,9 @@ class BookTile extends Tile {
         let source_elem = synopsis_source ?
             <i>Source: <Link href={synopsis_source} target="_blank">{new URL(synopsis_source).hostname}</Link></i> : null;
         let content = <>
-            <p><i>Author:</i> {author}</p>
-            <p><i>Synopsis:</i> {synopsis} {source_elem}</p>
-            <p><i>Thoughts:</i> {thoughts}</p>
+            <span className={styles.bookTileSection}><i>Author:</i> {author}</span>
+            <span className={styles.bookTileSection}><i>Synopsis:</i> {synopsis} {source_elem}</span>
+            <span className={styles.bookTileSection}><i>Thoughts:</i> {thoughts}</span>
         </>;
         super(title, content, thumbnail, [], [], "", {}, anchor);
     }
@@ -68,9 +68,8 @@ export default function ReadingList() {
                 consequences if we fail our one (and likely only) attempt at doing so.  He goes into
                 detail on how an AI, tasked with seemingly harmless <i>terminal goals</i> may
                 nevertheless set for itself <i>instrumental goals</i> that can pose an existential
-                threat to humanity.<br/>
-                As may be evident in the name, this work also heavily inspired me to
-                create <Link href="https://github.com/matthew-pisano/Superintelligent" target="_blank">Superintelligent</Link>.</>,
+                threat to humanity. As may be evident in the name, this work also heavily inspired me to
+                create my game, <Link href="https://github.com/matthew-pisano/Superintelligent" target="_blank">Superintelligent</Link>.</>,
             "https://m.media-amazon.com/images/I/71UvMcdcE9L._AC_UF1000,1000_QL80_.jpg",
             "superintelligence"
         ),
@@ -94,9 +93,10 @@ export default function ReadingList() {
                 on the fact that ML algorithms can accidentally infer data that was held-out from training
                 (for example, an 'unbiased' algorithm can accidentally condition itself on someone's
                 race or gender, despite only having names or neighborhoods in its dataset.).
-                <br/>Christian's chapters on reward systems and curiosity also helped to cement my
+
+                <p>Christian's chapters on reward systems and curiosity also helped to cement my
                 understanding of the role these concepts play in learning, both natural and artificial.
-                A common theme with this book was how well its concepts complemented my more formal education.</>,
+                A common theme with this book was how well its concepts complemented my more formal education.</p></>,
             "https://m.media-amazon.com/images/I/71buTbF1YDL._AC_UF1000,1000_QL80_.jpg",
             "alignment-problem"
         ),
@@ -119,14 +119,16 @@ export default function ReadingList() {
                 manner.  He covers a wide variety of topics, ranging from how AI may (and should) behave
                 when interacting with the real world, to common misconceptions and criticisms of
                 alignment research, and more concrete learning techniques.
-                <br/>Russell considers concepts such as how to balance the personal and societal
+
+                <p>Russell considers concepts such as how to balance the personal and societal
                 utilities of embodied assistants and how such assistants can safely learn by maintaining
                 a core of immutable ideals.  He also provides effective counter-arguments to common
                 arguments against alignment research, such as "Why can't you just turn it off" or
-                "It will behave if we specify its goals well enough".
-                <br/>The later chapters of the book introduce some learning techniques that I personally
+                "It will behave if we specify its goals well enough".</p>
+
+                <p>The later chapters of the book introduce some learning techniques that I personally
                 find interesting, such as inverse reinforcement learning and how that may be applicable
-                for aligning an AI with the ill-defined preferences of humans.</>,
+                for aligning an AI with the ill-defined preferences of humans.</p></>,
             "https://m.media-amazon.com/images/I/81nhGK0DNLL._UF1000,1000_QL80_.jpg",
             "human-compatible"
         ),
@@ -148,11 +150,12 @@ export default function ReadingList() {
                 Within all of this, he touches on some truly interesting psychological experiments,
                 chaos within systems, complexity, emergence, and the ways in which quantum effects do
                 and, importantly for his argument, do not influence our biology and behavior.
-                <br/>The second collection of chapters concerns the fallout of accepting this notion,
+
+                <p>The second collection of chapters concerns the fallout of accepting this notion,
                 on both distal and proximal scales.  This concerns topics such as, the societal impacts
                 of people repudiating the notion of free will, historical precedents for similar
                 seismic shifts in our understanding of the world, and consequences for mental health,
-                motivation, and criminal justice.</>,
+                motivation, and criminal justice.</p></>,
             ``,
             <>Reading Sapolsky's thoughts and expansions on this subject have been thoroughly
                 illuminating.  While I initially chose this book to reinforce, rather than revise, my own
@@ -163,15 +166,17 @@ export default function ReadingList() {
                 to seemingly random dumps of neurotransmitters and the well-studied consequences of
                 childhood adversity, he effectively argues that there is a mechanistic and (broadly)
                 deterministic explanation for all the phenomena we usually attribute to ourselves.
-                <br/>In essence, we do not choose how to play the hand that we are dealt in life, rather
-                we <i>are</i> the hand that we are dealt; the cards play themselves.
-                <br/>In addition to the well thought-out content, I also particularly enjoy his writing
+
+                <p>In essence, we do not choose how to play the hand that we are dealt in life, rather
+                we <i>are</i> the hand that we are dealt; the cards play themselves.</p>
+
+                <p>In addition to the well thought-out content, I also particularly enjoy his writing
                 style.  Each page comes with a myriad of citations, in-depth footnotes, asides, and short
                 personal rants that makes the experience of reading his book both stimulating and
                 engaging.  Even to those that may remain unconvinced by his ideas, the book is still
                 a worth-while read.  If not for the interesting facts, experiments, and history, then
                 hopefully such a reader would attend to his thoughts on empathy, justice, and how we
-                currently organize our society (and, hearteningly, how far we have already come).</>,
+                    currently organize our society (and, hearteningly, how far we have already come).</p></>,
             "https://m.media-amazon.com/images/I/712fJVnVAkL._SY466_.jpg",
             "determined"
         ),
@@ -195,11 +200,12 @@ export default function ReadingList() {
                 stands out from many others at the intersection between artificial intelligence and
                 cognitive science.  This is primarily because even modern AI has not yet implemented
                 many of the ideas presented here.
-                <br/>For me, the most impactful ideas presented here were Minsky's interpretation of
+
+                <p>For me, the most impactful ideas presented here were Minsky's interpretation of
                 the actor-critic structure of our cognition and his concept of <i>imprimers</i>, or
                 who we are most likely to learn from and why.  This book was a significant inspiration
                 behind my <Link href="/research/bergeron">Bergeron</Link> thesis, which is built around
-                a multi-model implementation of a simple actor-critic architecture.</>,
+                    a multi-model implementation of a simple actor-critic architecture.</p></>,
             "https://m.media-amazon.com/images/I/71qtkdlcqIS.jpg",
             "emotion-machine"
         ),
@@ -222,18 +228,20 @@ export default function ReadingList() {
                 fundamentally different with respect to the remainder of the animal kingdom.  His
                 description of space-flight, moon-bases, and technology are impressively accurate
                 for being written before even the first moon landing.
-                <br/>Of course, one of the most impactful details to me was how <i>HAL</i> behaves and
+
+                <p>Of course, one of the most impactful details to me was how <i>HAL</i> behaves and
                 how his internal world model motivates his actions.  He (it?) serves as an excellent
                 example of how seemingly virtuous terminal goals, such as investigating <i>TMA-2</i>,
                 can lead to unforeseen instrumental goals, such as self-preservation at all costs,
                 as <i>HAL</i> does not have a real understanding about what shutting down will really
                 mean for him.  All of this comes decades before alignment, or even AI, became popular
-                within public discourse.
-                <br/>Another interesting detail is what Clarke gets wrong.  Namely, his prediction that
+                within public discourse.</p>
+
+                <p>Another interesting detail is what Clarke gets wrong.  Namely, his prediction that
                 Marvin Minsky and Irving John Good would play a pivotal role in designing neural
                 networks that could effectively learn.  While this exact sequence of events did not
                 play out in reality, it is closely reflected in the real achievements of the two
-                scientists and thw AI boom of the 1980s.</>,
+                scientists and thw AI boom of the 1980s.</p></>,
             "https://m.media-amazon.com/images/I/71WoWlyQKtL._AC_UF1000,1000_QL80_.jpg",
             "space-odyssey"
         ),
@@ -253,14 +261,15 @@ export default function ReadingList() {
                 This further strengthens the book's central moral conflict concerning the difference
                 between humans and these 'andys'.  In addition to behaving like humans outwardly,
                 they also poses similar biology to humans internally.
-                <br/>This blurred distinction between humans and androids in the book is increasingly
+
+                <p>This blurred distinction between humans and androids in the book is increasingly
                 becoming applicable to the ethics of real-world artificial intelligences.  While I
                 do not foresee the development biological humanoid assistants, the book remains relevant
                 to how we interact with our increasingly intelligent and embodied assistants.  This
                 progression too is addressed within the book as Rick Deckard describes how he becomes
                 more empathetic to the more advanced androids that he is tasked with retiring.  With
                 his story, Dick asks us where the line between ourselves and our creations lies; this
-                is a question we should begin to ask ourselves as AI research continues to advance.</>,
+                is a question we should begin to ask ourselves as AI research continues to advance.</p></>,
             "https://images3.penguinrandomhouse.com/cover/9780345404473",
             "electric-sheep"
         ),
@@ -287,14 +296,15 @@ export default function ReadingList() {
                 and distrust in the sciences on the continent.  In later chapters, Labatut details the
                 Manhattan project and the sense of awful wonder that Nuclear Weapons imparted upon their
                 creators.  Many of the minds that the book follows finally break under the strain of
-                their environment or as a consequence of their own creations.<br/>
-                While the finer details of the book are not strictly based on historical evidence,
+                their environment or as a consequence of their own creations.
+
+                <p>While the finer details of the book are not strictly based on historical evidence,
                 reading <u>The Maniac</u> has changed how I think about inspiration, ideation, and
                 invention.  It also instills a sense of reverence for the geniuses that pioneered many
                 of the ideas that underpin the modern understanding of computing, artificial intelligence,
                 and game theory.  It also gave me a much better understanding of John von Neumann,
                 as his achievements are often less emphasized than those from Turing or Gödel during
-                undergraduate education.</>,
+                undergraduate education.</p></>,
             "https://m.media-amazon.com/images/I/71LWaPy3gjL._SL1500_.jpg",
             "maniac"
         ),
@@ -327,24 +337,27 @@ export default function ReadingList() {
                 process and <i>Zyklon A</i> have yielded nearly incalculable benefits through their
                 civilian use, chlorine gas and <i>Zkylon B</i> gave rise to untold suffering through
                 their military usage.  This concept similarly applies to many other technologies,
-                ranging from Artificial Intelligence to Nuclear Fission.<br/>
-                The next chapter examines Karl Schwarzschild and his equations that lead to the first
+                ranging from Artificial Intelligence to Nuclear Fission.
+
+                <p>The next chapter examines Karl Schwarzschild and his equations that lead to the first
                 theoretical description of a black hole.  From the trenches of World War One's Eastern
                 front, the German scientist worked tirelessly on developing the first exact solution
                 to Einsteins field equations.  His solutions described how a region of space that
                 contained a sufficient, finite mass could warp and tear the fabric of space-time itself,
                 leaving a point of infinite density and frozen time.  Here, Labatut examines how
                 the darkness of those theoretical black holes began to consume Schwarzschild and
-                how it was among the first cracks to form in our understanding of fundamental reality.<br/>
-                <i>The Heart of the Heart</i> explores the discoveries of the mathematicians
+                how it was among the first cracks to form in our understanding of fundamental reality.</p>
+
+                <p><i>The Heart of the Heart</i> explores the discoveries of the mathematicians
                 Alexander Grothendieck as his discoveries in algebraic geometry, topology, and vector
                 spaces began to shed light on a more fundamental mathematical truth, a concept he
                 referenced as <i>The Heart of the Heart</i>.  After this revelation, Grothendieck
                 retreated into hermitage, refusing to entertain any further concepts related to mathematics
                 out of fear of the potential consequences of his discovery.  We also see the story of
                 Shinichi Mochizuki, a Japanese mathematician whose work on the <i>ABC Conjecture</i>
-                and investigation into Grothendieck's work earned him a similar, self-imposed fate.<br/>
-                The last section of the book follows Werner Heisenberg and Erwin Schrödinger as their
+                and investigation into Grothendieck's work earned him a similar, self-imposed fate.</p>
+
+                <p>The last section of the book follows Werner Heisenberg and Erwin Schrödinger as their
                 discoveries at the core of quantum mechanics marked the collapse of the final pillar
                 of our classical understanding of the world.  Heisenberg, through isolation, used
                 hand-written matrix calculations to show a strange property of quantum particles:
@@ -361,8 +374,7 @@ export default function ReadingList() {
                 the particle to a more well-defined position or momentum.  The consequence of this
                 discovery was a world that does not have a predictable, fundamental description.  It is
                 "fuzzy", random, and uncertain at its core.  Our world of definite, commutable, and
-                observable phenomena is merely an illusion build on the true, quantum reality.
-            </>,
+                    observable phenomena is merely an illusion build on the true, quantum reality.</p></>,
             "https://m.media-amazon.com/images/I/81Wodz8m5vL._SL1500_.jpg",
             "cease-to-understand-the-world"
         ),
@@ -384,11 +396,11 @@ export default function ReadingList() {
                 between photons reflecting off of a class surface and quantum non-determinism,
                 help to frame the notoriously abstract concepts of the quantum realm in more
                 familiar terms.
-                <br/>I especially enjoy how the book is structured.  It follows a clear progression
+                <p>I especially enjoy how the book is structured.  It follows a clear progression
                 from that high-level example to the more complex reality of wave-particle dualities
                 and virtual photons.  I also found the logic behind his Feynman diagrams interesting
                 and how they can represent the infinite possibilities of particle interactions within
-                a series of simple lines.</>,
+                a series of simple lines.</p></>,
             "https://pup-assets.imgix.net/onix/images/9780691164090.jpg?w=410&auto=format",
             "quantum-electrodynamics"
         ),
@@ -407,11 +419,11 @@ export default function ReadingList() {
                 this relatively short book.  From the strings themselves to D-branes, M-theory,
                 and Supersymmetry, the book is able to convey the basic concepts behind these theories
                 through the usage of diagrams and how they may help tp explain real-world phenomena.
-                <br/>One of the most interesting portions for me was the last chapter of the book.  Here,
+                <p>One of the most interesting portions for me was the last chapter of the book.  Here,
                 he explains how the addition of a fifth dimension can help to explain the behavior of
                 quark-gluon plasma after being created by the collision of heavy gold nuclei.  It stood
                 out to me primarily because it was able to take an observed phenomena that could already
-                be described in terms of quantum field theory, and re-frame it using string theory.</>,
+                be described in terms of quantum field theory, and re-frame it using string theory.</p></>,
             "https://pup-assets.imgix.net/onix/images/9780691142890.jpg?w=410&auto=format",
             "string-theory"
         ),
@@ -440,7 +452,7 @@ export default function ReadingList() {
                 by other quantum events, the ordering of which is often asymmetric.  This creates a
                 sort of web of quantum events that evolve w.r.t. other events, rather than the passage
                 of time.
-                <br/>These ideas work to void the idea of a rigid <i>Block Universe</i> where the entire
+                <p>These ideas work to void the idea of a rigid <i>Block Universe</i> where the entire
                 universe can be resolved to a single state at every given instant.  In such a universe
                 all past states are both fully resolved and static.  To me, this idea seemed quite
                 sensible until I read Rovelli's well-crafter arguments as to why it does not fit with
@@ -449,7 +461,7 @@ export default function ReadingList() {
                 also noticed that the notions presented within this book seem (in a very rough sense)
                 compatible with Stephen Wolfram's conjectures on
                 <Link href="https://writings.stephenwolfram.com/2020/04/finally-we-may-have-a-path-to-the-fundamental-theory-of-physics-and-its-beautiful/" target="_blank">
-                    <i>Hypergraphs</i></Link>.</>,
+                    <i>Hypergraphs</i></Link>.</p></>,
             "https://m.media-amazon.com/images/I/61ctwcJg5dL._AC_UF1000,1000_QL80_.jpg",
             "order-of-time"
         ),
@@ -480,9 +492,9 @@ export default function ReadingList() {
                 In short, these points describe a world where information is increasingly streamed
                 and subscribed to, with an emphasis on cloud-based AI models.  Even back in 2017,
                 these points struck me as something to look out for in the future.
-                <br/>Reading this book helped to shape my attitude on the future of technological
+                <p>Reading this book helped to shape my attitude on the future of technological
                 progress and societal trends.  Kelly's optimism is still contagious, even in the
-                face of ever-potent click-through algorithms and the decreasing emphasis of digital ownership.</>,
+                face of ever-potent click-through algorithms and the decreasing emphasis of digital ownership.</p></>,
             "https://m.media-amazon.com/images/I/71uehq9SkLL._SL1500_.jpg",
             "inevitable"
         ),
