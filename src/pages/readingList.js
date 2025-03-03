@@ -315,11 +315,9 @@ export default function ReadingList() {
                 Labatut's books, <u>The Maniac</u>.  It is a fictionalized account of some major
                 developments in theoretical physics and mathematics during the 20th century.  Based
                 on real, historical events, the book examines the struggles, moral quandaries, and
-                often madness that accompanies groundbreaking discoveries.  It briefly follows scientists
-                such as Fritz Haber, Werner Heisenberg, and Erwin Schrödinger as they face the
-                consequences of their discoveries and their own personal struggles.  It also ties in
-                the mathematicians Alexander Grothendieck and Shinichi Mochizuki as they both grapple
-                with isolation and the danger of their own discoveries at the heart of mathematics.
+                often madness that accompanies groundbreaking discoveries.  It briefly follows luminaries
+                such as Fritz Haber, Werner Heisenberg, and Alexander Grothendieck as they face the
+                consequences of their discoveries and their own personal struggles.
             </>,
             ``,
             <>Through his use of fiction to fill in details that remain absent from the historical
@@ -339,34 +337,14 @@ export default function ReadingList() {
                 their military usage.  This concept similarly applies to many other technologies,
                 ranging from Artificial Intelligence to Nuclear Fission.
 
-                <p>The next chapter examines Karl Schwarzschild and his equations that lead to the first
-                theoretical description of a black hole.  From the trenches of World War One's Eastern
-                front, the German scientist worked tirelessly on developing the first exact solution
-                to Einsteins field equations.  His solutions described how a region of space that
-                contained a sufficient, finite mass could warp and tear the fabric of space-time itself,
-                leaving a point of infinite density and frozen time.  Here, Labatut examines how
-                the darkness of those theoretical black holes began to consume Schwarzschild and
-                how it was among the first cracks to form in our understanding of fundamental reality.</p>
-
-                <p><i>The Heart of the Heart</i> explores the discoveries of the mathematicians
-                Alexander Grothendieck as his discoveries in algebraic geometry, topology, and vector
-                spaces began to shed light on a more fundamental mathematical truth, a concept he
-                referenced as <i>The Heart of the Heart</i>.  After this revelation, Grothendieck
-                retreated into hermitage, refusing to entertain any further concepts related to mathematics
-                out of fear of the potential consequences of his discovery.  We also see the story of
-                Shinichi Mochizuki, a Japanese mathematician whose work on the <i>ABC Conjecture</i>
-                and investigation into Grothendieck's work earned him a similar, self-imposed fate.</p>
-
                 <p>The last section of the book follows Werner Heisenberg and Erwin Schrödinger as their
                 discoveries at the core of quantum mechanics marked the collapse of the final pillar
-                of our classical understanding of the world.  Heisenberg, through isolation, used
-                hand-written matrix calculations to show a strange property of quantum particles:
-                the more finely you were able to pin down their position, the less you could be
-                certain of their momenta.  Similarly, the better you are able to measure a particle's
-                momentum, the less certain you could be of its position.  This result is heavily
-                intertwined with the <i>Observer Effect</i> by which observations of a quantum ofject
-                are not commutable.  At first in opposition to Heisenberg's theories were those of
-                Erwin Schrödinger.  By his calculations, quantum objects could best be described as
+                of our classical understanding of the world.  First, Heisenberg's calculations
+                predicted a strange property of quantum particles: the more finely you were
+                able to pin down their position, the less you could be certain of their momenta
+                and vice-versa.  This result is heavily intertwined with the <i>Observer Effect</i>
+                by which observations of a quantum object are not commutable. Next came the discoveries
+                of Erwin Schrödinger. By his calculations, quantum objects could best be described as
                 waves, without a single, well-defined position of momentum.  By the end of the book,
                 Heisenberg realizes that these two notions are compatible, resulting in a world where
                 quantum particles exist in an indeterminate state, best described by Schrödinger's
@@ -374,7 +352,16 @@ export default function ReadingList() {
                 the particle to a more well-defined position or momentum.  The consequence of this
                 discovery was a world that does not have a predictable, fundamental description.  It is
                 "fuzzy", random, and uncertain at its core.  Our world of definite, commutable, and
-                    observable phenomena is merely an illusion build on the true, quantum reality.</p></>,
+                observable phenomena is merely an illusion build on the true, quantum reality.</p>
+
+                <p><u>When We Cease to Understand the World</u> expands upon a theme that I have noticed
+                among many of the books that I have read: as you examine reality at its most granular,
+                the stranger it becomes and the further your original understanding of the world
+                begins to break down.  This extends beyond quantum mechanics; the continuous flow
+                of time also increasingly appears to be a stubborn illusion, along with how all humans
+                behave, the underlying causes of our everyday interactions, and what it says about
+                how we make decisions, both personal and interpersonal.  I believe this notion warrants
+                a much deeper discussion in the future.</p></>,
             "https://m.media-amazon.com/images/I/81Wodz8m5vL._SL1500_.jpg",
             "cease-to-understand-the-world"
         ),
