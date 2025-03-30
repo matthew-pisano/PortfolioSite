@@ -38,7 +38,7 @@
 .displayTileContent {}
 
 .displayTileContent > span {
-    margin: 15px 0px;
+    margin: 15px 0;
     display: block;
 }
 
@@ -115,6 +115,15 @@
     text-indent: 20px;
 }
 
+.resumePage {
+    border-radius: 5px;
+    padding-top: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
 
 @media (max-width: 1300px) {
     .displayTileContent{
@@ -148,7 +157,7 @@
     }
 
     .displayTile {
-        margin-right: 0px;
+        margin-right: 0;
         margin-left: 3%;
     }
 }
