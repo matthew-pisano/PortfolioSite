@@ -70,10 +70,10 @@ function slideTilesOnScroll() {
  * The wrapper for all pages on the site.  This component is the parent of all other components, containing the main page content along with the margin menus and the terminal.
  * @param children {JSX.Element} The page content tiles and other elements
  * @param pageName {string} The name of the page
- * @param pageStyle {object} The style of the page element
+ * @param pageClass {object} The class of the inner page element
  * @return {JSX.Element} The wrapper for the page
  */
-function Wrapper({children, pageName, pageStyle}) {
+function Wrapper({children, pageName, pageClass}) {
     const [currentPath, setCurrentPath] = useState(null);
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
@@ -104,7 +104,7 @@ function Wrapper({children, pageName, pageStyle}) {
 
             <div id="wrapperContent" className={`w3-display-container w3-row ${styles.wrapperContent}`} onScroll={slideTilesOnScroll}>
                 <Sidebar changeSidebarState={changeSidebarState}/>
-                <div id="page" className={`w3-rest ${styles.page} ${pageStateCls}`} style={pageStyle}>
+                <div id="page" className={`w3-rest ${styles.page} ${pageStateCls} ${pageClass}`}>
                     {children}
                 </div>
             </div>
@@ -118,7 +118,7 @@ function Wrapper({children, pageName, pageStyle}) {
         </div>
     );
 }
-Wrapper.propTypes = { children: PropTypes.arrayOf(PropTypes.element), pageName: PropTypes.string, pageStyle: PropTypes.object };
+Wrapper.propTypes = { children: PropTypes.arrayOf(PropTypes.element), pageName: PropTypes.string, pageClass: PropTypes.object };
 
 
 export default Wrapper;
