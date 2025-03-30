@@ -322,17 +322,17 @@ export default function ReadingList() {
             ``,
             <>Through his use of fiction to fill in details that remain absent from the historical
                 record, Labatut explores the consequences of several foundational discoveries and
-                the physical and psychological consequences that befell their creators.  The first chapter,
-                <i>Prussian Blue</i>, focuses on Fritz Haber, a Jewish German chemist who invented a synthetic
-                process of creating ammonia from nitrogen and hydrogen gas in addition to heavier-than-air
+                the physical and psychological consequences that befell their creators.  The first
+                chapter, <i>Prussian Blue</i>, focuses on Fritz Haber, a Jewish German chemist who invented a
+                synthetic process of creating ammonia from nitrogen and hydrogen gas in addition to heavier-than-air
                 chlorine gas. The former revolutionized the production of rich fertilizer, potentially saving
                 hundreds of millions from starvation; the latter was used in the trenches of World War One, killing
                 hundreds of thousands.  Haber also discovered a powerful pesticide, dubbed <i>Zyklon A</i>,
                 a derivative of which would later be used by the Nazis to murder millions.  During use,
                 the <i>Zyklon B</i> derivative breaks down into several chemical byproducts, one of which
                 often stained chamber walls a distinctive shade of <i>Prussian Blue</i>.  At the core
-                of Fritz Haber's legacy is the concept of dual-use.  Just as the <i>Haber-Bosch</i>
-                process and <i>Zyklon A</i> have yielded nearly incalculable benefits through their
+                of Fritz Haber's legacy is the concept of dual-use.  Just as the <i>Haber-Bosch</i> process
+                and <i>Zyklon A</i> have yielded nearly incalculable benefits through their
                 civilian use, chlorine gas and <i>Zkylon B</i> gave rise to untold suffering through
                 their military usage.  This concept similarly applies to many other technologies,
                 ranging from Artificial Intelligence to Nuclear Fission.
@@ -342,8 +342,8 @@ export default function ReadingList() {
                 of our classical understanding of the world.  First, Heisenberg's calculations
                 predicted a strange property of quantum particles: the more finely you were
                 able to pin down their position, the less you could be certain of their momenta
-                and vice-versa.  This result is heavily intertwined with the <i>Observer Effect</i>
-                by which observations of a quantum object are not commutable. Next came the discoveries
+                and vice-versa.  This result is heavily intertwined with the <i>Observer Effect</i> by
+                which observations of a quantum object are not commutable. Next came the discoveries
                 of Erwin Schrödinger. By his calculations, quantum objects could best be described as
                 waves, without a single, well-defined position of momentum.  By the end of the book,
                 Heisenberg realizes that these two notions are compatible, resulting in a world where
@@ -369,8 +369,8 @@ export default function ReadingList() {
             <>There is No Antimemetics Division</>,
             "qntm (Sam Hughes)",
             <><u>There is No Antimemetics Division</u> follows Marion Wheeler, the head of the titular
-            <i>Antimemetics Division</i> within the
-            <Link href="https://scp-wiki.wikidot.com/" target="_blank">SCP Foundation</Link> as she
+            <i>Antimemetics Division</i> within
+            the <Link href="https://scp-wiki.wikidot.com/" target="_blank">SCP Foundation</Link> as she
             slowly realizes that her reality is under threat by an entity designated by the foundation as SCP-3125.
             The book reads as a collection of short stories, revolving around a small group of
             characters as they combat SCP-3125 and other antimemetic threats.  These entities primarily
@@ -383,13 +383,13 @@ export default function ReadingList() {
             with effectively: How can you combat something which you don't even remember the existence of?</>,
             ``,
             <>This book heavily relies upon the concept of <i>antimemes</i>.  To the uninitiated, this
-            can be a rather alien concept, even though it is still quite grounded in reality.  Whereas
-            <i>memes</i> (yes, those too) are ideas which can multiply and spread rapidly, almost virulently
-            at times, through a population, <i>antimemes</i> are ideas which cannot be spread.  Some
-            cannot be remembered by those who perceive it, some cannot be perceived at all, and yet
+            can be a rather alien concept, even though it is still quite grounded in reality.
+            Whereas <i>memes</i> (yes, those too) are ideas which can multiply and spread rapidly, almost
+            virulently at times, through a population, <i>antimemes</i> are ideas which cannot be spread.
+            Some cannot be remembered by those who perceive it, some cannot be perceived at all, and yet
             others can 'eat' the memories of anyone that is aware of it.  In the SCP universe, these
-            effects can be at least somewhat remedied by a class of drug known as <i>mnestics</i>
-            which make it more difficult for the user to forget and more adept at perceiving these SCPs.
+            effects can be at least somewhat remedied by a class of drug known as <i>mnestics</i> which
+            make it more difficult for the user to forget and more adept at perceiving these SCPs.
             Others in the story, like the character Adam, have a sort of natural 'immunity' to
             these antimemes, at least the weaker ones.  I the story, SCP-3125 is a
             <span style={{color: "black"}}>██████ ██ ██████████ ███ ███████ ███ ████ █████
@@ -509,8 +509,8 @@ export default function ReadingList() {
         new BookTile(
             <>The Inevitable: Understanding the 12 technological forces that will shape our future</>,
             "Kevin Kelly",
-            <><u>The Inevitable: Understanding the 12 technological forces that will shape our future</u>
-                asserts that much of what will happen in the next thirty years is inevitable, driven
+            <><u>The Inevitable: Understanding the 12 technological forces that will shape our future</u> asserts
+                that much of what will happen in the next thirty years is inevitable, driven
                 by technological trends that are already in motion. In this book, Kevin Kelly provides
                 an optimistic road map for the future, showing how the coming changes in our
                 lives—from virtual reality in the home to an on-demand economy to artificial
