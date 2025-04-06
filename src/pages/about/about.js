@@ -48,15 +48,27 @@ export default function About() {
         ),
         new Tile(
             <>Recent Employment</>,
-            <>After graduating in 2024, I have continued my research in AI safety through a
-                continued partnership with my Alma Mater.<hr/>
-                
-                <p><i>IBM Research</i></p>
-                Over the course of Summer 2023, I worked as a Visiting Researcher at IBM's research 
-                facility in Yorktown as part of their extern program.  During this time, I researched 
-                new techniques of model alignment using text-based game for safety training on 
-                moral and ethical principles.  More information can be found in
-                the <Link href="/research/highGround">Moral High Ground</Link> page<hr/>
+            <>
+                <p><i>IBM</i></p>
+                As a part of IBM's AI Enablement department, I have worked on low-level C and C++
+                development for compiling PyTorch models onto IBM's new <i>Sypre</i> AI accelerator
+                chips.  I have also been tasked with automating our build workflows and organize
+                our team scrums and pull-request meetings.
+
+                <p><i>SUNY Ulster</i></p>
+                Since the Spring semester of 2025, I have been an Adjunct Professor at SUNY Ulster.
+                Here, I teach the college's course on assembly language and computer architecture.
+                My responsibilities include lecturing to the class, managing the course curriculum
+                and creating new modules as needed, grading student work, and participating in
+                faculty meetings.
+
+                <p><i>Substrate AI Research</i></p>
+                During the second half of 2024, I worked on the development of a <i>Metacontrol</i> large
+                language model that could evaluate whether user queries violated a given set of policies,
+                queries were then passed to a more generalized assistant. Here, I used <i>LoRA</i> fine-tuning and
+                dataset cleaning to generate high-quality results from sparse, synthetically generated data.
+                On this team, I was the primary contributor towards the training of the model and the
+                development of the supporting infrastructure for production deployment.
                 
                 <p><i>FileScience</i></p>
                 As a founding member of the <Link href="https://filescience.io/" target="_blank">FileScience</Link> team,
@@ -64,19 +76,26 @@ export default function About() {
                 Cloud-to-Cloud backup service.  As this is geared towards enterprise clients, one of 
                 most important roles is to ensure that the code we produce is testable, maintainable,
                 and fault-tolerant.  This has given me invaluable experience with architecting highly 
-                distributed and parallelized software and infrastructure.<hr/>
+                distributed and parallelized software and infrastructure.
+
+                <p><i>IBM Research</i></p>
+                Over the course of Summer 2023, I worked as a Visiting Researcher at IBM's research
+                facility in Yorktown as part of their extern program.  During this time, I researched
+                new techniques of model alignment using text-based game for safety training on
+                moral and ethical principles.  More information can be found in
+                the <Link href="/research/highGround">Moral High Ground</Link> page.
                 
                 <p><i>Cyber Guardian Consulting Group</i></p>
                 Through my employment at <Link href="https://cgcg.biz/" target="_blank">Cyber Guardian Consulting Group</Link>, I
                 have developed a variety of proprietary business solutions using a variety of languages
                 and web services, primarily AWS.  These often involved custom SaaS solutions for clients, 
                 writing distributed and asynchronous backup software from scratch, database management, 
-                and many full-stack web applications.<hr/>
+                and many full-stack web applications.
                 
                 <p><i>Rensselaer Polytechnic Institute</i></p>
                 Throughout my graduate education, I had been employed at Rensselaer Polytechnic 
                 Institute as a teaching assistant.  In this position, I hold office hours, aid the 
-                professor in grading, and help students to better grasp relevant course material.<hr/>
+                professor in grading, and help students to better grasp relevant course material.
                 
                 <p><i>SUNY New Paltz</i></p>
                 During the Summer of 2022, I had worked for SUNY New Paltz through their summer 
