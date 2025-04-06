@@ -227,7 +227,7 @@ export default function Home() {
     let pageInfo = new PageInfo(
         "home",
         "Matthew Pisano",
-        "Language Model and Artificial Intelligence Alignment Researcher",
+        "Artificial Intelligence Alignment Researcher and Software Engineer",
         { backgroundColor: "#345b8f" },
         [],
         [
