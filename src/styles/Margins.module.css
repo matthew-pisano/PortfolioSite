@@ -4,7 +4,7 @@
     width: 100%;
     background-color: var(--theme-color-3);
     z-index: 3;
-    top: 0px;
+    top: 0;
 }
 
 .infoBar {
@@ -13,7 +13,7 @@
     background-color: var(--theme-color-1);
     z-index: 3;
     height: 30px;
-    bottom: 0px;
+    bottom: 0;
 }
 
 .menuItem, .infoBarItem {
@@ -69,14 +69,14 @@
 }
 
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
     .hideOnMobile {
         display: none;
     }
 }
 
 
-@media (max-width: 400px) {
+@media (width <= 400px) {
     .encodingStatus {
         display: none;
     }

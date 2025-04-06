@@ -1,5 +1,8 @@
 /** @type {import('stylelint').Config} */
 export default {
     extends: "stylelint-config-standard",
-    rules: {}
+    rules: {
+        "selector-class-pattern": "^[a-z][a-zA-Z0-9-]+$",
+        "selector-id-pattern": "^[a-z][a-zA-Z0-9-]+$"
+    }
 };
