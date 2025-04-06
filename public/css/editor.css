@@ -23,6 +23,7 @@
     border-left-color: var(--theme-text) !important;
 }
 
+/* stylelint-disable */
 .CodeMirror-cursor {
     border-color: var(--theme-accent);
 }
@@ -30,6 +31,7 @@
 .CodeMirror-gutters {
     background-color: var(--theme-color-3-hover);
 }
+/* stylelint-enable */
 
 .tab {
     text-indent: 40px;

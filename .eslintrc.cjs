@@ -18,6 +18,7 @@ module.exports = {
         "no-unused-vars": "warn",
         "no-control-regex": "off",
         "react/no-unescaped-entities": "off",
+        "react/no-unknown-property": "warn",
         "import/no-unresolved": "off",
         "import/order": [
             "warn",

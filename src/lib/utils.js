@@ -85,15 +85,4 @@ function genPageTitle(localFile) {
         : localFile.split("pages/")[1].split(".js")[0];
 }
 
-// Add a visible and invisible function to the jQuery prototype
-if (typeof window !== "undefined") {
-    let $ = require("jquery");
-    $.fn.visible = function () {
-        return this.css("visibility", "visible");
-    };
-    $.fn.invisible = function () {
-        return this.css("visibility", "hidden");
-    };
-}
-
 export { Constants, showDialog, genPageTitle };

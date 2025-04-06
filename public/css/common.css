@@ -35,7 +35,7 @@ code {
 }
 
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
     .katex {
         white-space: normal;
     }

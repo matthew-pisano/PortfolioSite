@@ -1,12 +1,11 @@
 {
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --fix",
-    "format": "prettier --log-level warn --write \"**/*.{jsx,js}\""
+    "format": "prettier --log-level warn --write \"**/*.{jsx,js}\" && stylelint --fix \"**/*.css\""
   },
   "dependencies": {
     "@babel/preset-env": "^7.25.4",
