@@ -1,7 +1,7 @@
 html, body {
     padding: 0;
     margin: 0;
-    font-family: Consolas,monaco,monospace;
+    font-family: Consolas, monaco, monospace;
     background-color: var(--theme-color-1);
     color: var(--theme-text);
 }
@@ -14,7 +14,7 @@ a {
     color: var(--theme-link);
 }
 
-.katex{
+.katex {
     white-space: nowrap;
 }
 

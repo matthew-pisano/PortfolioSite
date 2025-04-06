@@ -1,9 +1,7 @@
-
 /**
  * Class to hold system environment variables for the terminal.
  */
 class SysEnv {
-
     static USER = "guest";
     static HOME_FOLDER = "/home/" + this.USER;
     static PUBLIC_FOLDER = `${this.HOME_FOLDER}/public`;
@@ -15,12 +13,10 @@ class SysEnv {
     static KERNEL = "7.05.01-server";
 }
 
-
 /**
  * Class to hold permission constants for the file system.
  */
 class Perms {
-
     static READ = "r";
     static WRITE = "w";
     static EXECUTE = "x";
@@ -32,11 +28,12 @@ class Perms {
     static validate(permString) {
         if (permString.length !== 3) throw Error("Expected a permission string of length 3!");
         if (![this.READ, "-"].includes(permString[0])) throw Error(`Expected '${this.READ}' or '-' at permissions[0]!`);
-        if (![this.WRITE, "-"].includes(permString[1])) throw Error(`Expected '${this.WRITE}' or '-' at permissions[1]!`);
-        if (![this.EXECUTE, "-"].includes(permString[2])) throw Error(`Expected '${this.EXECUTE}' or '-' at permissions[2]!`);
+        if (![this.WRITE, "-"].includes(permString[1]))
+            throw Error(`Expected '${this.WRITE}' or '-' at permissions[1]!`);
+        if (![this.EXECUTE, "-"].includes(permString[2]))
+            throw Error(`Expected '${this.EXECUTE}' or '-' at permissions[2]!`);
     }
 }
-
 
 /**
  * ANSI color utilities for adding color to the terminal
@@ -77,14 +74,14 @@ class ANSI {
             let HTMLColor = this.asHTML(color);
 
             // Print either the text after the color code or the text verbatim if no color code is present
-            let innerText = (HTMLColor || color === this.DEFAULT) ? text : segments[i];
+            let innerText = HTMLColor || color === this.DEFAULT ? text : segments[i];
             if (HTMLColor) coloredText += `<span style="color: ${HTMLColor}">${innerText}</span>`;
             else coloredText += `<span>${innerText}</span>`;
         }
 
         if (color === this.WHITE) color = undefined;
 
-        return {text: coloredText, lastColor: color};
+        return { text: coloredText, lastColor: color };
     }
 
     /**
@@ -106,5 +103,4 @@ class ANSI {
     }
 }
 
-
-export {ANSI, Perms, SysEnv};
+export { ANSI, Perms, SysEnv };

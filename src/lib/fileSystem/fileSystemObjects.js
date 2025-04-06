@@ -1,11 +1,9 @@
-import {Perms} from "@/lib/fileSystem/fileSystemMeta";
-
+import { Perms } from "@/lib/fileSystem/fileSystemMeta";
 
 /**
  * Represents a file in the filesystem
  */
 class File {
-
     #text;
     #size;
     #isPage;
@@ -31,7 +29,9 @@ class File {
      * Gets the text content of the file
      * @returns {string} The text content of the file
      */
-    text() { return this.#text; }
+    text() {
+        return this.#text;
+    }
 
     /**
      * Overwrites the text of a file, optionally appending it
@@ -50,38 +50,56 @@ class File {
      * Gets the size of the file based on the length of the text
      * @return {number} The size of the file
      */
-    size() { return this.#size; }
+    size() {
+        return this.#size;
+    }
 
     /**
      * Spoofs the size of the file
      * @param size {number} The size to be spoofed
      */
-    spoofSize(size) { this.#size = size; }
+    spoofSize(size) {
+        this.#size = size;
+    }
 
     /**
      * Copies the file
      * @return {File} The copied file
      */
-    copy() { return new File(this.name, this.text(), this.permission); }
+    copy() {
+        return new File(this.name, this.text(), this.permission);
+    }
 
     /**
      * Marks the file as a page
      */
-    markAsPage() { this.#isPage = true; }
+    markAsPage() {
+        this.#isPage = true;
+    }
 
     /**
      * Checks if the file is a page
      * @returns {boolean} Whether the file is a page
      */
-    isPage() { return this.#isPage; }
+    isPage() {
+        return this.#isPage;
+    }
 
     /**
      * Serializes the file to a dictionary
      * @return {object}
      */
     serialize() {
-        return {objType: "file", name: this.name, text: this.#text, permission: this.permission,
-            created: this.created, modified: this.modified, size: this.#size, isPage: this.#isPage};
+        return {
+            objType: "file",
+            name: this.name,
+            text: this.#text,
+            permission: this.permission,
+            created: this.created,
+            modified: this.modified,
+            size: this.#size,
+            isPage: this.#isPage
+        };
     }
 
     /**
@@ -99,12 +117,10 @@ class File {
     }
 }
 
-
 /**
  * Represents a directory in the filesystem
  */
 class Directory {
-
     /**
      * @param name {string} The name of the directory
      * @param subTree {Directory[] | File[]} The sub-tree of the directory
@@ -136,7 +152,8 @@ class Directory {
      * @param overwrite {boolean} Whether to allow overwriting of existing children
      */
     addChild(child, overwrite = false) {
-        if (!overwrite && this.childNames.has(child.name)) throw Error(`Duplicate child name ${child.name} in directory ${this.name}!`);
+        if (!overwrite && this.childNames.has(child.name))
+            throw Error(`Duplicate child name ${child.name} in directory ${this.name}!`);
         this.childNames.add(child.name);
 
         for (let i = 0; i < this.subTree.length; i++) {
@@ -152,21 +169,31 @@ class Directory {
      * Copies the directory
      * @return {Directory} The copied directory
      */
-    copy() { return new Directory(this.name, this.subTree, this.permission); }
+    copy() {
+        return new Directory(this.name, this.subTree, this.permission);
+    }
 
     /**
      * Gets the size of the directory
      * @return {number} The size of the directory
      */
-    size() { return 4096; }
+    size() {
+        return 4096;
+    }
 
     /**
      * Serializes the directory to a dictionary
      * @return {object} The serialized directory
      */
     serialize() {
-        let dict = {objType: "directory", name: this.name, permission: this.permission,
-            created: this.created, modified: this.modified, subTree: []};
+        let dict = {
+            objType: "directory",
+            name: this.name,
+            permission: this.permission,
+            created: this.created,
+            modified: this.modified,
+            subTree: []
+        };
         for (let child of this.subTree) dict.subTree.push(child.serialize());
         return dict;
     }
@@ -184,11 +211,10 @@ class Directory {
         for (let child of dict.subTree)
             if (child.objType === "directory") directory.addChild(Directory.deserialize(child));
             else if (child.objType === "file") directory.addChild(File.deserialize(child));
-            else throw Error(`Unknown child type ${child.objType} in object ${dict.name}!`);  // Propagate to the caller
+            else throw Error(`Unknown child type ${child.objType} in object ${dict.name}!`); // Propagate to the caller
 
         return directory;
     }
 }
 
-
-export {Directory, File};
+export { Directory, File };

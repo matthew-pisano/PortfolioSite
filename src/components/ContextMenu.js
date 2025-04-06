@@ -1,17 +1,15 @@
 import React from "react";
 
 import PropTypes from "prop-types";
-import ReactDOM from 'react-dom/client';
+import ReactDOM from "react-dom/client";
 
 import styles from "@/styles/ContextMenu.module.css";
 import sidebarStyles from "@/styles/Sidebar.module.css";
-
 
 /**
  * The root element of the context menu
  */
 let contentMenuRoot;
-
 
 /**
  * The context menu component
@@ -22,22 +20,36 @@ let contentMenuRoot;
  * @returns {JSX.Element} The context menu
  * @constructor
  */
-function ContextMenu({top, left, selectedFile, actions}) {
-    return <div className={`contextMenu ${styles.contextMenu}`} style={{top: top, left: left}}
-                data-refdata={JSON.stringify(selectedFile.serialize())}
-                onContextMenu={(e) => e.preventDefault()}>
-        {
-            Object.keys(actions).map((itemName, index) => {
-                return <button key={index} className={`w3-button ${styles.contextMenuItem}`}
-                               onClick={() => {actions[itemName](); destroyContextMenu();}}>
-                    {itemName}
-                </button>;
-            })
-        }
-    </div>;
+function ContextMenu({ top, left, selectedFile, actions }) {
+    return (
+        <div
+            className={`contextMenu ${styles.contextMenu}`}
+            style={{ top: top, left: left }}
+            data-refdata={JSON.stringify(selectedFile.serialize())}
+            onContextMenu={(e) => e.preventDefault()}>
+            {Object.keys(actions).map((itemName, index) => {
+                return (
+                    <button
+                        key={index}
+                        className={`w3-button ${styles.contextMenuItem}`}
+                        onClick={() => {
+                            actions[itemName]();
+                            destroyContextMenu();
+                        }}>
+                        {itemName}
+                    </button>
+                );
+            })}
+        </div>
+    );
 }
-ContextMenu.propTypes = { top: PropTypes.number, left: PropTypes.number, selectedFile: PropTypes.any, actions: PropTypes.object };
 
+ContextMenu.propTypes = {
+    top: PropTypes.number,
+    left: PropTypes.number,
+    selectedFile: PropTypes.any,
+    actions: PropTypes.object
+};
 
 /**
  * Creates a context menu at the specified position with the specified actions
@@ -53,7 +65,7 @@ function createContextMenu(top, left, selectedFile, actions) {
     document.getElementById(fileName + "-File").classList.add(sidebarStyles.selectedSidebarLink);
 
     contentMenuRoot = ReactDOM.createRoot(document.getElementById("contextMenuHolder"));
-    contentMenuRoot.render(<ContextMenu top={top} left={left} selectedFile={selectedFile} actions={actions}/>);
+    contentMenuRoot.render(<ContextMenu top={top} left={left} selectedFile={selectedFile} actions={actions} />);
 }
 
 /**
@@ -62,7 +74,9 @@ function createContextMenu(top, left, selectedFile, actions) {
 function destroyContextMenu() {
     if (contentMenuRoot === undefined) return;
 
-    let curSelectedFile = JSON.parse(document.getElementById("contextMenuHolder").children[0].getAttribute("data-refdata"));
+    let curSelectedFile = JSON.parse(
+        document.getElementById("contextMenuHolder").children[0].getAttribute("data-refdata")
+    );
     let fileName = curSelectedFile.name.split(".")[0];
 
     contentMenuRoot.unmount();
@@ -75,4 +89,4 @@ function destroyContextMenu() {
         fileElement.classList.remove(sidebarStyles.selectedSidebarLink);
 }
 
-export {createContextMenu, destroyContextMenu};
+export { createContextMenu, destroyContextMenu };

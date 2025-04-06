@@ -15,7 +15,7 @@
     min-height: 100px;
 }
 
-.cm-tooltip, .cm-tooltip-autocomplete{
+.cm-tooltip, .cm-tooltip-autocomplete {
     background-color: var(--theme-color-3-hover) !important;
 }
 
@@ -31,8 +31,8 @@
     background-color: var(--theme-color-3-hover);
 }
 
-.tab{
-    text-indent:40px;
+.tab {
+    text-indent: 40px;
     margin-top: 5px;
     margin-bottom: 5px;
 }

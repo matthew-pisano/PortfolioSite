@@ -1,9 +1,8 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from "react";
 
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
-import {SysEnv} from "@/lib/fileSystem/fileSystemMeta";
-
+import { SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 
 let mathesisIcon = `${SysEnv.OS} ${SysEnv.ARCH}
         <span style="color: #05c905">
@@ -31,8 +30,9 @@ let mathesisIcon = `${SysEnv.OS} ${SysEnv.ARCH}
     /_/  /___/    \\___/  /_/  /_/______/_____/______/_____/
     </span>
 Entering admin landing shell...
-Last login: ███ ███ ██ 19:00:03 ████ from ███.███.██.█`.replace(/\n/g, "<br>").replace(/\s\s/g, "&nbsp;&nbsp;");
-
+Last login: ███ ███ ██ 19:00:03 ████ from ███.███.██.█`
+    .replace(/\n/g, "<br>")
+    .replace(/\s\s/g, "&nbsp;&nbsp;");
 
 let scpIcon = `<span>
 .------------------------------------------------------------------------------------------.
@@ -59,11 +59,11 @@ let scpIcon = `<span>
 |                                                    '*#######m     m#######*'             |
 |                                                           '*#######*'                    |
 '------------------------------------------------------------------------------------------'</span>
-<p>loading fallback archive [INTERNAL]...</p>`.replace(/\n/g, "<br>").replace(/ /g, '&nbsp;');
-
+<p>loading fallback archive [INTERNAL]...</p>`
+    .replace(/\n/g, "<br>")
+    .replace(/ /g, "&nbsp;");
 
 export default function Admin() {
-
     useEffect(() => {
         document.getElementById("adminPw").focus();
         document.documentElement.onclick = () => {
@@ -87,10 +87,10 @@ export default function Admin() {
             <p>Granting temporary permission...</p>
             <p style="color: red">Re-authentication will be required shortly after this session.</p>`;
 
-        await new Promise(r => setTimeout(r, 3000));
+        await new Promise((r) => setTimeout(r, 3000));
 
-        for(let i=0; i < 37; i++){
-            await new Promise(r => setTimeout(r, 100));
+        for (let i = 0; i < 37; i++) {
+            await new Promise((r) => setTimeout(r, 100));
             holder.innerHTML += `<p style="color: red">Archive ${i}: [DATA EXPUNGED]</p>`;
             window.scrollTo(0, document.body.scrollHeight);
         }
@@ -101,7 +101,7 @@ export default function Admin() {
     async function renaissance() {
         await accessGranted();
         window.scrollTo(0, document.body.scrollHeight);
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise((r) => setTimeout(r, 2000));
 
         window.location.replace("/secure/renaissance");
     }
@@ -111,28 +111,30 @@ export default function Admin() {
         holder.innerHTML += scpIcon;
         holder.innerHTML += `<p>loading archive [EXTERNAL]...</p>`;
         window.scrollTo(0, document.body.scrollHeight);
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise((r) => setTimeout(r, 2000));
 
         window.location.replace("/secure/scp");
     }
 
     async function onInput(e) {
-
-        if (e.nativeEvent.inputType === "insertParagraph" || e.nativeEvent.data === null && e.nativeEvent.inputType === "insertText"){
+        if (
+            e.nativeEvent.inputType === "insertParagraph" ||
+            (e.nativeEvent.data === null && e.nativeEvent.inputType === "insertText")
+        ) {
             let input = document.getElementById("adminPw");
             let holder = document.getElementById("pwHolder");
 
-            let inputRaw = input.innerText.substring(0, input.innerText.length-2);
+            let inputRaw = input.innerText.substring(0, input.innerText.length - 2);
             let inputCode = [];
-            for (let i=0; i<inputRaw.length; i++) inputCode.push(inputRaw.charCodeAt(i)*2);
+            for (let i = 0; i < inputRaw.length; i++) inputCode.push(inputRaw.charCodeAt(i) * 2);
 
-            if(""+inputCode === "228,202,220,194,210,230,230,194,220,198,202") return await renaissance();
-            else if(""+inputCode === "194,220,222,218,194,216,242") return await anomaly();
+            if ("" + inputCode === "228,202,220,194,210,230,230,194,220,198,202") return await renaissance();
+            else if ("" + inputCode === "194,220,222,218,194,216,242") return await anomaly();
 
             input.innerText = "incorrect";
             input.contentEditable = "false";
             holder.style.color = "red";
-            await new Promise(r => setTimeout(r, 750));
+            await new Promise((r) => setTimeout(r, 750));
             holder.style.color = "";
             input.innerText = "";
             input.contentEditable = "true";
@@ -143,11 +145,22 @@ export default function Admin() {
     return (
         <div>
             <p>{parse(mathesisIcon)}</p>
-            <span style={{display: "none"}}>ERROR preloadin{"����├-�=�▒I␌�L�>���┘�"}edentials for Pr∞jec⅂ <i>r☿nais↺ance</i>.  DATA CORRUP{"{GNUq���@��qvz����"}
-            ERROR prel{":▒; <(=0?8@@BHDP"}din{"��H�.␍H�%(H�D$␤1���┘�"} <i>∂n∘maly</i> inform{"◆(▒0␉8␌@␍H°P±X␤◆␋␤┐"}ion.  DA{"{@��dhfhz�f���"}
-            {"�������������ŠˠѠנݠ��������@4`\"/usr/lib/debug/.dwz/x86_64/coreutils.debug�.��X�"}</span>
-            <div id="pwHolder" style={{width: "100%", height: "30px"}}><span id="pwPrompt">password: </span>
-                <span id="adminPw" spellCheck="false" contentEditable={true} onInput={onInput} style={{outline: "none", whiteSpace: "nowrap", color: "#1e1e1e"}}></span></div>
+            <span style={{ display: "none" }}>
+                ERROR preloadin{"����├-�=�▒I␌�L�>���┘�"}edentials for Pr∞jec⅂ <i>r☿nais↺ance</i>. DATA CORRUP
+                {"{GNUq���@��qvz����"}
+                ERROR prel{":▒; <(=0?8@@BHDP"}din{"��H�.␍H�%(H�D$␤1���┘�"} <i>∂n∘maly</i> inform{"◆(▒0␉8␌@␍H°P±X␤◆␋␤┐"}
+                ion. DA{"{@��dhfhz�f���"}
+                {'�������������ŠˠѠנݠ��������@4`"/usr/lib/debug/.dwz/x86_64/coreutils.debug�.��X�'}
+            </span>
+            <div id="pwHolder" style={{ width: "100%", height: "30px" }}>
+                <span id="pwPrompt">password: </span>
+                <span
+                    id="adminPw"
+                    spellCheck="false"
+                    contentEditable={true}
+                    onInput={onInput}
+                    style={{ outline: "none", whiteSpace: "nowrap", color: "#1e1e1e" }}></span>
+            </div>
         </div>
     );
 }

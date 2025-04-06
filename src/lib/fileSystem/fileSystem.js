@@ -1,7 +1,6 @@
-import {bootstrapServerside} from "@/lib/fileSystem/bootstrap";
-import {Perms} from "@/lib/fileSystem/fileSystemMeta";
-import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
-
+import { bootstrapServerside } from "@/lib/fileSystem/bootstrap";
+import { Perms } from "@/lib/fileSystem/fileSystemMeta";
+import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
 
 /**
  * The version of the filesystem.  Used for compatibility checking
@@ -9,25 +8,22 @@ import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
  */
 const FS_VERSION = "1.0.0";
 
-
 /**
  * The master file system of the program
  * @type {FileSystem}
  */
 let masterFileSystem;
 
-
 /**
  * Custom error for when a filesystem operation fails
  */
 class FileSystemError extends Error {
-    constructor(message, code=1) {
+    constructor(message, code = 1) {
         super(message);
         this.code = code;
         this.name = "CommandError";
     }
 }
-
 
 /**
  * Builds the file system on the client side by rehydrating the page registry and the master file system
@@ -39,16 +35,14 @@ function buildClientside() {
     return dehydrateElem.innerText;
 }
 
-
 /**
  * Builds the file system on the server side and returns the dehydrated info
  * @returns {string} The dehydrated info
  */
 function buildServerside() {
     if (!masterFileSystem) masterFileSystem = bootstrapServerside();
-    return JSON.stringify(masterFileSystem.serialize());  // Make dehydrated info from the server file system
+    return JSON.stringify(masterFileSystem.serialize()); // Make dehydrated info from the server file system
 }
-
 
 /**
  * Joins paths together, removing any unnecessary elements
@@ -56,29 +50,26 @@ function buildServerside() {
  * @return {string} The joined path
  */
 function pathJoin(...paths) {
-
     let totalPath = [];
     for (let path of paths) {
-        if(!path) continue;
-        if (path[0] === "/") totalPath = [''];
-        let split = path.split('/');
+        if (!path) continue;
+        if (path[0] === "/") totalPath = [""];
+        let split = path.split("/");
         for (let elem of split) {
-            if (elem === '..') totalPath.pop();
-            else if (elem !== '.' && elem !== '') totalPath.push(elem);
+            if (elem === "..") totalPath.pop();
+            else if (elem !== "." && elem !== "") totalPath.push(elem);
         }
     }
 
-    if (totalPath.length === 1 && totalPath[0] === "") totalPath.push('');
+    if (totalPath.length === 1 && totalPath[0] === "") totalPath.push("");
     // Remove any duplicate slashes
-    return totalPath.join('/').replace("//", "/");
+    return totalPath.join("/").replace("//", "/");
 }
-
 
 /**
  * The filesystem class that manages the filesystem hierarchy
  */
 class FileSystem {
-
     /**
      * @param {Directory} hierarchy The root directory of the filesystem
      */
@@ -102,7 +93,7 @@ class FileSystem {
     update() {
         // Update the last update time and call all registered callbacks
         this.lastUpdateTime = Date.now();
-        if (typeof window !== 'undefined') localStorage.setItem("hierarchy", JSON.stringify(this.serialize()));
+        if (typeof window !== "undefined") localStorage.setItem("hierarchy", JSON.stringify(this.serialize()));
 
         for (let callback of this.callbacks) callback(this.lastUpdateTime);
     }
@@ -122,14 +113,15 @@ class FileSystem {
      * @return {Directory} The created directory
      */
     mkdir(path) {
-
-        if (this.exists(path)) throw new FileSystemError(`Cannot make directory.  Directory at ${path} already exists!`);
+        if (this.exists(path))
+            throw new FileSystemError(`Cannot make directory.  Directory at ${path} already exists!`);
 
         let parentPath = path.substring(0, path.lastIndexOf("/") + 1);
         let childName = path.substring(path.lastIndexOf("/") + 1);
         let parent = this.getItem(parentPath);
 
-        if (!parent) throw new FileSystemError(`Cannot make directory.  Parent directory at ${parentPath} does not exist!`);
+        if (!parent)
+            throw new FileSystemError(`Cannot make directory.  Parent directory at ${parentPath} does not exist!`);
 
         if (!parent.permission.includes(Perms.WRITE))
             throw new FileSystemError(`Cannot make directory under ${parentPath}.  Permission denied!`);
@@ -148,14 +140,14 @@ class FileSystem {
      * @return {File} The created file
      */
     touch(path, permission = Perms.ALLOW) {
-
         if (this.exists(path)) throw new FileSystemError(`Cannot create file.  File at ${path} already exists!`);
 
         let parentPath = path.substring(0, path.lastIndexOf("/") + 1);
         let childName = path.substring(path.lastIndexOf("/") + 1);
         let parent = this.getItem(parentPath);
 
-        if (!parent) throw new FileSystemError(`Cannot create file.  Parent directory at ${parentPath} does not exist!`);
+        if (!parent)
+            throw new FileSystemError(`Cannot create file.  Parent directory at ${parentPath} does not exist!`);
 
         if (!parent.permission.includes(Perms.WRITE))
             throw new FileSystemError(`Cannot make file under ${parentPath}.  Permission denied!`);
@@ -174,15 +166,14 @@ class FileSystem {
      * @return {Directory | File} The copied file or directory
      */
     cp(oldPath, newPath) {
-
-        if (newPath === oldPath)
-            throw new FileSystemError(`${oldPath} and ${newPath} are at the same location!`);
+        if (newPath === oldPath) throw new FileSystemError(`${oldPath} and ${newPath} are at the same location!`);
         if (!this.exists(oldPath))
-            throw new FileSystemError(`Cannot copy file or directory.  File or directory at ${oldPath} does not exist!`);
+            throw new FileSystemError(
+                `Cannot copy file or directory.  File or directory at ${oldPath} does not exist!`
+            );
 
         let newObj = this.getItem(newPath);
-        if (newObj && newObj.constructor === File)
-            throw new FileSystemError(`File at ${newPath} already exists!`);
+        if (newObj && newObj.constructor === File) throw new FileSystemError(`File at ${newPath} already exists!`);
 
         let newParentPath = newPath.substring(0, newPath.lastIndexOf("/") + 1);
         let newChildName = newPath.substring(newPath.lastIndexOf("/") + 1);
@@ -214,7 +205,6 @@ class FileSystem {
      * @return {Directory | File}
      */
     rm(path, options = []) {
-
         if (!this.exists(path))
             throw new FileSystemError(`Cannot remove file or directory.  File or directory at ${path} does not exist!`);
 
@@ -224,7 +214,6 @@ class FileSystem {
 
         // Search for the file or directory to remove in the parent directory
         for (let i in parentDir.subTree) {
-
             let target = parentDir.subTree[i];
             if (target.name === childName) {
                 if (!target.permission.includes(Perms.WRITE))
@@ -232,10 +221,11 @@ class FileSystem {
 
                 // Recursively remove directories if the -r option is used
                 if (target.constructor === Directory && options.includes("-r"))
-                    for (let child of target.subTree)
-                        this.rm(pathJoin(path, child.name), options);
+                    for (let child of target.subTree) this.rm(pathJoin(path, child.name), options);
                 else if (target.constructor === Directory)
-                    throw new FileSystemError(`Cannot remove directory ${path}: is a directory.  Use -r to remove directories!`);
+                    throw new FileSystemError(
+                        `Cannot remove directory ${path}: is a directory.  Use -r to remove directories!`
+                    );
 
                 // Remove the file or directory from the parent directory
                 parentDir.subTree.splice(parseInt(i), 1);
@@ -306,8 +296,7 @@ class FileSystem {
             let foundPath = false;
 
             // Return once the end of the path is reached
-            if (tokens.length === 1 && tokens[0] === current.name)
-                return current;
+            if (tokens.length === 1 && tokens[0] === current.name) return current;
 
             for (let i = 0; i < current.subTree.length; i++) {
                 if (current.subTree[i].name === tokens[0]) {
@@ -340,7 +329,6 @@ class FileSystem {
     }
 }
 
-
 /**
  * Merge the client directory into the matching server directory, adding in new files, but leaving server files untouched
  * @param serverDir {Directory} The initial directory from the server
@@ -348,18 +336,26 @@ class FileSystem {
  */
 function mergeClientDirectory(serverDir, customDir) {
     // Add any custom files to the file system
-    for (let customFile of customDir.subTree.filter(obj => obj instanceof File && !obj.isPage()))
+    for (let customFile of customDir.subTree.filter((obj) => obj instanceof File && !obj.isPage()))
         serverDir.addChild(customFile, true);
     // Add any custom directories to the file system
-    for (let customSubDir of customDir.subTree.filter(obj => obj instanceof Directory))
-        if (!serverDir.subTree.find(obj => obj.name === customSubDir.name && obj instanceof Directory))
+    for (let customSubDir of customDir.subTree.filter((obj) => obj instanceof Directory))
+        if (!serverDir.subTree.find((obj) => obj.name === customSubDir.name && obj instanceof Directory))
             serverDir.addChild(customSubDir);
 
     // Recurse for any shared directories between the server and custom file system
-    for (let dir of serverDir.subTree.filter(obj => obj instanceof Directory)) {
-        let customSubDir = customDir.subTree.find(obj => obj.name === dir.name && obj instanceof Directory);
+    for (let dir of serverDir.subTree.filter((obj) => obj instanceof Directory)) {
+        let customSubDir = customDir.subTree.find((obj) => obj.name === dir.name && obj instanceof Directory);
         if (customSubDir) mergeClientDirectory(dir, customSubDir);
     }
 }
 
-export {FileSystem, FileSystemError, pathJoin, masterFileSystem, buildServerside, buildClientside, mergeClientDirectory};
+export {
+    FileSystem,
+    FileSystemError,
+    pathJoin,
+    masterFileSystem,
+    buildServerside,
+    buildClientside,
+    mergeClientDirectory
+};

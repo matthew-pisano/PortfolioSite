@@ -1,18 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import {createContextMenu, destroyContextMenu} from "@/components/ContextMenu";
-import {FileSystem, masterFileSystem, pathJoin, mergeClientDirectory} from "@/lib/fileSystem/fileSystem";
-import {Perms, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
+import { createContextMenu, destroyContextMenu } from "@/components/ContextMenu";
+import { FileSystem, masterFileSystem, pathJoin, mergeClientDirectory } from "@/lib/fileSystem/fileSystem";
+import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 // eslint-disable-next-line no-unused-vars
-import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
-import {showDialog} from "@/lib/utils";
-import styles from '@/styles/Sidebar.module.css';
-
-
-
+import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
+import { showDialog } from "@/lib/utils";
+import styles from "@/styles/Sidebar.module.css";
 
 /**
  * Create a directory element in the sidebar
@@ -22,19 +19,20 @@ import styles from '@/styles/Sidebar.module.css';
  */
 function buildDirectory(directory, path) {
     let name = directory.name + "-Folder";
-    let dirStyle = directory.name === "public" ? {borderStyle: "none"} : {};
-    return <div key={name} id={name} className={`sidebarItem sidebarFolder w3-row ${styles.sidebarItem}`} style={dirStyle}>
+    let dirStyle = directory.name === "public" ? { borderStyle: "none" } : {};
+    return (
+        <div key={name} id={name} className={`sidebarItem sidebarFolder w3-row ${styles.sidebarItem}`} style={dirStyle}>
             <div className={`${styles.sidebarFolderHeader}`}>
-                <img className={`${styles.folderIcon}`} alt=''/>
+                <img className={`${styles.folderIcon}`} alt="" />
                 <span>{directory.name}</span>
             </div>
 
             <div id={directory.name + "Content"} className={`w3-row ${styles.sidebarItemContent}`}>
-                {directory.subTree.map(child => buildHierarchy(child, path + "/" + directory.name))}
+                {directory.subTree.map((child) => buildHierarchy(child, path + "/" + directory.name))}
             </div>
-        </div>;
+        </div>
+    );
 }
-
 
 /**
  * Create a file element in the sidebar
@@ -52,33 +50,47 @@ function buildFile(file, path) {
     if (masterFileSystem.getItem(pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)).isPage()) {
         urlPath = pathJoin(path.replace("public", ""), fileName);
         linkPath = urlPath;
-    }
-    else {
+    } else {
         urlPath = `/display?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
         linkPath = `${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
-        editIcon = <img className={`editorButton ${styles.editorButton}`} alt='' onClick={() => {
-            window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`);
-        }}/>;
+        editIcon = (
+            <img
+                className={`editorButton ${styles.editorButton}`}
+                alt=""
+                onClick={() => {
+                    window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`);
+                }}
+            />
+        );
     }
 
     let parentFolder = pathJoin(SysEnv.HOME_FOLDER, path.replace("/", ""));
 
     let onContextMenu = (e) => {
-        createContextMenu(e.clientY, e.clientX, file,
-            {rename: () => renameFile(file, parentFolder), remove: () => removeCustom(file, parentFolder)});
+        createContextMenu(e.clientY, e.clientX, file, {
+            rename: () => renameFile(file, parentFolder),
+            remove: () => removeCustom(file, parentFolder)
+        });
         // Prevent the default context menu from appearing
         e.preventDefault();
     };
 
     // eslint-disable-next-line react/no-unknown-property
-    return <div key={fileName + "-File"} id={fileName + "-File"} linkpath={linkPath} onContextMenu={onContextMenu}
-                className={`sidebarItem sidebarLink w3-row ${styles.sidebarItem} ${styles.sidebarLink}`}>
-        <img className={`${styles.htmlIcon}`} alt=''/>
-        <Link id={fileName + "-FileLink"} href={urlPath}>{file.name}</Link>
-        {editIcon}
-    </div>;
+    return (
+        <div
+            key={fileName + "-File"}
+            id={fileName + "-File"}
+            linkpath={linkPath}
+            onContextMenu={onContextMenu}
+            className={`sidebarItem sidebarLink w3-row ${styles.sidebarItem} ${styles.sidebarLink}`}>
+            <img className={`${styles.htmlIcon}`} alt="" />
+            <Link id={fileName + "-FileLink"} href={urlPath}>
+                {file.name}
+            </Link>
+            {editIcon}
+        </div>
+    );
 }
-
 
 /**
  * Build the hierarchy of the file system
@@ -92,14 +104,12 @@ function buildHierarchy(tree, path = "") {
     else return buildFile(tree, path);
 }
 
-
 /**
  * Rename a file in the file system
  * @param file {File} The file to rename
  * @param parentPath {string} The parentPath of the file
  */
 function renameFile(file, parentPath) {
-
     if (!file || !parentPath) {
         showDialog("File Not Found", "The file that you are attempting to rename does not exist!");
         return;
@@ -135,18 +145,19 @@ function renameFile(file, parentPath) {
     };
 
     // Remove the renamer if the user clicks outside of it and cancel the rename
-    let clickEvent = (evt) => { if (evt.target.id !== renamer.id) renameFile(); };
+    let clickEvent = (evt) => {
+        if (evt.target.id !== renamer.id) renameFile();
+    };
     renamer.oninput = (e) => {
         // Rename the file if the user presses enter
         if (["insertParagraph", "insertLineBreak"].includes(e.inputType)) {
             renameFile();
-            document.documentElement.removeEventListener('click', clickEvent, true);
+            document.documentElement.removeEventListener("click", clickEvent, true);
         }
     };
 
-    document.documentElement.addEventListener('click', clickEvent, true);
+    document.documentElement.addEventListener("click", clickEvent, true);
 }
-
 
 /**
  * Remove a file from the file system
@@ -154,7 +165,6 @@ function renameFile(file, parentPath) {
  * @param parentPath {string} The parentPath of the file
  */
 function removeCustom(file, parentPath) {
-
     if (!file || !parentPath) {
         showDialog("File Not Found", "The file that you are attempting to remove does not exist!");
         return;
@@ -174,7 +184,6 @@ function removeCustom(file, parentPath) {
     if (window.location.search.split("file=")[1] === filePath) window.location.replace("/");
 }
 
-
 /**
  * Splice the file or directory from a directory's subTree.  Used for manually ordering the sidebar items
  * @param subTree {(Directory|File)[]} The subTree to splice from
@@ -182,11 +191,9 @@ function removeCustom(file, parentPath) {
  * @return {File|Directory} The spliced file or directory
  */
 function spliceFromSubTree(subTree, name) {
-    for(let i=0; i<subTree.length; i++)
-        if(subTree[i].name === name) return subTree.splice(i,1)[0];
+    for (let i = 0; i < subTree.length; i++) if (subTree[i].name === name) return subTree.splice(i, 1)[0];
     return null;
 }
-
 
 /**
  * Build the sidebar from the public folder using a custom ordering
@@ -202,33 +209,44 @@ function buildSidebar() {
     let researchFolder = spliceFromSubTree(subTreeCopy, "research");
     let hackFolder = spliceFromSubTree(subTreeCopy, "hackathons");
     let customFolder = spliceFromSubTree(subTreeCopy, "custom");
-    subTreeCopy = [homeFile, helpFile, readingListFile, aboutFolder, researchFolder, ...subTreeCopy, hackFolder, customFolder];
+    subTreeCopy = [
+        homeFile,
+        helpFile,
+        readingListFile,
+        aboutFolder,
+        researchFolder,
+        ...subTreeCopy,
+        hackFolder,
+        customFolder
+    ];
     publicFolder.subTree = subTreeCopy;
     return buildHierarchy(publicFolder);
 }
-
 
 /**
  * The sidebar component that displays the file system hierarchy, used for navigation and file management
  * @param changeSidebarState {function} The callback function to change the sidebar state
  * @returns {JSX.Element} The sidebar component
  */
-function Sidebar({changeSidebarState}) {
+function Sidebar({ changeSidebarState }) {
     const [explorerTree, setExplorerTree] = useState(buildSidebar());
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     useEffect(() => {
         // Close the sidebar on mobile
-        if(window.innerWidth < 600)
-            setSidebarOpen(false);
+        if (window.innerWidth < 600) setSidebarOpen(false);
 
         // Load the custom hierarchy from local storage
         let savedHierarchy = localStorage.getItem("hierarchy");
         if (savedHierarchy) {
             try {
                 let clientFileSystem = FileSystem.deserialize(JSON.parse(savedHierarchy));
-                mergeClientDirectory(masterFileSystem.getItem(SysEnv.HOME_FOLDER), clientFileSystem.getItem(SysEnv.HOME_FOLDER));
-            } catch (e) {  // Remove the hierarchy from local storage if it fails to load
+                mergeClientDirectory(
+                    masterFileSystem.getItem(SysEnv.HOME_FOLDER),
+                    clientFileSystem.getItem(SysEnv.HOME_FOLDER)
+                );
+            } catch (e) {
+                // Remove the hierarchy from local storage if it fails to load
                 console.error("Failed to load custom hierarchy from local storage: " + e);
                 localStorage.removeItem("hierarchy");
             }
@@ -237,20 +255,26 @@ function Sidebar({changeSidebarState}) {
         setExplorerTree(buildSidebar());
 
         // Update the sidebar when the file system is updated
-        masterFileSystem.registerCallback(() => {setExplorerTree(buildSidebar());});
+        masterFileSystem.registerCallback(() => {
+            setExplorerTree(buildSidebar());
+        });
 
-        let destroyContextMenuEvent = (evt) => { if(!evt.target.className.includes("contextMenu")) destroyContextMenu(); };
-        document.documentElement.addEventListener('click', destroyContextMenuEvent, true);
-        document.body.addEventListener('contextmenu', destroyContextMenuEvent, true);
-
+        let destroyContextMenuEvent = (evt) => {
+            if (!evt.target.className.includes("contextMenu")) destroyContextMenu();
+        };
+        document.documentElement.addEventListener("click", destroyContextMenuEvent, true);
+        document.body.addEventListener("contextmenu", destroyContextMenuEvent, true);
     }, []);
 
-    useEffect(() => {changeSidebarState(sidebarOpen);}, [sidebarOpen]);
+    useEffect(() => {
+        changeSidebarState(sidebarOpen);
+    }, [sidebarOpen]);
 
     useEffect(() => {
         // Highlight the current page in the sidebar
         let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
-        if (pagePath.endsWith("display") || pagePath.endsWith("edit")) pagePath = window.location.search.split("file=")[1];
+        if (pagePath.endsWith("display") || pagePath.endsWith("edit"))
+            pagePath = window.location.search.split("file=")[1];
         let selectedLink = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`)[0];
         if (selectedLink) selectedLink.classList.add(styles.selectedSidebarLink);
     }, [explorerTree]);
@@ -259,22 +283,28 @@ function Sidebar({changeSidebarState}) {
     return (
         <div id="sidebar" className={`w3-col ${sidebarStateCls} ${styles.sidebar}`}>
             <div id="collapseHolder" className={`w3-cell-row ${sidebarStateCls} ${styles.collapseHolder}`}>
-                <button id="collapseSidebar" className={`w3-button w3-cell ${styles.collapseSidebar}`}
-                        onClick={() => setSidebarOpen(!sidebarOpen)}></button>
-                <span id="explorerTitle" className={`w3-cell ${styles.sidebarItem} ${styles.explorerTitle}`}
-                      style={{display: sidebarOpen ? "inline" : "none"}}>
+                <button
+                    id="collapseSidebar"
+                    className={`w3-button w3-cell ${styles.collapseSidebar}`}
+                    onClick={() => setSidebarOpen(!sidebarOpen)}></button>
+                <span
+                    id="explorerTitle"
+                    className={`w3-cell ${styles.sidebarItem} ${styles.explorerTitle}`}
+                    style={{ display: sidebarOpen ? "inline" : "none" }}>
                     Explorer
                 </span>
             </div>
-            <div id="sidebarContent" className={`w3-display-container w3-row ${styles.sidebarContent}`}
-                 style={{display: sidebarOpen ? "block" : "none"}}>
+            <div
+                id="sidebarContent"
+                className={`w3-display-container w3-row ${styles.sidebarContent}`}
+                style={{ display: sidebarOpen ? "block" : "none" }}>
                 {explorerTree}
             </div>
         </div>
     );
 }
+
 Sidebar.propTypes = { changeSidebarState: PropTypes.func };
 
-
 export default Sidebar;
-export {renameFile};
+export { renameFile };

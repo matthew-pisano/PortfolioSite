@@ -1,11 +1,11 @@
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
- <g id="Layer_1">
-  <title>Layer 1</title>
-  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="192.49415" x2="9.4423" y1="151.3733" x1="29.14274" stroke-width="10" stroke="#212121" fill="none"/>
-  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="173.88993" x2="50.82969" y1="192.65863" x1="11.21578" stroke-width="10" stroke="#212121" fill="none"/>
-  <path id="svg_16" d="m82.41378,26.81022l40.10851,0l0,144.0312l-40.10851,0l0,-144.0312z" transform="rotate(43.4135, 102.468, 98.8258)" opacity="undefined" stroke-width="0" stroke="#212121" fill="#212121"/>
-  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_17" y2="175.70912" x2="55.83607" y1="147.94894" x1="26.4986" stroke-width="10" stroke="#212121" fill="none"/>
-  <path id="svg_18" d="m21.39625,153.09585l20.26981,0l0,35.81987l-20.26981,0l0,-35.81987z" transform="rotate(43.4135, 31.5312, 171.006)" opacity="undefined" stroke-width="0" stroke="#212121" fill="#212121"/>
-  <path id="svg_22" d="m151.39668,11.86758l40.10851,0l0,29.57654l-40.10851,0l0,-29.57654z" transform="rotate(43.4135, 171.451, 26.6558)" opacity="undefined" stroke-width="0" stroke="#212121" fill="#212121"/>
- </g>
+    <g id="Layer_1">
+        <title>Layer 1</title>
+        <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="192.49415" x2="9.4423" y1="151.3733" x1="29.14274" stroke-width="10" stroke="#212121" fill="none"/>
+        <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="173.88993" x2="50.82969" y1="192.65863" x1="11.21578" stroke-width="10" stroke="#212121" fill="none"/>
+        <path id="svg_16" d="m82.41378,26.81022l40.10851,0l0,144.0312l-40.10851,0l0,-144.0312z" transform="rotate(43.4135, 102.468, 98.8258)" opacity="undefined" stroke-width="0" stroke="#212121" fill="#212121"/>
+        <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_17" y2="175.70912" x2="55.83607" y1="147.94894" x1="26.4986" stroke-width="10" stroke="#212121" fill="none"/>
+        <path id="svg_18" d="m21.39625,153.09585l20.26981,0l0,35.81987l-20.26981,0l0,-35.81987z" transform="rotate(43.4135, 31.5312, 171.006)" opacity="undefined" stroke-width="0" stroke="#212121" fill="#212121"/>
+        <path id="svg_22" d="m151.39668,11.86758l40.10851,0l0,29.57654l-40.10851,0l0,-29.57654z" transform="rotate(43.4135, 171.451, 26.6558)" opacity="undefined" stroke-width="0" stroke="#212121" fill="#212121"/>
+    </g>
 </svg>

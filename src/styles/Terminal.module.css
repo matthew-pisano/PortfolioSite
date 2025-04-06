@@ -4,7 +4,7 @@
     visibility: hidden;
 }
 
-.terminalClose:hover{
+.terminalClose:hover {
     background-color: var(--theme-color-3-hover) !important;
     color: var(--theme-text) !important;
 }
@@ -13,16 +13,16 @@
     display: flex;
 }
 
-.terminalHolder{
+.terminalHolder {
     background-color: var(--theme-color-3);
     position: fixed;
     bottom: 30px;
-    left:0px;
+    left: 0px;
     right: 0px;
     z-index: 2;
 }
 
-.terminalOutput{
+.terminalOutput {
     width: 100%;
 }
 
@@ -32,22 +32,22 @@
     user-select: none;
 }
 
-.terminalPrompt{
+.terminalPrompt {
     height: 40px;
     float: left;
 }
 
-.terminalInput{
+.terminalInput {
     min-height: 40px;
     overflow-wrap: break-word;
     overflow-x: hidden;
 }
 
-.terminalInput:focus-visible{
+.terminalInput:focus-visible {
     outline: none;
 }
 
-.terminal{
+.terminal {
     cursor: text;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -62,7 +62,7 @@
     z-index: 3;
     position: fixed;
     bottom: 30px;
-    left:0px;
+    left: 0px;
     right: 0px;
     display: none;
     background-color: rgba(128, 128, 128, 0.25) !important;
@@ -78,7 +78,7 @@
     border-style: solid;
 }
 
-.terminalThumb{
+.terminalThumb {
     background-color: var(--theme-color-3-hover);
     border-bottom: 1px solid black;
     border-right: 1px solid black;

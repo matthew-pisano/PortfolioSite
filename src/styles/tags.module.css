@@ -1,5 +1,5 @@
 
-.tag{
+.tag {
     width: 160px !important;
     padding: 2px 5px;
     margin: 3px 5px;
@@ -7,12 +7,12 @@
     border-radius: 10px;
 }
 
-.tag img{
+.tag img {
     width: 25px;
     margin-right: 5px;
 }
 
-.gitLink, .extraLink{
+.gitLink, .extraLink {
     width: 200px;
     padding: 2px 5px;
     margin: 3px 5px;
@@ -20,181 +20,200 @@
     border-radius: 10px;
 }
 
-.gitLink div a, .extraLink div a{
+.gitLink div a, .extraLink div a {
     width: 100%;
     display: block;
     text-align: center;
 }
 
-.gitLink img, .extraLink img{
+.gitLink img, .extraLink img {
     width: 25px;
     margin-right: 5px;
 }
 
-.gitLink img{
-    content:url("/assets/github.png");
+.gitLink img {
+    content: url("/assets/github.png");
 }
 
-.extraLink img{
-    content:url("/assets/paper.png");
+.extraLink img {
+    content: url("/assets/paper.png");
 }
 
 .darkTag {
     background-color: var(--theme-color-4);
 }
 
-/*Tags*/
+/* Tags */
 
-.paperTag img{
-    content:url("/assets/paper.png");
+.paperTag img {
+    content: url("/assets/paper.png");
 }
 
-.personalTag img{
-    content:url("/assets/personal.png");
+.personalTag img {
+    content: url("/assets/personal.png");
 }
-.personalTag div::after{
+
+.personalTag div::after {
     content: "Personal";
 }
 
-.academicTag img{
-    content:url("/assets/academic.png");
+.academicTag img {
+    content: url("/assets/academic.png");
 }
-.academicTag div::after{
+
+.academicTag div::after {
     content: "Academic";
 }
 
-.javaTag img{
-    content:url("/assets/java.png");
+.javaTag img {
+    content: url("/assets/java.png");
 }
-.javaTag div::after{
+
+.javaTag div::after {
     content: "Java";
 }
 
-.androidTag img{
-    content:url("/assets/android.png");
+.androidTag img {
+    content: url("/assets/android.png");
 }
-.androidTag div::after{
+
+.androidTag div::after {
     content: "Android";
 }
 
-.pythonTag img{
-    content:url("/assets/python.png");
+.pythonTag img {
+    content: url("/assets/python.png");
 }
-.pythonTag div::after{
+
+.pythonTag div::after {
     content: "Python";
 }
 
-.assemblyTag img{
-    content:url("/assets/assembly.png");
+.assemblyTag img {
+    content: url("/assets/assembly.png");
 }
-.assemblyTag div::after{
+
+.assemblyTag div::after {
     content: "Assembly";
 }
 
-.phpTag img{
-    content:url("/assets/php.png");
+.phpTag img {
+    content: url("/assets/php.png");
 }
-.phpTag div::after{
+
+.phpTag div::after {
     content: "PHP";
 }
 
-.htmlTag img{
-    content:url("/assets/html.png");
+.htmlTag img {
+    content: url("/assets/html.png");
 }
-.htmlTag div::after{
+
+.htmlTag div::after {
     content: "HTML";
 }
 
-.jsTag img{
-    content:url("/assets/js.png");
+.jsTag img {
+    content: url("/assets/js.png");
 }
-.jsTag div::after{
+
+.jsTag div::after {
     content: "JavaScript";
 }
 
-.collabTag img{
-    content:url("/assets/collab.png");
+.collabTag img {
+    content: url("/assets/collab.png");
 }
-.collabTag div::after{
+
+.collabTag div::after {
     content: "Collaboration";
 }
 
-.hackTag img{
-    content:url("/assets/hackathon.png");
+.hackTag img {
+    content: url("/assets/hackathon.png");
 }
-.hackTag div::after{
+
+.hackTag div::after {
     content: "Hackathon";
 }
 
-.researchTag img{
-    content:url("/assets/research.png");
+.researchTag img {
+    content: url("/assets/research.png");
 }
-.researchTag div::after{
+
+.researchTag div::after {
     content: "Research";
 }
 
-.aiTag img{
-    content:url("/assets/ai.png");
+.aiTag img {
+    content: url("/assets/ai.png");
 }
-.aiTag div::after{
+
+.aiTag div::after {
     content: "AI";
 }
 
-.helpTag img{
-    content:url("/assets/help.png");
+.helpTag img {
+    content: url("/assets/help.png");
 }
-.helpTag div::after{
+
+.helpTag div::after {
     content: "Help";
 }
 
-.keterTag img{
-    content:url("/assets/keter.png");
+.keterTag img {
+    content: url("/assets/keter.png");
 }
-.keterTag div::after{
+
+.keterTag div::after {
     content: "Keter";
 }
 
-.alignmentTag img{
-    content:url("/assets/alignment.png");
+.alignmentTag img {
+    content: url("/assets/alignment.png");
 }
-.alignmentTag div::after{
+
+.alignmentTag div::after {
     content: "Alignment";
 }
 
-.clangTag img{
-    content:url("/assets/c.png");
+.clangTag img {
+    content: url("/assets/c.png");
 }
-.clangTag div::after{
+
+.clangTag div::after {
     content: "C";
 }
 
-.cppTag img{
-    content:url("/assets/cpp.png");
+.cppTag img {
+    content: url("/assets/cpp.png");
 }
-.cppTag div::after{
+
+.cppTag div::after {
     content: "C++";
 }
 
-.cudaTag img{
-    content:url("/assets/cuda.png");
+.cudaTag img {
+    content: url("/assets/cuda.png");
 }
-.cudaTag div::after{
+
+.cudaTag div::after {
     content: "CUDA";
 }
 
 
-@media (max-width: 600px) {
-    .gitLink img, .extraLink img{
+@media (width <= 600px) {
+    .gitLink img, .extraLink img {
         width: 30px;
     }
 
-    .gitLink div a, .extraLink div a{
+    .gitLink div a, .extraLink div a {
         font-size: 1.3em;
     }
 }
 
 
-@media (max-width: 400px) {
+@media (width <= 400px) {
     .tag {
         width: 100% !important;
     }

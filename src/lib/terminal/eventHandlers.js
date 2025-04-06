@@ -1,10 +1,8 @@
-import {masterFileSystem} from "@/lib/fileSystem/fileSystem";
-import {SysEnv} from "@/lib/fileSystem/fileSystemMeta";
-import {showDialog} from "@/lib/utils";
-
+import { masterFileSystem } from "@/lib/fileSystem/fileSystem";
+import { SysEnv } from "@/lib/fileSystem/fileSystemMeta";
+import { showDialog } from "@/lib/utils";
 
 export class EventHandlers {
-
     /**
      * Whether the terminal is being dragged.  Needs to be global to be accessed by the event listeners
      * @type {boolean}
@@ -28,7 +26,6 @@ export class EventHandlers {
      */
     static commandIndex = -1;
 
-
     /**
      * The previous commands in the terminal history
      * @type {[string]}
@@ -40,7 +37,6 @@ export class EventHandlers {
      * @type {string}
      */
     static draftCommand = "";
-
 
     /**
      * The height of the terminal
@@ -62,8 +58,8 @@ export class EventHandlers {
         // Listeners need to be global to avoid losing track of the thumb
         document.addEventListener("mousemove", (evt) => this.thumbDrag(evt, resizeTerminal));
         document.addEventListener("mouseup", this.thumbDragEnd);
-        document.body.addEventListener('drop', (evt) => evt.preventDefault(), false);
-        document.body.addEventListener('dragover', (evt) => evt.preventDefault(), false);
+        document.body.addEventListener("drop", (evt) => evt.preventDefault(), false);
+        document.body.addEventListener("dragover", (evt) => evt.preventDefault(), false);
     }
 
     /**
@@ -74,9 +70,10 @@ export class EventHandlers {
         EventHandlers.enterEvents += 1;
         e.preventDefault();
 
-        if (!e.dataTransfer.items || e.dataTransfer.items.length === 0 || e.dataTransfer.items[0].kind !== "file") return;
+        if (!e.dataTransfer.items || e.dataTransfer.items.length === 0 || e.dataTransfer.items[0].kind !== "file")
+            return;
 
-        document.getElementById('terminalFileHandler').style.visibility = "visible";
+        document.getElementById("terminalFileHandler").style.visibility = "visible";
     }
 
     /**
@@ -89,7 +86,7 @@ export class EventHandlers {
 
         if (EventHandlers.leaveEvents < EventHandlers.enterEvents) return;
 
-        document.getElementById('terminalFileHandler').style.visibility = "hidden";
+        document.getElementById("terminalFileHandler").style.visibility = "hidden";
     }
 
     /**
@@ -103,7 +100,6 @@ export class EventHandlers {
 
         let files = e.dataTransfer.files;
         for (let file of files) {
-
             if (!file.type.startsWith("text")) {
                 showDialog("Invalid File", `'${file.name}' is not a text file`);
                 continue;
@@ -125,7 +121,7 @@ export class EventHandlers {
             reader.readAsText(file);
         }
 
-        document.getElementById('terminalFileHandler').style.visibility = "hidden";
+        document.getElementById("terminalFileHandler").style.visibility = "hidden";
     }
 
     /**
@@ -142,7 +138,7 @@ export class EventHandlers {
      */
     static thumbDrag(e, resizeTerminal) {
         if (!this.isDragging) return;
-        let thumb = document.getElementById('terminalThumb');
+        let thumb = document.getElementById("terminalThumb");
         let newHeight = thumb.getBoundingClientRect().top - e.clientY + this.terminalHeight;
         resizeTerminal(newHeight);
     }
@@ -160,9 +156,9 @@ export class EventHandlers {
      * @param submit {function} The function to submit the command
      */
     static onKeyDown(e, submit) {
-        let terminalInput = document.getElementById('terminalInput');
+        let terminalInput = document.getElementById("terminalInput");
         // Scroll the terminal output to the bottom on input
-        let terminalOutput = document.getElementById('terminalOutput');
+        let terminalOutput = document.getElementById("terminalOutput");
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
 
         if (e.code === "Enter") {
@@ -179,7 +175,10 @@ export class EventHandlers {
             terminalInput.innerText = this.prevCommands[this.prevCommands.length - 1 - this.commandIndex];
         } else if (e.code === "ArrowDown") {
             if (this.commandIndex > -1) this.commandIndex--;
-            terminalInput.innerText = this.commandIndex > -1 ? this.prevCommands[this.prevCommands.length - 1 - this.commandIndex] : this.draftCommand;
+            terminalInput.innerText =
+                this.commandIndex > -1
+                    ? this.prevCommands[this.prevCommands.length - 1 - this.commandIndex]
+                    : this.draftCommand;
         }
     }
 
@@ -198,7 +197,7 @@ export class EventHandlers {
     static submitCommand(command) {
         // Add the command to the history
         if (this.prevCommands[0] === "" && command.length > 0)
-            this.prevCommands = ([command, ...this.prevCommands.slice(1)]);
+            this.prevCommands = [command, ...this.prevCommands.slice(1)];
         else if (this.prevCommands[this.prevCommands.length - 1] !== command && command.length > 0)
             this.prevCommands = [...this.prevCommands, command];
         localStorage.setItem("terminalHistory", JSON.stringify(this.prevCommands));

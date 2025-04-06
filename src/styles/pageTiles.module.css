@@ -20,7 +20,7 @@
     transition: all 700ms;
 }
 
-.displayTileTitle > *{
+.displayTileTitle > * {
     font-weight: bolder;
 }
 
@@ -35,7 +35,8 @@
     border-radius: 10px;
 }
 
-.displayTileContent {}
+.displayTileContent {
+}
 
 .displayTileContent > span {
     margin: 15px 0;
@@ -68,7 +69,7 @@
     margin-top: 10px;
 }
 
-.forceWrap{
+.forceWrap {
     word-break: break-word;
     white-space: normal;
 }
@@ -96,14 +97,14 @@
     background-image: url("/assets/matrix.gif");
 }
 
-.anchorLink img{
+.anchorLink img {
     width: 20px;
     max-width: 20px;
     margin-left: 10px;
 }
 
 .anchorIcon {
-    content:url("/assets/anchorIcon.svg");
+    content: url("/assets/anchorIcon.svg");
 }
 
 .bookTileSection {
@@ -126,7 +127,7 @@
 }
 
 @media (max-width: 1300px) {
-    .displayTileContent{
+    .displayTileContent {
         width: 100%;
     }
 

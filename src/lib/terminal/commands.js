@@ -1,37 +1,34 @@
-import {FileSystemError, masterFileSystem, pathJoin} from '@/lib/fileSystem/fileSystem';
-import {ANSI, Perms, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
-import {Directory, File} from "@/lib/fileSystem/fileSystemObjects";
-import {eightBall, hal, haltingProblem, rmRoot, runPacer, toVoid} from '@/lib/terminal/easterEggs';
-import {EventHandlers} from "@/lib/terminal/eventHandlers";
-import {Help} from "@/lib/terminal/helpMenu";
-import {resolveTokens, tokenizeCommand} from "@/lib/terminal/processTokens";
-import {letoucan, neofetch, system32, tfLogo, theMissile} from '@/lib/terminal/strings';
-import {Sprite} from "@/lib/terminal/terminalSprites";
-import {setTheme, themes} from "@/lib/themes";
-
+import { FileSystemError, masterFileSystem, pathJoin } from "@/lib/fileSystem/fileSystem";
+import { ANSI, Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
+import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
+import { eightBall, hal, haltingProblem, rmRoot, runPacer, toVoid } from "@/lib/terminal/easterEggs";
+import { EventHandlers } from "@/lib/terminal/eventHandlers";
+import { Help } from "@/lib/terminal/helpMenu";
+import { resolveTokens, tokenizeCommand } from "@/lib/terminal/processTokens";
+import { letoucan, neofetch, system32, tfLogo, theMissile } from "@/lib/terminal/strings";
+import { Sprite } from "@/lib/terminal/terminalSprites";
+import { setTheme, themes } from "@/lib/themes";
 
 /**
  * Custom error for when a command expectedly exits
  */
 class CommandError extends Error {
-    constructor(message, code=1) {
+    constructor(message, code = 1) {
         super(message);
         this.code = code;
         this.name = "CommandError";
     }
 }
 
-
 /**
  * The Commands class contains all the commands that can be executed in the terminal
  */
 class Commands {
-
     /**
      * The environment object that contains the current working directory and other environment variables
      * @type {object}
      */
-    static ENV = {CWD: SysEnv.HOME_FOLDER, HOME: SysEnv.HOME_FOLDER, COLOR: "#ffffff"};
+    static ENV = { CWD: SysEnv.HOME_FOLDER, HOME: SysEnv.HOME_FOLDER, COLOR: "#ffffff" };
 
     /**
      * Resolves a path to an absolute path
@@ -40,8 +37,8 @@ class Commands {
      * @return {string} The resolved path
      * @private
      */
-    static resolvePath(path, cwd = this.ENV.CWD){
-        if(path[0] === "~") path = path.replace("~", SysEnv.HOME_FOLDER);
+    static resolvePath(path, cwd = this.ENV.CWD) {
+        if (path[0] === "~") path = path.replace("~", SysEnv.HOME_FOLDER);
         return pathJoin(cwd, path).replace("//", "/");
     }
 
@@ -60,7 +57,7 @@ class Commands {
             return `Error: only ${nArgs} arguments are accepted, found ${args.length} (${args})`;
         if (nOpts !== null && !nOpts.includes(opts.length))
             return `Error: only ${nOpts} options are accepted, found ${opts.length} (${opts})`;
-        if (allowedOpts !== null && opts.filter(opt => !allowedOpts.includes(opt)).length > 0)
+        if (allowedOpts !== null && opts.filter((opt) => !allowedOpts.includes(opt)).length > 0)
             return `Error: invalid options found in ${opts}`;
 
         return "";
@@ -88,7 +85,7 @@ class Commands {
             }
             i++;
         }
-        return {options: options, args: parsedArgs};
+        return { options: options, args: parsedArgs };
     }
 
     /**
@@ -97,8 +94,11 @@ class Commands {
      * @yield {string} The echoed tokens
      */
     static async *echo(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.echo; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.echo;
+            return;
+        }
 
         for (let i = 0; i < tokens.length; i++) yield tokens[i] + "\n";
     }
@@ -108,8 +108,11 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *clear(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.clear; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.clear;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -122,8 +125,11 @@ class Commands {
      * @yield {string} The current working directory
      */
     static async *pwd(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.pwd; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.pwd;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -136,19 +142,31 @@ class Commands {
      * @yield {string} The help information
      */
     static async *help(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.help; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.help;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0, 1], [0, 1], ["-f", "--force"]);
         if (valResult) throw new CommandError(valResult);
 
         // General help and secret help menu
-        if (args.length === 0 && (options.includes("-f") || options.includes("--force"))) {yield Help.secretHelpMenu; return;}
-        else if (args.length === 0) {yield Help.helpMenu; return;}
+        if (args.length === 0 && (options.includes("-f") || options.includes("--force"))) {
+            yield Help.secretHelpMenu;
+            return;
+        } else if (args.length === 0) {
+            yield Help.helpMenu;
+            return;
+        }
 
         // Help for a specific command
-        if (Object.getOwnPropertyNames(this).includes(args[0]) && args[0] in Help) {yield Help[args[0]];}
-        else if(Object.getOwnPropertyNames(this).includes(args[0])) {yield "No help information available";}
-        else {yield `help: command '${args[0]}' not found`;}
+        if (Object.getOwnPropertyNames(this).includes(args[0]) && args[0] in Help) {
+            yield Help[args[0]];
+        } else if (Object.getOwnPropertyNames(this).includes(args[0])) {
+            yield "No help information available";
+        } else {
+            yield `help: command '${args[0]}' not found`;
+        }
     }
 
     /**
@@ -156,21 +174,25 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *cd(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.cd; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.cd;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0, 1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
         // If no arguments are passed, change to the home directory
-        if (args.length === 0) {this.ENV.CWD = SysEnv.HOME_FOLDER; return;}
+        if (args.length === 0) {
+            this.ENV.CWD = SysEnv.HOME_FOLDER;
+            return;
+        }
 
         let cdPath = this.resolvePath(args[0]);
         let targetItem = masterFileSystem.getItem(cdPath);
 
-        if (!targetItem)
-            throw new CommandError(`Cannot enter directory.  Directory at ${cdPath} does not exist!`);
-        else if (targetItem.constructor === File)
-            throw new CommandError(`Cannot enter ${cdPath}, it is a file!`);
+        if (!targetItem) throw new CommandError(`Cannot enter directory.  Directory at ${cdPath} does not exist!`);
+        else if (targetItem.constructor === File) throw new CommandError(`Cannot enter ${cdPath}, it is a file!`);
         else if (!targetItem.permission.includes(Perms.EXECUTE)) {
             // Secret admin access
             if (cdPath === "/home/admin") {
@@ -190,8 +212,11 @@ class Commands {
      * @yield {string} The list of files and directories
      */
     static async *ls(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.ls; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.ls;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0, 1], [0, 1, 2], ["-l", "-a"]);
         if (valResult) throw new CommandError(valResult);
 
@@ -200,13 +225,15 @@ class Commands {
         let showDetails = options.includes("-l");
 
         let lsObj = masterFileSystem.getItem(path);
-        if (!lsObj) throw new CommandError(`Cannot list file or directory.  File or directory at ${path} does not exist!`);
+        if (!lsObj)
+            throw new CommandError(`Cannot list file or directory.  File or directory at ${path} does not exist!`);
 
         let pad = "\xa0\xa0";
         let paddedSize = `${lsObj.size()}`.padStart(6, "\xa0");
 
         if (lsObj.constructor === Directory) {
-            if (!lsObj.permission.includes(Perms.READ)) throw new CommandError(`Cannot list ${path}.  Permission denied!`);
+            if (!lsObj.permission.includes(Perms.READ))
+                throw new CommandError(`Cannot list ${path}.  Permission denied!`);
 
             // Gather the information for each file and directory in the directory
             let list = [];
@@ -220,7 +247,11 @@ class Commands {
                 let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
                 modStr = modStr.substring(0, modStr.lastIndexOf(":"));
                 let displayName = child.name.includes(" ") ? `'${child.name}'` : child.name;
-                if (showDetails) list.push([`d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}${displayName}${ANSI.DEFAULT}`, child.name]);
+                if (showDetails)
+                    list.push([
+                        `d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}${displayName}${ANSI.DEFAULT}`,
+                        child.name
+                    ]);
                 else list.push([`${ANSI.CYAN}${displayName}${ANSI.DEFAULT}`, child.name]);
             }
 
@@ -232,15 +263,17 @@ class Commands {
             if (path !== "/") {
                 let modStr = new Date(Date.now()).toISOString().split("T").join(" ");
                 modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-                if (showDetails) list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}..${ANSI.DEFAULT}`, ".."]);
+                if (showDetails)
+                    list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}..${ANSI.DEFAULT}`, ".."]);
                 else list.unshift(["..", ".."]);
-                if (showDetails) list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}.${ANSI.DEFAULT}`, "."]);
+                if (showDetails)
+                    list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}.${ANSI.DEFAULT}`, "."]);
                 else list.unshift([".", "."]);
             }
 
             // Add the information for each file and directory to the list
             for (let entry of list) {
-                if(!showHidden && entry[1].startsWith(".")) continue;
+                if (!showHidden && entry[1].startsWith(".")) continue;
                 yield entry[0] + (showDetails ? "\n" : pad);
             }
         } else {
@@ -248,23 +281,31 @@ class Commands {
             modStr = modStr.substring(0, modStr.lastIndexOf(":"));
 
             let displayName = lsObj.name.includes(" ") ? `'${lsObj.name}'` : lsObj.name;
-            if (lsObj.permission === "--x")
-                displayName = ANSI.GREEN + displayName + ANSI.DEFAULT;
+            if (lsObj.permission === "--x") displayName = ANSI.GREEN + displayName + ANSI.DEFAULT;
 
             if (showDetails) yield `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${displayName}`;
             else yield displayName;
         }
     }
-    static async *ll(tokens) {yield* await this.ls(["-l", ...tokens]);}
-    static async *la(tokens) {yield* await this.ls(["-la", ...tokens]);}
+
+    static async *ll(tokens) {
+        yield* await this.ls(["-l", ...tokens]);
+    }
+
+    static async *la(tokens) {
+        yield* await this.ls(["-la", ...tokens]);
+    }
 
     /**
      * Makes a new directory
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *mkdir(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.mkdir; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.mkdir;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -277,8 +318,11 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *touch(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.touch; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.touch;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -291,8 +335,11 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *cp(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.cp; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.cp;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [2], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -302,10 +349,8 @@ class Commands {
 
         let newObj = masterFileSystem.getItem(newPath);
 
-        if (newObj && newObj.constructor === Directory)
-            masterFileSystem.cp(oldPath, pathJoin(newPath, oldName));
-        else if (!newObj)
-            masterFileSystem.cp(oldPath, newPath);
+        if (newObj && newObj.constructor === Directory) masterFileSystem.cp(oldPath, pathJoin(newPath, oldName));
+        else if (!newObj) masterFileSystem.cp(oldPath, newPath);
         else throw new CommandError(`Cannot copy directory at ${oldPath} to file at ${newPath}!`);
     }
 
@@ -314,8 +359,11 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *mv(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.mv; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.mv;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -330,13 +378,17 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *rm(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.rm; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.rm;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [1], [0, 1, 2], ["-r", "-f"]);
         if (valResult) throw new CommandError(valResult);
 
         let pathArg = args[0];
-        if (pathArg === "." || pathArg === "..") throw new CommandError(`Refusing to remove '.' or '..' directory: skipping '${pathArg}'`);
+        if (pathArg === "." || pathArg === "..")
+            throw new CommandError(`Refusing to remove '.' or '..' directory: skipping '${pathArg}'`);
 
         let path = this.resolvePath(pathArg);
         // Prevent the user from deleting the system32 directory
@@ -347,8 +399,7 @@ class Commands {
         if (path === "/" && options.includes("-f") && options.includes("-r")) {
             yield* await rmRoot();
             return;
-        } else if (path === "/")
-            throw new CommandError(`Permission denied for path '/'!  Use -rf to force.`);
+        } else if (path === "/") throw new CommandError(`Permission denied for path '/'!  Use -rf to force.`);
 
         masterFileSystem.rm(path, options);
     }
@@ -359,8 +410,11 @@ class Commands {
      * @yield {string} The contents of the file
      */
     static async *cat(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.cat; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.cat;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -372,8 +426,11 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *open(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.open; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.open;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -384,9 +441,8 @@ class Commands {
         else if (currentFile.constructor === Directory) throw new CommandError(`Cannot open a directory!`);
         else if (currentFile.isPage()) {
             let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
-            window.open(relPath.replace(".html", ""), '_self');
-        }
-        else if (currentFile.permission.includes(Perms.EXECUTE)) window.open(`/display?file=${pagePath}`, '_self');
+            window.open(relPath.replace(".html", ""), "_self");
+        } else if (currentFile.permission.includes(Perms.EXECUTE)) window.open(`/display?file=${pagePath}`, "_self");
         else throw new CommandError(`Insufficient permissions to open ${pagePath}!`);
     }
 
@@ -395,14 +451,18 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *edit(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.edit; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.edit;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
         let pagePath = this.resolvePath(args[0]);
         let currentFile = masterFileSystem.getItem(pagePath);
-        if (!masterFileSystem.exists(pagePath)) throw new CommandError(`Cannot edit file.  File at ${pagePath} does not exist!`);
+        if (!masterFileSystem.exists(pagePath))
+            throw new CommandError(`Cannot edit file.  File at ${pagePath} does not exist!`);
         else if (currentFile.constructor === Directory) throw new CommandError(`Cannot edit a directory!`);
         else if (currentFile.permission.includes(Perms.WRITE)) window.location.replace(`/edit?file=${pagePath}`);
         else throw new CommandError(`Insufficient permissions to edit ${pagePath}!`);
@@ -414,8 +474,11 @@ class Commands {
      * @yield {string} The color change message
      */
     static async *color(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.color; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.color;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0, 1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -424,15 +487,17 @@ class Commands {
             return;
         }
 
-        if (args[0].match(/#[0-9a-fA-F]{6}/) || args[0].match(/#[0-9a-fA-F]{3}/))
-            this.ENV.COLOR = args[0];
+        if (args[0].match(/#[0-9a-fA-F]{6}/) || args[0].match(/#[0-9a-fA-F]{3}/)) this.ENV.COLOR = args[0];
         else throw new CommandError(`${args[0]} is not a valid color.  Use --help for more information.`);
     }
 
     static *theme(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.theme; return;}
-        let valResult = this._validateArgs(args, options, [0, 1], [0, 1], ['-l', '--list']);
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.theme;
+            return;
+        }
+        let valResult = this._validateArgs(args, options, [0, 1], [0, 1], ["-l", "--list"]);
         if (valResult) throw new CommandError(valResult);
 
         if (options.includes("-l") || options.includes("--list")) {
@@ -456,15 +521,18 @@ class Commands {
      * @returns {AsyncGenerator<string, void, *>}
      */
     static async *resize(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.resize; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.resize;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
         let height = parseInt(args[0]);
         if (isNaN(height)) throw new CommandError(`Invalid height: ${args[0]}`);
 
-        document.getElementById('terminal').dispatchEvent(new CustomEvent("openTo", {detail: height}));
+        document.getElementById("terminal").dispatchEvent(new CustomEvent("openTo", { detail: height }));
     }
 
     /**
@@ -473,9 +541,12 @@ class Commands {
      * @returns {AsyncGenerator<string, void, *>}
      */
     static async *history(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.history; return;}
-        let valResult = this._validateArgs(args, options, [0, 1], [0, 1], ['-c']);
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.history;
+            return;
+        }
+        let valResult = this._validateArgs(args, options, [0, 1], [0, 1], ["-c"]);
         if (valResult) throw new CommandError(valResult);
 
         if (options.includes("-c") || args.includes("clear")) {
@@ -489,8 +560,7 @@ class Commands {
         let limit = history.length;
         if (args && !isNaN(args[0]) && parseInt(args[0]) > 0) limit = parseInt(args[0]);
 
-        for (let i = history.length - 1; i >= history.length - limit; i--)
-            yield history[i] +"\n";
+        for (let i = history.length - 1; i >= history.length - limit; i--) yield history[i] + "\n";
     }
 
     /**
@@ -498,14 +568,17 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *exit(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.exit; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.exit;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0, 1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
         if (args.length > 0 && isNaN(parseInt(args[0]))) throw new CommandError(`Invalid exit code: ${args[0]}`);
 
-        document.getElementById('terminal').dispatchEvent(new CustomEvent("close"));
+        document.getElementById("terminal").dispatchEvent(new CustomEvent("close"));
     }
 
     /**
@@ -514,14 +587,17 @@ class Commands {
      * @yield {string} The reload message
      */
     static async *restart(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.restart; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.restart;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
         yield "Re-provisioning system (keeping state).  Standby...";
 
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise((r) => setTimeout(r, 1000));
         window.location.reload();
     }
 
@@ -531,8 +607,11 @@ class Commands {
      * @yield {string} The reset message
      */
     static async *reset(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.reset; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.reset;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -540,7 +619,7 @@ class Commands {
 
         yield "Re-provisioning system (clearing state).  Standby...";
 
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise((r) => setTimeout(r, 1000));
         window.location.href = "/";
     }
 
@@ -550,14 +629,17 @@ class Commands {
      * @yield {string} The rickroll message
      */
     static async *ng(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.ng; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.ng;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
         yield "ng (never gonna) - give you up";
 
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise((r) => setTimeout(r, 1000));
         window.location.href = "/media/video/rick.mp4";
     }
 
@@ -567,8 +649,11 @@ class Commands {
      * @yield {string} The TF2 logo
      */
     static async *mann(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.mann; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.mann;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -581,14 +666,17 @@ class Commands {
      * @yield {string} The HAL message
      */
     static async *halsay(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.halsay; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.halsay;
+            return;
+        }
 
         let defaultMsg = "I'm sorry Dave, I'm afraid I can't do that...";
         let colorEye = false;
 
         if (Math.random() < 0.2) {
-            defaultMsg = ANSI.RED+"Soon..."+ANSI.DEFAULT;
+            defaultMsg = ANSI.RED + "Soon..." + ANSI.DEFAULT;
             colorEye = true;
         }
         yield hal(tokens.length > 0 ? tokens.join(" ") : defaultMsg, colorEye);
@@ -600,8 +688,11 @@ class Commands {
      * @yield {string} The DIR joke message
      */
     static async *dir(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.dir; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.dir;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0, 1], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -614,8 +705,11 @@ class Commands {
      * @yield {string} The MIR joke message
      */
     static async *mir(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.mir; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.mir;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -627,13 +721,18 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *launch(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.launch; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.launch;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [3], [0], []);
         if (valResult) throw new CommandError(valResult);
 
         if (isNaN(parseInt(args[0])) || isNaN(parseFloat(args[1])) || isNaN(parseFloat(args[2])))
-            throw new CommandError("Error: Invalid coordinates or warhead ID.  Please provide numerical values for the coordinates or ID.");
+            throw new CommandError(
+                "Error: Invalid coordinates or warhead ID.  Please provide numerical values for the coordinates or ID."
+            );
 
         if (Math.random() < 0.2) {
             yield theMissile;
@@ -649,8 +748,11 @@ class Commands {
      * @yield {string} The SUDO joke message
      */
     static async *sudo(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.sudo; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.sudo;
+            return;
+        }
 
         yield "sudo is just bloat (Maybe try 'doas'?)";
     }
@@ -661,8 +763,11 @@ class Commands {
      * @yield {string} The DOAS joke message
      */
     static async *doas(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.doas; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.doas;
+            return;
+        }
 
         yield "Did you mean to type 'does'?";
     }
@@ -672,8 +777,11 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *haltingproblem(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.haltingproblem; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.haltingproblem;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -686,16 +794,26 @@ class Commands {
      * @yield {string} The 8-ball response
      */
     static async *eightball(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.eightball; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.eightball;
+            return;
+        }
 
         let question = tokens.join(" ");
 
         if (question === "") throw new CommandError("You need to give me a question to answer :/");
-        if (!question.endsWith("?")) throw new CommandError("That doesn't look like a question to me...try adding a '?' at the end");
+        if (!question.endsWith("?"))
+            throw new CommandError("That doesn't look like a question to me...try adding a '?' at the end");
         let spaces = (question.match(/ /g) || []).length;
-        if (spaces < 1) throw new CommandError("You dare ask me such a trivial question?  I need something longer, something more complex...");
-        if (spaces < 2 && Math.random() < 0.3) throw new CommandError("I'm getting tired of these simple questions...try again with something longer and more interesting!");
+        if (spaces < 1)
+            throw new CommandError(
+                "You dare ask me such a trivial question?  I need something longer, something more complex..."
+            );
+        if (spaces < 2 && Math.random() < 0.3)
+            throw new CommandError(
+                "I'm getting tired of these simple questions...try again with something longer and more interesting!"
+            );
 
         if ((question.match(/meaning of life/g) || []).length > 0 || (question.match(/answer to life/g) || []).length)
             throw new CommandError("That's pretty played out...don't you think?");
@@ -709,8 +827,11 @@ class Commands {
      * @yield {string} The toucan ASCII art
      */
     static async *toucan(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.toucan; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.toucan;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -722,8 +843,11 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *pacer(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.pacer; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.pacer;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -736,12 +860,15 @@ class Commands {
      * @yield {string} The neofetch output
      */
     static async *neofetch(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.neofetch; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.neofetch;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
-        yield neofetch.replace(new RegExp(' ', 'g'), '\u00A0');
+        yield neofetch.replace(new RegExp(" ", "g"), "\u00A0");
     }
 
     /**
@@ -750,8 +877,11 @@ class Commands {
      * @yield {string} The current user
      */
     static async *whoami(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.whoami; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.whoami;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -763,8 +893,11 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *void(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.void; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.void;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -776,8 +909,11 @@ class Commands {
      * @param tokens {string[]} The tokens passed to the command
      */
     static async *admin(tokens) {
-        let {args, options} = this._parseArgs(tokens);
-        if (options.includes("--help")) {yield Help.admin; return;}
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.admin;
+            return;
+        }
         let valResult = this._validateArgs(args, options, [0], [0], []);
         if (valResult) throw new CommandError(valResult);
 
@@ -785,10 +921,10 @@ class Commands {
     }
 
     static async *sprites(tokens) {
-        for (let sprite  of [Sprite.SCRMLN, Sprite.SCRBLN]) {
+        for (let sprite of [Sprite.SCRMLN, Sprite.SCRBLN]) {
             sprite.mount();
             sprite.animationLoop();
-            await new Promise(r => setTimeout(r, 500));
+            await new Promise((r) => setTimeout(r, 500));
         }
         yield "";
     }
@@ -799,7 +935,6 @@ class Commands {
      * @yield {Promise<{result: string, env: object}>} The command output and updated environment
      */
     static async *parseCommand(rawString) {
-
         let rawTokens = tokenizeCommand(rawString);
 
         // Execute each command in the command string, delimited by semicolons
@@ -813,7 +948,7 @@ class Commands {
 
                 // Split the command string into the command and its arguments
                 let command = resolvedTokens[0];
-                if(command === "?") command = "help";
+                if (command === "?") command = "help";
 
                 let argTokens = resolvedTokens.slice(1);
                 if (!command) continue;
@@ -848,17 +983,17 @@ class Commands {
                 if (e instanceof CommandError || e instanceof FileSystemError) yield e.message;
                 else {
                     console.error(e);
-                    yield "\nUnexpected Error: "+e.message;
+                    yield "\nUnexpected Error: " + e.message;
                 }
             }
         }
     }
 }
+
 // Add aliases for commands
 Commands.cls = Commands.clear;
 Commands.man = Commands.help;
 Commands.nuke = Commands.reset;
 Commands.reboot = Commands.restart;
 
-
-export {Commands};
+export { Commands };

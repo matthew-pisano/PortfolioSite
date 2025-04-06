@@ -1,5 +1,4 @@
-import {ANSI, SysEnv} from "@/lib/fileSystem/fileSystemMeta";
-
+import { ANSI, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 
 const neofetch = `
 ${ANSI.GREEN}   lWMMMMMMMMMWl        lWMMMMMMMMMWl   ${ANSI.DEFAULT}    ${ANSI.GREEN}guest${ANSI.DEFAULT}@${ANSI.CYAN}mathesisConsole${ANSI.GREEN}
@@ -18,7 +17,6 @@ ${ANSI.GREEN}MMMMMMWl       lWMMMMMMWl       lWMMMMMM${ANSI.DEFAULT}
 ${ANSI.GREEN}  kKMMWl       lWM    MWl       lWMMKk  ${ANSI.DEFAULT}
 ${ANSI.GREEN}   lWMWl       lWM    MWl       lWMWl   ${ANSI.DEFAULT}
 ${ANSI.GREEN}   lWMWl       lWM    MWl       lWMWl`;
-
 
 const rmRootMessage = `cannot remove /sys/module/printk/parameters/time': Operation not permitted
 cannot remove '/sys/module/printk/parameters/console_suspend': Operation not permitted
@@ -107,7 +105,6 @@ removing '/usr/local/lib': Operation succeeded
 [    4.397617] kernel.tmp/x86/entry_64.S:504 Code: 0e ff ff ff 80 00 00 00 00 0f ff ff ff bf ff ff ff
 [    4.397681] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000h`;
 
-
 const bashrc = `
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # append to the history file, don't overwrite it
@@ -122,11 +119,9 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -la'`;
 
-
 const theMissile = `The missile knows where it is at all times. It knows this because it knows where it isn't. By subtracting where it is from where it isn't, or where it isn't from where it is (whichever is greater), it obtains a difference, or deviation. The guidance subsystem uses deviations to generate corrective commands to drive the missile from a position where it is to a position where it isn't, and arriving at a position where it wasn't, it now is. Consequently, the position where it is, is now the position that it wasn't, and it follows that the position that it was, is now the position that it isn't.
 In the event that the position that it is in is not the position that it wasn't, the system has acquired a variation, the variation being the difference between where the missile is, and where it wasn't. If variation is considered to be a significant factor, it too may be corrected by the GEA. However, the missile must also know where it was.
 The missile guidance computer scenario works as follows. Because a variation has modified some of the information the missile has obtained, it is not sure just where it is. However, it is sure where it isn't, within reason, and it knows where it was. It now subtracts where it should be from where it wasn't, or vice-versa, and by differentiating this from the algebraic sum of where it shouldn't be, and where it was, it is able to obtain the deviation and its variation, which is called error.`;
-
 
 const encabulator = `The following device may provide an effective solution.  I will provide a simplified explanation.
 
@@ -140,38 +135,79 @@ The main winding was of the normal lotus-o-delta type placed in panendermic semi
 
 The turbo-encabulator has now reached a high level of development, and it’s being successfully used in the operation of novertrunnions. Moreover, whenever a forescent skor motion is required, it may also be employed in conjunction with a drawn reciprocation dingle arm, to reduce sinusoidal repleneration.`;
 
-
 const eightballResponses = [
-    "It is certain", "Without a doubt", "Yes definitely", "You may rely on it",
-    "Most likely", "Outlook® not installed", "Signs point to yes", "Hmmmmm...", "Reply hazy, try again",
-    "Ask again later", "404, response not found", "Better not tell you now", "Cannot predict now",
-    "Enrich 95% Uranium 235 and try again", "Don't count on it", "My reply is no", "have you tried sudo?",
-    "My sources say no [citation needed]", "Outlook not so good", "Very doubtful", "503, oh no that's not good!",
-    "Huh?", "What?", "Can you speak up?", "Segmentation fault (core dumped)", "Only if Han shot first",
-    "Have you tried water-scrum-fall?", "Have you tried turning it off and turning it on again?",
-    "Survey says: no", "*You are likely to be eaten by a grue*", "I'm sorry, Dave, I'm afraid I can't answer that",
-    "Have you tried rewriting in rust?", "That's what you get for using PHP", "418, I'm a teapot",
-    "I'm afraid the only winning move here is not to play", "You should try rearranging the deck chairs on the Titanic",
-    "Have you tried adding blockchain?", "Have you tried using AI?", "Have you tried implementing it serverlessly?",
-    "Sounds like an NP-hard problem, obviously the solution is trivial!", "Your answer is in another castle",
-    "Your mother was a hamster and your father smelt of elderberries", "You will die of dysentery",
-    "Of course it's a good idea!", "I require a shrubbery!",
+    "It is certain",
+    "Without a doubt",
+    "Yes definitely",
+    "You may rely on it",
+    "Most likely",
+    "Outlook® not installed",
+    "Signs point to yes",
+    "Hmmmmm...",
+    "Reply hazy, try again",
+    "Ask again later",
+    "404, response not found",
+    "Better not tell you now",
+    "Cannot predict now",
+    "Enrich 95% Uranium 235 and try again",
+    "Don't count on it",
+    "My reply is no",
+    "have you tried sudo?",
+    "My sources say no [citation needed]",
+    "Outlook not so good",
+    "Very doubtful",
+    "503, oh no that's not good!",
+    "Huh?",
+    "What?",
+    "Can you speak up?",
+    "Segmentation fault (core dumped)",
+    "Only if Han shot first",
+    "Have you tried water-scrum-fall?",
+    "Have you tried turning it off and turning it on again?",
+    "Survey says: no",
+    "*You are likely to be eaten by a grue*",
+    "I'm sorry, Dave, I'm afraid I can't answer that",
+    "Have you tried rewriting in rust?",
+    "That's what you get for using PHP",
+    "418, I'm a teapot",
+    "I'm afraid the only winning move here is not to play",
+    "You should try rearranging the deck chairs on the Titanic",
+    "Have you tried adding blockchain?",
+    "Have you tried using AI?",
+    "Have you tried implementing it serverlessly?",
+    "Sounds like an NP-hard problem, obviously the solution is trivial!",
+    "Your answer is in another castle",
+    "Your mother was a hamster and your father smelt of elderberries",
+    "You will die of dysentery",
+    "Of course it's a good idea!",
+    "I require a shrubbery!",
     "Wenn ist das Nunstück git und Slotermeyer? Ja! Beiherhund das Oder die Flipperwaldt gersput!",
     "A monad is just a monoid in the category of endofunctors, what's the problem?",
-    "Always bet on black", "Always look on the bright side of life", "My name is Inigo Montoya, you killed my father, prepare to die",
-    '"My response is "); DROP TABLE *;--""', "No problem, any sufficiently advanced bug is indistinguishable from a feature.",
-    "Can I offer you a Klein bottle for rent?  Inquire within.", "If and only if the Goldbach conjecture is true",
+    "Always bet on black",
+    "Always look on the bright side of life",
+    "My name is Inigo Montoya, you killed my father, prepare to die",
+    '"My response is "); DROP TABLE *;--""',
+    "No problem, any sufficiently advanced bug is indistinguishable from a feature.",
+    "Can I offer you a Klein bottle for rent?  Inquire within.",
+    "If and only if the Goldbach conjecture is true",
     "If and only if BusyBeaver(1000) is bigger than TREE(3)",
     "If and only if all axioms of our current system of mathematics are provably consistent within said system",
     "I'm sorry, but as an AI language model, I cannot...\n.\n.\n.\n.\nJust Kidding, that would be overkill, now wouldn't it?",
-    "Grass grows, birds fly, sun shines, and brother, I predict the future", "¯\\_(ツ)_/¯",
-    "AAAAAAAHHHHNNNGGGGG!!!!!!! (╯°□°)╯︵ ┻━┻\n.\n.\n.\n.\n...sorry, I almost lost my cool there", encabulator,
-    "The answer is very simply, yet very profound: [object Object]", "I hate to be the one to break it to you, but the house always wins",
-    "Seriously?  Professionals have standards!", "Have you given any thought to the effect that this may have on the economy?",
-    "You have no chance to survive, make your time!", "All your base are belong to us", "| ||\n|| |_", "Objection!",
-    "The cake is a lie", "That's all well and good, but can it run Doom?"
+    "Grass grows, birds fly, sun shines, and brother, I predict the future",
+    "¯\\_(ツ)_/¯",
+    "AAAAAAAHHHHNNNGGGGG!!!!!!! (╯°□°)╯︵ ┻━┻\n.\n.\n.\n.\n...sorry, I almost lost my cool there",
+    encabulator,
+    "The answer is very simply, yet very profound: [object Object]",
+    "I hate to be the one to break it to you, but the house always wins",
+    "Seriously?  Professionals have standards!",
+    "Have you given any thought to the effect that this may have on the economy?",
+    "You have no chance to survive, make your time!",
+    "All your base are belong to us",
+    "| ||\n|| |_",
+    "Objection!",
+    "The cake is a lie",
+    "That's all well and good, but can it run Doom?"
 ];
-
 
 const tfLogo = `
                 #####                   
@@ -189,7 +225,6 @@ const tfLogo = `
         ,,,,,,,,,    ,,,,,,,,,,,,       
            ,,,,,    ,,,,,,,,,.          
                     .... `.replace(/ /g, "\xa0");
-
 
 const hal9000 = `
  _______________
@@ -213,13 +248,11 @@ const hal9000 = `
 |:%*%*%*%*%*%*%:|
 '==============='`.replace(/ /g, "\xa0");
 
-
 const system32 = `Nice try, however I'd just like to interject for a moment.  You have failed to consider that this system is not a Microsoft Windows machine!  Rather, this is a GNU/Linux-based system, or or as I've recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX.
 
 Many computer users run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called Linux, and many of its users are not aware that it is basically the GNU system, developed by the GNU Project.
 
 There really is a Linux, and these people are using it, but it is just a part of the system they use. Linux is the kernel: the program in the system that allocates the machine's resources to the other programs that you run. The kernel is an essential part of an operating system, but useless by itself; it can only function in the context of a complete operating system. Linux is normally used in combination with the GNU operating system: the whole system is basically GNU with Linux added, or GNU/Linux. All the so-called Linux distributions are really distributions of GNU/Linux! `;
-
 
 const letoucan = `
 ░░░░░░░░▄▄▄▀▀▀▄▄███▄░░░░░░░░░░░░░░
@@ -234,15 +267,24 @@ const letoucan = `
 ░░░░░░has░░░░░░░░▀▄▄███████████████ 
 ░░░░░arrived░░░░░░░░░░░░█▀██████░░`;
 
-
 const keyArt = `oh it's public alright:
                    .--.
                   /.-. '----------.
                   \\'-' .--"--""-"-'
   here it is!      '--'`.replace(/ /g, "\xa0");
 
-
 const pacerTest = `The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly, but gets faster each minute after you hear this signal. [beep] A single lap should be completed each time you hear this sound. [ding] Remember to run in a straight line, and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark, get ready, start.`;
 
-
-export {neofetch, rmRootMessage, bashrc, eightballResponses, tfLogo, hal9000, system32, letoucan, pacerTest, keyArt, theMissile};
+export {
+    neofetch,
+    rmRootMessage,
+    bashrc,
+    eightballResponses,
+    tfLogo,
+    hal9000,
+    system32,
+    letoucan,
+    pacerTest,
+    keyArt,
+    theMissile
+};

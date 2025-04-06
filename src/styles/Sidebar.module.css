@@ -39,7 +39,7 @@
 }
 
 .sidebarFolderHeader {
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0 5px 5px 0;
 }
 
 .sidebarFolderHeader span {
@@ -52,7 +52,7 @@
     padding-left: 1px;
     padding-right: 1px;
     width: 100%;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0 5px 5px 0;
 }
 
 .sidebarItem a {
@@ -91,18 +91,18 @@
 }
 
 .folderIcon {
-    content:url("/assets/folderIcon.svg");
+    content: url("/assets/folderIcon.svg");
 }
 
 .htmlIcon {
-    content:url("/assets/htmlIcon.svg");
+    content: url("/assets/htmlIcon.svg");
 }
 
 .sidebarItemContent {
     padding-left: 15px;
 }
 
-.explorerTitle{
+.explorerTitle {
     text-align: left;
     border-style: none;
     vertical-align: middle;
@@ -129,7 +129,7 @@
 }
 
 .editorButton {
-    content:url("/assets/editIcon.svg");
+    content: url("/assets/editIcon.svg");
     cursor: pointer;
     margin-left: 5px;
     margin-right: 10px;
@@ -145,7 +145,7 @@
 }
 
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
     .explorerTitle {
         visibility: hidden;
     }

@@ -1,6 +1,5 @@
-import tileStyles from '@/styles/pageTiles.module.css';
+import tileStyles from "@/styles/pageTiles.module.css";
 import sidebarStyles from "@/styles/Sidebar.module.css";
-
 
 class ThemeColor {
     /**
@@ -16,7 +15,6 @@ class ThemeColor {
     }
 }
 
-
 class Theme {
     /**
      * Creates a new Theme object
@@ -29,8 +27,7 @@ class Theme {
      * @param color3 {ThemeColor} The ThemeColor object for the third color
      * @param color4 {ThemeColor} The ThemeColor object for the fourth color
      */
-    constructor(textColor, textHoverColor, linkColor, accentColor,
-                color1, color2, color3, color4) {
+    constructor(textColor, textHoverColor, linkColor, accentColor, color1, color2, color3, color4) {
         this.textColor = textColor;
         this.textHoverColor = textHoverColor;
         this.linkColor = linkColor;
@@ -42,13 +39,12 @@ class Theme {
     }
 }
 
-
 /**
  * The themes available for the application
  * @type {{string: Theme}}
  */
 const themes = {
-    "default": new Theme(
+    default: new Theme(
         "#f0ffff",
         "#f0ffff",
         "#add3ee",
@@ -58,7 +54,7 @@ const themes = {
         new ThemeColor("#2a3135", "#3f505a", "#3f505a"),
         new ThemeColor("#313131", "#3b3e40", "#3b3e40")
     ),
-    "classic": new Theme(
+    classic: new Theme(
         "#f0ffff",
         "#f0ffff",
         "#add3ee",
@@ -68,7 +64,7 @@ const themes = {
         new ThemeColor("#25272b", "#343a45", "#3e4043"),
         new ThemeColor("#313131", "#414141", "#414141")
     ),
-    "monochrome": new Theme(
+    monochrome: new Theme(
         "#ffffff",
         "#000000",
         "#ffffff",
@@ -78,7 +74,7 @@ const themes = {
         new ThemeColor("#000000", "#000000", "#ffffff"),
         new ThemeColor("#000000", "#000000", "#ffffff")
     ),
-    "light": new Theme(
+    light: new Theme(
         "#171717",
         "#171717",
         "#546acc",
@@ -87,9 +83,8 @@ const themes = {
         new ThemeColor("#e2eeff", "#95c7ff", "#cfe8ff"),
         new ThemeColor("#5d85d8", "#719ffb", "#bacef6"),
         new ThemeColor("#e5eeff", "#b4ceff", "#d4dbea")
-    ),
+    )
 };
-
 
 /**
  * Sets the theme of all dynamic icons
@@ -106,7 +101,6 @@ function setIconTheme(isLightTheme) {
     }
 }
 
-
 /**
  * Sets the theme to the given theme name
  * @param themeName {string} The name of the theme to set
@@ -115,32 +109,33 @@ function setTheme(themeName) {
     if (!themeName) return;
 
     let theme = themes[themeName];
-    let root = document.querySelector(':root');
-    root.style.setProperty('--theme-text', theme.textColor);
-    root.style.setProperty('--theme-text-hover', theme.textHoverColor);
-    root.style.setProperty('--theme-link', theme.linkColor);
-    root.style.setProperty('--theme-accent', theme.accentColor);
+    let root = document.querySelector(":root");
+    root.style.setProperty("--theme-text", theme.textColor);
+    root.style.setProperty("--theme-text-hover", theme.textHoverColor);
+    root.style.setProperty("--theme-link", theme.linkColor);
+    root.style.setProperty("--theme-accent", theme.accentColor);
 
-    root.style.setProperty('--theme-color-1', theme.color1.color);
-    root.style.setProperty('--theme-color-1-selected', theme.color1.selected);
-    root.style.setProperty('--theme-color-1-hover', theme.color1.hover);
-    root.style.setProperty('--theme-color-2', theme.color2.color);
-    root.style.setProperty('--theme-color-2-selected', theme.color2.selected);
-    root.style.setProperty('--theme-color-2-hover', theme.color2.hover);
-    root.style.setProperty('--theme-color-3', theme.color3.color);
-    root.style.setProperty('--theme-color-3-selected', theme.color3.selected);
-    root.style.setProperty('--theme-color-3-hover', theme.color3.hover);
-    root.style.setProperty('--theme-color-4', theme.color4.color);
-    root.style.setProperty('--theme-color-4-selected', theme.color4.selected);
-    root.style.setProperty('--theme-color-4-hover', theme.color4.hover);
+    root.style.setProperty("--theme-color-1", theme.color1.color);
+    root.style.setProperty("--theme-color-1-selected", theme.color1.selected);
+    root.style.setProperty("--theme-color-1-hover", theme.color1.hover);
+    root.style.setProperty("--theme-color-2", theme.color2.color);
+    root.style.setProperty("--theme-color-2-selected", theme.color2.selected);
+    root.style.setProperty("--theme-color-2-hover", theme.color2.hover);
+    root.style.setProperty("--theme-color-3", theme.color3.color);
+    root.style.setProperty("--theme-color-3-selected", theme.color3.selected);
+    root.style.setProperty("--theme-color-3-hover", theme.color3.hover);
+    root.style.setProperty("--theme-color-4", theme.color4.color);
+    root.style.setProperty("--theme-color-4-selected", theme.color4.selected);
+    root.style.setProperty("--theme-color-4-hover", theme.color4.hover);
 
     // Set the sidebar collapse icon based on the theme
-    document.getElementById("collapseSidebar").style.backgroundImage =
-        ["monochrome", "light"].includes(themeName) ? "url('/assets/explorerIconDark.svg')" : "";
+    document.getElementById("collapseSidebar").style.backgroundImage = ["monochrome", "light"].includes(themeName)
+        ? "url('/assets/explorerIconDark.svg')"
+        : "";
     let isLightTheme = ["light"].includes(themeName);
     setIconTheme(isLightTheme);
 
     localStorage.setItem("theme", themeName);
 }
 
-export {themes, setTheme};
+export { themes, setTheme };

@@ -1,27 +1,19 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
+    env: {
+        browser: true,
+        es2021: true,
+        node: true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:react/recommended"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
+    extends: ["eslint:recommended", "plugin:import/errors", "plugin:import/warnings", "plugin:react/recommended"],
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true
         },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+        ecmaVersion: "latest",
+        sourceType: "module"
     },
-    "plugins": [
-        "react",
-        "import"
-    ],
-    "rules": {
+    plugins: ["react", "import"],
+    rules: {
         "semi": ["warn", "always"],
         "no-unused-vars": "warn",
         "no-control-regex": "off",
@@ -33,18 +25,18 @@ module.exports = {
                 "groups": ["builtin", "external", "internal"],
                 "pathGroups": [
                     {
-                        "pattern": "react",
-                        "group": "external",
-                        "position": "before"
+                        pattern: "react",
+                        group: "external",
+                        position: "before"
                     }
                 ],
                 "pathGroupsExcludedImportTypes": ["react"],
                 "newlines-between": "always",
                 "alphabetize": {
-                    "order": "asc",
-                    "caseInsensitive": true
+                    order: "asc",
+                    caseInsensitive: true
                 }
             }
-        ],
-    },
+        ]
+    }
 };

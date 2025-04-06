@@ -1,8 +1,6 @@
-import React, {useEffect} from 'react';
-
+import React, { useEffect } from "react";
 
 export default function Void() {
-
     useEffect(() => {
         document.body.style.height = "100%";
         document.getElementById("__next").style.height = "100%";
@@ -13,11 +11,12 @@ export default function Void() {
     /* View in fullscreen */
     function openFullscreen() {
         console.log("Entering void");
-        if (document.documentElement.requestFullscreen)
-            document.documentElement.requestFullscreen();
-        else if (document.documentElement.webkitRequestFullscreen) /* Safari */
+        if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+        else if (document.documentElement.webkitRequestFullscreen)
+            /* Safari */
             document.documentElement.webkitRequestFullscreen();
-        else if (document.documentElement.msRequestFullscreen) /* IE11 */
+        else if (document.documentElement.msRequestFullscreen)
+            /* IE11 */
             document.documentElement.msRequestFullscreen();
         document.getElementById("enterVoid").style.display = "none";
         document.getElementById("exitVoid").style.display = "block";
@@ -25,23 +24,22 @@ export default function Void() {
 
     /* Close fullscreen */
     function closeFullscreen() {
-        if (document.exitFullscreen)
-            document.exitFullscreen();
-        else if (document.webkitExitFullscreen) /* Safari */
-            document.webkitExitFullscreen();
-        else if (document.msExitFullscreen) /* IE11 */
-            document.msExitFullscreen();
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) /* Safari */ document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) /* IE11 */ document.msExitFullscreen();
         document.getElementById("exitVoid").style.display = "none";
         document.getElementById("enterVoid").style.display = "block";
     }
 
-    return (<div style={{height: "100%"}}>
-        <div className="void"></div>
-        <div id="exitVoid" className="voidControl" style={{display:"none"}} onClick={closeFullscreen}>
-            [EXIT]
+    return (
+        <div style={{ height: "100%" }}>
+            <div className="void"></div>
+            <div id="exitVoid" className="voidControl" style={{ display: "none" }} onClick={closeFullscreen}>
+                [EXIT]
+            </div>
+            <div id="enterVoid" className="voidControl" onClick={openFullscreen}>
+                [ENTER]
+            </div>
         </div>
-        <div id="enterVoid" className="voidControl" onClick={openFullscreen}>
-            [ENTER]
-        </div>
-    </div>);
+    );
 }

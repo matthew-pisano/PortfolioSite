@@ -1,11 +1,10 @@
-import {SysEnv} from "@/lib/fileSystem/fileSystemMeta";
-import {eightBall} from "@/lib/terminal/easterEggs";
+import { SysEnv } from "@/lib/fileSystem/fileSystemMeta";
+import { eightBall } from "@/lib/terminal/easterEggs";
 
 /**
  * Class containing all the help information for the shell commands and a general help menu
  */
 class Help {
-
     static help = "help | man [options] [command] - print a help menu";
     static man = Help.help;
     static echo = "echo [*msg] - echoes each of the arguments on a new line";
@@ -20,10 +19,14 @@ class Help {
     static mv = "mv <oldPath> <newPath> - moves an existing file or directory to the new path";
     static rm = "rm [-r|-f] <path> - removes the file or directory with the given path";
     static cat = "cat <filePath> - prints our the contents of the given file";
-    static open = "open <filePath> - opens the file with the given path.  Only files with the execute permission can be opened";
-    static edit = "edit <filePath> - opens the file with the given path for editing.  Only files with the write permission can be edited";
-    static color = "color [color] - sets the terminal text color to the given hex color in the form #rrggbb or #rgb.  For example: #ff0000 or #f00";
-    static theme = "theme [theme] - sets the site theme to the given theme name.  Use -l or --list to list available themes";
+    static open =
+        "open <filePath> - opens the file with the given path.  Only files with the execute permission can be opened";
+    static edit =
+        "edit <filePath> - opens the file with the given path for editing.  Only files with the write permission can be edited";
+    static color =
+        "color [color] - sets the terminal text color to the given hex color in the form #rrggbb or #rgb.  For example: #ff0000 or #f00";
+    static theme =
+        "theme [theme] - sets the site theme to the given theme name.  Use -l or --list to list available themes";
     static resize = "resize <size> - resizes the terminal to the given height in pixels";
     static history = "history [-c] [clear|<num_commands>] - prints the command history or clears it";
     static exit = "exit [code] - clears the terminal and closes it";
@@ -105,7 +108,6 @@ MAthesis SHell (mash) extended capabilities.
 Sensitive documents are exposed to these commands.  Use with caution.
 
 ${this._aggregateSecretHelp()}`;
-
 }
 
-export {Help};
+export { Help };
