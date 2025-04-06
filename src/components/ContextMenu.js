@@ -82,10 +82,15 @@ function destroyContextMenu() {
     contentMenuRoot.unmount();
     contentMenuRoot = undefined;
 
-    let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
-    let selectedLink = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`)[0];
+    let pagePath = window.location.pathname;
+    if (window.location.pathname === "/") pagePath = "/home";
+    else if (window.location.pathname === "/display")
+        pagePath = new URLSearchParams(window.location.search).get("file");
+
+    let selectedLinks = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`);
+
     let fileElement = document.getElementById(fileName + "-File");
-    if (selectedLink.id !== fileName + "-File" && fileElement)
+    if (selectedLinks[0].id !== fileName + "-File" && fileElement)
         fileElement.classList.remove(sidebarStyles.selectedSidebarLink);
 }
 
