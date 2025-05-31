@@ -30,6 +30,17 @@ class GitLink extends TileLink {
     }
 }
 
+class DownloadLink extends TileLink {
+    /**
+     * A class for creating a link to a download page
+     * @param link {string} The link to the download page
+     * @param title {string} The title of the download page
+     */
+    constructor(link, title) {
+        super(link, title);
+    }
+}
+
 /**
  * A class for creating a tile to display on a page
  */
@@ -117,7 +128,14 @@ function buildTags(tile, dark = false) {
     return (
         <div className="w3-row">
             {(tile.links || []).map((tileLink, i) => {
-                tagClasses += " " + (tileLink instanceof GitLink ? tagStyles.gitLink : tagStyles.extraLink);
+                tagClasses +=
+                    " " +
+                    (tileLink instanceof GitLink
+                        ? tagStyles.gitLink
+                        : tileLink instanceof DownloadLink
+                          ? tagStyles.downloadLink
+                          : tagStyles.extraLink);
+
                 return (
                     <div className={`${tagClasses}`} key={"tileLink" + tileLink.title}>
                         <img className="w3-col" alt="tileLink" />
@@ -217,4 +235,4 @@ function buildPage(pageInfo, tiles) {
     );
 }
 
-export { buildPage, PageInfo, Tile, GalleryTile, SectionTile, TileLink, GitLink, TRANSLUCENT };
+export { buildPage, PageInfo, Tile, GalleryTile, SectionTile, TileLink, GitLink, DownloadLink, TRANSLUCENT };

@@ -12,7 +12,7 @@
     margin-right: 5px;
 }
 
-.gitLink, .extraLink {
+.gitLink, .extraLink, .downloadLink {
     width: 200px;
     padding: 2px 5px;
     margin: 3px 5px;
@@ -20,13 +20,13 @@
     border-radius: 10px;
 }
 
-.gitLink div a, .extraLink div a {
+.gitLink div a, .extraLink div a, .downloadLink div a {
     width: 100%;
     display: block;
     text-align: center;
 }
 
-.gitLink img, .extraLink img {
+.gitLink img, .extraLink img, .downloadLink img {
     width: 25px;
     margin-right: 5px;
 }
@@ -37,6 +37,10 @@
 
 .extraLink img {
     content: url("/assets/paper.png");
+}
+
+.downloadLink img {
+    content: url("/assets/download.png");
 }
 
 .darkTag {
@@ -203,11 +207,11 @@
 
 
 @media (width <= 600px) {
-    .gitLink img, .extraLink img {
+    .gitLink img, .extraLink img, .downloadLink img {
         width: 30px;
     }
 
-    .gitLink div a, .extraLink div a {
+    .gitLink div a, .extraLink div a, .downloadLink div a {
         font-size: 1.3em;
     }
 }
