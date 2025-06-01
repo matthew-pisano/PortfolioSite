@@ -224,6 +224,76 @@ export default function ReadingList() {
             "determined"
         ),
         new BookTile(
+            <>Behave: The Biology of Humans at Our Best and Worst</>,
+            "Robert M. Sapolsky",
+            (
+                <>
+                    <u>Behave: The Biology of Humans at Our Best and Worst</u> serves as an excellent exploration into
+                    the nature of human behavior, its causes, its consequences, and how we can use that knowledge to
+                    inform our own decisions. The central question of the book is this: a behavior has occurred, be it a
+                    righteous act of selfless heroism or an exercise in revolting depravity, why? Sapolsky's approach to
+                    this question is one of analytic thoroughness.
+                    <p>
+                        His answer is delivered piecemeal as he examines what events, values, stimuli, etc. could have
+                        influenced that behavior. What had occurred one second before that behavior? Which photons hit
+                        the persons retina, how much dopamine was present in the synapses of the person's brain? What
+                        about the minutes before? Was someone else recently rude to them, how much testosterone was
+                        present in their bloodstream? Hours or days before? Did they just get fired from their job or
+                        win an award, has a toothache recently developed? How was their adolescence? Did they grow up
+                        with the world as their oyster or worried about whether they were going to have dinner at night?
+                        Before birth, which hormones, and in what concentration were they exposed to in the womb? Were
+                        their parents raised in an individualist or collectivist culture? Every one of these questions
+                        has a significant impact on how a person behaves and how they process the behavior of others.
+                    </p>
+                    <p>
+                        Sapolsky continues, examining how behaviors evolve, how we treat in-group <i>Us'</i> and
+                        out-group <i>Thems</i>, how hierarchies form and how we respond to our statuses within them, and
+                        introspections into morality, empathy, and metaphor. Similarly to <u>Determined</u>, he also
+                        discusses the implications of these ideas on the criminal justice system. How does punishment
+                        work if our behaviors are heavily, if not fully{" "}
+                        <a href="https://matthewpisano.com/readingList#determined">determined</a> by factors outside of
+                        our control?
+                    </p>
+                </>
+            ),
+            ``,
+            (
+                <>
+                    I read <u>Behave</u> after I read <u>Determined</u> (unintentionally, but I'm glad that I did). It
+                    is very clear how the ideas Sapolsky presents in the former influenced the creation of the latter.
+                    In his familiar style, the author goes into a significant amount of detail to support each facet of
+                    his ideas, citing behavioral studies, observations of primates and other mammals, and his own
+                    personal experience. For me, his ideas on behavior, rewards, and punishment were relatively easy to
+                    digest after being primed by <u>Determined</u>, but they are presented in such a cohesive manner
+                    that I would certainly be of the same opinion had I read them in the opposite order. Aside from his
+                    core argument, <u>Behave</u> also serves as an un-intimidating and informative introduction to
+                    cognitive science, behavioral analysis, neuroscience, ethology, and many other fields.
+                    <p>
+                        There were several sections of the book that I particularly enjoyed. Throughout the book, he
+                        goes into detail on what many of the regions of the brain specialize in. What I found most
+                        enjoyable was the notion that evolution is, more often than not, a tinkerer, rather than an
+                        inventor; namely, many of the more complex fears and desires that we experience are just more
+                        primal sensations with a fresh coat of paint. Our insular cortex reacts similarly to an
+                        unappetizing piece of food and to a person that we dislike (in fact, our experience of one can
+                        affect how we later feel about the other!). Similarly, our hypothalamus activates when being
+                        chased by a lion or worrying about an upcoming deadline (even though lion chases are more deadly
+                        than deadlines, at least you only have to worry about them for a few seconds).
+                    </p>
+                    <p>
+                        I also found the information on different neurotransmitters and hormones interesting. The
+                        primary novel notion that I learned was that these chemicals amplify or suppress existing
+                        behavioral patterns, <i>rather than cause them outright</i>. Depending on who you are and how
+                        you stand within social hierarchies, testosterone can either promote or <i>suppress</i>{" "}
+                        aggressive tendencies. On top of this, these influences are often heavily context-dependent.
+                        Oxytocin can make people more nurturing and caring to in-group members, but more weary of
+                        out-group members.
+                    </p>
+                </>
+            ),
+            "https://m.media-amazon.com/images/I/71rP6KBGM8L._SL1500_.jpg",
+            "behave"
+        ),
+        new BookTile(
             <>The Emotion Machine</>,
             "Marvin Minsky",
             (
@@ -603,7 +673,7 @@ export default function ReadingList() {
                         well-crafter arguments as to why it does not fit with our current theories. The book also argues
                         quite convincingly in favor of <i>loop quantum gravity</i>, a theory which Rovelli himself is a
                         pioneer of. I have also noticed that the notions presented within this book seem (in a very
-                        rough sense) compatible with Stephen Wolfram's conjectures on
+                        rough sense) compatible with Stephen Wolfram's conjectures on{" "}
                         <Link
                             href="https://writings.stephenwolfram.com/2020/04/finally-we-may-have-a-path-to-the-fundamental-theory-of-physics-and-its-beautiful/"
                             target="_blank">
