@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -57,7 +58,7 @@ export default function Videntium() {
         genPageTitle(__filename),
         "Videntium",
         "Online map viewer for Imperium written in PHP",
-        { backgroundColor: "#6f63a6" },
+        { backgroundColor: PageColor.SEGFAULT_MOSS },
         ["academic", "php", "js", "html"],
         [new GitLink("https://github.com/matthew-pisano/Videntium", "Videntium")]
     );

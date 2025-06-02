@@ -1,6 +1,19 @@
 import tileStyles from "@/styles/pageTiles.module.css";
 import sidebarStyles from "@/styles/Sidebar.module.css";
 
+/**
+ * Map of possible page background colors
+ */
+const PageColor = {
+    LONDON_GREY: "#778291",
+    SINGULARITY_BLUE: "#345b8f",
+    SUDO_TEAL: "#4e8f8a",
+    URANIUM_GREEN: "#3f9366",
+    SEGFAULT_MOSS: "#629c53",
+    ALL_YOUR_BASE_PURPLE: "#62588e",
+    FOUNDATION_RED: "#872929"
+};
+
 class ThemeColor {
     /**
      * Creates a new ThemeColor object
@@ -138,4 +151,4 @@ function setTheme(themeName) {
     localStorage.setItem("theme", themeName);
 }
 
-export { themes, setTheme };
+export { themes, setTheme, PageColor };

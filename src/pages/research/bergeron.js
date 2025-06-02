@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
@@ -188,7 +189,7 @@ export default function Bergeron() {
         genPageTitle(__filename),
         "Bergeron",
         "A conscience-based alignment framework",
-        { backgroundColor: "#309c63" },
+        { backgroundColor: PageColor.URANIUM_GREEN },
         ["research", "academic", "ai", "alignment", "python"],
         [
             new GitLink("https://github.com/matthew-pisano/Bergeron", "Bergeron"),

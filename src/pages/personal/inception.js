@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -33,7 +34,7 @@ export default function Inception() {
         genPageTitle(__filename),
         "Inception Collage",
         "Assembles one image mosaic from many, smaller images",
-        { backgroundColor: "#919ba8" },
+        { backgroundColor: PageColor.SUDO_TEAL },
         ["personal", "java"],
         [new GitLink("https://github.com/matthew-pisano/InceptionCollage", "Inception")]
     );

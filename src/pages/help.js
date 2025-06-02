@@ -2,6 +2,7 @@ import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, PageInfo, SectionTile, Tile } from "@/lib/pageBuilder";
+import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Help() {
@@ -113,7 +114,7 @@ export default function Help() {
         genPageTitle(__filename),
         "Help Menu",
         "In case you'd like some assistance",
-        { backgroundColor: "#778291" },
+        { backgroundColor: PageColor.SINGULARITY_BLUE },
         ["help"]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;

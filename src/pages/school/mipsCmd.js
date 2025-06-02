@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
@@ -52,7 +53,7 @@ export default function MipsCmd() {
         genPageTitle(__filename),
         "MIPS Terminal",
         "A simple command processor written in the MIPS assembly language",
-        { backgroundColor: "#b3645d" },
+        { backgroundColor: PageColor.SEGFAULT_MOSS },
         ["academic", "assembly"]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;

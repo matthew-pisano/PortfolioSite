@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -92,7 +93,7 @@ export default function Simplex() {
         genPageTitle(__filename),
         "Simplex",
         "A math-oriented interpreted scripting language built in Java",
-        { backgroundColor: "#8461a5" },
+        { backgroundColor: PageColor.SUDO_TEAL },
         ["personal", "java", "android"],
         [new GitLink("https://github.com/matthew-pisano/SimplexIDE", "Simplex")]
     );

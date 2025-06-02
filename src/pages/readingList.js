@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
@@ -755,7 +756,7 @@ export default function ReadingList() {
         genPageTitle(__filename),
         "Reading List",
         "A series of books that I have read and recommend",
-        { backgroundColor: "#369f88" }
+        { backgroundColor: PageColor.SINGULARITY_BLUE }
     );
 
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;

@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -228,7 +229,7 @@ export default function Home() {
         "home",
         "Matthew Pisano",
         "Artificial Intelligence Alignment Researcher and Software Engineer",
-        { backgroundColor: "#345b8f" },
+        { backgroundColor: PageColor.SINGULARITY_BLUE },
         [],
         [
             new GitLink("https://github.com/matthew-pisano/", "GitHub"),

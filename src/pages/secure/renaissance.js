@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React, { useEffect } from "react";
 
 import Wrapper from "@/components/Wrapper";
@@ -263,7 +264,7 @@ export default function Renaissance() {
     return (
         <Wrapper pageName={pageInfo.pageName}>
             <div className={`${styles.titleCard}`}>
-                <h1 style={{ margin: "auto", width: "auto", textAlign: "center", color: "#37a85b" }}>
+                <h1 style={{ margin: "auto", width: "auto", textAlign: "center", color: PageColor.URANIUM_GREEN }}>
                     <b>{pageInfo.title}</b>
                 </h1>
                 <br />

@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React, { useEffect } from "react";
 
 import parse from "html-react-parser";
@@ -159,7 +160,7 @@ export default function Admin() {
                     spellCheck="false"
                     contentEditable={true}
                     onInput={onInput}
-                    style={{ outline: "none", whiteSpace: "nowrap", color: "#1e1e1e" }}></span>
+                    style={{ outline: "none", whiteSpace: "nowrap", color: PageColor.LONDON_GREY }}></span>
             </div>
         </div>
     );

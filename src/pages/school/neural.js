@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Latex from "react-latex-next";
@@ -175,7 +176,7 @@ export default function Neural() {
         genPageTitle(__filename),
         "Neural",
         "A research project for comparing training methods of neural networks",
-        { backgroundColor: "#4e95b3" },
+        { backgroundColor: PageColor.SEGFAULT_MOSS },
         ["research", "academic", "ai", "python"],
         [
             new GitLink("https://github.com/matthew-pisano/NuralPy", "Neural"),

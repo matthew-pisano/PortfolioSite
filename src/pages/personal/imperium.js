@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -64,7 +65,7 @@ export default function Imperium() {
         genPageTitle(__filename),
         "Imperium",
         "A historical grand strategy game for android devices",
-        { backgroundColor: "#c4c889" },
+        { backgroundColor: PageColor.SUDO_TEAL },
         ["personal", "java", "android"],
         [new GitLink("https://github.com/matthew-pisano/Imperium", "Imperium")]
     );

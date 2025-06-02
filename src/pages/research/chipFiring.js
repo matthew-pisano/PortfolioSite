@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Latex from "react-latex-next";
@@ -196,7 +197,7 @@ export default function ChipFiring() {
         genPageTitle(__filename),
         "Chip Firing",
         "A research project to examine patterns in chip firing games",
-        { backgroundColor: "#855160" },
+        { backgroundColor: PageColor.URANIUM_GREEN },
         ["research", "academic", "python"],
         [
             new GitLink("https://github.com/matthew-pisano/ChipFiring", "Chip Firing"),

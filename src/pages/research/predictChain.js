@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
@@ -122,7 +123,7 @@ export default function PredictChain() {
         genPageTitle(__filename),
         "PredictChain",
         "Empowering collaboration and data accessibility for AI in a decentralized blockchain-based marketplace",
-        { backgroundColor: "#3b5783" },
+        { backgroundColor: PageColor.URANIUM_GREEN },
         ["research", "academic", "ai", "python", "hack"],
         [
             new GitLink("https://github.com/predict-chain/predict-chain", "PredictChain"),

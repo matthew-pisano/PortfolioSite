@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Wrapper from "@/components/Wrapper";
@@ -172,7 +173,7 @@ export default function SCP() {
         "scp",
         "SCP-672██",
         "",
-        { backgroundColor: "#872929" },
+        { backgroundColor: PageColor.FOUNDATION_RED },
         ["keter", "research", "ai"],
         [new TileLink("https://scp-wiki.wikidot.com/scp-redacted", "██████ Entry")]
     );

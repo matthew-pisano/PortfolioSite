@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -76,7 +77,7 @@ export default function Masm() {
         genPageTitle(__filename),
         "Masm",
         "A MIPS assembler and interpreter",
-        { backgroundColor: "#6ab3b3" },
+        { backgroundColor: PageColor.SUDO_TEAL },
         ["personal", "cpp", "assembly", "python"],
         [
             new GitLink("https://github.com/matthew-pisano/masm", "Masm"),

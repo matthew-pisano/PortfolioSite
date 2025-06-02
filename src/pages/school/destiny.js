@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -117,7 +118,7 @@ export default function Destiny() {
         genPageTitle(__filename),
         "Manifest Destiny",
         "A cellular automata population growth simulator",
-        { backgroundColor: "#5cafb6" },
+        { backgroundColor: PageColor.SEGFAULT_MOSS },
         ["academic", "clang", "cuda", "collab"],
         [
             new GitLink("https://github.com/matthew-pisano/ManifestDestiny", "ManifestDestiny"),

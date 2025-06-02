@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
@@ -80,7 +81,7 @@ export default function AnonHires() {
         genPageTitle(__filename),
         "Anon Hires",
         "A Web-based hiring platform with anonymity",
-        { backgroundColor: "#4c8e4b" },
+        { backgroundColor: PageColor.ALL_YOUR_BASE_PURPLE },
         ["hack", "collab", "js", "python", "html"],
         [new GitLink("https://github.com/OpenHubHackathonGreen/Anonymous-Hires", "Anon Hires")]
     );

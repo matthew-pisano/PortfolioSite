@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
@@ -264,7 +265,7 @@ export default function About() {
         genPageTitle(__filename),
         "About",
         "Extra information on me as a researcher, developer, and person",
-        { backgroundColor: "#339f56" },
+        { backgroundColor: PageColor.LONDON_GREY },
         [],
         [
             new GitLink("https://github.com/matthew-pisano/", "GitHub"),

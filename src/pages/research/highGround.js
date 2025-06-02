@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
@@ -153,7 +154,7 @@ export default function HighGround() {
         genPageTitle(__filename),
         "Moral High Ground",
         "A conversational benchmark for LLM moral alignment",
-        { backgroundColor: "#429797" },
+        { backgroundColor: PageColor.URANIUM_GREEN },
         ["research", "academic", "ai", "python"],
         []
     );

@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
@@ -56,7 +57,7 @@ export default function UnivModels() {
         genPageTitle(__filename),
         "Universal Models",
         "An adapter between Huggingface transformers and several different APIs",
-        { backgroundColor: "#47af78" },
+        { backgroundColor: PageColor.SUDO_TEAL },
         ["personal", "ai", "python"],
         [
             new GitLink("https://github.com/matthew-pisano/UniversalModels", "UniversalModels"),

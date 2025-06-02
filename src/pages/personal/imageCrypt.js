@@ -1,3 +1,4 @@
+import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -130,7 +131,7 @@ export default function ImageCrypt() {
         genPageTitle(__filename),
         "Image-Crypt",
         "An image-based document encoder",
-        { backgroundColor: "#62a8a2" },
+        { backgroundColor: PageColor.SUDO_TEAL },
         ["personal", "cpp"],
         [new GitLink("https://github.com/matthew-pisano/ImageCrypt", "ImageCrypt")]
     );
