@@ -75,6 +75,20 @@ function buildFile(file, path) {
         e.preventDefault();
     };
 
+    let pageLink;
+    if (urlPath.startsWith("/display"))
+        pageLink = (
+            <a id={fileName + "-FileLink"} href={urlPath}>
+                {file.name}
+            </a>
+        );
+    else
+        pageLink = (
+            <Link id={fileName + "-FileLink"} href={urlPath}>
+                {file.name}
+            </Link>
+        );
+
     // eslint-disable-next-line react/no-unknown-property
     return (
         <div
@@ -84,9 +98,7 @@ function buildFile(file, path) {
             onContextMenu={onContextMenu}
             className={`sidebarItem sidebarLink w3-row ${styles.sidebarItem} ${styles.sidebarLink}`}>
             <img className={`${styles.htmlIcon}`} alt="" />
-            <Link id={fileName + "-FileLink"} href={urlPath}>
-                {file.name}
-            </Link>
+            {pageLink}
             {editIcon}
         </div>
     );
