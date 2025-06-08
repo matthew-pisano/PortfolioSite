@@ -15,9 +15,15 @@
     border-width: 5px;
     background-color: var(--theme-color-4);
     border-radius: 10px;
-    margin: 50px 20px 20px 3%;
+    margin: 50px 3% 20px;
     padding: 10px;
     transition: all 700ms;
+}
+
+.hiddenTile {
+    margin-left: 90%;
+    margin-right: -84%;
+    transition: none;
 }
 
 .displayTileTitle > * {
@@ -121,6 +127,12 @@
     .displayTile {
          margin: 50px 15% 20px;
     }
+
+    /* Must be last to override displayTile styles */
+    .hiddenTile {
+        margin-left: 90%;
+        margin-right: -60%;
+    }
 }
 
 @media (width <= 1300px) {
@@ -158,11 +170,4 @@
         margin-right: 0;
         margin-left: 3%;
     }
-}
-
-/* Must be last to override displayTile styles */
-.hiddenTile {
-    margin-left: 90%;
-    margin-right: -87%;
-    transition: none;
 }
