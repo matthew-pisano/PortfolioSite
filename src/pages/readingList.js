@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { PageInfo, SectionTile, Tile } from "@/lib/pageBuilder";
+import { GitLink, PageInfo, PageLink, SectionTile, Tile } from "@/lib/pageBuilder";
 import { genPageTitle } from "@/lib/utils";
 import styles from "@/styles/pageTiles.module.css";
 
@@ -756,7 +756,14 @@ export default function ReadingList() {
         genPageTitle(__filename),
         "Reading List",
         "A series of books that I have read and recommend",
-        { backgroundColor: PageColor.SINGULARITY_BLUE }
+        { backgroundColor: PageColor.SINGULARITY_BLUE },
+        [],
+        [
+            new PageLink("/readingList#ai-cog-sci", "AI & Cognitive Science"),
+            new PageLink("/readingList#hifi-sifi", "Historical and Science Fiction"),
+            new PageLink("/readingList#physics", "Physics"),
+            new PageLink("/readingList#futurism", "Futurism")
+        ]
     );
 
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;

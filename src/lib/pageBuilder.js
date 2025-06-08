@@ -41,6 +41,17 @@ class DownloadLink extends TileLink {
     }
 }
 
+class PageLink extends TileLink {
+    /**
+     * A class for creating an in-place page link to display on a page
+     * @param link {string} The link to the page
+     * @param title {string} The title of the link
+     */
+    constructor(link, title) {
+        super(link, title);
+    }
+}
+
 /**
  * A class for creating a tile to display on a page
  */
@@ -134,13 +145,16 @@ function buildTags(tile, dark = false) {
                         ? tagStyles.gitLink
                         : tileLink instanceof DownloadLink
                           ? tagStyles.downloadLink
-                          : tagStyles.extraLink);
+                          : tileLink instanceof PageLink
+                            ? tagStyles.pageLink
+                            : tagStyles.extraLink);
 
+                let target = tileLink instanceof PageLink ? "_self" : "_blank";
                 return (
                     <div className={`${tagClasses}`} key={"tileLink" + tileLink.title}>
                         <img className="w3-col" alt="tileLink" />
                         <div className="w3-rest">
-                            <Link href={tileLink.link} target="_blank" rel="noreferrer">
+                            <Link href={tileLink.link} target={target} rel="noreferrer">
                                 {tileLink.title}
                             </Link>
                         </div>
@@ -235,4 +249,4 @@ function buildPage(pageInfo, tiles) {
     );
 }
 
-export { buildPage, PageInfo, Tile, GalleryTile, SectionTile, TileLink, GitLink, DownloadLink, TRANSLUCENT };
+export { buildPage, PageInfo, Tile, GalleryTile, SectionTile, TileLink, GitLink, DownloadLink, PageLink, TRANSLUCENT };
