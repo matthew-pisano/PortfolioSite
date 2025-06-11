@@ -81,7 +81,7 @@ export default function Masm() {
         ["personal", "cpp", "assembly", "python"],
         [
             new GitLink("https://github.com/matthew-pisano/masm", "Masm"),
-            new DownloadLink("https://github.com/matthew-pisano/masm/releases/tag/1.0.0", "Download Masm")
+            new DownloadLink("https://github.com/matthew-pisano/masm/releases/latest", "Download Masm")
         ]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
