@@ -217,6 +217,7 @@ function buildSidebar() {
     let homeFile = spliceFromSubTree(subTreeCopy, "home.html");
     let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
     let readingListFile = spliceFromSubTree(subTreeCopy, "readingList.html");
+    let lecturesFile = spliceFromSubTree(subTreeCopy, "lectures.html");
     let aboutFolder = spliceFromSubTree(subTreeCopy, "about");
     let researchFolder = spliceFromSubTree(subTreeCopy, "research");
     let hackFolder = spliceFromSubTree(subTreeCopy, "hackathons");
@@ -225,6 +226,7 @@ function buildSidebar() {
         homeFile,
         helpFile,
         readingListFile,
+        lecturesFile,
         aboutFolder,
         researchFolder,
         ...subTreeCopy,
