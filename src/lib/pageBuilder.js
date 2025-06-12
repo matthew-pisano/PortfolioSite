@@ -135,9 +135,9 @@ class PageInfo {
  * @return {JSX.Element} The tags JSX DIV element
  */
 function buildTags(tile, dark = false) {
-    let tagClasses = `w3-mobile w3-row w3-col ${dark ? tagStyles.darkTag : ""}`;
+    let tagClasses = `w3-mobile w3-col ${dark ? tagStyles.darkTag : ""}`;
     return (
-        <div className="w3-row">
+        <div className={`w3-row ${tagStyles.tagHolder}`}>
             {(tile.links || []).map((tileLink, i) => {
                 tagClasses +=
                     " " +

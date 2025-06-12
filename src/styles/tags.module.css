@@ -1,4 +1,10 @@
 
+.tagHolder {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
 .tag {
     width: 160px !important;
     padding: 2px 5px;
