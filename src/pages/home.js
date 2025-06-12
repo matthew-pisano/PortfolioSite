@@ -1,8 +1,8 @@
-import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, PageInfo, SectionTile, Tile, TileLink } from "@/lib/pageBuilder";
+import { PageColor } from "@/lib/themes";
 import { Constants } from "@/lib/utils";
 
 export default function Home() {
@@ -77,6 +77,23 @@ export default function Home() {
             [new GitLink("https://github.com/AIRC-ASR/AIRC-ASR-Experimental", "AIRC ASR")]
         ),
         new SectionTile(<>Featured Projects</>),
+        new Tile(
+            <h2>Masm</h2>,
+            (
+                <>
+                    <i>Masm</i> is an assembler and interpreter for MIPS assembly programs. Written in C++, is it able
+                    to quickly parse, assemble, and execute even complex MIPS programs. Masm takes in one or more
+                    assembly source code files, processes the instructions within the code, transforms them into
+                    executable MIPS machine code, and executes the program on a virtual CPU. Additionally, it handles
+                    both input and output through a standard console interface, so it can integrate into shell
+                    pipelines.
+                </>
+            ),
+            "/media/image/assembly.png",
+            ["personal", "cpp", "assembly", "python"],
+            [new GitLink("https://github.com/matthew-pisano/masm", "Masm")],
+            "personal/masm"
+        ),
         new Tile(
             <>Universal Models</>,
             (

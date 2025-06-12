@@ -1,8 +1,8 @@
-import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { DownloadLink, GitLink, PageInfo, Tile } from "@/lib/pageBuilder";
+import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Masm() {
@@ -16,6 +16,11 @@ export default function Masm() {
                     source code files, processes the instructions within the code, transforms them into executable MIPS
                     machine code, and executes the program on a virtual CPU. Additionally, it handles both input and
                     output through a standard console interface, so it can integrate into shell pipelines.
+                    <p>
+                        Originally designed to function as a part of the Assembly course that I teach, it faithfully
+                        translates the inner-workings of a MIPS CPU into well-documented C++ code and has the ability to
+                        generate intermediate tokens and memory representations.
+                    </p>
                 </>
             ),
             "/media/image/assembly.png"
@@ -53,11 +58,12 @@ export default function Masm() {
                     CPU using a virtualized address space. This memory space can store up to 4GiB of data with working
                     implementations of the stack and heap spaces. During execution, the CPU operates on a register file
                     containing 32 registers that can hold 32 bits of data each.
-                    <br />
-                    Masm has two main execution modes: syscall and MMIO. Syscall mode, the default, uses syscalls to
-                    take input from the user and send output back. In this mode, accessing the MMIO registers will
-                    produce no effect. In MMIO mode, the keyboard I/O syscalls are disabled and the program communicates
-                    with the user exclusively through the memory-mapped I/O registers.
+                    <p>
+                        Masm has two main execution modes: syscall and MMIO. Syscall mode, the default, uses syscalls to
+                        take input from the user and send output back. In this mode, accessing the MMIO registers will
+                        produce no effect. In MMIO mode, the keyboard I/O syscalls are disabled and the program
+                        communicates with the user exclusively through the memory-mapped I/O registers.
+                    </p>
                 </>
             )
         ),
