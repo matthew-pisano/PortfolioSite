@@ -49,7 +49,9 @@ function addWrapperListeners() {
  */
 function slideTilesOnScroll() {
     let tileHolder = document.getElementById("tileHolder");
-    for (let tileElement of tileHolder ? tileHolder.children : []) {
+    if (!tileHolder) return;
+
+    for (let tileElement of tileHolder.children) {
         // For each tile, check if it is in view
         if (tileElement.id === "") continue;
 

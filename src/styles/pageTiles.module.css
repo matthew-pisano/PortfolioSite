@@ -128,7 +128,6 @@
          margin: 50px 15% 20px;
     }
 
-    /* Must be last to override displayTile styles */
     .hiddenTile {
         margin-left: 90%;
         margin-right: -60%;
