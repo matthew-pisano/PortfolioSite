@@ -1,10 +1,10 @@
-import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { GitLink, PageInfo, PageLink, SectionTile, Tile } from "@/lib/pageBuilder";
+import { PageInfo, PageLink, SectionTile, Tile } from "@/lib/pageBuilder";
+import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 import styles from "@/styles/pageTiles.module.css";
 
@@ -90,7 +90,7 @@ export default function ReadingList() {
                     .
                 </>
             ),
-            "https://m.media-amazon.com/images/I/71UvMcdcE9L._AC_UF1000,1000_QL80_.jpg",
+            "/media/image/superintelligence.jpg",
             "superintelligence"
         ),
         new BookTile(
@@ -124,7 +124,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/71buTbF1YDL._AC_UF1000,1000_QL80_.jpg",
+            "/media/image/the-alignment-problem.jpg",
             "alignment-problem"
         ),
         new BookTile(
@@ -165,7 +165,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/81nhGK0DNLL._UF1000,1000_QL80_.jpg",
+            "/media/image/human-compatible.jpg",
             "human-compatible"
         ),
         new BookTile(
@@ -221,7 +221,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/712fJVnVAkL._SY466_.jpg",
+            "/media/image/determined.jpg",
             "determined"
         ),
         new BookTile(
@@ -291,7 +291,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/71rP6KBGM8L._SL1500_.jpg",
+            "/media/image/behave.jpg",
             "behave"
         ),
         new BookTile(
@@ -327,7 +327,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/71qtkdlcqIS.jpg",
+            "/media/image/the-emotion-machine.jpg",
             "emotion-machine"
         ),
         new SectionTile(<>Historical and Science Fiction</>, "hifi-sifi"),
@@ -367,7 +367,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/71WoWlyQKtL._AC_UF1000,1000_QL80_.jpg",
+            "/media/image/2001.jpg",
             "space-odyssey"
         ),
         new BookTile(
@@ -403,7 +403,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://images3.penguinrandomhouse.com/cover/9780345404473",
+            "/media/image/do-androids-dream-of-electric-sheep.jpg",
             "electric-sheep"
         ),
         new BookTile(
@@ -444,7 +444,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/71LWaPy3gjL._SL1500_.jpg",
+            "/media/image/the-maniac.jpg",
             "maniac"
         ),
         new BookTile(
@@ -506,7 +506,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/81Wodz8m5vL._SL1500_.jpg",
+            "/media/image/when-we-cease-to-understand-the-world.jpg",
             "cease-to-understand-the-world"
         ),
         new BookTile(
@@ -572,7 +572,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/51fA9v9uLmL._SL1500_.jpg",
+            "/media/image/there-is-no-antimemetics-division.jpg",
             "antimemetics"
         ),
         new SectionTile(<>Physics</>, "physics"),
@@ -604,7 +604,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://pup-assets.imgix.net/onix/images/9780691164090.jpg?w=410&auto=format",
+            "/media/image/qed.jpg",
             "quantum-electrodynamics"
         ),
         new BookTile(
@@ -636,7 +636,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://pup-assets.imgix.net/onix/images/9780691142890.jpg?w=410&auto=format",
+            "/media/image/the-little-book-of-string-theory.jpg",
             "string-theory"
         ),
         new BookTile(
@@ -684,7 +684,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/61ctwcJg5dL._AC_UF1000,1000_QL80_.jpg",
+            "/media/image/the-order-of-time.jpg",
             "order-of-time"
         ),
         new SectionTile(<>Futurism</>, "futurism"),
@@ -723,7 +723,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "https://m.media-amazon.com/images/I/71uehq9SkLL._SL1500_.jpg",
+            "/media/image/the-inevitable.jpg",
             "inevitable"
         ),
         new BookTile(
@@ -748,7 +748,7 @@ export default function ReadingList() {
                     implemented, although through brain-computer interfaces, rather than reality warping abilities.
                 </>
             ),
-            "https://images2.penguinrandomhouse.com/cover/9780307278821",
+            "/media/image/physics-of-the-impossible.jpg",
             "physics-impossible"
         )
     ];
