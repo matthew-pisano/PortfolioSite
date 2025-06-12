@@ -1,10 +1,10 @@
-import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, PageInfo, SectionTile, Tile, TileLink } from "@/lib/pageBuilder";
+import { PageColor } from "@/lib/themes";
 import { Constants, genPageTitle } from "@/lib/utils";
 
 export default function About() {
@@ -138,7 +138,7 @@ export default function About() {
                     with automating our build workflows and organize our team scrums and pull-request meetings.
                 </>
             ),
-            "https://pngimg.com/uploads/ibm/ibm_PNG19658.png"
+            "/media/image/ibm.png"
         ),
         new Tile(
             <>SUNY Ulster</>,
@@ -153,7 +153,7 @@ export default function About() {
                     student work, and participating in faculty meetings.
                 </>
             ),
-            "https://acctsearches.org/wp-content/uploads/2022/01/suny-ulster-vector-logo.png"
+            "/media/image/suny-ulster.png"
         ),
         new Tile(
             <>Substrate AI Research</>,
@@ -170,7 +170,7 @@ export default function About() {
                     infrastructure for production deployment.
                 </>
             ),
-            "https://substrate.ai/wp-content/uploads/2022/03/logo_substrate-300x136.png"
+            "/media/image/substrate-ai.png"
         ),
         new Tile(
             <>FileScience</>,
@@ -191,7 +191,7 @@ export default function About() {
                     distributed and parallelized software and infrastructure.
                 </>
             ),
-            "https://i.tracxn.com/logo/company/filescience.io_Logo_216e1de5-dc1f-488f-84d5-33f8ad000ec5.jpg"
+            "/media/image/filescience.jpg"
         ),
         new Tile(
             <>IBM Research</>,
@@ -206,7 +206,7 @@ export default function About() {
                     information can be found in the <Link href="/research/highGround">Moral High Ground</Link> page.
                 </>
             ),
-            "https://avatars.githubusercontent.com/u/22341564?s=280&v=4"
+            "/media/image/ibm-research.png"
         ),
         new Tile(
             <>Rensselaer Polytechnic Institute</>,
@@ -220,7 +220,7 @@ export default function About() {
                     students to better grasp relevant course material.
                 </>
             ),
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwtnWmIefQkU9X48KffqNhfHm8-UWQZzkm4g&s"
+            "/media/image/rpi.png"
         ),
         new Tile(
             <>SUNY New Paltz</>,
@@ -239,7 +239,7 @@ export default function About() {
                     experience and to develop research for later publishing.
                 </>
             ),
-            "https://www.newpaltz.edu/media/ocm/toolkit/the-new-paltz-brand/vdp_pg13-2415x873.jpg"
+            "/media/image/suny-new-paltz.jpg"
         ),
         new Tile(
             <>Cyber Guardian Consulting Group</>,
@@ -258,7 +258,7 @@ export default function About() {
                     web applications.
                 </>
             ),
-            "https://media.licdn.com/dms/image/v2/C4E0BAQE4AdTogksURg/company-logo_200_200/company-logo_200_200/0/1643488532634/cyber_guardian_consulting_group_llc__logo?e=2147483647&v=beta&t=YXl3CljG1XeFAyMRMNzedpZ5gavmGEOdAR7oavf6B3Q"
+            "/media/image/cgcg.jpg"
         )
     ];
     let pageInfo = new PageInfo(
