@@ -59,7 +59,9 @@ function slideTilesOnScroll() {
             // If the tile is in view and offset, slide it into view
             tileElement.classList.remove(pageStyles.hiddenTile);
             tileElement.setAttribute("data-refdata", "slid");
-        } else if (tileElement.getAttribute("data-refdata") === "unslid") {
+        }
+        // Avoid adding hidden class if tile has already been shown or if the page has an anchor link (prevents visual scrolling errors)
+        else if (tileElement.getAttribute("data-refdata") === "unslid" && !window.location.hash.length) {
             tileElement.classList.add(pageStyles.hiddenTile); // Sides the tile off-screen if it is out of view as the page initially loads
             tileElement.setAttribute("data-refdata", "slid");
         }

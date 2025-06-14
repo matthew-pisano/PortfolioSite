@@ -1,3 +1,4 @@
+import pageStyles from "@/styles/pageTiles.module.css";
 import React from "react";
 
 import Link from "next/link";
@@ -129,6 +130,16 @@ class PageInfo {
 }
 
 /**
+ * Resets the horizontal position of all tiles by removing the hiddenTile class
+ */
+function resetTilesOnScroll() {
+    let tileHolder = document.getElementById("tileHolder");
+    if (!tileHolder) return;
+
+    for (let tileElement of tileHolder.children) tileElement.classList.remove(pageStyles.hiddenTile);
+}
+
+/**
  * Builds the tags for a page or tile
  * @param tile {Tile | PageInfo} The tiles to build tags for
  * @param dark {boolean} Whether the tags should be dark or darker
@@ -154,7 +165,7 @@ function buildTags(tile, dark = false) {
                     <div className={`${tagClasses}`} key={"tileLink" + tileLink.title}>
                         <img className="w3-col" alt="tileLink" />
                         <div className="w3-rest">
-                            <Link href={tileLink.link} target={target} rel="noreferrer">
+                            <Link href={tileLink.link} target={target} rel="noreferrer" onClick={resetTilesOnScroll}>
                                 {tileLink.title}
                             </Link>
                         </div>
@@ -189,7 +200,7 @@ function buildTiles(tiles) {
                   : "";
 
         let anchorElem = tile.anchor ? (
-            <Link href={`#${tile.anchor}`} className={`${tileStyles.anchorLink}`}>
+            <Link href={`#${tile.anchor}`} className={`${tileStyles.anchorLink}`} onClick={resetTilesOnScroll}>
                 <img className={`${tileStyles.anchorIcon}`} alt="" />
             </Link>
         ) : null;
