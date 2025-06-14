@@ -65,16 +65,23 @@ export default function Home() {
             "research/predictChain"
         ),
         new Tile(
-            <>Large-Scale Foundation Acoustic Modeling for Automatic Speech Recognition</>,
+            <>Homophone Decoding & Speech Based Emotion Detection</>,
             (
                 <>
-                    Improving the performance of modern ASM models by using a variety of techniques such as model
-                    fine-tuning and corrector LLMs.
+                    This study, commissioned as a part of an RPI-IBM collaboration focused on developing an automatic
+                    speech recognition (ASR) model with better accuracy on homophones; words that sound similar, but
+                    have different meanings. These could either be true homophones, or false homophones that merely
+                    sound similar to the ground-truth words. Our techniques involved using corrector large language
+                    models to help the composite model generate more context-sensitive predictions and fine-tuning on
+                    hard datasets that contained noisy samples and frequent use of homophones.
                 </>
             ),
             "",
             ["research", "academic", "ai", "python"],
-            [new GitLink("https://github.com/AIRC-ASR/AIRC-ASR-Experimental", "AIRC ASR")]
+            [
+                new GitLink("https://github.com/AIRC-ASR/AIRC-ASR-Experimental", "AIRC ASR"),
+                new TileLink("/media/documents/Homophone+Decoding.pdf", "Slides")
+            ]
         ),
         new SectionTile(<>Featured Projects</>),
         new Tile(

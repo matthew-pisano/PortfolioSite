@@ -1,10 +1,10 @@
-import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, PageInfo, SectionTile, Tile, TileLink } from "@/lib/pageBuilder";
+import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function PredictChain() {
@@ -14,9 +14,9 @@ export default function PredictChain() {
             (
                 <>
                     <i>PredictChain</i> is a decentralized artificial intelligence marketplace that I developed,
-                    primarily along with another student at RPI. It utilizes the Algorand blockchain to allow users to
-                    host instances of this marketplace, with the goal of more freely distributing AI models, data, and
-                    compute among all users.
+                    primarily along with another student at RPI. It utilizes the <i>Algorand</i> blockchain to allow
+                    users to host instances of this marketplace, with the goal of more freely distributing AI models,
+                    data, and compute among all users.
                 </>
             ),
             "/media/image/predictChain.png"

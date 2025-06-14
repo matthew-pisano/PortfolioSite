@@ -1,10 +1,10 @@
-import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Latex from "react-latex-next";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, PageInfo, SectionTile, Tile, TileLink } from "@/lib/pageBuilder";
+import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function ChipFiring() {
@@ -15,7 +15,7 @@ export default function ChipFiring() {
                 <>
                     This research was performed by myself, an advisor at <i>SUNY New Paltz</i>, and one of his
                     colleagues. In this research, we focused on the study of Chip-Firing games and how different
-                    combinations of directed and undirected edges affect its winning strategies. THis falls primarily
+                    combinations of directed and undirected edges affect its winning strategies. This falls primarily
                     within the fields of linear algebra, graph theory, and combinatorics.
                 </>
             ),

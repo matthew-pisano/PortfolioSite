@@ -140,21 +140,62 @@ export default function Lectures() {
         ),
         new Tile(
             <>PredictChain: Empowering Collaboration for AI in a Blockchain-based Marketplaces</>,
-            <></>,
+            (
+                <>
+                    <i>PredictChain</i> is a decentralized artificial intelligence marketplace that I developed,
+                    primarily along with another student at RPI. It utilizes the <i>Algorand</i> blockchain to allow
+                    users to host instances of this marketplace, with the goal of more freely distributing AI models,
+                    data, and compute among all users.
+                    <p>
+                        This project was presented at the 2023 Mega Ace Hackathon where it won first place globally and
+                        several other awards including <i>Most Innovative Use of Technology</i>. The paper that I
+                        co-wrote for this project was also accepted into the <i>ChainScience 2023</i> conference where
+                        it was presented by one of my collaborators on the paper.
+                    </p>
+                </>
+            ),
             "/media/image/chainscience.png",
             ["research", "ai"],
             [new TileLink("/media/documents/PredictChain+ChainScience+23.pdf", "Slides")]
         ),
         new Tile(
             <>Homophone Decoding & Speech Based Emotion Detection</>,
-            <></>,
+            (
+                <>
+                    This study, commissioned as a part of an RPI-IBM collaboration focused on developing an automatic
+                    speech recognition (ASR) model with better accuracy on homophones; words that sound similar, but
+                    have different meanings. These could either be true homophones, or false homophones that merely
+                    sound similar to the ground-truth words. Our techniques involved using corrector large language
+                    models to help the composite model generate more context-sensitive predictions and fine-tuning on
+                    hard datasets that contained noisy samples and frequent use of homophones.
+                    <p>
+                        I had given this presentation along with my collaborators on the project as well as our
+                        principal investigator at RPI. Our audience consisted mainly of our grantors from IBM as we gave
+                        this report on our successful progress.
+                    </p>
+                </>
+            ),
             "/media/image/rpi.png",
             ["research", "academic", "ai"],
             [new TileLink("/media/documents/Homophone+Decoding.pdf", "Slides")]
         ),
         new Tile(
             <>On Picard Groups and Jacobians of Directed Graphs</>,
-            <></>,
+            (
+                <>
+                    This research was performed by myself, an advisor at <i>SUNY New Paltz</i>, and one of his
+                    colleagues. In this research, we focused on the study of Chip-Firing games and how different
+                    combinations of directed and undirected edges affect its winning strategies. This falls primarily
+                    within the fields of linear algebra, graph theory, and combinatorics.
+                    <p>
+                        I created this presentation for the 2023 <i>Joint Mathematics Meetings</i> conference, where my
+                        paper was accepted. At the conference, I was given the opportunity to present my work in a
+                        seminar-style lecture to an audience of other interested conference attendees. Additionally, I
+                        was invited back to New Paltz after graduation as a guest lecturer for their{" "}
+                        <i>Math and Cookies</i> lecture series.
+                    </p>
+                </>
+            ),
             "/media/image/suny-new-paltz.jpg",
             ["research", "academic"],
             [new TileLink("/media/documents/JMMPresentation.pdf", "Slides")]
