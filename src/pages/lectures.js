@@ -41,7 +41,7 @@ export default function Lectures() {
                         objectives outlined by SUNY Ulster. In addition to the core topics, I have also made significant
                         revisions to the <i>cloud computing</i> and <i>vulnerabilities</i> sections of the course with
                         my own, novel material. These changes, in conjunction with the existing coursework, give
-                        students a more well-rounded understanding of the field of computers and low-level
+                        students a more well-rounded understanding of the field of computing and low-level
                         architectures.
                     </p>
                 </>
@@ -104,11 +104,11 @@ export default function Lectures() {
                     </a>{" "}
                     by the same name. I had presented this as part of a series of talks given by students in RPI's{" "}
                     <i>Human and Machine Learning</i> course. The original paper serves as a review of current advances
-                    in the field of reinforcement learning and how deep learning is enabling new discoveries. One of the
-                    themes of the paper is how implementations of artificial reinforcement learning in modern algorithms
-                    closely mirrors the processes that occur within biological brains. The authors highlight some
-                    notable consequences of this idea, primarily the fact that RL models can be used to accurately
-                    predict the RL mechanisms within organic learners.
+                    in the field of reinforcement learning and how deep learning is enabling new discoveries. One
+                    notable theme of the paper is how implementations of artificial reinforcement learning often closely
+                    mirror the processes that occur within biological brains. The authors highlight some notable
+                    consequences of this idea, primarily the fact that RL models can be used to accurately predict the
+                    RL mechanisms within organic learners.
                     <p>
                         A point that I stressed in my live presentation comes near the conclusion of the paper where the
                         authors highlight some caveats to the comparisons between artificial and natural learners.
@@ -130,8 +130,8 @@ export default function Lectures() {
                     As a part of my research visitation at the <i>IBM Thomas J. Watson Research Center</i>, I had given
                     a presentation summarizing my research progress over the summer. This research concerned the
                     abilities of language models to navigate through a series of moral and ethical quandaries, presented
-                    in the form of text-based games. My audience for this presentation consisted of other student
-                    researchers and senior members of IBM's research teams.
+                    in the form of conversational text-based games. My audience for this presentation consisted of other
+                    student researchers and senior members of IBM's research teams.
                     <p>In the interest of confidentiality, I have omitted the original slide deck here.</p>
                 </>
             ),
@@ -139,7 +139,7 @@ export default function Lectures() {
             ["research", "ai", "alignment"]
         ),
         new Tile(
-            <>PredictChain: Empowering Collaboration for AI in a Blockchain-based Marketplaces</>,
+            <>PredictChain: Empowering Collaboration for AI in a Blockchain-based Marketplace</>,
             (
                 <>
                     <i>PredictChain</i> is a decentralized artificial intelligence marketplace that I developed,
@@ -147,10 +147,10 @@ export default function Lectures() {
                     users to host instances of this marketplace, with the goal of more freely distributing AI models,
                     data, and compute among all users.
                     <p>
-                        This project was presented at the 2023 Mega Ace Hackathon where it won first place globally and
-                        several other awards including <i>Most Innovative Use of Technology</i>. The paper that I
-                        co-wrote for this project was also accepted into the <i>ChainScience 2023</i> conference where
-                        it was presented by one of my collaborators on the paper.
+                        This project was presented at the 2023 Mega Ace Hackathon where it won first place globally
+                        along with several other awards including <i>Most Innovative Use of Technology</i>. The paper
+                        that I co-wrote for this project was also accepted into the <i>ChainScience 2023</i> conference
+                        where it was presented by one of my collaborators on the paper.
                     </p>
                 </>
             ),
@@ -162,12 +162,12 @@ export default function Lectures() {
             <>Homophone Decoding & Speech Based Emotion Detection</>,
             (
                 <>
-                    This study, commissioned as a part of an RPI-IBM collaboration focused on developing an automatic
+                    This study, commissioned as a part of an RPI-IBM collaboration, focused on developing an automatic
                     speech recognition (ASR) model with better accuracy on homophones; words that sound similar, but
                     have different meanings. These could either be true homophones, or false homophones that merely
                     sound similar to the ground-truth words. Our techniques involved using corrector large language
-                    models to help the composite model generate more context-sensitive predictions and fine-tuning on
-                    hard datasets that contained noisy samples and frequent use of homophones.
+                    models to help the composite model generate more context-sensitive predictions, along with using
+                    fine-tuning on hard datasets that contained noisy samples and frequent use of homophones.
                     <p>
                         I had given this presentation along with my collaborators on the project as well as our
                         principal investigator at RPI. Our audience consisted mainly of our grantors from IBM as we gave
