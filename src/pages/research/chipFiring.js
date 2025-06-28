@@ -39,8 +39,14 @@ export default function ChipFiring() {
             (
                 <>
                     This paper was accepted into the Joint Mathematics Meetings 2023 and presented on January 6th 2023.
-                    We also plan to submit this paper to the Journal of Experimental Mathematics and the Journal of
-                    Combinatorial Theory.
+                    This research was also published in the journal{" "}
+                    <a
+                        href="https://www.sciencedirect.com/science/article/pii/S0024379525000771"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <i>Linear Algebra and its Applications</i>
+                    </a>
+                    , Volume 711, Pages 180-211 on April 15th 2025.
                 </>
             )
         ),
@@ -201,7 +207,7 @@ export default function ChipFiring() {
         ["research", "academic", "python"],
         [
             new GitLink("https://github.com/matthew-pisano/ChipFiring", "Chip Firing"),
-            new TileLink("https://arxiv.org/abs/2302.10327", "Research Paper")
+            new TileLink("https://www.sciencedirect.com/science/article/pii/S0024379525000771", "Research Paper")
         ]
     );
     return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
