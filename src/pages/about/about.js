@@ -270,7 +270,8 @@ export default function About() {
         [
             new GitLink("https://github.com/matthew-pisano/", "GitHub"),
             new TileLink(Constants.resumeUrl, "Résumé"),
-            new TileLink("https://www.linkedin.com/in/matthew-pisano", "LinkedIn")
+            new TileLink("https://www.linkedin.com/in/matthew-pisano", "LinkedIn"),
+            new TileLink("https://orcid.org/my-orcid?orcid=0009-0001-5714-3585", "Orcid")
         ]
     );
 
