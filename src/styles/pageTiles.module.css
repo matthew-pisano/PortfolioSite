@@ -40,7 +40,7 @@
     border-radius: 10px;
 }
 
-.displayTileContent {
+.displayTileContent, .displayContentTitle {
     padding: 0 25px;
 }
 
@@ -107,6 +107,36 @@
     content: url("/assets/anchorIcon.svg");
 }
 
+.bookTileContent {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-bottom: 60px;
+}
+
+.bookTileContent::before {
+    content: "";
+    top: 0;
+    background: linear-gradient(to top, transparent, var(--theme-color-4));
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bookTileContent::after {
+    content: "";
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent, var(--theme-color-4));
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 80px;
+    pointer-events: none;
+    z-index: 1;
+}
+
 .bookTileSection {
     display: block;
     margin-top: 15px;
@@ -151,6 +181,10 @@
 
 
 @media (width <= 600px) {
+    .bookTileContent {
+        max-height: none;
+    }
+
     .openSidebarPage {
         margin-left: 10px !important;
         display: none;

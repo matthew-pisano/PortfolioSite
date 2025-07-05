@@ -3,49 +3,9 @@ import React from "react";
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { PageInfo, PageLink, SectionTile, Tile } from "@/lib/pageBuilder";
+import { BookTile, PageInfo, PageLink, SectionTile, Tile } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
-import styles from "@/styles/pageTiles.module.css";
-
-/**
- * A class for creating a tile to display on a page
- */
-class BookTile extends Tile {
-    /**
-     * @param title {JSXElement} The title of the book tile
-     * @param author {string} The author of the book
-     * @param synopsis {JSXElement} A brief synopsis of the book
-     * @param synopsis_source {string} The source of the synopsis
-     * @param thoughts {JSXElement} My thoughts on the book
-     * @param thumbnail {string} The thumbnail image/cover for the book
-     * @param anchor {string} The name of the anchor link to the tile
-     */
-    constructor(title, author, synopsis, synopsis_source, thoughts, thumbnail, anchor = "") {
-        let source_elem = synopsis_source ? (
-            <i>
-                Source:{" "}
-                <Link href={synopsis_source} target="_blank">
-                    {new URL(synopsis_source).hostname}
-                </Link>
-            </i>
-        ) : null;
-        let content = (
-            <>
-                <span className={styles.bookTileSection}>
-                    <i>Author:</i> {author}
-                </span>
-                <span className={styles.bookTileSection}>
-                    <i>Synopsis:</i> {synopsis} {source_elem}
-                </span>
-                <span className={styles.bookTileSection}>
-                    <i>Thoughts:</i> {thoughts}
-                </span>
-            </>
-        );
-        super(title, content, thumbnail, [], [], "", {}, anchor);
-    }
-}
 
 export default function ReadingList() {
     let tiles = [

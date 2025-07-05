@@ -106,6 +106,45 @@ class SectionTile extends Tile {
 }
 
 /**
+ * A class for creating a tile to display on a page
+ */
+class BookTile extends Tile {
+    /**
+     * @param title {JSXElement} The title of the book tile
+     * @param author {string} The author of the book
+     * @param synopsis {JSXElement} A brief synopsis of the book
+     * @param synopsis_source {string} The source of the synopsis
+     * @param thoughts {JSXElement} My thoughts on the book
+     * @param thumbnail {string} The thumbnail image/cover for the book
+     * @param anchor {string} The name of the anchor link to the tile
+     */
+    constructor(title, author, synopsis, synopsis_source, thoughts, thumbnail, anchor = "") {
+        let source_elem = synopsis_source ? (
+            <i>
+                Source:{" "}
+                <Link href={synopsis_source} target="_blank">
+                    {new URL(synopsis_source).hostname}
+                </Link>
+            </i>
+        ) : null;
+        let content = (
+            <>
+                <span className={tileStyles.bookTileSection}>
+                    <i>Author:</i> {author}
+                </span>
+                <span className={tileStyles.bookTileSection}>
+                    <i>Synopsis:</i> {synopsis} {source_elem}
+                </span>
+                <span className={tileStyles.bookTileSection}>
+                    <i>Thoughts:</i> {thoughts}
+                </span>
+            </>
+        );
+        super(title, content, thumbnail, [], [], "", {}, anchor);
+    }
+}
+
+/**
  * Metadata for a page
  */
 class PageInfo {
@@ -197,7 +236,9 @@ function buildTiles(tiles) {
                 ? tileStyles.galleryTileContent
                 : !tile.thumbnail
                   ? tileStyles.textOnlyTileContent
-                  : "";
+                  : tile instanceof BookTile
+                    ? tileStyles.bookTileContent
+                    : "";
 
         let anchorElem = tile.anchor ? (
             <Link href={`#${tile.anchor}`} className={`${tileStyles.anchorLink}`} onClick={resetTilesOnScroll}>
@@ -222,21 +263,23 @@ function buildTiles(tiles) {
                     </div>
                 ) : null}
 
-                <div className={`w3-mobile w3-rest ${tileStyles.displayTileContent} ${contentTypeClass}`}>
+                <div className={`w3-mobile w3-rest`}>
                     {tile instanceof SectionTile ? (
-                        <h2>
+                        <h2 className={`${tileStyles.displayContentTitle}`}>
                             {titleElem}
                             {anchorElem}
                         </h2>
                     ) : (
-                        <h4>
+                        <h4 className={`${tileStyles.displayContentTitle}`}>
                             {titleElem}
                             {anchorElem}
                         </h4>
                     )}
-
-                    {tile.content ? <span>{tile.content}</span> : null}
-
+                    <div style={{ position: "relative" }}>
+                        <div className={`${tileStyles.displayTileContent} ${contentTypeClass}`}>
+                            {tile.content ? <span>{tile.content}</span> : null}
+                        </div>
+                    </div>
                     {buildTags(tile)}
                 </div>
             </div>
@@ -260,4 +303,16 @@ function buildPage(pageInfo, tiles) {
     );
 }
 
-export { buildPage, PageInfo, Tile, GalleryTile, SectionTile, TileLink, GitLink, DownloadLink, PageLink, TRANSLUCENT };
+export {
+    buildPage,
+    PageInfo,
+    Tile,
+    GalleryTile,
+    SectionTile,
+    BookTile,
+    TileLink,
+    GitLink,
+    DownloadLink,
+    PageLink,
+    TRANSLUCENT
+};
