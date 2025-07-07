@@ -9,7 +9,7 @@ import Sidebar from "@/components/Sidebar";
 import Terminal from "@/components/Terminal";
 import { buildClientside, buildServerside } from "@/lib/fileSystem/fileSystem";
 import { setTheme } from "@/lib/themes";
-import pageStyles from "@/styles/pageTiles.module.css";
+import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
 /**
@@ -57,12 +57,12 @@ function slideTilesOnScroll() {
 
         if (tileElement.getBoundingClientRect().top <= window.innerHeight - 100) {
             // If the tile is in view and offset, slide it into view
-            tileElement.classList.remove(pageStyles.hiddenTile);
+            tileElement.classList.remove(tileStyles.hiddenTile);
             tileElement.setAttribute("data-refdata", "slid");
         }
         // Avoid adding hidden class if tile has already been shown or if the page has an anchor link (prevents visual scrolling errors)
         else if (tileElement.getAttribute("data-refdata") === "unslid" && !window.location.hash.length) {
-            tileElement.classList.add(pageStyles.hiddenTile); // Sides the tile off-screen if it is out of view as the page initially loads
+            tileElement.classList.add(tileStyles.hiddenTile); // Sides the tile off-screen if it is out of view as the page initially loads
             tileElement.setAttribute("data-refdata", "slid");
         }
     }

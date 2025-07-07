@@ -1,4 +1,3 @@
-import pageStyles from "@/styles/pageTiles.module.css";
 import React from "react";
 
 import Link from "next/link";
@@ -8,6 +7,9 @@ import tagStyles from "@/styles/tags.module.css";
 
 const TRANSLUCENT = "rgba(139,166,175,0.45)";
 
+/**
+ * A class for creating a link to display on a page
+ */
 class TileLink {
     /**
      * A class for creating a link to display on a page
@@ -20,6 +22,9 @@ class TileLink {
     }
 }
 
+/**
+ * A class for creating a link to a git repository
+ */
 class GitLink extends TileLink {
     /**
      * A class for creating a link to a git repository
@@ -31,6 +36,9 @@ class GitLink extends TileLink {
     }
 }
 
+/**
+ * A class for creating a link to a download page
+ */
 class DownloadLink extends TileLink {
     /**
      * A class for creating a link to a download page
@@ -42,6 +50,9 @@ class DownloadLink extends TileLink {
     }
 }
 
+/**
+ * A class for creating an in-place page link to display on a page
+ */
 class PageLink extends TileLink {
     /**
      * A class for creating an in-place page link to display on a page
@@ -58,6 +69,7 @@ class PageLink extends TileLink {
  */
 class Tile {
     /**
+     * A class for creating a tile to display on a page
      * @param title {JSXElement} The title of the tile
      * @param content {JSXElement} The content of the tile
      * @param thumbnail {string} The thumbnail image for the tile
@@ -79,8 +91,12 @@ class Tile {
     }
 }
 
+/**
+ * A class for creating a gallery tile to display on a page
+ */
 class GalleryTile extends Tile {
     /**
+     * A class for creating a gallery tile to display on a page
      * @param title {JSXElement} The title of the tile
      * @param content {JSXElement} The content of the tile
      * @param thumbnail {string} The thumbnail image for the tile
@@ -94,8 +110,12 @@ class GalleryTile extends Tile {
     }
 }
 
+/**
+ * A class for creating a section tile to display on a page
+ */
 class SectionTile extends Tile {
     /**
+     * A class for creating a section tile to display on a page
      * @param title {JSXElement} The title of the tile
      * @param style {object} The style of the tile
      * @param anchor {string} The name of the anchor link to the tile
@@ -106,10 +126,11 @@ class SectionTile extends Tile {
 }
 
 /**
- * A class for creating a tile to display on a page
+ * A class for creating a book tile to display on a page
  */
 class BookTile extends Tile {
     /**
+     * A class for creating a book tile to display on a page
      * @param title {JSXElement} The title of the book tile
      * @param author {string} The author of the book
      * @param synopsis {JSXElement} A brief synopsis of the book
@@ -151,6 +172,7 @@ class PageInfo {
     pageName;
 
     /**
+     * Metadata for a page
      * @param pageName {string} The name of the page
      * @param title {string} The title of the page
      * @param summary {string} A brief summary of the page
@@ -175,7 +197,7 @@ function resetTilesOnScroll() {
     let tileHolder = document.getElementById("tileHolder");
     if (!tileHolder) return;
 
-    for (let tileElement of tileHolder.children) tileElement.classList.remove(pageStyles.hiddenTile);
+    for (let tileElement of tileHolder.children) tileElement.classList.remove(tileStyles.hiddenTile);
 }
 
 /**
