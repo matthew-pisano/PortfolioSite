@@ -47,6 +47,34 @@ export default function Home() {
             "research/highGround"
         ),
         new Tile(
+            <>On Picard Groups and Jacobians of Directed Graphs</>,
+            (
+                <>
+                    This research was performed by myself, an advisor at <i>SUNY New Paltz</i>, and one of his
+                    colleagues. In this research, we focused on the study of Chip-Firing games and how different
+                    combinations of directed and undirected edges affect its winning strategies. This falls primarily
+                    within the fields of linear algebra, graph theory, and combinatorics.
+                    <p>
+                        This paper was accepted into the Joint Mathematics Meetings 2023 and published in the journal{" "}
+                        <a
+                            href="https://www.sciencedirect.com/science/article/pii/S0024379525000771"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i>Linear Algebra and its Applications</i>
+                        </a>
+                        , Volume 711, Pages 180-211 on April 15th 2025.
+                    </p>
+                </>
+            ),
+            "/media/image/chipfiring.png",
+            ["research", "academic", "python"],
+            [
+                new GitLink("https://github.com/matthew-pisano/ChipFiring", "Chip Firing"),
+                new TileLink("https://www.sciencedirect.com/science/article/pii/S0024379525000771", "Research Paper")
+            ],
+            "research/chipFiring"
+        ),
+        new Tile(
             <>PredictChain</>,
             (
                 <>
