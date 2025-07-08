@@ -265,46 +265,54 @@ function buildTiles(tiles) {
                     ? tileStyles.bookTileContent
                     : "";
 
+        // Element that serves as a page anchor link
         let anchorElem = tile.anchor ? (
             <Link href={`#${tile.anchor}`} className={`${tileStyles.anchorLink}`} onClick={resetTilesOnScroll}>
                 <img className={`${tileStyles.anchorIcon}`} alt="" />
             </Link>
         ) : null;
-        let titleElem = tile.titleLink ? (
+        // The title of the tile, either a link or in bold
+        let titleTextElem = tile.titleLink ? (
             <Link className={titleClass} href={tile.titleLink}>
                 <u>{tile.title}</u>
             </Link>
         ) : (
             <b className={titleClass}>{tile.title}</b>
         );
+        // The title element for the tile, either an h2 or h4 depending on the tile type
+        let titleElem =
+            tile instanceof SectionTile ? (
+                <h2 className={`${tileStyles.displayContentTitle}`}>
+                    {titleTextElem}
+                    {anchorElem}
+                </h2>
+            ) : (
+                <h4 className={`${tileStyles.displayContentTitle}`}>
+                    {titleTextElem}
+                    {anchorElem}
+                </h4>
+            );
+        // The thumbnail image for the tile, if it exists
+        let thumbnailElem = tile.thumbnail ? (
+            <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail} ${imageClass}`}>
+                <img src={tile.thumbnail} alt="gitLogo" />
+            </div>
+        ) : null;
+        // The content element for the tile
+        let contentElem = tile.content ? (
+            <div style={{ position: "relative" }}>
+                <div className={`${tileStyles.displayTileContent} ${contentTypeClass}`}>{tile.content}</div>
+            </div>
+        ) : null;
 
         let tileId = tile.anchor ? tile.anchor : "pageTile" + i;
-
         return (
-            <div id={tileId} className={className} key={"pageTile" + i} style={tile.style} data-refdata={"unslid"}>
-                {tile.thumbnail ? (
-                    <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail} ${imageClass}`}>
-                        <img src={tile.thumbnail} alt="gitLogo" />
-                    </div>
-                ) : null}
+            <div id={tileId} className={className} key={tileId} style={tile.style} data-refdata={"unslid"}>
+                {thumbnailElem}
 
                 <div className={`w3-mobile w3-rest`}>
-                    {tile instanceof SectionTile ? (
-                        <h2 className={`${tileStyles.displayContentTitle}`}>
-                            {titleElem}
-                            {anchorElem}
-                        </h2>
-                    ) : (
-                        <h4 className={`${tileStyles.displayContentTitle}`}>
-                            {titleElem}
-                            {anchorElem}
-                        </h4>
-                    )}
-                    <div style={{ position: "relative" }}>
-                        <div className={`${tileStyles.displayTileContent} ${contentTypeClass}`}>
-                            {tile.content ? <span>{tile.content}</span> : null}
-                        </div>
-                    </div>
+                    {titleElem}
+                    {contentElem}
                     {buildTags(tile)}
                 </div>
             </div>
