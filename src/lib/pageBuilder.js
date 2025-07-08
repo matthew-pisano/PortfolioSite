@@ -201,38 +201,41 @@ function resetTilesOnScroll() {
 }
 
 /**
+ * Builds a link to display on a tile
+ * @param tileLink {TileLink} The tile link to build
+ * @param dark {boolean} Whether the link should be dark or darker
+ * @returns {JSX.Element} The link JSX DIV element
+ */
+function buildLink(tileLink, dark = false) {
+    let linkStyle = tagStyles.extraLink;
+    if (tileLink instanceof GitLink) linkStyle = tagStyles.gitLink;
+    else if (tileLink instanceof DownloadLink) linkStyle = tagStyles.downloadLink;
+    else if (tileLink instanceof PageLink) linkStyle = tagStyles.pageLink;
+    if (dark) linkStyle += ` ${tagStyles.darkTag}`;
+
+    let target = tileLink instanceof PageLink ? "_self" : "_blank";
+    return (
+        <div className={`w3-mobile w3-col ${linkStyle}`} key={"tileLink" + tileLink.title}>
+            <img className="w3-col" alt="tileLink" />
+            <div className="w3-rest">
+                <Link href={tileLink.link} target={target} rel="noreferrer" onClick={resetTilesOnScroll}>
+                    {tileLink.title}
+                </Link>
+            </div>
+        </div>
+    );
+}
+
+/**
  * Builds the tags for a page or tile
  * @param tile {Tile | PageInfo} The tiles to build tags for
  * @param dark {boolean} Whether the tags should be dark or darker
  * @return {JSX.Element} The tags JSX DIV element
  */
 function buildTags(tile, dark = false) {
-    let tagClasses = `w3-mobile w3-col ${dark ? tagStyles.darkTag : ""}`;
     return (
         <div className={`w3-row ${tagStyles.tagHolder}`}>
-            {(tile.links || []).map((tileLink, i) => {
-                tagClasses +=
-                    " " +
-                    (tileLink instanceof GitLink
-                        ? tagStyles.gitLink
-                        : tileLink instanceof DownloadLink
-                          ? tagStyles.downloadLink
-                          : tileLink instanceof PageLink
-                            ? tagStyles.pageLink
-                            : tagStyles.extraLink);
-
-                let target = tileLink instanceof PageLink ? "_self" : "_blank";
-                return (
-                    <div className={`${tagClasses}`} key={"tileLink" + tileLink.title}>
-                        <img className="w3-col" alt="tileLink" />
-                        <div className="w3-rest">
-                            <Link href={tileLink.link} target={target} rel="noreferrer" onClick={resetTilesOnScroll}>
-                                {tileLink.title}
-                            </Link>
-                        </div>
-                    </div>
-                );
-            })}
+            {(tile.links || []).map((tileLink, i) => buildLink(tileLink, dark))}
             {(tile.tags || []).map((tagName, i) => (
                 <div className={`w3-col w3-mobile ${tagStyles.tag} ${tagStyles[tagName + "Tag"]}`} key={tagName}>
                     <img className="w3-col" alt={tagName} />
