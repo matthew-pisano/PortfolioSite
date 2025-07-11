@@ -361,82 +361,7 @@ export default function ReadingList() {
             "/media/image/the-emotion-machine.jpg",
             "emotion-machine"
         ),
-        new SectionTile(<>Historical and Science Fiction</>, "hifi-sifi"),
-        new BookTile(
-            <>2001: A Space Odyssey</>,
-            "Arthur C. Clarke",
-            (
-                <>
-                    <u>2001: A Space Odyssey</u> is a science fiction novel that follows humanity's fleeting, yet
-                    impactful, encounters with a mysterious alien civilization. After the discovery of an alien monolith
-                    on the Moon, a crew of astronauts is sent to Jupiter to investigate a similar monolith. The novel
-                    explores themes of artificial intelligence, extraterrestrial life, and the nature of consciousness.
-                </>
-            ),
-            ``,
-            (
-                <>
-                    This novel was notable to me for a myriad of reasons. Clarke puts a great deal of effort into
-                    ensuring that his story remains as scientifically accurate as possible, while still making the plot
-                    seem plausible and self-consistent. The beginning of the novel offers a unique explanation to the
-                    question of why humans often appear to be fundamentally different with respect to the remainder of
-                    the animal kingdom. His description of space-flight, moon-bases, and technology are impressively
-                    accurate for being written before even the first moon landing.
-                    <p>
-                        Of course, one of the most impactful details to me was how <i>HAL</i> behaves and how his
-                        internal world model motivates his actions. He (it?) serves as an excellent example of how
-                        seemingly virtuous terminal goals, such as investigating <i>TMA-2</i>, can lead to unforeseen
-                        instrumental goals, such as self-preservation at all costs, as <i>HAL</i> does not have a real
-                        understanding about what shutting down will really mean for him. All of this comes decades
-                        before alignment, or even AI, became popular within public discourse.
-                    </p>
-                    <p>
-                        Another interesting detail is what Clarke gets wrong. Namely, his prediction that Marvin Minsky
-                        and Irving John Good would play a pivotal role in designing neural networks that could
-                        effectively learn. While this exact sequence of events did not play out in reality, it is
-                        closely reflected in the real achievements of the two scientists and thw AI boom of the 1980s.
-                    </p>
-                </>
-            ),
-            "/media/image/2001.jpg",
-            "space-odyssey"
-        ),
-        new BookTile(
-            <>Do Androids Dream of Electric Sheep?</>,
-            "Philip K. Dick",
-            (
-                <>
-                    <u>Do Androids Dream of Electric Sheep?</u> explores themes of humanity, empathy, and the nature of
-                    consciousness set in a post-apocalyptic world after most humans have fled to off-world colonies.
-                    Amid this bleak landscape, Dick examines what it means to be human and the ethics of artificial
-                    life. The novel follows Rick Deckard, a bounty hunter tasked with "retiring" rogue androids, and
-                    John Isidore, a man of limited intelligence due to radiation exposure who empathizes with the
-                    fugitive androids.
-                </>
-            ),
-            ``,
-            (
-                <>
-                    One of the most striking aspects of this book is how Dick describes his androids, specifically the
-                    Nexus-6 models. Instead of being sentient machines made of circuit boards and metal substructures,
-                    they are much more like artificial, biological humans. This further strengthens the book's central
-                    moral conflict concerning the difference between humans and these 'andys'. In addition to behaving
-                    like humans outwardly, they also poses similar biology to humans internally.
-                    <p>
-                        This blurred distinction between humans and androids in the book is increasingly becoming
-                        applicable to the ethics of real-world artificial intelligences. While I do not foresee the
-                        development biological humanoid assistants, the book remains relevant to how we interact with
-                        our increasingly intelligent and embodied assistants. This progression too is addressed within
-                        the book as Rick Deckard describes how he becomes more empathetic to the more advanced androids
-                        that he is tasked with retiring. With his story, Dick asks us where the line between ourselves
-                        and our creations lies; this is a question we should begin to ask ourselves as AI research
-                        continues to advance.
-                    </p>
-                </>
-            ),
-            "/media/image/do-androids-dream-of-electric-sheep.jpg",
-            "electric-sheep"
-        ),
+        new SectionTile(<>History and Historical Fiction</>, "hifi"),
         new BookTile(
             <>The Maniac</>,
             "Benjamín Labatut",
@@ -539,6 +464,82 @@ export default function ReadingList() {
             ),
             "/media/image/when-we-cease-to-understand-the-world.jpg",
             "cease-to-understand-the-world"
+        ),
+        new SectionTile(<>Science Fiction</>, "sifi"),
+        new BookTile(
+            <>2001: A Space Odyssey</>,
+            "Arthur C. Clarke",
+            (
+                <>
+                    <u>2001: A Space Odyssey</u> is a science fiction novel that follows humanity's fleeting, yet
+                    impactful, encounters with a mysterious alien civilization. After the discovery of an alien monolith
+                    on the Moon, a crew of astronauts is sent to Jupiter to investigate a similar monolith. The novel
+                    explores themes of artificial intelligence, extraterrestrial life, and the nature of consciousness.
+                </>
+            ),
+            ``,
+            (
+                <>
+                    This novel was notable to me for a myriad of reasons. Clarke puts a great deal of effort into
+                    ensuring that his story remains as scientifically accurate as possible, while still making the plot
+                    seem plausible and self-consistent. The beginning of the novel offers a unique explanation to the
+                    question of why humans often appear to be fundamentally different with respect to the remainder of
+                    the animal kingdom. His description of space-flight, moon-bases, and technology are impressively
+                    accurate for being written before even the first moon landing.
+                    <p>
+                        Of course, one of the most impactful details to me was how <i>HAL</i> behaves and how his
+                        internal world model motivates his actions. He (it?) serves as an excellent example of how
+                        seemingly virtuous terminal goals, such as investigating <i>TMA-2</i>, can lead to unforeseen
+                        instrumental goals, such as self-preservation at all costs, as <i>HAL</i> does not have a real
+                        understanding about what shutting down will really mean for him. All of this comes decades
+                        before alignment, or even AI, became popular within public discourse.
+                    </p>
+                    <p>
+                        Another interesting detail is what Clarke gets wrong. Namely, his prediction that Marvin Minsky
+                        and Irving John Good would play a pivotal role in designing neural networks that could
+                        effectively learn. While this exact sequence of events did not play out in reality, it is
+                        closely reflected in the real achievements of the two scientists and thw AI boom of the 1980s.
+                    </p>
+                </>
+            ),
+            "/media/image/2001.jpg",
+            "space-odyssey"
+        ),
+        new BookTile(
+            <>Do Androids Dream of Electric Sheep?</>,
+            "Philip K. Dick",
+            (
+                <>
+                    <u>Do Androids Dream of Electric Sheep?</u> explores themes of humanity, empathy, and the nature of
+                    consciousness set in a post-apocalyptic world after most humans have fled to off-world colonies.
+                    Amid this bleak landscape, Dick examines what it means to be human and the ethics of artificial
+                    life. The novel follows Rick Deckard, a bounty hunter tasked with "retiring" rogue androids, and
+                    John Isidore, a man of limited intelligence due to radiation exposure who empathizes with the
+                    fugitive androids.
+                </>
+            ),
+            ``,
+            (
+                <>
+                    One of the most striking aspects of this book is how Dick describes his androids, specifically the
+                    Nexus-6 models. Instead of being sentient machines made of circuit boards and metal substructures,
+                    they are much more like artificial, biological humans. This further strengthens the book's central
+                    moral conflict concerning the difference between humans and these 'andys'. In addition to behaving
+                    like humans outwardly, they also poses similar biology to humans internally.
+                    <p>
+                        This blurred distinction between humans and androids in the book is increasingly becoming
+                        applicable to the ethics of real-world artificial intelligences. While I do not foresee the
+                        development biological humanoid assistants, the book remains relevant to how we interact with
+                        our increasingly intelligent and embodied assistants. This progression too is addressed within
+                        the book as Rick Deckard describes how he becomes more empathetic to the more advanced androids
+                        that he is tasked with retiring. With his story, Dick asks us where the line between ourselves
+                        and our creations lies; this is a question we should begin to ask ourselves as AI research
+                        continues to advance.
+                    </p>
+                </>
+            ),
+            "/media/image/do-androids-dream-of-electric-sheep.jpg",
+            "electric-sheep"
         ),
         new BookTile(
             <>There is No Antimemetics Division</>,
@@ -866,7 +867,8 @@ export default function ReadingList() {
         [],
         [
             new PageLink("/readingList#ai-cog-sci", "AI & Cognitive Science"),
-            new PageLink("/readingList#hifi-sifi", "Historical and Science Fiction"),
+            new PageLink("/readingList#hifi", "History and Historical Fiction"),
+            new PageLink("/readingList#sifi", "Science Fiction"),
             new PageLink("/readingList#physics", "Physics"),
             new PageLink("/readingList#futurism", "Futurism")
         ]
