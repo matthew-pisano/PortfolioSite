@@ -363,6 +363,15 @@ export default function ReadingList() {
         ),
         new SectionTile(<>History and Historical Fiction</>, "hifi"),
         new BookTile(
+            <>Turing's Cathedral</>,
+            "George Dyson",
+            <></>,
+            ``,
+            <></>,
+            "/media/image/turings-cathedral.jpg",
+            "cathedral"
+        ),
+        new BookTile(
             <>The Maniac</>,
             "Benjamín Labatut",
             (
