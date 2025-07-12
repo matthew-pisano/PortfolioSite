@@ -803,6 +803,8 @@ export default function ReadingList() {
             "/media/image/the-order-of-time.jpg",
             "order-of-time"
         ),
+        new SectionTile(<>Philosophy</>, "philosophy"),
+        new BookTile(<>The Stranger</>, "Albert Camus", <></>, ``, <></>, "/media/image/the-stranger.jpg", "letranger"),
         new SectionTile(<>Futurism</>, "futurism"),
         new BookTile(
             <>The Inevitable: Understanding the 12 technological forces that will shape our future</>,
@@ -879,6 +881,7 @@ export default function ReadingList() {
             new PageLink("/readingList#hifi", "History and Historical Fiction"),
             new PageLink("/readingList#sifi", "Science Fiction"),
             new PageLink("/readingList#physics", "Physics"),
+            new PageLink("/readingList#philosophy", "Philosophy"),
             new PageLink("/readingList#futurism", "Futurism")
         ]
     );
