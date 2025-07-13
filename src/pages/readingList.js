@@ -922,6 +922,46 @@ export default function ReadingList() {
                         pause, he shoots him four more times.
                     </p>
                     <hr />
+                    <p>
+                        The second part of the book details the fallout of the unnamed man's murder. Meursault is
+                        arrested and placed in prison awaiting trial. During his incarceration, he notes that it was
+                        easier to accommodate than he imagined, due in part to his general detachment to life. Over the
+                        next several months, he begins to talk to himself in his cell. At several points, he is brought
+                        to the Magistrate for evaluation. Meursault never denies the murder, but also cannot fully
+                        articulate why he shot the man. During their meeting, Meursault's apathy sends the magistrate
+                        into an impassioned and religious tirade; the narrator expresses his confusion to the reader on
+                        how the subject is relevant to his case.
+                    </p>
+                    <p>
+                        At the trial, the prosecution builds its case on Meursault's character and circumstance far more
+                        heavily than the facts of the case. They point out how he did not cry a his mother's funeral,
+                        how he want to see a comedy movie that same day, and even how he accepted coffee with milk from
+                        the home's caretaker. Meursault is described very passionately as a soulless monster for his
+                        quietness and lack of empathy. The weight of these allegations thoroughly surprises Meursault
+                        who does not view himself as such. The defense calls several character witnesses on his behalf
+                        and his attorney assures Meursault that the sentence will likely be light if found guilty.
+                    </p>
+                    <p>Meursault is sentenced to execution by guillotine 'in the name of the French people'.</p>
+                    <p>
+                        As he awaits his execution, Meursault obsesses over the idea of a successful appeal and attempts
+                        to come to terms with his impending doom. We wonders how his death can be at the behest of the
+                        nebulous notion of 'the French people'. After refusing the prison chaplain several times, he
+                        visits Meursault's cell regardless. The chaplain preaches that the narrator must come to terms
+                        with his actions to be forgiven by God. He insists that this is the only path forward. This
+                        pushes Meursault past his threshold, which has already been worn thin. He shouts at the
+                        chaplain, something he has never been shown to do. He does not believe in God, nor does he care
+                        to. In a rage, Meursault attacks the priest's philosophy and patronizing attitude towards him.
+                        He asserts that there is no point in seeking God's forgiveness or hoping for his appeal since he
+                        is condemned regardless, be it in a week by execution or in twenty years by old age. Given this,
+                        none of his actions or desires even matter since the outcome will always be the same.
+                    </p>
+                    <p>
+                        After prison guards separate the two, Meursault feels drained. He no longer has the energy to
+                        hope for an appeal or a successful escape. He resigns himself to the 'benign indifference of the
+                        universe' and concludes that he is, and always has been happy as he is absorbed into the
+                        uncaring universe. He hopes that, at the date of his public execution, he will be surrounded not
+                        by loved ones, but by a large and hateful crowd.
+                    </p>
                 </>
             ),
             ``,
