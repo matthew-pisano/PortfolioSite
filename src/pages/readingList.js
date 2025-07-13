@@ -965,7 +965,35 @@ export default function ReadingList() {
                 </>
             ),
             ``,
-            <></>,
+            (
+                <>
+                    The narrator, Meursault, serves as a vessel through which Camus explores a subset of 1940s French
+                    society and human the human condition more generally. A common theme that Camus includes in his
+                    story is the fact that the rules and customs of society are not based on any fundamental laws, but
+                    rather on vague notions of morality and society. Serving as a detached observer, Meursault is a
+                    stranger in the society that he is placed in, a feeling that Camus also imbues the reader with.
+                    <p>
+                        Several blatant absurdities and contradictions are present within the story. The police let
+                        Raymond off with a warning after they determine that the woman that he batters was unfaithful.
+                        Salamano derides and abuses his dog, then experiences a great loss when it escapes. The
+                        magistrate is convinced that Meursault can escape harsh punishment if he repents, then quickly
+                        unravels when Meursault does not reciprocate his conviction. The prosecutor builds his case
+                        primarily upon Meursault's minor behaviors that do not perfectly match the expectations of
+                        society. The chaplain insists that Meursault, a man condemned to a violent death will be safe
+                        and at peace if he only accepts that the lord gives his life meaning.
+                    </p>
+                    <p>
+                        These incongruities compound upon themselves until Meursault breaks. His already weak connection
+                        to society is severed. He rejects the meanings and interpretations of life that are forced upon
+                        him, instead asserting that no inherent meaning exists. From the point of view of Camus, with
+                        Meursault as his voice, the universe is a fundamentally uncaring place. There is no higher power
+                        or force setting fundamental rules, be it society in general or a god. After Meursault accepts
+                        this, he feels at peace. To him, the ultimate rejection of the norms of society would be to hope
+                        that his final moments are spent surrounded by people who despise him.
+                    </p>
+                    <p>To many readers, this is a rather attractive notion.</p>
+                </>
+            ),
             "/media/image/the-stranger.jpg",
             "letranger"
         ),
