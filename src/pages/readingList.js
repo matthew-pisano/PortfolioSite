@@ -861,7 +861,74 @@ export default function ReadingList() {
             "order-of-time"
         ),
         new SectionTile(<>Philosophy</>, "philosophy"),
-        new BookTile(<>The Stranger</>, "Albert Camus", <></>, ``, <></>, "/media/image/the-stranger.jpg", "letranger"),
+        new BookTile(
+            <>The Stranger</>,
+            "Albert Camus",
+            (
+                <>
+                    <u>The Stranger</u> is told from the perspective of Meursault, a French settler in Algiers, at the
+                    time a part of France's colonial empire. The first part of the book opens with the death of
+                    Meursault's mother and his travel to her old-age home and the subsequent funeral. Meursault's
+                    general indifference and lack of grief during the process is our first introduction to his
+                    character. Throughout the evening vigil and the subsequent funeral, the narrator frequently
+                    references the extreme heat of the North African environment. This induces stress and clouds his
+                    judgement, a fact that will prove to be pivotal later on.
+                    <p>
+                        After the funeral, he returns to Algiers where he meets Marie, who previously worked as a
+                        secretary at his company. After swimming and viewing a comedy film that day, they begin to form
+                        a relationship, at least in Marie's eyes. Meursault enjoys the situation, but is apathetic
+                        toward Marie's suggestions of formalizing their relationship. As Meursault is returning home
+                        from work one day, he encounters Salamano, his elderly neighbor. Accompanying the old man is his
+                        dog which lost much of its formerly smooth coat dur to mange. He notes his neighbors twice-daily
+                        ritual of taking his dog out as he curses and beats the animal for not following properly.
+                    </p>
+                    <p>
+                        Soon after, our protagonist becomes involved with Raymond Sintès, his neighbor and rumored pimp.
+                        Raymond has convinced himself that his mistress, an Arab woman, has been unfaithful to him. To
+                        this end, he employs Meursault to help him get his revenge. Over dinner, he asks the narrator to
+                        write a letter which will trick to woman to return to him so he can execute his reprisal.
+                        Despite the fact that Raymond had earlier proudly described his short temper and pension for
+                        violence, Meursault takes no issue with the moral implications of the situation, rather, he is
+                        more interested in the fact that Raymond now describes him as his 'pal'. When the woman visits
+                        Raymond's apartment, he beats her enough for the police to be called. When the officer arrives,
+                        he gives Raymond a warning and a court notice. During the session, Meursault serves as a witness
+                        of the woman's infidelity despite not observing any evidence for himself and law enforcement
+                        takes no further action.
+                    </p>
+                    <p>
+                        During this period, Meursault's boss at his firm extends an offer to travel to their new Paris
+                        branch. He has no strong feelings about moving, going with whatever would seem to please his
+                        superior; this draws his boss to criticise him on his lack of motivation. When Marie brings up
+                        the topic of marriage, he reacts similarly. During another trip home from work, we meet Salamano
+                        again. We learn that he has recently lost his dog. Despite his obvious ire for his pet, he is
+                        extremely distraught. Meursault learns that he adopted the dog shortly after his wife's passing.
+                        Meursault takes note of his neighbor's contradictory behavior but does not offer any opinion to
+                        the reader.
+                    </p>
+                    <p>
+                        Soon after, Raymond invites Meursault and Maria to a weekend at his friend's bungalow on the
+                        beach. On the way, the group encounters several Arab men that have been recently been tailing
+                        Raymond; one of these men is the brother of his former mistress. At the beach, Meursault,
+                        Raymond, and his friend Masson encounter the group of Arabs again. This time, Raymond initiates
+                        a fight where he is badly slashed with a knife. During the scuffle, Raymond nearly draws his
+                        revolver on his assailant, but is persuaded by Meursault to give him the weapon instead. The
+                        unnamed Arab men run off after this event.
+                    </p>
+                    <p>
+                        Later in the day, Meursault goes on a walk on the beach along, noting the extreme heat of the
+                        day. On his way to a natural spring that would relieve his torment, he encounters the Arab man
+                        along. As the narrator approaches, the man draws the knife he used to slash Raymond. Delirious
+                        from heat exhaustion, Meursault accidentally shoots the man with Raymond's revolver. After a
+                        pause, he shoots him four more times.
+                    </p>
+                    <hr />
+                </>
+            ),
+            ``,
+            <></>,
+            "/media/image/the-stranger.jpg",
+            "letranger"
+        ),
         new SectionTile(<>Futurism</>, "futurism"),
         new BookTile(
             <>The Inevitable: Understanding the 12 technological forces that will shape our future</>,
