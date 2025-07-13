@@ -371,24 +371,23 @@ export default function ReadingList() {
                     surrounding the creation of the first general-purpose, electronic, digital computer. The{" "}
                     <i>ENIAC</i>, or Electronic Numerical Integrator and Computer, was one of the first concrete
                     realizations of Turing's <i>Universal Computing Machine</i>. The historical account, compiled by
-                    Dyson from records of the <i>Institute for Advanced Study</i> (among other sources), details the
-                    project itself, along with the scientists and engineers that created it and the institute itself.
+                    Dyson from the records of the <i>Institute for Advanced Study</i> (among other sources), details the
+                    project itself, along with the scientists and engineers that created it, and the institute itself.
                     <p>
                         From its inception in late 1945, the machine was often reserved for usage in military
                         calculations, namely those integral in predicting the behavior of thermonuclear reactions,
                         purely theoretical at the time. Many of the scientists involved in the project, including John
                         von Neumann and Robert Oppenheimer, had come straight from Los Alamos after the completion of
-                        the <i>Manhattan Project</i> that created the first fission bombs; the <i>ENIAC</i> served as a
-                        computerized replacement to the largely manual calculations that had help predict the behavior
-                        of more simple fission weapons.
+                        the <i>Manhattan Project</i>, which created the first fission bombs; the <i>ENIAC</i> served as
+                        a computerized replacement to the largely manual calculations that had help predict the behavior
+                        of more simple atomic weapons.
                     </p>
                     <p>
                         However, the <i>ENIAC</i>'s impact reached far beyond nuclear calculations. Dyson detailed the
                         innovations that went into its design and the other calculations that it performed when not
                         predicting neutron cascades or blast waves. From the first computerized <i>Monte Carlo</i>{" "}
-                        simulations, to cellular automata, cellular automata, weather prediction, and cosmic rays, the
-                        computer helped to further many scientific fields through statistical predictions and numerical
-                        analysis.
+                        simulations, to cellular automata, weather prediction, and cosmic rays, the computer helped to
+                        further many scientific fields through statistical predictions and numerical analysis.
                     </p>
                     <p>
                         In addition to the machine itself, Dyson also expands upon the personal histories of its
@@ -418,8 +417,8 @@ export default function ReadingList() {
                         I also enjoyed Dyson's detailed explorations of the series of rapid advancements made in the
                         post-war years; many of which still serve as foundations of computer science today. The author
                         not only offers explanations for the Monte Carlo method of analysis, Barricelli's early cellular
-                        automata, the realization of Lewis Richardson's work on weather forecasting by Jule Charney, but
-                        also details on the lives of their originators. The result is a dense web of scientists and
+                        automata, and the realization of Lewis Richardson's work on weather forecasting by Jule Charney,
+                        but also details on the lives of their originators. The result is a dense web of scientists and
                         histories whose paths all briefly crossed in the halls of the IAS to realize the true power of
                         Turing's creation.
                     </p>
@@ -870,9 +869,10 @@ export default function ReadingList() {
                     time a part of France's colonial empire. The first part of the book opens with the death of
                     Meursault's mother and his travel to her old-age home and the subsequent funeral. Meursault's
                     general indifference and lack of grief during the process is our first introduction to his
-                    character. Throughout the evening vigil and the subsequent funeral, the narrator frequently
-                    references the extreme heat of the North African environment. This induces stress and clouds his
-                    judgement, a fact that will prove to be pivotal later on.
+                    character, including the fact that he is not sure what day she died upon and even what her age was.
+                    Throughout the evening vigil and the subsequent funeral, the narrator frequently references the
+                    extreme heat of the North African environment. This induces stress and clouds his judgement, a fact
+                    that will prove to be pivotal later on.
                     <p>
                         After the funeral, he returns to Algiers where he meets Marie, who previously worked as a
                         secretary at his company. After swimming and viewing a comedy film that day, they begin to form
@@ -880,7 +880,7 @@ export default function ReadingList() {
                         toward Marie's suggestions of formalizing their relationship. As Meursault is returning home
                         from work one day, he encounters Salamano, his elderly neighbor. Accompanying the old man is his
                         dog which lost much of its formerly smooth coat dur to mange. He notes his neighbors twice-daily
-                        ritual of taking his dog out as he curses and beats the animal for not following properly.
+                        ritual of taking his dog out as he curses and beats the animal for not behaving properly.
                     </p>
                     <p>
                         Soon after, our protagonist becomes involved with Raymond Sintès, his neighbor and rumored pimp.
@@ -911,26 +911,26 @@ export default function ReadingList() {
                         Raymond; one of these men is the brother of his former mistress. At the beach, Meursault,
                         Raymond, and his friend Masson encounter the group of Arabs again. This time, Raymond initiates
                         a fight where he is badly slashed with a knife. During the scuffle, Raymond nearly draws his
-                        revolver on his assailant, but is persuaded by Meursault to give him the weapon instead. The
-                        unnamed Arab men run off after this event.
+                        revolver on his assailant, but is persuaded by Meursault to give him the weapon instead to
+                        defuse the situation. The unnamed Arab men run off after this event.
                     </p>
                     <p>
-                        Later in the day, Meursault goes on a walk on the beach along, noting the extreme heat of the
-                        day. On his way to a natural spring that would relieve his torment, he encounters the Arab man
-                        along. As the narrator approaches, the man draws the knife he used to slash Raymond. Delirious
-                        from heat exhaustion, Meursault accidentally shoots the man with Raymond's revolver. After a
-                        pause, he shoots him four more times.
+                        Later in the day, Meursault goes on a walk on the beach alone, noting the extreme heat of the
+                        day. On his way to a natural spring that would relieve his suffering, he encounters the Arab man
+                        alone. As the narrator approaches, the man draws the knife that he used to slash Raymond.
+                        Delirious from heat exhaustion, Meursault accidentally shoots the man with Raymond's revolver.
+                        After a pause, he shoots him four more times.
                     </p>
                     <hr />
                     <p>
                         The second part of the book details the fallout of the unnamed man's murder. Meursault is
                         arrested and placed in prison awaiting trial. During his incarceration, he notes that it was
-                        easier to accommodate than he imagined, due in part to his general detachment to life. Over the
-                        next several months, he begins to talk to himself in his cell. At several points, he is brought
-                        to the Magistrate for evaluation. Meursault never denies the murder, but also cannot fully
-                        articulate why he shot the man. During their meeting, Meursault's apathy sends the magistrate
-                        into an impassioned and religious tirade; the narrator expresses his confusion to the reader on
-                        how the subject is relevant to his case.
+                        easier to accommodate to prison life than he imagined, due in part to his general detachment to
+                        life in general. Over the next several months, he begins to talk to himself in his cell. At
+                        several points, he is brought to the Magistrate for evaluation. Meursault never denies the
+                        murder, but also cannot fully articulate why he shot the man. During their meeting, Meursault's
+                        apathy sends the magistrate into an impassioned and religious tirade; the narrator expresses his
+                        confusion to the reader on how the subject is relevant to his case.
                     </p>
                     <p>
                         At the trial, the prosecution builds its case on Meursault's character and circumstance far more
@@ -943,17 +943,18 @@ export default function ReadingList() {
                     </p>
                     <p>Meursault is sentenced to execution by guillotine 'in the name of the French people'.</p>
                     <p>
-                        As he awaits his execution, Meursault obsesses over the idea of a successful appeal and attempts
-                        to come to terms with his impending doom. We wonders how his death can be at the behest of the
-                        nebulous notion of 'the French people'. After refusing the prison chaplain several times, he
-                        visits Meursault's cell regardless. The chaplain preaches that the narrator must come to terms
-                        with his actions to be forgiven by God. He insists that this is the only path forward. This
-                        pushes Meursault past his threshold, which has already been worn thin. He shouts at the
-                        chaplain, something he has never been shown to do. He does not believe in God, nor does he care
-                        to. In a rage, Meursault attacks the priest's philosophy and patronizing attitude towards him.
-                        He asserts that there is no point in seeking God's forgiveness or hoping for his appeal since he
-                        is condemned regardless, be it in a week by execution or in twenty years by old age. Given this,
-                        none of his actions or desires even matter since the outcome will always be the same.
+                        As he awaits his execution, Meursault obsesses over the idea of a successful appeal and possible
+                        ways of escape as he attempts to come to terms with his impending doom. We wonders how his death
+                        can be at the behest of the nebulous notion of 'the French people'. After refusing the prison
+                        chaplain several times, he visits Meursault's cell regardless. The chaplain preaches that the
+                        narrator must come to terms with his actions to be forgiven by God. He insists that this is the
+                        only path forward. This pushes Meursault past his threshold, which has already been worn thin.
+                        He shouts at the chaplain, something he has never been shown to do. He does not believe in God,
+                        nor does he care to. In a rage, Meursault attacks the priest's philosophy and patronizing
+                        attitude towards him. He asserts that there is no point in seeking God's forgiveness or hoping
+                        for his appeal since he is condemned regardless, be it in a week by execution or in twenty years
+                        by old age. Given this, none of his actions or desires even matter since the outcome will always
+                        be the same.
                     </p>
                     <p>
                         After prison guards separate the two, Meursault feels drained. He no longer has the energy to
@@ -968,10 +969,10 @@ export default function ReadingList() {
             (
                 <>
                     The narrator, Meursault, serves as a vessel through which Camus explores a subset of 1940s French
-                    society and human the human condition more generally. A common theme that Camus includes in his
+                    society, and human the human condition more generally. A common theme that Camus includes in his
                     story is the fact that the rules and customs of society are not based on any fundamental laws, but
-                    rather on vague notions of morality and society. Serving as a detached observer, Meursault is a
-                    stranger in the society that he is placed in, a feeling that Camus also imbues the reader with.
+                    rather on vague notions of morality and rule of law. Serving as a detached observer, Meursault is a
+                    stranger in this society that he is placed in, a feeling that Camus also imbues the reader with.
                     <p>
                         Several blatant absurdities and contradictions are present within the story. The police let
                         Raymond off with a warning after they determine that the woman that he batters was unfaithful.
@@ -979,7 +980,7 @@ export default function ReadingList() {
                         magistrate is convinced that Meursault can escape harsh punishment if he repents, then quickly
                         unravels when Meursault does not reciprocate his conviction. The prosecutor builds his case
                         primarily upon Meursault's minor behaviors that do not perfectly match the expectations of
-                        society. The chaplain insists that Meursault, a man condemned to a violent death will be safe
+                        society. The chaplain insists that Meursault, a man condemned to a violent death, will be safe
                         and at peace if he only accepts that the lord gives his life meaning.
                     </p>
                     <p>
@@ -991,7 +992,7 @@ export default function ReadingList() {
                         this, he feels at peace. To him, the ultimate rejection of the norms of society would be to hope
                         that his final moments are spent surrounded by people who despise him.
                     </p>
-                    <p>To many readers, this is a rather attractive notion.</p>
+                    <p>To many readers, this is can be a rather attractive notion.</p>
                 </>
             ),
             "/media/image/the-stranger.jpg",
