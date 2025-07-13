@@ -151,13 +151,22 @@ class BookTile extends Tile {
         let content = (
             <>
                 <span className={tileStyles.bookTileSection}>
-                    <i>Author:</i> {author}
+                    <b>
+                        <i>Author:</i>
+                    </b>{" "}
+                    {author}
                 </span>
                 <span className={tileStyles.bookTileSection}>
-                    <i>Synopsis:</i> {synopsis} {source_elem}
+                    <b>
+                        <i>Synopsis:</i>
+                    </b>{" "}
+                    {synopsis} {source_elem}
                 </span>
                 <span className={tileStyles.bookTileSection}>
-                    <i>Thoughts:</i> {thoughts}
+                    <b>
+                        <i>Thoughts:</i>
+                    </b>{" "}
+                    {thoughts}
                 </span>
             </>
         );
