@@ -20,6 +20,30 @@ export default function Lectures() {
             )
         ),
         new Tile(
+            <>Transformers, Step-by-Step</>,
+            (
+                <>
+                    I created this lecture for a session of IBM's internal lecture series. For these sessions,
+                    knowledgeable members of an organization are invited to give a lecture on an area of their expertise
+                    to a technical audience that may not consist of domain experts. Given IBM's recent acceleration in
+                    the development of its AI technology, many members of my organization were developing along with
+                    models which they may not have understood on a fundamental level. The aim of this lecture was to
+                    provide a clearer picture of the inner-workings of the transformer architecture in a detailed, yet
+                    accessible manner.
+                    <p>
+                        For the presentation slides, I included detailed diagrams, of my design, for <i>BERT</i> and
+                        IBM's <i>Granite</i>, along with a step-by-step expansion on the attention mechanism itself.
+                        Most explanations of attention calculation, in my opinion, are either too technical or too
+                        simplified. To convey this process in a more representative manner, I presented the calculations
+                        as a short dialogue between several tokens within a sequence as their attention scores were
+                        updated over time.
+                    </p>
+                </>
+            ),
+            "/media/image/ibm.png",
+            ["academic", "ai"]
+        ),
+        new Tile(
             <>Computer Architecture and Organization Lecture Series</>,
             (
                 <>
