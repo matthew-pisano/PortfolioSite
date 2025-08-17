@@ -27,9 +27,19 @@ export default function ReadingList() {
                 <>
                     Below is a collection of books I have read and would recommend to others. The following may be
                     useful for gaining foundational knowledge in the field of AI and the Cognitive Sciences, may have
-                    had a significant impact on my own world model, or I may just find them interesting. Some of these
-                    have also been personally recommended to me by colleagues and mentors. Through this collection, I
-                    hope to provide some insight into my field of study and my own personal interests.
+                    had a significant impact on my own world model, or I may just have found them interesting. Some of
+                    these have also been personally recommended to me by colleagues and mentors. Through this
+                    collection, I hope to provide some insight into my field of study and my own personal interests.
+                    <p>
+                        Each book contains two sections: a summary and my own personal thoughts/analysis. Some of these
+                        summaries are quite verbose, but I tried to include the minimum information needed for someone
+                        unfamiliar with the work to understand my thoughts well. Outside of the summaries, the second
+                        sections contain my own thoughts and opinions about the book, along with analysis that I think
+                        would be helpful for a reader to grasp the main ideas without fully reading the book itself. For
+                        the works of fiction here, I do not deliberately include spoilers, but I also do not avoid them
+                        when they are important for understanding underlying themes. Proceed with caution in this
+                        respect.
+                    </p>
                 </>
             )
         ),
