@@ -138,13 +138,57 @@ export default [
                 </p>
                 <p>
                     Hofstadter's usage of dialogues is also worth mentioning. Conversations between the Greek hero
-                    Achilles, The Turtle, and others bookend each chapter and serve to reinforce and humanize the
+                    Achilles, Mr. Turtle, and others bookend each chapter and serve to reinforce and humanize the
                     somewhat technical and abstract ideas presented in the preceding pages.
                 </p>
             </>
         ),
         ``,
-        <></>,
+        (
+            <>
+                The structure and format of this book is among the most unique and original that I have read. This is
+                before even considering the main content. I have yet to read a book that makes better (or any!) use of a
+                dialogue system like Hofstadter does. Even though I personally have a background in the technical
+                subjects that the book explains, the conversations between Achilles, Mr. Turtle, Mr. Crab, and others
+                serve to improve my own understanding of these abstract subjects. I especially enjoyed{" "}
+                <i>Little Harmonic Labyrinth</i> for its creative usages of recursion, geometric convergence, and
+                infinite series and <i>...Ant Fugue</i> for its commentary on reductionism (and holism), determinism,
+                and emergent phenomena. Although the nature of the book as a whole carries a serious and academic tone,
+                the author uses these dialogues as an opportunity to insert humor into the text. I thought the hiding of
+                "Cantor" in <i>Aria with Diverse Variations</i> and the reference to Goldbach's Conjecture in{" "}
+                <i>The Magnificrab, Indeed</i> were very well thought out. Finally, I'd like to point out the level of
+                detail and effort put into each of the dialogues. Each dialogue (with the exception of Carrol's) is
+                based on one of Bach's pieces. While this is referenced in the title, the ties run much deeper. The
+                theme of each often mirrors that of the target musical score and even the voices within the dialogue
+                match the pattern of voices within the music. Occasionally this relation is referenced within the
+                dialogue, but often it is left up to the reader to draw this connection.
+                <p>
+                    While the author's augment on the common themes present in the works of book's three namesakes is
+                    strong on its own, the its meta-writing also reinforces that relationship. It genuinely surprised me
+                    just how well the art produced by Bach and Escher fit alongside Gödel and the more rigorous elements
+                    of the author's thoughts. Every Escher lithograph seems like it could have been custom-made for the
+                    chapters in which it was placed. The themes present in Bach's music almost appear to deliberately
+                    match the book, instead of the other way around. The recursive and self-referential connections
+                    between the three luminaries are far from obvious, but one struggles to miss how deep this
+                    connection is after reading this book.
+                </p>
+                <p>
+                    A final note that I should make concerns Bach in particular. While the ideas of recursion and
+                    self-reference are requirements for understanding Gödel's proof, and they are often visually
+                    apparent in Escher's pieces, this is much less obvious for Bach. This is especially true for those
+                    who have not listened (or read) too thoroughly or even at all. Just how well Bach's music fits into
+                    a mathematical framing is highly unexpected. Many of his musical scores can (deliberately) be
+                    translated, mirrored, and scaled in frequency and time similarly to how objects in geometry can be
+                    manipulated in the same manor. The delay and shifting of the voices in his fugues, the inversion in
+                    time of <i>Crab Canon</i> and the reflection in frequency present in one of the cannons in his{" "}
+                    <i>Goldberg Variations</i>. In fact, this last piece can be printed and played on the surface of a
+                    Möbius strip! These scores are a strange mix of creative and mechanical; the notes can be thought of
+                    following clever algorithms, almost as if it was written by a dedicated mathematician. This level of
+                    complexity is not immediately apparent, at least to me, unless one deliberately analyzes the sound
+                    in a thoughtful manner.
+                </p>
+            </>
+        ),
         "/media/image/",
         "geb-egb"
     ),
