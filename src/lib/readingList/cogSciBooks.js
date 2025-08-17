@@ -106,6 +106,49 @@ export default [
         "thinking-fast-slow"
     ),
     new BookTile(
+        <>Gödel, Escher, Bach: An Eternal Golden Braid</>,
+        "Douglas Hofstadter",
+        (
+            <>
+                <u>GEB: EGB</u> is a work that often resists attempts at strict classification and even summarization.
+                At first, it may seem to be building up to Gödel's proof and how it can be related to other formal
+                systems. This, however, is only one component of the tome's content. Hofstadter also touches on themes
+                of mathematical formalisms, number theory, geometry, recursion, self-replication, self-representation,
+                self-modification, holism/reductionism, cognition, computers, and artificial intelligence. Towards the
+                end, the author also adds discussions about determinism, free will, and <i>Strange Loops</i> to the
+                list. The latter of these being one of Hofstadter's main theses: the fact that "interesting" systems,
+                such as number theory, genetics, or the human mind must contain different levels of self-reference
+                across levels of abstraction. These <i>Tangled Hierarchies</i> allow a system to "speak" about itself
+                and enable emergent phenomena such as Gödel's theorems on incompleteness and consistency, genetic code
+                replication, and human consciousness.
+                <p>
+                    Beyond the above, surface-level themes, there resides the concept present in the book's subtitle.
+                    Namely, how the works of Gödel, Escher, and Bach can, at a certain level of abstraction, braid
+                    together to describe the same self-referential concept. This theme is represented in several ways
+                    within the book. Bach's work is used as inspiration for the book's dialogues, being used both
+                    explicitly and implicitly within them, along with direct references in the main text. For example,{" "}
+                    <i>Musical Offering</i> and his endlessly rising canon. Similarly, Escher's art is referenced both
+                    within some of the dialogues and to show the reader Hofstadter's ideas through a graphic
+                    perspective. <i>Waterfall</i>, <i>Drawing Hands</i>, and <i>Dragon</i> are used particularly to
+                    illustrate examples of self-reference and recursion. Finally, Gödel's first and second
+                    incompleteness theorems serve as a central focus, especially in the first part. The author's
+                    introduction to formal systems and number theory give the reader a foundation for understanding the
+                    author's interpretation of Gödel's original proofs. These theorems are later leveraged to concretize
+                    the notions of incompleteness and consistency used in the book's latter half.
+                </p>
+                <p>
+                    Hofstadter's usage of dialogues is also worth mentioning. Conversations between the Greek hero
+                    Achilles, The Turtle, and others bookend each chapter and serve to reinforce and humanize the
+                    somewhat technical and abstract ideas presented in the preceding pages.
+                </p>
+            </>
+        ),
+        ``,
+        <></>,
+        "/media/image/",
+        "geb-egb"
+    ),
+    new BookTile(
         <>The Alignment Problem</>,
         "Brian Christian",
         (
