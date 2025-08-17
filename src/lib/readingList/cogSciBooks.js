@@ -189,7 +189,7 @@ export default [
                 </p>
             </>
         ),
-        "/media/image/",
+        "/media/image/geb-egb.jpg",
         "geb-egb"
     ),
     new BookTile(
