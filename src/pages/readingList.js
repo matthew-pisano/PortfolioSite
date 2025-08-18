@@ -41,7 +41,8 @@ export default function ReadingList() {
                         respect.
                     </p>
                 </>
-            )
+            ),
+            "/media/image/bookshelf.png"
         ),
         new SectionTile(<>Artificial Intelligence and Cognitive Science</>, sections.cogSci),
         ...cogSciBooks,
