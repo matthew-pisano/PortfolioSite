@@ -32,6 +32,18 @@
     padding-right: 10px;
 }
 
+.titleCard h1 {
+    margin: auto;
+    width: 100%;
+    text-align: center
+}
+
+.titleCard h3 {
+    margin: auto;
+    width: auto;
+    text-align: center
+}
+
 .openSidebarPage {
     margin-left: 250px !important;
 }

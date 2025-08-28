@@ -16,9 +16,9 @@ function DefaultWrapper({ pageInfo, tiles }) {
     return (
         <Wrapper pageName={pageInfo.pageName}>
             <div className={`${styles.titleCard}`}>
-                <h1 style={{ margin: "auto", width: "100%", textAlign: "center" }}>{pageInfo.title}</h1>
+                <h1>{pageInfo.title}</h1>
                 <br />
-                <h3 style={{ margin: "auto", width: "auto", textAlign: "center" }}>{pageInfo.summary}</h3>
+                <h3>{pageInfo.summary}</h3>
             </div>
             {buildPage(pageInfo, tiles)}
         </Wrapper>
