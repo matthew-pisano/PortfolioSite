@@ -20,7 +20,7 @@ export default function Lectures() {
             )
         ),
         new Tile(
-            <>Transformers, Step-by-Step</>,
+            <>Transformer Models: Architectures and Use Cases</>,
             (
                 <>
                     I created this lecture for a session of IBM's internal lecture series. For these sessions,
@@ -31,7 +31,7 @@ export default function Lectures() {
                     provide a clearer picture of the inner-workings of the transformer architecture in a detailed, yet
                     accessible manner.
                     <p>
-                        For the presentation slides, I included detailed diagrams, of my design, for <i>BERT</i> and
+                        For the presentation slides, I included detailed diagrams, of my own design, for <i>BERT</i> and
                         IBM's <i>Granite</i>, along with a step-by-step expansion on the attention mechanism itself.
                         Most explanations of attention calculation, in my opinion, are either too technical or too
                         simplified. To convey this process in a more representative manner, I presented the calculations
@@ -41,7 +41,8 @@ export default function Lectures() {
                 </>
             ),
             "/media/image/ibm.png",
-            ["academic", "ai"]
+            ["academic", "ai"],
+            [new TileLink("/media/documents/IBM+Transformer+Models.pdf", "Slides")]
         ),
         new Tile(
             <>Computer Architecture and Organization Lecture Series</>,
