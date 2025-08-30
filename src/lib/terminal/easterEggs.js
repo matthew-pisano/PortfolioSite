@@ -92,12 +92,24 @@ async function removeStyles(el, delay) {
     el.removeAttribute("style");
     el.setAttribute("src", "");
     el.setAttribute("class", "");
-    el.style.display = "none";
     el.style.display = "";
 
     for (const x of el.childNodes) {
-        if (x.nodeType === 1) await removeStyles(x, 0);
+        if (x.nodeType === 1) await removeStyles(x, delay);
     }
+}
+
+/**
+ * Removes all child elements of an element with a delay
+ * @param el {HTMLElement|ChildNode} The element to remove children from
+ * @param delay {number} The delay between removing children
+ * @returns {Promise<void>}
+ */
+async function removeElement(el, delay) {
+    await new Promise((resolve) => setTimeout(resolve, delay));
+    let children = Array.from(el.childNodes);
+    for (let child of children) await removeElement(child, delay);
+    el.remove();
 }
 
 /**
@@ -109,22 +121,44 @@ async function* rmRoot() {
         yield lines[i] + "\n";
         await new Promise((resolve) => setTimeout(resolve, 20));
     }
-    let pageElem = document.getElementById("page");
+
+    let currentFileName = document.getElementById("itemStatus").innerText;
+
+    // Remove status elements
     document.getElementById("menuDropHolder").remove();
     for (let statusElem of ["langStatus", "encodingStatus", "linesStatus", "sizeStatus", "itemStatus"]) {
         document.getElementById(statusElem).innerText = "???";
         await new Promise((resolve) => setTimeout(resolve, 100));
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    await removeStyles(document.documentElement, 300);
+    let pageElem = document.getElementById("page");
+    // Remove all elements under the page element
+    let children = Array.from(pageElem.childNodes);
+    for (let child of children) await removeElement(child, 15);
 
+    // Add error to page
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    pageElem.innerHTML = `<p style="color: red">ERROR: Could not read directory '${currentFileName}'</p>`;
+
+    // Add error to sidebar
     await new Promise((resolve) => setTimeout(resolve, 1000));
     document.getElementById("sidebarContent").innerHTML =
         `<p style="color: red">ERROR: Could not read directory '${SysEnv.PUBLIC_FOLDER}'</p>`;
+
+    // Remove terminal
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    pageElem.innerHTML = `<p style="color: red">ERROR: File not found</p>`;
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    document.getElementById("terminalHolder").remove();
+
+    // Remove Styles
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await removeStyles(document.documentElement, 100);
+    document.getElementsByTagName("body")[0].style.backgroundColor = "white";
+    document.getElementsByTagName("body")[0].style.color = "black";
+    document.getElementsByTagName("html")[0].style.backgroundColor = "white";
+    document.getElementsByTagName("html")[0].style.color = "black";
+
+    // Show BSOD
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     window.document.documentElement.style.backgroundColor = "#020183";
     window.document.body.innerHTML = '<img src="/media/image/bsod.png" alt="bsod" style="width: 100%;"/>';
 }
