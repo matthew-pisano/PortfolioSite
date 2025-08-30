@@ -192,7 +192,7 @@ class Commands {
         let targetItem = masterFileSystem.getItem(cdPath);
 
         if (!targetItem) throw new CommandError(`Cannot enter directory.  Directory at ${cdPath} does not exist!`);
-        else if (targetItem.constructor === File) throw new CommandError(`Cannot enter ${cdPath}, it is a file!`);
+        else if (targetItem instanceof File) throw new CommandError(`Cannot enter ${cdPath}, it is a file!`);
         else if (!targetItem.permission.includes(Perms.EXECUTE)) {
             // Secret admin access
             if (cdPath === "/home/admin") {
@@ -231,14 +231,14 @@ class Commands {
         let pad = "\xa0\xa0";
         let paddedSize = `${lsObj.size()}`.padStart(6, "\xa0");
 
-        if (lsObj.constructor === Directory) {
+        if (lsObj instanceof Directory) {
             if (!lsObj.permission.includes(Perms.READ))
                 throw new CommandError(`Cannot list ${path}.  Permission denied!`);
 
             // Gather the information for each file and directory in the directory
             let list = [];
             for (let child of lsObj.subTree) {
-                if (child.constructor === File) {
+                if (child instanceof File) {
                     let fileInfo = (await this.ls([...options, pathJoin(path, child.name)]).next()).value;
                     list.push([fileInfo, child.name]);
                     continue;
@@ -349,7 +349,7 @@ class Commands {
 
         let newObj = masterFileSystem.getItem(newPath);
 
-        if (newObj && newObj.constructor === Directory) masterFileSystem.cp(oldPath, pathJoin(newPath, oldName));
+        if (newObj && newObj instanceof Directory) masterFileSystem.cp(oldPath, pathJoin(newPath, oldName));
         else if (!newObj) masterFileSystem.cp(oldPath, newPath);
         else throw new CommandError(`Cannot copy directory at ${oldPath} to file at ${newPath}!`);
     }
@@ -391,17 +391,21 @@ class Commands {
             throw new CommandError(`Refusing to remove '.' or '..' directory: skipping '${pathArg}'`);
 
         let path = this.resolvePath(pathArg);
+
+        if (masterFileSystem.isDir(path) && !options.includes("-r"))
+            throw new CommandError("Use -r to remove a directory.");
+
         // Prevent the user from deleting the system32 directory
         if (pathArg.replace(/\\/g, "/") === "C:/Windows/System32" || path === "/mnt/C:/Windows/System32")
             throw new CommandError(system32);
 
         // Check if the root directory is being removed and if the -rf option is used
-        if (path === "/" && options.includes("-f") && options.includes("-r")) {
+        if (path === "/" && options.includes("-f")) {
             yield* await rmRoot();
             return;
-        } else if (path === "/") throw new CommandError(`Permission denied for path '/'!  Use -rf to force.`);
+        } else if (path === "/") throw new CommandError(`Permission denied for path '/'!  Use -f to force.`);
 
-        masterFileSystem.rm(path, options);
+        masterFileSystem.rm(path);
     }
 
     /**
@@ -438,7 +442,7 @@ class Commands {
         let currentFile = masterFileSystem.getItem(pagePath);
 
         if (!currentFile) throw new CommandError(`Cannot open file.  File at ${pagePath} does not exist!`);
-        else if (currentFile.constructor === Directory) throw new CommandError(`Cannot open a directory!`);
+        else if (currentFile instanceof Directory) throw new CommandError(`Cannot open a directory!`);
         else if (currentFile.isPage()) {
             let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
             window.open(relPath.replace(".html", ""), "_self");
@@ -463,7 +467,7 @@ class Commands {
         let currentFile = masterFileSystem.getItem(pagePath);
         if (!masterFileSystem.exists(pagePath))
             throw new CommandError(`Cannot edit file.  File at ${pagePath} does not exist!`);
-        else if (currentFile.constructor === Directory) throw new CommandError(`Cannot edit a directory!`);
+        else if (currentFile instanceof Directory) throw new CommandError(`Cannot edit a directory!`);
         else if (currentFile.permission.includes(Perms.WRITE)) window.location.replace(`/edit?file=${pagePath}`);
         else throw new CommandError(`Insufficient permissions to edit ${pagePath}!`);
     }

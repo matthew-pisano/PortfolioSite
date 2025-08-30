@@ -22,7 +22,7 @@ export default function Display() {
         let currentFile = masterFileSystem.getItem(filePath);
         // Show error message if file is not found, is a directory, or does not have read permissions
         if (!currentFile) setPageText(`Cannot find file at ${filePath}!`);
-        else if (currentFile.constructor === Directory) setPageText("Cannot open a directory!");
+        else if (currentFile instanceof Directory) setPageText("Cannot open a directory!");
         else if (!currentFile.permission.includes(Perms.READ))
             setPageText(`Insufficient permissions to access source of ${filePath}!`);
         else {

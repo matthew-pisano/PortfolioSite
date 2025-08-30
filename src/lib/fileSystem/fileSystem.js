@@ -172,8 +172,7 @@ class FileSystem {
                 `Cannot copy file or directory.  File or directory at ${oldPath} does not exist!`
             );
 
-        let newObj = this.getItem(newPath);
-        if (newObj && newObj.constructor === File) throw new FileSystemError(`File at ${newPath} already exists!`);
+        if (this.isFile(newPath)) throw new FileSystemError(`File at ${newPath} already exists!`);
 
         let newParentPath = newPath.substring(0, newPath.lastIndexOf("/") + 1);
         let newChildName = newPath.substring(newPath.lastIndexOf("/") + 1);
@@ -201,10 +200,9 @@ class FileSystem {
     /**
      * Removes a file or directory from one path to another
      * @param path {string} The path to remove from
-     * @param options {string[]} The options for the remove command
      * @return {Directory | File}
      */
-    rm(path, options = []) {
+    rm(path) {
         if (!this.exists(path))
             throw new FileSystemError(`Cannot remove file or directory.  File or directory at ${path} does not exist!`);
 
@@ -219,13 +217,7 @@ class FileSystem {
                 if (!target.permission.includes(Perms.WRITE))
                     throw new FileSystemError(`Cannot remove ${path}.  Permission denied!`);
 
-                // Recursively remove directories if the -r option is used
-                if (target.constructor === Directory && options.includes("-r"))
-                    for (let child of target.subTree) this.rm(pathJoin(path, child.name), options);
-                else if (target.constructor === Directory)
-                    throw new FileSystemError(
-                        `Cannot remove directory ${path}: is a directory.  Use -r to remove directories!`
-                    );
+                if (target instanceof Directory) for (let child of target.subTree) this.rm(pathJoin(path, child.name));
 
                 // Remove the file or directory from the parent directory
                 parentDir.subTree.splice(parseInt(i), 1);
@@ -247,7 +239,7 @@ class FileSystem {
         let file = this.getItem(path);
         if (!file) file = this.touch(path);
 
-        if (file.constructor === Directory) throw new FileSystemError(`Cannot write to directory at ${path}!`);
+        if (file instanceof Directory) throw new FileSystemError(`Cannot write to directory at ${path}!`);
 
         if (!file.permission.includes(Perms.WRITE))
             throw new FileSystemError(`Cannot write to ${path}.  Permission denied!`);
@@ -267,7 +259,7 @@ class FileSystem {
         let file = this.getItem(path);
         if (!file) throw new FileSystemError(`Cannot read from file.  File at ${path} does not exist!`);
 
-        if (file.constructor === Directory) throw new FileSystemError(`Cannot read: Is a directory at ${path}!`);
+        if (file instanceof Directory) throw new FileSystemError(`Cannot read: Is a directory at ${path}!`);
 
         if (!file.permission.includes(Perms.READ))
             throw new FileSystemError(`Cannot read from ${path}.  Permission denied!`);
@@ -276,9 +268,29 @@ class FileSystem {
     }
 
     /**
+     * Checks if the path is a directory
+     * @param path {string} The path to check
+     * @returns {boolean} True if the path is a directory, false otherwise
+     */
+    isDir(path) {
+        let item = this.getItem(path);
+        return item instanceof Directory;
+    }
+
+    /**
+     * Checks if the path is a file
+     * @param path {string} The path to check
+     * @returns {boolean} True if the path is a file, false otherwise
+     */
+    isFile(path) {
+        let item = this.getItem(path);
+        return item instanceof File;
+    }
+
+    /**
      * Gets a file or directory at the given path; returns null if the path does not exist
      * @param path {string} The path to get the file or directory from
-     * @return {Directory | File} The file or directory at the given path
+     * @return {Directory | File | null} The file or directory at the given path
      */
     getItem(path) {
         if (!path) return null;
