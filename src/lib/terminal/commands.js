@@ -563,6 +563,21 @@ class Commands {
         for (let i = history.length - 1; i >= history.length - limit; i--) yield history[i] + "\n";
     }
 
+    static async *sleep(tokens) {
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.sleep;
+            return;
+        }
+        let valResult = this._validateArgs(args, options, [1], [0], []);
+        if (valResult) throw new CommandError(valResult);
+
+        let duration = parseInt(args[0]);
+        if (isNaN(duration)) throw new CommandError(`Invalid duration: ${args[0]}`);
+
+        await new Promise((r) => setTimeout(r, duration * 1000));
+    }
+
     /**
      * Clears the terminal and exits the terminal
      * @param tokens {string[]} The tokens passed to the command
