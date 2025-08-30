@@ -47,6 +47,7 @@ class Help {
     static haltingproblem = "haltingproblem - Computes and prints out the optimal solution to the halting problem";
     static neofetch = "neofetch - displays system and software information";
     static whoami = "whoami - displays the current user";
+    static hostname = "hostname - displays the system hostname";
     static void = "void - ██████████████";
     static admin = "admin - Administrator use only";
     static toucan = "toucan - le toucan has arrived";

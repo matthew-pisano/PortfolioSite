@@ -908,6 +908,23 @@ class Commands {
     }
 
     /**
+     * Displays the hostname of the system
+     * @param tokens {string[]} The tokens passed to the command
+     * @yield {string} The system hostname
+     */
+    static async *hostname(tokens) {
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.hostname;
+            return;
+        }
+        let valResult = this._validateArgs(args, options, [0], [0], []);
+        if (valResult) throw new CommandError(valResult);
+
+        yield SysEnv.HOSTNAME;
+    }
+
+    /**
      * Sends the user to the void
      * @param tokens {string[]} The tokens passed to the command
      */

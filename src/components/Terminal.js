@@ -23,12 +23,12 @@ function Terminal() {
      */
     function genPrompt(cwd, colored) {
         if (cwd.startsWith(SysEnv.HOME_FOLDER)) cwd = cwd.replace(SysEnv.HOME_FOLDER, "~");
-        let rawTest;
+        let rawText;
         if (colored) {
-            rawTest = `[${ANSI.GREEN}${SysEnv.USER}${ANSI.DEFAULT}]-(${ANSI.CYAN}${cwd}${ANSI.DEFAULT})$\xa0`;
-            return ANSI.colorText(rawTest).text;
+            rawText = `[${ANSI.GREEN}${SysEnv.USER}${ANSI.DEFAULT}@${ANSI.GREEN}${SysEnv.HOSTNAME}${ANSI.DEFAULT}]-(${ANSI.CYAN}${cwd}${ANSI.DEFAULT})$\xa0`;
+            return ANSI.colorText(rawText).text;
         }
-        return `[${SysEnv.USER}]-(${cwd})$\xa0`;
+        return `[${SysEnv.USER}@${SysEnv.HOSTNAME}]-(${cwd})$\xa0`;
     }
 
     const [prompt, setPrompt] = useState(genPrompt(SysEnv.HOME_FOLDER, true));

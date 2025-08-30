@@ -3,6 +3,7 @@
  */
 class SysEnv {
     static USER = "guest";
+    static HOSTNAME = "mathesis";
     static HOME_FOLDER = "/home/" + this.USER;
     static PUBLIC_FOLDER = `${this.HOME_FOLDER}/public`;
     static MOUNT_FOLDER = `${this.HOME_FOLDER}/mnt`;
