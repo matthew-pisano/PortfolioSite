@@ -1,10 +1,10 @@
-import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import Latex from "react-latex-next";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, PageInfo, SectionTile, Tile, TileLink } from "@/lib/pageBuilder";
+import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Neural() {

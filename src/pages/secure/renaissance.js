@@ -1,8 +1,8 @@
-import { PageColor } from "@/lib/themes";
 import React, { useEffect } from "react";
 
 import Wrapper from "@/components/Wrapper";
 import { buildPage, PageInfo, Tile } from "@/lib/pageBuilder";
+import { PageColor } from "@/lib/themes";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 

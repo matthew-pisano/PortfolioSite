@@ -1,8 +1,8 @@
-import { PageColor } from "@/lib/themes";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, PageInfo, Tile } from "@/lib/pageBuilder";
+import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Imperium() {

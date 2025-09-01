@@ -1,9 +1,9 @@
-import { PageColor } from "@/lib/themes";
 import React, { useEffect } from "react";
 
 import parse from "html-react-parser";
 
 import { SysEnv } from "@/lib/fileSystem/fileSystemMeta";
+import { PageColor } from "@/lib/themes";
 
 let mathesisIcon = `${SysEnv.OS} ${SysEnv.ARCH}
         <span style="color: #05c905">
