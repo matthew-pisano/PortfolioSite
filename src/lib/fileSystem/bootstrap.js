@@ -6,7 +6,7 @@ import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
 import { bashrc, keyArt } from "@/lib/terminal/strings";
 
-const NON_INDEXED_PAGES = ["admin", "index", "404", "display", "edit", "babble", "403", "void", "_document"];
+const NON_INDEXED_PAGES = ["admin", "index", "404", "display", "edit", "babble", "403", "void", "_document", "_error"];
 
 /**
  * The initial hierarchy of the file system
