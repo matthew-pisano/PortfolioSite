@@ -43,7 +43,11 @@ export default function MipsCmd() {
                     This command processor in input from the <i>Mars</i> console emulator, and outputs to that same
                     interface. It has the ability to preform mathematical operations, bidirectional decimal and
                     hexadecimal conversions, produce MIDI audio output, and display sections of its memory to the user.
-                    It also has the ability to draw using one of <i>Mars</i>'s virtual screens.
+                    It also has the ability to draw using one of <i>Mars</i>'s virtual screens. For a live demo of the
+                    command processor, visit{" "}
+                    <Link href="https://mips.matthewpisano.com" target="_blank">
+                        mips.matthewpisano.com
+                    </Link>
                 </>
             ),
             "/media/image/mipscmd.png"
