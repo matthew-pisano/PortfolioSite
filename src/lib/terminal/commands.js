@@ -640,6 +640,25 @@ class Commands {
     }
 
     /**
+     * Launches the MIPS terminal project in a new tab
+     * @param tokens {string[]} The tokens passed to the command
+     * @returns {string} The status message
+     */
+    static async *mips(tokens) {
+        let { args, options } = this._parseArgs(tokens);
+        if (options.includes("--help")) {
+            yield Help.mips + "\n";
+            return;
+        }
+        let valResult = this._validateArgs(args, options, [0], [0], []);
+        if (valResult) throw new CommandError(valResult);
+
+        window.open("https://mips.matthewpisano.com", "_blank");
+
+        yield "Launching subprocess...";
+    }
+
+    /**
      * Rickrolls the user by redirecting to the rickroll video
      * @param tokens {string[]} The tokens passed to the command
      * @yield {string} The rickroll message

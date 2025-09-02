@@ -33,6 +33,7 @@ class Help {
     static exit = "exit [code] - clears the terminal and closes it";
     static restart = "restart - Reloads the page";
     static reset = "reset | nuke - Resets all persistent page data";
+    static mips = "mips - launches a simulation of the MIPS terminal project (launched as a subprocess)";
     static nuke = Help.reset;
     static halsay = "halsay [msg] - Generates an ASCII image of Hal-9000 with the option of a custom message";
     static eightball = `eightball <query> - ${eightBall()}`;
