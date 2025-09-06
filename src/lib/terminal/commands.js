@@ -10,6 +10,16 @@ import { Sprite } from "@/lib/terminal/terminalSprites";
 import { setTheme, themes } from "@/lib/themes";
 
 /**
+ * Formats a file's modified timestamp into a human-readable string
+ * @param fileObj {File|Directory} The file or directory object
+ * @returns {string} The formatted timestamp in the format "YYYY-MM-DD HH:MM"
+ */
+function fileTimestamp(fileObj) {
+    let modStr = new Date(fileObj.modified).toISOString().split("T").join(" ");
+    return modStr.substring(0, modStr.lastIndexOf(":"));
+}
+
+/**
  * Custom error for when a command expectedly exits
  */
 class CommandError extends Error {
@@ -227,6 +237,7 @@ class Commands {
         let pad = "\xa0\xa0";
         let paddedSize = `${lsObj.size()}`.padStart(6, "\xa0");
 
+        // List directory
         if (lsObj instanceof Directory) {
             if (!lsObj.permission.includes(Perms.READ))
                 throw new CommandError(`Cannot list ${path}.  Permission denied!`);
@@ -235,17 +246,17 @@ class Commands {
             let list = [];
             for (let child of lsObj.subTree) {
                 if (child instanceof File) {
+                    // Recursive call for files
                     let fileInfo = (await this.ls([...options, pathJoin(path, child.name)]).next()).value;
                     list.push([fileInfo, child.name]);
                     continue;
                 }
 
-                let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
-                modStr = modStr.substring(0, modStr.lastIndexOf(":"));
                 let displayName = child.name.includes(" ") ? `'${child.name}'` : child.name;
                 if (showDetails)
                     list.push([
-                        `d${child.permission}${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}${displayName}${ANSI.DEFAULT}`,
+                        `d${child.permission}${pad}${paddedSize}${pad}${fileTimestamp(lsObj)}` +
+                            `${pad}${ANSI.CYAN}${displayName}${ANSI.DEFAULT}`,
                         child.name
                     ]);
                 else list.push([`${ANSI.CYAN}${displayName}${ANSI.DEFAULT}`, child.name]);
@@ -253,36 +264,31 @@ class Commands {
 
             list.sort((a, b) => a[1].localeCompare(b[1]));
 
-            if (showDetails) yield "total " + lsObj.subTree.length + "\n";
-
             // Add the parent and current directory to the list
-            if (path !== "/") {
-                let modStr = new Date(Date.now()).toISOString().split("T").join(" ");
-                modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-                if (showDetails)
-                    list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}..${ANSI.DEFAULT}`, ".."]);
-                else list.unshift(["..", ".."]);
-                if (showDetails)
-                    list.unshift([`drwx${pad}${paddedSize}${pad}${modStr}${pad}${ANSI.CYAN}.${ANSI.DEFAULT}`, "."]);
-                else list.unshift([".", "."]);
-            }
+            let dirTime = fileTimestamp(lsObj);
+            if (showDetails)
+                list.unshift([`drwx${pad}${paddedSize}${pad}${dirTime}${pad}${ANSI.CYAN}..${ANSI.DEFAULT}`, ".."]);
+            else list.unshift(["..", ".."]);
+
+            if (showDetails)
+                list.unshift([`drwx${pad}${paddedSize}${pad}${dirTime}${pad}${ANSI.CYAN}.${ANSI.DEFAULT}`, "."]);
+            else list.unshift([".", "."]);
 
             // Add the information for each file and directory to the list
             for (let entry of list) {
                 if (!showHidden && entry[1].startsWith(".")) continue;
                 yield entry[0] + (showDetails ? "\n" : pad);
             }
-            if (!showDetails) yield "\n";
-        } else {
-            let modStr = new Date(lsObj.modified).toISOString().split("T").join(" ");
-            modStr = modStr.substring(0, modStr.lastIndexOf(":"));
-
-            let displayName = lsObj.name.includes(" ") ? `'${lsObj.name}'` : lsObj.name;
-            if (lsObj.permission === "--x") displayName = ANSI.GREEN + displayName + ANSI.DEFAULT;
-
-            if (showDetails) yield `-${lsObj.permission}${pad}${paddedSize}${pad}${modStr}${pad}${displayName}\n`;
-            else yield displayName + "\n";
+            return;
         }
+
+        // List file
+        let displayName = lsObj.name.includes(" ") ? `'${lsObj.name}'` : lsObj.name;
+        if (lsObj.permission === "--x") displayName = ANSI.GREEN + displayName + ANSI.DEFAULT;
+
+        let fileTime = fileTimestamp(lsObj);
+        if (showDetails) yield `-${lsObj.permission}${pad}${paddedSize}${pad}${fileTime}${pad}${displayName}`;
+        else yield displayName;
     }
 
     static async *ll(tokens) {
