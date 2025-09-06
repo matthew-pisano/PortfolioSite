@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+import styles from "@/styles/Terminal.module.css";
+
 export default function Void() {
     useEffect(() => {
         document.body.style.height = "100%";
@@ -33,11 +35,15 @@ export default function Void() {
 
     return (
         <div style={{ height: "100%" }}>
-            <div className="void"></div>
-            <div id="exitVoid" className="voidControl" style={{ display: "none" }} onClick={closeFullscreen}>
+            <div className={`${styles.void}`}></div>
+            <div
+                id="exitVoid"
+                className={`${styles.voidControl}`}
+                style={{ display: "none" }}
+                onClick={closeFullscreen}>
                 [EXIT]
             </div>
-            <div id="enterVoid" className="voidControl" onClick={openFullscreen}>
+            <div id="enterVoid" className={`${styles.voidControl}`} onClick={openFullscreen}>
                 [ENTER]
             </div>
         </div>
