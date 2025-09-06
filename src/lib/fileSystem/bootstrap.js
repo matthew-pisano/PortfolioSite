@@ -1,10 +1,11 @@
 import { readdirSync, readFileSync, statSync } from "fs";
 import { resolve } from "path";
 
+import { authorizedKeys, idRsa, idRsaPub, improbability, knownHosts } from "@/lib/fileSystem/fileStrings";
 import { FileSystem, pathJoin } from "@/lib/fileSystem/fileSystem";
 import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
-import { bashrc, keyArt } from "@/lib/terminal/strings";
+import { bashrc } from "@/lib/terminal/strings";
 
 const NON_INDEXED_PAGES = ["admin", "index", "404", "display", "edit", "babble", "403", "void", "_document", "_error"];
 
@@ -19,16 +20,16 @@ let initialHierarchy = new Directory(
             new Directory("guest", [
                 new File(".bashrc", bashrc),
                 new Directory(".ssh", [
-                    new File("authorized_keys", "I would tell you, but then I would have to ^C you."),
-                    new File("id_rsa", "It would be pretty silly if this was a real key, wouldn't it?"),
-                    new File("id_rsa.pub", keyArt),
-                    new File("known_hosts", "I don't know any good hosts, do you?")
+                    new File("authorized_keys", authorizedKeys),
+                    new File("id_rsa", idRsa),
+                    new File("id_rsa.pub", idRsaPub),
+                    new File("known_hosts", knownHosts)
                 ]),
                 new Directory("bin", [new File("icrypt", "", Perms.DENY)]),
                 new Directory("mnt", []),
                 new Directory("public", []),
                 new Directory("src", []),
-                new Directory("tmp", [])
+                new Directory("tmp", [new File("improbability.txt", improbability)])
             ]),
             new Directory("admin", [], Perms.DENY)
         ]),
