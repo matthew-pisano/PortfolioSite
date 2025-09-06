@@ -73,20 +73,20 @@ function bootstrapServerside() {
 
             let hierarchyPath = pathJoin(SysEnv.PUBLIC_FOLDER, dirName);
 
-            if (!dirent.isDirectory()) {
-                let fileStats = statSync(res);
-                let fileName = res.substring(res.lastIndexOf("/") + 1).replace(".js", "");
-                if (NON_INDEXED_PAGES.includes(fileName)) continue; // Skip non-indexed pages
-                // Add the file to the file system and the page registry
-                let name = hierarchyPath.replace(SysEnv.PUBLIC_FOLDER, "");
-                if (name[0] === "/") name = name.substring(1); // Remove the leading slash
+            if (dirent.isDirectory()) continue;
 
-                let fullPath = pathJoin(hierarchyPath, fileName + ".html");
-                let newFile = masterFileSystem.touch(fullPath, "--" + Perms.EXECUTE);
-                newFile.modified = fileStats.mtimeMs;
-                newFile.spoofSize(fileStats.size); // Set the file's size without actually setting the text
-                newFile.markAsPage();
-            }
+            let fileStats = statSync(res);
+            let fileName = res.substring(res.lastIndexOf("/") + 1).replace(".js", "");
+            if (NON_INDEXED_PAGES.includes(fileName)) continue; // Skip non-indexed pages
+            // Add the file to the file system and the page registry
+            let name = hierarchyPath.replace(SysEnv.PUBLIC_FOLDER, "");
+            if (name[0] === "/") name = name.substring(1); // Remove the leading slash
+
+            let fullPath = pathJoin(hierarchyPath, fileName + ".html");
+            let newFile = masterFileSystem.touch(fullPath, "--" + Perms.EXECUTE);
+            newFile.modified = fileStats.mtimeMs;
+            newFile.spoofSize(fileStats.size); // Set the file's size without actually setting the text
+            newFile.markAsPage();
         }
 
         // For each sub-directory in the directory
@@ -95,12 +95,13 @@ function bootstrapServerside() {
             let dirName = dir.substring(dir.lastIndexOf("pages") + 6);
             let hierarchyPath = pathJoin(SysEnv.PUBLIC_FOLDER, dirName);
 
-            if (dirent.isDirectory()) {
-                // Skip the secure directory
-                if (dirent.name.endsWith("secure")) continue;
-                masterFileSystem.mkdir(pathJoin(hierarchyPath, dirent.name));
-                walkPages(res);
-            }
+            if (!dirent.isDirectory()) continue;
+
+            // Skip the secure directory
+            if (dirent.name.endsWith("secure")) continue;
+            masterFileSystem.mkdir(pathJoin(hierarchyPath, dirent.name));
+            // Recurse into the sub-directory
+            walkPages(res);
         }
     }
 
