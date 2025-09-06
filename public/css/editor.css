@@ -6,7 +6,7 @@
     border-color: var(--theme-accent);
     border-width: 2px;
     white-space: nowrap;
-    background-color: var(--theme-color-4);
+    background-color: var(--theme-color-3);
     width: 100%;
     height: 100%;
 }
@@ -20,18 +20,33 @@
 }
 
 .cm-cursor {
-    border-left-color: var(--theme-text) !important;
+    border-color: var(--theme-text) !important;
+    border-width: 2px;
 }
 
-/* stylelint-disable */
-.CodeMirror-cursor {
-    border-color: var(--theme-accent);
+.cm-activeLine-background {
+    background-color: var(--theme-color-2-hover) !important;
 }
 
-.CodeMirror-gutters {
-    background-color: var(--theme-color-3-hover);
+.cm-selectionBackground {
+    background-color: var(--theme-color-2-selected) !important;
+    opacity: 0.8;
 }
-/* stylelint-enable */
+
+/* For compatibility and native selection styling */
+.cm-editor ::selection {
+    background-color: var(--theme-color-2-selected) !important;
+    opacity: 0.8;
+}
+
+.cm-gutters {
+    background-color: var(--theme-color-3-selected) !important;
+    color: var(--theme-text) !important;
+}
+
+.cm-activeLineGutter {
+    background-color: var(--theme-color-3) !important;
+}
 
 .tab {
     text-indent: 40px;
