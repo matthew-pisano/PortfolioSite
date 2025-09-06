@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, statSync } from "fs";
 import { resolve } from "path";
 
-import { authorizedKeys, idRsa, idRsaPub, improbability, knownHosts } from "@/lib/fileSystem/fileStrings";
+import { SSH, DontPanic } from "@/lib/fileSystem/fileStrings";
 import { FileSystem, pathJoin } from "@/lib/fileSystem/fileSystem";
 import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
@@ -20,16 +20,24 @@ let initialHierarchy = new Directory(
             new Directory("guest", [
                 new File(".bashrc", bashrc),
                 new Directory(".ssh", [
-                    new File("authorized_keys", authorizedKeys),
-                    new File("id_rsa", idRsa),
-                    new File("id_rsa.pub", idRsaPub),
-                    new File("known_hosts", knownHosts)
+                    new File("authorized_keys", SSH.authorizedKeys),
+                    new File("id_rsa", SSH.idRsa),
+                    new File("id_rsa.pub", SSH.idRsaPub),
+                    new File("known_hosts", SSH.knownHosts)
                 ]),
                 new Directory("bin", [new File("icrypt", "", Perms.DENY)]),
-                new Directory("mnt", []),
+                new Directory("mnt", [
+                    new Directory("dont_panic", [
+                        new File("improbability.txt", DontPanic.improbability),
+                        new File("final-message.txt", DontPanic.finalMessage),
+                        new File("nutrimatic.txt", DontPanic.tea),
+                        new File("lunch.txt", DontPanic.lunch),
+                        new File("earth.txt", DontPanic.earth)
+                    ])
+                ]),
                 new Directory("public", []),
                 new Directory("src", []),
-                new Directory("tmp", [new File("improbability.txt", improbability)])
+                new Directory("tmp", [])
             ]),
             new Directory("admin", [], Perms.DENY)
         ]),

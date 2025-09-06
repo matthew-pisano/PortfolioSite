@@ -206,7 +206,9 @@ const eightballResponses = [
     "| ||\n|| |_",
     "Objection!",
     "The cake is a lie",
-    "That's all well and good, but can it run Doom?"
+    "That's all well and good, but can it run Doom?",
+    "Good software is when its fundamental design flaws are completely hidden by its superficial design flaws.",
+    "My advice is this: A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools."
 ];
 
 const tfLogo = `
