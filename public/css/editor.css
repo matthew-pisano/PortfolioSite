@@ -25,17 +25,17 @@
 }
 
 .cm-activeLine-background {
-    background-color: var(--theme-color-2-hover) !important;
+    background-color: var(--theme-color-3-hover) !important;
 }
 
 .cm-selectionBackground {
-    background-color: var(--theme-color-2-selected) !important;
+    background-color: var(--theme-color-3-selected) !important;
     opacity: 0.8;
 }
 
 /* For compatibility and native selection styling */
 .cm-editor ::selection {
-    background-color: var(--theme-color-2-selected) !important;
+    background-color: var(--theme-color-3-selected) !important;
     opacity: 0.8;
 }
 

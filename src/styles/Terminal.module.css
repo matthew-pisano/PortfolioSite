@@ -15,6 +15,7 @@
 
 .terminalHolder {
     background-color: var(--theme-color-3);
+    color: var(--theme-text) !important;
     position: fixed;
     bottom: 30px;
     left: 0;

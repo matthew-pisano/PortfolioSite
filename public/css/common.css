@@ -28,7 +28,7 @@ a {
 }
 
 code {
-    background-color: var(--theme-color-3-selected);
+    background-color: color-mix(in srgb, var(--theme-color-3-selected) 80%, transparent);
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 5px;

@@ -84,17 +84,17 @@ const themes = {
         "#ffffff",
         new ThemeColor("#000000", "#000000", "#ffffff"),
         new ThemeColor("#000000", "#ffffff", "#ffffff"),
-        new ThemeColor("#000000", "#000000", "#ffffff"),
+        new ThemeColor("#000000", "#ffffff", "#ffffff"),
         new ThemeColor("#000000", "#000000", "#ffffff")
     ),
     light: new Theme(
-        "#171717",
-        "#171717",
+        "#404040",
+        "#404040",
         "#546acc",
         "#bac8ff",
-        new ThemeColor("#efefef", "#c1daff", "#e0edff"),
-        new ThemeColor("#e2eeff", "#95c7ff", "#cfe8ff"),
-        new ThemeColor("#5d85d8", "#719ffb", "#bacef6"),
+        new ThemeColor("#edffff", "#c1daff", "#e0edff"),
+        new ThemeColor("#edffff", "#81acdd", "#8bc8ff"),
+        new ThemeColor("#edffff", "#719ffb", "#5a90ff"),
         new ThemeColor("#e5eeff", "#b4ceff", "#d4dbea")
     )
 };

@@ -6,6 +6,7 @@ import tileStyles from "@/styles/pageTiles.module.css";
 import tagStyles from "@/styles/tags.module.css";
 
 const TRANSLUCENT = "rgba(139,166,175,0.45)";
+const TRANSLUCENT_TEXT = "rgb(238,251,255)";
 
 /**
  * A class for creating a link to display on a page
@@ -120,7 +121,7 @@ class SectionTile extends Tile {
      * @param style {object} The style of the tile
      * @param anchor {string} The name of the anchor link to the tile
      */
-    constructor(title, anchor = "", style = { backgroundColor: TRANSLUCENT }) {
+    constructor(title, anchor = "", style = { backgroundColor: TRANSLUCENT, color: TRANSLUCENT_TEXT }) {
         super(title, "", "", [], [], "", style, anchor);
     }
 }
