@@ -8,24 +8,65 @@ import { eightballResponses, hal9000, pacerTest, rmRootMessage } from "@/lib/ter
 let prevEightballQuestions = [];
 
 /**
+ * The last time the eightball command was used
+ * @type {number} Timestamp in milliseconds
+ */
+let lastEightballTime = 0;
+
+/**
  * Generates a random response for the eightball command
  * @param question {string} The question to generate a response for
- * @return {string} The random eightball response
+ * @yields {string} The eightball response
  */
-function eightBall(question = "") {
-    if (question && prevEightballQuestions.includes(question) && Math.random() < 0.1)
-        return "That question seems...oddly familiar...";
-    if (question) prevEightballQuestions.push(question);
+async function* eightBall(question) {
+    // Ensure question is of right form
+    if (question === "") return yield "You need to give me a question to answer :/";
+    if (!question.endsWith("?")) return yield "That doesn't look like a question to me...try adding a '?' at the end";
 
+    let spaces = (question.match(/\S \S/g) || []).length;
+    if (spaces < 2) {
+        return yield "You dare ask me such a trivial question?  I need something longer, something more complex...";
+    }
+    if (spaces < 4 && Math.random() < 0.6)
+        return yield "I'm getting tired of these simple questions...try again with something longer and more interesting!";
+
+    // 42
+    if ((question.match(/meaning of life/g) || []).length > 0 || (question.match(/answer to life/g) || []).length)
+        return yield "That's pretty played out...don't you think?";
+
+    // Ensure questions are not too fast
+    let eightballTimeDiff = Date.now() - lastEightballTime;
+    lastEightballTime = Date.now();
+    if (eightballTimeDiff < 2000) {
+        if (Math.random() < 0.8) return yield "Whoa, slow down there!  I can only answer so fast!";
+        return yield "Hold on hold on!  I need, like, two seconds to gather my thoughts.  Can you do that for me?";
+    }
+
+    // Ensure questions are not repeated too many times
+    let previousOcurences = prevEightballQuestions.filter((v) => v === question).length;
+    prevEightballQuestions.push(question);
+
+    if (question && previousOcurences) {
+        if (previousOcurences === 1) yield "Again?  Fine, one second; I don't like repeat questions too much...\n\n";
+        else if (previousOcurences === 2) return yield "That question seems...oddly familiar...";
+        else if (previousOcurences === 3) return yield "I am no one to be trifled with.";
+        else if (previousOcurences === 4) yield "Alright, last chance!  I'll humor you once more...\n\n";
+        else if (previousOcurences === 5) return yield "I do not appreciate being messed with.";
+        else if (previousOcurences === 6) return yield "I will not even dignify that with a response.";
+        else if (previousOcurences > 10) {
+            yield "That's it buster, I'm putting you in time out!\n";
+            return yield* await toVoid();
+        } else return yield "";
+    }
+
+    // Select answer
     let resultIndex = Math.floor(Math.random() * eightballResponses.length);
-    let answer = eightballResponses[resultIndex];
-    if (!question && (answer.includes("\n") || answer.length > 70))
-        return "Your one-stop shop for all your fortune-telling needs!";
-    return answer;
+    yield eightballResponses[resultIndex];
 }
 
 /**
  * Computes the solution to the halting problem...then segfaults
+ * @yields {string} The halting problem output
  */
 async function* haltingProblem() {
     let dots = 7;
@@ -59,6 +100,7 @@ function hal(msg, colorEye = false) {
 
 /**
  * Runs the FitnessGram™ Pacer Test
+ * @yields {string} The pacer test output
  */
 async function* runPacer() {
     // Delay for the terminal to catch up
@@ -165,11 +207,11 @@ async function* rmRoot() {
 
 /**
  * Replace the current page with the void page
- * @returns {AsyncGenerator<string, void, *>}
+ * @yields {string} The void string, printed one character at a time
  */
 async function* toVoid() {
     let voidStr = "I T - C O N S U M E S - A L L".replace(/ /g, "\xa0");
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // Slowly print the void string
     for (let letter of voidStr) {

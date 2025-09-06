@@ -197,10 +197,10 @@ const eightballResponses = [
     "¯\\_(ツ)_/¯",
     "AAAAAAAHHHHNNNGGGGG!!!!!!! (╯°□°)╯︵ ┻━┻\n.\n.\n.\n.\n...sorry, I almost lost my cool there",
     encabulator,
-    "The answer is very simply, yet very profound: [object Object]",
-    "I hate to be the one to break it to you, but the house always wins",
+    "The answer is very simple, yet very profound: [object Object]",
+    "Yeesh, bad luck...I hate to be the one to break it to you, but the house always wins",
     "Seriously?  Professionals have standards!",
-    "Have you given any thought to the effect that this may have on the economy?",
+    "Have you given any thought to the effect that this question may have on the economy?",
     "You have no chance to survive, make your time!",
     "All your base are belong to us",
     "| ||\n|| |_",
@@ -208,7 +208,8 @@ const eightballResponses = [
     "The cake is a lie",
     "That's all well and good, but can it run Doom?",
     "Good software is when its fundamental design flaws are completely hidden by its superficial design flaws.",
-    "My advice is this: A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools."
+    "My advice is this: A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.",
+    "Won't you please think of the children!"
 ];
 
 const tfLogo = `

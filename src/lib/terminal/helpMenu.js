@@ -1,5 +1,4 @@
 import { SysEnv } from "@/lib/fileSystem/fileSystemMeta";
-import { eightBall } from "@/lib/terminal/easterEggs";
 
 /**
  * Class containing all the help information for the shell commands and a general help menu
@@ -36,7 +35,7 @@ class Help {
     static mips = "mips - launches a simulation of the MIPS terminal project (launched as a subprocess)";
     static nuke = Help.reset;
     static halsay = "halsay [msg] - Generates an ASCII image of Hal-9000 with the option of a custom message";
-    static eightball = `eightball <query> - ${eightBall()}`;
+    static eightball = `eightball <query> - Your one-stop shop for all your fortune-telling needs!`;
     static _secretSentinel = null;
     static ng = "ng - Never Gonna...";
     static mann = "mann - Brought to you by TF Industries";
