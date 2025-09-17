@@ -1,13 +1,13 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import cogSciBooks from "@/components/readingList/cogSciBooks";
+import futurismBooks from "@/components/readingList/futurismBooks";
+import historyBooks from "@/components/readingList/historyBooks";
+import philosophyBooks from "@/components/readingList/philosophyBooks";
+import physicsBooks from "@/components/readingList/physicsBooks";
+import scifiBooks from "@/components/readingList/scifiBooks";
 import { PageInfo, PageLink, SectionTile, Tile } from "@/lib/pageBuilder";
-import cogSciBooks from "@/lib/readingList/cogSciBooks";
-import futurismBooks from "@/lib/readingList/futurismBooks";
-import historyBooks from "@/lib/readingList/historyBooks";
-import philosophyBooks from "@/lib/readingList/philosophyBooks";
-import physicsBooks from "@/lib/readingList/physicsBooks";
-import scifiBooks from "@/lib/readingList/scifiBooks";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
