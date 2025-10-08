@@ -92,16 +92,11 @@ function genPageTitle(localFile) {
  * @param length
  */
 function redact(length) {
-    let noise = 1;
-    let i = length;
-    let string = "";
-    while (i > 0) {
-        let word = "█".repeat(Math.max((i * noise) % 11, 1)) + " ";
-        string += word;
-        i -= word.length;
-        noise *= 4;
-    }
-    return <span style={{ color: "black" }}>{string}</span>;
+    return (
+        <span style={{ color: "black", backgroundColor: "black", userSelect: "none" }}>
+            {"█ ".repeat(length / 2).trim()}
+        </span>
+    );
 }
 
 export { Constants, showDialog, genPageTitle, redact };

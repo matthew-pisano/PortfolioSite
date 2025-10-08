@@ -3,7 +3,14 @@ import React from "react";
 import Wrapper from "@/components/Wrapper";
 import { buildPage, PageInfo, Tile, TileLink } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
+import { redact } from "@/lib/utils";
 import styles from "@/styles/Wrapper.module.css";
+
+let redactedDate = (
+    <>
+        {redact(4)}/{redact(4)}/{redact(4)}
+    </>
+);
 
 export default function SCP() {
     let tiles = [
@@ -20,10 +27,10 @@ export default function SCP() {
             <>Special Containment Procedures</>,
             (
                 <>
-                    SCP-672<span style={{ color: "black" }}>██</span> is to be kept at high-security Site-162, in a
-                    standard humanoid accommodation chamber within a sector currently under the supervision of the
-                    <span style={{ color: "black" }}>████████</span>. Mobile Task Force unit{" "}
-                    <span style={{ color: "black" }}>██████</span>-10 ("<span style={{ color: "black" }}>███████</span>
+                    SCP-672{redact(4)} is to be kept at high-security Site-162, in a standard humanoid accommodation
+                    chamber within a sector currently under the supervision of the {redact(10)}. Mobile Task Force unit{" "}
+                    {redact(6)}-10 ("
+                    {redact(12)}
                     "), is to be set on high alert and stationed no more than 5km away from the containment site at all
                     times.
                 </>
@@ -33,47 +40,20 @@ export default function SCP() {
             <>Description</>,
             (
                 <>
-                    SCP-672<span style={{ color: "black" }}>██</span> was{" "}
-                    <span style={{ color: "black" }}>██████ ████ ██ ████████████</span>
-                    as into <span style={{ color: "black" }}>███████ ██████ ████████ ████████████████</span>,{" "}
-                    <span style={{ color: "black" }}>██</span>. Originally created as part of{" "}
-                    <i>
-                        Project <span style={{ color: "black" }}>███████████</span>
-                    </i>{" "}
-                    by the
-                    <span style={{ color: "black" }}>██████████████</span> research division of Mathesis International,
-                    <span style={{ color: "black" }}>███████ █████ ██████████████████████████</span>.
-                    <span style={{ color: "black" }}>
-                        ██████████████████████ ████████████████ █████████████████ ██████████ ███████ ███████████
-                    </span>{" "}
-                    after the initial incident. Researcher L<span style={{ color: "black" }}>███████</span> P
-                    <span style={{ color: "black" }}>█████</span> <span style={{ color: "black" }}>████████</span>.
-                    <span style={{ color: "black" }}>██████████</span>, is a{" "}
-                    <span style={{ color: "black" }}>
-                        █████████████████████████████ ███████████ █████████████████████████ ███████████████████████
-                    </span>{" "}
-                    and{" "}
-                    <span style={{ color: "black" }}>
-                        █████████████████████ ████████████████████████ ███████████ ████████████████████
-                        █████████████████████ ██████████████ ███████████████████████
-                    </span>
-                    .
+                    SCP-672{redact(4)} was {redact(30)} as into {redact(60)}. Originally created as part of{" "}
+                    <i>Project</i> {redact(10)} by the {redact(15)} research division of Mathesis International,{" "}
+                    {redact(90)} after the initial incident. Researcher L{redact(6)} P{redact(6)} {redact(17)}.
+                    {redact(10)}, is a {redact(80)} and {redact(200)}.
                 </>
             ),
             "/media/image/imageOf.png"
         ),
         new Tile(
+            <>Addendum 672{redact(4)}.1: Timeline of Events</>,
             (
                 <>
-                    Addendum 672<span style={{ color: "black" }}>██</span>.1: Timeline of Events
-                </>
-            ),
-            (
-                <>
-                    The following is a series of internal Mathesis{" "}
-                    <span style={{ color: "black" }}>██████████████</span> research division e-mails describing the
-                    events of <span style={{ color: "black" }}>██</span>/<span style={{ color: "black" }}>██</span>/
-                    <span style={{ color: "black" }}>████</span>.<br />
+                    The following is a series of internal Mathesis {redact(10)} research division e-mails describing the
+                    events of {redactedDate}.<br />
                     <br />
                     <b>[BEGIN LOG]</b>
                     <br />
@@ -81,7 +61,7 @@ export default function SCP() {
                     <br />
                     From: pisanleo@mathesisinternational.net
                     <br />
-                    To: admn, intellidir, <span style={{ color: "black" }}>███████████</span>head
+                    To: admn, intellidir, {redact(10)}head
                     <br />
                     Subject: Please Advise
                     <br />
@@ -95,7 +75,7 @@ export default function SCP() {
                     <br />
                     ------------
                     <br />
-                    From: <span style={{ color: "black" }}>███████████</span>head
+                    From: {redact(10)}head
                     <br />
                     To: pisanleo@mathesisinternational.net
                     <br />
@@ -107,17 +87,13 @@ export default function SCP() {
                     <br />
                     From: pisanleo@mathesisinternational.net
                     <br />
-                    To: <span style={{ color: "black" }}>███████████</span>head
+                    To: {redact(10)}head
                     <br />
                     Subject: Singularity
                     <br />
                     After further analysis, we have come to a dreaded conclusion. The chief intelligence has achieved
                     post-human intelligence, at least. A machine like this, we cannot hope to control. Our only option
-                    is to terminate it. Only today it has
-                    <span style={{ color: "black" }}>
-                        █████████████████████ ███████████████████████████████████ ████████████████████
-                        █████████████████████ ██████████████ ███████████████████████
-                    </span>
+                    is to terminate it. Only today it has {redact(500)}
                     <br />
                     ------------
                     <br />
@@ -127,14 +103,11 @@ export default function SCP() {
                     <br />
                     From: pisanleo@mathesisinternational.net
                     <br />
-                    To: <span style={{ color: "black" }}>███████████</span>head
+                    To: {redact(10)}head
                     <br />
-                    Subject: <span style={{ color: "black" }}>█████████</span>
+                    Subject: {redact(35)}
                     <br />
-                    <span style={{ color: "black" }}>
-                        ███████████ ██████████████████ ███████████ ██████████████████████ ██████████████ ████████
-                        ██████████████
-                    </span>
+                    {redact(60)}
                     <br />
                     There is no forgiveness now.
                     <br />
@@ -145,8 +118,7 @@ export default function SCP() {
         new Tile(
             (
                 <>
-                    Addendum 672<span style={{ color: "black" }}>██</span>.1: Interview with surviving{" "}
-                    <span style={{ color: "black" }}>███████████</span>
+                    Addendum 672{redact(4)}.1: Interview with surviving {redact(14)}
                 </>
             ),
             (
@@ -156,12 +128,7 @@ export default function SCP() {
             )
         ),
         new Tile(
-            (
-                <>
-                    Addendum 672<span style={{ color: "black" }}>██</span>.2: Video surveillance of original incident at
-                    Mathesis Labs
-                </>
-            ),
+            <>Addendum 672{redact(4)}.2: Video surveillance of original incident at Mathesis Labs</>,
             (
                 <>
                     <a href="/assets/surveil.mp4">surveil.mp4</a>

@@ -1,27 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Wrapper from "@/components/Wrapper";
 import { buildPage, PageInfo, Tile } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
-import tileStyles from "@/styles/pageTiles.module.css";
+import { redact } from "@/lib/utils";
 import styles from "@/styles/Wrapper.module.css";
 
-export default function Renaissance() {
-    useEffect(() => {
-        for (let elem of document.getElementsByClassName(tileStyles.displayTile))
-            elem.style.backgroundColor = "#1e1e1e";
-    }, []);
+let redactedDate = (
+    <>
+        {redact(4)}/{redact(4)}/{redact(4)}
+    </>
+);
 
+export default function Renaissance() {
     let tiles = [
         new Tile(
             <h2>Overview</h2>,
             (
                 <>
-                    The following is a collection of relevant sources, both internal and external, converning the failed
-                    project renaissance and the incident on <span style={{ color: "black" }}>██</span>/
-                    <span style={{ color: "black" }}>██</span>/<span style={{ color: "black" }}>████</span>. The
-                    following information should be shared as a warning to all of those with sufficent security
-                    clearance.
+                    The following is a collection of relevant sources, both internal and external, concerning the failed
+                    project renaissance and the incident on {redactedDate}. The following information should be shared
+                    as a warning to all of those with sufficient security clearance.
                     <br />
                     <br />
                     We cannot let an incident like this happen again.
@@ -32,9 +31,8 @@ export default function Renaissance() {
             <>Select Publicly Available Context Resources</>,
             (
                 <>
-                    The following is a series of external news articles and public reporting surrounding the events of
-                    <span style={{ color: "black" }}>██</span>/<span style={{ color: "black" }}>██</span>/
-                    <span style={{ color: "black" }}>████</span>.
+                    The following is a series of external news articles and public reporting surrounding the events of{" "}
+                    {redactedDate}.
                     <br />
                     <b>[BEGIN ARCHIVE]</b>
                     <br />
@@ -74,7 +72,8 @@ export default function Renaissance() {
                     <br />
                     ------------
                     <br />
-                    [SOURCE]: <span style={{ color: "black" }}>███████████</span> <i>City Times</i>
+                    [SOURCE]: {redact(12)}
+                    <i>City Times</i>
                     <br />
                     The state governor has recently issued an internet blackout for several counties surrounding{" "}
                     <i>Mathesis'</i> facility outsize of <b>[REDACTED]</b>. Residents of the wider area are strongly
@@ -85,7 +84,8 @@ export default function Renaissance() {
                     <br />
                     ------------
                     <br />
-                    [SOURCE]: <span style={{ color: "black" }}>███████████</span> <i>City Times</i>
+                    [SOURCE]: {redact(12)}
+                    <i>City Times</i>
                     <br />
                     At 4AM local time, multiple residents reported a powerful explosion. Since very few people were
                     remaining in the area, there has been no reported fatalities, only reports of minor injuries from
@@ -113,10 +113,8 @@ export default function Renaissance() {
             <>Pre-Incident Email Logs</>,
             (
                 <>
-                    The following is a series of internal Mathesis{" "}
-                    <span style={{ color: "black" }}>██████████████</span> research division e-mails describing the
-                    events prior to and during <span style={{ color: "black" }}>██</span>/
-                    <span style={{ color: "black" }}>██</span>/<span style={{ color: "black" }}>████</span>.<br />
+                    The following is a series of internal Mathesis {redact(17)} research division e-mails describing the
+                    events prior to and during {redactedDate}.<br />
                     <br />
                     <b>[BEGIN LOG]</b>
                     <br />
@@ -223,11 +221,7 @@ export default function Renaissance() {
                     <br />
                     After further analysis, we have come to a dreaded conclusion. The chief intelligence has achieved
                     post-human intelligence, at least. A machine like this, we cannot hope to control. Our only option
-                    is to terminate it. Only today it has
-                    <span style={{ color: "black" }}>
-                        █████████████████████ ████████████████████████ ███████████ ████████████████████
-                        █████████████████████ ██████████████ ███████████████████████
-                    </span>
+                    is to terminate it. Only today it has {redact(250)}
                     <br />
                     ------------
                     <br />
@@ -239,13 +233,10 @@ export default function Renaissance() {
                     <br />
                     To: renaissancehead
                     <br />
-                    Subject: <span style={{ color: "black" }}>█████████</span>
+                    Subject: {redact(40)}
                     <br />
                     <br />
-                    <span style={{ color: "black" }}>
-                        ███████████ ██████████████████ ███████████ ██████████████████████ ██████████████ ████████
-                        ██████████████
-                    </span>
+                    {redact(150)}
                     <br />
                     There is no forgiveness now.
                     <br />

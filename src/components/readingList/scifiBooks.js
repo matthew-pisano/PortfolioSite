@@ -87,8 +87,9 @@ export default [
                     foot long gap in Karen's (formerly) wall-to-wall bookshelf.
                 </p>
                 <p>
-                    <div
+                    <span
                         style={{
+                            display: "block",
                             textAlign: "center",
                             width: "80%",
                             margin: "auto",
@@ -105,7 +106,7 @@ export default [
                         Karen's protests, William ventures inside, nearly losing himself in the absolute darkness and
                         shifting geometry of a space far too large to exist
                         {<FootRef idx={1} />}, all the while hearing a dull, ominous growl emanating from the maze.
-                    </div>
+                    </span>
                 </p>
                 <p>
                     Sensing more help was needed, Reston calls upon renowned adventurer Holloway Roberts to lead a small
@@ -376,12 +377,7 @@ export default [
                 the SCP universe, these effects can be at least somewhat remedied by a class of drug known as{" "}
                 <i>mnestics</i> which make it more difficult for the user to forget and more adept at perceiving these
                 SCPs. Others in the story, like the character Adam, have a sort of natural 'immunity' to these
-                antimemes, at least the weaker ones. I the story, SCP-3125 is a
-                <span style={{ color: "black" }}>
-                    ██████ ██ ██████████ ███ ███████ ███ ████ █████ ████████ ██ █████████ ███ ██████ ██████ ████████ ███
-                    ███████ ███ ███████████ ███████ ███ ████████ ██ ██
-                </span>
-                . It is able to{" "}
+                antimemes, at least the weaker ones. I the story, SCP-3125 is a {redact(40)}. It is able to{" "}
                 <i>
                     <b>[DATA EXPUNGED]</b>
                 </i>

@@ -44,11 +44,6 @@
     padding: 0 25px;
 }
 
-.displayTileContent > span {
-    margin: 15px 0;
-    display: block;
-}
-
 .galleryTileTitle {
     display: block;
     margin: auto;
