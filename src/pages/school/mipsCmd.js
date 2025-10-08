@@ -6,6 +6,7 @@ import DefaultWrapper from "@/components/DefaultWrapper";
 import { PageInfo, Tile, TRANSLUCENT } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
+import wrapperStyles from "@/styles/Wrapper.module.css";
 
 export default function MipsCmd() {
     let tiles = [
@@ -43,14 +44,35 @@ export default function MipsCmd() {
                     This command processor in input from the <i>Mars</i> console emulator, and outputs to that same
                     interface. It has the ability to preform mathematical operations, bidirectional decimal and
                     hexadecimal conversions, produce MIDI audio output, and display sections of its memory to the user.
-                    It also has the ability to draw using one of <i>Mars</i>'s virtual screens. For a live demo of the
-                    command processor, visit{" "}
-                    <Link href="https://mips.matthewpisano.com" target="_blank">
-                        mips.matthewpisano.com
-                    </Link>
+                    It also has the ability to draw using one of <i>Mars</i>'s virtual screens.
                 </>
             ),
             "/media/image/mipscmd.png"
+        ),
+        new Tile(
+            <>Live Demo</>,
+            (
+                <>
+                    <iframe
+                        className={wrapperStyles.hideOnMobile}
+                        src="https://mips.matthewpisano.com"
+                        width="100%"
+                        height="500px"
+                        style={{ border: "none", borderRadius: "10px" }}
+                        title="MIPS Terminal"></iframe>
+                    <p className={wrapperStyles.showOnMobile}>
+                        The live demo of the terminal is not available on smaller screens. Please visit{" "}
+                        <Link href="https://mips.matthewpisano.com" target="_blank">
+                            mips.matthewpisano.com
+                        </Link>{" "}
+                        for a better viewing experience.
+                    </p>
+                </>
+            ),
+            "",
+            [],
+            [],
+            "https://mips.matthewpisano.com"
         )
     ];
     let pageInfo = new PageInfo(

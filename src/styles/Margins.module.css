@@ -69,13 +69,6 @@
 }
 
 
-@media (width <= 600px) {
-    .hideOnMobile {
-        display: none;
-    }
-}
-
-
 @media (width <= 400px) {
     .encodingStatus {
         display: none;

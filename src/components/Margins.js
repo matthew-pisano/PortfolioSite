@@ -9,6 +9,7 @@ import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { setTheme } from "@/lib/themes";
 import { showDialog } from "@/lib/utils";
 import styles from "@/styles/Margins.module.css";
+import wrapperStyles from "@/styles/Wrapper.module.css";
 
 /**
  * Whether the menu bar is primed for animation by clicking it
@@ -301,7 +302,7 @@ function HeaderMenu({ currentPath }) {
         <header className={`w3-row ${styles.menuBar}`}>
             {headerMenus.map((menu, index) => {
                 let className = `w3-button w3-col ${styles.menuItem}`;
-                if (menu.hideOnMobile) className += ` ${styles.hideOnMobile}`;
+                if (menu.hideOnMobile) className += ` ${wrapperStyles.hideOnMobile}`;
                 return (
                     <button
                         key={index}
@@ -333,7 +334,7 @@ function MenuDrop({ currentPath }) {
                     <div key={index} id={menu.name.toLowerCase() + "MenuDropdown"} className={styles.menuDropdown}>
                         {menu.items.map((item, index) => {
                             let className = `w3-button ${styles.menuDropItem}`;
-                            if (item.hideOnMobile) className += ` ${styles.hideOnMobile}`;
+                            if (item.hideOnMobile) className += ` ${wrapperStyles.hideOnMobile}`;
                             if (item.itemType === "action")
                                 return (
                                     <button
