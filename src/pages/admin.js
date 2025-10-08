@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import parse from "html-react-parser";
 
 import { SysEnv } from "@/lib/fileSystem/fileSystemMeta";
-import { PageColor } from "@/lib/themes";
+import styles from "@/styles/pageTiles.module.css";
 
 let mathesisIcon = `${SysEnv.OS} ${SysEnv.ARCH}
         <span style="color: #05c905">
@@ -129,6 +129,8 @@ export default function Admin() {
             let inputCode = [];
             for (let i = 0; i < inputRaw.length; i++) inputCode.push(inputRaw.charCodeAt(i) * 2);
 
+            // It's a good thing this is not guarding anything important!
+            // Not with this level of security, anyway
             if ("" + inputCode === "228,202,220,194,210,230,230,194,220,198,202") return await renaissance();
             else if ("" + inputCode === "194,220,222,218,194,216,242") return await anomaly();
 
@@ -145,13 +147,12 @@ export default function Admin() {
 
     return (
         <div>
-            <p>{parse(mathesisIcon)}</p>
-            <span style={{ display: "none" }}>
-                ERROR preloadin{"����├-�=�▒I␌�L�>���┘�"}edentials for Pr∞jec⅂ <i>r☿nais↺ance</i>. DATA CORRUP
-                {"{GNUq���@��qvz����"}
-                ERROR prel{":▒; <(=0?8@@BHDP"}din{"��H�.␍H�%(H�D$␤1���┘�"} <i>∂n∘maly</i> inform{"◆(▒0␉8␌@␍H°P±X␤◆␋␤┐"}
-                ion. DA{"{@��dhfhz�f���"}
-                {'�������������ŠˠѠנݠ��������@4`"/usr/lib/debug/.dwz/x86_64/coreutils.debug�.��X�'}
+            <p style={{ userSelect: "none" }}>{parse(mathesisIcon)}</p>
+            <span className={styles.initStatus}>
+                ERROR preloadin����├-�=�▒I␌�L�|���┘�edentials for Project <i>renais��▒ce</i>. DATA CORRUP
+                GNUq���@��qvz���� <br />
+                ERROR prel:▒; .(=0?8@@BHDPdin��H�.␍H�%(H�D$␤1���┘� <i>anom@ly</i> inform◆(▒0␉8␌@␍H°P±X␤◆␋␤┐ion.
+                DA@��dhfhz�f��� �������������ŠˠѠנݠ��������@4`"/usr/lib/debug/.dwz/x86_64/coreutils.debug�.��X�
             </span>
             <div id="pwHolder" style={{ width: "100%", height: "30px" }}>
                 <span id="pwPrompt">password: </span>
@@ -160,7 +161,7 @@ export default function Admin() {
                     spellCheck="false"
                     contentEditable={true}
                     onInput={onInput}
-                    style={{ outline: "none", whiteSpace: "nowrap", color: PageColor.LONDON_GREY }}></span>
+                    className={styles.passwordInput}></span>
             </div>
         </div>
     );

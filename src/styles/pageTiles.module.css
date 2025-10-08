@@ -153,6 +153,17 @@
     transform: scaleX(-1);
 }
 
+.initStatus {
+    display: none;
+}
+
+.passwordInput {
+    outline: none;
+    white-space: nowrap;
+    opacity: 0;
+    caret-color: transparent;
+}
+
 @media (width >= 1500px) {
     .displayTile {
          margin: 50px 15% 20px;
