@@ -221,7 +221,7 @@ export default function Lectures() {
                     </p>
                 </>
             ),
-            "/media/image/suny-new-paltz.jpg",
+            "/media/image/jmm.jpg",
             ["research", "academic"],
             [new TileLink("/media/documents/JMMPresentation.pdf", "Slides")]
         )
