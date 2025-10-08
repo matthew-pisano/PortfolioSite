@@ -153,6 +153,11 @@
     inset: 0;
 }
 
+.mirrored {
+    display: inline-block; /* Essential for applying transform correctly */
+    transform: scaleX(-1);
+}
+
 @media (width >= 1500px) {
     .displayTile {
          margin: 50px 15% 20px;

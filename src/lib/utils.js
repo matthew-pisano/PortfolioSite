@@ -1,3 +1,5 @@
+import React from "react";
+
 import $ from "jquery";
 
 /**
@@ -85,4 +87,21 @@ function genPageTitle(localFile) {
         : localFile.split("pages/")[1].split(".js")[0];
 }
 
-export { Constants, showDialog, genPageTitle };
+/**
+ * Generates redacted text of the specified length
+ * @param length
+ */
+function redact(length) {
+    let noise = 1;
+    let i = length;
+    let string = "";
+    while (i > 0) {
+        let word = "█".repeat(Math.max((i * noise) % 11, 1)) + " ";
+        string += word;
+        i -= word.length;
+        noise *= 4;
+    }
+    return <span style={{ color: "black" }}>{string}</span>;
+}
+
+export { Constants, showDialog, genPageTitle, redact };
