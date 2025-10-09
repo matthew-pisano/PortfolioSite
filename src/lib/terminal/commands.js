@@ -104,7 +104,7 @@ class Commands {
      * @yield {string} The echoed tokens
      */
     static async *echo(tokens) {
-        let { args, options } = this._parseArgs(tokens);
+        let options = this._parseArgs(tokens).options;
         if (options.includes("--help")) {
             yield Help.echo + "\n";
             return;
@@ -707,7 +707,7 @@ class Commands {
      * @yield {string} The HAL message
      */
     static async *halsay(tokens) {
-        let { args, options } = this._parseArgs(tokens);
+        let options = this._parseArgs(tokens).options;
         if (options.includes("--help")) {
             yield Help.halsay + "\n";
             return;
@@ -789,7 +789,7 @@ class Commands {
      * @yield {string} The SUDO joke message
      */
     static async *sudo(tokens) {
-        let { args, options } = this._parseArgs(tokens);
+        let options = this._parseArgs(tokens).options;
         if (options.includes("--help")) {
             yield Help.sudo + "\n";
             return;
@@ -804,7 +804,7 @@ class Commands {
      * @yield {string} The DOAS joke message
      */
     static async *doas(tokens) {
-        let { args, options } = this._parseArgs(tokens);
+        let options = this._parseArgs(tokens).options;
         if (options.includes("--help")) {
             yield Help.doas + "\n";
             return;
@@ -835,7 +835,7 @@ class Commands {
      * @yield {string} The 8-ball response
      */
     static async *eightball(tokens) {
-        let { args, options } = this._parseArgs(tokens);
+        let options = this._parseArgs(tokens).options;
         if (options.includes("--help")) {
             yield Help.eightball + "\n";
             return;
@@ -962,6 +962,7 @@ class Commands {
         window.location.href = "/admin";
     }
 
+    // eslint-disable-next-line no-unused-vars
     static async *sprites(tokens) {
         for (let sprite of [Sprite.SCRMLN, Sprite.SCRBLN]) {
             sprite.mount();

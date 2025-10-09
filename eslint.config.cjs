@@ -50,7 +50,7 @@ module.exports = defineConfig([
             "no-unused-vars": "warn",
             "no-control-regex": "off",
             "react/no-unescaped-entities": "off",
-            "react/no-unknown-property": "warn",
+            "react/no-unknown-property": ["warn", { "ignore": ["linkpath"] }],
             "import/no-unresolved": "off",
 
             "import/order": [

@@ -89,7 +89,6 @@ function buildFile(file, path) {
             </Link>
         );
 
-    // eslint-disable-next-line react/no-unknown-property
     return (
         <div
             key={fileName + "-File"}

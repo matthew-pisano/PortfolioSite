@@ -22,7 +22,7 @@ function randText(len) {
 async function backgroundGradient() {
     let grayDirection = 2;
     let grayState = 0;
-    // eslint-disable-next-line no-constant-condition
+     
     while (true) {
         // Update background with red bias
         let redBias = Math.log(grayState) + 20;
@@ -74,7 +74,7 @@ async function babelTilesStep() {
  */
 async function babbleLoop() {
     backgroundGradient();
-    // eslint-disable-next-line no-constant-condition
+     
     while (true) {
         await babelTilesStep();
         await new Promise((resolve) => setTimeout(resolve, 2000));

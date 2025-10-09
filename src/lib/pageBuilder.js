@@ -245,8 +245,8 @@ function buildLink(tileLink, dark = false) {
 function buildTags(tile, dark = false) {
     return (
         <div className={`w3-row ${tagStyles.tagHolder}`}>
-            {(tile.links || []).map((tileLink, i) => buildLink(tileLink, dark))}
-            {(tile.tags || []).map((tagName, i) => (
+            {(tile.links || []).map((tileLink) => buildLink(tileLink, dark))}
+            {(tile.tags || []).map((tagName) => (
                 <div className={`w3-col w3-mobile ${tagStyles.tag} ${tagStyles[tagName + "Tag"]}`} key={tagName}>
                     <img className="w3-col" alt={tagName} />
                     <div className="w3-rest"></div>
