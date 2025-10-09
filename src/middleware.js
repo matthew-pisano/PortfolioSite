@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-export function middleware(request) {
-    const cookieStore = cookies();
+export async function middleware(request) {
+    const cookieStore = await cookies();
     const authToken = cookieStore.get("mathesisAdminAuth");
     let hasAdminAuth = authToken && authToken.value === "screwball";
 
