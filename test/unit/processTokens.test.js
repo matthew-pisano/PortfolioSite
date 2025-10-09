@@ -1,4 +1,4 @@
-import { describe, expect, test } from "@jest/globals";
+import { describe, test, expect } from "vitest";
 
 import { insertVars, processAssignment, tokenizeCommand } from "@/lib/terminal/processTokens";
 

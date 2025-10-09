@@ -1,4 +1,4 @@
-import { describe, expect, test } from "@jest/globals";
+import { describe, test, expect } from "vitest";
 
 import { mergeClientDirectory } from "@/lib/fileSystem/fileSystem";
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
