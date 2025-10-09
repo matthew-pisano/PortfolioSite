@@ -48,7 +48,6 @@ class Sprite {
         if (this.spriteElem === null) throw new Error("Sprite not mounted");
         let terminalThumb = document.getElementById("terminalThumb");
 
-         
         while (true) {
             let targetTop = terminalThumb.getBoundingClientRect().top - this.spriteHeight;
             let scrmlnTop = this.spriteElem.getBoundingClientRect().top;
