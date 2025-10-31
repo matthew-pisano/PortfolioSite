@@ -218,7 +218,7 @@ export default [
                     Clarisse McClellan. After identifying him as a fireman through his odor of accelerant, she begins
                     asking him questions...questions that make him think. "Are you happy?" What? Of course he was happy!
                     He had endless entertainment at his fingertips; in fact, he had just recently gotten a third
-                    ceiling-to-floor television screen installed in his parlor...although he did not find the endless
+                    floor-to-ceiling television screen installed in his parlor...although he did not find the endless
                     stream of melodramas very entertaining. He was never bored either! The state made it nearly
                     impossible to be bored, too much temptation to <i>think</i>...although he wished he had time to
                     think. "Are you in love?" Such a ridiculous notion! He had a lovely wife Mildred whom he loved very
@@ -231,21 +231,21 @@ export default [
                 </p>
                 <p>
                     Guy Montag is a <i>liar</i>. He had stolen a book, and he had finally worked up the courage to read
-                    it. During one of his late-night calls, he had snatched a book of poetry curing the chaos of the
+                    it. During one of his late-night calls, he had snatched a book of poetry during the chaos of the
                     call. He prayed that Fire Chief Beatty did not notice. This call was different, though. Instead of
-                    the offender being taken away be the authorities, the woma whose library they had just decimated
+                    the offender being taken away by the authorities, the woman whose library they had just decimated
                     threw herself into the fire along with it. What could be in those books that was worth dying over?
                     Calling in sick the day after, he planned to find out. Chief Beatty comes over to make sure he is
                     feeling alright...he never calls out of a shift. As Montag lies in bed, with the book hidden under
                     his pillow, the Chief delivers a monologue on why firemen do what they do. As firemen, it is their
                     duty to protect people from the harm that books can cause and to preserve the stability of the
-                    state. Books inconvenient, he explains. They are unpopular, they are decisive, they are subversive,
+                    state. Books inconvenient, he explains. They are unpopular, they are divisive, they are subversive,
                     they upset people. The state did not ban books, he reveals, the people banned them themselves.
                     People now live with endless entertainment, personalized to their own perspectives and views. The
                     entertainment is endless, the televisions know them and can tailor what they see so they are never
                     bored. Books do not care who you are, they do not yield to your preferences, their philosophies are
                     only accessible to those few that understand them. Books are <i>destabilizing</i> and the people
-                    want them gone. He goes on to explain that it is normal for books to call to firemen, to temp them
+                    want them gone. He goes on to explain that it is normal for books to call to firemen, to tempt them
                     into upsetting the delicate balance of society. It is alright if a fireman gives in and takes a
                     book, as long as it is burned within a day. You wouldn't happen to know anything about that, would
                     you Montag?
@@ -267,20 +267,20 @@ export default [
                 <p>
                     Guy Montag is a <i>murderer</i>. Tearing off his suit, Montag takes off into the night. The police
                     were already on their way, he does not have much time. Cutting through back yards and highways, he
-                    races to evade the police and the mechanical hound tracking his scent.
+                    races to evade the police and the mechanical hound tracking his scent. Peering in through living
+                    room windows, he can see his own chase being televised across the city. The people love a spectacle.
+                    As the authorities close in, Montag reaches the river. In an effort to throw the hound off of his
+                    scent, he jumps in and lets the current take him downstream and to the opposite bank. Hours later,
+                    no hound has tracked him down.
                 </p>
                 <p>
-                    Guy Montag is a <i>fugitive</i>. Peering in through living room windows, he can see hiw own chase
-                    being televised across the city. The people love a spectacle. As the authorities close in, Montag
-                    reaches the river. In an effort to throw the hound off of his scent, he jumps in and lets the
-                    current take him downstream and to the opposite bank. Hours later, no hound has tracked him down.
-                    Montag begins to feel safe. As he wanders down the tracks, he comes across a camp of drifters.
+                    Guy Montag is...<i>free</i>. As he wanders down the tracks, he comes across a camp of drifters.
                     These, however, are no ordinary transients. They are professors and thinkers from the long-abandoned
                     institution of higher education. They tell Montag that they collect books, just like him. Although
                     not physically, that would be far too risky. They keep their books in a place where the state cannot
-                    fine them, in their own minds. Each of them has memorized portions of books they they find
+                    find them, in their own minds. Each of them has memorized portions of books that they find
                     meaningful. Together, they form a nationwide mental library. On a small portable television, the
-                    group turns in to Montag's ongoing manhunt. Unable to find the true Montag, the police know they
+                    group tunes in to Montag's ongoing manhunt. Unable to find the true Montag, the police know they
                     cannot look weak in the eyes of the public. Coming upon a lone man walking in the early hours of the
                     morning, they declare that they have found their man. After dealing with their newly minted
                     scapegoat, they have done their job. One rogue fugitive is a small price to pay for the state's
@@ -293,7 +293,7 @@ export default [
             <>
                 <i>Fahrenheit 451</i> is as beautifully written as it is disconcertingly prophetic. One aspect of the
                 story that I particularly like is how Bradbury presents the origin of the state-wide ban on books.
-                Unlike most other media, where a totalitarian state suddenly materializes and begins issuing to-down,
+                Unlike most other media, where a totalitarian state suddenly materializes and begins issuing top-down,
                 draconian edicts, the American state in <i>Fahrenheit 451</i> implements policies that already have
                 widespread public support. Being written shortly after the second world war, it does not surprise me
                 that the state is portrayed in this manner. The unnerving reality is that it is common for totalitarian
@@ -302,19 +302,19 @@ export default [
                 deeply unpopular with the majority of Germans. Similar to the state in the novel, these conditions gave
                 the <i>NSDAP</i> an excellent opportunity. They implemented (or at least promised) policies that many
                 people actually wanted. Before (and even during) their height of power, control, and malice, the Nazi
-                party was <i>popular</i> among many everyday Germans; and, to them, that is all that really mattered.
-                Most relevant to this book, many of their early, famous book-burnings were not top-down directives from
-                party leadership. Instead, they were perpetrated by radicalized university students, a demographic that
-                often serves as a "canary in the coal mine" for future social upheaval.
+                party was <i>popular</i> among many everyday Germans. To them, that is all that really mattered. Most
+                relevant to this book, many of their early, famous book-burnings were not top-down directives from party
+                leadership. Instead, they were perpetrated by radicalized university students, a demographic that often
+                serves as a "canary in the coal mine" for future social upheaval.
                 <p>
                     This book also holds a significant amount of contemporary relevance. This is aside from the default
-                    examples of modern book-burning and book-banning, of which their are unfortunately still many.
-                    Instead, I would like to highlight the entertainment present in Bradbury's fictional world. Every
-                    home has at least one floor-to-ceiling, wall-to-wall television screen. Some even have all four
-                    walls covered (something that Mildred is all-too-eager to achieve). These screens are designed to
-                    completely envelop and consume their user, both in their dominating physical presence and the
-                    addicting properties of their content. From the perspective of Guy (as he observes Mildred), the
-                    reader gets a sense of how these screens operate. They are loud, very loud. So loud that it is
+                    examples of modern book-burning and book-banning, of which there are unfortunately still many
+                    examples. Instead, I would like to highlight the entertainment present in Bradbury's fictional
+                    world. Every home has at least one floor-to-ceiling, wall-to-wall television screen. Some even have
+                    all four walls covered (something that Mildred is all-too-eager to achieve). These screens are
+                    designed to completely envelop and consume their user, both in their dominating physical presence
+                    and the addicting properties of their content. From the perspective of Guy (as he observes Mildred),
+                    the reader gets a sense of how these screens operate. They are loud, very loud. So loud that it is
                     difficult to think of anything aside from what is on the screen. That is the point, in fact.
                     Mildred's favorite show is "The Family", which plays non-stop on the screens of their parlor. This
                     show, along with the intervening advertisements, is perfectly tailored to Mildred and her tastes.
@@ -325,24 +325,25 @@ export default [
                     impossible). Advertisements also play an important role in the story. Aside from the personalized
                     ads that play on the screens, they are omnipresent throughout daily life. The most notable example
                     of this occurs to Montag on the subway where his thoughts on the bible that he has recently acquired
-                    are continually interrupted by a jingle for "Denham's Dentifrice". This also serves as another
-                    indication that rampant consumerism is a driving force of their society. This ad, in particular,
-                    nearly drives Guy mad and pushes him further towards his inevitable rebellion. This is all beginning
-                    to sound a little too familiar, isn't it?
+                    are continually interrupted by a jingle for "Denham's Dentifrice". The speakers assault his mind
+                    with this phrase. Over. And over. <i>And over</i> again. This also serves as another indication that
+                    rampant consumerism is a driving force of their society. This ad, in particular, nearly drives Guy
+                    mad and pushes him further towards his inevitable rebellion. This is all beginning to sound a little
+                    too familiar, isn't it?
                 </p>
                 <p>
                     Another theme that lurks in the background of the book is the specter of nuclear annihilation. At
                     several points within the story, this is alluded to. One time, there is a mention of low-flying
-                    military jets, another is an offhanded remark of rising geopolitical tensions, Montag even mentions
-                    that the U.S has won two nuclear wars since 2022. This all comes to a head at the end of the book.
-                    Guy Montag and his new conspirator, Professor Faber{<FootRef idx={1} />}, plan to use the impending
-                    war as a catalyst for their plan to destabilize the government. Their plan quickly unravels after
-                    Chief Beatty discovers Montag's book stash. However, as Montag is on the run, war is invariably
-                    declared. Standing with the group of forsaken professors, he watches as the bombs hit the city that
-                    he has just escaped. This is implied to have immediately killed Mildred and perhaps even Professor
-                    Faber, as it is uncertain that he has gotten far enough from the city. The destruction of the city,
-                    and perhaps even the nation, leaves the book off on a bittersweet note as Bradbury implies that the
-                    group of scholars will work to spread their knowledge of books in the aftermath.
+                    military jets, another is an offhanded remark about rising geopolitical tensions, Montag even
+                    mentions that the U.S has won two nuclear wars since 2022. This all comes to a head at the end of
+                    the book. Guy Montag and his new conspirator, Professor Faber{<FootRef idx={1} />}, plan to use the
+                    impending war as a catalyst for their plan to destabilize the government. Their plan quickly
+                    unravels after Chief Beatty discovers Montag's book stash. However, as Montag is on the run, war is
+                    invariably declared. Standing with the group of forsaken professors, he watches as the bombs hit the
+                    city that he has just escaped. This is implied to immediately kill Mildred and perhaps even
+                    Professor Faber, as it is uncertain that he has gotten far enough from the city. The destruction of
+                    the city, and perhaps even the nation, leaves the book off on a bittersweet note as Bradbury implies
+                    that the group of scholars will work to spread their knowledge of books in the aftermath.
                 </p>
                 <hr />
                 <FootNote idx={1}>
