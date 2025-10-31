@@ -374,25 +374,26 @@ export default [
         ``,
         (
             <>
-                This novel was notable to me for a myriad of reasons. Clarke puts a great deal of effort into ensuring
-                that his story remains as scientifically accurate as possible, while still making the plot seem
-                plausible and self-consistent. The beginning of the novel offers a unique explanation to the question of
-                why humans often appear to be fundamentally different with respect to the remainder of the animal
-                kingdom. His description of space-flight, moon-bases, and technology are impressively accurate for being
-                written before even the first moon landing.
+                This novel stands out for a myriad of reasons. Clarke puts a great deal of effort into ensuring that his
+                story remains as scientifically accurate as possible, while still making the plot seem plausible and
+                self-consistent. The beginning of the novel offers a unique explanation to the question of why humans
+                often appear to be fundamentally different with respect to the remainder of the animal kingdom. His
+                description of space-flight, moon-bases, and technology are impressively accurate for being written
+                before even the first moon landing.
                 <p>
                     Of course, one of the most impactful details to me was how <i>HAL</i> behaves and how his internal
-                    world model motivates his actions. He (it?) serves as an excellent example of how seemingly virtuous
+                    world model motivates his actions. He serves as an excellent example of how seemingly virtuous
                     terminal goals, such as investigating <i>TMA-2</i>, can lead to unforeseen instrumental goals, such
-                    as self-preservation at all costs, as <i>HAL</i> does not have a real understanding about what
-                    shutting down will really mean for him. All of this comes decades before alignment, or even AI,
-                    became popular within public discourse.
+                    as self-preservation at all costs. <i>HAL</i> does not have a proper understanding of what shutting
+                    down really means for him, all that he knows is that it that will prevent him from achieving his
+                    terminal goal. These insights from the author come decades before alignment, or even AI, became
+                    popular within public discourse.
                 </p>
                 <p>
                     Another interesting detail is what Clarke gets wrong. Namely, his prediction that Marvin Minsky and
                     Irving John Good would play a pivotal role in designing neural networks that could effectively
                     learn. While this exact sequence of events did not play out in reality, it is closely reflected in
-                    the real achievements of the two scientists and thw AI boom of the 1980s.
+                    the real achievements of the two scientists and the AI boom of the 1980s.
                 </p>
             </>
         ),
