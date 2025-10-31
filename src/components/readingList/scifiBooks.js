@@ -293,55 +293,55 @@ export default [
             <>
                 <i>Fahrenheit 451</i> is as beautifully written as it is disconcertingly prophetic. One aspect of the
                 story that I particularly like is how Bradbury presents the origin of the state-wide ban on books.
-                Unlike most other media, where a totalitarian state suddenly materializes and begins issuing to-down
+                Unlike most other media, where a totalitarian state suddenly materializes and begins issuing to-down,
                 draconian edicts, the American state in <i>Fahrenheit 451</i> implements policies that already have
                 widespread public support. Being written shortly after the second world war, it does not surprise me
-                that the state is portrayed in this manner. In reality, it is common for even totalitarian regimes to
-                have popular support as long as they enforce the will of the majority. The most apt, and default,
-                example comes from 1930's Germany. At the time, the Wiemar government was already deeply unpopular with
-                the majority of Germans. Similar to the state in the novel, these conditions gave the <i>NSDAP</i> an
-                excellent opportunity. They implemented (or at least promised) policies that many people actually
-                wanted. Before (and even during) their height of power, control, and malice, the Nazi party was{" "}
-                <i>popular</i> among many everyday Germans; and, to them, that is all that really mattered. Most
-                relevant to this book, many of their early, famous book-burnings were not top-down directives from party
-                leadership. Instead, they were perpetrated by radicalized university students, a demographic that often
-                serves as a "canary in the coal mine" for future social upheaval.
+                that the state is portrayed in this manner. The unnerving reality is that it is common for totalitarian
+                regimes to have popular support as long as they enforce the will of the majority. The most apt (and
+                somewhat default) example comes from 1930's Germany. At the time, the Wiemar government was already
+                deeply unpopular with the majority of Germans. Similar to the state in the novel, these conditions gave
+                the <i>NSDAP</i> an excellent opportunity. They implemented (or at least promised) policies that many
+                people actually wanted. Before (and even during) their height of power, control, and malice, the Nazi
+                party was <i>popular</i> among many everyday Germans; and, to them, that is all that really mattered.
+                Most relevant to this book, many of their early, famous book-burnings were not top-down directives from
+                party leadership. Instead, they were perpetrated by radicalized university students, a demographic that
+                often serves as a "canary in the coal mine" for future social upheaval.
                 <p>
                     This book also holds a significant amount of contemporary relevance. This is aside from the default
                     examples of modern book-burning and book-banning, of which their are unfortunately still many.
                     Instead, I would like to highlight the entertainment present in Bradbury's fictional world. Every
                     home has at least one floor-to-ceiling, wall-to-wall television screen. Some even have all four
-                    walls covered. These screens are designed to completely envelop and consume their user, both in
-                    their dominating physical presence and the addicting properties of their content. From the
-                    perspective of Guy as we observes Mildred, the reader gets a sense of how these screens operate.
-                    They are loud, very loud. So loud that it is difficult to think of anything aside from what is on
-                    the screen. That is the point, in fact. Mildred's favorite show is "The Family", which plays
-                    non-stop on the screens of their parlor. This show, along with the intervening advertisements, is
-                    perfectly tailored to Mildred and her tastes. They even mention her by name when it is relevant.
-                    Entertainment in this world is not merely limited to the screens, however. At night, Mildred, along
-                    with millions of others to be sure, have plugged their ears with small devices that resemble
-                    seashells. They produce a constant stream of pleasant sounds, meant to put the user at ease (with
-                    the convenient side-effect of making any idle thoughts impossible). Advertisements also play an
-                    important role in the story. Aside from the personalized ads that play on the screens, they are
-                    omnipresent throughput daily life. The most notable example of this occurs to Montag on the subway
-                    where his thoughts on the bible that he has recently acquired are continually interrupted by a
-                    jingle for "Denham's Dentifrice". This also serves as another indication that rampant consumerism is
-                    a driving force of their society. This ad, in particular, nearly drives Guy mad and pushes him
-                    further towards his inevitable rebellion. This is all beginning to sound a little too familiar,
-                    isn't it?
+                    walls covered (something that Mildred is all-too-eager to achieve). These screens are designed to
+                    completely envelop and consume their user, both in their dominating physical presence and the
+                    addicting properties of their content. From the perspective of Guy (as he observes Mildred), the
+                    reader gets a sense of how these screens operate. They are loud, very loud. So loud that it is
+                    difficult to think of anything aside from what is on the screen. That is the point, in fact.
+                    Mildred's favorite show is "The Family", which plays non-stop on the screens of their parlor. This
+                    show, along with the intervening advertisements, is perfectly tailored to Mildred and her tastes.
+                    They even mention her by name when it is relevant. Entertainment in this world is not merely limited
+                    to the screens, however. At night, Mildred, along with millions of others to be sure, have plugged
+                    their ears with small devices that resemble seashells. They produce a constant stream of pleasant
+                    sounds, meant to put the user at ease (with the convenient side-effect of making any idle thoughts
+                    impossible). Advertisements also play an important role in the story. Aside from the personalized
+                    ads that play on the screens, they are omnipresent throughout daily life. The most notable example
+                    of this occurs to Montag on the subway where his thoughts on the bible that he has recently acquired
+                    are continually interrupted by a jingle for "Denham's Dentifrice". This also serves as another
+                    indication that rampant consumerism is a driving force of their society. This ad, in particular,
+                    nearly drives Guy mad and pushes him further towards his inevitable rebellion. This is all beginning
+                    to sound a little too familiar, isn't it?
                 </p>
                 <p>
                     Another theme that lurks in the background of the book is the specter of nuclear annihilation. At
                     several points within the story, this is alluded to. One time, there is a mention of low-flying
-                    military jets, another is an offhanded remark of rising tensions, Montag even mentions that the U.S
-                    has won two nuclear wars since 2022. This all comes to a head at the end of the book. Guy Montag and
-                    his new conspirator Professor Faber{<FootRef idx={1} />} plan to use the impending war as a catalyst
-                    for their plan to destabilize the government. Their plan quickly unravels after Chief Beatty
-                    discovers Montag's book stash. However, as Montag is on the run, war is invariably declared.
-                    Standing with the group of forsaken professors, he watches as the bombs hit the city that he has
-                    just escaped. This is implied to have immediately killed Mildred and perhaps even Professor Faber,
-                    as it is uncertain that he has gotten far enough from the city. The destruction of the city, and
-                    perhaps even the nation, leaves the book off on a bittersweet note as Bradbury implies that the
+                    military jets, another is an offhanded remark of rising geopolitical tensions, Montag even mentions
+                    that the U.S has won two nuclear wars since 2022. This all comes to a head at the end of the book.
+                    Guy Montag and his new conspirator, Professor Faber{<FootRef idx={1} />}, plan to use the impending
+                    war as a catalyst for their plan to destabilize the government. Their plan quickly unravels after
+                    Chief Beatty discovers Montag's book stash. However, as Montag is on the run, war is invariably
+                    declared. Standing with the group of forsaken professors, he watches as the bombs hit the city that
+                    he has just escaped. This is implied to have immediately killed Mildred and perhaps even Professor
+                    Faber, as it is uncertain that he has gotten far enough from the city. The destruction of the city,
+                    and perhaps even the nation, leaves the book off on a bittersweet note as Bradbury implies that the
                     group of scholars will work to spread their knowledge of books in the aftermath.
                 </p>
                 <hr />
