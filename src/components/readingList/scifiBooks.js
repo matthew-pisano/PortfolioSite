@@ -455,21 +455,37 @@ export default [
                 self-consistent. The beginning of the novel offers a unique explanation to the question of why humans
                 often appear to be fundamentally different with respect to the remainder of the animal kingdom. His
                 description of space-flight, moon-bases, and technology are impressively accurate for being written
-                before even the first moon landing.
+                before even the first moon landing. The inclusion of spinning discs that induce artificial gravity
+                through centripetal force was very forward thinking for the time and would go on to influence countless
+                other works of science fiction.
                 <p>
                     Of course, one of the most impactful details to me was how <i>HAL</i> behaves and how his internal
-                    world model motivates his actions. He serves as an excellent example of how seemingly virtuous
-                    terminal goals, such as investigating <i>TMA-2</i>, can lead to unforeseen instrumental goals, such
-                    as self-preservation at all costs. <i>HAL</i> does not have a proper understanding of what shutting
-                    down really means for him, all that he knows is that it that will prevent him from achieving his
-                    terminal goal. These insights from the author come decades before alignment, or even AI, became
-                    popular within public discourse.
+                    world model motivates his actions. From the outset of the story, <i>HAL</i> has two primary
+                    objectives: deliver the crew of scientists to Saturn and to ensure that Bowman and Poole are unaware
+                    of their true mission. <i>HAL</i> knows that his crewmembers are curious, though. They will begin to
+                    ask questions. They may try to contact Earth for more details or even wake the scientists in stasis.
+                    In anticipation, he first tries to pretend that the communication module is broken. When that ruse
+                    fails, Bowman and Poole grow suspicious of him. In <i>HAL</i>'s mind, this leaves him with only the
+                    nuclear option. This serves as an excellent example of how seemingly reasonable terminal goals, such
+                    as investigating <i>TMA-2</i> and keeping the mission a secret, can lead to unforeseen instrumental
+                    goals, such as self-preservation at all costs. <i>HAL</i> does not have a proper understanding of
+                    what shutting down really means for him, all that he knows is that Poole and Bowman's interference
+                    may will prevent him from achieving his terminal goal. These insights from the author come decades
+                    before alignment, or even AI, became popular within public discourse.
                 </p>
                 <p>
                     Another interesting detail is what Clarke gets wrong. Namely, his prediction that Marvin Minsky and
                     Irving John Good would play a pivotal role in designing neural networks that could effectively
-                    learn. While this exact sequence of events did not play out in reality, it is closely reflected in
-                    the real achievements of the two scientists and the AI boom of the 1980s.
+                    learn. With the invention of the <i>perceptron</i> in 1957, the theoretical groundwork for{" "}
+                    <i>HAL</i> has already been laid by the time <i>2001</i> was being written. Around the same time,
+                    Minsky published <i>Perceptrons</i>, a book that showed that single-layer networks of perceptrons
+                    were incapable of learning relatively simple functions, such as XOR. However, Minsky and Papert
+                    suggested that deeper networks could model more complex functions. Unfortunately, it was difficult
+                    to effectively train these networks. The solution would not come until 1982 when Werbos applied a
+                    modern method of <i>backpropagation</i> to multi-layered perceptrons. This, combined with the
+                    popularization of neural networks by Hinton and Hopfield lead to the modern systems that exist
+                    today. Given that <i>2001</i> was written only at the very beginning of this journey, it is
+                    impressive that it was able to approximate so much progress that was yet to be had in the field.
                 </p>
                 <hr />
                 <FootNote idx={1}>
