@@ -56,15 +56,16 @@ export default [
             <>
                 Unlike the other entries in this list, <u>{House()} of Leaves</u> is not simply a book. Rather, it is a
                 series of notes written while editing a literary analysis of a documentary about a {house()} that does
-                not exist. A {house()} that is bigger on the <big>inside</big> than <small>out</small>. Found footage in
-                literary form. In addition to Danielewski himself, this book has two additional authors: Johnny Truant,
-                the "top-level" author of the notes, and Zampanò, the author of the original literary analysis.
+                not exist. A {house()} that is bigger on the <big>inside</big> than <small>out</small>. It is found
+                footage in literary form. In addition to Danielewski himself, this book has two additional authors:
+                Johnny Truant, the "top-level" author of the notes, and Zampanò, the author of the original literary
+                analysis.
                 <p>
                     The main "story" is written from the point of view of Johnny as he journals the changes in his life
-                    after his friend, Lude, leads him to the apartment the now deceased Zampanò. After entering the dark
-                    and sealed-off apartment of the eighty-something year old blind man, the two men discover heaps upon
-                    heaps of disorganized papers, a series of mysterious gouge marks in the splintered wooden floor, and
-                    a large chest that contains the second layer of the story.
+                    after his friend, Lude, leads him to the apartment of the now deceased Zampanò. After entering the
+                    dark and sealed-off apartment of the eighty-something-year-old blind man, the two men discover heaps
+                    upon heaps of disorganized papers, a series of mysterious gouge marks in the splintered wooden
+                    floor, and a large chest that contains the second layer of the story.
                 </p>
                 <p>
                     In the years that preceded his death, Zampanò wrote, or more accurately dictated, a highly detailed
@@ -116,10 +117,11 @@ export default [
                     dimensionality. In its center, the Holloway expedition discovers an enormous, descending spiral
                     staircase. After several hours of descending in the frigid atmosphere of the staircase, they retreat
                     back to the {house()}. Unsatisfied, the team takes a week to prepare for the much more ambitious{" "}
-                    <i>Exploration #4</i>. Soon after entering {redact(10)} hear {redact(7)} growl.
+                    <i>Exploration #4</i>. Soon after entering {redact(10)} they hear {redact(7)} growl.
                     {redact(70)} after several days {redact(24)} Holloway chambers a round and {redact(143)} huddled
                     together in a {redact(10)} waiting for rescue. {redact(74)} beast {redact(123)} {minotaur()}{" "}
-                    {redact(300)} evacuated from the {house()}
+                    {redact(300)} consumed by the madness of the inky blackness, Holloway {redact(200)} evacuated from
+                    the {house()}
                     {<FootRef idx={2} />}.
                 </p>
                 <p style={{ textAlign: "center" }}>
@@ -131,9 +133,12 @@ export default [
                     Throughout the story, we bear witness to Johnny Truant's deteriorating mental health through the
                     footnotes he leaves periodically throughout the text. As he ventures deeper into Zampanò's work, he
                     becomes more and more isolated and cares less and less about anything other than organizing the
-                    scattered notes found in that old chest. The first edition of the book leaves off with Johnny
-                    traveling to Virginia himself to look for the {house()} that has consumed all of his waking (and
-                    indeed resting) hours. The second edition picks up {redact(256)} fate.
+                    scattered notes found in that old chest. When we last meet him at the end, his teeth have begun to
+                    decay, he has found scratch marks on his body that he cannot recall getting, and his sense of time
+                    has all-but vanished, to the point where he can black out for weeks at a time. The first edition of
+                    the book leaves off with Johnny traveling to Virginia himself to look for the {house()} that has
+                    consumed all of his waking (and indeed resting) hours. The second edition picks up {redact(256)}{" "}
+                    fate.
                 </p>
             </>
         ),
@@ -173,7 +178,7 @@ export default [
                     The text also makes several references to real-life figures. At one point, Karen submits a draft
                     version of <i>The Navidson Record</i> to several scientists, writers, and filmmakers. This
                     assortment of sources even includes Douglas Hofstadter who, in true Hofstadterian fashion,
-                    immediately relates the content of the film to his friends Mr. Tortise and Achilles
+                    immediately relates the content of the film to his friends Mr. Tortoise and Achilles
                     {<FootRef idx={5} />}, to my great delight.
                 </p>
                 <hr />
