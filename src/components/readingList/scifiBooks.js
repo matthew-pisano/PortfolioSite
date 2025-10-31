@@ -365,10 +365,73 @@ export default [
         "Arthur C. Clarke",
         (
             <>
-                <u>2001: A Space Odyssey</u> is a science fiction novel that follows humanity's fleeting, yet impactful,
-                encounters with a mysterious alien civilization. After the discovery of an alien monolith on the Moon, a
-                crew of astronauts is sent to Jupiter to investigate a similar monolith. The novel explores themes of
-                artificial intelligence, extraterrestrial life, and the nature of consciousness.
+                The first time we meet David Bowman, he is on his way to Saturn to conduct a study of the planet...at
+                least, this is what he was told. In reality, he is thirty days into completing the final leg of a
+                journey that humanity has been unknowingly on for millions of years.
+                <p>
+                    <i>Moon-Watcher</i> gazes into the pitch-darkness of the night sky. Inside of his cave, his tribe
+                    huddles together for warmth. Most of those who have not already starved to death are well on their
+                    way to doing so. A changing climate had forced his ancestors to descend from the trees millennia
+                    ago; unfortunately, resources are not much more abundant on the ground. Under the cover of darkness
+                    one night, the daily struggle of these early <i>australopithecines</i> is forever altered by the
+                    arrival of the monolith. In stark contrast to the surrounding arid environment, the eleven foot tall
+                    pillar of perfectly black, perfectly smooth material looms over <i>Moon-Watcher</i> and his tribe.
+                    It's dimensions are precisely 1:4:9, the first three perfect squares. The monolith speaks to the
+                    apes, not through language, as that gift will only manifest later on, but through the modification
+                    and mutation of their minds. Having planted the seeds of what is yet to come, the monolith leaves as
+                    suddenly as it had arrived.
+                </p>
+                <p>
+                    Dr. Heywood Floyd gazes into the pitch-darkness of the star-lit sky. Washington has urgently ordered
+                    him to the <i>Clavius</i> Moon Base. Rumors have leaked something about a quarantine. Nobody is
+                    allowed in and nobody out, except for him. Upon his arrival, he is greeted with the full reality of
+                    the situation. Some time earlier, surveyors on the Moon noticed a magnetic anomaly located within
+                    Tycho Crater. An investigation reveals the source of the anomaly: an eleven foot tall pillar of
+                    perfectly black, perfectly smooth material with dimensions of precisely 1:4:9, buried twenty feet
+                    under the lunar regolith. <i>TMA-1</i>. It is Floyd's job to investigate. Soon after his arrival,
+                    the mid-day sun strikes the monolith's surface for the first time in millions of years. At that
+                    moment the helmets of all present began to shriek as the monolith blasted high-energy radio waves
+                    into the vastness of space. Following this event, the magnetic field of the anomaly had evaporated,
+                    all of its energy transformed into a lone signal, aimed directly at the moons of Saturn...
+                </p>
+                <p>
+                    David Bowman gazes into the pitch-darkness of space. Inside of the starship <i>Discovery</i>,
+                    himself and his crew are on an escape velocity from Earth. They will perform a gravity-assist
+                    maneuver at Jupiter to gain velocity before they reach their final destination of Saturn. Aboard are
+                    Bowman, Frank Poole, their <i>HAL 9000</i> artificial intelligence, and several crewmates in stasis.
+                    Only Bowman will live to see their true objective. As their mission progresses, <i>HAL</i> begins to
+                    behave strangely. He blunders a chess move during a game against Poole. He reports the failure of
+                    the critical <i>AE-35</i> communication gyroscope, twice. Both units are later found to be in
+                    perfect working order. He begins to ask his human counterparts personal questions regarding their
+                    perspective on the mission. Bowman and Poole begin to suspect that their AI is malfunctioning after
+                    hearing of a similar incident on Earth. Their discussion occurs beyond the earshot of <i>HAL</i>'s
+                    microphones; they do not know that <i>HAL</i> is good at reading lips.
+                </p>
+                <p>
+                    <i>HAL</i> is also a skilled opportunist. Poole is alone on a spacewalk to replace the <i>AE-35</i>{" "}
+                    that <i>HAL</i> insisted would fail within 72 hours. Using his EVA module for light, he does not
+                    notice as it begins to accelerate towards him at its maximum thrust...it does not stop after impact.
+                    One threat to the mission has been eliminated. Still reeling from watching Poole's demise, David
+                    Bowman hears alarms blaring from the stasis chambers. The life-support has been turned off. Four
+                    down; one remains. As Bowman races towards <i>HAL</i>'s control room, air begins to hiss through the
+                    steadily opening airlocks; be barley has enough time to don a space suit before the ships
+                    life-sustaining atmosphere vanishes into the vacuum of space. Forcing his way into <i>HAL</i>'s
+                    inner sanctum, Bowman begins to rip out the many modules that control the great machine. Becoming
+                    more erratic with each module removed, <i>HAL</i>'s final message to Bowman is a song he was first
+                    taught by his instructor. <br />
+                    <br />
+                    <i>
+                        Daisy, Daisy, Give me your answer, do! I'm half crazy, All for the love of you! It won't be a
+                        stylish marriage, I can't afford a carriage, But you'll look sweet{" "}
+                        <small>upon the seat Of a bicycle built forrrr tttwwwoooo...</small>
+                        {<FootRef idx={1} />}
+                    </i>
+                </p>
+                <hr />
+                <FootNote idx={1}>
+                    In 1962, Clarke witnessed researchers at Bell Labs program an IBM 7094 machine to sing this song in
+                    the earliest example of computer speech synthesis.
+                </FootNote>
             </>
         ),
         ``,
