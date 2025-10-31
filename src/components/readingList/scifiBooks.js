@@ -404,8 +404,10 @@ export default [
                     the critical <i>AE-35</i> communication gyroscope, twice. Both units are later found to be in
                     perfect working order. He begins to ask his human counterparts personal questions regarding their
                     perspective on the mission. Bowman and Poole begin to suspect that their AI is malfunctioning after
-                    hearing of a similar incident on Earth. Their discussion occurs beyond the earshot of <i>HAL</i>'s
-                    microphones; they do not know that <i>HAL</i> is good at reading lips.
+                    hearing of a similar incident on Earth. The inner conflict between <i>HAL</i>'s two main directives,
+                    to ensure the mission reaches Saturn and that absolute secrecy is maintained during the journey, has
+                    caused him to crack. Their discussion occurs beyond the earshot of <i>HAL</i>'s microphones; they do
+                    not know that <i>HAL</i> is good at reading lips.
                 </p>
                 <p>
                     <i>HAL</i> is also a skilled opportunist. Poole is alone on a spacewalk to replace the <i>AE-35</i>{" "}
@@ -420,6 +422,10 @@ export default [
                     more erratic with each module removed, <i>HAL</i>'s final message to Bowman is a song he was first
                     taught by his instructor. <br />
                     <br />
+                    <audio controls style={{ width: "100%", borderRadius: "10px" }}>
+                        <source src="/media/audio/daisy.mp3" type="audio/mpeg" />
+                    </audio>
+                    <br />
                     <i>
                         Daisy, Daisy, Give me your answer, do! I'm half crazy, All for the love of you! It won't be a
                         stylish marriage, I can't afford a carriage, But you'll look sweet{" "}
@@ -427,11 +433,18 @@ export default [
                         {<FootRef idx={1} />}
                     </i>
                 </p>
-                <hr />
-                <FootNote idx={1}>
-                    In 1962, Clarke witnessed researchers at Bell Labs program an IBM 7094 machine to sing this song in
-                    the earliest example of computer speech synthesis.
-                </FootNote>
+                <p>
+                    After dismantling <i>HAL</i>, manually points the antenna back to Earth in order to reestablish
+                    communication. After relaying his situation to the ground, he learns of the true nature of the
+                    mission. The radio signal sent by <i>TMA-1</i> was directed at a second monolith on Japetus, one of
+                    Saturn's moons, dubbed <i>TMA-2</i>. However, instead of eleven feet high, this monolith reaches
+                    nearly two kilometers into the blackness of space. With barley enough fuel left, Bowman guides the
+                    crippled spacecraft towards its final resting place in orbit of Japetus. Without enough resources to
+                    return home, Bowman pushes onward, taking one of the ships maintenance pods down to the tip of the
+                    spire. As be descends, he realizes something: the monolith is hollow. Passing the impermeable
+                    threshold, he utters the last words that Earth will ever hear from him,{" "}
+                    <i>"My God, it's full of stars!"</i>.
+                </p>
             </>
         ),
         ``,
@@ -458,6 +471,11 @@ export default [
                     learn. While this exact sequence of events did not play out in reality, it is closely reflected in
                     the real achievements of the two scientists and the AI boom of the 1980s.
                 </p>
+                <hr />
+                <FootNote idx={1}>
+                    In 1962, Clarke witnessed researchers at Bell Labs program an IBM 7094 machine to sing this song in
+                    the earliest example of computer speech synthesis.
+                </FootNote>
             </>
         ),
         "/media/image/2001.jpg",
