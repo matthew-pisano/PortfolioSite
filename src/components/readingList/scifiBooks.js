@@ -508,6 +508,16 @@ export default [
                 this bleak landscape, Dick examines what it means to be human and the ethics of artificial life. The
                 novel follows Rick Deckard, a bounty hunter tasked with "retiring" rogue androids, and John Isidore, a
                 man of limited intelligence due to radiation exposure who empathizes with the fugitive androids.
+                <p>
+                    The central conflict of the story revolves around the new Nexus-6 model of androids. These
+                    artificial humanoids are more intelligent than previous models, and therefore more capable of
+                    blending in with natural humans. Rick Deckard is informed that six of these androids have escaped
+                    from the Mars colony where they were meant to work. By the time he is assigned the case, two have
+                    already been 'retired' by another bounty hunter. The remaining four have already integrated
+                    themselves into society. As Deckard carries out his assignment, he struggles to distinguish between
+                    members of his species and mere facsimiles, and questions whether he can bear to destroy beings with
+                    the same desires, feelings, and fears as himself.
+                </p>
             </>
         ),
         ``,
