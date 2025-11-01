@@ -474,18 +474,19 @@ export default [
                     before alignment, or even AI, became popular within public discourse.
                 </p>
                 <p>
-                    Another interesting detail is what Clarke gets wrong. Namely, his prediction that Marvin Minsky and
-                    Irving John Good would play a pivotal role in designing neural networks that could effectively
-                    learn. With the invention of the <i>perceptron</i> in 1957, the theoretical groundwork for{" "}
-                    <i>HAL</i> has already been laid by the time <i>2001</i> was being written. Around the same time,
-                    Minsky published <i>Perceptrons</i>, a book that showed that single-layer networks of perceptrons
-                    were incapable of learning relatively simple functions, such as XOR. However, Minsky and Papert
-                    suggested that deeper networks could model more complex functions. Unfortunately, it was difficult
-                    to effectively train these networks. The solution would not come until 1982 when Werbos applied a
-                    modern method of <i>backpropagation</i> to multi-layered perceptrons. This, combined with the
-                    popularization of neural networks by Hinton and Hopfield lead to the modern systems that exist
-                    today. Given that <i>2001</i> was written only at the very beginning of this journey, it is
-                    impressive that it was able to approximate so much progress that was yet to be had in the field.
+                    Another interesting detail is what Clarke gets wrong. Wrong, but in the most correct way possible.
+                    Namely, his prediction that Marvin Minsky and Irving John Good would play a pivotal role in
+                    designing neural networks that could effectively learn. With the invention of the <i>perceptron</i>{" "}
+                    in 1957, the theoretical groundwork for <i>HAL</i> has already been laid by the time <i>2001</i> was
+                    being written. Around the same time, Minsky published <i>Perceptrons</i>, a book that showed that
+                    single-layer networks of perceptrons were incapable of learning relatively simple functions, such as
+                    XOR. However, Minsky and Papert suggested that deeper networks could model more complex functions.
+                    Unfortunately, it was difficult to effectively train these networks. The solution would not come
+                    until 1982 when Werbos applied a modern method of <i>backpropagation</i> to multi-layered
+                    perceptrons. This, combined with the popularization of neural networks by Hinton and Hopfield lead
+                    to the modern systems that exist today. Given that <i>2001</i> was written only at the very
+                    beginning of this journey, it is impressive that it was able to approximate so much progress that
+                    was yet to be had in the field, even if the finer details were incorrect.
                 </p>
                 <hr />
                 <FootNote idx={1}>
