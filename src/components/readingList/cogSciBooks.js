@@ -1,3 +1,4 @@
+// javascript
 import React from "react";
 
 import Link from "next/link";
@@ -41,13 +42,13 @@ export default [
         "Daniel Kahneman",
         (
             <>
-                <u>Thinking Fast and Slow</u> serves as a compendium of the authors knowledge on both human psychology
+                <u>Thinking Fast and Slow</u> serves as a compendium of the author's knowledge on both human psychology
                 and economic theory, particularly on the intersection between the two. The core idea of the book is
                 that, in contrast to traditional economic theory where humans serve as simple, rational agents, the
                 behavior of real humans is more complex and nuanced than originally thought. This idea is expanded upon
-                through three, more targeted, concepts: the two systems theory of cognition, the difference between real
-                humans and idealized <i>Econs</i>, and how humans behave differently when experiencing a stimuli and
-                remembering that same stimuli.
+                through three more targeted concepts: the two systems theory of cognition, the difference between real
+                humans and idealized <i>Econs</i>, and how humans behave differently when experiencing a stimulus and
+                remembering that same stimulus.
                 <p>
                     Traditionally, people tend to view their thought process as a monolith. A uniform process of careful
                     deliberation and informed decision making. Through his experiments, however, Kahneman noticed that
@@ -86,17 +87,17 @@ export default [
                 economics, cognitive science, and psychology, I find his first set of ideas the most interesting.
                 Namely, his distinction between <i>System 1</i> and <i>System 2</i> thinking. This is primarily because
                 of its potential implications on my own field of study, artificial intelligence. Currently, the most
-                successful attempts at creating a <i>general</i> artificially intelligent agent have, buy and large,
-                used a monolithic architecture where the same fundamental structure or algorithm serves as the basis for
-                an entire model.
+                successful attempts at creating a <i>general</i> artificially intelligent agent have, by and large, used
+                a monolithic architecture where the same fundamental structure or algorithm serves as the basis for an
+                entire model.
                 <p>
-                    While this has thus-far been impressively successful, this approach has yet to produce something
-                    nearing human-level in the majority of domains, especially for problem solving and slow, methodical
-                    thinking. Current approaches appear to closely mirror a <i>System 1</i> process, providing quick
-                    answers that heavily rely on heuristics and learned biases. Additionally, while many modern models
-                    can be coerced into <i>System 2-eqsue</i> reasoning, it does not come as a natural consequence of
-                    the architecture and still often falls short when the problem domain is significantly out of
-                    distribution or scope from the original training data. To create a system that can truly be
+                    While this has thus far been impressively successful, this approach has yet to produce something
+                    nearing human-level performance in the majority of domains, especially for problem solving and slow,
+                    methodical thinking. Current approaches appear to closely mirror a <i>System 1</i> process,
+                    providing quick answers that heavily rely on heuristics and learned biases. Additionally, while many
+                    modern models can be coerced into <i>System 2-esque</i> reasoning, it does not come as a natural
+                    consequence of the architecture and still often falls short when the problem domain is significantly
+                    out of distribution or scope from the original training data. To create a system that can truly be
                     classified as generally intelligent in the same way we consider ourselves, Kahneman's ideas may
                     suggest that a different approach is needed in conjunction with modern strategies.
                 </p>
@@ -179,13 +180,13 @@ export default [
                     who have not listened (or read) too thoroughly or even at all. Just how well Bach's music fits into
                     a mathematical framing is highly unexpected. Many of his musical scores can (deliberately) be
                     translated, mirrored, and scaled in frequency and time similarly to how objects in geometry can be
-                    manipulated in the same manor. The delay and shifting of the voices in his fugues, the inversion in
-                    time of <i>Crab Canon</i> and the reflection in frequency present in one of the cannons in his{" "}
+                    manipulated in the same manner. The delay and shifting of the voices in his fugues, the inversion in
+                    time of <i>Crab Canon</i> and the reflection in frequency present in one of the canons in his{" "}
                     <i>Goldberg Variations</i>. In fact, this last piece can be printed and played on the surface of a
                     Möbius strip! These scores are a strange mix of creative and mechanical; the notes can be thought of
-                    following clever algorithms, almost as if it was written by a dedicated mathematician. This level of
-                    complexity is not immediately apparent, at least to me, unless one deliberately analyzes the sound
-                    in a thoughtful manner.
+                    as following clever algorithms, almost as if they were written by a dedicated mathematician. This
+                    level of complexity is not immediately apparent, at least to me, unless one deliberately analyzes
+                    the sound in a thoughtful manner.
                 </p>
             </>
         ),
@@ -215,7 +216,7 @@ export default [
                 groups. One of the most interesting insights along this vein was on the fact that ML algorithms can
                 accidentally infer data that was held-out from training (for example, an 'unbiased' algorithm can
                 accidentally condition itself on someone's race or gender, despite only having names or neighborhoods in
-                its dataset.).
+                its dataset).
                 <p>
                     Christian's chapters on reward systems and curiosity also helped to cement my understanding of the
                     role these concepts play in learning, both natural and artificial. A common theme with this book was
@@ -252,7 +253,7 @@ export default [
                     Russell considers concepts such as how to balance the personal and societal utilities of embodied
                     assistants and how such assistants can safely learn by maintaining a core of immutable ideals. He
                     also provides effective counter-arguments to common arguments against alignment research, such as
-                    "Why can't you just turn it off" or "It will behave if we specify its goals well enough".
+                    "Why can't you just turn it off?" or "It will behave if we specify its goals well enough."
                 </p>
                 <p>
                     The later chapters of the book introduce some learning techniques that I personally find
@@ -284,7 +285,7 @@ export default [
                 importantly for his argument, do not influence our biology and behavior.
                 <p>
                     The second collection of chapters concerns the fallout of accepting this notion, on both distal and
-                    proximal scales. This concerns topics such as, the societal impacts of people repudiating the notion
+                    proximal scales. This concerns topics such as the societal impacts of people repudiating the notion
                     of free will, historical precedents for similar seismic shifts in our understanding of the world,
                     and consequences for mental health, motivation, and criminal justice.
                 </p>
@@ -294,22 +295,22 @@ export default [
         (
             <>
                 Reading Sapolsky's thoughts and expansions on this subject have been thoroughly illuminating. While I
-                initially chose this book to reinforce, rather than revise, my own views on <i>free will</i>, I both
-                found his arguments to be both unique and thought-provoking. He is able to masterfully bring together
-                many disparate scientific disciplines and follows their findings to their natural conclusions about us
-                and what really determines our behavior. From the behavior of slime molds and the quantum effects on
-                microtubules to seemingly random dumps of neurotransmitters and the well-studied consequences of
-                childhood adversity, he effectively argues that there is a mechanistic and (broadly) deterministic
-                explanation for all the phenomena we usually attribute to ourselves.
+                initially chose this book to reinforce, rather than revise, my own views on <i>free will</i>, I found
+                his arguments unique and thought-provoking. He is able to masterfully bring together many disparate
+                scientific disciplines and follows their findings to their natural conclusions about us and what really
+                determines our behavior. From the behavior of slime molds and the quantum effects on microtubules to
+                seemingly random dumps of neurotransmitters and the well-studied consequences of childhood adversity, he
+                effectively argues that there is a mechanistic and (broadly) deterministic explanation for all the
+                phenomena we usually attribute to ourselves.
                 <p>
                     In essence, we do not choose how to play the hand that we are dealt in life, rather we <i>are</i>{" "}
                     the hand that we are dealt; the cards play themselves.
                 </p>
                 <p>
                     In addition to the well thought-out content, I also particularly enjoy his writing style. Each page
-                    comes with a myriad of citations, in-depth footnotes, asides, and short personal rants that makes
-                    the experience of reading his book both stimulating and engaging. Even to those that may remain
-                    unconvinced by his ideas, the book is still a worth-while read. If not for the interesting facts,
+                    comes with a myriad of citations, in-depth footnotes, asides, and short personal rants that make the
+                    experience of reading his book both stimulating and engaging. Even for those who may remain
+                    unconvinced by his ideas, the book is still a worthwhile read. If not for the interesting facts,
                     experiments, and history, then hopefully such a reader would attend to his thoughts on empathy,
                     justice, and how we currently organize our society (and, hearteningly, how far we have already
                     come).
@@ -332,7 +333,7 @@ export default [
                 <p>
                     His answer is delivered piecemeal as he examines what events, values, stimuli, etc. could have
                     influenced that behavior. What had occurred one second before that behavior? Which photons hit the
-                    persons retina, how much dopamine was present in the synapses of the person's brain? What about the
+                    person's retina, how much dopamine was present in the synapses of the person's brain? What about the
                     minutes before? Was someone else recently rude to them, how much testosterone was present in their
                     bloodstream? Hours or days before? Did they just get fired from their job or win an award, has a
                     toothache recently developed? How was their adolescence? Did they grow up with the world as their
@@ -362,7 +363,7 @@ export default [
                 For me, his ideas on behavior, rewards, and punishment were relatively easy to digest after being primed
                 by <u>Determined</u>, but they are presented in such a cohesive manner that I would certainly be of the
                 same opinion had I read them in the opposite order. Aside from his core argument, <u>Behave</u> also
-                serves as an un-intimidating and informative introduction to cognitive science, behavioral analysis,
+                serves as an unintimidating and informative introduction to cognitive science, behavioral analysis,
                 neuroscience, ethology, and many other fields.
                 <p>
                     There were several sections of the book that I particularly enjoyed. Throughout the book, he goes
@@ -381,7 +382,7 @@ export default [
                     patterns, <i>rather than cause them outright</i>. Depending on who you are and how you stand within
                     social hierarchies, testosterone can either promote or <i>suppress</i> aggressive tendencies. On top
                     of this, these influences are often heavily context-dependent. Oxytocin can make people more
-                    nurturing and caring to in-group members, but more weary of out-group members.
+                    nurturing and caring to in-group members, but more wary of out-group members.
                 </p>
             </>
         ),
@@ -406,11 +407,11 @@ export default [
         `https://www.simonandschuster.com/books/The-Emotion-Machine/Marvin-Minsky/9780743276641`,
         (
             <>
-                This book was my first real introduction to Marvin Minsky and his unique concepts about the mind and
-                social behavior. His ideals surrounding the true nature of emotions and hierarchies of thinking were
-                whole novel to me when I first read it. This book stands out from many others at the intersection
-                between artificial intelligence and cognitive science. This is primarily because even modern AI has not
-                yet implemented many of the ideas presented here.
+                This book was my first real introduction to Marvin Minsky and his unique ideas about the mind and social
+                behavior. His ideas surrounding the true nature of emotions and hierarchies of thinking were wholly
+                novel to me when I first read it. This book stands out from many others at the intersection between
+                artificial intelligence and cognitive science. This is primarily because even modern AI has not yet
+                implemented many of the ideas presented here.
                 <p>
                     For me, the most impactful ideas presented here were Minsky's interpretation of the actor-critic
                     structure of our cognition and his concept of <i>imprimers</i>, or who we are most likely to learn
