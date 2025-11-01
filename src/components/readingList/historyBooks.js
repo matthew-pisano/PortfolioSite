@@ -1,3 +1,4 @@
+// javascript
 import React from "react";
 
 import { BookTile } from "@/lib/pageBuilder";
@@ -20,22 +21,22 @@ export default [
                     the time. Many of the scientists involved in the project, including John von Neumann and Robert
                     Oppenheimer, had come straight from Los Alamos after the completion of the <i>Manhattan Project</i>,
                     which created the first fission bombs; the <i>ENIAC</i> served as a computerized replacement to the
-                    largely manual calculations that had help predict the behavior of more simple atomic weapons.
+                    largely manual calculations that helped predict the behavior of simpler atomic weapons.
                 </p>
                 <p>
-                    However, the <i>ENIAC</i>'s impact reached far beyond nuclear calculations. Dyson detailed the
+                    However, the <i>ENIAC</i>'s impact reached far beyond nuclear calculations. Dyson details the
                     innovations that went into its design and the other calculations that it performed when not
                     predicting neutron cascades or blast waves. From the first computerized <i>Monte Carlo</i>{" "}
-                    simulations, to cellular automata, weather prediction, and cosmic rays, the computer helped to
+                    simulations to cellular automata, weather prediction, and cosmic rays, the computer helped to
                     further many scientific fields through statistical predictions and numerical analysis.
                 </p>
                 <p>
                     In addition to the machine itself, Dyson also expands upon the personal histories of its creators.
                     These include John von Neumann, the mastermind of the project and designer of the modern computer
-                    architecture, Herman Goldstine who would help to organize the project along with J. Presper Eckert
-                    and John Mauchly, and Julian Bigelow as the chief engineer. Along with Alan Turing himself, of
-                    course, who did not directly contribute to the project, but laid the theoretical groundwork upon
-                    which the computer could be built.
+                    architecture, Herman Goldstine who helped organize the project along with J. Presper Eckert and John
+                    Mauchly, and Julian Bigelow as the chief engineer. Along with Alan Turing himself, of course, who
+                    did not directly contribute to the project but laid the theoretical groundwork upon which the
+                    computer could be built.
                 </p>
             </>
         ),
@@ -44,14 +45,14 @@ export default [
             <>
                 One of the more surprising aspects of Dyson's account was just how tightly linked the development of the
                 first computer was with the development of atomic weapons. Many of the scientists who worked on the
-                project at Los Alamos pivoted to the <i>ENIAC</i> project where their work was continued in the form of
+                project at Los Alamos pivoted to the <i>ENIAC</i> project where their work continued in the form of
                 thermonuclear calculations. Upon further analysis, however, the nature of the fields of nuclear physics
                 and computer science shared a high degree of similarity in 1945. A significant amount of theoretical
                 work had already been established before the war. For nuclear physics this was Einstein's special
                 relativity and the discovery of fission by Hahn and Strassmann. For computer science, this came in the
                 form of Gödel's incompleteness theorems, Shannon's work on information, and Turing's theories on
                 computation. This groundwork was built upon by both American scientists and former members of Europe's
-                Intelligentsia, fleeing the looming threat of the Third Reich, and funded through U.S subsidies,
+                intelligentsia who fled the looming threat of the Third Reich, and was funded through U.S. subsidies
                 motivated by the war effort.
                 <p>
                     I also enjoyed Dyson's detailed explorations of the series of rapid advancements made in the
@@ -72,7 +73,7 @@ export default [
         "Benjamín Labatut",
         (
             <>
-                <u>The Maniac</u> is a fictionalised biography of polymath John von Neumann. It primarily explores von
+                <u>The Maniac</u> is a fictionalized biography of polymath John von Neumann. It primarily explores von
                 Neumann's life and accomplishments through a series of envisioned interviews with those he interacted
                 with. The book's prelude follows Paul Ehrenfest as he grapples with the crumbling foundations of physics
                 and mathematics that began to buckle under the weight of the quantum revolution and the theory of
@@ -88,10 +89,10 @@ export default [
                 of awe within the reader and contextualize historical events with a sense of gravity that traditional
                 history books may struggle to convey. Much of the book takes place during the 1920s and 1930s. These
                 chapters explore how some of Europe's most brilliant minds coped with existential threats to the
-                established order of Science and Mathematics in the forms of quantum mechanics, relativity, and Gödel's
+                established order of science and mathematics in the forms of quantum mechanics, relativity, and Gödel's
                 incompleteness theorems. For some, this is compounded by the rapid rise of the Nazis, anti-semitism, and
-                distrust in the sciences on the continent. In later chapters, Labatut details the Manhattan project and
-                the sense of awful wonder that Nuclear Weapons imparted upon their creators. Many of the minds that the
+                distrust in the sciences on the continent. In later chapters, Labatut details the Manhattan Project and
+                the sense of awful wonder that nuclear weapons imparted upon their creators. Many of the minds that the
                 book follows finally break under the strain of their environment or as a consequence of their own
                 creations.
                 <p>
@@ -129,12 +130,12 @@ export default [
                 Haber, a Jewish German chemist who invented a synthetic process of creating ammonia from nitrogen and
                 hydrogen gas in addition to heavier-than-air chlorine gas. The former revolutionized the production of
                 rich fertilizer, potentially saving hundreds of millions from starvation; the latter was used in the
-                trenches of World War One, killing hundreds of thousands. Haber also discovered a powerful pesticide,
+                trenches of World War I, killing hundreds of thousands. Haber also discovered a powerful pesticide,
                 dubbed <i>Zyklon A</i>, a derivative of which would later be used by the Nazis to murder millions.
-                During use, the <i>Zyklon B</i> derivative breaks down into several chemical byproducts, one of which
+                During its use, the <i>Zyklon B</i> derivative broke down into several chemical byproducts, one of which
                 often stained chamber walls a distinctive shade of <i>Prussian Blue</i>. At the core of Fritz Haber's
                 legacy is the concept of dual-use. Just as the <i>Haber-Bosch</i> process and <i>Zyklon A</i> have
-                yielded nearly incalculable benefits through their civilian use, chlorine gas and <i>Zkylon B</i> gave
+                yielded nearly incalculable benefits through their civilian use, chlorine gas and <i>Zyklon B</i> gave
                 rise to untold suffering through their military usage. This concept similarly applies to many other
                 technologies, ranging from Artificial Intelligence to Nuclear Fission.
                 <p>
@@ -151,7 +152,7 @@ export default [
                     collapses, resolving the particle to a more well-defined position or momentum. The consequence of
                     this discovery was a world that does not have a predictable, fundamental description. It is "fuzzy",
                     random, and uncertain at its core. Our world of definite, commutable, and observable phenomena is
-                    merely an illusion build on the true, quantum reality.
+                    merely an illusion built on the true, quantum reality.
                 </p>
                 <p>
                     <u>When We Cease to Understand the World</u> expands upon a theme that I have noticed among many of
