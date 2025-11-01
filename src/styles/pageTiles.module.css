@@ -164,6 +164,26 @@
     caret-color: transparent;
 }
 
+
+.linedPaper {
+    background-image:
+            linear-gradient(90deg, transparent 40px, #7ac3cf 40px, #7ac3cf 42px, transparent 42px),
+            linear-gradient(var(--theme-text) .1em, transparent .1em);
+    background-size: 100% 1.2em;
+    padding-left: 50px;
+}
+
+.linedPaper > span {
+    display: block;
+    line-height: 1.2em;
+}
+
+.inkWriting {
+    color: #6786d3;
+    font-family: sans-serif;
+    font-style: italic;
+}
+
 @media (width >= 1500px) {
     .displayTile {
          margin: 50px 15% 20px;

@@ -20,6 +20,22 @@ function minotaur() {
 }
 
 /**
+ * An element styled to look like handwritten ink
+ * @param children The text elements to be styled
+ * @param The style to apply
+ * @returns {JSX.Element} The ink element
+ * @constructor
+ */
+function Ink({ style, children }) {
+    return (
+        <span className={styles.inkWriting} style={style}>
+            {children}
+        </span>
+    );
+}
+Ink.propTypes = { style: PropTypes.object, children: PropTypes.node.isRequired };
+
+/**
  * A footnote reference to appear in the text
  * @param idx The index of the footnote
  * @returns {JSX.Element} A footnote reference in the main text body
@@ -204,6 +220,209 @@ export default [
         ),
         "/media/image/house-of-leaves.jpg",
         "house-of-leaves"
+    ),
+    new BookTile(
+        <>Brave New World</>,
+        "Aldous Huxley",
+        (
+            <>
+                <i>Brave New World</i> is a book that describes a perfect utopia. Free from nearly all disease, old age,
+                social strife, and the very notion of discomfort itself! The world government has been keeping
+                everything running smoothly for hundreds of years. Alphas, Betas, Gammas, Deltas, and even the lowly
+                Epsilons leave their <i>Hatching and Conditioning</i> centers and live lives of idyllic{" "}
+                <i>Community, Identity, and Stability</i> (and a healthy amount of consumption) thanks to the world
+                state's stewardship and the help of a little <i>soma</i>. Nothing could be closer to the platonic ideal
+                of a perfect society. At least...that's what anyone who loved there would tell you...
+                <p>
+                    Huxley opens the book by introducing us to the Director of London's own H&C facility as he gives a
+                    group of Alpha students a tour of the facility. Beginning in the fertilizing room, he exposits, in a
+                    cold and clinical fashion, how male and female gametes grown in their lab, fertilized, and cloned
+                    through the revolutionary process of <i>bokanovskification</i>. A single egg can be cloned up to
+                    ninety-five times to create classes of perfectly uniform workers! Alpha and Beta eggs do not undergo
+                    this process, as you understand, and are bred one-to-one from their original eggs. Onto the social
+                    predestination room, next. By now, each zygote is transferred into the saline solution of an
+                    individual test tube. Each is catalogued by the Predestinators and used to inform the nature of the
+                    next batch ordered for fertilization. They are next down to the embryo store. As the test tubes
+                    slowly creep through the red darkness, along the conveyor belt, they will receive regular chemical
+                    adjustments from the resident beta workers to help form them into their final castes.
+                </p>
+                <span
+                    className={styles.linedPaper}
+                    style={{
+                        display: "block",
+                        width: "90%",
+                        margin: "auto"
+                    }}>
+                    <span>
+                        <br />
+                    </span>
+                    <span style={{ textAlign: "center" }}>
+                        <b>Embryo Development Log</b>
+                    </span>
+                    <span>
+                        <br />
+                    </span>
+                    <span>ID #45997/Ε</span>
+                    <span>Batch ID #638/Ε</span>
+                    <span>Batch Class - Epsilon (Ε)</span>
+                    <span>
+                        Batch Handler - <Ink>Lenina</Ink>
+                    </span>
+                    <span>Fertilization Date - Mar. 11</span>
+                    <span>Freemartin - NO</span>
+                    <span>
+                        Sex: <Ink>〇</Ink>
+                    </span>
+                    <span>
+                        <br />
+                    </span>
+                    <span>
+                        <b>—— Every 12 Metres ——</b>
+                    </span>
+                    <span>
+                        |<Ink>42 </Ink>| <i>Corpus Luteum</i> extract injections
+                    </span>
+                    <span>
+                        <b>
+                            —— Every 24 Metres after Metre 212 <i>FREEMARTINS ONLY</i> ——
+                        </b>
+                    </span>
+                    <span>
+                        |<Ink>N/A</Ink>| Testosterone and DHT courses <Ink>test says female, should stay fertile</Ink>
+                    </span>
+                    <span>
+                        <b>—— Every 7 and 8 Metres ——</b>
+                    </span>
+                    <span>
+                        |<Ink>63 </Ink>| Decanting preparation treatment
+                    </span>
+                    <span>
+                        <br />
+                    </span>
+                    <span>
+                        <b>—— Metre 0 ——</b>
+                    </span>
+                    <span>
+                        |<Ink> ✓ </Ink>| Peritoneum attachment
+                    </span>
+                    <span>
+                        |<Ink> ✓ </Ink>| Blood surrogate infusion
+                    </span>
+                    <span>
+                        |<Ink> ✓ </Ink>| Placentin and Thyroxin treatment
+                    </span>
+                    <span>
+                        <b>—— Metre 112 ——</b>
+                    </span>
+                    <span>
+                        |<Ink> ✓ </Ink>| Maternal circulation pump installed
+                    </span>
+                    <span>
+                        <b>—— Metre 150 TROPICAL ONLY ——</b>
+                    </span>
+                    <span style={{ textDecoration: "line-through", textDecorationColor: "#6786d3" }}>
+                        |<Ink>N/A</Ink>| Typhoid Inoculation
+                    </span>
+                    <span style={{ textDecoration: "line-through", textDecorationColor: "#6786d3" }}>
+                        |<Ink>N/A</Ink>| Sleeping Sickness Inoculation
+                    </span>
+                    <span>
+                        <b>—— Metre 170 TROPICAL ONLY ——</b>
+                    </span>
+                    <span style={{ textDecoration: "line-through", textDecorationColor: "#6786d3" }}>
+                        |<Ink>N/A</Ink>| Bottling
+                    </span>
+                    <span style={{ textDecoration: "line-through", textDecorationColor: "#6786d3" }}>
+                        |<Ink>N/A</Ink>| X-Ray Bombardment
+                    </span>
+                    <span style={{ textDecoration: "line-through", textDecorationColor: "#6786d3" }}>
+                        |<Ink>N/A</Ink>| Heat Conditioning
+                    </span>
+                    <span>
+                        <b>—— Metre 212 ——</b>
+                    </span>
+                    <span>
+                        |<Ink> ✓ </Ink>| Sex Identification <Ink>DNA test said female</Ink>
+                    </span>
+                    <span>
+                        <b>
+                            —— Metre 320 <i>EPSILONS ONLY</i> ——
+                        </b>
+                    </span>
+                    <span>
+                        |<Ink> ✓ </Ink>| Alcohol Injection <Ink>not sure, given twice to make sure</Ink>
+                    </span>
+                    <span>
+                        |<Ink>.72</Ink>| Oxygen deprivation (fill current level of normal)
+                    </span>
+                    <span>
+                        <b>—— Metre 1100 ALPHA ——</b>
+                    </span>
+                    <span style={{ textDecoration: "line-through", textDecorationColor: "#6786d3" }}>
+                        | | Intellectual Conditioning
+                    </span>
+                    <span>
+                        <b>—— Metre 1100 AEROSPACE ONLY ——</b>
+                    </span>
+                    <span style={{ textDecoration: "line-through", textDecorationColor: "#6786d3" }}>
+                        | | Rotational conditioning
+                    </span>
+                    <span>
+                        <b>—— Metre 2040 ——</b>
+                    </span>
+                    <span>
+                        | | Pituitary course <i>I</i>
+                    </span>
+                    <span>
+                        <b>—— Metre 2072 ——</b>
+                    </span>
+                    <span>
+                        | | Pituitary course <i>II</i>
+                    </span>
+                    <span>
+                        <b>—— Metre 2104 ——</b>
+                    </span>
+                    <span>
+                        | | Pituitary course <i>III</i>
+                    </span>
+                    <span>
+                        <br />
+                    </span>
+                    <span>
+                        <b>—— Supervisor Notes ——</b>
+                    </span>
+                    <span>
+                        <Ink style={{ color: "#967fea" }}>
+                            Lenina, I will not tolerate any more mistakes with the alcohol injections. Accidentally
+                            giving an epsilon a double dose is acceptable, but think of the consequences if you confuse
+                            an alpha for one and give a dose! I acknowledge that Edith is older, but you must not follow
+                            her example; she has made that mistake once already. There is a reason why the D.H.C. sent
+                            her to the falklands.
+                        </Ink>
+                    </span>
+                    <span>
+                        <br />
+                    </span>
+                    <span style={{ textAlign: "center" }}>
+                        <i>LONDON HATCHING & CONDITIONING</i>
+                    </span>
+                    <span style={{ textAlign: "center" }}>
+                        <i>"Community, Identity, and Stability"</i>
+                    </span>
+                    <span>
+                        <br />
+                    </span>
+                </span>
+                <p>
+                    Two hundred sixty-seven days and two-thousand one-hundred thirty-six meters later, they will be{" "}
+                    <i>decanted</i> and the newborns stent off for social conditioning.
+                </p>
+            </>
+        ),
+        ``,
+        <></>,
+        "/media/image/brave-new-world.jpg",
+        "brave-new-world"
     ),
     new BookTile(
         <>Fahrenheit 451</>,
