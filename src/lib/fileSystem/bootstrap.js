@@ -63,6 +63,28 @@ let initialHierarchy = new Directory(
 );
 
 /**
+ * Updates the reading list page with accurate sizes from its composing files
+ * @param fileSystem {FileSystem}
+ */
+function patchReadingList(fileSystem) {
+    let dir = "src/components/readingList";
+    let totaSize = 0;
+    let latestModified = 0;
+    const dirents = readdirSync(dir, { withFileTypes: true });
+    for (const dirent of dirents) {
+        if (dirent.isDirectory()) continue;
+
+        const filePath = resolve(dir, dirent.name);
+        let fileStats = statSync(filePath);
+        totaSize += fileStats.size;
+        if (fileStats.mtimeMs > latestModified) latestModified = fileStats.mtimeMs;
+    }
+    let readingListFile = fileSystem.getItem(pathJoin(SysEnv.PUBLIC_FOLDER, "readingList.html"));
+    readingListFile.modified = latestModified;
+    readingListFile.spoofSize(totaSize); // Set the file's size without actually setting the text
+}
+
+/**
  * Builds the file system on the server side by walking through the pages directory and using the initial hierarchy
  * @returns {FileSystem} The file system
  */
@@ -77,15 +99,15 @@ function bootstrapServerside() {
         const dirents = readdirSync(dir, { withFileTypes: true });
         // For each file in the directory
         for (const dirent of dirents) {
-            const res = resolve(dir, dirent.name);
+            const filePath = resolve(dir, dirent.name);
             let dirName = dir.substring(dir.lastIndexOf("pages") + 6);
 
             let hierarchyPath = pathJoin(SysEnv.PUBLIC_FOLDER, dirName);
 
             if (dirent.isDirectory()) continue;
 
-            let fileStats = statSync(res);
-            let fileName = res.substring(res.lastIndexOf("/") + 1).replace(".js", "");
+            let fileStats = statSync(filePath);
+            let fileName = filePath.substring(filePath.lastIndexOf("/") + 1).replace(".js", "");
             if (NON_INDEXED_PAGES.includes(fileName)) continue; // Skip non-indexed pages
             // Add the file to the file system and the page registry
             let name = hierarchyPath.replace(SysEnv.PUBLIC_FOLDER, "");
@@ -115,6 +137,8 @@ function bootstrapServerside() {
     }
 
     walkPages();
+    // ReadingList is a composite page, most of its content is imported from other pages and should therefore be counted
+    patchReadingList(masterFileSystem);
 
     masterFileSystem.mkdir(pathJoin(SysEnv.PUBLIC_FOLDER, "custom"));
     let readmeContents = readFileSync("public/readme.html");
