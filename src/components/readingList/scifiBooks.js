@@ -535,8 +535,86 @@ export default [
         ``,
         (
             <>
+                There is quite a lot to say about <i>Brave New World</i>. One of its standout qualities is its world
+                building. The Hatchery and Conditioning facility serves as a microcosm of the World Society. The casual
+                attitude toward sexual experiences, the castes, the bio-engineering, the social conditioning, the social
+                dynamics, all represented here and introduced to the reader from the perspective of touring students.
+                Even Mustapha Mond at the end of the sequence giving an overview of their society's history and
+                organization. It is a very clever method of both world building and delivering exposition.
+                <p>
+                    Class, or caste, plays a central role in the story. It is the central governing influence on
+                    people's lives and is deeply ingrained into their culture and thinking. This is made all the more
+                    compelling when considering the real-world influences of this system. A native of England, Huxley
+                    would have grown up familiar with the remnants of the strict Victorian class system. While its
+                    influence had waned by the book's publication in 1932, Huxley himself, and certainly many of his
+                    readers, had likely experienced it first-hand to some degree. While not completely unshakable, the
+                    influences of one's class still heavily influenced the course of one's life, either directly or
+                    through circumstance. Another potential influence to the story's system of castes were the many
+                    Eugenics movements gaining traction in Europe and America during the 20's and 30's. Stripping away
+                    any human consequences or complications, the optimization of genetic material appears agreeable on
+                    paper. However, once any practical or moral aspects are considered, the feasibility and{" "}
+                    <i>preferability</i> of such optimization quickly fall apart. This is strongly mirrored in the
+                    story. To everyone living in the society, everything is as ideal as possible. Genetic anomalies have
+                    been eliminated and everyone is perfectly tailored for their destined work environment. Though, as
+                    John points out on several occasions, this apparent perfection has come at the cost of everyone's
+                    humanity and autonomy.
+                </p>
+                <p>
+                    The inclusion of John and the "savages" is also an excellent plot device. Oftentimes in dystopian
+                    stories, the focus of the story is on a character from within the dystopia that rises against it in
+                    some act of rebellion{<FootRef idx={2} />}. <i>1984</i> and <i>Fahrenheit 451</i> are two such
+                    examples. In this novel, the reader is thrown for a loop. Upon his introduction and his immediate
+                    display of disdain for their society, something the reader may agree with, Bernard Marx seems like a
+                    good candidate for a protagonist. As the story progresses, however, we see that his motivations are
+                    not rooted in some moral core, but only in his own self-interest. He takes no issue with
+                    scapegoating his friends or abusing the lower castes. He chooses to remain an agent of the system as
+                    long as it fits his needs. He merely is a plot device that introduces John to his world, the
+                    character that creates meaningful tension with the status quo, coming from outside of the system and
+                    later engulfed by it. John comes from a more traditional culture, even backwards in some respects.
+                    This creates an excellent counter to the hyper-modern world of England. This places the reader in
+                    the temporal and moral middle ground. A place where they are prepared to understand both John's and
+                    Mond's opinions.
+                </p>
+                <p>
+                    In a similar vein of thought, <i>Brave New World</i> serves as a foil to more traditional dystopian
+                    stories such as <i>1984</i>. Whereas in <i>1984</i>, knowledge and order is controlled top-down
+                    through force and fear, the World State of <i>Brave New World</i> has no need for such measures.
+                    It's society is self-reinforcing from the bottom-up. The former represents a sort of unstable
+                    equilibrium. Order is maintained as long as <i>Ingsoc</i> is the dominant force in their society,
+                    however, there is motivation for individuals to challenge that force. Characters such as Wilson
+                    Smith demonstrate that, no matter how much oppression or distraction the state imposes upon the
+                    people, there is still the underlying will for better treatment.
+                </p>
+                <p>
+                    <i>Fahrenheit 451</i> moves slightly away from <i>1984</i> on the spectrum of dystopia. The people
+                    who live along side Guy Montag seem content by default. Entertainment is cheap and plentiful, living
+                    conditions are tolerable,and initiatives such as the firemen appear to have genuine and widespread
+                    public support. The difficulty here is that the human element still remains. Characters like Guy
+                    Montag or Clarisse McClellan show that independent thought still persists; some people are still
+                    curious for the world that was left behind. Some characters, like Professor Faber have even
+                    experienced it.
+                </p>
+                <p>
+                    In contrast, <i>Brave New World</i> showcases a society that is in a much more stable equilibrium.
+                    It shares many qualities with the two others (the knowledge suppression, the supremacy of the state,
+                    the annihilation of the individual, etc.), but it has one important difference: human autonomy has
+                    been completely eliminated exactly where it needed to be. Stunting the development of the lower
+                    castes and conditioning them before even their decanting ensures the stability of the state because
+                    nobody has any interest in an alternative. Without the state, all of the castes would not have the
+                    jobs that they were conditioned to love. They would not have their endless material consumption or,
+                    most importantly, the happiness-giving <i>soma</i>. The crowd of delta workers rally against John as
+                    he tries to "save" them from their <i>soma</i>. Bernard is not resents his position on the social
+                    hierarchy, but would rather be on top himself than change how its fundamental structure. Helmholtz
+                    believes that his job does not suit his abilities well and desires change, but not in the system
+                    itself, only in his manner of serving it. He would rather do his writing in peace without causing
+                    much of a disruption. Fair enough. The only character to fundamentally question the structure of the
+                    state is John, the only character conditioned by a world separate from it. However, since there is
+                    no desire for change inside of the system, his efforts for change make little difference. His only
+                    option by the end of the story is to escape. Permanently.
+                </p>
                 <hr />
                 <FootNote idx={1}>No relation.</FootNote>
+                <FootNote idx={2}>Results may vary.</FootNote>
             </>
         ),
         "/media/image/brave-new-world.jpg",
