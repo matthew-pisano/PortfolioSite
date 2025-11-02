@@ -235,16 +235,17 @@ export default [
                 of a perfect society. At least...that's what anyone who loved there would tell you...
                 <p>
                     Huxley opens the book by introducing us to the Director of London's own H&C facility as he gives a
-                    group of Alpha students a tour of the facility. Beginning in the fertilizing room, he exposits, in a
-                    cold and clinical fashion, how male and female gametes grown in their lab, fertilized, and cloned
-                    through the revolutionary process of <i>bokanovskification</i>. A single egg can be cloned up to
-                    ninety-five times to create classes of perfectly uniform workers! Alpha and Beta eggs do not undergo
-                    this process, as you understand, and are bred one-to-one from their original eggs. Onto the social
-                    predestination room, next. By now, each zygote is transferred into the saline solution of an
-                    individual test tube. Each is catalogued by the Predestinators and used to inform the nature of the
-                    next batch ordered for fertilization. They are next down to the embryo store. As the test tubes
-                    slowly creep through the red darkness, along the conveyor belt, they will receive regular chemical
-                    adjustments from the resident beta workers to help form them into their final castes.
+                    group of Alpha students a tour of the squat, grey, and clinical facility. Beginning in the
+                    fertilizing room, he exposits, in a cold and clinical fashion, how male and female gametes grown in
+                    their lab, fertilized, and cloned through the revolutionary process of <i>bokanovskification</i>. A
+                    single egg can be cloned up to ninety-five times to create classes of perfectly uniform workers!
+                    Alpha and Beta eggs do not undergo this process, as you understand, and are bred one-to-one from
+                    their original eggs. Onto the social predestination room, next. By now, each zygote is transferred
+                    into the saline solution of an individual test tube. Each is catalogued by the Predestinators and
+                    used to inform the nature of the next batch ordered for fertilization. They are next down to the
+                    embryo store. As the test tubes slowly creep through the red darkness, along the conveyor belt, they
+                    will receive regular chemical adjustments from the resident beta workers to help form them into
+                    their final castes.
                 </p>
                 <span
                     className={styles.linedPaper}
@@ -266,7 +267,7 @@ export default [
                     <span>Batch ID #638/Ε</span>
                     <span>Batch Class - Epsilon (Ε)</span>
                     <span>
-                        Batch Handler - <Ink>Lenina</Ink>
+                        Batch Handler - <Ink>Lenina Crowne</Ink>
                     </span>
                     <span>Fertilization Date - Mar. 11</span>
                     <span>Freemartin - NO</span>
@@ -404,7 +405,7 @@ export default [
                         <br />
                     </span>
                     <span style={{ textAlign: "center" }}>
-                        <i>LONDON HATCHING & CONDITIONING</i>
+                        <i>LONDON HATCHING & CONDITIONING CENTRE</i>
                     </span>
                     <span style={{ textAlign: "center" }}>
                         <i>"Community, Identity, and Stability"</i>
@@ -417,10 +418,127 @@ export default [
                     Two hundred sixty-seven days and two-thousand one-hundred thirty-six meters later, they will be{" "}
                     <i>decanted</i> and the newborns stent off for social conditioning.
                 </p>
+                <p>
+                    Social conditioning begins soon after birth. During the day, they are taught lessons in work ethic,
+                    material consumption, and social hierarchy. At night, speakers under their pillows whisper messages
+                    that subconsciously condition them to love their work and caste, hate the other castes, to always be
+                    happy, ensure a healthy amount of material consumption, and to take their <i>soma</i> in cases of
+                    discomfort. Through a monologue from World Controller of Western Europe, Mustapha Mond, the students
+                    learn about the foundational principles of their society. Every aspect of it is carefully designed
+                    and planned. Everyone is guaranteed to do the job that they were decanted to do. Everyone loves
+                    their work and their place in the social strata; that is what they were bred to do. Everything from
+                    the tunics that they wear, to the food tht they eat, to the <i>soma</i> rations that they take, are
+                    carefully to deigned to fit everyone and their caste. In this world, there is no cause for
+                    discontent if entertainment is endless, no cause for strife if everyone looks the same, no need for
+                    resentment if everyone feels they are right where they belong, no need for discomfort when{" "}
+                    <i>soma</i> can take it away, no need for discontent when there are no books to spark it. There is
+                    only <i>Community, Identity, and Stability</i> the world over.
+                </p>
+                <p>
+                    After meeting the students on their facility tour, Lenina Crowne a beta worker in the embryo
+                    storage, gossips with her friend Fanny Crowne{<FootRef idx={1} />}. The topic of conversation shifts
+                    to her apparent obsession with D.H.C assistant Henry Foster, she has been seeing him for four entire
+                    months without tying someone else. Absolutely unheard of. Lenina yields, admitting that she somewhat
+                    fancies Bernard Marx, a strange, shorter-than-average, alpha, sleep-learning specialist at the
+                    Hatchery and Conditioning Center. Bernard overhears this conversation. Privately, he disdains the
+                    notion of passing lovers around like portions of meat. He is an outsider, technically an alpha by
+                    caste and ability, his stature is stunted and causes him to look more like an Epsilon and an alpha,
+                    something he deeply resents. Cruel rumours often spread about alcohol accidentally being injected
+                    unto his bottle as a fetus.
+                </p>
+                <p>
+                    Some time later, Lenina meets Bernard on the roof of the complex. After expressing her interest in
+                    him, Bernard asks for her to accompany him to the Savage reservation in New Mexico. She reluctantly
+                    agrees. Excited by the prospect of the inflated social reputation that a partner would bring, he
+                    shares the news with Helmholtz Watson, a friend of his. Watson is the perfect image of an alpha
+                    male: physically fit, skilled at his job, and highly intelligent, perhaps a little too intelligent
+                    for his work writing new hypnopaedic phrases for the children. In the following days, Marx asks the
+                    Director for permission to visit the reservation. He hesitantly agrees as he relays a story about
+                    one of his own visits, twenty years ago, where he lost in partner to the savages during a storm.
+                    Before embarking towards the reservation, Helmholtz informs Bernard that the director has grown wear
+                    of his unorthodox opinions and is planning to send Bernard to Iceland after his return. He is
+                    disturbed by this information, but decides to press on with Lenina to the reservation.
+                </p>
+                <p>
+                    The transition from their clean, sterile, and controlled lives, to the dirty, diseased, and
+                    disorganized reservation is not easy on Bernard and Lenina. The savages here practice strange
+                    customs, a mix of native american folklore and old American Christianity. A far cry from their noble
+                    and orderly worship of his Fordship, Henry Ford. People grow old here, gnarled by the stressors of
+                    age and disease. Back in England, people present as perfectly healthy their entire lives until
+                    neurodegenerative diseases take them at around sixty. Worst of all, reproduction on the reservation
+                    still occurs...naturally, with babies being <i>born</i> to actual human m*thers. A deeply unsettling
+                    notion, to be sure. At the savages' village, they meet John, who looks different from the rest.
+                    Fair-skinned and learned, he is often ostracized from the other youths. He tells them that he is the
+                    son of Linda, a woman the villagers rescued twenty years ago. It has been a long time since Bernard
+                    was this excited. He offers to take John back to his home, the "brave new world", but insists that
+                    Linda <i>must</i> come as well. John, excited by the prospect and enamoured by Lenina, agrees.
+                </p>
+                <p>
+                    Back in London, the Directory awaits Bernard's return so he can publicly exile him to Iceland for
+                    his strange behavior. As Bernard meets him in front of the crowd, he can barley contain his elation.
+                    Soon after the director makes his decree, Barnard asks both John and Linda to come forward. They
+                    rush toward the director, expecting a warm welcome from their father/partner. Instead, the Director
+                    recoils at the sight, along with his audience. You see, impregnating a woman "naturally" is social
+                    suicide here. In this respect, the Director has been dead for twenty years, it just took a while for
+                    anyone to realize. Soon after running out of the room, the Director resigns in disgrace. To Bernard,
+                    revenge had never been so sweet.
+                </p>
+                <p>
+                    Now in London, John becomes a spectacle and Bernard becomes his liaison. Members of high society are
+                    excited to learn more about how the filthy savages live on their reservation. As much as they are
+                    curious about him, John is disgusted by them. The breeding factories, the pills, the polygamy, the
+                    consumption, the castes; it is all too much for him. Looking to cash in on his newfound fame,
+                    Bernard hosts lavish parties and sleeps with many women. His peers still dislike him, but they will
+                    tolerate him as long as it means seeing the savage. After much anticipation, Bernard organizes a
+                    grand event to introduce John to his fair-weather friends; realizing that he is more of an
+                    attraction than a guest, John refuses to show. The charade collapses on top of Bernard; the
+                    familiar, insidious rumours begin anew.
+                </p>
+                <p>
+                    After John and Lenina have a violent falling out due to her (in John's eyes) promiscuous behavior,
+                    he learns that Linda is in the hospital. With her mind stupefied from <i>soma</i> abuse upon her
+                    return, Linda lies barely conscious in her bed. Already dealing with grief, anger, and confusion,
+                    John is interrupted by a group of young Delta clones on their regular death conditioning visit to
+                    the hospital. Never seeing a woman so disfigured and overweight, the children clamour over to her,
+                    gawking at her appearance. This enrages John, who, after angrily throwing off the children, makes
+                    his way to the hospital entrance. A shift change is happening and the egresssing Delta workers are
+                    being given their daily <i>soma</i> ration. John hates the drug, he hates what it has done to Linda
+                    and he hates what it has done to these people. In a frenzy, he grabs the distribution box and begins
+                    throwing the pills out of the window. Eager to get their only daily source of happiness, a riot
+                    erupts. Hearing of the riot, Bernard and Helmholtz arrive to help. Helmholtz excitedly joins the act
+                    of rebellion while Bernard meekly stands out of the way. All three are then apprehended by police.
+                </p>
+                <p>
+                    With the three sitting in front of World Controller Mustapha Mond, Bernard feverishly insists that
+                    it was the fault of the other two. He had nothing to do with it! Ignoring Marx's meltdown, Mond has
+                    a discussion with John and the much more composed Helmholtz. He informs them that Bernard and
+                    Helmholtz will be sent to an island where they cannot cause another disruption. Bernard is
+                    inconsolable, Helmholtz looks forward to having some good motivation to write. Helmholtz carries his
+                    shell shocked friend from the room, leaving John along with Mond. They debate on the ethics of their
+                    society, Mond asserts that their control is needed for their safety, John counters that no life is
+                    worth living under that level of control. John chooses to self-isolate in the countryside.
+                </p>
+                <p>
+                    After buying some supplies, some seeds, equipment, and a length of rope, John makes an abandoned
+                    lighthouse his new home. He aims to lead a new life without the corrupting influence of the modern
+                    world. He is successful in this respect...at least until the tourists begin to arrive. A savage
+                    living alone as a hermit just outside of London? The residents of the city could hardly imagine a
+                    more entertaining sight! They flock to his abode in the tens, then dozens, then hundreds. They call
+                    for him to do some of his many "tricks" and rituals for them, on command. Angered by this treatment
+                    more befitting of a circus animal than a man, John heads inside until they bore and leave for the
+                    night. The following morning, word spreads further of the spectacle at the lighthouse. Hundreds more
+                    helicopters whiz over the horizon, eager to be entertained. As they arrive, the door is left ajar.
+                    Before anyone can enter, the rope snaps taught. The show is over.
+                </p>
             </>
         ),
         ``,
-        <></>,
+        (
+            <>
+                <hr />
+                <FootNote idx={1}>No relation.</FootNote>
+            </>
+        ),
         "/media/image/brave-new-world.jpg",
         "brave-new-world"
     ),
