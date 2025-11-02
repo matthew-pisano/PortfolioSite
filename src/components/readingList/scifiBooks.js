@@ -603,14 +603,14 @@ export default [
                     nobody has any interest in an alternative. Without the state, all of the castes would not have the
                     jobs that they were conditioned to love. They would not have their endless material consumption or,
                     most importantly, the happiness-giving <i>soma</i>. The crowd of Delta workers rally against John as
-                    he tries to "save" them from their <i>soma</i>. Bernard does not resent his position on the social
-                    hierarchy, but would rather be on top himself than change its fundamental structure. Helmholtz
-                    believes that his job does not suit his abilities well and desires change, but not in the system
-                    itself, only in his manner of serving it. He would rather do his writing in peace without causing
-                    much of a disruption. Fair enough. The only character to fundamentally question the structure of the
-                    state is John, the only character conditioned by a world separate from it. However, since there is
-                    no desire for change inside of the system, his efforts for change make little difference. His only
-                    option by the end of the story is to escape. Permanently.
+                    he tries to "save" them from their <i>soma</i>. Bernard is resentful of his position within the
+                    social hierarchy, but would rather be on top himself than change its fundamental structure.
+                    Helmholtz believes that his job does not suit his abilities well and desires change, but not in the
+                    system itself, only in his manner of serving it. He would rather do his writing in peace without
+                    causing much of a disruption. Fair enough. The only character to fundamentally question the
+                    structure of the state is John, the only character conditioned by a world separate from it. However,
+                    since there is no desire for change from within the system, his efforts for change make little
+                    difference. His only option by the end of the story is to escape. Permanently.
                 </p>
                 <hr />
                 <FootNote idx={1}>No relation.</FootNote>
