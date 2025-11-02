@@ -232,7 +232,7 @@ export default [
                 Epsilons leave their <i>Hatching and Conditioning</i> centers and live lives of idyllic{" "}
                 <i>Community, Identity, and Stability</i> (and a healthy amount of consumption) thanks to the world
                 state's stewardship and the help of a little <i>soma</i>. Nothing could be closer to the platonic ideal
-                of a perfect society. At least...that's what anyone who loved there would tell you...
+                of a perfect society. At least...that's what anyone who lived there would tell you...
                 <p>
                     Huxley opens the book by introducing us to the Director of London's own H&C facility as he gives a
                     group of Alpha students a tour of the squat, grey, and clinical facility. Beginning in the
@@ -396,9 +396,9 @@ export default [
                         <Ink style={{ color: "#967fea" }}>
                             Lenina, I will not tolerate any more mistakes with the alcohol injections. Accidentally
                             giving an epsilon a double dose is acceptable, but think of the consequences if you confuse
-                            an alpha for one and give a dose! I acknowledge that Edith is older, but you must not follow
+                            an Alpha for one and give a dose! I acknowledge that Edith is older, but you must not follow
                             her example; she has made that mistake once already. There is a reason why the D.H.C. sent
-                            her to the falklands.
+                            her to the Falklands.
                         </Ink>
                     </span>
                     <span>
@@ -416,7 +416,7 @@ export default [
                 </span>
                 <p>
                     Two hundred sixty-seven days and two-thousand one-hundred thirty-six meters later, they will be{" "}
-                    <i>decanted</i> and the newborns stent off for social conditioning.
+                    <i>decanted</i> and the newborns sent off for social conditioning.
                 </p>
                 <p>
                     Social conditioning begins soon after birth. During the day, they are taught lessons in work ethic,
@@ -427,42 +427,42 @@ export default [
                     learn about the foundational principles of their society. Every aspect of it is carefully designed
                     and planned. Everyone is guaranteed to do the job that they were decanted to do. Everyone loves
                     their work and their place in the social strata; that is what they were bred to do. Everything from
-                    the tunics that they wear, to the food tht they eat, to the <i>soma</i> rations that they take, are
-                    carefully to deigned to fit everyone and their caste. In this world, there is no cause for
-                    discontent if entertainment is endless, no cause for strife if everyone looks the same, no need for
-                    resentment if everyone feels they are right where they belong, no need for discomfort when{" "}
-                    <i>soma</i> can take it away, no need for discontent when there are no books to spark it. There is
-                    only <i>Community, Identity, and Stability</i> the world over.
+                    the tunics that they wear, to the food that they eat, to the <i>soma</i> rations that they take, are
+                    carefully designed to fit everyone and their caste. In this world, there is no cause for discontent
+                    if entertainment is endless, no cause for strife if everyone looks the same, no need for resentment
+                    if everyone feels they are right where they belong, no need for discomfort when <i>soma</i> can take
+                    it away, no need for discontent when there are no books to spark it. There is only{" "}
+                    <i>Community, Identity, and Stability</i> the world over.
                 </p>
                 <p>
-                    After meeting the students on their facility tour, Lenina Crowne a beta worker in the embryo
+                    After meeting the students on their facility tour, Lenina Crowne, a beta worker in the embryo
                     storage, gossips with her friend Fanny Crowne{<FootRef idx={1} />}. The topic of conversation shifts
-                    to her apparent obsession with D.H.C assistant Henry Foster, she has been seeing him for four entire
+                    to her apparent obsession with D.H.C assistant Henry Foster; she has been seeing him for four entire
                     months without tying someone else. Absolutely unheard of. Lenina yields, admitting that she somewhat
-                    fancies Bernard Marx, a strange, shorter-than-average, alpha, sleep-learning specialist at the
+                    fancies Bernard Marx, a strange, shorter-than-average, Alpha, sleep-learning specialist at the
                     Hatchery and Conditioning Center. Bernard overhears this conversation. Privately, he disdains the
-                    notion of passing lovers around like portions of meat. He is an outsider, technically an alpha by
-                    caste and ability, his stature is stunted and causes him to look more like an Epsilon and an alpha,
-                    something he deeply resents. Cruel rumours often spread about alcohol accidentally being injected
-                    unto his bottle as a fetus.
+                    notion of passing lovers around like portions of meat. He is an outsider, technically an Alpha by
+                    caste and ability, but his stature is stunted and causes him to look more like an Epsilon than an
+                    Alpha, something he deeply resents. Cruel rumours often spread about alcohol accidentally being
+                    injected into his bottle as a fetus.
                 </p>
                 <p>
                     Some time later, Lenina meets Bernard on the roof of the complex. After expressing her interest in
                     him, Bernard asks for her to accompany him to the Savage reservation in New Mexico. She reluctantly
                     agrees. Excited by the prospect of the inflated social reputation that a partner would bring, he
-                    shares the news with Helmholtz Watson, a friend of his. Watson is the perfect image of an alpha
+                    shares the news with Helmholtz Watson, a friend of his. Watson is the perfect image of an Alpha
                     male: physically fit, skilled at his job, and highly intelligent, perhaps a little too intelligent
-                    for his work writing new hypnopaedic phrases for the children. In the following days, Marx asks the
-                    Director for permission to visit the reservation. He hesitantly agrees as he relays a story about
-                    one of his own visits, twenty years ago, where he lost in partner to the savages during a storm.
-                    Before embarking towards the reservation, Helmholtz informs Bernard that the director has grown wear
-                    of his unorthodox opinions and is planning to send Bernard to Iceland after his return. He is
-                    disturbed by this information, but decides to press on with Lenina to the reservation.
+                    for his work writing new hypnopaedic phrases for the children. In the following days, Bernard asks
+                    the Director for permission to visit the reservation. He hesitantly agrees as he relays a story
+                    about one of his own visits, twenty years ago, where he lost a partner to the savages during a
+                    storm. Before embarking towards the reservation, Helmholtz informs Bernard that the director has
+                    grown weary of his unorthodox opinions and is planning to send Bernard to Iceland after his return.
+                    He is disturbed by this information, but decides to press on with Lenina to the reservation.
                 </p>
                 <p>
                     The transition from their clean, sterile, and controlled lives, to the dirty, diseased, and
                     disorganized reservation is not easy on Bernard and Lenina. The savages here practice strange
-                    customs, a mix of native american folklore and old American Christianity. A far cry from their noble
+                    customs, a mix of Native American folklore and old American Christianity. A far cry from their noble
                     and orderly worship of his Fordship, Henry Ford. People grow old here, gnarled by the stressors of
                     age and disease. Back in England, people present as perfectly healthy their entire lives until
                     neurodegenerative diseases take them at around sixty. Worst of all, reproduction on the reservation
@@ -474,12 +474,12 @@ export default [
                     Linda <i>must</i> come as well. John, excited by the prospect and enamoured by Lenina, agrees.
                 </p>
                 <p>
-                    Back in London, the Directory awaits Bernard's return so he can publicly exile him to Iceland for
-                    his strange behavior. As Bernard meets him in front of the crowd, he can barley contain his elation.
-                    Soon after the director makes his decree, Barnard asks both John and Linda to come forward. They
+                    Back in London, the Director awaits Bernard's return so he can publicly exile him to Iceland for his
+                    strange behavior. As Bernard meets him in front of the crowd, he can barely contain his elation.
+                    Soon after the director makes his decree, Bernard asks both John and Linda to come forward. They
                     rush toward the director, expecting a warm welcome from their father/partner. Instead, the Director
                     recoils at the sight, along with his audience. You see, impregnating a woman "naturally" is social
-                    suicide here. In this respect, the Director has been dead for twenty years, it just took a while for
+                    suicide here. In this respect, the Director has been dead for twenty years; it just took a while for
                     anyone to realize. Soon after running out of the room, the Director resigns in disgrace. To Bernard,
                     revenge had never been so sweet.
                 </p>
@@ -487,7 +487,7 @@ export default [
                     Now in London, John becomes a spectacle and Bernard becomes his liaison. Members of high society are
                     excited to learn more about how the filthy savages live on their reservation. As much as they are
                     curious about him, John is disgusted by them. The breeding factories, the pills, the polygamy, the
-                    consumption, the castes; it is all too much for him. Looking to cash in on his newfound fame,
+                    consumption, the castes — it is all too much for him. Looking to cash in on his newfound fame,
                     Bernard hosts lavish parties and sleeps with many women. His peers still dislike him, but they will
                     tolerate him as long as it means seeing the savage. After much anticipation, Bernard organizes a
                     grand event to introduce John to his fair-weather friends; realizing that he is more of an
@@ -501,7 +501,7 @@ export default [
                     John is interrupted by a group of young Delta clones on their regular death conditioning visit to
                     the hospital. Never seeing a woman so disfigured and overweight, the children clamour over to her,
                     gawking at her appearance. This enrages John, who, after angrily throwing off the children, makes
-                    his way to the hospital entrance. A shift change is happening and the egresssing Delta workers are
+                    his way to the hospital entrance. A shift change is happening and the egressing Delta workers are
                     being given their daily <i>soma</i> ration. John hates the drug, he hates what it has done to Linda
                     and he hates what it has done to these people. In a frenzy, he grabs the distribution box and begins
                     throwing the pills out of the window. Eager to get their only daily source of happiness, a riot
@@ -510,12 +510,12 @@ export default [
                 </p>
                 <p>
                     With the three sitting in front of World Controller Mustapha Mond, Bernard feverishly insists that
-                    it was the fault of the other two. He had nothing to do with it! Ignoring Marx's meltdown, Mond has
-                    a discussion with John and the much more composed Helmholtz. He informs them that Bernard and
+                    it was the fault of the other two. He had nothing to do with it! Ignoring Bernard's meltdown, Mond
+                    has a discussion with John and the much more composed Helmholtz. He informs them that Bernard and
                     Helmholtz will be sent to an island where they cannot cause another disruption. Bernard is
                     inconsolable, Helmholtz looks forward to having some good motivation to write. Helmholtz carries his
-                    shell shocked friend from the room, leaving John along with Mond. They debate on the ethics of their
-                    society, Mond asserts that their control is needed for their safety, John counters that no life is
+                    shell-shocked friend from the room, leaving John along with Mond. They debate on the ethics of their
+                    society; Mond asserts that their control is needed for their safety, John counters that no life is
                     worth living under that level of control. John chooses to self-isolate in the countryside.
                 </p>
                 <p>
@@ -525,10 +525,10 @@ export default [
                     living alone as a hermit just outside of London? The residents of the city could hardly imagine a
                     more entertaining sight! They flock to his abode in the tens, then dozens, then hundreds. They call
                     for him to do some of his many "tricks" and rituals for them, on command. Angered by this treatment
-                    more befitting of a circus animal than a man, John heads inside until they bore and leave for the
-                    night. The following morning, word spreads further of the spectacle at the lighthouse. Hundreds more
-                    helicopters whiz over the horizon, eager to be entertained. As they arrive, the door is left ajar.
-                    Before anyone can enter, the rope snaps taught. The show is over.
+                    more befitting of a circus animal than a man, John heads inside until they become bored and leave
+                    for the night. The following morning, word spreads further of the spectacle at the lighthouse.
+                    Hundreds more helicopters whiz over the horizon, eager to be entertained. As they arrive, the door
+                    is left ajar. Before anyone can enter, the rope snaps taut. The show is over.
                 </p>
             </>
         ),
@@ -578,8 +578,8 @@ export default [
                 <p>
                     In a similar vein of thought, <i>Brave New World</i> serves as a foil to more traditional dystopian
                     stories such as <i>1984</i>. Whereas in <i>1984</i>, knowledge and order is controlled top-down
-                    through force and fear, the World State of <i>Brave New World</i> has no need for such measures.
-                    It's society is self-reinforcing from the bottom-up. The former represents a sort of unstable
+                    through force and fear, the World State of <i>Brave New World</i> has no need for such measures. Its
+                    society is self-reinforcing from the bottom-up. The former represents a sort of unstable
                     equilibrium. Order is maintained as long as <i>Ingsoc</i> is the dominant force in their society,
                     however, there is motivation for individuals to challenge that force. Characters such as Wilson
                     Smith demonstrate that, no matter how much oppression or distraction the state imposes upon the
@@ -602,9 +602,9 @@ export default [
                     castes and conditioning them before even their decanting ensures the stability of the state because
                     nobody has any interest in an alternative. Without the state, all of the castes would not have the
                     jobs that they were conditioned to love. They would not have their endless material consumption or,
-                    most importantly, the happiness-giving <i>soma</i>. The crowd of delta workers rally against John as
-                    he tries to "save" them from their <i>soma</i>. Bernard is not resents his position on the social
-                    hierarchy, but would rather be on top himself than change how its fundamental structure. Helmholtz
+                    most importantly, the happiness-giving <i>soma</i>. The crowd of Delta workers rally against John as
+                    he tries to "save" them from their <i>soma</i>. Bernard does not resent his position on the social
+                    hierarchy, but would rather be on top himself than change its fundamental structure. Helmholtz
                     believes that his job does not suit his abilities well and desires change, but not in the system
                     itself, only in his manner of serving it. He would rather do his writing in peace without causing
                     much of a disruption. Fair enough. The only character to fundamentally question the structure of the
