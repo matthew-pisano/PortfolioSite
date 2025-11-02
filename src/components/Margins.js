@@ -250,7 +250,7 @@ function getPageStats(currentPath) {
     if (!pageFile) return { lines: 0, size: 0 };
 
     let fileLines = pageFile.text().split(/\r\n|\r|\n/).length;
-    if (!pageFile.text()) fileLines = Math.round(pageFile.size() / 140.6);
+    if (!pageFile.text()) fileLines = Math.round(pageFile.size() / 53.7);
 
     return { lines: fileLines, size: pageFile.size() };
 }
