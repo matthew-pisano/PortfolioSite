@@ -10,6 +10,12 @@ import { Sprite } from "@/lib/terminal/terminalSprites";
 import { setTheme, themes } from "@/lib/themes";
 
 /**
+ * Whether the sprites command has been invoked
+ * @type {boolean}
+ */
+let spritesExist = false;
+
+/**
  * Formats a file's modified timestamp into a human-readable string
  * @param fileObj {File|Directory} The file or directory object
  * @returns {string} The formatted timestamp in the format "YYYY-MM-DD HH:MM"
@@ -964,11 +970,13 @@ class Commands {
 
     // eslint-disable-next-line no-unused-vars
     static async *sprites(tokens) {
-        for (let sprite of [Sprite.SCRMLN, Sprite.SCRBLN]) {
+        if (spritesExist) return;
+        for (let sprite of [Sprite.IDTMRN, Sprite.SCRMLN, Sprite.SCRBLN]) {
             sprite.mount();
             sprite.animationLoop();
             await new Promise((r) => setTimeout(r, 500));
         }
+        spritesExist = true;
         yield "";
     }
 

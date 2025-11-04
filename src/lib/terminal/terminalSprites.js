@@ -1,12 +1,14 @@
 import styles from "@/styles/Terminal.module.css";
 
 class Sprite {
+    static HEIGHT_PX = 100;
     static SCRMLN = new Sprite(
         "scrmln",
         "/media/image/scrmlnIdle.png",
         "/media/image/scrmlnFall.png",
         "/media/image/scrmlnBlink.png"
     );
+
     static SCRBLN = new Sprite(
         "scrbln",
         "/media/image/scrblnIdle.png",
@@ -14,7 +16,22 @@ class Sprite {
         "/media/image/scrblnBlink.png"
     );
 
-    constructor(spriteId, idleFrame, fallFrame, blinkFrame) {
+    static IDTMRN = new Sprite(
+        "idtmrn",
+        "/media/image/idtmrnIdle.png",
+        "/media/image/idtmrnFall.png",
+        "/media/image/idtmrnBlink.png"
+    );
+
+    /**
+     *
+     * @param spriteId The id of the sprite
+     * @param idleFrame The path to the idle frame image
+     * @param fallFrame The path to the fall frame image
+     * @param blinkFrame The path to the blink frame image
+     * @param scale The float scale of the sprite
+     */
+    constructor(spriteId, idleFrame, fallFrame, blinkFrame, scale = 1) {
         this.id = spriteId;
         this.idleFrame = idleFrame;
         this.fallFrame = fallFrame;
@@ -22,6 +39,7 @@ class Sprite {
         this.spriteElem = null;
         this.spriteHeight = null;
         this.frame = 0;
+        this.scale = scale;
         this.blinkJitter = Math.floor(Math.random() * 1000);
     }
 
@@ -35,6 +53,7 @@ class Sprite {
         let terminalSprite = document.createElement("img");
         terminalSprite.id = spriteElemId;
         terminalSprite.className = styles.terminalSprite;
+        terminalSprite.style.height = Sprite.HEIGHT_PX * this.scale + "px";
         document.getElementById("spriteContainer").appendChild(terminalSprite);
         this.spriteElem = terminalSprite;
         this.spriteHeight = terminalSprite.getBoundingClientRect().height;
