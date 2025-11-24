@@ -15,7 +15,7 @@ export default [
                 <p>
                     The primary concern of <u>Superintelligence: Paths, Dangers, Strategies</u> is not necessarily what
                     needs to happen for artificial general intelligence to be developed, but what happens soon after.
-                    This could be on timescales as long as decades, or as short as seconds. After this point, th entire
+                    This could be on timescales as long as decades, or as short as seconds. After this point, the entire
                     course of human history will be altered; this much is certain. The only remaining uncertainty is
                     whether it will result in our extinction or maximal utopia. In this book, Nick Bostrom explores how
                     we can minimize the probability of the former and maximize that of the latter.
@@ -36,7 +36,7 @@ export default [
                     the scope of possibilities further, he divides these categories into intelligences that are faster,
                     smarter, or more collective than unmodified human brains. Each architecture for superintelligence
                     can initially embody any of these qualities, but specific affinities do exist. For example, WBE is
-                    likely to initially perform faster and in a more collective manner than humans, not not necessarily
+                    likely to initially perform faster and in a more collective manner than humans, not necessarily
                     smarter as it is merely a human brain transferred to a digital substrate.
                 </p>
                 <p>
@@ -68,14 +68,14 @@ export default [
                     If there are multiple, independent projects working towards the development of superintelligence,
                     how are their dynamics affected by takeoff speed? Naively, it seems as if the relative progress of
                     each will undergo an approximately linear transformation over the course of the intelligence
-                    explosion. It is easy to assume that the forerunner may maintain about the same lead as ti began
+                    explosion. It is easy to assume that the forerunner may maintain about the same lead as it began
                     with. However, Bostrom argues that, in the cases of slow and moderate takeoff, the forerunner is
                     likely to gain a decisive strategic advantage. Whomever emerges from the takeoff period first now
                     has control over (or is perhaps now controlled by) the most intelligent entity on the planet.
                     Depending on its goal system (to be expanded upon later), it may be desirable to eliminate all
                     competing projects, which only control inferior intelligences. Without competitors, the agent is
                     free to utilize the whole of the planets resources for its aims. To this end, it would be further
-                    desirable for it to form a <i>singleton</i>. This could be in the form of a word government, a
+                    desirable for it to form a <i>singleton</i>. This could be in the form of a world government, a
                     collective consortium, or a unitary structure à la <i>SkyNet</i>.
                 </p>
                 <p>
@@ -121,7 +121,7 @@ export default [
                     do.
                 </p>
                 <p>
-                    These outcomes are undesirable. Naturally, the question of mitigation arrises. In order to
+                    These outcomes are undesirable. Naturally, the question of mitigation arises. In order to
                     extrinsically prevent the AI's goals, what if we:
                 </p>
                 <ul>
@@ -280,12 +280,12 @@ export default [
                     hole host of ethical quandaries into this scenario.
                 </p>
                 <p>
-                    We would have not commited a mind crime ourselves on an industrial scale. Each simulated mind would
+                    We would have now committed a mind crime ourselves on an industrial scale. Each simulated mind would
                     be isomorphic to a real human brain; a mind's underlying substrate could be software or wet-ware,
                     but the mind itself would not know the difference. How many clones can we instantiate? Can we
                     ethically terminate them without their consent? Are we morally justified in re-training or
                     experimenting upon them in order to improve their capabilities? Additionally, the problem of control
-                    arrises here once again. Even though the donor brain would (ideally) operate on accepted human
+                    arises here once again. Even though the donor brain would (ideally) operate on accepted human
                     values, there is no guarantee that its digital twin would behave in the exact same manner. We do not
                     know if simulation process itself would perturb the sensitive nature of the brain into behaving
                     erratically. Even the most noble and fortified scientist or scholar may find it difficult to
@@ -302,7 +302,7 @@ export default [
                     <u>Superintelligence</u> should serve as required reading for anyone interested in AI safety and in
                     AGI research more broadly. Even though the landscape of AI has changed dramatically over the past
                     decade, the core ideas of the book stand largely unweathered by time. Many of the strategies for
-                    control within this book come with a lof of "hand-waving" when it comes to details. This was surely
+                    control within this book come with a lot of "hand-waving" when it comes to details. This was surely
                     by design, as advancements in alignment techniques serve to fill in the gaps, rather than overwrite
                     any fundamental notions. The paperback version of this book (released a year later) contains an{" "}
                     <i>afterword</i> section where Bostrom reflects on the books impact and also the state of the field.
