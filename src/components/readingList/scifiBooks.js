@@ -166,7 +166,10 @@ export default [
                     immediately relates the content of the film to his friends Mr. Tortoise and Achilles
                     {<FootRef idx={5} />}, to my great delight.
                 </p>
-                <hr />
+            </>
+        ),
+        (
+            <>
                 <FootNote idx={1} style={{ fontFamily: "verdana" }}>
                     A rigorous analysis of the geometry of this space would make <i>Postulate 5</i> look like a primary
                     school assignment.
@@ -583,7 +586,10 @@ export default [
                     since there is no desire for change from within the system, his efforts for change make little
                     difference. His only option by the end of the story is to escape. Permanently.
                 </p>
-                <hr />
+            </>
+        ),
+        (
+            <>
                 <FootNote idx={1}>No relation.</FootNote>
                 <FootNote idx={2}>Results may vary.</FootNote>
             </>
@@ -732,7 +738,10 @@ export default [
                     the city, and perhaps even the nation, leaves the book off on a bittersweet note as Bradbury implies
                     that the group of scholars will work to spread their knowledge of books in the aftermath.
                 </p>
-                <hr />
+            </>
+        ),
+        (
+            <>
                 <FootNote idx={1}>
                     During my summary, I do not mention Professor Faber explicitly in the interest of brevity, but he
                     plays an important role in motivating Montag and helping him resist the persuasions of Chief Beatty.
@@ -870,7 +879,10 @@ export default [
                     beginning of this journey, it is impressive that it was able to approximate so much progress that
                     was yet to be had in the field, even if the finer details were incorrect.
                 </p>
-                <hr />
+            </>
+        ),
+        (
+            <>
                 <FootNote idx={1}>
                     In 1962, Clarke witnessed researchers at Bell Labs program an IBM 7094 machine to sing this song in
                     the earliest example of computer speech synthesis.
@@ -922,6 +934,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/do-androids-dream-of-electric-sheep.jpg",
         "electric-sheep"
     ),
@@ -991,6 +1004,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/i-robot.jpg",
         "i-robot"
     ),
@@ -1050,6 +1064,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/there-is-no-antimemetics-division.jpg",
         "antimemetics"
     )

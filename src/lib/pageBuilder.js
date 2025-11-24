@@ -123,7 +123,7 @@ class SectionTile extends Tile {
      * @param anchor {string} The name of the anchor link to the tile
      */
     constructor(title, anchor = "", style = { backgroundColor: TRANSLUCENT, color: TRANSLUCENT_TEXT }) {
-        super(title, "", "", [], [], "", style, anchor);
+        super(title, <></>, "", [], [], "", style, anchor);
     }
 }
 
@@ -138,10 +138,11 @@ class BookTile extends Tile {
      * @param synopsis {JSXElement} A brief synopsis of the book
      * @param synopsis_source {string} The source of the synopsis
      * @param thoughts {JSXElement} My thoughts on the book
+     * @param footnotes {JSXElement} Any footnotes to include
      * @param thumbnail {string} The thumbnail image/cover for the book
      * @param anchor {string} The name of the anchor link to the tile
      */
-    constructor(title, author, synopsis, synopsis_source, thoughts, thumbnail, anchor = "") {
+    constructor(title, author, synopsis, synopsis_source, thoughts, footnotes, thumbnail, anchor = "") {
         let source_elem = synopsis_source ? (
             <i>
                 Source:{" "}
@@ -164,11 +165,16 @@ class BookTile extends Tile {
                     </b>{" "}
                     {synopsis} {source_elem}
                 </span>
+                s
                 <span className={tileStyles.bookTileSection}>
                     <b>
                         <i>Thoughts:</i>
                     </b>{" "}
                     {thoughts}
+                </span>
+                <span className={tileStyles.bookTileSection}>
+                    {footnotes.props.children ? <hr /> : null}
+                    {footnotes}
                 </span>
             </>
         );

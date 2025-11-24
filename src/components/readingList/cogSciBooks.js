@@ -304,7 +304,10 @@ export default [
                     and (pre-transformer) attention-based generation methods. This serves as some subtle and
                     unintentional foreshadowing for the state of modern AI.
                 </p>
-                <hr />
+            </>
+        ),
+        (
+            <>
                 <FootNote idx={1}>
                     The rapid advancement in transformer technology is an excellent example of an{" "}
                     <i>algorithm overhang</i>. The core architecture has remained largely the same since its
@@ -427,6 +430,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/thinking-fast-and-slow.jpg",
         "thinking-fast-slow"
     ),
@@ -514,6 +518,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/geb-egb.jpg",
         "geb-egb"
     ),
@@ -548,6 +553,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/the-alignment-problem.jpg",
         "alignment-problem"
     ),
@@ -586,6 +592,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/human-compatible.jpg",
         "human-compatible"
     ),
@@ -641,6 +648,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/determined.jpg",
         "determined"
     ),
@@ -710,6 +718,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/behave.jpg",
         "behave"
     ),
@@ -745,6 +754,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/the-emotion-machine.jpg",
         "emotion-machine"
     )

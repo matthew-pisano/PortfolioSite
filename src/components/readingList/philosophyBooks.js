@@ -134,6 +134,7 @@ export default [
                 <p>To many readers, this can be a rather attractive notion.</p>
             </>
         ),
+        <></>,
         "/media/image/the-stranger.jpg",
         "letranger"
     )

@@ -65,6 +65,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/turings-cathedral.jpg",
         "cathedral"
     ),
@@ -105,6 +106,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/the-maniac.jpg",
         "maniac"
     ),
@@ -165,6 +167,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/when-we-cease-to-understand-the-world.jpg",
         "cease-to-understand-the-world"
     )

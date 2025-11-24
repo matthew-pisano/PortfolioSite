@@ -34,6 +34,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/qed.jpg",
         "quantum-electrodynamics"
     ),
@@ -108,6 +109,7 @@ export default [
                 about natural phenomena to peering into the fundamental inner workings of the universe.
             </>
         ),
+        <></>,
         "/media/image/reality-is-not-what-it-seems.jpg",
         "not-what-it-seems"
     ),
@@ -140,6 +142,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/the-little-book-of-string-theory.jpg",
         "string-theory"
     ),
@@ -188,6 +191,7 @@ export default [
                 </p>
             </>
         ),
+        <></>,
         "/media/image/the-order-of-time.jpg",
         "order-of-time"
     )
