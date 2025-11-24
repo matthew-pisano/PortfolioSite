@@ -207,19 +207,102 @@ export default [
                     existential threats to humanity. Ideas such as this had been explored extensively in the realm of
                     fiction, but it was not until the last decade or so that X-risks could be foreseen in reality.
                 </p>
-
                 <p>
-                    This book almost single-handedly inspired me to pursue an education in artificial intelligence and
-                    specifically in the theory of alignment. Bostrom presents groundbreaking ideas on the nature and
-                    potential of AI in an easily digestible manner. The book explores ideas relating how we may control
-                    entities far more clever than us and the consequences if we fail our one (and likely only) attempt
-                    at doing so. He goes into detail on how an AI, tasked with seemingly harmless <i>terminal goals</i>{" "}
-                    may nevertheless set for itself <i>instrumental goals</i> that can pose an existential threat to
-                    humanity. As may be evident in the name, this work also heavily inspired me to create my game,{" "}
-                    <Link href="https://github.com/matthew-pisano/Superintelligent" target="_blank">
-                        Superintelligent
-                    </Link>
-                    .
+                    I especially enjoy this book because it helped to dispel several misconceptions about
+                    superintelligent AI that I held upon my first read. In fiction and in popular culture, powerful
+                    artificial intelligence is often portrayed as meticulous and cunning with complex and far-reaching
+                    goals. A.M. from <i>I have no Mouth and I Must Scream</i> and SkyNet are examples that come to mind.
+                    AI can certainly poses both of these qualities, but Bostrom effectively shows that there need be no
+                    relationship between them. An entity of awesome intelligence may be just as effective at maximizing
+                    the production of paperclips{<FootRef idx={8} />} as it could be at protecting the United States.
+                    His <i>orthogonality</i> thesis is non-trivial when examples of "smart" AI with "dumb" goals are
+                    less prevalent in media and (until recently) literature.
+                </p>
+                <p>
+                    Another concept that is somewhat difficult to grasp at first is the sheer gap between the
+                    intelligence of a superintelligent AI system and that of humans. Humans are generally not exposed to
+                    situations that are irrecoverably hopeless in reality or in fiction (the latter would not make for a
+                    very good story, after all). It is therefore natural to think that some concerted planning from a
+                    group of scientists or rebels could outsmart or outmaneuver an AI during or after the takeoff
+                    period. This type of story is very common in fiction where the antagonist is artificial
+                    intelligence. Aside from the need for an interesting story, this also stems from our fundamental
+                    inability to faithfully simulate an entity that may have a greater intelligence gap over us than we
+                    do over ants. At a certain point the only realistic constraints that we can apply to the
+                    capabilities of a theoretical AI are the laws of physics themselves (with the very bold assumption
+                    that we already know them). Even the creation of rival systems would likely fail if the leading
+                    agent has already completed its period of recursive self-improvement as it would have the
+                    capabilities (and the instrumental desire) to terminate any competing projects. The book effectively
+                    drives home the fact that our number of successful attempts at creating superintelligence will be
+                    exactly zero or one.
+                </p>
+                <p>
+                    Another interesting concept that this book proposes is that of <i>mind crime</i>. In order to
+                    accurately simulate what humans may want, it may seem reasonable for a capable AI system to simply
+                    simulate how its sponsors would react to some action. This may also be useful when a system's
+                    objective is to maximize some human <i>qualia</i> and it concludes that digital humans count as
+                    well. If simulations are sufficiently detailed, such that the simulations themselves gain
+                    consciousness, Bostrom terms this to be a mind crime. The idea that perfect digital <i>simulacra</i>{" "}
+                    can be instantiated, experimented upon, and terminated is very unsettling. Interestingly, Bostrom's
+                    whole brain emulation scenario itself may be inherently guilty of this as well. I find this scenario
+                    to be particularly intriguing.
+                </p>
+                <p>
+                    On the topic of whole brain emulation, it is the most disturbing (and underexplored) avenue for
+                    intelligent agents in my opinion. Concerning its initial construction, it may be somewhat more
+                    brittle than the fully artificial path. Artificial intelligence can improve (and degrade) somewhat
+                    smoothly, each step of advancement provides some utility, even if its capabilities do not match
+                    humans in all categories. In contrast, emulating a human brain appears more discrete or even binary.
+                    Human brains are one of the most complex known constructions in nature, therefore progressively
+                    increasing our level of simulated detail is not likely to linearly track with simulation accuracy.
+                    For example, instantiating billions of traditional perceptrons within a recurrent "brain-shaped"
+                    architecture does not automatically result in any appreciable fraction of human capability. Their
+                    utility only materializes when placed within an engineered architecture that may or may not actually
+                    resemble anything natural. It is also unknown which level of detail will be sufficient, even if
+                    simulated faithfully. Are the precise electrical discharge patterns of neurons a critical component?
+                    Must we precisely model how neurotransmitters behave chemically? Are quantum effects actually
+                    required for human-like thought as some have conjectured?
+                </p>
+                <p>
+                    Whole brain emulation may also not advance our knowledge sufficiently to undergo an intelligence
+                    explosion. Suppose that we could create reliable a digital twin of a human brain. Now what? Aside
+                    from the low-hanging fruit of increasing emulation speed and potentially increasing grey matter
+                    volume, we (and therefore our new digital twin) do not currently know which parameters to tune that
+                    increases capability without distributing the unstable equilibrium of the brain. We would be naive
+                    students blatantly plagiarizing mother nature and expecting to learn something in the process.
+                    Though, perhaps we could, with the aid of innumerable digital clones, glean some insight into the
+                    nature of human intelligence from this process. Regardless of that outcome, we have now invited a
+                    hole host of ethical quandaries into this scenario.
+                </p>
+                <p>
+                    We would have not commited a mind crime ourselves on an industrial scale. Each simulated mind would
+                    be isomorphic to a real human brain; a mind's underlying substrate could be software or wet-ware,
+                    but the mind itself would not know the difference. How many clones can we instantiate? Can we
+                    ethically terminate them without their consent? Are we morally justified in re-training or
+                    experimenting upon them in order to improve their capabilities? Additionally, the problem of control
+                    arrises here once again. Even though the donor brain would (ideally) operate on accepted human
+                    values, there is no guarantee that its digital twin would behave in the exact same manner. We do not
+                    know if simulation process itself would perturb the sensitive nature of the brain into behaving
+                    erratically. Even the most noble and fortified scientist or scholar may find it difficult to
+                    completely abandon their agency in favor of the common good. A simulation would retain this
+                    property. We also have no basis for knowing what the kinetics of an intelligence explosion would
+                    look like in this context. We have no guarantees that a simulated brain with radically altered
+                    capabilities and faculties will behave simply like a more intelligent version of its template brain.
+                    With AGI and ASI, we essentially desire a perfect slave. An entity that obeys our every command (or
+                    moral intention) without second thought or concept of itself divorced from its servitude to its
+                    sponsors. This notion carries very serious moral implications in the artificial case, even more so
+                    for the case of emulations.
+                </p>
+                <p>
+                    <u>Superintelligence</u> should serve as required reading for anyone interested in AI safety and in
+                    AGI research more broadly. Even though the landscape of AI has changed dramatically over the past
+                    decade, the core ideas of the book stand largely unweathered by time. Many of the strategies for
+                    control within this book come with a lof of "hand-waving" when it comes to details. This was surely
+                    by design, as advancements in alignment techniques serve to fill in the gaps, rather than overwrite
+                    any fundamental notions. The paperback version of this book (released a year later) contains an{" "}
+                    <i>afterword</i> section where Bostrom reflects on the books impact and also the state of the field.
+                    In this section, he catalogues some emerging technologies including generative adversarial networks
+                    and (pre-transformer) attention-based generation methods. This serves as some subtle and
+                    unintentional foreshadowing for the state of modern AI.
                 </p>
                 <hr />
                 <FootNote idx={1}>
@@ -269,6 +352,9 @@ export default [
                     to current <i>post hoc</i> alignment training techniques. Assuming the model is not intelligent
                     enough to deduce the process from scratch, it is easier to just not tell a model how to build a bomb
                     instead of telling it, then forbidding it from sharing this knowledge from the user.
+                </FootNote>
+                <FootNote idx={8}>
+                    <i>Ethical Issues in Advanced Artificial Intelligence</i> (Bostrom 2003)
                 </FootNote>
             </>
         ),
