@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { BookTile } from "@/lib/pageBuilder";
+import { BookTile, FootNote, FootRef } from "@/lib/pageBuilder";
 import { redact } from "@/lib/utils";
 import styles from "@/styles/pageTiles.module.css";
 
@@ -34,35 +34,6 @@ function Ink({ style, children }) {
     );
 }
 Ink.propTypes = { style: PropTypes.object, children: PropTypes.node.isRequired };
-
-/**
- * A footnote reference to appear in the text
- * @param idx The index of the footnote
- * @returns {JSX.Element} A footnote reference in the main text body
- * @constructor
- */
-function FootRef({ idx }) {
-    return <sup>{idx}</sup>;
-}
-FootRef.propTypes = { idx: PropTypes.number.isRequired };
-
-/**
- * A footnote to appear at the bottom of the text
- * @param idx The index of the footnote
- * @param style The style to apply to the footnote
- * @param children The content of the footnote
- * @returns {JSX.Element} A footnote at the bottom of the text
- * @constructor
- */
-function FootNote({ idx, style, children }) {
-    return (
-        <span style={{ ...style, textIndent: 0, display: "block" }}>
-            <sup>{idx}</sup>
-            <small>{children}</small>
-        </span>
-    );
-}
-FootNote.propTypes = { idx: PropTypes.number.isRequired, style: PropTypes.object, children: PropTypes.node.isRequired };
 
 export default [
     new BookTile(

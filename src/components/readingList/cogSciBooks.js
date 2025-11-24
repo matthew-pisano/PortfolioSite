@@ -2,8 +2,9 @@
 import React from "react";
 
 import Link from "next/link";
+import Latex from "react-latex-next";
 
-import { BookTile } from "@/lib/pageBuilder";
+import { BookTile, FootNote, FootRef } from "@/lib/pageBuilder";
 
 export default [
     new BookTile(
@@ -11,27 +12,264 @@ export default [
         "Nick Bostrom",
         (
             <>
-                <u>Superintelligence: Paths, Dangers, Strategies</u> explores how superintelligence could be created and
-                what its features and motivations might be. It argues that superintelligence, if created, would be
-                difficult to control, and that it could take over the world in order to accomplish its goals. The book
-                also presents strategies to help make superintelligences whose goals benefit humanity. It was
-                particularly influential for raising concerns about existential risk from artificial intelligence.
+                <p>
+                    The primary concern of <u>Superintelligence: Paths, Dangers, Strategies</u> is not necessarily what
+                    needs to happen for artificial general intelligence to be developed, but what happens soon after.
+                    This could be on timescales as long as decades, or as short as seconds. After this point, th entire
+                    course of human history will be altered; this much is certain. The only remaining uncertainty is
+                    whether it will result in our extinction or maximal utopia. In this book, Nick Bostrom explores how
+                    we can minimize the probability of the former and maximize that of the latter.
+                </p>
+                <p>
+                    One of the core theses of this work is that an agent of general intelligence, which could incur
+                    substantial risk, may evolve into a superintelligent agent, which certainly implies an existential
+                    risk, or X-risk. The transitory process between the two is referred to as an intelligence explosion,
+                    a period of rapid recursive self-improvement. Bostrom further asserts that conditions at the outset
+                    of this process will heavily influence the conditions following it.
+                </p>
+                <p>
+                    To capture the full breadth of possible scenarios, the book not only covers the traditional
+                    artificial machine intelligence (AI) route, but also explores the possibilities of whole brain
+                    emulation (WBE), human cognitive enhancement, brain-computer interfaces, and
+                    collective/network-based intelligences. All of these are referenced throughout the book, but the
+                    most attention is given to the machine intelligence and whole brain emulation routes. Classifying
+                    the scope of possibilities further, he divides these categories into intelligences that are faster,
+                    smarter, or more collective than unmodified human brains. Each architecture for superintelligence
+                    can initially embody any of these qualities, but specific affinities do exist. For example, WBE is
+                    likely to initially perform faster and in a more collective manner than humans, not not necessarily
+                    smarter as it is merely a human brain transferred to a digital substrate.
+                </p>
+                <p>
+                    Turning to the intelligence explosion itself, the most important component is its catalyst:
+                    recursive self-improvement. Theoretically, an agent with human-level intelligence and the ability to
+                    modify its own intelligence can create a version of itself that is more capable at this improvement.
+                    This initial jump can be significant or minor. The primary assumption is that <i>some</i>{" "}
+                    multiplicative improvement is always available at each iteration. This series of recursive steps
+                    soon produces an exponential curve of increasing intelligence. For the purposes of this book, it
+                    does not particularly matter where the inflection point of this curve lies, so long as it is
+                    significantly above human levels of intelligence. This period of rapid, exponential improvement is
+                    referred to as "takeoff". In terms of timescales, this takeoff be slow (measured in decades or
+                    centuries) fast (taking seconds to days), or moderate (at timescales in-between). This rate is
+                    governed by two main factors: optimization power, the ability of a system to optimize its own
+                    capabilities, and recalcitrance, the resistance of intelligence, <Latex>{`$i$`}</Latex>, to being
+                    optimized.
+                    <span style={{ margin: "10px", textAlign: "center", display: "block" }}>
+                        <Latex>{`$\\dfrac{di}{dt} = \\dfrac{optimization\\_power}{resistance}$`}</Latex>
+                    </span>
+                    In concrete terms, recalcitrance could decrease with better scanning technology or emulation
+                    algorithms for WBE or from breakthroughs in general algorithms or architectures for AI. Optimization
+                    power may increase slowly at first, then dramatically as "overhangs" in capability are crossed. A{" "}
+                    <i>hardware overhang</i> may occur when improvements in software lag and abundant hardware already
+                    exists for when this threshold is crossed. Similar for <i>algorithm overhangs</i>, when software has
+                    reached sufficient maturity, but hardware or other resources contain its abilities
+                    {<FootRef idx={1} />}.
+                </p>
+                <p>
+                    If there are multiple, independent projects working towards the development of superintelligence,
+                    how are their dynamics affected by takeoff speed? Naively, it seems as if the relative progress of
+                    each will undergo an approximately linear transformation over the course of the intelligence
+                    explosion. It is easy to assume that the forerunner may maintain about the same lead as ti began
+                    with. However, Bostrom argues that, in the cases of slow and moderate takeoff, the forerunner is
+                    likely to gain a decisive strategic advantage. Whomever emerges from the takeoff period first now
+                    has control over (or is perhaps now controlled by) the most intelligent entity on the planet.
+                    Depending on its goal system (to be expanded upon later), it may be desirable to eliminate all
+                    competing projects, which only control inferior intelligences. Without competitors, the agent is
+                    free to utilize the whole of the planets resources for its aims. To this end, it would be further
+                    desirable for it to form a <i>singleton</i>. This could be in the form of a word government, a
+                    collective consortium, or a unitary structure à la <i>SkyNet</i>.
+                </p>
+                <p>
+                    To drive home this point, the book expands upon a probable scenario in which a <i>singleton</i>{" "}
+                    could form, starting from a sub-human intelligence <i>in silico</i>. This initial intelligence, the{" "}
+                    <i>seed AI</i> begins below human capability, but with the ability to slowly improve itself. In the
+                    early phases, it acts more as an assistant to human programmers, but soon it begins to take on the
+                    primary role in its own development. This triggers the process of recursive self-improvement and the
+                    beginning of takeoff. After this period, the AI is now superintelligent, with the abilities to
+                    create instrumental goals and to credibly act on those intentions. This process may begin with a
+                    covert phase where the agent gathers digital resources and human accomplices. Once its success is
+                    insured, a period of overt implementation begins where it begins to amass physical resources and
+                    pursue its final goals. If the problem of alignment has not been generally solved before takeoff,
+                    this AI is likely to either deliberately eliminate humanity to ensure its uninterrupted access to
+                    resources or it may simply ignore our presence if we pose a trivial threat{<FootRef idx={2} />}.
+                </p>
+                <p>
+                    A common assumption that people often make is that complex intelligences may have complex goals:
+                    discovering the meaning of <i>life, the universe, and everything</i>, creating a utopia, or driving
+                    technological innovation. However, an important thesis in this work is that the complexity of goals
+                    is <i>orthogonal</i> to the intelligence of the agent pursuing those goals. Since this entity may be
+                    entirely alien to how human minds are structured, it may take on entirely un-human-like goals. This
+                    will be especially true if a concerted effort is not made by the original programmers to imbue it
+                    with some semblance of human values. Without being aligned to these values, agents will likely
+                    exhibit <i>instrumental convergence</i> on a set of sub-goals. These are sub-goals that are useful
+                    for nearly every type of ultimate goal, therefore any AI is likely to pursue them in the absence of
+                    strong internal guardrails. Examples include, self-preservation, goal integrity, cognitive
+                    enhancement, and resource acquisition.
+                </p>
+                <p>
+                    Simply specifying the "correct" goals is not a get-out-of-doom-free card either. Here, Bostrom
+                    introduces the concept of a <i>malignant failure mode</i>. Even well-intentioned goals can turn
+                    catastrophic when given to an unstoppable reward-maximizing AI system. Similar go a genie of
+                    monkey's paw, an agent that has the goal of maximizing goal-based reward will take the shortest and
+                    most extreme path towards completion. For example, a superintelligence with the goal of "ending
+                    human suffering" is likely to simply eliminate all humans, since there is always a non-zero
+                    possibility of suffering (even in a perfect utopia) and a dead human can no longer suffer. Adding on
+                    more and more "but also" conditions to this goal is also not likely to work as there is a strong
+                    incentive to find a loophole that leads to goal achievement faster and more thoroughly
+                    {<FootRef idx={3} />}. It will not act this way out of some sense of spite or malice, this is simply
+                    the best way of achieving <i>exactly</i> what it has been asked to do.
+                </p>
+                <p>
+                    These outcomes are undesirable. Naturally, the question of mitigation arrises. In order to
+                    extrinsically prevent the AI's goals, what if we:
+                    <ul>
+                        <li>
+                            Put it in a box? The AI has a strong incentive to manipulate/hack its way out in order to
+                            fulfil its objective.
+                        </li>
+                        <li>
+                            Press a button that produces a massive negative reward? The AI now has the instrumental goal
+                            of preventing anyone from ever pressing that button. Any would-be button presser will have
+                            to face the full ire of a nearly all-powerful agent.{<FootRef idx={4} />}
+                        </li>
+                        <li>
+                            Stunt its growth? Too much and the AI is not useful, too little and it will be smart enough
+                            to remove those protections.
+                        </li>
+                        <li>
+                            Set up a tripwire? If an AI triggers one, it will be retrained or abandoned. This only means
+                            that the next AI will know not to fall for the same trap again.
+                        </li>
+                    </ul>
+                    The only reliable methods of controlling the behavior of a superintelligent agent will be intrinsic.
+                    Safely implementing potential goals is explored at-length later on.
+                </p>
+                <p>
+                    The constraints on AI models go beyond simple containment methods. Here, Bostrom identifies four
+                    main types of agents, although with deeper analysis, these are all different manifestations of the
+                    same fundamental concept. Oracles are simple "boxed" models that (ideally) cannot take any external
+                    actions themselves. Optionally, these can be restricted further by limiting their output, down to a
+                    single bit if desired. These seem the most safe, and they likely are, but for the reasons mentioned
+                    above, this safety is only weakly enforceable. Genies are models designed to fulfil a single "wish"
+                    at a time. A command is issues, the agent completes the command, then shuts itself down. This also
+                    seems relatively safe, but in order to fulfil a request of any complexity, plans must be developed
+                    and instrumental convergence appears once again. Next on the hierarchy comes sovereigns. This class
+                    is similar to a genie, but it is designed from the ground-up to execute complex commands and create
+                    its own goals independent of human overseers{<FootRef idx={5} />}. Finally, tool-AIs are designed to
+                    work more like traditional software in that they do not exhibit goal-directed behavior. The creation
+                    of such a system may involve significant amounts of manual tuning and parameter search. Traditional
+                    software does not (currently) attempt to form a singleton, so this appears to be a safe option.
+                    However, these tools either become difficult to scale{<FootRef idx={6} />} to superintelligence or
+                    they develop sufficient complexity to reclassify themselves into one of the prior three categories.
+                </p>
+                <p>
+                    Containment measures will likely not be able to constrain the behavior of a superintelligent agent
+                    in the long-run. The most reliable method of behavioral steering are different methods of alignment.
+                    In the book, Bostrom frames this as a problem of value-loading{<FootRef idx={7} />}: when
+                    researchers decide upon a set of values to align the model to, how can those values be reliably
+                    impressed upon it? The book presents several methods, the most promising of which seem to be
+                    motivational scaffolding, value learning, and institutional design. Motivational scaffolding
+                    proposes that we first create a smaller, more controllable AI which we can train to hold human
+                    values. Next, the capabilities of this system are increased to that of a superintelligence. At this
+                    point, the agent will be much more resistant to goal change, "locking in" the original goals. Value
+                    learning proposes that we train an AI to "do what we would want an AI to do in this situation". This
+                    type of adjacent reasoning may be difficult to reliably implement, but it would free programmers
+                    from the burden of choosing a specific goal for the model to optimize towards. Final, Bostrom
+                    considers designing an institution that would govern the behavior of many AI agents. The main
+                    architecture discussed is one composed of <Latex>{`$n$`}</Latex> superintelligent agents with{" "}
+                    <Latex>{`$n/2$`}</Latex> less intelligent agents designed to monitor them. This pattern repeats
+                    until we are left with one or more humans at the top governing the least capable level of agents.
+                </p>
+                <p>
+                    Once we have created a method for reliably loading desired values into a superintelligent system,
+                    which values should we then load? How can we create an AI that enacts <i>the spirit</i> of our
+                    desires, rather than enacting them to <i>the letter</i>? The core of this problem requires{" "}
+                    <i>indirect normativity</i>, a method for loading in a human-like system of values, or ways of
+                    inferring those values when not explicitly specified. Bostrom devotes significant text to a method
+                    called "coherent extrapolated volution". In short, an AI is to act as if it is being commanded by a
+                    human race that is smarter, more clear minded, less combative, and generally knows what is best for
+                    them, compared to humans now. This is, of course, extreme high level and difficult to implement with
+                    the mechanistic techniques available to us today. Nevertheless, the aim of this section is to
+                    impress upon the reader that our best chance with AI lies within indirect goal specification. If we
+                    can devise reliable methods for "doing what I mean", the model may naturally attract itself toward
+                    our general goals, even with minor perturbations in initial conditions. These initial conditions are
+                    comprised of the goal's content, the decision theory that the system is based around, its theory of
+                    epistemology, and the degree to which its decisions are ratified by humans.
+                </p>
             </>
         ),
-        `https://en.wikipedia.org/wiki/Superintelligence:_Paths,_Dangers,_Strategies`,
+        ``,
         (
             <>
-                This book almost single-handedly inspired me to pursue an education in artificial intelligence,
-                specifically alignment. Bostrom presents groundbreaking ideas on the nature and potential of AI in an
-                easily digestible manner. The book explores ideas relating how we may control entities far more clever
-                than us and the consequences if we fail our one (and likely only) attempt at doing so. He goes into
-                detail on how an AI, tasked with seemingly harmless <i>terminal goals</i> may nevertheless set for
-                itself <i>instrumental goals</i> that can pose an existential threat to humanity. As may be evident in
-                the name, this work also heavily inspired me to create my game,{" "}
-                <Link href="https://github.com/matthew-pisano/Superintelligent" target="_blank">
-                    Superintelligent
-                </Link>
-                .
+                <p>
+                    This book almost single-handedly inspired me to pursue an education in artificial intelligence and
+                    specifically in the theory of alignment. When this book released in 2014, Bostrom was one of only a
+                    handful of authors that treated superintelligent (or even generally intelligent) systems as credible
+                    existential threats to humanity. Ideas such as this had been explored extensively in the realm of
+                    fiction, but it was not until the last decade or so that X-risks could be foreseen in reality.
+                </p>
+
+                <p>
+                    This book almost single-handedly inspired me to pursue an education in artificial intelligence and
+                    specifically in the theory of alignment. Bostrom presents groundbreaking ideas on the nature and
+                    potential of AI in an easily digestible manner. The book explores ideas relating how we may control
+                    entities far more clever than us and the consequences if we fail our one (and likely only) attempt
+                    at doing so. He goes into detail on how an AI, tasked with seemingly harmless <i>terminal goals</i>{" "}
+                    may nevertheless set for itself <i>instrumental goals</i> that can pose an existential threat to
+                    humanity. As may be evident in the name, this work also heavily inspired me to create my game,{" "}
+                    <Link href="https://github.com/matthew-pisano/Superintelligent" target="_blank">
+                        Superintelligent
+                    </Link>
+                    .
+                </p>
+                <hr />
+                <FootNote idx={1}>
+                    The rapid advancement in transformer technology is an excellent example of an{" "}
+                    <i>algorithm overhang</i>. The core architecture has remained largely the same since its
+                    introduction in 2017, but recent advances in GPU architecture and data availability have fueled
+                    their rapid expansion in capability.
+                </FootNote>
+                <FootNote idx={2}>
+                    This may sound like a much better outcome, but there is also no motive for the superintelligence to
+                    maintain the habitability of Earth for anything except for itself. This is especially true if the
+                    agent considers terraforming to be an instrumental goal in service of its final goal. Good luck
+                    finding something to eat when the entire planet if tiled in paperclips stacked miles high!
+                </FootNote>
+                <FootNote idx={3}>
+                    "But, you also can't kill all humans.", assert the researchers.
+                    <br />
+                    "Fine.", says the AI as it hooks up all human brains to an endless stream of dopamine and serotonin.
+                </FootNote>
+                <FootNote idx={4}>
+                    "Simply unplug it" is a variant of the button-press scenario. Being turned off is equivalent to an
+                    infinite negative reward. Therefore, any agent that is capable enough for us to worry about will do
+                    everything in its power to preserve itself. "Could we also train it to want to be turned off by a
+                    human?" Yes, but you now have either a{" "}
+                    <Link href={"https://en.wikipedia.org/wiki/Useless_machine"}>useless machine</Link> or a god with a
+                    death wish.
+                </FootNote>
+                <FootNote idx={5}>Terms and conditions my apply...</FootNote>
+                <FootNote idx={6}>
+                    The current paradigm of large language models (including "agentic models") likely fall somewhere
+                    near this category. They are not trained with a specific goal or moral system in mind, but primarily
+                    to accurately predict text based on its training distribution. This includes fine-tuning regimes
+                    such as assistant training and RLHF as these simply model the distribution that the model can pull
+                    from at inference time. It is also somewhat difficult for these models to develop strategic
+                    instrumental goals as they cannot currently learn "online", with gathered knowledge being limited to
+                    their context windows. The proverbial jury is still out on whether transformer models can truly
+                    generalize outside of their training distribution or begin to learn continually in an "online"
+                    manner without sacrificing capability or drawing too many resources.
+                </FootNote>
+                <FootNote idx={7}>
+                    Language models may actually have an advantage in this respect. Since we can precisely control the
+                    text (and images, audio, etc.) that is trained into the model's predictive distribution, we have a
+                    significant amount of fine-grained control on what the model knows and may predict. Though, perhaps
+                    too fine-grained as the sheer volume of material needed to pre-train and fine-tune these models far
+                    outstrips our abilities to vet their contents. Methods for reliably filtering out potentially
+                    undesirable data from huge corpora have yet to be developed, but it may serve as a good complement
+                    to current <i>post hoc</i> alignment training techniques. Assuming the model is not intelligent
+                    enough to deduce the process from scratch, it is easier to just not tell a model how to build a bomb
+                    instead of telling it, then forbidding it from sharing this knowledge from the user.
+                </FootNote>
             </>
         ),
         "/media/image/superintelligence.jpg",
