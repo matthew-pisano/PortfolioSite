@@ -1,5 +1,6 @@
-// javascript
 import React from "react";
+
+import Link from "next/link";
 
 import { BookTile } from "@/lib/pageBuilder";
 
@@ -17,10 +18,21 @@ export default [
                 accelerating forces. These larger forces will revolutionize the way we buy, work, learn, and communicate
                 with each other. Kelly's bright, hopeful book will be indispensable to anyone who seeks guidance on
                 where their business, industry, or life is heading—what to invent, where to work, what to invest in, how
-                to better reach customers, and what to begin to put into place as this new world emerges.
+                to better reach customers, and what to begin to put into place as this new world emerges.{" "}
+                <i>
+                    Source:{" "}
+                    <Link
+                        href={`https://www.amazon.com/Inevitable-Understanding-Technological-Forces-Future/dp/0143110373`}
+                        target="_blank">
+                        {
+                            new URL(
+                                `https://www.amazon.com/Inevitable-Understanding-Technological-Forces-Future/dp/0143110373`
+                            ).hostname
+                        }
+                    </Link>
+                </i>
             </>
         ),
-        `https://www.amazon.com/Inevitable-Understanding-Technological-Forces-Future/dp/0143110373`,
         (
             <>
                 I first read this book when it originally came out. At that point, it was uncertain whether any of
@@ -53,7 +65,6 @@ export default [
                 of the theoretical concepts he presents.
             </>
         ),
-        ``,
         (
             <>
                 While many of the technologies discussed in the book may well be impossible, I found it especially

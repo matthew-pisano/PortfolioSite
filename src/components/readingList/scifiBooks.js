@@ -128,7 +128,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 <u>{House()} of Leaves</u> may be one of the most uniquely written (and certainly typeset) books that I
@@ -506,7 +505,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 There is quite a lot to say about <i>Brave New World</i>. One of its standout qualities is its world
@@ -682,7 +680,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 <i>Fahrenheit 451</i> is as beautifully written as it is disconcertingly prophetic. One aspect of the
@@ -838,7 +835,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 This novel stands out for a myriad of reasons. Clarke puts a great deal of effort into ensuring that his
@@ -914,7 +910,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 One of the most striking aspects of this book is how Dick describes his androids, specifically the
@@ -968,7 +963,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 Similar to other pioneering works such as <u>2001: A Space Odyssey</u> or{" "}
@@ -1029,7 +1023,6 @@ export default [
                 with effectively: How can you combat something which you don't even remember the existence of?
             </>
         ),
-        ``,
         (
             <>
                 This book heavily relies upon the concept of <i>antimemes</i>. To the uninitiated, this can be a rather

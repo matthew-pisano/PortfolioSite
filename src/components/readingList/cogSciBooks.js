@@ -197,7 +197,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 <p>
@@ -407,7 +406,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 While all of the concepts presented within <u>Thinking Fast and Slow</u> have far-reaching influences on
@@ -472,7 +470,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 The structure and format of this book is among the most unique and original that I have read. This is
@@ -531,10 +528,15 @@ export default [
                 interviews with experts trying to build artificial intelligence systems, particularly machine learning
                 systems, that are aligned with human values. The book is divided into three sections: Prophecy, Agency,
                 and Normativity. Each section covers researchers and engineers working on different challenges in the
-                alignment of artificial intelligence with human values.
+                alignment of artificial intelligence with human values.{" "}
+                <i>
+                    Source:{" "}
+                    <Link href={`https://en.wikipedia.org/wiki/The_Alignment_Problem`} target="_blank">
+                        {new URL(`https://en.wikipedia.org/wiki/The_Alignment_Problem`).hostname}
+                    </Link>
+                </i>
             </>
         ),
-        `https://en.wikipedia.org/wiki/The_Alignment_Problem`,
         (
             <>
                 While this book concentrates on similar themes to Nick Bostrom's <u>Superintelligence</u>, some of the
@@ -569,10 +571,15 @@ export default [
                 getting better and better at achieving rigid human-specified goals, is dangerously misguided. If an AI
                 developed in this manner were to become superintelligent, it would likely not fully reflect human values
                 and could be catastrophic to humanity. Russell further asserts that safety research should be begun as
-                soon as possible, as it is also highly uncertain how long it would take to complete such research.
+                soon as possible, as it is also highly uncertain how long it would take to complete such research.{" "}
+                <i>
+                    Source:{" "}
+                    <Link href={`https://en.wikipedia.org/wiki/Human_Compatible`} target="_blank">
+                        {new URL(`https://en.wikipedia.org/wiki/Human_Compatible`).hostname}
+                    </Link>
+                </i>
             </>
         ),
-        `https://en.wikipedia.org/wiki/Human_Compatible`,
         (
             <>
                 In this book, Russell both introduces technical topics to the reader and challenges some conventional
@@ -622,7 +629,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 Reading Sapolsky's thoughts and expansions on this subject have been thoroughly illuminating. While I
@@ -685,7 +691,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 I read <u>Behave</u> after I read <u>Determined</u> (unintentionally, but I'm glad that I did). It is
@@ -734,10 +739,21 @@ export default [
                 shows how our minds progress from simple, instinctive kinds of thought to more complex forms, such as
                 consciousness or self-awareness. Indeed, says Minsky, if thinking can be understood as the step-by-step
                 process that it is, then we can build machines -- artificial intelligences -- that not only can assist
-                with our thinking by thinking as we do but have the potential to be as conscious as we are.
+                with our thinking by thinking as we do but have the potential to be as conscious as we are.{" "}
+                <i>
+                    Source:{" "}
+                    <Link
+                        href={`https://www.simonandschuster.com/books/The-Emotion-Machine/Marvin-Minsky/9780743276641`}
+                        target="_blank">
+                        {
+                            new URL(
+                                `https://www.simonandschuster.com/books/The-Emotion-Machine/Marvin-Minsky/9780743276641`
+                            ).hostname
+                        }
+                    </Link>
+                </i>
             </>
         ),
-        `https://www.simonandschuster.com/books/The-Emotion-Machine/Marvin-Minsky/9780743276641`,
         (
             <>
                 This book was my first real introduction to Marvin Minsky and his unique ideas about the mind and social

@@ -19,7 +19,6 @@ export default [
                 can understand.
             </>
         ),
-        ``,
         (
             <>
                 This book served as my first (informal) introduction to QED, specifically, and even QFT in general. His
@@ -95,7 +94,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 Rovelli's work offers an in-depth and well-written explanation of both the current state of theoretical
@@ -122,10 +120,21 @@ export default [
                 of the most talked-about areas of physics today. String theory has been called the "theory of
                 everything". It seeks to describe all the fundamental forces of nature. It encompasses gravity and
                 quantum mechanics in one unifying theory. But it is unproven and fraught with controversy. After reading
-                this book, you’ll be able to draw your own conclusions about string theory.
+                this book, you’ll be able to draw your own conclusions about string theory.{" "}
+                <i>
+                    Source:{" "}
+                    <Link
+                        href={`https://press.princeton.edu/books/hardcover/9780691142890/the-little-book-of-string-theory`}
+                        target="_blank">
+                        {
+                            new URL(
+                                `https://press.princeton.edu/books/hardcover/9780691142890/the-little-book-of-string-theory`
+                            ).hostname
+                        }
+                    </Link>
+                </i>
             </>
         ),
-        `https://press.princeton.edu/books/hardcover/9780691142890/the-little-book-of-string-theory`,
         (
             <>
                 Similarly to <u>QED</u>, this served as my first semi-serious introduction to <i>String Theory</i>.
@@ -162,7 +171,6 @@ export default [
                 processes.
             </>
         ),
-        ``,
         (
             <>
                 Rovelli manages to cover an impressive amount of theory and conjecture within just over 200 pages. As a

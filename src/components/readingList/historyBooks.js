@@ -40,7 +40,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 One of the more surprising aspects of Dyson's account was just how tightly linked the development of the
@@ -83,7 +82,6 @@ export default [
                 and his work on AlphaGo, a computer program that defeated the world Go champion.
             </>
         ),
-        ``,
         (
             <>
                 In this book, Labatut effectively employs fictionalized interactions and interviews to instill a sense
@@ -123,7 +121,6 @@ export default [
                 consequences of their discoveries and their own personal struggles.
             </>
         ),
-        ``,
         (
             <>
                 Through his use of fiction to fill in details that remain absent from the historical record, Labatut

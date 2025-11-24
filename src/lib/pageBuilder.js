@@ -136,21 +136,12 @@ class BookTile extends Tile {
      * @param title {JSXElement} The title of the book tile
      * @param author {string} The author of the book
      * @param synopsis {JSXElement} A brief synopsis of the book
-     * @param synopsis_source {string} The source of the synopsis
      * @param thoughts {JSXElement} My thoughts on the book
      * @param footnotes {JSXElement} Any footnotes to include
      * @param thumbnail {string} The thumbnail image/cover for the book
      * @param anchor {string} The name of the anchor link to the tile
      */
-    constructor(title, author, synopsis, synopsis_source, thoughts, footnotes, thumbnail, anchor = "") {
-        let source_elem = synopsis_source ? (
-            <i>
-                Source:{" "}
-                <Link href={synopsis_source} target="_blank">
-                    {new URL(synopsis_source).hostname}
-                </Link>
-            </i>
-        ) : null;
+    constructor(title, author, synopsis, thoughts, footnotes, thumbnail, anchor = "") {
         let content = (
             <>
                 <span className={tileStyles.bookTileSection}>
@@ -163,9 +154,8 @@ class BookTile extends Tile {
                     <b>
                         <i>Synopsis:</i>
                     </b>{" "}
-                    {synopsis} {source_elem}
+                    {synopsis}
                 </span>
-                s
                 <span className={tileStyles.bookTileSection}>
                     <b>
                         <i>Thoughts:</i>

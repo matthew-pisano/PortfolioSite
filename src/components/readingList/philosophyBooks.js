@@ -104,7 +104,6 @@ export default [
                 </p>
             </>
         ),
-        ``,
         (
             <>
                 The narrator, Meursault, serves as a vessel through which Camus explores a subset of 1940s French
