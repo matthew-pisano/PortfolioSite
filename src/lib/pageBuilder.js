@@ -141,7 +141,7 @@ class BookTile extends Tile {
      * @param thumbnail {string} The thumbnail image/cover for the book
      * @param anchor {string} The name of the anchor link to the tile
      */
-    constructor(title, author, synopsis, thoughts, footnotes, thumbnail, anchor = "") {
+    constructor(title, author, synopsis, thoughts, footnotes, thumbnail, anchor) {
         let content = (
             <>
                 <span className={tileStyles.bookTileSection}>
@@ -200,31 +200,44 @@ class PageInfo {
 /**
  * A footnote reference to appear in the text
  * @param idx The index of the footnote
+ * @param anchor The anchor of the book the footnote is in
  * @returns {JSX.Element} A footnote reference in the main text body
  * @constructor
  */
-function FootRef({ idx }) {
-    return <sup>{idx}</sup>;
+function FootRef({ idx, anchor }) {
+    return (
+        <Link href={`#footnote-${anchor}-${idx}`}>
+            <sup id={`footref-${anchor}-${idx}`}>{idx}</sup>
+        </Link>
+    );
 }
-FootRef.propTypes = { idx: PropTypes.number.isRequired };
+FootRef.propTypes = { idx: PropTypes.number.isRequired, anchor: PropTypes.string.isRequired };
 
 /**
  * A footnote to appear at the bottom of the text
  * @param idx The index of the footnote
+ * @param anchor The anchor of the book the footnote is in
  * @param style The style to apply to the footnote
  * @param children The content of the footnote
  * @returns {JSX.Element} A footnote at the bottom of the text
  * @constructor
  */
-function FootNote({ idx, style, children }) {
+function FootNote({ idx, anchor, style, children }) {
     return (
         <span style={{ ...style, textIndent: 0, display: "block", marginBottom: "10px" }}>
-            <sup>{idx}</sup>
+            <Link href={`#footref-${anchor}-${idx}`}>
+                <sup id={`footnote-${anchor}-${idx}`}>{idx}</sup>
+            </Link>{" "}
             <small>{children}</small>
         </span>
     );
 }
-FootNote.propTypes = { idx: PropTypes.number.isRequired, style: PropTypes.object, children: PropTypes.node.isRequired };
+FootNote.propTypes = {
+    idx: PropTypes.number.isRequired,
+    anchor: PropTypes.string.isRequired,
+    style: PropTypes.object,
+    children: PropTypes.node.isRequired
+};
 
 /**
  * Resets the horizontal position of all tiles by removing the hiddenTile class

@@ -62,7 +62,7 @@ export default [
                     <i>hardware overhang</i> may occur when improvements in software lag and abundant hardware already
                     exists for when this threshold is crossed. Similar for <i>algorithm overhangs</i>, when software has
                     reached sufficient maturity, but hardware or other resources contain its abilities
-                    {<FootRef idx={1} />}.
+                    {<FootRef idx={1} anchor={`superintelligence`} />}.
                 </p>
                 <p>
                     If there are multiple, independent projects working towards the development of superintelligence,
@@ -90,7 +90,8 @@ export default [
                     insured, a period of overt implementation begins where it begins to amass physical resources and
                     pursue its final goals. If the problem of alignment has not been generally solved before takeoff,
                     this AI is likely to either deliberately eliminate humanity to ensure its uninterrupted access to
-                    resources or it may simply ignore our presence if we pose a trivial threat{<FootRef idx={2} />}.
+                    resources or it may simply ignore our presence if we pose a trivial threat
+                    {<FootRef idx={2} anchor={`superintelligence`} />}.
                 </p>
                 <p>
                     A common assumption that people often make is that complex intelligences may have complex goals:
@@ -115,8 +116,9 @@ export default [
                     possibility of suffering (even in a perfect utopia) and a dead human can no longer suffer. Adding on
                     more and more "but also" conditions to this goal is also not likely to work as there is a strong
                     incentive to find a loophole that leads to goal achievement faster and more thoroughly
-                    {<FootRef idx={3} />}. It will not act this way out of some sense of spite or malice, this is simply
-                    the best way of achieving <i>exactly</i> what it has been asked to do.
+                    {<FootRef idx={3} anchor={`superintelligence`} />}. It will not act this way out of some sense of
+                    spite or malice, this is simply the best way of achieving <i>exactly</i> what it has been asked to
+                    do.
                 </p>
                 <p>
                     These outcomes are undesirable. Naturally, the question of mitigation arrises. In order to
@@ -130,7 +132,7 @@ export default [
                     <li>
                         Press a button that produces a massive negative reward? The AI now has the instrumental goal of
                         preventing anyone from ever pressing that button. Any would-be button presser will have to face
-                        the full ire of a nearly all-powerful agent.{<FootRef idx={4} />}
+                        the full ire of a nearly all-powerful agent.{<FootRef idx={4} anchor={`superintelligence`} />}
                     </li>
                     <li>
                         Stunt its growth? Too much and the AI is not useful, too little and it will be smart enough to
@@ -157,30 +159,32 @@ export default [
                     seems relatively safe, but in order to fulfil a request of any complexity, plans must be developed
                     and instrumental convergence appears once again. Next on the hierarchy comes sovereigns. This class
                     is similar to a genie, but it is designed from the ground-up to execute complex commands and create
-                    its own goals independent of human overseers{<FootRef idx={5} />}. Finally, tool-AIs are designed to
-                    work more like traditional software in that they do not exhibit goal-directed behavior. The creation
-                    of such a system may involve significant amounts of manual tuning and parameter search. Traditional
-                    software does not (currently) attempt to form a singleton, so this appears to be a safe option.
-                    However, these tools either become difficult to scale{<FootRef idx={6} />} to superintelligence or
-                    they develop sufficient complexity to reclassify themselves into one of the prior three categories.
+                    its own goals independent of human overseers{<FootRef idx={5} anchor={`superintelligence`} />}.
+                    Finally, tool-AIs are designed to work more like traditional software in that they do not exhibit
+                    goal-directed behavior. The creation of such a system may involve significant amounts of manual
+                    tuning and parameter search. Traditional software does not (currently) attempt to form a singleton,
+                    so this appears to be a safe option. However, these tools either become difficult to scale
+                    {<FootRef idx={6} anchor={`superintelligence`} />} to superintelligence or they develop sufficient
+                    complexity to reclassify themselves into one of the prior three categories.
                 </p>
                 <p>
                     Containment measures will likely not be able to constrain the behavior of a superintelligent agent
                     in the long-run. The most reliable method of behavioral steering are different methods of alignment.
-                    In the book, Bostrom frames this as a problem of value-loading{<FootRef idx={7} />}: when
-                    researchers decide upon a set of values to align the model to, how can those values be reliably
-                    impressed upon it? The book presents several methods, the most promising of which seem to be
-                    motivational scaffolding, value learning, and institutional design. Motivational scaffolding
-                    proposes that we first create a smaller, more controllable AI which we can train to hold human
-                    values. Next, the capabilities of this system are increased to that of a superintelligence. At this
-                    point, the agent will be much more resistant to goal change, "locking in" the original goals. Value
-                    learning proposes that we train an AI to "do what we would want an AI to do in this situation". This
-                    type of adjacent reasoning may be difficult to reliably implement, but it would free programmers
-                    from the burden of choosing a specific goal for the model to optimize towards. Final, Bostrom
-                    considers designing an institution that would govern the behavior of many AI agents. The main
-                    architecture discussed is one composed of <Latex>{`$n$`}</Latex> superintelligent agents with{" "}
-                    <Latex>{`$n/2$`}</Latex> less intelligent agents designed to monitor them. This pattern repeats
-                    until we are left with one or more humans at the top governing the least capable level of agents.
+                    In the book, Bostrom frames this as a problem of value-loading
+                    {<FootRef idx={7} anchor={`superintelligence`} />}: when researchers decide upon a set of values to
+                    align the model to, how can those values be reliably impressed upon it? The book presents several
+                    methods, the most promising of which seem to be motivational scaffolding, value learning, and
+                    institutional design. Motivational scaffolding proposes that we first create a smaller, more
+                    controllable AI which we can train to hold human values. Next, the capabilities of this system are
+                    increased to that of a superintelligence. At this point, the agent will be much more resistant to
+                    goal change, "locking in" the original goals. Value learning proposes that we train an AI to "do
+                    what we would want an AI to do in this situation". This type of adjacent reasoning may be difficult
+                    to reliably implement, but it would free programmers from the burden of choosing a specific goal for
+                    the model to optimize towards. Final, Bostrom considers designing an institution that would govern
+                    the behavior of many AI agents. The main architecture discussed is one composed of{" "}
+                    <Latex>{`$n$`}</Latex> superintelligent agents with <Latex>{`$n/2$`}</Latex> less intelligent agents
+                    designed to monitor them. This pattern repeats until we are left with one or more humans at the top
+                    governing the least capable level of agents.
                 </p>
                 <p>
                     Once we have created a method for reliably loading desired values into a superintelligent system,
@@ -216,9 +220,9 @@ export default [
                     goals. A.M. from <i>I have no Mouth and I Must Scream</i> and SkyNet are examples that come to mind.
                     AI can certainly poses both of these qualities, but Bostrom effectively shows that there need be no
                     relationship between them. An entity of awesome intelligence may be just as effective at maximizing
-                    the production of paperclips{<FootRef idx={8} />} as it could be at protecting the United States.
-                    His <i>orthogonality</i> thesis is non-trivial when examples of "smart" AI with "dumb" goals are
-                    less prevalent in media and (until recently) literature.
+                    the production of paperclips{<FootRef idx={8} anchor={`superintelligence`} />} as it could be at
+                    protecting the United States. His <i>orthogonality</i> thesis is non-trivial when examples of
+                    "smart" AI with "dumb" goals are less prevalent in media and (until recently) literature.
                 </p>
                 <p>
                     Another concept that is somewhat difficult to grasp at first is the sheer gap between the
@@ -310,33 +314,37 @@ export default [
         ),
         (
             <>
-                <FootNote idx={1}>
+                <FootNote idx={1} anchor={`superintelligence`}>
                     The rapid advancement in transformer technology is an excellent example of an{" "}
                     <i>algorithm overhang</i>. The core architecture has remained largely the same since its
                     introduction in 2017, but recent advances in GPU architecture and data availability have fueled
                     their rapid expansion in capability.
                 </FootNote>
-                <FootNote idx={2}>
+                <FootNote idx={2} anchor={`superintelligence`}>
                     This may sound like a much better outcome, but there is also no motive for the superintelligence to
                     maintain the habitability of Earth for anything except for itself. This is especially true if the
                     agent considers terraforming to be an instrumental goal in service of its final goal. Good luck
                     finding something to eat when the entire planet if tiled in paperclips stacked miles high!
                 </FootNote>
-                <FootNote idx={3}>
+                <FootNote idx={3} anchor={`superintelligence`}>
                     "But, you also can't kill all humans.", assert the researchers.
                     <br />
                     "Fine.", says the AI as it hooks up all human brains to an endless stream of dopamine and serotonin.
                 </FootNote>
-                <FootNote idx={4}>
+                <FootNote idx={4} anchor={`superintelligence`}>
                     "Simply unplug it" is a variant of the button-press scenario. Being turned off is equivalent to an
                     infinite negative reward. Therefore, any agent that is capable enough for us to worry about will do
                     everything in its power to preserve itself. "Could we also train it to want to be turned off by a
                     human?" Yes, but you now have either a{" "}
-                    <Link href={"https://en.wikipedia.org/wiki/Useless_machine"}>useless machine</Link> or a god with a
-                    death wish.
+                    <Link href={"https://en.wikipedia.org/wiki/Useless_machine"} target={"_blank"}>
+                        useless machine
+                    </Link>{" "}
+                    or a god with a death wish.
                 </FootNote>
-                <FootNote idx={5}>Terms and conditions my apply...</FootNote>
-                <FootNote idx={6}>
+                <FootNote idx={5} anchor={`superintelligence`}>
+                    Terms and conditions my apply...
+                </FootNote>
+                <FootNote idx={6} anchor={`superintelligence`}>
                     The current paradigm of large language models (including "agentic models") likely fall somewhere
                     near this category. They are not trained with a specific goal or moral system in mind, but primarily
                     to accurately predict text based on its training distribution. This includes fine-tuning regimes
@@ -347,7 +355,7 @@ export default [
                     generalize outside of their training distribution or begin to learn continually in an "online"
                     manner without sacrificing capability or drawing too many resources.
                 </FootNote>
-                <FootNote idx={7}>
+                <FootNote idx={7} anchor={`superintelligence`}>
                     Language models may actually have an advantage in this respect. Since we can precisely control the
                     text (and images, audio, etc.) that is trained into the model's predictive distribution, we have a
                     significant amount of fine-grained control on what the model knows and may predict. Though, perhaps
@@ -358,7 +366,7 @@ export default [
                     enough to deduce the process from scratch, it is easier to just not tell a model how to build a bomb
                     instead of telling it, then forbidding it from sharing this knowledge from the user.
                 </FootNote>
-                <FootNote idx={8}>
+                <FootNote idx={8} anchor={`superintelligence`}>
                     <i>Ethical Issues in Advanced Artificial Intelligence</i> (Bostrom 2003)
                 </FootNote>
             </>
