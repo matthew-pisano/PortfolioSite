@@ -40,6 +40,16 @@ export default function ReadingList() {
                         when they are important for understanding underlying themes. Proceed with caution in this
                         respect.
                     </p>
+                    <p>
+                        Disclaimer: much of what I write about here involves AI in some manner. I believe current
+                        generative models have a time and a place to be useful, but a replacement for the creative
+                        process is neither. Therefore all of the following is hand-written (typed?) by me. It is
+                        reasonable to assume that you are here to hear my genuine thoughts on these books, so that is
+                        what I will provide. To me, the occasional typo or awkward prose is preferable to text that is
+                        not of my own design. To err is to be human and perhaps that is preferable in a world of
+                        generated content. I encourage you to read on, perhaps what follows will provide some useful
+                        insights or interesting ideas.
+                    </p>
                 </>
             ),
             "/media/image/bookshelf.png"
