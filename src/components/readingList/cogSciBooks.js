@@ -121,28 +121,31 @@ export default [
                 <p>
                     These outcomes are undesirable. Naturally, the question of mitigation arrises. In order to
                     extrinsically prevent the AI's goals, what if we:
-                    <ul>
-                        <li>
-                            Put it in a box? The AI has a strong incentive to manipulate/hack its way out in order to
-                            fulfil its objective.
-                        </li>
-                        <li>
-                            Press a button that produces a massive negative reward? The AI now has the instrumental goal
-                            of preventing anyone from ever pressing that button. Any would-be button presser will have
-                            to face the full ire of a nearly all-powerful agent.{<FootRef idx={4} />}
-                        </li>
-                        <li>
-                            Stunt its growth? Too much and the AI is not useful, too little and it will be smart enough
-                            to remove those protections.
-                        </li>
-                        <li>
-                            Set up a tripwire? If an AI triggers one, it will be retrained or abandoned. This only means
-                            that the next AI will know not to fall for the same trap again.
-                        </li>
-                    </ul>
+                </p>
+                <ul>
+                    <li>
+                        Put it in a box? The AI has a strong incentive to manipulate/hack its way out in order to fulfil
+                        its objective.
+                    </li>
+                    <li>
+                        Press a button that produces a massive negative reward? The AI now has the instrumental goal of
+                        preventing anyone from ever pressing that button. Any would-be button presser will have to face
+                        the full ire of a nearly all-powerful agent.{<FootRef idx={4} />}
+                    </li>
+                    <li>
+                        Stunt its growth? Too much and the AI is not useful, too little and it will be smart enough to
+                        remove those protections.
+                    </li>
+                    <li>
+                        Set up a tripwire? If an AI triggers one, it will be retrained or abandoned. This only means
+                        that the next AI will know not to fall for the same trap again.
+                    </li>
+                </ul>
+                <p>
                     The only reliable methods of controlling the behavior of a superintelligent agent will be intrinsic.
                     Safely implementing potential goals is explored at-length later on.
                 </p>
+
                 <p>
                     The constraints on AI models go beyond simple containment methods. Here, Bostrom identifies four
                     main types of agents, although with deeper analysis, these are all different manifestations of the
