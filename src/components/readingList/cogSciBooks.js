@@ -531,6 +531,54 @@ export default [
         "geb-egb"
     ),
     new BookTile(
+        <>Human Compatible: Artificial Intelligence and the Problem of Control</>,
+        "Stuart Russell",
+        (
+            <>
+                <u>Human Compatible</u> concentrates on potentially the most important field in the discipline in
+                artificial intelligence research: alignment and the problem of control. Within its pages, Russell argues
+                that advanced artificially intelligent systems will pose a significant, existential risk to humanity.
+                This risk also has a non-trivial chance of being realized in the near future. Despite uncertainty in our
+                ability to actually develop superintelligence {<FootRef idx={1} anchor={`human-compatible`} />},
+                developing an intelligence using our current techniques could be catastrophic. More specifically, he
+                asserts that the single-goal optimization objectives used to train modern AI systems could lead to
+                dangerous and unforeseen consequences. AI trained in this manner would likely not reflect the values
+                that we intended to train into it; the failure modes for this system would be dangerously unpredictable.
+                To structure his argument, Russell splits the book into three parts focusing on an overview of machine
+                intelligence, realized and foreseen problems with intelligent machines, and potential solutions for the
+                problem of control, respectively.
+            </>
+        ),
+        (
+            <>
+                In this book, Russell both introduces technical topics to the reader and challenges some conventional
+                thinking about artificial intelligence in a concrete and understandable manner. He covers a wide variety
+                of topics, ranging from how AI may (and should) behave when interacting with the real world, to common
+                misconceptions and criticisms of alignment research, and more concrete learning techniques.
+                <p>
+                    Russell considers concepts such as how to balance the personal and societal utilities of embodied
+                    assistants and how such assistants can safely learn by maintaining a core of immutable ideals. He
+                    also provides effective counter-arguments to common arguments against alignment research, such as
+                    "Why can't you just turn it off?" or "It will behave if we specify its goals well enough."
+                </p>
+                <p>
+                    The later chapters of the book introduce some learning techniques that I personally find
+                    interesting, such as inverse reinforcement learning and how that may be applicable for aligning an
+                    AI with the ill-defined preferences of humans.
+                </p>
+            </>
+        ),
+        (
+            <>
+                <FootNote idx={1} anchor={`human-compatible`}>
+                    At the time of writing and to a somewhat lesser extent today.
+                </FootNote>
+            </>
+        ),
+        "/media/image/human-compatible.jpg",
+        "human-compatible"
+    ),
+    new BookTile(
         <>The Alignment Problem</>,
         "Brian Christian",
         (
@@ -569,50 +617,6 @@ export default [
         <></>,
         "/media/image/the-alignment-problem.jpg",
         "alignment-problem"
-    ),
-    new BookTile(
-        <>Human Compatible: Artificial Intelligence and the Problem of Control</>,
-        "Stuart Russell",
-        (
-            <>
-                <u>Human Compatible: Artificial Intelligence and the Problem of Control</u>
-                asserts that the risk to humanity from advanced artificial intelligence is a serious concern despite the
-                uncertainty surrounding future progress in AI. It also proposes an approach to the AI control problem.
-                Russell asserts that the standard model of AI research, in which the primary definition of success is
-                getting better and better at achieving rigid human-specified goals, is dangerously misguided. If an AI
-                developed in this manner were to become superintelligent, it would likely not fully reflect human values
-                and could be catastrophic to humanity. Russell further asserts that safety research should be begun as
-                soon as possible, as it is also highly uncertain how long it would take to complete such research.{" "}
-                <i>
-                    Source:{" "}
-                    <Link href={`https://en.wikipedia.org/wiki/Human_Compatible`} target="_blank">
-                        {new URL(`https://en.wikipedia.org/wiki/Human_Compatible`).hostname}
-                    </Link>
-                </i>
-            </>
-        ),
-        (
-            <>
-                In this book, Russell both introduces technical topics to the reader and challenges some conventional
-                thinking about artificial intelligence in a concrete and understandable manner. He covers a wide variety
-                of topics, ranging from how AI may (and should) behave when interacting with the real world, to common
-                misconceptions and criticisms of alignment research, and more concrete learning techniques.
-                <p>
-                    Russell considers concepts such as how to balance the personal and societal utilities of embodied
-                    assistants and how such assistants can safely learn by maintaining a core of immutable ideals. He
-                    also provides effective counter-arguments to common arguments against alignment research, such as
-                    "Why can't you just turn it off?" or "It will behave if we specify its goals well enough."
-                </p>
-                <p>
-                    The later chapters of the book introduce some learning techniques that I personally find
-                    interesting, such as inverse reinforcement learning and how that may be applicable for aligning an
-                    AI with the ill-defined preferences of humans.
-                </p>
-            </>
-        ),
-        <></>,
-        "/media/image/human-compatible.jpg",
-        "human-compatible"
     ),
     new BookTile(
         <>Determined: A Science of Life Without Free Will</>,
