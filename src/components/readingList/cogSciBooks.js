@@ -672,10 +672,17 @@ export default [
         ),
         (
             <>
-                In this book, Russell both introduces technical topics to the reader and challenges some conventional
-                thinking about artificial intelligence in a concrete and understandable manner. He covers a wide variety
-                of topics, ranging from how AI may (and should) behave when interacting with the real world, to common
-                misconceptions and criticisms of alignment research, and more concrete learning techniques.
+                This book was recommended to me by Selmer Bringsjord of RPI after I gave one of my first presentations
+                on my <Link href={"https://matthewpisano.com/research/bergeron"}>Master's thesis research</Link>.
+                Reading this book gave theoretical foundations to my ill-defined concerns about alignment at the time.
+                Through this work, Russel's thoughts helped to influence both this and my future research.
+                <p>
+                    In this book, Russell both introduces technical topics to the reader and challenges some
+                    conventional thinking about artificial intelligence in a concrete and understandable manner. He
+                    covers a wide variety of topics, ranging from how AI may (and should) behave when interacting with
+                    the real world, to common misconceptions and criticisms of alignment research, and more concrete
+                    learning techniques.
+                </p>
                 <p>
                     Russell considers concepts such as how to balance the personal and societal utilities of embodied
                     assistants and how such assistants can safely learn by maintaining a core of immutable ideals. He
