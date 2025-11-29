@@ -1057,26 +1057,23 @@ export default [
         "Marvin Minsky",
         (
             <>
-                <u>The Emotion Machine</u> offers a fascinating new model for how our minds work. Minsky argues
-                persuasively that emotions, intuitions, and feelings are not distinct things, but different ways of
-                thinking. By examining these different forms of mind activity, Minsky says, we can explain why our
-                thought sometimes takes the form of carefully reasoned analysis and at other times turns to emotion. He
-                shows how our minds progress from simple, instinctive kinds of thought to more complex forms, such as
-                consciousness or self-awareness. Indeed, says Minsky, if thinking can be understood as the step-by-step
-                process that it is, then we can build machines -- artificial intelligences -- that not only can assist
-                with our thinking by thinking as we do but have the potential to be as conscious as we are.{" "}
-                <i>
-                    Source:{" "}
-                    <Link
-                        href={`https://www.simonandschuster.com/books/The-Emotion-Machine/Marvin-Minsky/9780743276641`}
-                        target="_blank">
-                        {
-                            new URL(
-                                `https://www.simonandschuster.com/books/The-Emotion-Machine/Marvin-Minsky/9780743276641`
-                            ).hostname
-                        }
-                    </Link>
-                </i>
+                Within <u>The Emotion Machine</u>, Minsky introduces a new interpretation on familiar aspects of human
+                cognition. Namely that emotions, intuitions, and feelings are not isolated processes nor hindrances to
+                some perfectly rational, platonically ideal version of a human mind. Instead they make up core aspects
+                of our cognition. These altered states modify our existing behaviors and values to suit unusual levels
+                of stress and uncertainty. Switching between these states helps to explain how particular situations can
+                shift our thinking from slow and reasoned analysis to quick and intuitive judgement. To support his
+                argument, Minsky explores how we form models of the world, ourselves, others, and the models that others
+                form about ourselves. These models and subsequent notions of <i>theory of mind</i> make up our conscious
+                experience and self-awareness.
+                <p>
+                    Minsky asserts that this more mechanistic analysis of the human mind can be utilized to create
+                    advanced and human-like artificial intelligences. These machines would be able to assist with our
+                    thinking by thinking in the same manner as us, and could begin to anticipate our future preferences
+                    based on this ability. The book also posits that machines minds with a very similar architecture to
+                    our own could begin have subjective and conscious experiences as we do. The substrate that a mind
+                    lies upon, whether digital or biological, has no bearing on its ability to be self-aware.
+                </p>
             </>
         ),
         (
@@ -1086,6 +1083,17 @@ export default [
                 novel to me when I first read it. This book stands out from many others at the intersection between
                 artificial intelligence and cognitive science. This is primarily because even modern AI has not yet
                 implemented many of the ideas presented here.
+                <p>
+                    The interpretation of emotions as altered, but purposeful states, instead of irrational outbursts,
+                    has important impacts on how we treat our fellow people and design synthetic intelligence. By
+                    understanding changes in human cognition as intentional (albeit sub-conscious) responses to
+                    unexpected changes in our mental models, we may better treat and interact with each other during
+                    these states. These themes, especially in the realm of criminal justice and policy, are further
+                    explored in Sapolsky's works. Moreover, machines could apply this same line of reasoning. By
+                    interpreting altered behavior not as persistent changes to goals or values, but as temporary states,
+                    machines could better interpret our intentions, rather than learning explicitly from our actions.
+                    This concept is explored in much more detail in Russell's <i>Human Compatible</i>.
+                </p>
                 <p>
                     For me, the most impactful ideas presented here were Minsky's interpretation of the actor-critic
                     structure of our cognition and his concept of <i>imprimers</i>, or who we are most likely to learn
