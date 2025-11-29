@@ -668,6 +668,56 @@ export default [
                     </Link>
                     .
                 </p>
+                <p>
+                    After highlighting these dangers of under-controlled AI and arguments against alignment measures,
+                    Russell offers some practical solutions that he thinks will make future AI systems more manageable
+                    to control. One of the biggest difficulties of working with modern AI is that it uses training to
+                    empirically predict behavior instead of formal methods that guarantee correctness. The ideal
+                    solution likely will contain a combination of both {<FootRef idx={8} anchor={`human-compatible`} />}
+                    , but our current techniques heavily rely on the former and rarely employ the latter (for complex
+                    systems). Russell has noticed this as well and introduces the concept of provably beneficial AI. The
+                    text suggests that a more formal process for machine learning is employed. Soe some set of machines,
+                    some algorithms, and some environments, it can be proven that the probability of something
+                    unexpected happening is acceptably low. His suggestion for such a predictable learning process is
+                    one that learns what to learn, based on observations. To make this sentiment more concrete, he
+                    introduces his concept of <i>inverse reinforcement learning</i> (IRL). Whereas a normal
+                    reinforcement learning (RL) system learns to optimize for a predetermined reward function, an IRL
+                    system will first have to learn the reward function itself based on observing an idealized entity.
+                    When generalizing this framework to more complex tasks, we run into a problem, however. A human
+                    teaching a robot a task will not act in the same way as if they were simply doing the task
+                    themselves. As we perform some task, we are not always quietly muttering step-by-step instructions
+                    to ourselves as if we were teaching someone else; we simply do the task in a manner that would not
+                    be as helpful to an outside observer. Instead of pure IRL, we would like artificial observers to
+                    learn human preferences implicitly, rather than directly copying observed behaviors. To aid in this
+                    goal, Russell introduces <i>assistance games</i>. In an assistance game, a human is paired with a
+                    robot. As the human interacts with the automata, they make constant observations and learn to
+                    anticipate their behavior, not my acting as the human, but acting as the human wanted them to act
+                    (shown through the human's actions). By always assigning some reward to deferring to human action
+                    (and assigning a degree of uncertainty to its own actions), autonomous systems may be significantly
+                    less resistant to human interference with their initial plans.
+                </p>
+                <p>
+                    Another important component of provably beneficial AI is its interpretation of goals. Traditional
+                    thought in this area models machines that pursue given goals with single-minded determination. Of
+                    course, this is almost never a good idea. While it is not a completely novel idea, Russell
+                    elaborates on the notion of costs associated with a goal. He gives the example of fetching a cup of
+                    coffee. Instead of fetching one <i>at all costs</i> an agent should infer that reasonable
+                    constraints are applied. The coffee should be a reasonable price, arrive within a reasonable speed,
+                    and no harm should befall any people or property along the way. This is difficult to formalize, but
+                    important to mention.
+                </p>
+                <p>
+                    An impactful concept that the text also introduces is that of <i>wireheading</i>. It is important to
+                    remember that an agent (artificial or biological) trained by reward for some goal is not trained for
+                    that goal. It is only trained for the <i>reward</i> associated with that goal. If this reward can be
+                    obtained from elsewhere with less costs, a rational agent would prefer the shortcut. Rats with
+                    artificially stimulated reward systems will act on that artificial stimulation repeatedly,
+                    neglecting other essential activities. This also occurs naturally. Humans evolved a sensation of
+                    reward after eating foods with a high sugar content, essential for maintaining energy reserves.
+                    Overly-sweet foods come with many health risks, however, so we invented artificial sweeteners like
+                    sucralose that provide no energy. Note that the goal of eating artificially sweet foods has nothing
+                    to do with the "intended" goal, but it satisfies the goal of reward all the same.
+                </p>
             </>
         ),
         (
@@ -740,6 +790,9 @@ export default [
                     solve, or even approach, this issue even experts in the field of artificial intelligence. Given that
                     no solution is yet known, it is imperative to consider the reasoning of a strategy on its own
                     merits, falling back to expert opinion only as a last resort.
+                </FootNote>
+                <FootNote idx={8} anchor={`human-compatible`}>
+                    My opinion.
                 </FootNote>
             </>
         ),
