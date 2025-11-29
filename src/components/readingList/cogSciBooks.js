@@ -780,6 +780,23 @@ export default [
                     interesting, such as inverse reinforcement learning and how that may be applicable for aligning an
                     AI with the ill-defined preferences of humans.
                 </p>
+                <p>
+                    An important idea that Russell introduces at the end of the book is that of human enfeeblement. Here
+                    he asks "What if we succeed"? What if we can create truly, provably beneficial AI systems? How would
+                    we behave and how would we interact with these systems? Should we prefer a reality in where there is
+                    no war, hunger, or disease, but humans are no longer in control? Maintaining our autonomy from a
+                    benevolent AI seems like an obviously good idea; we would be able to choose our own destiny. But
+                    should we? This requires serious thought. By definition humans would be worse (perhaps <i>much</i>{" "}
+                    worse) than a superintelligent AI system at our own governance. Tribalism inevitably develops in any
+                    human-controlled institution along with competition and inequality. On their own, these are
+                    generally seen as negative, but is some amount of harm or risk preferable to none at all? In my
+                    opinion, some amount of risk and harm are beneficial to the human condition, lest we resign
+                    ourselves to Matrix-esque pleasure simulations. That should likely be the limit, though. Relegating
+                    superintelligent AI to simply <i>laissez-faire</i> caretakers that only ensure that we do not
+                    destroy ourselves and leaving humans in charge will be suboptimal. This is putting it lightly. We
+                    can use tens of thousands of years of human history as evidence that leaving humans in primary
+                    positions of power is a generally bad idea{<FootRef idx={11} anchor={`human-compatible`} />}.
+                </p>
             </>
         ),
         (
@@ -843,6 +860,12 @@ export default [
                     a resource constrained environment, it is reasonable to hope that they decrease their own living
                     standard in exchange for raising that of everyone else. Of course, it is important to remember that
                     many instances of envy do indeed produce net-negative effects.
+                </FootNote>
+                <FootNote idx={11} anchor={`human-compatible`}>
+                    Again, this is all conditional on the predicate that the AI system is probably beneficial in a "do
+                    what I mean, not what I say" manner. The worst human atrocities in the past are better than even the
+                    "benign" case of an AI that is indifferent to our survival. We, as a species, can survive (and
+                    ideally learn from) genocidal maniacs, but we cannot recover from extinction.
                 </FootNote>
             </>
         ),
