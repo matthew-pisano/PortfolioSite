@@ -497,14 +497,14 @@ export default [
                 match the pattern of voices within the music. Occasionally this relation is referenced within the
                 dialogue, but often it is left up to the reader to draw this connection.
                 <p>
-                    While the author's augment on the common themes present in the works of book's three namesakes is
-                    strong on its own, the its meta-writing also reinforces that relationship. It genuinely surprised me
-                    just how well the art produced by Bach and Escher fit alongside Gödel and the more rigorous elements
-                    of the author's thoughts. Every Escher lithograph seems like it could have been custom-made for the
-                    chapters in which it was placed. The themes present in Bach's music almost appear to deliberately
-                    match the book, instead of the other way around. The recursive and self-referential connections
-                    between the three luminaries are far from obvious, but one struggles to miss how deep this
-                    connection is after reading this book.
+                    While the author's argument on the common themes present in the works of the book's three namesakes
+                    is strong on its own, the its meta-writing also reinforces that relationship. It genuinely surprised
+                    me just how well the art produced by Bach and Escher fit alongside Gödel and the more rigorous
+                    elements of the author's thoughts. Every Escher lithograph seems like it could have been custom-made
+                    for the chapters in which it was placed. The themes present in Bach's music almost appear to
+                    deliberately match the book, instead of the other way around. The recursive and self-referential
+                    connections between the three luminaries are far from obvious, but one struggles to miss how deep
+                    this connection is after reading this book.
                 </p>
                 <p>
                     A final note that I should make concerns Bach in particular. While the ideas of recursion and
@@ -585,16 +585,16 @@ export default [
                     needed as each one can perform the same labor as many and the number of houses needing painting does
                     not expand proportionally. When semi-autonomous machines can paint houses, the number of workers
                     drops further as one person can oversee the painting of an entire house very quickly. Russell
-                    further explores this trend from the lens of white collar workers as well, with similar predicted
-                    (and observed!) results. Finally, he discusses the potential consequences of making automata
-                    indistinguishable from humans in a physical sense, in addition to in an intellectual sense. In short
-                    the integration of humanoid robots into distinctly human jobs (healthcare and law, for example),
-                    would have severe negative affects on human socialization and dignity.
+                    further explores this trend from the perspective of white collar workers as well, with similar
+                    predicted (and observed!) results. Finally, he discusses the potential consequences of making
+                    automata indistinguishable from humans in a physical sense, in addition to in an intellectual sense.
+                    In short, the integration of humanoid robots into distinctly human jobs (healthcare and law, for
+                    example), would have severe negative affects on human socialization and dignity.
                 </p>
                 <p>
                     There are several problems that arise when AI becomes more generally intelligent and capable than
                     humans. <i>The Gorilla Problem</i> illustrates the future dynamic between humans and AI systems. Ten
-                    million years ago, ancient hominins branches off from gorillas and other grate apes. Early on, our
+                    million years ago, ancient hominins branches off from gorillas and other great apes. Early on, our
                     ancestors were few and the apes many. A <i>directed</i> effort could have easily eliminated our
                     lineage. As we evolved, we became more generally intelligent and capable than our relatives.
                     Millions of years later, it is our species trying to save gorillas from <i>accidental</i> extinction
@@ -633,7 +633,7 @@ export default [
                 <p>
                     Like many threats that largely live in the realm of theory (at least in the existential sense),
                     there is still significant debate among researchers in the field on how to solve the problem of
-                    control. Unfortunately, these is still discourse on whether this is even a problem at all. Russell
+                    control. Unfortunately, there is still discourse on whether this is even a problem at all. Russell
                     points out examples of AI researchers denying that the problem of control exists or is as serious as
                     people make it out to be. Superintelligent AI could be framed as impossible, there is no need to
                     worry about something that cannot happen. It could be in the far off future, why dedicate resources
@@ -652,8 +652,8 @@ export default [
                         them, we will not see those benefits; we shall instead incur incalculable harm.
                     </i>
                     The text also addresses some common arguments against the thread of superintelligent AI. Shutting
-                    the systems down, boxing them, collaborating with them, or avoiding training them on strict human
-                    goals are all potentially "easy" solutions to the problem of control. Simple solutions like these
+                    the systems down, boxing them, collaborating with them, or not training them on strict human goals
+                    are all potentially "easy" solutions to the problem of control. Simple solutions like these
                     fundamentally misunderstand the dynamic between ourselves an a superintelligent agent: it can, and
                     will out-think us in every scenario. It could prevent itself from being shut down through
                     intimidation or force, it could convince (just one of) us to let it out of its box, it would (after
@@ -707,7 +707,7 @@ export default [
                     An impactful concept that the text also introduces is that of <i>wireheading</i>. It is important to
                     remember that an agent (artificial or biological) trained by reward for some goal is not trained for
                     that goal. It is only trained for the <i>reward</i> associated with that goal. If this reward can be
-                    obtained from elsewhere with less costs, a rational agent would prefer the shortcut. Rats with
+                    obtained from elsewhere with fewer costs, a rational agent would prefer the shortcut. Rats with
                     artificially stimulated reward systems will act on that artificial stimulation repeatedly,
                     neglecting other essential activities. This also occurs naturally. Humans evolved a sensation of
                     reward after eating foods with a high sugar content, essential for maintaining energy reserves.
@@ -811,7 +811,7 @@ export default [
                     At the time of writing and to a somewhat lesser extent today.
                 </FootNote>
                 <FootNote idx={2} anchor={`human-compatible`}>
-                    Unrelated to Amazon Web Services (AWS, although services for the former could certainly be provided
+                    Unrelated to Amazon Web Services (AWS), although services for the former could certainly be provided
                     through the latter.
                 </FootNote>
                 <FootNote idx={3} anchor={`human-compatible`}>
@@ -962,7 +962,7 @@ export default [
                 effectively argues that there is a mechanistic and (broadly) deterministic explanation for all the
                 phenomena we usually attribute to ourselves.
                 <p>
-                    In essence, we do not choose how to play the hand that we are dealt in life, rather we <i>are</i>{" "}
+                    In essence, we do not choose how to play the hand that we are dealt in life; rather we <i>are</i>{" "}
                     the hand that we are dealt; the cards play themselves.
                 </p>
                 <p>
@@ -1083,7 +1083,7 @@ export default [
                 <p>
                     The interpretation of emotions as altered, but purposeful states, instead of irrational outbursts,
                     has important impacts on how we treat our fellow people and design synthetic intelligence. By
-                    understanding changes in human cognition as intentional (albeit sub-conscious) responses to
+                    understanding changes in human cognition as intentional (albeit subconscious) responses to
                     unexpected changes in our mental models, we may better treat and interact with each other during
                     these states. These themes, especially in the realm of criminal justice and policy, are further
                     explored in Sapolsky's works. Moreover, machines could apply this same line of reasoning. By

@@ -51,8 +51,8 @@ export default [
                 <p>
                     Leaping forward to the renaissance, the author highlights Galileo and his studies of how matter on
                     Earth moves and accelerates, along with Copernicus and Kepler and their calculations and laws on how
-                    bodies move in the heavens. On to Newton and his realization that the same laws that Galileo used to
-                    describe objects on Earth could be used to describe the objects of the heavens just as Copernicus
+                    bodies move in the heavens. On to Newton, and his realization that the same laws that Galileo used
+                    to describe objects on Earth could be used to describe the objects of the heavens just as Copernicus
                     and Kepler had done. His synthesis of these ideas went on to serve as the groundwork of physics
                     until the nineteenth century.
                 </p>

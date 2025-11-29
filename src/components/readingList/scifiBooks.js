@@ -91,9 +91,9 @@ export default [
                         Beyond its threshold, a hundred-foot-long hallway of the same black material extends into a
                         space that could not possibly exist. From the outside, the space that should be occupied by the
                         hallway instead contains an ordinary patch of yard. After recovering the children and despite
-                        Karen's protests, William ventures inside, nearly losing himself in the absolute darkness and
-                        shifting geometry of a space far too large to exist
-                        {<FootRef idx={1} anchor={`house-of-leaves`} />}, all the while hearing a dull, ominous growl
+                        Karen's protests, William ventures inside. Here, he nearly looses himself in the absolute
+                        darkness and shifting geometry of a space far too large to exist
+                        {<FootRef idx={1} anchor={`house-of-leaves`} />}. All the while hearing a dull, ominous growl
                         emanating from the maze.
                     </span>
                 </p>
@@ -432,8 +432,8 @@ export default [
                     shares the news with Helmholtz Watson, a friend of his. Watson is the perfect image of an Alpha
                     male: physically fit, skilled at his job, and highly intelligent, perhaps a little too intelligent
                     for his work writing new hypnopaedic phrases for the children. In the following days, Bernard asks
-                    the Director for permission to visit the reservation. He hesitantly agrees as he relays a story
-                    about one of his own visits, twenty years ago, where he lost a partner to the savages during a
+                    the Director for permission to visit the reservation. The Director hesitantly agrees as he relays a
+                    story about one of his own visits, twenty years ago, where he lost a partner to the savages during a
                     storm. Before embarking towards the reservation, Helmholtz informs Bernard that the director has
                     grown weary of his unorthodox opinions and is planning to send Bernard to Iceland after his return.
                     He is disturbed by this information, but decides to press on with Lenina to the reservation.
@@ -446,7 +446,7 @@ export default [
                     age and disease. Back in England, people present as perfectly healthy their entire lives until
                     neurodegenerative diseases take them at around sixty. Worst of all, reproduction on the reservation
                     still occurs...naturally, with babies being <i>born</i> to actual human m*thers. A deeply unsettling
-                    notion, to be sure. At the savages' village, they meet John, who looks different from the rest.
+                    notion, to be sure. At the savages' village, they meet John, who looks different from the others.
                     Fair-skinned and learned, he is often ostracized from the other youths. He tells them that he is the
                     son of Linda, a woman the villagers rescued twenty years ago. It has been a long time since Bernard
                     was this excited. He offers to take John back to his home, the "brave new world", but insists that
@@ -642,7 +642,7 @@ export default [
                     his pillow, the Chief delivers a monologue on why firemen do what they do. As firemen, it is their
                     duty to protect people from the harm that books can cause and to preserve the stability of the
                     state. Books inconvenient, he explains. They are unpopular, they are divisive, they are subversive,
-                    they upset people. The state did not ban books, he reveals, the people banned them themselves.
+                    they upset people. The state did not ban books, he reveals, the people banned the books themselves!
                     People now live with endless entertainment, personalized to their own perspectives and views. The
                     entertainment is endless, the televisions know them and can tailor what they see so they are never
                     bored. Books do not care who you are, they do not yield to your preferences, their philosophies are

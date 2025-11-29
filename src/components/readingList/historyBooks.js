@@ -59,8 +59,8 @@ export default [
                     only offers explanations for the Monte Carlo method of analysis, Barricelli's early cellular
                     automata, and the realization of Lewis Richardson's work on weather forecasting by Jule Charney, but
                     also details on the lives of their originators. The result is a dense web of scientists and
-                    histories whose paths all briefly crossed in the halls of the IAS to realize the true power of
-                    Turing's creation.
+                    histories whose paths all briefly crossed in the halls of the IAS. Here the true power of Turing's
+                    creation was first realized.
                 </p>
             </>
         ),
@@ -97,7 +97,7 @@ export default [
                 <p>
                     While the finer details of the book are not strictly based on historical evidence, reading{" "}
                     <u>The Maniac</u> has changed how I think about inspiration, ideation, and invention. It also
-                    instills a sense of reverence for the geniuses that pioneered many of the ideas that underpin the
+                    instills a sense of reverence for the geniuses who pioneered many of the ideas that underpin the
                     modern understanding of computing, artificial intelligence, and game theory. It also gave me a much
                     better understanding of John von Neumann, as his achievements are often less emphasized than those
                     from Turing or Gödel during undergraduate education.
@@ -138,15 +138,15 @@ export default [
                 rise to untold suffering through their military usage. This concept similarly applies to many other
                 technologies, ranging from Artificial Intelligence to Nuclear Fission.
                 <p>
-                    The last section of the book follows Werner Heisenberg and Erwin Schrödinger as their discoveries at
-                    the core of quantum mechanics marked the collapse of the final pillar of our classical understanding
-                    of the world. First, Heisenberg's calculations predicted a strange property of quantum particles:
-                    the more finely you were able to pin down their position, the less you could be certain of their
-                    momenta and vice-versa. This result is heavily intertwined with the <i>Observer Effect</i> by which
-                    observations of a quantum object are not commutable. Next came the discoveries of Erwin Schrödinger.
-                    By his calculations, quantum objects could best be described as waves, without a single,
-                    well-defined position of momentum. By the end of the book, Heisenberg realizes that these two
-                    notions are compatible, resulting in a world where quantum particles exist in an indeterminate
+                    The last section of the book follows Werner Heisenberg and Erwin Schrödinger as their discoveries,
+                    at the core of quantum mechanics, marked the collapse of the final pillar of our classical
+                    understanding of the world. First, Heisenberg's calculations predicted a strange property of quantum
+                    particles: the more finely you were able to pin down their position, the less you could be certain
+                    of their momenta and vice-versa. This result is heavily intertwined with the <i>Observer Effect</i>{" "}
+                    by which observations of a quantum object are not commutable. Next came the discoveries of Erwin
+                    Schrödinger. By his calculations, quantum objects could best be described as waves, without a
+                    single, well-defined position of momentum. By the end of the book, Heisenberg realizes that these
+                    two notions are compatible, resulting in a world where quantum particles exist in an indeterminate
                     state, best described by Schrödinger's wave functions. Upon observation, however, this wave function
                     collapses, resolving the particle to a more well-defined position or momentum. The consequence of
                     this discovery was a world that does not have a predictable, fundamental description. It is "fuzzy",
