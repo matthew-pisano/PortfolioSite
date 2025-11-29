@@ -770,15 +770,24 @@ export default [
                     learning techniques.
                 </p>
                 <p>
-                    Russell considers concepts such as how to balance the personal and societal utilities of embodied
-                    assistants and how such assistants can safely learn by maintaining a core of immutable ideals. He
-                    also provides effective counter-arguments to common arguments against alignment research, such as
-                    "Why can't you just turn it off?" or "It will behave if we specify its goals well enough."
+                    I find Russell's thoughts on the risks associated with superintelligent AI to be particularly lucid.
+                    It is valuable that sections of conjecture and interleaved with real-world and concrete examples.
+                    His thoughts on the disadvantages of goal-directed systems would not be as compelling if it were not
+                    paired with a discussion of modern click-through algorithms. Since this book came out in 2019, the
+                    societal problems associated with these algorithms have only grown in their potency. This is further
+                    exacerbated by the flood of information from generative AI systems.
                 </p>
                 <p>
-                    The later chapters of the book introduce some learning techniques that I personally find
-                    interesting, such as inverse reinforcement learning and how that may be applicable for aligning an
-                    AI with the ill-defined preferences of humans.
+                    The later chapters of this book introduce many reinforcement learning techniques that are becoming
+                    increasingly important in the field. Inverse reinforcement learning is a particularly interesting
+                    concept. Instead of traditional RL algorithms that operate off of a human-crafted policy, these IRL
+                    systems craft their own policies through observation. In the book, Russell uses the concrete example
+                    of model helicopters imitating stunt pilots through the use of an IRL algorithm. These models are
+                    able to replicate complex tricks, simply by inferring what their examples are optimizing for. It is
+                    always enlightening to hear how some machine learning technique was created, directly from its
+                    creator. I find this to be especially true for biologically motivated techniques. Taking direct
+                    inspiration from nature both saves time and ensures that the given technique has some precedent for
+                    success (at minimum in biologically-adjacent use cases).
                 </p>
                 <p>
                     An important idea that Russell introduces at the end of the book is that of human enfeeblement. Here
