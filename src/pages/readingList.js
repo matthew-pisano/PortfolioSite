@@ -52,7 +52,7 @@ export default function ReadingList() {
                     </p>
                 </>
             ),
-            "/media/image/bookshelf.png"
+            "/media/image/bookshelf.webp"
         ),
         new SectionTile(<>Artificial Intelligence and Cognitive Science</>, sections.cogSci),
         ...cogSciBooks,
