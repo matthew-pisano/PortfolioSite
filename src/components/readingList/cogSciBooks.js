@@ -12,14 +12,12 @@ export default [
         "Nick Bostrom",
         (
             <>
-                <p>
-                    The primary concern of <u>Superintelligence: Paths, Dangers, Strategies</u> is not necessarily what
-                    needs to happen for artificial general intelligence to be developed, but what happens soon after.
-                    This could be on timescales as long as decades, or as short as seconds. After this point, the entire
-                    course of human history will be altered; this much is certain. The only remaining uncertainty is
-                    whether it will result in our extinction or maximal utopia. In this book, Nick Bostrom explores how
-                    we can minimize the probability of the former and maximize that of the latter.
-                </p>
+                The primary concern of <u>Superintelligence: Paths, Dangers, Strategies</u> is not necessarily what
+                needs to happen for artificial general intelligence to be developed, but what happens soon after. This
+                could be on timescales as long as decades, or as short as seconds. After this point, the entire course
+                of human history will be altered; this much is certain. The only remaining uncertainty is whether it
+                will result in our extinction or maximal utopia. In this book, Nick Bostrom explores how we can minimize
+                the probability of the former and maximize that of the latter.
                 <p>
                     One of the core theses of this work is that an agent of general intelligence, which could incur
                     substantial risk, may evolve into a superintelligent agent, which certainly implies an existential
@@ -147,7 +145,6 @@ export default [
                     The only reliable methods of controlling the behavior of a superintelligent agent will be intrinsic.
                     Safely implementing potential goals is explored at-length later on.
                 </p>
-
                 <p>
                     The constraints on AI models go beyond simple containment methods. Here, Bostrom identifies four
                     main types of agents, although with deeper analysis, these are all different manifestations of the
