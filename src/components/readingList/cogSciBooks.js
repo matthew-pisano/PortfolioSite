@@ -886,17 +886,24 @@ export default [
         "Brian Christian",
         (
             <>
-                <u>The Alignment Problem: Machine Learning and Human Values</u> compiles and analyzes numerous
-                interviews with experts trying to build artificial intelligence systems, particularly machine learning
-                systems, that are aligned with human values. The book is divided into three sections: Prophecy, Agency,
-                and Normativity. Each section covers researchers and engineers working on different challenges in the
-                alignment of artificial intelligence with human values.{" "}
-                <i>
-                    Source:{" "}
-                    <Link href={`https://en.wikipedia.org/wiki/The_Alignment_Problem`} target="_blank">
-                        {new URL(`https://en.wikipedia.org/wiki/The_Alignment_Problem`).hostname}
-                    </Link>
-                </i>
+                Unlike many of the other books on this list,{" "}
+                <u>The Alignment Problem: Machine Learning and Human Values</u> concentrates primarily on the immediate
+                risks of AI alignment, rather than long-term existential risks. One of the core theses of this books is
+                that we do not have to wait until artificial general intelligence to feel the negative effects of
+                misaligned AI systems. Through expert interviews, Christian lays out the full breadth of modern machine
+                learning research and how each handles the problem of alignment.
+                <p>
+                    This book is divided into three parts: Prophecy, Agency, and Normativity. Prophecy covers the
+                    history of AI development, from the first perceptrons to <i>AlexNet</i>, along with concrete
+                    examples of simple machine learning systems causing real-world harm. Agency explores biological
+                    mechanisms of reward, such as the dopaminergic system in the brain, and artificial ones, exemplified
+                    by research into reinforcement learning. This includes discussions of perhaps the most notable
+                    examples of massive RL systems, DeepMind's <i>AlphaGo</i> and <i>AlphaZero</i> systems. The final
+                    section zooms out, covering potential future aspects of AI misalignment, inverse reinforcement
+                    learning, effective altruism, and existential risk. The unique approach of this book to concentrate
+                    so heavily on real examples helped to ground the concept in the mind of the reader. Considering the
+                    harm misaligned systems have already caused, it is easier to mentally frame their potential impacts.
+                </p>
             </>
         ),
         (
