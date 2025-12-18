@@ -111,8 +111,9 @@ function buildFile(file, path) {
  */
 function buildHierarchy(tree, path = "") {
     // Create a directory if the tree is a directory, otherwise create a file
-    if (tree instanceof Directory) return buildDirectory(tree, path);
-    else return buildFile(tree, path);
+    if (tree instanceof Directory) {
+        if (tree.name !== "blog") return buildDirectory(tree, path);
+    } else return buildFile(tree, path);
 }
 
 /**
@@ -215,6 +216,7 @@ function buildSidebar() {
     let subTreeCopy = [...publicFolder.subTree];
     let homeFile = spliceFromSubTree(subTreeCopy, "home.html");
     let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
+    let blogFile = spliceFromSubTree(subTreeCopy, "blog.html");
     let readingListFile = spliceFromSubTree(subTreeCopy, "readingList.html");
     let lecturesFile = spliceFromSubTree(subTreeCopy, "lectures.html");
     let aboutFolder = spliceFromSubTree(subTreeCopy, "about");
@@ -226,6 +228,7 @@ function buildSidebar() {
         helpFile,
         readingListFile,
         lecturesFile,
+        blogFile,
         aboutFolder,
         researchFolder,
         ...subTreeCopy,

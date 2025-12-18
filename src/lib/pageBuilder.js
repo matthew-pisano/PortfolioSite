@@ -105,10 +105,11 @@ class GalleryTile extends Tile {
      * @param tags {string[]} The tags for the tile
      * @param links {TileLink[]} Links to display
      * @param titleLink {string} The link that the title should go to
+     * @param style {object} The style of the tile
      * @param anchor {string} The name of the anchor link to the tile
      */
-    constructor(title, content, thumbnail = "", tags = [], links = [], titleLink = "", anchor = "") {
-        super(title, content, thumbnail, tags, links, titleLink, {}, anchor);
+    constructor(title, content, thumbnail = "", tags = [], links = [], titleLink = "", style = {}, anchor = "") {
+        super(title, content, thumbnail, tags, links, titleLink, style, anchor);
     }
 }
 
@@ -387,6 +388,7 @@ function buildPage(pageInfo, tiles) {
 
 export {
     buildPage,
+    buildTiles,
     PageInfo,
     Tile,
     GalleryTile,
