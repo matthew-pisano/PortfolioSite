@@ -290,5 +290,5 @@ export default function Home() {
             new TileLink("https://orcid.org/0009-0001-5714-3585", "Orcid")
         ]
     );
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
+    return <DefaultWrapper pageInfo={pageInfo}></DefaultWrapper>;
 }

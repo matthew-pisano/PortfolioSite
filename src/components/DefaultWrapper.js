@@ -8,11 +8,11 @@ import styles from "@/styles/Wrapper.module.css";
 
 /**
  * Default wrapper for pages that do not need any special handling.
+ * @param children {JSXElement} The childre of the wrapper
  * @param pageInfo {PageInfo} Information about the page to be displayed
- * @param tiles {Tile[]} Tiles to be displayed on the page
  * @return {JSX.Element} The page wrapped in the default wrapper
  */
-function DefaultWrapper({ pageInfo, tiles }) {
+function DefaultWrapper({ children, pageInfo }) {
     return (
         <Wrapper pageName={pageInfo.pageName}>
             <div className={`${styles.titleCard}`}>
@@ -20,11 +20,12 @@ function DefaultWrapper({ pageInfo, tiles }) {
                 <br />
                 <h3>{pageInfo.summary}</h3>
             </div>
-            {buildPage(pageInfo, tiles)}
+            {children}
+            {buildPage(pageInfo, [])}
         </Wrapper>
     );
 }
 
-DefaultWrapper.propTypes = { pageInfo: PropTypes.any, tiles: PropTypes.array };
+DefaultWrapper.propTypes = { children: PropTypes.node, pageInfo: PropTypes.any };
 
 export default DefaultWrapper;
