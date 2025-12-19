@@ -3,7 +3,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Wrapper from "@/components/Wrapper";
-import { buildPage } from "@/lib/pageBuilder";
+import { buildTags } from "@/lib/pageBuilder";
+import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
 /**
@@ -20,8 +21,13 @@ function DefaultWrapper({ children, pageInfo }) {
                 <br />
                 <h3>{pageInfo.summary}</h3>
             </div>
-            {children}
-            {buildPage(pageInfo, [])}
+            <div
+                id="tileHolder"
+                className={`w3-display-container ${tileStyles.tileHolder}`}
+                style={pageInfo.holderStyle}>
+                {buildTags(pageInfo, true)}
+                {children}
+            </div>
         </Wrapper>
     );
 }

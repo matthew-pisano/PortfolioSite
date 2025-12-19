@@ -198,6 +198,29 @@ class PageInfo {
 }
 
 /**
+ * Metadata for a tile
+ */
+class TileInfo {
+    /**
+     * A Metadata for a tile
+     * @param title {JSXElement} The title of the tile
+     * @param thumbnail {string} The thumbnail image for the tile
+     * @param tags {string[]} The tags for the tile
+     * @param links {TileLink[]} Links to display
+     * @param titleLink {string} The link that the title should go to
+     * @param anchor {string} The name of the anchor link to the tile
+     */
+    constructor(title, thumbnail = "", tags = [], links = [], titleLink = "", anchor = "") {
+        this.title = title;
+        this.tags = tags;
+        this.thumbnail = thumbnail;
+        this.titleLink = titleLink;
+        this.links = links;
+        this.anchor = anchor;
+    }
+}
+
+/**
  * A footnote reference to appear in the text
  * @param idx The index of the footnote
  * @param anchor The anchor of the book the footnote is in
@@ -387,8 +410,10 @@ function buildPage(pageInfo, tiles) {
 
 export {
     buildPage,
+    buildTags,
     resetTilesOnScroll,
     PageInfo,
+    TileInfo,
     Tile,
     GalleryTile,
     SectionTile,
