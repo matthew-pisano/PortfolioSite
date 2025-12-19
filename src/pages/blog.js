@@ -33,7 +33,9 @@ export default function Blog() {
                     aliquip ex ea commodo consequat. Duis aute irure dolor.
                 </>
             ),
-            "/media/image/predictChain.png"
+            "/media/image/predictChain.png",
+            [],
+            "/blog/blogOne"
         ),
         new FlexTile(
             <h2>Lorem Ipsum</h2>,
@@ -44,7 +46,9 @@ export default function Blog() {
                     aliquip ex ea commodo consequat. Duis aute irure dolor.
                 </>
             ),
-            "/media/image/predictChain.png"
+            "/media/image/predictChain.png",
+            [],
+            "/blog/blogTwo"
         ),
         new FlexTile(
             <h2>Lorem Ipsum</h2>,
@@ -55,7 +59,9 @@ export default function Blog() {
                     aliquip ex ea commodo consequat. Duis aute irure dolor.
                 </>
             ),
-            "/media/image/predictChain.png"
+            "/media/image/predictChain.png",
+            [],
+            "/blog/blogThree"
         ),
         new FlexTile(
             <h2>Lorem Ipsumc</h2>,
@@ -66,7 +72,9 @@ export default function Blog() {
                     aliquip ex ea commodo consequat. Duis aute irure dolor.
                 </>
             ),
-            "/media/image/predictChain.png"
+            "/media/image/predictChain.png",
+            [],
+            "/blog/blogFour"
         )
     ];
     let pageInfo = new PageInfo(
