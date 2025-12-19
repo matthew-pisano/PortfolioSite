@@ -387,6 +387,7 @@ function buildPage(pageInfo, tiles) {
 
 export {
     buildPage,
+    resetTilesOnScroll,
     PageInfo,
     Tile,
     GalleryTile,
