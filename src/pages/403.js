@@ -38,7 +38,9 @@ export default function Unauthorized() {
                 <br />
                 <h3 style={{ margin: "auto", width: "auto", textAlign: "center" }}>{pageInfo.summary}</h3>
             </div>
-            <div id="tileHolder" className="w3-display-container" style={{ backgroundColor: "#000000" }}>
+            <div
+                className={`w3-display-container ${tileStyles.tileHolder}`}
+                style={{ backgroundColor: "#000000", marginTop: "200px" }}>
                 <div className={`w3-container w3-row ${tileStyles.displayTile}`}>
                     <h3>
                         <b>We have detected an unauthorized access attempt</b>
