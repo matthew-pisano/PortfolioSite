@@ -8,7 +8,7 @@ import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
 /**
- * Default wrapper for pages that do not need any special handling.
+ * Wrapper for pages that require tiles to wrap.
  * @param pageInfo {PageInfo} Information about the page to be displayed
  * @param tiles {Tile[]} Tiles to be displayed on the page
  * @return {JSX.Element} The page wrapped in the default wrapper
@@ -25,16 +25,7 @@ function FlexWrapper({ pageInfo, tiles }) {
                 id="tileHolder"
                 className={`w3-display-container ${tileStyles.tileHolder}`}
                 style={pageInfo.holderStyle}>
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flexWrap: "wrap",
-                        gap: "20px",
-                        paddingLeft: "3%"
-                    }}>
-                    {buildTiles(tiles)}
-                </div>
+                <div className={`${tileStyles.flexTileHolder}`}>{buildTiles(tiles)}</div>
             </div>
         </Wrapper>
     );
