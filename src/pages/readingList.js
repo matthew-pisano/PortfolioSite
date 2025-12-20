@@ -73,19 +73,19 @@ export default function ReadingList() {
                     new TileInfo({ title: <>Artificial Intelligence and Cognitive Science</>, anchor: sections.cogSci })
                 }
             />
-            {/*{cogSciBooks}*/}
+            {cogSciBooks}
             <SectionTile
                 tileInfo={new TileInfo({ title: <>History and Historical Fiction</>, anchor: sections.history })}
             />
-            {/*{historyBooks}*/}
+            {historyBooks}
             <SectionTile tileInfo={new TileInfo({ title: <>Science Fiction</>, anchor: sections.scifi })} />
-            {/*{scifiBooks}*/}
+            {scifiBooks}
             <SectionTile tileInfo={new TileInfo({ title: <>Physics</>, anchor: sections.physics })} />
-            {/*{physicsBooks}*/}
+            {physicsBooks}
             <SectionTile tileInfo={new TileInfo({ title: <>Philosophy</>, anchor: sections.philosophy })} />
             {philosophyBooks}
             <SectionTile tileInfo={new TileInfo({ title: <>Futurism</>, anchor: sections.futurism })} />
-            {/*{futurismBooks}*/}
+            {futurismBooks}
         </DefaultWrapper>
     );
 }
