@@ -43,7 +43,7 @@ export default function Home() {
                     the end user less exposed to potential threats.
                 </p>
                 <p>
-                    This can be thought of attaching a conscience to these models to help guide them toward aligned
+                    This can be thought of as attaching a conscience to these models to help guide them toward aligned
                     responses.
                 </p>
             </Tile>
@@ -132,12 +132,14 @@ export default function Home() {
                         ]
                     })
                 }>
-                This study, commissioned as a part of an RPI-IBM collaboration focused on developing an automatic speech
-                recognition (ASR) model with better accuracy on homophones; words that sound similar, but have different
-                meanings. These could either be true homophones, or false homophones that merely sound similar to the
-                ground-truth words. Our techniques involved using corrector large language models to help the composite
-                model generate more context-sensitive predictions and fine-tuning on hard datasets that contained noisy
-                samples and frequent use of homophones.
+                <p>
+                    This study, commissioned as a part of an RPI-IBM collaboration focused on developing an automatic
+                    speech recognition (ASR) model with better accuracy on homophones; words that sound similar, but
+                    have different meanings. These could either be true homophones, or false homophones that merely
+                    sound similar to the ground-truth words. Our techniques involved using corrector large language
+                    models to help the composite model generate more context-sensitive predictions and fine-tuning on
+                    hard datasets that contained noisy samples and frequent use of homophones.
+                </p>
             </Tile>
 
             <SectionTile tileInfo={new TileInfo({ title: <>Featured Projects</> })} />
@@ -152,11 +154,14 @@ export default function Home() {
                         titleLink: "personal/masm"
                     })
                 }>
-                <i>Masm</i> is an assembler and interpreter for MIPS assembly programs. Written in C++, is it able to
-                quickly parse, assemble, and execute even complex MIPS programs. Masm takes in one or more assembly
-                source code files, processes the instructions within the code, transforms them into executable MIPS
-                machine code, and executes the program on a virtual CPU. Additionally, it handles both input and output
-                through a standard console interface, so it can integrate into shell pipelines.
+                <p>
+                    <i>Masm</i> is an assembler and interpreter for MIPS assembly programs. Written in C++, it is able
+                    to quickly parse, assemble, and execute even complex MIPS programs. Masm takes in one or more
+                    assembly source code files, processes the instructions within the code, transforms them into
+                    executable MIPS machine code, and executes the program on a virtual CPU. Additionally, it handles
+                    both input and output through a standard console interface, so it can integrate into shell
+                    pipelines.
+                </p>
             </Tile>
 
             <Tile
@@ -171,10 +176,12 @@ export default function Home() {
                         titleLink: "personal/univmodels"
                     })
                 }>
-                The <i>Universal Models</i> library serves as an adapter between Hugging Face Transformers and several
-                other APIs. All models from these different sources can be instantiated and interacted with in the same
-                way as regular, local <i>Transformers</i> models. This allows for the easy integration of these models
-                into projects that need generation from models from different sources.
+                <p>
+                    The <i>Universal Models</i> library serves as an adapter between Hugging Face Transformers and
+                    several other APIs. All models from these different sources can be instantiated and interacted with
+                    in the same way as regular, local <i>Transformers</i> models. This allows for the easy integration
+                    of these models into projects that need generation from models from different sources.
+                </p>
             </Tile>
 
             <Tile
@@ -193,8 +200,10 @@ export default function Home() {
                         titleLink: "school/destiny"
                     })
                 }>
-                A highly parallelized population growth simulator. It is based on a cellular automata model of the
-                United States during its period of rapid Westward expansion from 1763 to 1863.
+                <p>
+                    A highly parallelized population growth simulator. It is based on a cellular automata model of the
+                    United States during its period of rapid Westward expansion from 1763 to 1863.
+                </p>
             </Tile>
 
             <Tile
@@ -207,8 +216,10 @@ export default function Home() {
                         titleLink: "personal/imageCrypt"
                     })
                 }>
-                A image-based document encoder and decoder that stores text within an image using small amounts of
-                noise.
+                <p>
+                    An image-based document encoder and decoder that stores text within an image using small amounts of
+                    noise.
+                </p>
             </Tile>
 
             <Tile
@@ -219,8 +230,11 @@ export default function Home() {
                         links: [new GitLink("https://github.com/matthew-pisano/LLMRetrieval", "LLM Retrieval")]
                     })
                 }>
-                A Solr information retrieval system with the capabilities of a large language model. Uses a language
-                model to improve retrieved results through query expansion, term re-weighting, and document re-ranking.
+                <p>
+                    A Solr information retrieval system with the capabilities of a large language model. Uses a language
+                    model to improve retrieved results through query expansion, term re-weighting, and document
+                    re-ranking.
+                </p>
             </Tile>
 
             <Tile
@@ -232,9 +246,11 @@ export default function Home() {
                         links: [new GitLink("https://github.com/GPT-Pedagogy/GPT-Pedagogy", "Mathesis")]
                     })
                 }>
-                Research into the creation of a fine-tuned GPT-3 teaching assistant that will enable the transparent use
-                of the technology between instructor and student to create a more active and participatory learning
-                environment.
+                <p>
+                    Research into the creation of a fine-tuned GPT-3 teaching assistant that will enable the transparent
+                    use of the technology between instructor and student to create a more active and participatory
+                    learning environment.
+                </p>
             </Tile>
 
             <Tile
@@ -247,7 +263,7 @@ export default function Home() {
                         titleLink: "personal/simplex"
                     })
                 }>
-                A math-oriented interpreted scripting language built in Java.
+                <p>A math-oriented interpreted scripting language built in Java.</p>
                 <p>
                     Simplex's focus is on mathematical and scientific calculations as it offers built-in matrix
                     operations (multiplication, determinants, etc.) as well as many scientific and fundamental
@@ -269,7 +285,7 @@ export default function Home() {
                         titleLink: "personal/imperium"
                     })
                 }>
-                Imperium is an android grand strategy game modeled after other popular titles on the PC platform.
+                <p>Imperium is an android grand strategy game modeled after other popular titles on the PC platform.</p>
                 <p>
                     The goal of this project is to provide mobile users with a fun empire simulator in either historical
                     settings within Europe or blank maps with game play more similar to the <i>RISK</i> board game.
