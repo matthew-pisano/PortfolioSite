@@ -17,11 +17,11 @@ export default function Help() {
     return (
         <DefaultWrapper pageInfo={pageInfo}>
             <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2> })}>
-                <>
+                <p>
                     This website is modeled after <i>Visual Studio Code</i> and the suite of
                     <i>Jetbrains</i> IDEs that I write many of my projects in. This site features many of the navigation
                     and editing characteristics of VS Code and other IDEs that I use regularly.
-                </>
+                </p>
             </Tile>
 
             <Tile
@@ -31,16 +31,16 @@ export default function Help() {
                         links: [new GitLink("https://github.com/matthew-pisano/PortfolioSite", "Source Code")]
                     })
                 }>
-                <>
+                <p>
                     As with the vast majority of my projects, this website is fully open-source! All system pages,
                     terminal emulation code, and build scripts can be found in a GitHub repository.
-                </>
+                </p>
             </Tile>
 
             <SectionTile tileInfo={new TileInfo({ title: <>Features</> })} />
 
             <Tile tileInfo={new TileInfo({ title: <>Explorer</> })}>
-                <>
+                <p>
                     The explorer sidebar, located on the left-hand side, allows for the navigation of the pages within
                     this site. Clicking on each of the files displays the page associated with that file. For example,
                     selecting <code>home.html</code> opens the homepage of the website. The names of the files are
@@ -48,11 +48,11 @@ export default function Help() {
                     file is selected, some additional information will be displayed on the status bar at the bottom of
                     the page, such as the file's size. At the top of the explorer is the collapse button, which
                     collapses the explorer to the left if more room for viewing the website content is needed.
-                </>
+                </p>
             </Tile>
 
             <Tile tileInfo={new TileInfo({ title: <>Files</> })}>
-                <>
+                <p>
                     Each of the files in the explorer represent pages that explain the various projects, research
                     papers, or events that I have worked on or participated in. The top of the page contains the title
                     of the project and a brief description. Below that are a series of tags. The first tag is often a
@@ -61,41 +61,41 @@ export default function Help() {
                     information on the type of project, the language(s) used, or the skills involved. Below those are
                     tiles that give more detailed information on the project, possibly including their own tags or
                     images. Files can also be created by the user using standard HTML, and CSS.
-                </>
+                </p>
             </Tile>
 
             <Tile tileInfo={new TileInfo({ title: <>File Storage Location</> })}>
-                <>
+                <p>
                     All files and other data are stored within your browser's local storage. This means that all files
                     created or modified will be saved even if the page is refreshed or closed. This also means that any
                     information saved here will not be accessible to myself, other users, or devices. This site also
                     contains no telemetry or tracking of any kind. This data can be cleared by using the{" "}
                     <code>File {">"} Reset</code> option in the top menu bar.
-                </>
+                </p>
             </Tile>
 
             <Tile tileInfo={new TileInfo({ title: <>File Editor</> })}>
-                <>
+                <p>
                     All user-created files are editable and can be renamed or deleted. These are usually located within
                     the <code>custom/</code> folder if created using the GUI. Selecting <code>File {">"} New</code> on
                     the menu bar will create a new file. Files can be renamed by right-clicking on them and selecting
                     the <code>Rename</code> button in the context menu.
-                    <br />
-                    <br />
+                </p>
+                <p>
                     These files will initially appear blank, all except for the <code>custom/readme.html</code> file,
                     which offers further explanation on how to use the editor. To add or edit the content of these
                     files, click the pencil icon to the right of the file. This will open the editor; whatever valid
                     HTML or CSS that is typed here will be interpreted and shown on screen whenever you select the main
                     file itself once again. This editor yields almost all the standard features of HTML. In fact, large
                     portions of this website can be recreated by using the editor alone!
-                    <br />
-                    <br />
+                </p>
+                <p>
                     To save the file, select <code>File {">"} Save</code> in the top right corner of the editor.
-                </>
+                </p>
             </Tile>
 
             <Tile tileInfo={new TileInfo({ title: <>Terminal</> })}>
-                <>
+                <p>
                     For browsers with larger screen sizes, a terminal emulator is available at the bottom of the screen.
                     This serves as a tool similar to the menu bar. Files can be created, renamed or deleted from here,
                     along with other standard commands. The terminal can be opened by clicking on it (at the bottom of
@@ -105,7 +105,7 @@ export default function Help() {
                     gathering information about this mock system, and even a few secrets and hidden features!
                     Additionally, the terminal supports drag-and-drop functionality for files. These files will appear
                     in the <code>~/mnt/</code> folder.
-                </>
+                </p>
             </Tile>
         </DefaultWrapper>
     );
