@@ -1,4 +1,3 @@
-import tagStyles from "@/styles/tags.module.css";
 import React from "react";
 
 import PropTypes from "prop-types";
@@ -6,6 +5,7 @@ import PropTypes from "prop-types";
 import { tagFactory } from "@/components/Tags";
 import Wrapper from "@/components/Wrapper";
 import tileStyles from "@/styles/pageTiles.module.css";
+import tagStyles from "@/styles/tags.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
 /**

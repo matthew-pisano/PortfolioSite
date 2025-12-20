@@ -1,3 +1,5 @@
+// noinspection JSAnnotator
+
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";

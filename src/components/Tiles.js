@@ -1,4 +1,3 @@
-import tagStyles from "@/styles/tags.module.css";
 import React from "react";
 
 import Link from "next/link";
@@ -6,6 +5,7 @@ import PropTypes from "prop-types";
 
 import { tagFactory } from "@/components/Tags";
 import tileStyles from "@/styles/pageTiles.module.css";
+import tagStyles from "@/styles/tags.module.css";
 
 const TRANSLUCENT = "rgba(139,166,175,0.45)";
 const TRANSLUCENT_TEXT = "rgb(238,251,255)";
