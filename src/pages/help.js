@@ -1,38 +1,45 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { GitLink, PageInfo, SectionTile, Tile } from "@/lib/pageBuilder";
+import { Tile, SectionTile } from "@/components/Tiles";
+import { GitLink, PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Help() {
-    let tiles = [
-        new Tile(
-            <h2>Overview</h2>,
-            (
+    let pageInfo = new PageInfo(
+        genPageTitle(__filename),
+        "Help Menu",
+        "In case you'd like some assistance",
+        { backgroundColor: PageColor.SINGULARITY_BLUE },
+        ["help"]
+    );
+    return (
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2> })}>
                 <>
                     This website is modeled after <i>Visual Studio Code</i> and the suite of
                     <i>Jetbrains</i> IDEs that I write many of my projects in. This site features many of the navigation
                     and editing characteristics of VS Code and other IDEs that I use regularly.
                 </>
-            )
-        ),
-        new Tile(
-            <>Source</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Source</>,
+                        links: [new GitLink("https://github.com/matthew-pisano/PortfolioSite", "Source Code")]
+                    })
+                }>
                 <>
                     As with the vast majority of my projects, this website is fully open-source! All system pages,
                     terminal emulation code, and build scripts can be found in a GitHub repository.
                 </>
-            ),
-            "",
-            [],
-            [new GitLink("https://github.com/matthew-pisano/PortfolioSite", "Source Code")]
-        ),
-        new SectionTile(<>Features</>),
-        new Tile(
-            <>Explorer</>,
-            (
+            </Tile>
+
+            <SectionTile tileInfo={new TileInfo({ title: <>Features</> })} />
+
+            <Tile tileInfo={new TileInfo({ title: <>Explorer</> })}>
                 <>
                     The explorer sidebar, located on the left-hand side, allows for the navigation of the pages within
                     this site. Clicking on each of the files displays the page associated with that file. For example,
@@ -42,11 +49,9 @@ export default function Help() {
                     the page, such as the file's size. At the top of the explorer is the collapse button, which
                     collapses the explorer to the left if more room for viewing the website content is needed.
                 </>
-            )
-        ),
-        new Tile(
-            <>Files</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Files</> })}>
                 <>
                     Each of the files in the explorer represent pages that explain the various projects, research
                     papers, or events that I have worked on or participated in. The top of the page contains the title
@@ -57,11 +62,9 @@ export default function Help() {
                     tiles that give more detailed information on the project, possibly including their own tags or
                     images. Files can also be created by the user using standard HTML, and CSS.
                 </>
-            )
-        ),
-        new Tile(
-            <>File Storage Location</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>File Storage Location</> })}>
                 <>
                     All files and other data are stored within your browser's local storage. This means that all files
                     created or modified will be saved even if the page is refreshed or closed. This also means that any
@@ -69,11 +72,9 @@ export default function Help() {
                     contains no telemetry or tracking of any kind. This data can be cleared by using the{" "}
                     <code>File {">"} Reset</code> option in the top menu bar.
                 </>
-            )
-        ),
-        new Tile(
-            <>File Editor</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>File Editor</> })}>
                 <>
                     All user-created files are editable and can be renamed or deleted. These are usually located within
                     the <code>custom/</code> folder if created using the GUI. Selecting <code>File {">"} New</code> on
@@ -91,11 +92,9 @@ export default function Help() {
                     <br />
                     To save the file, select <code>File {">"} Save</code> in the top right corner of the editor.
                 </>
-            )
-        ),
-        new Tile(
-            <>Terminal</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Terminal</> })}>
                 <>
                     For browsers with larger screen sizes, a terminal emulator is available at the bottom of the screen.
                     This serves as a tool similar to the menu bar. Files can be created, renamed or deleted from here,
@@ -107,15 +106,7 @@ export default function Help() {
                     Additionally, the terminal supports drag-and-drop functionality for files. These files will appear
                     in the <code>~/mnt/</code> folder.
                 </>
-            )
-        )
-    ];
-    let pageInfo = new PageInfo(
-        genPageTitle(__filename),
-        "Help Menu",
-        "In case you'd like some assistance",
-        { backgroundColor: PageColor.SINGULARITY_BLUE },
-        ["help"]
+            </Tile>
+        </DefaultWrapper>
     );
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
 }
