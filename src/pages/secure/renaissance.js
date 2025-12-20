@@ -1,7 +1,7 @@
-import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { TileTag } from "@/components/Tags";
 import { Tile } from "@/components/Tiles";
 import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { redact } from "@/lib/utils";

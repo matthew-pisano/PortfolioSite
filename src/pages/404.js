@@ -1,8 +1,8 @@
-import { TileTag } from "@/components/Tags";
 import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 
+import { TileTag } from "@/components/Tags";
 import Wrapper, { PageInfo } from "@/components/Wrapper";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";

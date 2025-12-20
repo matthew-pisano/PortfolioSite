@@ -1,10 +1,10 @@
-import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import Latex from "react-latex-next";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, TileLink } from "@/components/Links";
+import { TileTag } from "@/components/Tags";
 import { SectionTile, Tile } from "@/components/Tiles";
 import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
