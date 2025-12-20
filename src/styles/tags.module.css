@@ -41,12 +41,12 @@
     margin-right: 5px;
 }
 
-.gitLink img {
-    content: url("/assets/github.png");
-}
-
 .extraLink img {
     content: url("/assets/paper.png");
+}
+
+.gitLink img {
+    content: url("/assets/github.png");
 }
 
 .downloadLink img {
@@ -195,11 +195,11 @@
     content: "Alignment";
 }
 
-.clangTag img {
+.cTag img {
     content: url("/assets/c.png");
 }
 
-.clangTag div::after {
+.cTag div::after {
     content: "C";
 }
 

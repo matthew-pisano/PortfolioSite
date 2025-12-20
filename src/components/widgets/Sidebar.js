@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { createContextMenu, destroyContextMenu } from "@/components/ContextMenu";
-import { FileSystem, masterFileSystem, pathJoin, mergeClientDirectory } from "@/lib/fileSystem/fileSystem";
+import { createContextMenu, destroyContextMenu } from "@/components/widgets/ContextMenu";
+import { FileSystem, masterFileSystem, mergeClientDirectory, pathJoin } from "@/lib/fileSystem/fileSystem";
 import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 // eslint-disable-next-line no-unused-vars
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
-import { showDialog } from "@/lib/utils";
+import { showDialog } from "@/lib/util/utils";
 import styles from "@/styles/Sidebar.module.css";
 
 /**
@@ -221,7 +221,6 @@ function buildSidebar() {
     let lecturesFile = spliceFromSubTree(subTreeCopy, "lectures.html");
     let aboutFolder = spliceFromSubTree(subTreeCopy, "about");
     let researchFolder = spliceFromSubTree(subTreeCopy, "research");
-    let hackFolder = spliceFromSubTree(subTreeCopy, "hackathons");
     let customFolder = spliceFromSubTree(subTreeCopy, "custom");
     subTreeCopy = [
         homeFile,
@@ -232,7 +231,6 @@ function buildSidebar() {
         aboutFolder,
         researchFolder,
         ...subTreeCopy,
-        hackFolder,
         customFolder
     ];
     publicFolder.subTree = subTreeCopy;

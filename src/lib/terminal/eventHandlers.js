@@ -1,6 +1,6 @@
 import { masterFileSystem } from "@/lib/fileSystem/fileSystem";
 import { SysEnv } from "@/lib/fileSystem/fileSystemMeta";
-import { showDialog } from "@/lib/utils";
+import { showDialog } from "@/lib/util/utils";
 
 export class EventHandlers {
     /**

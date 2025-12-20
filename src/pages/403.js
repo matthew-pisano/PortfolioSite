@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 
-import Wrapper from "@/components/Wrapper";
-import { PageInfo } from "@/lib/pageBuilder";
+import Wrapper, { PageInfo } from "@/components/wrappers/Wrapper";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
@@ -38,7 +37,9 @@ export default function Unauthorized() {
                 <br />
                 <h3 style={{ margin: "auto", width: "auto", textAlign: "center" }}>{pageInfo.summary}</h3>
             </div>
-            <div id="tileHolder" className="w3-display-container" style={{ backgroundColor: "#000000" }}>
+            <div
+                className={`w3-display-container ${tileStyles.tileHolder}`}
+                style={{ backgroundColor: "#000000", marginTop: "200px" }}>
                 <div className={`w3-container w3-row ${tileStyles.displayTile}`}>
                     <h3>
                         <b>We have detected an unauthorized access attempt</b>
