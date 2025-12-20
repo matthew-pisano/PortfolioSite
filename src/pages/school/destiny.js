@@ -1,26 +1,41 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { GalleryTile, GitLink, PageInfo, Tile, TileLink } from "@/lib/pageBuilder";
+import { Tile, GalleryTile } from "@/components/Tiles";
+import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Destiny() {
-    let tiles = [
-        new Tile(
-            <h2>Overview</h2>,
-            (
+    let pageInfo = new PageInfo(
+        genPageTitle(__filename),
+        "Manifest Destiny",
+        "A cellular automata population growth simulator",
+        { backgroundColor: PageColor.SEGFAULT_MOSS },
+        ["academic", "clang", "cuda", "collab"],
+        [
+            new GitLink("https://github.com/matthew-pisano/ManifestDestiny", "ManifestDestiny"),
+            new TileLink(
+                "https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf",
+                "Research Paper"
+            )
+        ]
+    );
+    return (
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2> })}>
                 <>
                     <i>Manifest Destiny</i> is a population growth simulator. It is based on a cellular automata model
                     of the United States during its period of rapid Westward expansion from 1763 to 1863. It is
                     implemented in C and uses MPI for both parallel processing and parallel I/O. Additionally, it uses
                     CUDA to leverage the power of GPUs for the simulation.
                 </>
-            )
-        ),
-        new GalleryTile(
-            <>Simulation Details</>,
-            (
+            </Tile>
+
+            <GalleryTile
+                tileInfo={
+                    new TileInfo({ title: <>Simulation Details</>, thumbnail: "/media/image/1763-timelapse.gif" })
+                }>
                 <>
                     Our simulation uses a 2D cellular automata model of the United States. Each cell represents a square
                     area of land about 3 square miles in size, splitting the continental United States into a
@@ -29,12 +44,12 @@ export default function Destiny() {
                     cell's new population is calculated using a combination of the current population, the population of
                     neighboring cells, a cell's surrounding resources, and a random factor.
                 </>
-            ),
-            "/media/image/1763-timelapse.gif"
-        ),
-        new GalleryTile(
-            <>Cell Resources</>,
-            (
+            </GalleryTile>
+
+            <GalleryTile
+                tileInfo={
+                    new TileInfo({ title: <>Cell Resources</>, thumbnail: "/media/image/manifest-preprocessing.png" })
+                }>
                 <>
                     Each cell represents an 8 dimensional vector of attributes. These are a cell's elevation, surface
                     gradient, water attractiveness, temperature, annual precipitation, mineral wealth, biome, and
@@ -42,12 +57,9 @@ export default function Destiny() {
                     attractiveness is taken into account. We preprocessed visual map data to obtain each of these static
                     attributes, excluding population, which is the only dynamically calculated attribute.
                 </>
-            ),
-            "/media/image/manifest-preprocessing.png"
-        ),
-        new Tile(
-            <>Comparison to Census Data</>,
-            (
+            </GalleryTile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Comparison to Census Data</> })}>
                 <>
                     The following table contains historical census data of several American cities, as well as the
                     United States as a whole, compared with the results that our simulation produced for those areas.
@@ -101,32 +113,15 @@ export default function Destiny() {
                     namely the Irish Potato Famine and the sudden influx of Chinese immigrants during the Qing dynasty's
                     internal crisis of that time.
                 </>
-            )
-        ),
-        new Tile(
-            <>Parallelization</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Parallelization</> })}>
                 <>
                     Our simulation can also take advantage of high-performance computing resources to run simulations in
                     a fraction of the time it would take to run serially. We can simulate 1000 simulation iterations in
                     less than two seconds when utilizing 4 MPI ranks with 4 GPUs.
                 </>
-            )
-        )
-    ];
-    let pageInfo = new PageInfo(
-        genPageTitle(__filename),
-        "Manifest Destiny",
-        "A cellular automata population growth simulator",
-        { backgroundColor: PageColor.SEGFAULT_MOSS },
-        ["academic", "clang", "cuda", "collab"],
-        [
-            new GitLink("https://github.com/matthew-pisano/ManifestDestiny", "ManifestDestiny"),
-            new TileLink(
-                "https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf",
-                "Research Paper"
-            )
-        ]
+            </Tile>
+        </DefaultWrapper>
     );
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
 }
