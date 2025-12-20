@@ -104,7 +104,7 @@ BookTile.propTypes = {
     synopsis: PropTypes.element.isRequired,
     thoughts: PropTypes.element.isRequired,
     footnotes: PropTypes.element,
-    thumbnail: PropTypes.element.isRequired,
+    thumbnail: PropTypes.string.isRequired,
     anchor: PropTypes.string.isRequired
 };
 
