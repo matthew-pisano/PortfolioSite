@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import Latex from "react-latex-next";
@@ -15,7 +16,7 @@ export default function Neural() {
         "Neural",
         "A research project for comparing training methods of neural networks",
         { backgroundColor: PageColor.SEGFAULT_MOSS },
-        ["research", "academic", "ai", "python"],
+        [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.PYTHON],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/NuralPy"}>Neural</GitLink>

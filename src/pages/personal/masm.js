@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -13,7 +14,7 @@ export default function Masm() {
         "Masm",
         "A MIPS assembler and interpreter",
         { backgroundColor: PageColor.SUDO_TEAL },
-        ["personal", "cpp", "assembly", "python"],
+        [TileTag.PERSONAL, TileTag.CPP, TileTag.ASSEMBLY, TileTag.PYTHON],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/masm"}>Masm</GitLink>

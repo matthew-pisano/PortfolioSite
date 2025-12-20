@@ -2,6 +2,7 @@ import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink } from "@/components/Links";
+import { TileTag } from "@/components/Tags";
 import { Tile } from "@/components/Tiles";
 import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
@@ -13,7 +14,7 @@ export default function ImageCrypt() {
         "Image-Crypt",
         "An image-based document encoder",
         { backgroundColor: PageColor.SUDO_TEAL },
-        ["personal", "cpp"],
+        [TileTag.PERSONAL, TileTag.CPP],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/ImageCrypt"}>ImageCrypt</GitLink>

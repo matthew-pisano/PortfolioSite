@@ -1,5 +1,6 @@
 // noinspection JSAnnotator
 
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -35,7 +36,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Transformer Models: Architectures and Use Cases</>,
                         thumbnail: "/media/image/ibm.png",
-                        tags: ["academic", "ai"],
+                        tags: [TileTag.ACADEMIC, TileTag.AI],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/IBM+Transformer+Models.pdf"}>Slides</TileLink>
@@ -66,7 +67,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Computer Architecture and Organization Lecture Series</>,
                         thumbnail: "/media/image/suny-ulster.png",
-                        tags: ["academic", "assembly"]
+                        tags: [TileTag.ACADEMIC, TileTag.ASSEMBLY]
                     })
                 }>
                 <p>
@@ -99,7 +100,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Bergeron: Combating Adversarial Attacks by Emulating a Conscience</>,
                         thumbnail: "/media/image/rpi.png",
-                        tags: ["research", "academic", "ai", "alignment"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.ALIGNMENT],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/Bergeron+Thesis+Presentation.pdf"}>Slides</TileLink>
@@ -128,7 +129,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Bergeron: Towards Language Models with a Conscience</>,
                         thumbnail: "/media/image/rpi.png",
-                        tags: ["research", "academic", "ai", "alignment"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.ALIGNMENT],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/Bergeron+Cog+Sci+Series.pdf"}>Slides</TileLink>
@@ -155,7 +156,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Deep Reinforcement Learning and Its Neuroscientific Implications</>,
                         thumbnail: "/media/image/rpi.png",
-                        tags: ["research", "academic", "ai"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/Deep+RL+and+Implications.pdf"}>Slides</TileLink>
@@ -191,7 +192,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Moral High Ground: A Conversational Benchmark for LLM Moral Alignment</>,
                         thumbnail: "/media/image/ibm-research.png",
-                        tags: ["research", "ai", "alignment"]
+                        tags: [TileTag.RESEARCH, TileTag.AI, TileTag.ALIGNMENT]
                     })
                 }>
                 <p>
@@ -209,7 +210,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>PredictChain: Empowering Collaboration for AI in a Blockchain-based Marketplace</>,
                         thumbnail: "/media/image/chainscience.png",
-                        tags: ["research", "ai"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/PredictChain+ChainScience+23.pdf"}>Slides</TileLink>
@@ -236,7 +237,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Homophone Decoding & Speech Based Emotion Detection</>,
                         thumbnail: "/media/image/rpi.png",
-                        tags: ["research", "academic", "ai"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/Homophone+Decoding.pdf"}>Slides</TileLink>
@@ -264,7 +265,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>On Picard Groups and Jacobians of Directed Graphs</>,
                         thumbnail: "/media/image/jmm.jpg",
-                        tags: ["research", "academic"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/JMMPresentation.pdf"}>Slides</TileLink>

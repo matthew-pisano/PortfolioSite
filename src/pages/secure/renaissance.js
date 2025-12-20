@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -17,7 +18,7 @@ export default function Renaissance() {
         "Project Renaissance Archive",
         "Internal Incident Archive",
         { backgroundColor: "#616161" },
-        ["research", "ai"]
+        [TileTag.RESEARCH, TileTag.AI]
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>

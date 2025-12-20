@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -20,7 +21,7 @@ export default function SCP() {
         "SCP-672██",
         "",
         { backgroundColor: PageColor.FOUNDATION_RED },
-        ["keter", "research", "ai"],
+        [TileTag.KETER, TileTag.RESEARCH, TileTag.AI],
         (
             <>
                 <TileLink href={"https://scp-wiki.wikidot.com/scp-redacted"}>██████ Entry</TileLink>

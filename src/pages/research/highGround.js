@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import Link from "next/link";
@@ -14,8 +15,7 @@ export default function HighGround() {
         "Moral High Ground",
         "A conversational benchmark for LLM moral alignment",
         { backgroundColor: PageColor.URANIUM_GREEN },
-        ["research", "academic", "ai", "python"],
-        []
+        [TileTag.RESEARCH, TileTag.ALIGNMENT, TileTag.AI, TileTag.PYTHON]
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>

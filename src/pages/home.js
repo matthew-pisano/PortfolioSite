@@ -4,6 +4,7 @@ import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, TileLink } from "@/components/Links";
+import { TileTag } from "@/components/Tags";
 import { SectionTile, Tile } from "@/components/Tiles";
 import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
@@ -33,7 +34,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>Bergeron</>,
                         thumbnail: "/media/image/bergeron.png",
-                        tags: ["research", "academic", "ai", "alignment", "python"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.ALIGNMENT, TileTag.PYTHON],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/matthew-pisano/Bergeron"}>Bergeron</GitLink>
@@ -60,7 +61,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>Moral High Ground</>,
                         thumbnail: "/media/image/tw-llm.png",
-                        tags: ["research", "academic", "ai", "alignment", "python"],
+                        tags: [TileTag.RESEARCH, TileTag.AI, TileTag.ALIGNMENT, TileTag.PYTHON],
                         titleLink: "research/highGround"
                     })
                 }>
@@ -78,7 +79,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>On Picard Groups and Jacobians of Directed Graphs</>,
                         thumbnail: "/media/image/chipfiring.png",
-                        tags: ["research", "academic", "python"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.PYTHON],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/matthew-pisano/ChipFiring"}>Chip Firing</GitLink>
@@ -113,7 +114,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>PredictChain</>,
                         thumbnail: "/media/image/predictChain.png",
-                        tags: ["research", "academic", "ai", "python", "hack"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.PYTHON, TileTag.HACKATHON],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/predict-chain/predict-chain"}>PredictChain</GitLink>
@@ -135,7 +136,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>Homophone Decoding & Speech Based Emotion Detection</>,
-                        tags: ["research", "academic", "ai", "python"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.PYTHON],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/AIRC-ASR/AIRC-ASR-Experimental"}>AIRC ASR</GitLink>
@@ -161,7 +162,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>Masm</>,
                         thumbnail: "/media/image/assembly.png",
-                        tags: ["personal", "cpp", "assembly", "python"],
+                        tags: [TileTag.PERSONAL, TileTag.CPP, TileTag.ASSEMBLY, TileTag.PYTHON],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/matthew-pisano/masm"}>Masm</GitLink>
@@ -184,7 +185,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>Universal Models</>,
-                        tags: ["personal", "ai", "python"],
+                        tags: [TileTag.PERSONAL, TileTag.AI, TileTag.PYTHON],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/matthew-pisano/UniversalModels"}>
@@ -209,7 +210,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>Manifest Destiny</>,
                         thumbnail: "/media/image/1763-timelapse.gif",
-                        tags: ["academic", "clang", "cuda", "collab"],
+                        tags: [TileTag.ACADEMIC, TileTag.C, TileTag.CUDA, TileTag.COLLAB],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/matthew-pisano/ManifestDestiny"}>
@@ -237,7 +238,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>Image-Crypt</>,
                         thumbnail: "/media/image/secret-message.png",
-                        tags: ["personal", "cpp"],
+                        tags: [TileTag.PERSONAL, TileTag.CPP],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/matthew-pisano/ImageCrypt"}>ImageCrypt</GitLink>
@@ -256,7 +257,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>LLM Augmented Information Retrieval</>,
-                        tags: ["academic", "ai", "python"],
+                        tags: [TileTag.ACADEMIC, TileTag.AI, TileTag.PYTHON],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/matthew-pisano/LLMRetrieval"}>LLM Retrieval</GitLink>
@@ -276,7 +277,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>Mathesis</>,
                         thumbnail: "/assets/mathesis.png",
-                        tags: ["research", "academic", "ai", "python"],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.PYTHON],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/GPT-Pedagogy/GPT-Pedagogy"}>Mathesis</GitLink>
@@ -296,7 +297,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>Simplex</>,
                         thumbnail: "/media/image/simplexCode.jpg",
-                        tags: ["personal", "java", "android"],
+                        tags: [TileTag.PERSONAL, TileTag.JAVA, TileTag.ANDROID],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/matthew-pisano/SimplexIDE"}>Simplex</GitLink>
@@ -322,7 +323,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>Imperium</>,
                         thumbnail: "/media/image/imperiumLogo.png",
-                        tags: ["personal", "java", "android"],
+                        tags: [TileTag.PERSONAL, TileTag.JAVA, TileTag.ANDROID],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/matthew-pisano/Imperium"}>Imperium</GitLink>

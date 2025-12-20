@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import Link from "next/link";
@@ -15,7 +16,7 @@ export default function Bergeron() {
         "Bergeron",
         "A conscience-based alignment framework",
         { backgroundColor: PageColor.URANIUM_GREEN },
-        ["research", "academic", "ai", "alignment", "python"],
+        [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.ALIGNMENT, TileTag.PYTHON],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/Bergeron"}>Bergeron</GitLink>

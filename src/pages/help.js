@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -13,7 +14,7 @@ export default function Help() {
         "Help Menu",
         "In case you'd like some assistance",
         { backgroundColor: PageColor.SINGULARITY_BLUE },
-        ["help"]
+        [TileTag.HELP]
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>

@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import Latex from "react-latex-next";
@@ -15,7 +16,7 @@ export default function ChipFiring() {
         "Chip Firing",
         "A research project to examine patterns in chip firing games",
         { backgroundColor: PageColor.URANIUM_GREEN },
-        ["research", "academic", "python"],
+        [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.PYTHON],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/ChipFiring"}>Chip Firing</GitLink>

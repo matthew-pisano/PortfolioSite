@@ -195,11 +195,11 @@
     content: "Alignment";
 }
 
-.clangTag img {
+.cTag img {
     content: url("/assets/c.png");
 }
 
-.clangTag div::after {
+.cTag div::after {
     content: "C";
 }
 
