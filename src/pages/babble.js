@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
+import DefaultWrapper from "@/components/DefaultWrapper";
 import { Tile } from "@/components/Tiles";
-import Wrapper from "@/components/Wrapper";
-import { buildTags, PageInfo, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
@@ -44,7 +44,7 @@ async function backgroundGradient() {
  */
 async function babelTilesStep() {
     // Update the title card with random text
-    document.getElementsByClassName(styles.titleCard)[0].children[0].children[0].innerText = randText(
+    document.getElementsByClassName(styles.titleCard)[0].children[0].innerText = randText(
         Math.floor(Math.random() * 5) + 10
     );
 
@@ -89,24 +89,12 @@ export default function Babble() {
     }, []);
 
     return (
-        <Wrapper pageName={pageInfo.pageName}>
-            <div className={`${styles.titleCard}`}>
-                <h1 style={{ margin: "auto", width: "auto", textAlign: "center" }}>
-                    <b></b>
-                </h1>
-                <br />
-            </div>
-            <div
-                id="tileHolder"
-                className={`w3-display-container ${tileStyles.tileHolder}`}
-                style={pageInfo.holderStyle}>
-                {buildTags(pageInfo.tags, pageInfo.links, true)}
-                <Tile tileInfo={new TileInfo({ title: <>_</> })}></Tile>
-                <Tile tileInfo={new TileInfo({ title: <>_</> })}></Tile>
-                <Tile tileInfo={new TileInfo({ title: <>_</> })}></Tile>
-                <Tile tileInfo={new TileInfo({ title: <>_</> })}></Tile>
-                <Tile tileInfo={new TileInfo({ title: <>_</> })}></Tile>
-            </div>
-        </Wrapper>
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile tileInfo={new TileInfo({ title: <>_</> })}></Tile>
+            <Tile tileInfo={new TileInfo({ title: <>_</> })}></Tile>
+            <Tile tileInfo={new TileInfo({ title: <>_</> })}></Tile>
+            <Tile tileInfo={new TileInfo({ title: <>_</> })}></Tile>
+            <Tile tileInfo={new TileInfo({ title: <>_</> })}></Tile>
+        </DefaultWrapper>
     );
 }
