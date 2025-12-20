@@ -1,15 +1,24 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { GitLink, PageInfo, Tile } from "@/lib/pageBuilder";
+import { Tile } from "@/components/Tiles";
+import { GitLink, PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Imperium() {
-    let tiles = [
-        new Tile(
-            <h2>Overview</h2>,
-            (
+    let pageInfo = new PageInfo(
+        genPageTitle(__filename),
+        "Imperium",
+        "A historical grand strategy game for android devices",
+        { backgroundColor: PageColor.SUDO_TEAL },
+        ["personal", "java", "android"],
+        [new GitLink("https://github.com/matthew-pisano/Imperium", "Imperium")]
+    );
+
+    return (
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2> })}>
                 <>
                     Imperium is an application developed for android without any game engines or development frameworks.
                     <br />
@@ -19,34 +28,35 @@ export default function Imperium() {
                     board game and other grand strategy games for the PC platform and to develop a low level expertise
                     in Android for myself by building everything from scratch.
                 </>
-            )
-        ),
-        new Tile(
-            <>Development</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Development</>, thumbnail: "/media/image/imperiumLogo.png" })}>
                 <>
                     Starting as a side-project, Imperium soon became a learning exercise in Android and Java
                     development. Utilizing many techniques such as thread management, Android layout design, knowledge
                     of the Android file system and permissions, and general game design, the making of Imperium greatly
                     expanded my knowledge of Java, Android, and software development.
                 </>
-            ),
-            "/media/image/imperiumLogo.png"
-        ),
-        new Tile(
-            <>Publishing and Best Practices</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Publishing and Best Practices</>,
+                        thumbnail: "/media/image/imperiumGooglePlay.png"
+                    })
+                }>
                 <>
                     Published to the Google Play store in early 2020, Imperium has amassed several thousand downloads.
                     Adherence to Google Play guidelines and standards has resulted in an enjoyable experience for many
                     users. Local multiplayer is also supported resulting in many users being reached by recommendations.
                 </>
-            ),
-            "/media/image/imperiumGooglePlay.png"
-        ),
-        new Tile(
-            <>Features and Game-play</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>Features and Game-play</>, thumbnail: "/media/image/imperiumMap.png" })
+                }>
                 <>
                     Imperium implements many features present in the grand strategy games it emulates. Users can save
                     and reload save files, play, pause or skip music of its soundtrack, access an inbuilt tutorial, and
@@ -57,17 +67,7 @@ export default function Imperium() {
                     diplomacy and historical scenarios at its most complex. Statistics of a player's game are recorded
                     and saved for access by the player in-game.
                 </>
-            ),
-            "/media/image/imperiumMap.png"
-        )
-    ];
-    let pageInfo = new PageInfo(
-        genPageTitle(__filename),
-        "Imperium",
-        "A historical grand strategy game for android devices",
-        { backgroundColor: PageColor.SUDO_TEAL },
-        ["personal", "java", "android"],
-        [new GitLink("https://github.com/matthew-pisano/Imperium", "Imperium")]
+            </Tile>
+        </DefaultWrapper>
     );
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
 }
