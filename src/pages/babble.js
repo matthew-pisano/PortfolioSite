@@ -26,6 +26,7 @@ async function backgroundGradient() {
     let grayDirection = 2;
     let grayState = 0;
 
+    // noinspection InfiniteLoopJS
     while (true) {
         // Update background with red bias
         let redBias = Math.log(grayState) + 20;
@@ -75,6 +76,7 @@ async function babelTilesStep() {
 async function babbleLoop() {
     backgroundGradient();
 
+    // noinspection InfiniteLoopJS
     while (true) {
         await babelTilesStep();
         await new Promise((resolve) => setTimeout(resolve, 2000));
