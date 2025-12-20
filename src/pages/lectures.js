@@ -1,27 +1,43 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { PageInfo, Tile, TileLink } from "@/lib/pageBuilder";
+import { Tile } from "@/components/Tiles";
+import { PageInfo, TileLink, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Lectures() {
     let deepRlLink =
         "https://www.cell.com/neuron/fulltext/S0896-6273(20)30468-2?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0896627320304682%3Fshowall%3Dtrue";
-    let tiles = [
-        new Tile(
-            <h2>Overview</h2>,
-            (
+
+    let pageInfo = new PageInfo(
+        genPageTitle(__filename),
+        "Lectures and Presentations",
+        "A series of notable lectures or presentations that I have given",
+        { backgroundColor: PageColor.SINGULARITY_BLUE },
+        [],
+        []
+    );
+
+    return (
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2> })}>
                 <>
                     This page serves as a place to aggregate and link to some of the notable lectures or presentations
                     that I have given throughout my education and career. Topics range from my own research to general
                     education in subject areas of my expertise.
                 </>
-            )
-        ),
-        new Tile(
-            <>Transformer Models: Architectures and Use Cases</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Transformer Models: Architectures and Use Cases</>,
+                        thumbnail: "/media/image/ibm.png",
+                        tags: ["academic", "ai"],
+                        links: [new TileLink("/media/documents/IBM+Transformer+Models.pdf", "Slides")]
+                    })
+                }>
                 <>
                     I created this lecture for a session of IBM's internal lecture series. For these sessions,
                     knowledgeable members of an organization are invited to give a lecture on an area of their expertise
@@ -39,14 +55,17 @@ export default function Lectures() {
                         updated over time.
                     </p>
                 </>
-            ),
-            "/media/image/ibm.png",
-            ["academic", "ai"],
-            [new TileLink("/media/documents/IBM+Transformer+Models.pdf", "Slides")]
-        ),
-        new Tile(
-            <>Computer Architecture and Organization Lecture Series</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Computer Architecture and Organization Lecture Series</>,
+                        thumbnail: "/media/image/suny-ulster.png",
+                        tags: ["academic", "assembly"],
+                        links: []
+                    })
+                }>
                 <>
                     This lecture series, given over the course of one semester, covers the core concepts of MIPS,
                     computer organization, and more advanced topics. This includes:
@@ -70,14 +89,20 @@ export default function Lectures() {
                         architectures.
                     </p>
                 </>
-            ),
-            "/media/image/suny-ulster.png",
-            ["academic", "assembly"],
-            []
-        ),
-        new Tile(
-            <>Bergeron: Combating Adversarial Attacks by Emulating a Conscience</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Bergeron: Combating Adversarial Attacks by Emulating a Conscience</>,
+                        thumbnail: "/media/image/rpi.png",
+                        tags: ["research", "academic", "ai", "alignment"],
+                        links: [
+                            new TileLink("/media/documents/Bergeron+Thesis+Presentation.pdf", "Slides"),
+                            new TileLink("/media/video/Bergeron+Thesis+Presentation.mp4", "Recording")
+                        ]
+                    })
+                }>
                 <>
                     My thesis lecture and defense concentrated on a novel strategy of aligning the behavior of large
                     language models with human preferences. It details my <i>Bergeron</i> framework that aims to improve
@@ -91,17 +116,20 @@ export default function Lectures() {
                         was invited to participate in both a seminar-style lecture and a poster presentation.
                     </p>
                 </>
-            ),
-            "/media/image/rpi.png",
-            ["research", "academic", "ai", "alignment"],
-            [
-                new TileLink("/media/documents/Bergeron+Thesis+Presentation.pdf", "Slides"),
-                new TileLink("/media/video/Bergeron+Thesis+Presentation.mp4", "Recording")
-            ]
-        ),
-        new Tile(
-            <>Bergeron: Towards Language Models with a Conscience</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Bergeron: Towards Language Models with a Conscience</>,
+                        thumbnail: "/media/image/rpi.png",
+                        tags: ["research", "academic", "ai", "alignment"],
+                        links: [
+                            new TileLink("/media/documents/Bergeron+Cog+Sci+Series.pdf", "Slides"),
+                            new TileLink("https://vimeo.com/showcase/10930583/video/916811537", "Recording")
+                        ]
+                    })
+                }>
                 <>
                     This presentation was an earlier revision of my thesis research which I tailored to a technical
                     audience that did not necessarily include experts in the field. It is distinct from my final
@@ -111,17 +139,17 @@ export default function Lectures() {
                     guest lecture for both graduate and undergraduate students in RPI's{" "}
                     <i>Topics in Cognitive Science</i> course.
                 </>
-            ),
-            "/media/image/rpi.png",
-            ["research", "academic", "ai", "alignment"],
-            [
-                new TileLink("/media/documents/Bergeron+Cog+Sci+Series.pdf", "Slides"),
-                new TileLink("https://vimeo.com/showcase/10930583/video/916811537", "Recording")
-            ]
-        ),
-        new Tile(
-            <>Deep Reinforcement Learning and Its Neudoscientific Implications</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Deep Reinforcement Learning and Its Neuroscientific Implications</>,
+                        thumbnail: "/media/image/rpi.png",
+                        tags: ["research", "academic", "ai"],
+                        links: [new TileLink("/media/documents/Deep+RL+and+Implications.pdf", "Slides")]
+                    })
+                }>
                 <>
                     This presentation is an adaptation of Matthew Botvinick's (et al.) 2020{" "}
                     <a href={deepRlLink} target="_blank" rel="noreferrer">
@@ -143,14 +171,16 @@ export default function Lectures() {
                         a learner needs to see before learning the general case for a pattern.
                     </p>
                 </>
-            ),
-            "/media/image/rpi.png",
-            ["research", "academic", "ai"],
-            [new TileLink("/media/documents/Deep+RL+and+Implications.pdf", "Slides")]
-        ),
-        new Tile(
-            <>Moral High Ground: A Conversational Benchmark for LLM Moral Alignment</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Moral High Ground: A Conversational Benchmark for LLM Moral Alignment</>,
+                        thumbnail: "/media/image/ibm-research.png",
+                        tags: ["research", "ai", "alignment"]
+                    })
+                }>
                 <>
                     As a part of my research visitation at the <i>IBM Thomas J. Watson Research Center</i>, I had given
                     a presentation summarizing my research progress over the summer. This research concerned the
@@ -159,13 +189,17 @@ export default function Lectures() {
                     student researchers and senior members of IBM's research teams.
                     <p>In the interest of confidentiality, I have omitted the original slide deck here.</p>
                 </>
-            ),
-            "/media/image/ibm-research.png",
-            ["research", "ai", "alignment"]
-        ),
-        new Tile(
-            <>PredictChain: Empowering Collaboration for AI in a Blockchain-based Marketplace</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>PredictChain: Empowering Collaboration for AI in a Blockchain-based Marketplace</>,
+                        thumbnail: "/media/image/chainscience.png",
+                        tags: ["research", "ai"],
+                        links: [new TileLink("/media/documents/PredictChain+ChainScience+23.pdf", "Slides")]
+                    })
+                }>
                 <>
                     <i>PredictChain</i> is a decentralized artificial intelligence marketplace that I developed,
                     primarily along with another student at RPI. It utilizes the <i>Algorand</i> blockchain to allow
@@ -178,14 +212,17 @@ export default function Lectures() {
                         where it was presented by one of my collaborators on the paper.
                     </p>
                 </>
-            ),
-            "/media/image/chainscience.png",
-            ["research", "ai"],
-            [new TileLink("/media/documents/PredictChain+ChainScience+23.pdf", "Slides")]
-        ),
-        new Tile(
-            <>Homophone Decoding & Speech Based Emotion Detection</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Homophone Decoding & Speech Based Emotion Detection</>,
+                        thumbnail: "/media/image/rpi.png",
+                        tags: ["research", "academic", "ai"],
+                        links: [new TileLink("/media/documents/Homophone+Decoding.pdf", "Slides")]
+                    })
+                }>
                 <>
                     This study, commissioned as a part of an RPI-IBM collaboration, focused on developing an automatic
                     speech recognition (ASR) model with better accuracy on homophones; words that sound similar, but
@@ -199,14 +236,17 @@ export default function Lectures() {
                         this report on our successful progress.
                     </p>
                 </>
-            ),
-            "/media/image/rpi.png",
-            ["research", "academic", "ai"],
-            [new TileLink("/media/documents/Homophone+Decoding.pdf", "Slides")]
-        ),
-        new Tile(
-            <>On Picard Groups and Jacobians of Directed Graphs</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>On Picard Groups and Jacobians of Directed Graphs</>,
+                        thumbnail: "/media/image/jmm.jpg",
+                        tags: ["research", "academic"],
+                        links: [new TileLink("/media/documents/JMMPresentation.pdf", "Slides")]
+                    })
+                }>
                 <>
                     This research was performed by myself, an advisor at <i>SUNY New Paltz</i>, and one of his
                     colleagues. In this research, we focused on the study of Chip-Firing games and how different
@@ -220,20 +260,7 @@ export default function Lectures() {
                         <i>Math and Cookies</i> lecture series.
                     </p>
                 </>
-            ),
-            "/media/image/jmm.jpg",
-            ["research", "academic"],
-            [new TileLink("/media/documents/JMMPresentation.pdf", "Slides")]
-        )
-    ];
-    let pageInfo = new PageInfo(
-        genPageTitle(__filename),
-        "Lectures and Presentations",
-        "A series of notable lectures or presentations that I have given",
-        { backgroundColor: PageColor.SINGULARITY_BLUE },
-        [],
-        []
+            </Tile>
+        </DefaultWrapper>
     );
-
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
 }
