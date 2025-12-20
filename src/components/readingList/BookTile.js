@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useEffect, useRef } from "react";
 
 import Link from "next/link";
 import PropTypes from "prop-types";
@@ -21,9 +21,53 @@ const BookAnchorContext = createContext(null);
  * @param anchor {string} The anchor id for the tile
  * @constructor
  */
+
 function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anchor }) {
+    const footnotesRef = useRef([]);
+    const footRefsRef = useRef([]);
+
+    useEffect(() => {
+        const refs = footRefsRef.current;
+        const notes = footnotesRef.current;
+
+        // Check for duplicates
+        const duplicateFootRefs = refs.filter((idx, i) => refs.indexOf(idx) !== i);
+        const duplicateFootNotes = notes.filter((idx, i) => notes.indexOf(idx) !== i);
+
+        const duplicateFootnoteIndices = [...new Set(duplicateFootNotes)].join(", ");
+        if (duplicateFootNotes.length > 0)
+            throw new Error(`Book "${title}": Duplicate FootNote index(es): ${duplicateFootnoteIndices}`);
+
+        const duplicateFootRefIndices = [...new Set(duplicateFootRefs)].join(", ");
+        if (duplicateFootRefs.length > 0)
+            throw new Error(`Book "${title}": Duplicate FootRef index(es): ${duplicateFootRefIndices}`);
+
+        // Validate that all FootRefs have corresponding FootNotes
+        const uniqueRefs = [...new Set(refs)];
+        const uniqueNotes = [...new Set(notes)];
+
+        const missingNotes = uniqueRefs.filter((idx) => !uniqueNotes.includes(idx));
+        const unusedNotes = uniqueNotes.filter((idx) => !uniqueRefs.includes(idx));
+
+        if (missingNotes.length > 0)
+            throw new Error(`Book "${title}": FootRef(s) without matching FootNote(s): ${missingNotes.join(", ")}`);
+
+        if (unusedNotes.length > 0)
+            throw new Error(`Book "${title}": FootNote(s) without matching FootRef(s): ${unusedNotes.join(", ")}`);
+    }, [title, anchor, synopsis, thoughts, footnotes]);
+
+    const contextValue = {
+        anchor,
+        registerFootNote: (idx) => {
+            footnotesRef.current.push(idx);
+        },
+        registerFootRef: (idx) => {
+            footRefsRef.current.push(idx);
+        }
+    };
+
     return (
-        <BookAnchorContext.Provider value={anchor}>
+        <BookAnchorContext.Provider value={contextValue}>
             <Tile tileInfo={new TileInfo({ title: <>{title}</>, thumbnail: thumbnail, anchor: anchor })}>
                 <div className={`${tileStyles.bookTileContent}`}>
                     <span className={tileStyles.bookTileSection}>
@@ -71,13 +115,26 @@ BookTile.propTypes = {
  * @constructor
  */
 function FootRef({ idx }) {
-    const anchor = useContext(BookAnchorContext);
+    const context = useContext(BookAnchorContext);
+    if (!context) throw new Error("FootRef must be used within a BookTile");
+
+    const { anchor, registerFootRef } = context;
+    const registeredRef = useRef(false);
+
+    useEffect(() => {
+        if (!registeredRef.current) {
+            registerFootRef(idx);
+            registeredRef.current = true;
+        }
+    }, [idx, registerFootRef]);
+
     return (
         <Link href={`#footnote-${anchor}-${idx}`}>
             <sup id={`footref-${anchor}-${idx}`}>{idx}</sup>
         </Link>
     );
 }
+
 FootRef.propTypes = { idx: PropTypes.number.isRequired };
 
 /**
@@ -89,7 +146,19 @@ FootRef.propTypes = { idx: PropTypes.number.isRequired };
  * @constructor
  */
 function FootNote({ idx, style, children }) {
-    const anchor = useContext(BookAnchorContext);
+    const context = useContext(BookAnchorContext);
+    if (!context) throw new Error("FootNote must be used within a BookTile");
+
+    const { anchor, registerFootNote } = context;
+    const registeredRef = useRef(false);
+
+    useEffect(() => {
+        if (!registeredRef.current) {
+            registerFootNote(idx);
+            registeredRef.current = true;
+        }
+    }, [idx, registerFootNote]);
+
     return (
         <span style={{ ...style, textIndent: 0, display: "block", marginBottom: "10px" }}>
             <Link href={`#footref-${anchor}-${idx}`}>
@@ -99,6 +168,7 @@ function FootNote({ idx, style, children }) {
         </span>
     );
 }
+
 FootNote.propTypes = {
     idx: PropTypes.number.isRequired,
     style: PropTypes.object,
