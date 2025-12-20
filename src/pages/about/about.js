@@ -9,7 +9,6 @@ import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
 import { Constants, genPageTitle } from "@/lib/utils";
 
-
 export default function About() {
     let pageInfo = new PageInfo(
         genPageTitle(__filename),
@@ -20,9 +19,9 @@ export default function About() {
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/"}>GitHub</GitLink>
-                <TileLink href={Constants.resumeUrl}>"Résumé"</TileLink>
-                <TileLink href={"https://www.linkedin.com/in/matthew-pisano"}>"LinkedIn"</TileLink>
-                <TileLink href={"https://orcid.org/0009-0001-5714-3585"}>"Orcid"</TileLink>
+                <TileLink href={Constants.resumeUrl}>Résumé</TileLink>
+                <TileLink href={"https://www.linkedin.com/in/matthew-pisano"}>LinkedIn</TileLink>
+                <TileLink href={"https://orcid.org/0009-0001-5714-3585"}>Orcid</TileLink>
             </>
         )
     );
