@@ -57,7 +57,7 @@ function Tag({ tagId }) {
 }
 
 Tag.propTypes = {
-    tagId: PropTypes.object.isRequired
+    tagId: PropTypes.string.isRequired
 };
 
 export { TileTag, tagFactory };
