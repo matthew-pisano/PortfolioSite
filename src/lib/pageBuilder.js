@@ -300,7 +300,7 @@ function buildLink(tileLink, dark = false) {
 
 /**
  * Builds the tags for a page or tile
- * @param tags {String[]} Names of tags to build
+ * @param tags {string[]} Names of tags to build
  * @param links {TileLink[]} Links to add to the tile
  * @param dark {boolean} Whether the tags should be dark or darker
  * @return {JSX.Element} The tags JSX DIV element
