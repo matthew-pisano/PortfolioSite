@@ -6,20 +6,17 @@ import PropTypes from "prop-types";
 import { resetTilesOnScroll } from "@/components/Tiles";
 import tagStyles from "@/styles/tags.module.css";
 
-
-
 /**
  * A link element for usage in a tile or page
  * @param children {JSXElement} The link body
  * @param href {string} The link target
  * @param target {string} The link opening method
- * @param dark {boolean} Whether the link is styled darker
  * @param className {string} Any additional classes
  * @constructor
  */
-function TileLink({ children, href, target, dark, className }) {
+function TileLink({ children, href, target, className }) {
     return (
-        <div className={`w3-mobile w3-col ${tagStyles.extraLink} ${dark ? tagStyles.darkTag : ""} ${className}`}>
+        <div className={`w3-mobile w3-col ${tagStyles.extraLink} ${className}`}>
             <img className="w3-col" alt="tileLink" />
             <div className="w3-rest">
                 <Link href={href} target={target ? target : "_blank"} rel="noreferrer" onClick={resetTilesOnScroll}>
@@ -34,7 +31,6 @@ TileLink.propTypes = {
     children: PropTypes.element,
     href: PropTypes.string.isRequired,
     target: PropTypes.string,
-    dark: PropTypes.bool,
     className: PropTypes.string
 };
 
@@ -42,12 +38,11 @@ TileLink.propTypes = {
  * A GitHub link element for usage in a tile or page
  * @param children {JSXElement} The link body
  * @param href {string} The link target
- * @param dark {boolean} Whether the link is styled darker
  * @constructor
  */
-function GitLink({ children, href, dark }) {
+function GitLink({ children, href }) {
     return (
-        <TileLink href={href} className={tagStyles.gitLink} dark={dark}>
+        <TileLink href={href} className={tagStyles.gitLink}>
             {children}
         </TileLink>
     );
@@ -55,20 +50,18 @@ function GitLink({ children, href, dark }) {
 
 GitLink.propTypes = {
     children: PropTypes.element,
-    href: PropTypes.string.isRequired,
-    dark: PropTypes.bool
+    href: PropTypes.string.isRequired
 };
 
 /**
  * A download link element for usage in a tile or page
  * @param children {JSXElement} The link body
  * @param href {string} The link target
- * @param dark {boolean} Whether the link is styled darker
  * @constructor
  */
-function DownloadLink({ children, href, dark }) {
+function DownloadLink({ children, href }) {
     return (
-        <TileLink href={href} className={tagStyles.downloadLink} dark={dark}>
+        <TileLink href={href} className={tagStyles.downloadLink}>
             {children}
         </TileLink>
     );
@@ -76,20 +69,18 @@ function DownloadLink({ children, href, dark }) {
 
 DownloadLink.propTypes = {
     children: PropTypes.element,
-    href: PropTypes.string.isRequired,
-    dark: PropTypes.bool
+    href: PropTypes.string.isRequired
 };
 
 /**
  * A page header link element for usage in a tile or page
  * @param children {JSXElement} The link body
  * @param href {string} The link target
- * @param dark {boolean} Whether the link is styled darker
  * @constructor
  */
-function PageLink({ children, href, dark }) {
+function PageLink({ children, href }) {
     return (
-        <TileLink href={href} className={tagStyles.pageLink} dark={dark} target={"_self"}>
+        <TileLink href={href} className={tagStyles.pageLink} target={"_self"}>
             {children}
         </TileLink>
     );
@@ -97,8 +88,7 @@ function PageLink({ children, href, dark }) {
 
 PageLink.propTypes = {
     children: PropTypes.element,
-    href: PropTypes.string.isRequired,
-    dark: PropTypes.bool
+    href: PropTypes.string.isRequired
 };
 
 export { TileLink, GitLink, DownloadLink, PageLink };
