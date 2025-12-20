@@ -1,7 +1,7 @@
 import React from "react";
 
-import Wrapper, { PageInfo } from "@/components/Wrapper";
-import { Constants } from "@/lib/utils";
+import Wrapper, { PageInfo } from "@/components/wrappers/Wrapper";
+import { Constants } from "@/lib/util/utils";
 import styles from "@/styles/pageTiles.module.css";
 
 export default function Resume() {

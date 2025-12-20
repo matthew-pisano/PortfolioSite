@@ -1,17 +1,17 @@
 import React from "react";
 
-import DefaultWrapper from "@/components/DefaultWrapper";
-import { PageLink } from "@/components/Links";
 import cogSciBooks from "@/components/readingList/cogSciBooks";
 import futurismBooks from "@/components/readingList/futurismBooks";
 import historyBooks from "@/components/readingList/historyBooks";
 import philosophyBooks from "@/components/readingList/philosophyBooks";
 import physicsBooks from "@/components/readingList/physicsBooks";
 import scifiBooks from "@/components/readingList/scifiBooks";
-import { SectionTile, Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/components/Wrapper";
-import { PageColor } from "@/lib/themes";
-import { genPageTitle } from "@/lib/utils";
+import { PageLink } from "@/components/tiles/Links";
+import { SectionTile, Tile } from "@/components/tiles/Tiles";
+import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
+import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
+import { PageColor } from "@/lib/util/themes";
+import { genPageTitle } from "@/lib/util/utils";
 
 export default function ReadingList() {
     let sections = {

@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { tagFactory } from "@/components/Tags";
+import { tagFactory } from "@/components/tiles/Tags";
 import tileStyles from "@/styles/pageTiles.module.css";
 import tagStyles from "@/styles/tags.module.css";
 

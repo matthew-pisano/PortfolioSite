@@ -1,12 +1,12 @@
 import React from "react";
 
-import DefaultWrapper from "@/components/DefaultWrapper";
-import { GitLink } from "@/components/Links";
-import { TileTag } from "@/components/Tags";
-import { Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/components/Wrapper";
-import { PageColor } from "@/lib/themes";
-import { genPageTitle } from "@/lib/utils";
+import { GitLink } from "@/components/tiles/Links";
+import { TileTag } from "@/components/tiles/Tags";
+import { Tile } from "@/components/tiles/Tiles";
+import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
+import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
+import { PageColor } from "@/lib/util/themes";
+import { genPageTitle } from "@/lib/util/utils";
 
 export default function Inception() {
     let pageInfo = new PageInfo(

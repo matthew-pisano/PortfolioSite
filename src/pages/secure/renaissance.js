@@ -1,10 +1,10 @@
 import React from "react";
 
-import DefaultWrapper from "@/components/DefaultWrapper";
-import { TileTag } from "@/components/Tags";
-import { Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/components/Wrapper";
-import { redact } from "@/lib/utils";
+import { TileTag } from "@/components/tiles/Tags";
+import { Tile } from "@/components/tiles/Tiles";
+import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
+import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
+import { redact } from "@/lib/util/utils";
 
 let redactedDate = (
     <>

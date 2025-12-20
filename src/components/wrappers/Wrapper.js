@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import PropTypes from "prop-types";
 
-import DialogBox from "@/components/DialogBox";
-import { HeaderMenu, savePage, StatusFooter } from "@/components/Margins";
-import Sidebar from "@/components/Sidebar";
-import Terminal from "@/components/Terminal";
-import { slideTilesOnScroll } from "@/components/Tiles";
+import { slideTilesOnScroll } from "@/components/tiles/Tiles";
+import DialogBox from "@/components/widgets/DialogBox";
+import { HeaderMenu, savePage, StatusFooter } from "@/components/widgets/Margins";
+import Sidebar from "@/components/widgets/Sidebar";
+import Terminal from "@/components/widgets/Terminal";
 import { buildClientside, buildServerside } from "@/lib/fileSystem/fileSystem";
-import { setTheme } from "@/lib/themes";
+import { setTheme } from "@/lib/util/themes";
 import styles from "@/styles/Wrapper.module.css";
 
 /**

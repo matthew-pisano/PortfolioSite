@@ -2,12 +2,12 @@ import React from "react";
 
 import Link from "next/link";
 
-import DefaultWrapper from "@/components/DefaultWrapper";
-import { TileTag } from "@/components/Tags";
-import { GalleryTile, SectionTile, Tile, TRANSLUCENT } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/components/Wrapper";
-import { PageColor } from "@/lib/themes";
-import { genPageTitle } from "@/lib/utils";
+import { TileTag } from "@/components/tiles/Tags";
+import { GalleryTile, SectionTile, Tile, TRANSLUCENT } from "@/components/tiles/Tiles";
+import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
+import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
+import { PageColor } from "@/lib/util/themes";
+import { genPageTitle } from "@/lib/util/utils";
 
 export default function HighGround() {
     let pageInfo = new PageInfo(

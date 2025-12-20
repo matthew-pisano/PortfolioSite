@@ -3,11 +3,11 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { renameFile } from "@/components/Sidebar";
+import { renameFile } from "@/components/widgets/Sidebar";
 import { masterFileSystem, pathJoin } from "@/lib/fileSystem/fileSystem";
 import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
-import { setTheme } from "@/lib/themes";
-import { showDialog } from "@/lib/utils";
+import { setTheme } from "@/lib/util/themes";
+import { showDialog } from "@/lib/util/utils";
 import styles from "@/styles/Margins.module.css";
 import wrapperStyles from "@/styles/Wrapper.module.css";
 

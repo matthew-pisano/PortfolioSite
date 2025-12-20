@@ -7,7 +7,7 @@ import { Help } from "@/lib/terminal/helpMenu";
 import { resolveTokens, tokenizeCommand } from "@/lib/terminal/processTokens";
 import { letoucan, neofetch, system32, tfLogo, theMissile } from "@/lib/terminal/strings";
 import { Sprite } from "@/lib/terminal/terminalSprites";
-import { setTheme, themes } from "@/lib/themes";
+import { setTheme, themes } from "@/lib/util/themes";
 
 /**
  * Whether the sprites command has been invoked

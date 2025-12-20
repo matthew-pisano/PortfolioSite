@@ -3,8 +3,8 @@ import React, { createContext, useContext, useEffect, useRef } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { Tile } from "@/components/Tiles";
-import { TileInfo } from "@/components/Wrapper";
+import { Tile } from "@/components/tiles/Tiles";
+import { TileInfo } from "@/components/wrappers/Wrapper";
 import tileStyles from "@/styles/pageTiles.module.css";
 
 // Create a context for the book anchor
