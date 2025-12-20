@@ -5,7 +5,6 @@ import parse from "html-react-parser";
 import { SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import styles from "@/styles/pageTiles.module.css";
 
-
 let mathesisIcon = `${SysEnv.OS} ${SysEnv.ARCH}
         <span style="color: #05c905">
               lWMMMMMMMMMWl        lWMMMMMMMMMWl

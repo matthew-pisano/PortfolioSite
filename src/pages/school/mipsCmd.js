@@ -9,7 +9,6 @@ import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 import wrapperStyles from "@/styles/Wrapper.module.css";
 
-
 export default function MipsCmd() {
     let pageInfo = new PageInfo(
         genPageTitle(__filename),

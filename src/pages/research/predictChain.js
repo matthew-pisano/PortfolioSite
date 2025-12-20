@@ -9,7 +9,6 @@ import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
-
 export default function PredictChain() {
     let pageInfo = new PageInfo(
         genPageTitle(__filename),

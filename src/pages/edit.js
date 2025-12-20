@@ -10,8 +10,6 @@ import { masterFileSystem } from "@/lib/fileSystem/fileSystem";
 import { Perms } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory } from "@/lib/fileSystem/fileSystemObjects";
 
-
-
 export default function Edit() {
     let pageInfo = new PageInfo("edit", "Edit", "Edit the contents of a file");
 

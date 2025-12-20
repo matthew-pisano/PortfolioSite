@@ -11,8 +11,6 @@ import { showDialog } from "@/lib/utils";
 import styles from "@/styles/Margins.module.css";
 import wrapperStyles from "@/styles/Wrapper.module.css";
 
-
-
 /**
  * Whether the menu bar is primed for animation by clicking it
  * @type {boolean}

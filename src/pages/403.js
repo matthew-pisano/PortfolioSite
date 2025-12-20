@@ -6,7 +6,6 @@ import Wrapper, { PageInfo } from "@/components/Wrapper";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
-
 const authQuotes = [
     "You appear to have been misinformed.",
     "You're not from around here, ain't ya?",
