@@ -30,12 +30,12 @@ export default function About() {
                     My name is Matthew Pisano. I am an Artificial Intelligence Researcher and Software Engineer. I have
                     a Master's degree in Computer Science from Rensselaer Polytechnic Institute along with extensive
                     work experience in the domains of artificial intelligence, academia, and software development.
-                    <br />
-                    <br />
-                    My research centers around language model alignment; enforcing safety without hampering its
-                    cognitive abilities. I often draw inspiration from biological intelligences to aid im my work with
-                    artificial ones. I enjoy learning about how the mind works and the cognitive principles that it
-                    operates upon.
+                    <p>
+                        My research centers around language model alignment; enforcing safety without hampering its
+                        cognitive abilities. I often draw inspiration from biological intelligences to aid im my work
+                        with artificial ones. I enjoy learning about how the mind works and the cognitive principles
+                        that it operates upon.
+                    </p>
                 </>
             </Tile>
 
