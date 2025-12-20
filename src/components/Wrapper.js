@@ -7,9 +7,9 @@ import DialogBox from "@/components/DialogBox";
 import { HeaderMenu, savePage, StatusFooter } from "@/components/Margins";
 import Sidebar from "@/components/Sidebar";
 import Terminal from "@/components/Terminal";
+import { slideTilesOnScroll } from "@/components/Tiles";
 import { buildClientside, buildServerside } from "@/lib/fileSystem/fileSystem";
 import { setTheme } from "@/lib/themes";
-import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
 /**
@@ -45,26 +45,50 @@ function addWrapperListeners() {
 }
 
 /**
- * Slides the tiles into view as the user scrolls down the page
+ * Metadata for a page
  */
-function slideTilesOnScroll() {
-    let tileHolder = document.getElementById("tileHolder");
-    if (!tileHolder) return;
+class PageInfo {
+    pageName;
 
-    for (let tileElement of tileHolder.children) {
-        // For each tile, check if it is in view
-        if (tileElement.id === "") continue;
+    /**
+     * Metadata for a page
+     * @param pageName {string} The name of the page
+     * @param title {string} The title of the page
+     * @param summary {string} A brief summary of the page
+     * @param holderStyle {object} The style of the page holder
+     * @param tags {string[]} The tags for the page
+     * @param links {JSXElement} Links to display at the top of the page
+     */
+    constructor(pageName, title, summary, holderStyle = {}, tags = [], links = []) {
+        this.pageName = pageName;
+        this.title = title;
+        this.summary = summary;
+        this.holderStyle = holderStyle;
+        this.links = links;
+        this.tags = tags;
+    }
+}
 
-        if (tileElement.getBoundingClientRect().top <= window.innerHeight - 100) {
-            // If the tile is in view and offset, slide it into view
-            tileElement.classList.remove(tileStyles.hiddenTile);
-            tileElement.setAttribute("data-refdata", "slid");
-        }
-        // Avoid adding hidden class if tile has already been shown or if the page has an anchor link (prevents visual scrolling errors)
-        else if (tileElement.getAttribute("data-refdata") === "unslid" && !window.location.hash.length) {
-            tileElement.classList.add(tileStyles.hiddenTile); // Sides the tile off-screen if it is out of view as the page initially loads
-            tileElement.setAttribute("data-refdata", "slid");
-        }
+/**
+ * Metadata for a tile
+ */
+class TileInfo {
+    /**
+     * A Metadata for a tile
+     * @param title {JSXElement} The title of the tile
+     * @param thumbnail {string} The thumbnail image for the tile
+     * @param tags {string[]} The tags for the tile
+     * @param links {JSXElement} Links to display
+     * @param titleLink {string} The link that the title should go to
+     * @param anchor {string} The name of the anchor link to the tile
+     */
+    constructor({ title, thumbnail = "", tags = [], links = [], titleLink = "", anchor = "" }) {
+        this.title = title;
+        this.tags = tags;
+        this.thumbnail = thumbnail;
+        this.titleLink = titleLink;
+        this.links = links;
+        this.anchor = anchor;
     }
 }
 
@@ -136,3 +160,4 @@ Wrapper.propTypes = {
 };
 
 export default Wrapper;
+export { TileInfo, PageInfo };

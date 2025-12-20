@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 
-import Wrapper from "@/components/Wrapper";
-import { PageInfo } from "@/lib/pageBuilder";
+import Wrapper, { PageInfo } from "@/components/Wrapper";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
