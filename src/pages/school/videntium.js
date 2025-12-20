@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -13,7 +14,7 @@ export default function Videntium() {
         "Videntium",
         "Online map viewer for Imperium written in PHP",
         { backgroundColor: PageColor.SEGFAULT_MOSS },
-        ["academic", "php", "js", "html"],
+        [TileTag.ACADEMIC, TileTag.PHP, TileTag.JS, TileTag.HTML],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/Videntium"}>Videntium</GitLink>

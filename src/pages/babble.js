@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React, { useEffect } from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -81,7 +82,7 @@ async function babbleLoop() {
 }
 
 export default function Babble() {
-    let pageInfo = new PageInfo("babble", "", "", { backgroundColor: "#5a3afa00" }, ["help"]);
+    let pageInfo = new PageInfo("babble", "", "", { backgroundColor: "#5a3afa00" }, [TileTag.HELP]);
 
     // Start the babble loop when the page loads
     useEffect(() => {

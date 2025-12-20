@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -13,7 +14,7 @@ export default function Destiny() {
         "Manifest Destiny",
         "A cellular automata population growth simulator",
         { backgroundColor: PageColor.SEGFAULT_MOSS },
-        ["academic", "clang", "cuda", "collab"],
+        [TileTag.ACADEMIC, TileTag.C, TileTag.CUDA, TileTag.COLLAB],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/ManifestDestiny"}>ManifestDestiny</GitLink>

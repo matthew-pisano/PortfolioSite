@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import Link from "next/link";
@@ -15,7 +16,7 @@ export default function UnivModels() {
         "Universal Models",
         "An adapter between Huggingface transformers and several different APIs",
         { backgroundColor: PageColor.SUDO_TEAL },
-        ["personal", "ai", "python"],
+        [TileTag.PERSONAL, TileTag.AI, TileTag.PYTHON],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/UniversalModels"}>UniversalModels</GitLink>

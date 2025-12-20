@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import Link from "next/link";
@@ -15,7 +16,7 @@ export default function MipsCmd() {
         "MIPS Terminal",
         "A simple command processor written in the MIPS assembly language",
         { backgroundColor: PageColor.SEGFAULT_MOSS },
-        ["academic", "assembly"]
+        [TileTag.ACADEMIC, TileTag.ASSEMBLY]
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>

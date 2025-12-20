@@ -14,7 +14,7 @@ const TileTag = {
     COLLAB: "collab",
     CPP: "cpp",
     CUDA: "cuda",
-    HACKATHON: "hackathon",
+    HACKATHON: "hack",
     HELP: "help",
     HTML: "html",
     JAVA: "java",

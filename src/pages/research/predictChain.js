@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import Link from "next/link";
@@ -15,7 +16,7 @@ export default function PredictChain() {
         "PredictChain",
         "Empowering collaboration and data accessibility for AI in a decentralized blockchain-based marketplace",
         { backgroundColor: PageColor.URANIUM_GREEN },
-        ["research", "academic", "ai", "python", "hack"],
+        [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.PYTHON, TileTag.HACKATHON],
         (
             <>
                 <GitLink href={"https://github.com/predict-chain/predict-chain"}>PredictChain</GitLink>

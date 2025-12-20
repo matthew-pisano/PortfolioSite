@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -13,7 +14,7 @@ export default function Imperium() {
         "Imperium",
         "A historical grand strategy game for android devices",
         { backgroundColor: PageColor.SUDO_TEAL },
-        ["personal", "java", "android"],
+        [TileTag.PERSONAL, TileTag.JAVA, TileTag.ANDROID],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/Imperium"}>Imperium</GitLink>

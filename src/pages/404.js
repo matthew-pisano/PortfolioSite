@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
@@ -39,7 +40,7 @@ export default function PageNotFound() {
         return "/babble";
     }
 
-    let pageInfo = new PageInfo("404", "Page Not Found", quote, { backgroundColor: "#000000" }, ["help"]);
+    let pageInfo = new PageInfo("404", "Page Not Found", quote, { backgroundColor: "#000000" }, [TileTag.HELP]);
 
     return (
         <Wrapper pageName={pageInfo.pageName}>

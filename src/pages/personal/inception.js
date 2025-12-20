@@ -1,3 +1,4 @@
+import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
@@ -13,7 +14,7 @@ export default function Inception() {
         "Inception Collage",
         "Assembles one image mosaic from many, smaller images",
         { backgroundColor: PageColor.SUDO_TEAL },
-        ["personal", "java"],
+        [TileTag.PERSONAL, TileTag.JAVA],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/InceptionCollage"}>Inception</GitLink>
