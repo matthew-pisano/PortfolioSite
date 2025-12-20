@@ -6,7 +6,6 @@ import Wrapper, { PageInfo } from "@/components/Wrapper";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
-
 const lostQuotes = [
     "How did we get here?",
     "Not all who wander are lost...",

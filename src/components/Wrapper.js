@@ -12,8 +12,6 @@ import { buildClientside, buildServerside } from "@/lib/fileSystem/fileSystem";
 import { setTheme } from "@/lib/themes";
 import styles from "@/styles/Wrapper.module.css";
 
-
-
 /**
  * Execute a command in the terminal.  This function is called when a command is passed in the URL.
  */

@@ -11,8 +11,6 @@ import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
 import { showDialog } from "@/lib/utils";
 import styles from "@/styles/Sidebar.module.css";
 
-
-
 /**
  * Create a directory element in the sidebar
  * @param directory {Directory} The directory to create

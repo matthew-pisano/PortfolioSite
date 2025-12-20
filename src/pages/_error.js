@@ -6,8 +6,6 @@ import PropTypes from "prop-types";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
-
-
 function Error({ statusCode }) {
     return (
         <div>
