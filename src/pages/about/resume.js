@@ -1,7 +1,6 @@
 import React from "react";
 
-import Wrapper from "@/components/Wrapper";
-import { PageInfo } from "@/lib/pageBuilder";
+import Wrapper, { PageInfo } from "@/components/Wrapper";
 import { Constants } from "@/lib/utils";
 import styles from "@/styles/pageTiles.module.css";
 

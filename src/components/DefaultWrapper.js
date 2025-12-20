@@ -1,15 +1,16 @@
+import tagStyles from "@/styles/tags.module.css";
 import React from "react";
 
 import PropTypes from "prop-types";
 
+import { tagFactory } from "@/components/Tags";
 import Wrapper from "@/components/Wrapper";
-import { buildTags } from "@/lib/pageBuilder";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
 /**
  * Default wrapper for pages that do not need any special handling.
- * @param children {JSXElement} The childre of the wrapper
+ * @param children {JSXElement} The children of the wrapper
  * @param pageInfo {PageInfo} Information about the page to be displayed
  * @return {JSX.Element} The page wrapped in the default wrapper
  */
@@ -25,7 +26,10 @@ function DefaultWrapper({ children, pageInfo }) {
                 id="tileHolder"
                 className={`w3-display-container ${tileStyles.tileHolder}`}
                 style={pageInfo.holderStyle}>
-                {buildTags(pageInfo.tags, pageInfo.links, true)}
+                <div className={`w3-row ${tagStyles.tagHolder}`}>
+                    {pageInfo.links}
+                    {tagFactory(pageInfo.tags)}
+                </div>
                 {children}
             </div>
         </Wrapper>

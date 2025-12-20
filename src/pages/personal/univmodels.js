@@ -5,9 +5,10 @@ import Link from "next/link";
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, TileLink } from "@/components/Links";
 import { Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
+
 
 export default function UnivModels() {
     let pageInfo = new PageInfo(

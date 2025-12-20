@@ -6,6 +6,8 @@ import ReactDOM from "react-dom/client";
 import styles from "@/styles/ContextMenu.module.css";
 import sidebarStyles from "@/styles/Sidebar.module.css";
 
+
+
 /**
  * The root element of the context menu
  */

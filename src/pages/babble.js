@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/components/Wrapper";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 

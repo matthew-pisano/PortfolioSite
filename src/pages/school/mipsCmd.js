@@ -4,10 +4,11 @@ import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { Tile, TRANSLUCENT } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 import wrapperStyles from "@/styles/Wrapper.module.css";
+
 
 export default function MipsCmd() {
     let pageInfo = new PageInfo(

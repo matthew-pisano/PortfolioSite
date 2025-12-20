@@ -12,6 +12,8 @@ import { buildClientside, buildServerside } from "@/lib/fileSystem/fileSystem";
 import { setTheme } from "@/lib/themes";
 import styles from "@/styles/Wrapper.module.css";
 
+
+
 /**
  * Execute a command in the terminal.  This function is called when a command is passed in the URL.
  */
@@ -42,6 +44,54 @@ function addWrapperListeners() {
             savePage(window.location.pathname);
         }
     });
+}
+
+/**
+ * Metadata for a page
+ */
+class PageInfo {
+    pageName;
+
+    /**
+     * Metadata for a page
+     * @param pageName {string} The name of the page
+     * @param title {string} The title of the page
+     * @param summary {string} A brief summary of the page
+     * @param holderStyle {object} The style of the page holder
+     * @param tags {string[]} The tags for the page
+     * @param links {JSXElement} Links to display at the top of the page
+     */
+    constructor(pageName, title, summary, holderStyle = {}, tags = [], links = []) {
+        this.pageName = pageName;
+        this.title = title;
+        this.summary = summary;
+        this.holderStyle = holderStyle;
+        this.links = links;
+        this.tags = tags;
+    }
+}
+
+/**
+ * Metadata for a tile
+ */
+class TileInfo {
+    /**
+     * A Metadata for a tile
+     * @param title {JSXElement} The title of the tile
+     * @param thumbnail {string} The thumbnail image for the tile
+     * @param tags {string[]} The tags for the tile
+     * @param links {JSXElement} Links to display
+     * @param titleLink {string} The link that the title should go to
+     * @param anchor {string} The name of the anchor link to the tile
+     */
+    constructor({ title, thumbnail = "", tags = [], links = [], titleLink = "", anchor = "" }) {
+        this.title = title;
+        this.tags = tags;
+        this.thumbnail = thumbnail;
+        this.titleLink = titleLink;
+        this.links = links;
+        this.anchor = anchor;
+    }
 }
 
 /**
@@ -112,3 +162,4 @@ Wrapper.propTypes = {
 };
 
 export default Wrapper;
+export { TileInfo, PageInfo };

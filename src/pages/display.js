@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import parse from "html-react-parser";
 
-import Wrapper from "@/components/Wrapper";
+import Wrapper, { PageInfo } from "@/components/Wrapper";
 import { masterFileSystem } from "@/lib/fileSystem/fileSystem";
 import { Perms } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory } from "@/lib/fileSystem/fileSystemObjects";
-import { PageInfo } from "@/lib/pageBuilder";
+
 
 export default function Display() {
     const [pageText, setPageText] = useState("");

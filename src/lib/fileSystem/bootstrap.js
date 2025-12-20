@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, statSync } from "fs";
 import { resolve } from "path";
 
-import { SSH, DontPanic } from "@/lib/fileSystem/fileStrings";
+import { DontPanic, SSH } from "@/lib/fileSystem/fileStrings";
 import { FileSystem, pathJoin } from "@/lib/fileSystem/fileSystem";
 import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";

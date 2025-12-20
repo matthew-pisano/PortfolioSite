@@ -4,8 +4,10 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 
 import { Tile } from "@/components/Tiles";
-import { TileInfo } from "@/lib/pageBuilder";
+import { TileInfo } from "@/components/Wrapper";
 import tileStyles from "@/styles/pageTiles.module.css";
+
+
 
 /**
  * A tile representing a book review

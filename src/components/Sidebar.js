@@ -4,12 +4,14 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 
 import { createContextMenu, destroyContextMenu } from "@/components/ContextMenu";
-import { FileSystem, masterFileSystem, pathJoin, mergeClientDirectory } from "@/lib/fileSystem/fileSystem";
+import { FileSystem, masterFileSystem, mergeClientDirectory, pathJoin } from "@/lib/fileSystem/fileSystem";
 import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 // eslint-disable-next-line no-unused-vars
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
 import { showDialog } from "@/lib/utils";
 import styles from "@/styles/Sidebar.module.css";
+
+
 
 /**
  * Create a directory element in the sidebar

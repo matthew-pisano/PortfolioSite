@@ -3,7 +3,7 @@ import React from "react";
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { TileLink } from "@/components/Links";
 import { Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
 import { redact } from "@/lib/utils";
 

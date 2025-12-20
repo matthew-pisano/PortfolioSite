@@ -4,10 +4,11 @@ import Latex from "react-latex-next";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
 import { GitLink, TileLink } from "@/components/Links";
-import { Tile, SectionTile } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/lib/pageBuilder";
+import { SectionTile, Tile } from "@/components/Tiles";
+import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
+
 
 export default function Neural() {
     let pageInfo = new PageInfo(

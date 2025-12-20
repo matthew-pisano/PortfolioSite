@@ -9,7 +9,7 @@ import philosophyBooks from "@/components/readingList/philosophyBooks";
 import physicsBooks from "@/components/readingList/physicsBooks";
 import scifiBooks from "@/components/readingList/scifiBooks";
 import { SectionTile, Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 

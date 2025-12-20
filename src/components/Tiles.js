@@ -1,9 +1,10 @@
+import tagStyles from "@/styles/tags.module.css";
 import React from "react";
 
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { buildTags } from "@/lib/pageBuilder";
+import { tagFactory } from "@/components/Tags";
 import tileStyles from "@/styles/pageTiles.module.css";
 
 const TRANSLUCENT = "rgba(139,166,175,0.45)";
@@ -119,7 +120,10 @@ function Tile({ children, tileInfo, style }) {
             <div className={`w3-mobile w3-rest`}>
                 <h4 className={`${tileStyles.displayContentTitle}`}>{tileElements.tileTitle}</h4>
                 {tileElements.tileContent}
-                {buildTags(tileInfo.tags, tileInfo.links)}
+                <div className={`w3-row ${tagStyles.tagHolder}`}>
+                    {tileInfo.links}
+                    {tagFactory(tileInfo.tags)}
+                </div>
             </div>
         </div>
     );
