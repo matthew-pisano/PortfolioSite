@@ -1,7 +1,7 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { Tile } from "@/components/Tiles";
+import { Tile, SectionTile } from "@/components/Tiles";
 import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { Constants } from "@/lib/utils";
@@ -293,7 +293,29 @@ export default function Home() {
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
-            <Tile tileInfo={new TileInfo(<>Featured Research</>)}></Tile>
+            <SectionTile tileInfo={new TileInfo({ title: <>Featured Research</> })} />
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Bergeron</>,
+                        thumbnail: "/media/image/bergeron.png",
+                        tags: ["research", "academic", "ai", "alignment", "python"],
+                        links: [
+                            new GitLink("https://github.com/matthew-pisano/Bergeron", "Bergeron"),
+                            new TileLink("https://arxiv.org/abs/2312.00029", "Research Paper")
+                        ],
+                        titleLink: "research/bergeron"
+                    })
+                }>
+                <i>Bergeron</i> is a framework that protects models against both natural language adversarial attacks
+                and its own bias toward mis-alignment. This is done through the usage of a secondary model that judges
+                the prompts to and responses from that primary model. This leaves the primary model and the end user
+                less exposed to potential threats.
+                <p>
+                    This can be thought of attaching a conscience to these models to help guide them toward aligned
+                    responses.
+                </p>
+            </Tile>
         </DefaultWrapper>
     );
 }

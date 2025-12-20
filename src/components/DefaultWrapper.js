@@ -25,7 +25,7 @@ function DefaultWrapper({ children, pageInfo }) {
                 id="tileHolder"
                 className={`w3-display-container ${tileStyles.tileHolder}`}
                 style={pageInfo.holderStyle}>
-                {buildTags(pageInfo, true)}
+                {buildTags(pageInfo.tags, pageInfo.links, true)}
                 {children}
             </div>
         </Wrapper>

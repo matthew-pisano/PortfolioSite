@@ -210,7 +210,7 @@ class TileInfo {
      * @param titleLink {string} The link that the title should go to
      * @param anchor {string} The name of the anchor link to the tile
      */
-    constructor(title, thumbnail = "", tags = [], links = [], titleLink = "", anchor = "") {
+    constructor({ title, thumbnail = "", tags = [], links = [], titleLink = "", anchor = "" }) {
         this.title = title;
         this.tags = tags;
         this.thumbnail = thumbnail;
@@ -300,15 +300,16 @@ function buildLink(tileLink, dark = false) {
 
 /**
  * Builds the tags for a page or tile
- * @param tile {Tile | PageInfo} The tiles to build tags for
+ * @param tags {String[]} Names of tags to build
+ * @param links {TileLink[]} Links to add to the tile
  * @param dark {boolean} Whether the tags should be dark or darker
  * @return {JSX.Element} The tags JSX DIV element
  */
-function buildTags(tile, dark = false) {
+function buildTags(tags, links, dark = false) {
     return (
         <div className={`w3-row ${tagStyles.tagHolder}`}>
-            {(tile.links || []).map((tileLink) => buildLink(tileLink, dark))}
-            {(tile.tags || []).map((tagName) => (
+            {(links || []).map((tileLink) => buildLink(tileLink, dark))}
+            {(tags || []).map((tagName) => (
                 <div className={`w3-col w3-mobile ${tagStyles.tag} ${tagStyles[tagName + "Tag"]}`} key={tagName}>
                     <img className="w3-col" alt={tagName} />
                     <div className="w3-rest"></div>
