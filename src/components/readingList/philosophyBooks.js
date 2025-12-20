@@ -5,7 +5,6 @@ import { BookTile } from "@/components/readingList/BookTile";
 export default (
     <>
         <BookTile
-            key={crypto.randomUUID()}
             title={"The Stranger"}
             author={"Albert Camus"}
             synopsis={
@@ -141,7 +140,6 @@ export default (
                     <p>To many readers, this can be a rather attractive notion.</p>
                 </>
             }
-            footnotes={<></>}
             thumbnail={"/media/image/the-stranger.jpg"}
             anchor={"letranger"}
         />
