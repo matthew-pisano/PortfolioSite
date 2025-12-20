@@ -47,6 +47,7 @@ export default function Home() {
                     responses.
                 </p>
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -64,6 +65,7 @@ export default function Home() {
                     abilities of several LLMs.
                 </p>
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -97,6 +99,7 @@ export default function Home() {
                     , Volume 711, Pages 180-211 on April 15th 2025.
                 </p>
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -117,6 +120,7 @@ export default function Home() {
                     hackathon.
                 </p>
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -135,7 +139,9 @@ export default function Home() {
                 model generate more context-sensitive predictions and fine-tuning on hard datasets that contained noisy
                 samples and frequent use of homophones.
             </Tile>
+
             <SectionTile tileInfo={new TileInfo({ title: <>Featured Projects</> })} />
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -152,6 +158,7 @@ export default function Home() {
                 machine code, and executes the program on a virtual CPU. Additionally, it handles both input and output
                 through a standard console interface, so it can integrate into shell pipelines.
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -169,6 +176,7 @@ export default function Home() {
                 way as regular, local <i>Transformers</i> models. This allows for the easy integration of these models
                 into projects that need generation from models from different sources.
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -188,6 +196,7 @@ export default function Home() {
                 A highly parallelized population growth simulator. It is based on a cellular automata model of the
                 United States during its period of rapid Westward expansion from 1763 to 1863.
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -201,6 +210,7 @@ export default function Home() {
                 A image-based document encoder and decoder that stores text within an image using small amounts of
                 noise.
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -212,6 +222,7 @@ export default function Home() {
                 A Solr information retrieval system with the capabilities of a large language model. Uses a language
                 model to improve retrieved results through query expansion, term re-weighting, and document re-ranking.
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -225,6 +236,7 @@ export default function Home() {
                 of the technology between instructor and student to create a more active and participatory learning
                 environment.
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
@@ -246,6 +258,7 @@ export default function Home() {
                     work.
                 </p>
             </Tile>
+
             <Tile
                 tileInfo={
                     new TileInfo({
