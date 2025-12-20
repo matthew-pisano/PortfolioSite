@@ -1,10 +1,8 @@
-// javascript
 import React from "react";
 
 import Link from "next/link";
 
 import { BookTile } from "@/components/readingList/BookTile";
-
 
 export default (
     <>

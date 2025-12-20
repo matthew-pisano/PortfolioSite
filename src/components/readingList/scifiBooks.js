@@ -7,8 +7,6 @@ import { BookTile, FootNote, FootRef } from "@/components/readingList/BookTile";
 import { redact } from "@/lib/utils";
 import styles from "@/styles/pageTiles.module.css";
 
-
-
 function house() {
     return <span style={{ color: "CornflowerBlue" }}>house</span>;
 }
@@ -97,8 +95,7 @@ export default (
                             occupied by the hallway instead contains an ordinary patch of yard. After recovering the
                             children and despite Karen's protests, William ventures inside. Here, he nearly looses
                             himself in the absolute darkness and shifting geometry of a space far too large to exist
-                            {<FootRef idx={1} anchor={`house-of-leaves`} />}. All the while hearing a dull, ominous
-                            growl emanating from the maze.
+                            {<FootRef idx={1} />}. All the while hearing a dull, ominous growl emanating from the maze.
                         </span>
                     </p>
                     <p>
@@ -115,7 +112,7 @@ export default (
                         together in a {redact(10)} waiting for rescue. {redact(74)} beast {redact(123)} {minotaur()}{" "}
                         {redact(300)} consumed by the madness of the inky blackness, Holloway {redact(200)} evacuated
                         from the {house()}
-                        {<FootRef idx={2} anchor={`house-of-leaves`} />}.
+                        {<FootRef idx={2} />}.
                     </p>
                     <p style={{ textAlign: "center" }}>
                         <i>
@@ -151,19 +148,18 @@ export default (
                     <p>
                         The story of <u>{House()} of Leaves</u> is also deepened through the use of extensive world
                         building. Throughout his analysis, Zampanò demonstrates that he inhabits a world just as real as
-                        our own. The text is littered with footnotes{<FootRef idx={3} anchor={`house-of-leaves`} />}{" "}
-                        from various detailed academic sources, articles, commentaries, and interviews surrounding the
-                        fictional Navidson documentary. In this world, seemingly dozens of works have been created with
-                        the sole purpose of analyzing the plot, cinematography, framing, dialogue, etc. of the film,
-                        with many more making passing references to it. Each reference has a unique title and authors.
-                        It is not difficult for the reader to imagine a world where this film commands the same cultural
-                        impact as <i>Inception</i> or <i>The Blair Witch Project</i>. There is even an in-universe
-                        debate as to whether the film itself is a work of clever editing or rock-solid evidence of the
-                        breakdown of the fundamental laws of reality. Zampanò even presents examples of calculations
-                        that demonstrate that it would have been completely implausible for Navidson to fake the events
-                        of the film
-                        {<FootRef idx={4} anchor={`house-of-leaves`} />}, despite the outright impossibility of its
-                        content. I find it particularly amusing that many are convinced Navidson's
+                        our own. The text is littered with footnotes{<FootRef idx={3} />} from various detailed academic
+                        sources, articles, commentaries, and interviews surrounding the fictional Navidson documentary.
+                        In this world, seemingly dozens of works have been created with the sole purpose of analyzing
+                        the plot, cinematography, framing, dialogue, etc. of the film, with many more making passing
+                        references to it. Each reference has a unique title and authors. It is not difficult for the
+                        reader to imagine a world where this film commands the same cultural impact as <i>Inception</i>{" "}
+                        or <i>The Blair Witch Project</i>. There is even an in-universe debate as to whether the film
+                        itself is a work of clever editing or rock-solid evidence of the breakdown of the fundamental
+                        laws of reality. Zampanò even presents examples of calculations that demonstrate that it would
+                        have been completely implausible for Navidson to fake the events of the film
+                        {<FootRef idx={4} />}, despite the outright impossibility of its content. I find it particularly
+                        amusing that many are convinced Navidson's
                         {house()} truly does contain a gaping hole in the very fabric of reality, yet most references to
                         his film are discussions of cinematography and Navidson's own editing.
                     </p>
@@ -172,36 +168,32 @@ export default (
                         version of <i>The Navidson Record</i> to several scientists, writers, and filmmakers. This
                         assortment of sources even includes Douglas Hofstadter who, in true Hofstadterian fashion,
                         immediately relates the content of the film to his friends Mr. Tortoise and Achilles
-                        {<FootRef idx={5} anchor={`house-of-leaves`} />}, to my great delight.
+                        {<FootRef idx={5} />}, to my great delight.
                     </p>
                 </>
             }
             footnotes={
                 <>
-                    <FootNote idx={1} anchor={`house-of-leaves`} style={{ fontFamily: "verdana" }}>
+                    <FootNote idx={1} style={{ fontFamily: "verdana" }}>
                         A rigorous analysis of the geometry of this space would make <i>Postulate 5</i> look like a
                         primary school assignment.
                     </FootNote>
-                    <FootNote idx={2} anchor={`house-of-leaves`}>
+                    <FootNote idx={2}>
                         Portions of the <i>Holloway Tape</i>, as it had come to be known, leaked online before the
                         entire film's official release, prompting much speculation from the community.
                     </FootNote>
-                    <FootNote idx={3} anchor={`house-of-leaves`}>
-                        And footnotes of footnotes{<FootRef idx={6} anchor={`house-of-leaves`} />}.
-                    </FootNote>
-                    <FootNote idx={4} anchor={`house-of-leaves`}>
+                    <FootNote idx={3}>And footnotes of footnotes{<FootRef idx={6} />}.</FootNote>
+                    <FootNote idx={4}>
                         This goes doubly so for the deaths and injuries that occurred within the {house()}.
                     </FootNote>
-                    <FootNote idx={5} anchor={`house-of-leaves`}>
+                    <FootNote idx={5}>
                         See{" "}
                         <Link href="https://matthewpisano.com/readingList#geb-egb">
                             Gödel, Escher, Bach: An Eternal Golden Braid
                         </Link>
                         .
                     </FootNote>
-                    <FootNote idx={6} anchor={`house-of-leaves`}>
-                        And even one level deeper at times.
-                    </FootNote>
+                    <FootNote idx={6}>And even one level deeper at times.</FootNote>
                 </>
             }
             thumbnail={"/media/image/house-of-leaves.jpg"}
@@ -425,16 +417,15 @@ export default (
                     </p>
                     <p>
                         After meeting the students on their facility tour, Lenina Crowne, a beta worker in the embryo
-                        storage, gossips with her friend Fanny Crowne{<FootRef idx={1} anchor={`brave-new-world`} />}.
-                        The topic of conversation shifts to her apparent obsession with D.H.C assistant Henry Foster;
-                        she has been seeing him for four entire months without tying someone else. Absolutely unheard
-                        of. Lenina yields, admitting that she somewhat fancies Bernard Marx, a strange,
-                        shorter-than-average, Alpha, sleep-learning specialist at the Hatchery and Conditioning Center.
-                        Bernard overhears this conversation. Privately, he disdains the notion of passing lovers around
-                        like portions of meat. He is an outsider, technically an Alpha by caste and ability, but his
-                        stature is stunted and causes him to look more like an Epsilon than an Alpha, something he
-                        deeply resents. Cruel rumours often spread about alcohol accidentally being injected into his
-                        bottle as a fetus.
+                        storage, gossips with her friend Fanny Crowne{<FootRef idx={1} />}. The topic of conversation
+                        shifts to her apparent obsession with D.H.C assistant Henry Foster; she has been seeing him for
+                        four entire months without tying someone else. Absolutely unheard of. Lenina yields, admitting
+                        that she somewhat fancies Bernard Marx, a strange, shorter-than-average, Alpha, sleep-learning
+                        specialist at the Hatchery and Conditioning Center. Bernard overhears this conversation.
+                        Privately, he disdains the notion of passing lovers around like portions of meat. He is an
+                        outsider, technically an Alpha by caste and ability, but his stature is stunted and causes him
+                        to look more like an Epsilon than an Alpha, something he deeply resents. Cruel rumours often
+                        spread about alcohol accidentally being injected into his bottle as a fetus.
                     </p>
                     <p>
                         Some time later, Lenina meets Bernard on the roof of the complex. After expressing her interest
@@ -557,18 +548,18 @@ export default (
                     <p>
                         The inclusion of John and the "savages" is also an excellent plot device. Oftentimes in
                         dystopian stories, the focus of the story is on a character from within the dystopia that rises
-                        against it in some act of rebellion{<FootRef idx={2} anchor={`brave-new-world`} />}. <i>1984</i>{" "}
-                        and <i>Fahrenheit 451</i> are two such examples. In this novel, the reader is thrown for a loop.
-                        Upon his introduction and his immediate display of disdain for their society, something the
-                        reader may agree with, Bernard Marx seems like a good candidate for a protagonist. As the story
-                        progresses, however, we see that his motivations are not rooted in some moral core, but only in
-                        his own self-interest. He takes no issue with scapegoating his friends or abusing the lower
-                        castes. He chooses to remain an agent of the system as long as it fits his needs. He merely is a
-                        plot device that introduces John to his world, the character that creates meaningful tension
-                        with the status quo, coming from outside of the system and later engulfed by it. John comes from
-                        a more traditional culture, even backwards in some respects. This creates an excellent counter
-                        to the hyper-modern world of England. This places the reader in the temporal and moral middle
-                        ground. A place where they are prepared to understand both John's and Mond's opinions.
+                        against it in some act of rebellion{<FootRef idx={2} />}. <i>1984</i> and <i>Fahrenheit 451</i>{" "}
+                        are two such examples. In this novel, the reader is thrown for a loop. Upon his introduction and
+                        his immediate display of disdain for their society, something the reader may agree with, Bernard
+                        Marx seems like a good candidate for a protagonist. As the story progresses, however, we see
+                        that his motivations are not rooted in some moral core, but only in his own self-interest. He
+                        takes no issue with scapegoating his friends or abusing the lower castes. He chooses to remain
+                        an agent of the system as long as it fits his needs. He merely is a plot device that introduces
+                        John to his world, the character that creates meaningful tension with the status quo, coming
+                        from outside of the system and later engulfed by it. John comes from a more traditional culture,
+                        even backwards in some respects. This creates an excellent counter to the hyper-modern world of
+                        England. This places the reader in the temporal and moral middle ground. A place where they are
+                        prepared to understand both John's and Mond's opinions.
                     </p>
                     <p>
                         In a similar vein of thought, <i>Brave New World</i> serves as a foil to more traditional
@@ -612,12 +603,8 @@ export default (
             }
             footnotes={
                 <>
-                    <FootNote idx={1} anchor={`brave-new-world`}>
-                        No relation.
-                    </FootNote>
-                    <FootNote idx={2} anchor={`brave-new-world`}>
-                        Results may vary.
-                    </FootNote>
+                    <FootNote idx={1}>No relation.</FootNote>
+                    <FootNote idx={2}>Results may vary.</FootNote>
                 </>
             }
             thumbnail={"/media/image/brave-new-world.jpg"}
@@ -763,20 +750,20 @@ export default (
                         low-flying military jets, another is an offhanded remark about rising geopolitical tensions,
                         Montag even mentions that the U.S. has won two nuclear wars since 2022. This all comes to a head
                         at the end of the book. Guy Montag and his new conspirator, Professor Faber
-                        {<FootRef idx={1} anchor={`fahrenheit-451`} />}, plan to use the impending war as a catalyst for
-                        their plan to destabilize the government. Their plan quickly unravels after Chief Beatty
-                        discovers Montag's book stash. However, as Montag is on the run, war is invariably declared.
-                        Standing with the group of forsaken professors, he watches as the bombs hit the city that he has
-                        just escaped. This is implied to immediately kill Mildred and perhaps even Professor Faber, as
-                        it is uncertain that he has gotten far enough from the city. The destruction of the city, and
-                        perhaps even the nation, leaves the book off on a bittersweet note as Bradbury implies that the
-                        group of scholars will work to spread their knowledge of books in the aftermath.
+                        {<FootRef idx={1} />}, plan to use the impending war as a catalyst for their plan to destabilize
+                        the government. Their plan quickly unravels after Chief Beatty discovers Montag's book stash.
+                        However, as Montag is on the run, war is invariably declared. Standing with the group of
+                        forsaken professors, he watches as the bombs hit the city that he has just escaped. This is
+                        implied to immediately kill Mildred and perhaps even Professor Faber, as it is uncertain that he
+                        has gotten far enough from the city. The destruction of the city, and perhaps even the nation,
+                        leaves the book off on a bittersweet note as Bradbury implies that the group of scholars will
+                        work to spread their knowledge of books in the aftermath.
                     </p>
                 </>
             }
             footnotes={
                 <>
-                    <FootNote idx={1} anchor={`fahrenheit-451`}>
+                    <FootNote idx={1}>
                         During my summary, I do not mention Professor Faber explicitly in the interest of brevity, but
                         he plays an important role in motivating Montag and helping him resist the persuasions of Chief
                         Beatty.
@@ -859,7 +846,7 @@ export default (
                             Daisy, Daisy, Give me your answer, do! I'm half crazy, All for the love of you! It won't be
                             a stylish marriage, I can't afford a carriage, But you'll look sweet{" "}
                             <small>upon the seat Of a bicycle built forrrr tttwwwoooo...</small>
-                            {<FootRef idx={1} anchor={`2001`} />}
+                            {<FootRef idx={1} />}
                         </i>
                     </p>
                     <p>
@@ -922,7 +909,7 @@ export default (
             }
             footnotes={
                 <>
-                    <FootNote idx={1} anchor={`2001`}>
+                    <FootNote idx={1}>
                         In 1962, Clarke witnessed researchers at Bell Labs program an IBM 7094 machine to sing this song
                         in the earliest example of computer speech synthesis.
                     </FootNote>
