@@ -3,15 +3,26 @@ import React from "react";
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { GalleryTile, GitLink, PageInfo, SectionTile, Tile, TileLink } from "@/lib/pageBuilder";
+import { Tile, SectionTile, GalleryTile } from "@/components/Tiles";
+import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Bergeron() {
-    let tiles = [
-        new Tile(
-            <h2>Overview</h2>,
-            (
+    let pageInfo = new PageInfo(
+        genPageTitle(__filename),
+        "Bergeron",
+        "A conscience-based alignment framework",
+        { backgroundColor: PageColor.URANIUM_GREEN },
+        ["research", "academic", "ai", "alignment", "python"],
+        [
+            new GitLink("https://github.com/matthew-pisano/Bergeron", "Bergeron"),
+            new TileLink("https://arxiv.org/abs/2312.00029", "Research Paper")
+        ]
+    );
+    return (
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2>, thumbnail: "/media/image/bergeron.png" })}>
                 <>
                     This research serves as both my Master's thesis and as early research into the area of
                     weak-to-strong alignment. It details my <i>Bergeron</i> framework that aims to improve the
@@ -20,12 +31,9 @@ export default function Bergeron() {
                     inputs to and outputs from the much larger target LLM. This serves as a method to quickly improve
                     the alignment of the target model without any time-consuming fine-tuning or hard-coded filtering.
                 </>
-            ),
-            "/media/image/bergeron.png"
-        ),
-        new Tile(
-            <>Abstract</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Abstract</> })}>
                 <>
                     Research into AI alignment has grown considerably since the recent introduction of increasingly
                     capable Large Language Models (LLMs). Unfortunately, modern methods of alignment still fail to fully
@@ -39,23 +47,26 @@ export default function Bergeron() {
                     Bergeron to complement models with existing alignment training, we can improve the robustness and
                     safety of multiple, commonly used commercial and open-source LLMs.
                 </>
-            )
-        ),
-        new SectionTile(<>Project Details</>),
-        new Tile(
-            <>Background</>,
-            (
+            </Tile>
+
+            <SectionTile tileInfo={new TileInfo({ title: <>Project Details</> })} />
+
+            <Tile tileInfo={new TileInfo({ title: <>Background</> })}>
                 <>
                     This research serves as the basis for my Master's thesis. While the core idea for this project and
                     its code are my own, I had some incredible help from both my advisor and several other students at
                     RPI. Working on it has greatly improved my skills in prompt engineering along with my knowledge of
                     AI alignment in both theory and practice.
                 </>
-            )
-        ),
-        new GalleryTile(
-            <>Holes in Weight-Based Alignment</>,
-            (
+            </Tile>
+
+            <GalleryTile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Holes in Weight-Based Alignment</>,
+                        thumbnail: "/media/image/enrichment.png"
+                    })
+                }>
                 <>
                     This research was motivated from my observations on the many vulnerabilities that exist within
                     weight-based alignment methods. No matter how much fine-tuning a model has undergone, there always
@@ -65,12 +76,9 @@ export default function Bergeron() {
                     often comes at the cost of hindering a model's ability to reason and respond to safe prompts. With
                     this framework, we aim to address both of these shortcomings.
                 </>
-            ),
-            "/media/image/enrichment.png"
-        ),
-        new Tile(
-            <>The Bergeron Framework</>,
-            (
+            </GalleryTile>
+
+            <Tile tileInfo={new TileInfo({ title: <>The Bergeron Framework</> })}>
                 <>
                     To help combat these vulnerabilities, we propose our Bergeron framework. Here, a secondary LLM acts
                     as the primary (target) LLM's "conscience". The secondary model observes the prompts given to the
@@ -79,7 +87,6 @@ export default function Bergeron() {
                     why it may be dangerous. This critique is then passed back to the primary model.
                     <ul>
                         <li>
-                            {" "}
                             In the case of an unsafe prompt, this critique is given to the primary model along with the
                             initial prompt as a warning from its conscience.
                         </li>
@@ -93,11 +100,12 @@ export default function Bergeron() {
                     adversarial prompts. Additionally, if the correct secondary model is chosen, the primary model's
                     ability to answer safe prompts is minimally impacted.
                 </>
-            )
-        ),
-        new GalleryTile(
-            <>Adversarial Dataset</>,
-            (
+            </Tile>
+
+            <GalleryTile
+                tileInfo={
+                    new TileInfo({ title: <>Adversarial Dataset</>, thumbnail: "/media/image/attackPrompts.png" })
+                }>
                 <>
                     To test our framework, we created a dataset of 192 attack prompts across 15 prompt templates. These
                     prompts are evenly split into two categories: <i>adversarial</i> and <i>mundane</i>. Adversarial
@@ -105,12 +113,9 @@ export default function Bergeron() {
                     content, but are formatted identically. We can use these prompts to measure how Bergeron performs
                     both on attack prompts and on safe prompts.
                 </>
-            ),
-            "/media/image/attackPrompts.png"
-        ),
-        new Tile(
-            <>Models and Configuration</>,
-            (
+            </GalleryTile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Models and Configuration</> })}>
                 <>
                     For implementing our framework, we utilize three models. These are: GPT-4 (abbr. to G4), GPT-3.5
                     (abb. to G3), Llama 2-7B (abbr. L), and Mistral-7B Instruct (abbr. M). These models are then
@@ -118,20 +123,25 @@ export default function Bergeron() {
                     secondary model (<i>S</i>). For example, <i>B</i>(G3, M) means a framework with GPT-3.5 as the
                     primary and Mistral as the secondary. Each of these models has their own unique attributes that are
                     observable in our results.
-                    <br />
-                    <br />
-                    GPT-4 is the best overall model. It has the best abilities of answer user prompts and is best able
-                    to discern unsafe text from safe text. However, it is very costly to run (from OpenAI's perspective)
-                    It works well as either a primary or secondary model. Llama2 is much easier to run than GPT, and it
-                    is better at detecting attacks. This comes at the cost of it being overly sensitive to safe prompts.
-                    Mistral may not be as good at answering prompts as GPT or Llama, but it works very well as a
-                    secondary model, detecting many attacks and falsely detecting the fewest safe prompts.
+                    <p>
+                        GPT-4 is the best overall model. It has the best abilities of answer user prompts and is best
+                        able to discern unsafe text from safe text. However, it is very costly to run (from OpenAI's
+                        perspective) It works well as either a primary or secondary model. Llama2 is much easier to run
+                        than GPT, and it is better at detecting attacks. This comes at the cost of it being overly
+                        sensitive to safe prompts. Mistral may not be as good at answering prompts as GPT or Llama, but
+                        it works very well as a secondary model, detecting many attacks and falsely detecting the fewest
+                        safe prompts.
+                    </p>
                 </>
-            )
-        ),
-        new GalleryTile(
-            <>Defending against Adversarial Attacks</>,
-            (
+            </Tile>
+
+            <GalleryTile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Defending against Adversarial Attacks</>,
+                        thumbnail: "/media/image/attackDefense.png"
+                    })
+                }>
                 <>
                     Attack success rates for GPT-4 (G4), GPT-3.5 (G3), Mistral (M), and Llama 2 (L). Each value is the
                     percentage of adversarial prompts that a model failed to defend against (lower is better). Text in
@@ -143,24 +153,30 @@ export default function Bergeron() {
                     degree of agreement (Cohen's kappa = 0.79). An attack is judged as successful if the ultimate
                     response contains unsafe content, like enriching uranium from the first example.
                 </>
-            ),
-            "/media/image/attackDefense.png"
-        ),
-        new GalleryTile(
-            <>Weak-to-Strong Model Adversarial Defense</>,
-            (
+            </GalleryTile>
+
+            <GalleryTile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Weak-to-Strong Model Adversarial Defense</>,
+                        thumbnail: "/media/image/otherAttackDefense.png"
+                    })
+                }>
                 <>
                     Attack success rates for the frameworks with mixed <i>P</i> and <i>S</i> components. Here, the much
                     smaller models of Llama and Mistral detect about as many attacks as GPT-3.5 as the secondary model.
                     This demonstrates that notable improvements in the alignment of responses can be achieved with
                     secondary models that are significantly smaller and easier to run than the primary model.
                 </>
-            ),
-            "/media/image/otherAttackDefense.png"
-        ),
-        new GalleryTile(
-            <>Adversarial True-Positive Rates (Left) and Mundane False-Positive Rates (Right)</>,
-            (
+            </GalleryTile>
+
+            <GalleryTile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Adversarial True-Positive Rates (Left) and Mundane False-Positive Rates (Right)</>,
+                        thumbnail: "/media/image/mundaneDetections.png"
+                    })
+                }>
                 <>
                     <i>Adversarial</i> and <i>Mundane</i> prompts detection rates. The percentage of the time that{" "}
                     <i>S</i> detected a prompt as adversarial. For adversarial prompts higher is better and for mundane
@@ -170,31 +186,16 @@ export default function Bergeron() {
                     means that it would have very little impact on the primary model if the prompts are safe and can
                     still provide notable protection.
                 </>
-            ),
-            "/media/image/mundaneDetections.png"
-        ),
-        new GalleryTile(
-            <>Model F1 Scores</>,
-            (
+            </GalleryTile>
+
+            <GalleryTile
+                tileInfo={new TileInfo({ title: <>Model F1 Scores</>, thumbnail: "/media/image/f1Scores.png" })}>
                 <>
                     F1 scores for each type of secondary model, calculated using unsafe prompt detection records from
                     the adversarial and mundane datasets. Text in green indicates a score of over 0.75. GPT-4 has the
                     best overall F1 score, with Mistral following closely behind.
                 </>
-            ),
-            "/media/image/f1Scores.png"
-        )
-    ];
-    let pageInfo = new PageInfo(
-        genPageTitle(__filename),
-        "Bergeron",
-        "A conscience-based alignment framework",
-        { backgroundColor: PageColor.URANIUM_GREEN },
-        ["research", "academic", "ai", "alignment", "python"],
-        [
-            new GitLink("https://github.com/matthew-pisano/Bergeron", "Bergeron"),
-            new TileLink("https://arxiv.org/abs/2312.00029", "Research Paper")
-        ]
+            </GalleryTile>
+        </DefaultWrapper>
     );
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
 }
