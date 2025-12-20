@@ -1,9 +1,9 @@
-import { TileTag } from "@/components/Tags";
 import React from "react";
 
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { TileTag } from "@/components/Tags";
 import { GalleryTile, SectionTile, Tile, TRANSLUCENT } from "@/components/Tiles";
 import { PageInfo, TileInfo } from "@/components/Wrapper";
 import { PageColor } from "@/lib/themes";
