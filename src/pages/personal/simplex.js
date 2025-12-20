@@ -1,15 +1,24 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { GitLink, PageInfo, Tile } from "@/lib/pageBuilder";
+import { Tile } from "@/components/Tiles";
+import { GitLink, PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Simplex() {
-    let tiles = [
-        new Tile(
-            <h2>Overview</h2>,
-            (
+    let pageInfo = new PageInfo(
+        genPageTitle(__filename),
+        "Simplex",
+        "A math-oriented interpreted scripting language built in Java",
+        { backgroundColor: PageColor.SUDO_TEAL },
+        ["personal", "java", "android"],
+        [new GitLink("https://github.com/matthew-pisano/SimplexIDE", "Simplex")]
+    );
+
+    return (
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2> })}>
                 <>
                     Simplex is a programming language with focus is on mathematical and scientific calculations. It
                     offers built-in matrix operations (multiplication, determinants, etc.) as well as several scientific
@@ -24,11 +33,12 @@ export default function Simplex() {
                     Simplex is built entirely from scratch, without using any external libraries or frameworks. The
                     language is written in <code>Java</code>.
                 </>
-            )
-        ),
-        new Tile(
-            <>Companion Android App</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>Companion Android App</>, thumbnail: "/media/image/simplexCode.jpg" })
+                }>
                 <>
                     The goal of the Simplex Android IDE is to both allow easy mobile programming and serve as an
                     educational tool. When a user of the app is ready to build their program, they have the option to
@@ -38,12 +48,12 @@ export default function Simplex() {
                     is that any users new to programming would gain a deeper understanding of what goes on behind the
                     scenes.
                 </>
-            ),
-            "/media/image/simplexCode.jpg"
-        ),
-        new Tile(
-            <>Processing Its Source</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>Processing Its Source</>, thumbnail: "/media/image/simplexLex.jpg" })
+                }>
                 <>
                     When source code is given to the Simplex interpreter, it first encounters the lexer. These
                     operations split the code into tokens separated into groups like 'numbers' or 'keywords'. Once the
@@ -53,12 +63,9 @@ export default function Simplex() {
                     nodes of the tree, reserved words are given their exact class names and variable ids are given their
                     proper types, among other things. After this step, the program is ready for execution.
                 </>
-            ),
-            "/media/image/simplexLex.jpg"
-        ),
-        new Tile(
-            <>Execution</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Execution</> })}>
                 <>
                     After a program has been built into its data structure, it is ready for execution. By the time of
                     execution, all variables and functions have been loaded into memory with their initial values, so
@@ -69,11 +76,9 @@ export default function Simplex() {
                     index of an array for example, and functions have the real values or their arguments given to them
                     for their execution.
                 </>
-            )
-        ),
-        new Tile(
-            <>Scientific Focus</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Scientific Focus</>, thumbnail: "/media/image/simplexSci.jpg" })}>
                 <>
                     One of the other notable features of Simplex is its concentration on making some physics or
                     mathematical operations easier. The language comes with a wide array of built-in mathematical and
@@ -85,17 +90,7 @@ export default function Simplex() {
                     product of the two matrices. This becomes even more useful when used with the built-in determinate
                     and inverse functions that can be used on the arrays.
                 </>
-            ),
-            "/media/image/simplexSci.jpg"
-        )
-    ];
-    let pageInfo = new PageInfo(
-        genPageTitle(__filename),
-        "Simplex",
-        "A math-oriented interpreted scripting language built in Java",
-        { backgroundColor: PageColor.SUDO_TEAL },
-        ["personal", "java", "android"],
-        [new GitLink("https://github.com/matthew-pisano/SimplexIDE", "Simplex")]
+            </Tile>
+        </DefaultWrapper>
     );
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
 }
