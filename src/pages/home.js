@@ -1,8 +1,9 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { GitLink, TileLink } from "@/components/Links";
 import { Tile, SectionTile } from "@/components/Tiles";
-import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { Constants } from "@/lib/utils";
 
@@ -13,12 +14,14 @@ export default function Home() {
         "Artificial Intelligence Alignment Researcher and Software Engineer",
         { backgroundColor: PageColor.SINGULARITY_BLUE },
         [],
-        [
-            new GitLink("https://github.com/matthew-pisano/", "GitHub"),
-            new TileLink(Constants.resumeUrl, "Résumé"),
-            new TileLink("https://www.linkedin.com/in/matthew-pisano", "LinkedIn"),
-            new TileLink("https://orcid.org/0009-0001-5714-3585", "Orcid")
-        ]
+        (
+            <>
+                <GitLink href={"https://github.com/matthew-pisano/"}>GitHub</GitLink>
+                <TileLink href={Constants.resumeUrl}>Résumé</TileLink>
+                <TileLink href={"https://www.linkedin.com/in/matthew-pisano"}>LinkedIn</TileLink>
+                <TileLink href={"https://orcid.org/0009-0001-5714-3585"}>Orcid</TileLink>
+            </>
+        )
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
@@ -29,10 +32,12 @@ export default function Home() {
                         title: <>Bergeron</>,
                         thumbnail: "/media/image/bergeron.png",
                         tags: ["research", "academic", "ai", "alignment", "python"],
-                        links: [
-                            new GitLink("https://github.com/matthew-pisano/Bergeron", "Bergeron"),
-                            new TileLink("https://arxiv.org/abs/2312.00029", "Research Paper")
-                        ],
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/matthew-pisano/Bergeron"}>Bergeron</GitLink>
+                                <TileLink href={"https://arxiv.org/abs/2312.00029"}>Research Paper</TileLink>
+                            </>
+                        ),
                         titleLink: "research/bergeron"
                     })
                 }>
@@ -72,13 +77,14 @@ export default function Home() {
                         title: <>On Picard Groups and Jacobians of Directed Graphs</>,
                         thumbnail: "/media/image/chipfiring.png",
                         tags: ["research", "academic", "python"],
-                        links: [
-                            new GitLink("https://github.com/matthew-pisano/ChipFiring", "Chip Firing"),
-                            new TileLink(
-                                "https://www.sciencedirect.com/science/article/pii/S0024379525000771",
-                                "Research Paper"
-                            )
-                        ],
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/matthew-pisano/ChipFiring"}>Chip Firing</GitLink>
+                                <TileLink href={"https://www.sciencedirect.com/science/article/pii/S0024379525000771"}>
+                                    Research Paper
+                                </TileLink>
+                            </>
+                        ),
                         titleLink: "research/chipFiring"
                     })
                 }>
@@ -106,10 +112,12 @@ export default function Home() {
                         title: <>PredictChain</>,
                         thumbnail: "/media/image/predictChain.png",
                         tags: ["research", "academic", "ai", "python", "hack"],
-                        links: [
-                            new GitLink("https://github.com/predict-chain/predict-chain", "PredictChain"),
-                            new TileLink("https://arxiv.org/abs/2307.15168", "Research Paper")
-                        ],
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/predict-chain/predict-chain"}>PredictChain</GitLink>
+                                <TileLink href={"https://arxiv.org/abs/2307.15168"}>Research Paper</TileLink>
+                            </>
+                        ),
                         titleLink: "research/predictChain"
                     })
                 }>
@@ -126,10 +134,12 @@ export default function Home() {
                     new TileInfo({
                         title: <>Homophone Decoding & Speech Based Emotion Detection</>,
                         tags: ["research", "academic", "ai", "python"],
-                        links: [
-                            new GitLink("https://github.com/AIRC-ASR/AIRC-ASR-Experimental", "AIRC ASR"),
-                            new TileLink("/media/documents/Homophone+Decoding.pdf", "Slides")
-                        ]
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/AIRC-ASR/AIRC-ASR-Experimental"}>AIRC ASR</GitLink>
+                                <TileLink href={"/media/documents/Homophone+Decoding.pdf"}>Slides</TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -150,7 +160,11 @@ export default function Home() {
                         title: <>Masm</>,
                         thumbnail: "/media/image/assembly.png",
                         tags: ["personal", "cpp", "assembly", "python"],
-                        links: [new GitLink("https://github.com/matthew-pisano/masm", "Masm")],
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/matthew-pisano/masm"}>Masm</GitLink>
+                            </>
+                        ),
                         titleLink: "personal/masm"
                     })
                 }>
@@ -169,10 +183,14 @@ export default function Home() {
                     new TileInfo({
                         title: <>Universal Models</>,
                         tags: ["personal", "ai", "python"],
-                        links: [
-                            new GitLink("https://github.com/matthew-pisano/UniversalModels", "UniversalModels"),
-                            new TileLink("https://pypi.org/project/universalmodels/", "PyPi Project")
-                        ],
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/matthew-pisano/UniversalModels"}>
+                                    UniversalModels
+                                </GitLink>
+                                <TileLink href={"https://pypi.org/project/universalmodels/"}>PyPi Project</TileLink>
+                            </>
+                        ),
                         titleLink: "personal/univmodels"
                     })
                 }>
@@ -190,13 +208,19 @@ export default function Home() {
                         title: <>Manifest Destiny</>,
                         thumbnail: "/media/image/1763-timelapse.gif",
                         tags: ["academic", "clang", "cuda", "collab"],
-                        links: [
-                            new GitLink("https://github.com/matthew-pisano/ManifestDestiny", "ManifestDestiny"),
-                            new TileLink(
-                                "https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf",
-                                "Research Paper"
-                            )
-                        ],
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/matthew-pisano/ManifestDestiny"}>
+                                    ManifestDestiny
+                                </GitLink>
+                                <TileLink
+                                    href={
+                                        "https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf"
+                                    }>
+                                    Research Paper
+                                </TileLink>
+                            </>
+                        ),
                         titleLink: "school/destiny"
                     })
                 }>
@@ -212,7 +236,11 @@ export default function Home() {
                         title: <>Image-Crypt</>,
                         thumbnail: "/media/image/secret-message.png",
                         tags: ["personal", "cpp"],
-                        links: [new GitLink("https://github.com/matthew-pisano/ImageCrypt", "ImageCrypt")],
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/matthew-pisano/ImageCrypt"}>ImageCrypt</GitLink>
+                            </>
+                        ),
                         titleLink: "personal/imageCrypt"
                     })
                 }>
@@ -227,7 +255,11 @@ export default function Home() {
                     new TileInfo({
                         title: <>LLM Augmented Information Retrieval</>,
                         tags: ["academic", "ai", "python"],
-                        links: [new GitLink("https://github.com/matthew-pisano/LLMRetrieval", "LLM Retrieval")]
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/matthew-pisano/LLMRetrieval"}>LLM Retrieval</GitLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -243,7 +275,11 @@ export default function Home() {
                         title: <>Mathesis</>,
                         thumbnail: "/assets/mathesis.png",
                         tags: ["research", "academic", "ai", "python"],
-                        links: [new GitLink("https://github.com/GPT-Pedagogy/GPT-Pedagogy", "Mathesis")]
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/GPT-Pedagogy/GPT-Pedagogy"}>Mathesis</GitLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -259,7 +295,11 @@ export default function Home() {
                         title: <>Simplex</>,
                         thumbnail: "/media/image/simplexCode.jpg",
                         tags: ["personal", "java", "android"],
-                        links: [new GitLink("https://github.com/matthew-pisano/SimplexIDE", "Simplex")],
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/matthew-pisano/SimplexIDE"}>Simplex</GitLink>
+                            </>
+                        ),
                         titleLink: "personal/simplex"
                     })
                 }>
@@ -281,7 +321,11 @@ export default function Home() {
                         title: <>Imperium</>,
                         thumbnail: "/media/image/imperiumLogo.png",
                         tags: ["personal", "java", "android"],
-                        links: [new GitLink("https://github.com/matthew-pisano/Imperium", "Imperium")],
+                        links: (
+                            <>
+                                <GitLink href={"https://github.com/matthew-pisano/Imperium"}>Imperium</GitLink>
+                            </>
+                        ),
                         titleLink: "personal/imperium"
                     })
                 }>

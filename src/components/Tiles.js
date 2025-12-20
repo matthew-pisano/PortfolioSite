@@ -3,11 +3,45 @@ import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { buildTags, resetTilesOnScroll } from "@/lib/pageBuilder";
+import { buildTags } from "@/lib/pageBuilder";
 import tileStyles from "@/styles/pageTiles.module.css";
 
 const TRANSLUCENT = "rgba(139,166,175,0.45)";
 const TRANSLUCENT_TEXT = "rgb(238,251,255)";
+
+/**
+ * Resets the horizontal position of all tiles by removing the hiddenTile class
+ */
+function resetTilesOnScroll() {
+    let tileHolder = document.getElementById("tileHolder");
+    if (!tileHolder) return;
+
+    for (let tileElement of tileHolder.children) tileElement.classList.remove(tileStyles.hiddenTile);
+}
+
+/**
+ * Slides the tiles into view as the user scrolls down the page
+ */
+function slideTilesOnScroll() {
+    let tileHolder = document.getElementById("tileHolder");
+    if (!tileHolder) return;
+
+    for (let tileElement of tileHolder.children) {
+        // For each tile, check if it is in view
+        if (tileElement.id === "") continue;
+
+        if (tileElement.getBoundingClientRect().top <= window.innerHeight - 100) {
+            // If the tile is in view and offset, slide it into view
+            tileElement.classList.remove(tileStyles.hiddenTile);
+            tileElement.setAttribute("data-refdata", "slid");
+        }
+        // Avoid adding hidden class if tile has already been shown or if the page has an anchor link (prevents visual scrolling errors)
+        else if (tileElement.getAttribute("data-refdata") === "unslid" && !window.location.hash.length) {
+            tileElement.classList.add(tileStyles.hiddenTile); // Sides the tile off-screen if it is out of view as the page initially loads
+            tileElement.setAttribute("data-refdata", "slid");
+        }
+    }
+}
 
 /**
  * Data class to encapsulate the elements that comprise a tile
@@ -164,4 +198,4 @@ GalleryTile.propTypes = {
     style: PropTypes.object
 };
 
-export { Tile, SectionTile, GalleryTile };
+export { Tile, SectionTile, GalleryTile, slideTilesOnScroll, resetTilesOnScroll };
