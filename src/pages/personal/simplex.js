@@ -23,15 +23,15 @@ export default function Simplex() {
                     Simplex is a programming language with focus is on mathematical and scientific calculations. It
                     offers built-in matrix operations (multiplication, determinants, etc.) as well as several scientific
                     and fundamental constants.
-                    <br />
-                    <br />
-                    It is strictly typed like languages such <code>C</code> or <code>Java</code>, but has a similar
-                    syntax to <code>Python</code> with type hinting. Being a hybrid interpreted language offers Simplex
-                    the ability to freeze any source code on its way to execution for viewing by the user.
-                    <br />
-                    <br />
-                    Simplex is built entirely from scratch, without using any external libraries or frameworks. The
-                    language is written in <code>Java</code>.
+                    <p>
+                        It is strictly typed like languages such <code>C</code> or <code>Java</code>, but has a similar
+                        syntax to <code>Python</code> with type hinting. Being a hybrid interpreted language offers
+                        Simplex the ability to freeze any source code on its way to execution for viewing by the user.
+                    </p>
+                    <p>
+                        Simplex is built entirely from scratch, without using any external libraries or frameworks. The
+                        language is written in <code>Java</code>.
+                    </p>
                 </>
             </Tile>
 
@@ -70,11 +70,11 @@ export default function Simplex() {
                     After a program has been built into its data structure, it is ready for execution. By the time of
                     execution, all variables and functions have been loaded into memory with their initial values, so
                     execution begins at the beginning and goes line by line.
-                    <br />
-                    <br />
-                    As each line is hit, any expressions in that line are resolved to their real values, reading the
-                    index of an array for example, and functions have the real values or their arguments given to them
-                    for their execution.
+                    <p>
+                        As each line is hit, any expressions in that line are resolved to their real values, reading the
+                        index of an array for example, and functions have the real values or their arguments given to
+                        them for their execution.
+                    </p>
                 </>
             </Tile>
 
