@@ -1,15 +1,33 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { DownloadLink, GitLink, PageInfo, Tile } from "@/lib/pageBuilder";
+import { Tile } from "@/components/Tiles";
+import { DownloadLink, GitLink, PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function Masm() {
-    let tiles = [
-        new Tile(
-            <h2>Overview</h2>,
-            (
+    let pageInfo = new PageInfo(
+        genPageTitle(__filename),
+        "Masm",
+        "A MIPS assembler and interpreter",
+        { backgroundColor: PageColor.SUDO_TEAL },
+        ["personal", "cpp", "assembly", "python"],
+        [
+            new GitLink("https://github.com/matthew-pisano/masm", "Masm"),
+            new DownloadLink("https://github.com/matthew-pisano/masm/releases/latest", "Download Masm")
+        ]
+    );
+
+    return (
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <h2>Overview</h2>,
+                        thumbnail: "/media/image/assembly.png"
+                    })
+                }>
                 <>
                     Masm is an assembler and interpreter for MIPS assembly programs. Written in C++, is it able to
                     quickly parse, assemble, and execute even complex MIPS programs. Masm takes in one or more assembly
@@ -22,12 +40,9 @@ export default function Masm() {
                         generate intermediate tokens and memory representations.
                     </p>
                 </>
-            ),
-            "/media/image/assembly.png"
-        ),
-        new Tile(
-            <>Development</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Development</> })}>
                 <>
                     Masm was originally designed to be used as a teaching tool for the assembly course that I teach at
                     SUNY Ulster. This repository also comes with a program that can output the intermediate steps of
@@ -44,11 +59,9 @@ export default function Masm() {
                         <li>Memory-mapped I/O</li>
                     </ul>
                 </>
-            )
-        ),
-        new Tile(
-            <>Implementation</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Implementation</> })}>
                 <>
                     Masm is written primarily in C++ with additional bindings written in Python. It implements the core
                     features of the MIPS instruction set architecture and handles memory in the big-endian format.
@@ -65,30 +78,16 @@ export default function Masm() {
                         communicates with the user exclusively through the memory-mapped I/O registers.
                     </p>
                 </>
-            )
-        ),
-        new Tile(
-            <>Python Bindings</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Python Bindings</> })}>
                 <>
                     In addition to the main program executable, this project also exposes Python bindings that can call
                     the functionality of Masm directly from within a Python program. Using the <code>pymasm</code>{" "}
                     package, the tokenizer, parser, and interpreter can all be executed with their outputs visible to
                     the program. This allows easier integration of Masm into scripts or web server applications.
                 </>
-            )
-        )
-    ];
-    let pageInfo = new PageInfo(
-        genPageTitle(__filename),
-        "Masm",
-        "A MIPS assembler and interpreter",
-        { backgroundColor: PageColor.SUDO_TEAL },
-        ["personal", "cpp", "assembly", "python"],
-        [
-            new GitLink("https://github.com/matthew-pisano/masm", "Masm"),
-            new DownloadLink("https://github.com/matthew-pisano/masm/releases/latest", "Download Masm")
-        ]
+            </Tile>
+        </DefaultWrapper>
     );
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
 }
