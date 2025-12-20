@@ -63,7 +63,7 @@ export default (
                         hardware already exists for when this threshold is crossed. Similar for{" "}
                         <i>algorithm overhangs</i>, when software has reached sufficient maturity, but hardware or other
                         resources contain its abilities
-                        {<FootRef idx={1} />}.
+                        <FootRef idx={1} />.
                     </p>
                     <p>
                         If there are multiple, independent projects working towards the development of
@@ -94,7 +94,7 @@ export default (
                         alignment has not been generally solved before takeoff, this AI is likely to either deliberately
                         eliminate humanity to ensure its uninterrupted access to resources or it may simply ignore our
                         presence if we pose a trivial threat
-                        {<FootRef idx={2} />}.
+                        <FootRef idx={2} />.
                     </p>
                     <p>
                         A common assumption that people often make is that complex intelligences may have complex goals:
@@ -119,7 +119,7 @@ export default (
                         non-zero possibility of suffering (even in a perfect utopia) and a dead human can no longer
                         suffer. Adding on more and more "but also" conditions to this goal is also not likely to work as
                         there is a strong incentive to find a loophole that leads to goal achievement faster and more
-                        thoroughly {<FootRef idx={3} />}. It will not act this way out of some sense of spite or malice,
+                        thoroughly <FootRef idx={3} />. It will not act this way out of some sense of spite or malice,
                         this is simply the best way of achieving <i>exactly</i> what it has been asked to do.
                     </p>
                     <p>
@@ -135,7 +135,7 @@ export default (
                             Press a button that produces a massive negative reward? The AI now has the instrumental goal
                             of preventing anyone from ever pressing that button. Any would-be button presser will have
                             to face the full ire of a nearly all-powerful agent.
-                            {<FootRef idx={4} />}
+                            <FootRef idx={4} />
                         </li>
                         <li>
                             Stunt its growth? Too much and the AI is not useful, too little and it will be smart enough
@@ -162,20 +162,20 @@ export default (
                         complexity, plans must be developed and instrumental convergence appears once again. Next on the
                         hierarchy comes sovereigns. This class is similar to a genie, but it is designed from the
                         ground-up to execute complex commands and create its own goals independent of human overseers
-                        {<FootRef idx={5} />}. Finally, tool-AIs are designed to work more like traditional software in
+                        <FootRef idx={5} />. Finally, tool-AIs are designed to work more like traditional software in
                         that they do not exhibit goal-directed behavior. The creation of such a system may involve
                         significant amounts of manual tuning and parameter search. Traditional software does not
                         (currently) attempt to form a singleton, so this appears to be a safe option. However, these
                         tools either become difficult to scale
-                        {<FootRef idx={6} />} to superintelligence or they develop sufficient complexity to reclassify
+                        <FootRef idx={6} /> to superintelligence or they develop sufficient complexity to reclassify
                         themselves into one of the prior three categories.
                     </p>
                     <p>
                         Containment measures will likely not be able to constrain the behavior of a superintelligent
                         agent in the long-run. The most reliable method of behavioral steering are different methods of
                         alignment. In the book, Bostrom frames this as a problem of value-loading
-                        {<FootRef idx={7} />}: when researchers decide upon a set of values to align the model to, how
-                        can those values be reliably impressed upon it? The book presents several methods, the most
+                        <FootRef idx={7} />: when researchers decide upon a set of values to align the model to, how can
+                        those values be reliably impressed upon it? The book presents several methods, the most
                         promising of which seem to be motivational scaffolding, value learning, and institutional
                         design. Motivational scaffolding proposes that we first create a smaller, more controllable AI
                         which we can train to hold human values. Next, the capabilities of this system are increased to
@@ -226,7 +226,7 @@ export default (
                         that come to mind. AI can certainly poses both of these qualities, but Bostrom effectively shows
                         that there need be no relationship between them. An entity of awesome intelligence may be just
                         as effective at maximizing the production of paperclips
-                        {<FootRef idx={8} />} as it could be at protecting the United States. His <i>orthogonality</i>{" "}
+                        <FootRef idx={8} /> as it could be at protecting the United States. His <i>orthogonality</i>{" "}
                         thesis is non-trivial when examples of "smart" AI with "dumb" goals are less prevalent in media
                         and (until recently) literature.
                     </p>
@@ -553,13 +553,13 @@ export default (
                     argues that advanced artificially intelligent systems will pose a significant, existential risk to
                     humanity. This risk also has a non-trivial chance of being realized in the near future. Despite
                     uncertainty in our ability to actually develop superintelligence
-                    {<FootRef idx={1} />}, developing an intelligence using our current techniques could be
-                    catastrophic. More specifically, he asserts that the single-goal optimization objectives used to
-                    train modern AI systems could lead to dangerous and unforeseen consequences. AI trained in this
-                    manner would likely not reflect the values that we intended to train into it; the failure modes for
-                    this system would be dangerously unpredictable. To structure his argument, Russell splits the book
-                    into three parts focusing on an overview of machine intelligence, realized and foreseen problems
-                    with intelligent machines, and potential solutions for the problem of control, respectively.
+                    <FootRef idx={1} />, developing an intelligence using our current techniques could be catastrophic.
+                    More specifically, he asserts that the single-goal optimization objectives used to train modern AI
+                    systems could lead to dangerous and unforeseen consequences. AI trained in this manner would likely
+                    not reflect the values that we intended to train into it; the failure modes for this system would be
+                    dangerously unpredictable. To structure his argument, Russell splits the book into three parts
+                    focusing on an overview of machine intelligence, realized and foreseen problems with intelligent
+                    machines, and potential solutions for the problem of control, respectively.
                     <p>
                         While our biggest threats lie within superintelligence that we cannot control, Russell still
                         finds it valuable to consider potential misuses of AI while it is still unintelligent enough for
@@ -576,12 +576,12 @@ export default (
                     </p>
                     <p>
                         The text also discusses autonomous weapons systems (AWS)
-                        {<FootRef idx={2} />}. Aside from surface level concerns of a future intelligent agent using
-                        these weapons against humans intentionally, a more mundane concern lies at our current level of
+                        <FootRef idx={2} />. Aside from surface level concerns of a future intelligent agent using these
+                        weapons against humans intentionally, a more mundane concern lies at our current level of
                         technology. AI systems do not always behave as you train them, their actions can appear to
                         optimize for the desired objective during training, while they are really optimizing for
                         something else
-                        {<FootRef idx={3} />}. This can quickly become obvious in practice if not caught.
+                        <FootRef idx={3} />. This can quickly become obvious in practice if not caught.
                     </p>
                     <p>
                         Advanced autonomous systems can not only replace human soldiers, but also wider sections of the
@@ -618,11 +618,11 @@ export default (
                         <i>accidental</i> extinction at our own hand than the other way around. If we create advanced AI
                         that is difficult to control, we will be in the position of the gorillas with no reason to think
                         that the machines will pay much mind to our own <i>accidental</i> extinction
-                        {<FootRef idx={4} />}. <i>The King Midas Problem</i> threatens that advanced AI is likely to
-                        give us exactly what we ask for, <i>us exactly what we ask for</i>. Just as King Midas' wish
-                        turned his food and drink to inedible gold, so could our own wishes lead to unforeseen
-                        consequences. As Nick Bostrom discusses at length in <i>Superintelligence</i>, machines designed
-                        without sufficient planning are likely to suffer from <i>value alignment</i>. Their
+                        <FootRef idx={4} />. <i>The King Midas Problem</i> threatens that advanced AI is likely to give
+                        us exactly what we ask for, <i>us exactly what we ask for</i>. Just as King Midas' wish turned
+                        his food and drink to inedible gold, so could our own wishes lead to unforeseen consequences. As
+                        Nick Bostrom discusses at length in <i>Superintelligence</i>, machines designed without
+                        sufficient planning are likely to suffer from <i>value alignment</i>. Their
                         values/goals/objectives may be exactly what we ask for, but not exactly what we mean. In
                         addition to the many, many examples of how this can pose an existential risk, a more grounded
                         example is often helpful. Click-through and engagement algorithms are currently a staple of most
@@ -630,23 +630,24 @@ export default (
                         algorithms optimize for a single goal: keep users engaging with the platform as long as possible
                         so they may be shown more and better targeted advertisements. This works well in theory (better
                         content should attract more viewers), but in reality, this often drives misinformation or
-                        hateful content {<FootRef idx={5} />}. <i>Unaligned Instrumental Goals</i> pose another problem.
-                        Even if the terminal, or final, goals of a machine are somehow aligned with our intentions, that
-                        does not guarantee that instrumental or intermediate goals will be. You can't achieve your
-                        terminal goals if you wre dead, so self-preservation becomes a strong instrumental motivator,
-                        even of not explicitly trained into a model{<FootRef idx={6} />}. Compounding these issues is
-                        that of an <i>Intelligence Explosion</i>. It would potentially be easier to solve the above
-                        problems if we could ensure that the intelligence of artificial minds always grew smoothly and
-                        linearly with time. We could carefully craft machines up until just before they become too
-                        clever for us to reliably control without having to face the full reality of an existential
-                        risk. This is not likely to be the case. With or without human encouragement, the increase of
-                        one's intelligence is an instrumental goal applicable to nearly every unbounded or
-                        underspecified task. Systems <i>less</i> intelligent than we are could, overtly or covertly,
-                        begin to slightly increase their own intelligence. The second, smarter system would be motivated
-                        to do the same. This process occurs recursively until further increases in capability are
-                        subject to sufficiently diminishing returns. The values of a system before this exponential
-                        curve are not guaranteed to remain the same after logistic terms begin to dominate and the
-                        process slows.
+                        hateful content
+                        <FootRef idx={5} />. <i>Unaligned Instrumental Goals</i> pose another problem. Even if the
+                        terminal, or final, goals of a machine are somehow aligned with our intentions, that does not
+                        guarantee that instrumental or intermediate goals will be. You can't achieve your terminal goals
+                        if you wre dead, so self-preservation becomes a strong instrumental motivator, even of not
+                        explicitly trained into a model
+                        <FootRef idx={6} />. Compounding these issues is that of an <i>Intelligence Explosion</i>. It
+                        would potentially be easier to solve the above problems if we could ensure that the intelligence
+                        of artificial minds always grew smoothly and linearly with time. We could carefully craft
+                        machines up until just before they become too clever for us to reliably control without having
+                        to face the full reality of an existential risk. This is not likely to be the case. With or
+                        without human encouragement, the increase of one's intelligence is an instrumental goal
+                        applicable to nearly every unbounded or underspecified task. Systems <i>less</i> intelligent
+                        than we are could, overtly or covertly, begin to slightly increase their own intelligence. The
+                        second, smarter system would be motivated to do the same. This process occurs recursively until
+                        further increases in capability are subject to sufficiently diminishing returns. The values of a
+                        system before this exponential curve are not guaranteed to remain the same after logistic terms
+                        begin to dominate and the process slows.
                     </p>
                     <p>
                         Like many threats that largely live in the realm of theory (at least in the existential sense),
@@ -658,7 +659,7 @@ export default (
                         dedicate resources to something that <i>may</i> not happen for decades? A strong appeal to
                         authority can also be used to extinguish constructive debate; why should we worry if a handful
                         of accomplished scientists are not personally worried
-                        {<FootRef idx={7} />}? Researchers in the field of AI may also deflect sound proposals for
+                        <FootRef idx={7} />? Researchers in the field of AI may also deflect sound proposals for
                         alignment strategies or preparation, while acknowledging their technical validity. Likely the
                         most straightforward warnings given by AI safety researchers is to simply slow down research.
                         Many scientists may agree with this in principle, but their employment likely hinges on doing
@@ -689,7 +690,7 @@ export default (
                         measures, Russell offers some practical solutions that he thinks will make future AI systems
                         more manageable to control. One of the biggest difficulties of working with modern AI is that it
                         uses training to empirically predict behavior instead of formal methods that guarantee
-                        correctness. The ideal solution likely will contain a combination of both {<FootRef idx={8} />},
+                        correctness. The ideal solution likely will contain a combination of both <FootRef idx={8} />,
                         but our current techniques heavily rely on the former and rarely employ the latter (for complex
                         systems). Russell has noticed this as well and introduces the concept of provably beneficial AI.
                         The text suggests that a more formal process for machine learning is employed. Soe some set of
@@ -755,7 +756,7 @@ export default (
                         <i>utility monsters</i> are people who theoretically experience pleasure significantly more than
                         others, and thus a utility-maximizing robot would allocate disproportional resources to these
                         people
-                        {<FootRef idx={9} />}. Additionally, how much weight would a utility-maximizing robot assign to
+                        <FootRef idx={9} />. Additionally, how much weight would a utility-maximizing robot assign to
                         its owner over others. At either end of this scale, you either get selfish robots all over again
                         or robots so altruistic that there is no personal advantage to buying one at all. Finding a
                         balance that makes this idea practically workable will be difficult.
@@ -768,12 +769,12 @@ export default (
                         happiness from the lowered standards of living of others. Negative altruists need not be pure
                         evil either; anyone who has ever felt envy or hoped for misfortune to befall someone else has
                         experienced negative altruism
-                        {<FootRef idx={10} />}. Humans are also prone to emotional outbursts, irrationality, and are
-                        often myopic. It would important for a robot to recognize that these altered states do not
-                        represent a change in our goals, but are rather consequences of our limitations. We may not see
-                        a clear avenue to our goals and may act erratically from the perspective of a rational agent. It
-                        is important for robots to be able to model and predict these states without directly
-                        experiencing them internally.
+                        <FootRef idx={10} />. Humans are also prone to emotional outbursts, irrationality, and are often
+                        myopic. It would important for a robot to recognize that these altered states do not represent a
+                        change in our goals, but are rather consequences of our limitations. We may not see a clear
+                        avenue to our goals and may act erratically from the perspective of a rational agent. It is
+                        important for robots to be able to model and predict these states without directly experiencing
+                        them internally.
                     </p>
                 </>
             }
@@ -828,7 +829,7 @@ export default (
                         caretakers that only ensure that we do not destroy ourselves and leaving humans in charge will
                         be suboptimal. This is putting it lightly. We can use tens of thousands of years of human
                         history as evidence that leaving humans in primary positions of power is a generally bad idea
-                        {<FootRef idx={11} />}.
+                        <FootRef idx={11} />.
                     </p>
                 </>
             }
