@@ -2,13 +2,13 @@ import React from "react";
 
 import Link from "next/link";
 
-import DefaultWrapper from "@/components/DefaultWrapper";
-import { GitLink, TileLink } from "@/components/Links";
-import { TileTag } from "@/components/Tags";
-import { SectionTile, Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/components/Wrapper";
-import { PageColor } from "@/lib/themes";
-import { genPageTitle } from "@/lib/utils";
+import { GitLink, TileLink } from "@/components/tiles/Links";
+import { TileTag } from "@/components/tiles/Tags";
+import { SectionTile, Tile } from "@/components/tiles/Tiles";
+import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
+import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
+import { PageColor } from "@/lib/util/themes";
+import { genPageTitle } from "@/lib/util/utils";
 
 export default function PredictChain() {
     let pageInfo = new PageInfo(

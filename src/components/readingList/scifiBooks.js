@@ -4,7 +4,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 
 import { BookTile, FootNote, FootRef } from "@/components/readingList/BookTile";
-import { redact } from "@/lib/utils";
+import { redact } from "@/lib/util/utils";
 import styles from "@/styles/pageTiles.module.css";
 
 function house() {

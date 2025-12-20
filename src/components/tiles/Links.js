@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { resetTilesOnScroll } from "@/components/Tiles";
+import { resetTilesOnScroll } from "@/components/tiles/Tiles";
 import tagStyles from "@/styles/tags.module.css";
 
 /**

@@ -1,12 +1,12 @@
 import React from "react";
 
-import DefaultWrapper from "@/components/DefaultWrapper";
-import { TileLink } from "@/components/Links";
-import { TileTag } from "@/components/Tags";
-import { Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo } from "@/components/Wrapper";
-import { PageColor } from "@/lib/themes";
-import { redact } from "@/lib/utils";
+import { TileLink } from "@/components/tiles/Links";
+import { TileTag } from "@/components/tiles/Tags";
+import { Tile } from "@/components/tiles/Tiles";
+import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
+import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
+import { PageColor } from "@/lib/util/themes";
+import { redact } from "@/lib/util/utils";
 
 let redactedDate = (
     <>

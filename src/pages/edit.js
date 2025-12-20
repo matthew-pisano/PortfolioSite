@@ -5,7 +5,7 @@ import { Compartment, EditorState } from "@codemirror/state";
 import { lineNumbers } from "@codemirror/view";
 import { basicSetup, EditorView } from "codemirror";
 
-import Wrapper, { PageInfo } from "@/components/Wrapper";
+import Wrapper, { PageInfo } from "@/components/wrappers/Wrapper";
 import { masterFileSystem } from "@/lib/fileSystem/fileSystem";
 import { Perms } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory } from "@/lib/fileSystem/fileSystemObjects";
