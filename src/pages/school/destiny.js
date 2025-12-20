@@ -1,8 +1,9 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { GitLink, TileLink } from "@/components/Links";
 import { Tile, GalleryTile } from "@/components/Tiles";
-import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -13,13 +14,17 @@ export default function Destiny() {
         "A cellular automata population growth simulator",
         { backgroundColor: PageColor.SEGFAULT_MOSS },
         ["academic", "clang", "cuda", "collab"],
-        [
-            new GitLink("https://github.com/matthew-pisano/ManifestDestiny", "ManifestDestiny"),
-            new TileLink(
-                "https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf",
-                "Research Paper"
-            )
-        ]
+        (
+            <>
+                <GitLink href={"https://github.com/matthew-pisano/ManifestDestiny"}>ManifestDestiny</GitLink>
+                <TileLink
+                    href={
+                        "https://github.com/matthew-pisano/ManifestDestiny/blob/master/docs/manifest-destiny-report.pdf"
+                    }>
+                    Research Paper
+                </TileLink>
+            </>
+        )
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
@@ -64,50 +69,48 @@ export default function Destiny() {
                     The following table contains historical census data of several American cities, as well as the
                     United States as a whole, compared with the results that our simulation produced for those areas.
                 </p>
-                <p>
-                    <table style={{ borderCollapse: "collapse", margin: "auto" }}>
-                        <tbody>
-                            <tr>
-                                <th className="tabCell">Location</th>
-                                <th className="tabCell">Census</th>
-                                <th className="tabCell">Simulated</th>
-                                <th className="tabCell">Difference</th>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td className="tabCell">U.S. Total</td>
-                                <td className="tabCell">31,443,321</td>
-                                <td className="tabCell">33,778,227</td>
-                                <td className="tabCell">+7.426%</td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td className="tabCell">New Orleans</td>
-                                <td className="tabCell">168,000</td>
-                                <td className="tabCell">162,537</td>
-                                <td className="tabCell">-3.25%</td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td className="tabCell">New York</td>
-                                <td className="tabCell">1,080,000</td>
-                                <td className="tabCell">510,165</td>
-                                <td className="tabCell">-52.76%</td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td className="tabCell">San Francisco Bay</td>
-                                <td className="tabCell">68,714</td>
-                                <td className="tabCell">21,735</td>
-                                <td className="tabCell">-68.37%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </p>
+                <table style={{ borderCollapse: "collapse", margin: "auto" }}>
+                    <tbody>
+                        <tr>
+                            <th className="tabCell">Location</th>
+                            <th className="tabCell">Census</th>
+                            <th className="tabCell">Simulated</th>
+                            <th className="tabCell">Difference</th>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td className="tabCell">U.S. Total</td>
+                            <td className="tabCell">31,443,321</td>
+                            <td className="tabCell">33,778,227</td>
+                            <td className="tabCell">+7.426%</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td className="tabCell">New Orleans</td>
+                            <td className="tabCell">168,000</td>
+                            <td className="tabCell">162,537</td>
+                            <td className="tabCell">-3.25%</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td className="tabCell">New York</td>
+                            <td className="tabCell">1,080,000</td>
+                            <td className="tabCell">510,165</td>
+                            <td className="tabCell">-52.76%</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td className="tabCell">San Francisco Bay</td>
+                            <td className="tabCell">68,714</td>
+                            <td className="tabCell">21,735</td>
+                            <td className="tabCell">-68.37%</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <p>
                     Notably, the significant population deficits shown in coastal cities like New York and San Francisco
                     can be almost entirely accounted for by large waves of immigration occurring between 1850 and 1863,

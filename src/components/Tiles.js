@@ -198,4 +198,4 @@ GalleryTile.propTypes = {
     style: PropTypes.object
 };
 
-export { Tile, SectionTile, GalleryTile, slideTilesOnScroll, resetTilesOnScroll };
+export { Tile, SectionTile, GalleryTile, slideTilesOnScroll, resetTilesOnScroll, TRANSLUCENT };

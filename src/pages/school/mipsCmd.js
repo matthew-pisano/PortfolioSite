@@ -3,8 +3,8 @@ import React from "react";
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo, TRANSLUCENT } from "@/lib/pageBuilder";
+import { Tile, TRANSLUCENT } from "@/components/Tiles";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 import wrapperStyles from "@/styles/Wrapper.module.css";

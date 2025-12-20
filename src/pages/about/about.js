@@ -3,8 +3,9 @@ import React from "react";
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { GitLink, TileLink } from "@/components/Links";
 import { Tile, SectionTile } from "@/components/Tiles";
-import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { Constants, genPageTitle } from "@/lib/utils";
 
@@ -15,12 +16,14 @@ export default function About() {
         "Extra information on me as a researcher, developer, and person",
         { backgroundColor: PageColor.LONDON_GREY },
         [],
-        [
-            new GitLink("https://github.com/matthew-pisano/", "GitHub"),
-            new TileLink(Constants.resumeUrl, "Résumé"),
-            new TileLink("https://www.linkedin.com/in/matthew-pisano", "LinkedIn"),
-            new TileLink("https://orcid.org/0009-0001-5714-3585", "Orcid")
-        ]
+        (
+            <>
+                <GitLink href={"https://github.com/matthew-pisano/"}>GitHub</GitLink>
+                <TileLink href={Constants.resumeUrl}>"Résumé"</TileLink>
+                <TileLink href={"https://www.linkedin.com/in/matthew-pisano"}>"LinkedIn"</TileLink>
+                <TileLink href={"https://orcid.org/0009-0001-5714-3585"}>"Orcid"</TileLink>
+            </>
+        )
     );
 
     return (
@@ -43,27 +46,29 @@ export default function About() {
                 <p>
                     While I have experience in many languages, my skills in <i>Python</i>, <i>C++</i>, <i>JavaScript</i>
                     , and <i>Java</i> are the most developed.
-                    <ul>
-                        <li>
-                            I have created several production-ready research and enterprise machine learning
-                            applications, utilizing libraries such as HuggingFace, PyTorch, and CUDA.
-                        </li>
-                        <li>
-                            Through Python, I have developed novel research into LLM alignment, worked with the
-                            low-level C++ bindings of PyTorch, and developed a distributed and asynchronous
-                            cloud-to-cloud backup SaaS.
-                        </li>
-                        <li>
-                            With C and C++, I have taught students about data structures, developed highly parallelized
-                            population simulations, created byte-encoding CLI utilities, and worked on AI model
-                            compilation to enterprise grade accelerator cards.
-                        </li>
-                        <li>
-                            In the more meta domain of DevOps, I have extensive experience directing small teams,
-                            working with CI/CD pipelines, using project management software, and mentoring others in
-                            best-practice testing and clean code standards.
-                        </li>
-                    </ul>
+                </p>
+                <ul>
+                    <li>
+                        I have created several production-ready research and enterprise machine learning applications,
+                        utilizing libraries such as HuggingFace, PyTorch, and CUDA.
+                    </li>
+                    <li>
+                        Through Python, I have developed novel research into LLM alignment, worked with the low-level
+                        C++ bindings of PyTorch, and developed a distributed and asynchronous cloud-to-cloud backup
+                        SaaS.
+                    </li>
+                    <li>
+                        With C and C++, I have taught students about data structures, developed highly parallelized
+                        population simulations, created byte-encoding CLI utilities, and worked on AI model compilation
+                        to enterprise grade accelerator cards.
+                    </li>
+                    <li>
+                        In the more meta domain of DevOps, I have extensive experience directing small teams, working
+                        with CI/CD pipelines, using project management software, and mentoring others in best-practice
+                        testing and clean code standards.
+                    </li>
+                </ul>
+                <p>
                     I have work experience ranging from small startups to Multinational Research divisions. With each
                     new experience, I gain valuable knowledge on the unique cultures and strategies that they offer.
                 </p>

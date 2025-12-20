@@ -3,8 +3,9 @@ import React from "react";
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { GitLink, TileLink } from "@/components/Links";
 import { Tile, SectionTile } from "@/components/Tiles";
-import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -15,10 +16,12 @@ export default function PredictChain() {
         "Empowering collaboration and data accessibility for AI in a decentralized blockchain-based marketplace",
         { backgroundColor: PageColor.URANIUM_GREEN },
         ["research", "academic", "ai", "python", "hack"],
-        [
-            new GitLink("https://github.com/predict-chain/predict-chain", "PredictChain"),
-            new TileLink("https://arxiv.org/abs/2307.15168", "Research Paper")
-        ]
+        (
+            <>
+                <GitLink href={"https://github.com/predict-chain/predict-chain"}>PredictChain</GitLink>
+                <TileLink href={"https://arxiv.org/abs/2307.15168"}>Research Paper</TileLink>
+            </>
+        )
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
@@ -105,13 +108,13 @@ export default function PredictChain() {
                     PredictChain offers a variety of models for users to interact with. Each of these model types is
                     randomly initialized originally, with users training a copy of that model when requested.
                     PredictChain offers:
-                    <ul>
-                        <li>Multi-layered perceptrons</li>
-                        <li>Recurrent NNs</li>
-                        <li>Long Short-Term Memory networks</li>
-                        <li>Gated Recurrent Unit Networks</li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>Multi-layered perceptrons</li>
+                    <li>Recurrent NNs</li>
+                    <li>Long Short-Term Memory networks</li>
+                    <li>Gated Recurrent Unit Networks</li>
+                </ul>
             </Tile>
         </DefaultWrapper>
     );

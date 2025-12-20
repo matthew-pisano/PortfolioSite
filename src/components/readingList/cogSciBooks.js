@@ -4,8 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Latex from "react-latex-next";
 
-import { BookTile } from "@/components/readingList/BookTile";
-import { FootNote, FootRef } from "@/lib/pageBuilder";
+import { BookTile, FootNote, FootRef } from "@/components/readingList/BookTile";
 
 export default (
     <>

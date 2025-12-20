@@ -1,8 +1,9 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { GitLink } from "@/components/Links";
 import { Tile } from "@/components/Tiles";
-import { GitLink, PageInfo, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -13,7 +14,11 @@ export default function Imperium() {
         "A historical grand strategy game for android devices",
         { backgroundColor: PageColor.SUDO_TEAL },
         ["personal", "java", "android"],
-        [new GitLink("https://github.com/matthew-pisano/Imperium", "Imperium")]
+        (
+            <>
+                <GitLink href={"https://github.com/matthew-pisano/Imperium"}>Imperium</GitLink>
+            </>
+        )
     );
 
     return (

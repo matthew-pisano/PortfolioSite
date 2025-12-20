@@ -1,8 +1,9 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { GitLink } from "@/components/Links";
 import { Tile } from "@/components/Tiles";
-import { GitLink, PageInfo, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -13,7 +14,11 @@ export default function Simplex() {
         "A math-oriented interpreted scripting language built in Java",
         { backgroundColor: PageColor.SUDO_TEAL },
         ["personal", "java", "android"],
-        [new GitLink("https://github.com/matthew-pisano/SimplexIDE", "Simplex")]
+        (
+            <>
+                <GitLink href={"https://github.com/matthew-pisano/SimplexIDE"}>Simplex</GitLink>
+            </>
+        )
     );
 
     return (
@@ -23,7 +28,7 @@ export default function Simplex() {
                     Simplex is a programming language with focus is on mathematical and scientific calculations. It
                     offers built-in matrix operations (multiplication, determinants, etc.) as well as several scientific
                     and fundamental constants.
-                </p>{" "}
+                </p>
                 <p>
                     It is strictly typed like languages such <code>C</code> or <code>Java</code>, but has a similar
                     syntax to <code>Python</code> with type hinting. Being a hybrid interpreted language offers Simplex

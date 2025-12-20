@@ -1,8 +1,9 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { TileLink } from "@/components/Links";
 import { Tile } from "@/components/Tiles";
-import { PageInfo, TileLink, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -14,9 +15,7 @@ export default function Lectures() {
         genPageTitle(__filename),
         "Lectures and Presentations",
         "A series of notable lectures or presentations that I have given",
-        { backgroundColor: PageColor.SINGULARITY_BLUE },
-        [],
-        []
+        { backgroundColor: PageColor.SINGULARITY_BLUE }
     );
 
     return (
@@ -35,7 +34,11 @@ export default function Lectures() {
                         title: <>Transformer Models: Architectures and Use Cases</>,
                         thumbnail: "/media/image/ibm.png",
                         tags: ["academic", "ai"],
-                        links: [new TileLink("/media/documents/IBM+Transformer+Models.pdf", "Slides")]
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/IBM+Transformer+Models.pdf"}>Slides</TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -61,25 +64,25 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Computer Architecture and Organization Lecture Series</>,
                         thumbnail: "/media/image/suny-ulster.png",
-                        tags: ["academic", "assembly"],
-                        links: []
+                        tags: ["academic", "assembly"]
                     })
                 }>
                 <p>
                     This lecture series, given over the course of one semester, covers the core concepts of MIPS,
                     computer organization, and more advanced topics. This includes:
-                    <ul>
-                        <li>Basic assembly instructions</li>
-                        <li>Procedures, procedure calls, and the stack</li>
-                        <li>Addressing modes, parallel processing, and pipelining</li>
-                        <li>I/O, interrupts, and exceptions</li>
-                        <li>Floating point representations and operations</li>
-                        <li>Memory hierarchy and caching</li>
-                        <li>Virtual memory and virtual machines</li>
-                        <li>Cloud computing</li>
-                        <li>Exploits and vulnerabilities</li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>Basic assembly instructions</li>
+                    <li>Procedures, procedure calls, and the stack</li>
+                    <li>Addressing modes, parallel processing, and pipelining</li>
+                    <li>I/O, interrupts, and exceptions</li>
+                    <li>Floating point representations and operations</li>
+                    <li>Memory hierarchy and caching</li>
+                    <li>Virtual memory and virtual machines</li>
+                    <li>Cloud computing</li>
+                    <li>Exploits and vulnerabilities</li>
+                </ul>
+
                 <p>
                     The core portions of this course have remained unchanged to align with the policies and learning
                     objectives outlined by SUNY Ulster. In addition to the core topics, I have also made significant
@@ -95,10 +98,12 @@ export default function Lectures() {
                         title: <>Bergeron: Combating Adversarial Attacks by Emulating a Conscience</>,
                         thumbnail: "/media/image/rpi.png",
                         tags: ["research", "academic", "ai", "alignment"],
-                        links: [
-                            new TileLink("/media/documents/Bergeron+Thesis+Presentation.pdf", "Slides"),
-                            new TileLink("/media/video/Bergeron+Thesis+Presentation.mp4", "Recording")
-                        ]
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/Bergeron+Thesis+Presentation.pdf"}>Slides</TileLink>
+                                <TileLink href={"/media/video/Bergeron+Thesis+Presentation.mp4"}>Recording</TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -122,10 +127,14 @@ export default function Lectures() {
                         title: <>Bergeron: Towards Language Models with a Conscience</>,
                         thumbnail: "/media/image/rpi.png",
                         tags: ["research", "academic", "ai", "alignment"],
-                        links: [
-                            new TileLink("/media/documents/Bergeron+Cog+Sci+Series.pdf", "Slides"),
-                            new TileLink("https://vimeo.com/showcase/10930583/video/916811537", "Recording")
-                        ]
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/Bergeron+Cog+Sci+Series.pdf"}>Slides</TileLink>
+                                <TileLink href={"https://vimeo.com/showcase/10930583/video/916811537"}>
+                                    Recording
+                                </TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -145,7 +154,11 @@ export default function Lectures() {
                         title: <>Deep Reinforcement Learning and Its Neuroscientific Implications</>,
                         thumbnail: "/media/image/rpi.png",
                         tags: ["research", "academic", "ai"],
-                        links: [new TileLink("/media/documents/Deep+RL+and+Implications.pdf", "Slides")]
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/Deep+RL+and+Implications.pdf"}>Slides</TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -195,7 +208,11 @@ export default function Lectures() {
                         title: <>PredictChain: Empowering Collaboration for AI in a Blockchain-based Marketplace</>,
                         thumbnail: "/media/image/chainscience.png",
                         tags: ["research", "ai"],
-                        links: [new TileLink("/media/documents/PredictChain+ChainScience+23.pdf", "Slides")]
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/PredictChain+ChainScience+23.pdf"}>Slides</TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -218,7 +235,11 @@ export default function Lectures() {
                         title: <>Homophone Decoding & Speech Based Emotion Detection</>,
                         thumbnail: "/media/image/rpi.png",
                         tags: ["research", "academic", "ai"],
-                        links: [new TileLink("/media/documents/Homophone+Decoding.pdf", "Slides")]
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/Homophone+Decoding.pdf"}>Slides</TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -242,7 +263,11 @@ export default function Lectures() {
                         title: <>On Picard Groups and Jacobians of Directed Graphs</>,
                         thumbnail: "/media/image/jmm.jpg",
                         tags: ["research", "academic"],
-                        links: [new TileLink("/media/documents/JMMPresentation.pdf", "Slides")]
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/JMMPresentation.pdf"}>Slides</TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>

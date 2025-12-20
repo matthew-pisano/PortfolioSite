@@ -3,8 +3,9 @@ import React from "react";
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { GitLink, TileLink } from "@/components/Links";
 import { Tile, SectionTile, GalleryTile } from "@/components/Tiles";
-import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -15,10 +16,12 @@ export default function Bergeron() {
         "A conscience-based alignment framework",
         { backgroundColor: PageColor.URANIUM_GREEN },
         ["research", "academic", "ai", "alignment", "python"],
-        [
-            new GitLink("https://github.com/matthew-pisano/Bergeron", "Bergeron"),
-            new TileLink("https://arxiv.org/abs/2312.00029", "Research Paper")
-        ]
+        (
+            <>
+                <GitLink href={"https://github.com/matthew-pisano/Bergeron"}>Bergeron</GitLink>
+                <TileLink href={"https://arxiv.org/abs/2312.00029"}>Research Paper</TileLink>
+            </>
+        )
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>

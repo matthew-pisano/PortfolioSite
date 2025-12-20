@@ -1,8 +1,9 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { DownloadLink, GitLink } from "@/components/Links";
 import { Tile } from "@/components/Tiles";
-import { DownloadLink, GitLink, PageInfo, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -13,10 +14,14 @@ export default function Masm() {
         "A MIPS assembler and interpreter",
         { backgroundColor: PageColor.SUDO_TEAL },
         ["personal", "cpp", "assembly", "python"],
-        [
-            new GitLink("https://github.com/matthew-pisano/masm", "Masm"),
-            new DownloadLink("https://github.com/matthew-pisano/masm/releases/latest", "Download Masm")
-        ]
+        (
+            <>
+                <GitLink href={"https://github.com/matthew-pisano/masm"}>Masm</GitLink>
+                <DownloadLink href={"https://github.com/matthew-pisano/masm/releases/latest"}>
+                    Download Masm
+                </DownloadLink>
+            </>
+        )
     );
 
     return (

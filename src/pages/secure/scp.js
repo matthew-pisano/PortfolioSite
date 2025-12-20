@@ -1,8 +1,9 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { TileLink } from "@/components/Links";
 import { Tile } from "@/components/Tiles";
-import { PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { redact } from "@/lib/utils";
 
@@ -20,7 +21,11 @@ export default function SCP() {
         "",
         { backgroundColor: PageColor.FOUNDATION_RED },
         ["keter", "research", "ai"],
-        [new TileLink("https://scp-wiki.wikidot.com/scp-redacted", "██████ Entry")]
+        (
+            <>
+                <TileLink href={"https://scp-wiki.wikidot.com/scp-redacted"}>██████ Entry</TileLink>
+            </>
+        )
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>

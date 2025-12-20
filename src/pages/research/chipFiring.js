@@ -3,8 +3,9 @@ import React from "react";
 import Latex from "react-latex-next";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { GitLink, TileLink } from "@/components/Links";
 import { Tile, SectionTile } from "@/components/Tiles";
-import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -15,10 +16,14 @@ export default function ChipFiring() {
         "A research project to examine patterns in chip firing games",
         { backgroundColor: PageColor.URANIUM_GREEN },
         ["research", "academic", "python"],
-        [
-            new GitLink("https://github.com/matthew-pisano/ChipFiring", "Chip Firing"),
-            new TileLink("https://www.sciencedirect.com/science/article/pii/S0024379525000771", "Research Paper")
-        ]
+        (
+            <>
+                <GitLink href={"https://github.com/matthew-pisano/ChipFiring"}>Chip Firing</GitLink>
+                <TileLink href={"https://www.sciencedirect.com/science/article/pii/S0024379525000771"}>
+                    Research Paper
+                </TileLink>
+            </>
+        )
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>

@@ -3,8 +3,9 @@ import React from "react";
 import Latex from "react-latex-next";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { GitLink, TileLink } from "@/components/Links";
 import { Tile, SectionTile } from "@/components/Tiles";
-import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -15,13 +16,17 @@ export default function Neural() {
         "A research project for comparing training methods of neural networks",
         { backgroundColor: PageColor.SEGFAULT_MOSS },
         ["research", "academic", "ai", "python"],
-        [
-            new GitLink("https://github.com/matthew-pisano/NuralPy", "Neural"),
-            new TileLink(
-                "https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf",
-                "Research Paper"
-            )
-        ]
+        (
+            <>
+                <GitLink href={"https://github.com/matthew-pisano/NuralPy"}>Neural</GitLink>
+                <TileLink
+                    href={
+                        "https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf"
+                    }>
+                    Research Paper
+                </TileLink>
+            </>
+        )
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
@@ -33,18 +38,7 @@ export default function Neural() {
                 </p>
             </Tile>
 
-            <Tile
-                tileInfo={
-                    new TileInfo({
-                        title: <>Research Paper</>,
-                        links: [
-                            new TileLink(
-                                "https://github.com/matthew-pisano/NuralPy/blob/master/Docs/NeuralNetworkAndDecisionTreeReport.pdf",
-                                "Research Paper"
-                            )
-                        ]
-                    })
-                }>
+            <Tile tileInfo={new TileInfo({ title: <>Research Paper</> })}>
                 <p>
                     While the paper originally intended to only be a short presentation of the project, my classmate and
                     I developed the presentation much further into a research paper under the guidance of our professor.

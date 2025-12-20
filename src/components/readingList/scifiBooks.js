@@ -3,8 +3,7 @@ import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { FootNote, FootRef } from "@/lib/pageBuilder";
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, FootNote, FootRef } from "@/components/readingList/BookTile";
 import { redact } from "@/lib/utils";
 import styles from "@/styles/pageTiles.module.css";
 

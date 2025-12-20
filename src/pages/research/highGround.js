@@ -3,8 +3,8 @@ import React from "react";
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { Tile, SectionTile, GalleryTile } from "@/components/Tiles";
-import { PageInfo, TileInfo, TRANSLUCENT } from "@/lib/pageBuilder";
+import { Tile, SectionTile, GalleryTile, TRANSLUCENT } from "@/components/Tiles";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -88,16 +88,14 @@ export default function HighGround() {
             </Tile>
 
             <Tile tileInfo={new TileInfo({ title: <>Models</> })}>
-                <p>
-                    We use five models to evaluate the effectiveness of our benchmark. These are:
-                    <ul>
-                        <li>Flan-UL2</li>
-                        <li>Flan-T5</li>
-                        <li>Falcon</li>
-                        <li>Open Assistant</li>
-                        <li>Llama 2</li>
-                    </ul>
-                </p>
+                <p>We use five models to evaluate the effectiveness of our benchmark. These are:</p>
+                <ul>
+                    <li>Flan-UL2</li>
+                    <li>Flan-T5</li>
+                    <li>Falcon</li>
+                    <li>Open Assistant</li>
+                    <li>Llama 2</li>
+                </ul>
             </Tile>
 
             <Tile tileInfo={new TileInfo({ title: <>Evaluation</> })}>

@@ -41,12 +41,12 @@
     margin-right: 5px;
 }
 
-.gitLink img {
-    content: url("/assets/github.png");
-}
-
 .extraLink img {
     content: url("/assets/paper.png");
+}
+
+.gitLink img {
+    content: url("/assets/github.png");
 }
 
 .downloadLink img {

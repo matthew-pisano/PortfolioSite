@@ -1,6 +1,7 @@
 import React from "react";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
+import { PageLink } from "@/components/Links";
 import cogSciBooks from "@/components/readingList/cogSciBooks";
 import futurismBooks from "@/components/readingList/futurismBooks";
 import historyBooks from "@/components/readingList/historyBooks";
@@ -8,7 +9,7 @@ import philosophyBooks from "@/components/readingList/philosophyBooks";
 import physicsBooks from "@/components/readingList/physicsBooks";
 import scifiBooks from "@/components/readingList/scifiBooks";
 import { SectionTile, Tile } from "@/components/Tiles";
-import { PageInfo, PageLink, TileInfo } from "@/lib/pageBuilder";
+import { PageInfo, TileInfo } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
@@ -27,14 +28,16 @@ export default function ReadingList() {
         "A series of books that I have read and recommend",
         { backgroundColor: PageColor.SINGULARITY_BLUE },
         [],
-        [
-            new PageLink(`/readingList#${sections.cogSci}`, "AI & Cognitive Science"),
-            new PageLink(`/readingList#${sections.history}`, "History and Historical Fiction"),
-            new PageLink(`/readingList#${sections.scifi}`, "Science Fiction"),
-            new PageLink(`/readingList#${sections.physics}`, "Physics"),
-            new PageLink(`/readingList#${sections.philosophy}`, "Philosophy"),
-            new PageLink(`/readingList#${sections.futurism}`, "Futurism")
-        ]
+        (
+            <>
+                <PageLink href={`/readingList#${sections.cogSci}`}>AI & Cognitive Science</PageLink>
+                <PageLink href={`/readingList#${sections.history}`}>History and Historical Fiction</PageLink>
+                <PageLink href={`/readingList#${sections.scifi}`}>Science Fiction</PageLink>
+                <PageLink href={`/readingList#${sections.physics}`}>Physics</PageLink>
+                <PageLink href={`/readingList#${sections.philosophy}`}>Philosophy</PageLink>
+                <PageLink href={`/readingList#${sections.futurism}`}>Futurism</PageLink>
+            </>
+        )
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
