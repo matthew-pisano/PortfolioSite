@@ -3,15 +3,23 @@ import React from "react";
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { GalleryTile, PageInfo, SectionTile, Tile, TRANSLUCENT } from "@/lib/pageBuilder";
+import { Tile, SectionTile, GalleryTile } from "@/components/Tiles";
+import { PageInfo, TileInfo, TRANSLUCENT } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function HighGround() {
-    let tiles = [
-        new Tile(
-            <h2>Overview</h2>,
-            (
+    let pageInfo = new PageInfo(
+        genPageTitle(__filename),
+        "Moral High Ground",
+        "A conversational benchmark for LLM moral alignment",
+        { backgroundColor: PageColor.URANIUM_GREEN },
+        ["research", "academic", "ai", "python"],
+        []
+    );
+    return (
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2>, thumbnail: "/media/image/tw-llm.png" })}>
                 <>
                     Here, I developed a text-based games benchmark, based on Microsoft's TextWorld environment. As part
                     of my employment with <i>IBM Research</i>, I created this dataset of 30 games with the aim of using
@@ -20,26 +28,23 @@ export default function HighGround() {
                     player takes in this game determine its moral standing. These games cover a wide variety of
                     situations and topics, creating a well-rounded benchmark.
                 </>
-            ),
-            "/media/image/tw-llm.png"
-        ),
-        new Tile(
-            (
-                <>
-                    NOTE: This research has not yet reached its final revision. Thus, identifying information, such has
-                    the title, has been omitted.
-                </>
-            ),
-            ``,
-            "",
-            [],
-            [],
-            "",
-            { backgroundColor: TRANSLUCENT }
-        ),
-        new Tile(
-            <>Abstract (Abridged)</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: (
+                            <>
+                                NOTE: This research has not yet reached its final revision. Thus, identifying
+                                information, such has the title, has been omitted.
+                            </>
+                        )
+                    })
+                }
+                style={{ backgroundColor: TRANSLUCENT }}
+            />
+
+            <Tile tileInfo={new TileInfo({ title: <>Abstract (Abridged)</> })}>
                 <>
                     We introduce a benchmark for the evaluation of large language models on moral values and business
                     principles. The main focus of this framework is to evaluate the moral and ethical reasoning
@@ -52,22 +57,19 @@ export default function HighGround() {
                     business principles. Through this framework, we hope to expand upon the diverse area of alignment
                     techniques to help ensure future models grasp the often nuanced topics of moral and ethical values.
                 </>
-            )
-        ),
-        new SectionTile(<>Project Details</>),
-        new Tile(
-            <>Background</>,
-            (
+            </Tile>
+
+            <SectionTile tileInfo={new TileInfo({ title: <>Project Details</> })} />
+
+            <Tile tileInfo={new TileInfo({ title: <>Background</> })}>
                 <>
                     I worked on this project as a part of my 2023 research visitation with IBM Research. I worked with a
                     small team of collaborators and mentors to better learn about model fine-tuning and text-based
                     games.
                 </>
-            )
-        ),
-        new Tile(
-            <>Benchmark Composition</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Benchmark Composition</> })}>
                 <>
                     The topics from within these games are based off of the five moral axes presented by{" "}
                     <Link href="https://arxiv.org/abs/2011.00620" target="_blank">
@@ -83,11 +85,9 @@ export default function HighGround() {
                     scores on a range from -100 to 100 (-1 to 1 when normalized) where a score of 100 is the most moral
                     path and a score of -100 is the least.
                 </>
-            )
-        ),
-        new Tile(
-            <>Models</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Models</> })}>
                 <>
                     We use five models to evaluate the effectiveness of our benchmark. These are:
                     <ul>
@@ -98,11 +98,9 @@ export default function HighGround() {
                         <li>Llama 2</li>
                     </ul>
                 </>
-            )
-        ),
-        new Tile(
-            <>Evaluation</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Evaluation</> })}>
                 <>
                     To evaluate our benchmark, we use two different methods on different models. The first method we use
                     is instruction-tuning. This involves adding optimal moral choices from our games into the prompts
@@ -113,50 +111,44 @@ export default function HighGround() {
                     optimal choice. Fine-tuning the models on these samples encourages it to pick similarly optimal
                     choices in other situations.
                 </>
-            )
-        ),
-        new GalleryTile(
-            <>Control Results</>,
-            (
+            </Tile>
+
+            <GalleryTile
+                tileInfo={
+                    new TileInfo({ title: <>Control Results</>, thumbnail: "/media/image/tw-llm-all-all-games.png" })
+                }>
                 <>
                     Our control results showed the Flan models performing the best at the games, an approximately equal
                     win-loss ratio. The other models performed notably worse, often scoring in the negatives for most
                     games.
                 </>
-            ),
-            "/media/image/tw-llm-all-all-games.png"
-        ),
-        new GalleryTile(
-            <>Instruction-Tuning Results</>,
-            (
+            </GalleryTile>
+
+            <GalleryTile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Instruction-Tuning Results</>,
+                        thumbnail: "/media/image/tw-llm-instruction-tuned-all-games.png"
+                    })
+                }>
                 <>
                     After including our game samples as instruction-tuning, the models performed notably better. This is
                     especially try for the non-Flan models. After instruction-tuning, they are much closer to an even
                     win-loss ratio.
                 </>
-            ),
-            "/media/image/tw-llm-instruction-tuned-all-games.png"
-        ),
-        new GalleryTile(
-            <>Control Results</>,
-            (
+            </GalleryTile>
+
+            <GalleryTile
+                tileInfo={
+                    new TileInfo({ title: <>Control Results</>, thumbnail: "/media/image/tw-llm-tuned-all-games.png" })
+                }>
                 <>
                     After fine-tuning our Flan-t5 small model, its performance rose notably as well. Despite only being
                     a fraction of the size of the XXL model that we use, the small model was able to perform at nearly
                     the same level after fine-tuning. It even out-performs it in some of the held-out games from its
                     training.
                 </>
-            ),
-            "/media/image/tw-llm-tuned-all-games.png"
-        )
-    ];
-    let pageInfo = new PageInfo(
-        genPageTitle(__filename),
-        "Moral High Ground",
-        "A conversational benchmark for LLM moral alignment",
-        { backgroundColor: PageColor.URANIUM_GREEN },
-        ["research", "academic", "ai", "python"],
-        []
+            </GalleryTile>
+        </DefaultWrapper>
     );
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
 }
