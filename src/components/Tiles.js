@@ -29,27 +29,22 @@ class TileElements {
 function tileFactory(tileInfo, children = null) {
     const tileId = tileInfo.anchor ? tileInfo.anchor : "pageTile-" + crypto.randomUUID();
 
-    // Element that serves as a page anchor link
-    let anchorElem = tileInfo.anchor ? (
-        <Link href={`#${tileInfo.anchor}`} className={`${tileStyles.anchorLink}`} onClick={resetTilesOnScroll}>
-            <img className={`${tileStyles.anchorIcon}`} alt="" />
-        </Link>
-    ) : null;
-
     // The title of the tile, either a link or in bold
-    let titleTextElem = tileInfo.titleLink ? (
-        <Link className={`${tileStyles.displayTileTitle}`} href={tileInfo.titleLink}>
-            <u>{tileInfo.title}</u>
-        </Link>
-    ) : (
-        <b className={`${tileStyles.displayTileTitle}`}>{tileInfo.title}</b>
-    );
-
-    // The title element for the tile, either an h2 or h4 depending on the tile type
     let tileTitle = (
         <>
-            {titleTextElem}
-            {anchorElem}
+            {tileInfo.titleLink ? (
+                <Link className={`${tileStyles.displayTileTitle}`} href={tileInfo.titleLink}>
+                    <u>{tileInfo.title}</u>
+                </Link>
+            ) : (
+                <b className={`${tileStyles.displayTileTitle}`}>{tileInfo.title}</b>
+            )}
+
+            {tileInfo.anchor ? (
+                <Link href={`#${tileInfo.anchor}`} className={`${tileStyles.anchorLink}`} onClick={resetTilesOnScroll}>
+                    <img className={`${tileStyles.anchorIcon}`} alt="" />
+                </Link>
+            ) : null}
         </>
     );
 
@@ -131,4 +126,42 @@ SectionTile.propTypes = {
     style: PropTypes.object
 };
 
-export { Tile, SectionTile };
+/**
+ * A gallery tile object within a page to highlight an image
+ * @param children {JSXElement} The children of the tile
+ * @param tileInfo {TileInfo} Metadata for the tile
+ * @param style {object} The style of the tile
+ */
+function GalleryTile({ children, tileInfo, style }) {
+    let tileElements = tileFactory(tileInfo);
+    return (
+        <div
+            id={tileElements.tileId}
+            className={`w3-container w3-row ${tileStyles.displayTile}`}
+            style={style}
+            data-refdata={"unslid"}>
+            <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail} ${tileStyles.galleryTileThumbnail}`}>
+                <img src={tileInfo.thumbnail} alt="gitLogo" />
+            </div>
+
+            <div className={`w3-mobile w3-rest`}>
+                <h4 className={`${tileStyles.displayContentTitle}`}>
+                    <b className={`${tileStyles.displayTileTitle} ${tileStyles.galleryTileTitle}`}>{tileInfo.title}</b>
+                </h4>
+                <div style={{ position: "relative" }}>
+                    <div className={`${tileStyles.displayTileContent} ${tileStyles.galleryTileContent}`}>
+                        {children}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+GalleryTile.propTypes = {
+    children: PropTypes.node,
+    tileInfo: PropTypes.object.isRequired,
+    style: PropTypes.object
+};
+
+export { Tile, SectionTile, GalleryTile };
