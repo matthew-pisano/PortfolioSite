@@ -3,15 +3,29 @@ import React from "react";
 import Link from "next/link";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { GitLink, PageInfo, SectionTile, Tile, TileLink } from "@/lib/pageBuilder";
+import { Tile, SectionTile } from "@/components/Tiles";
+import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { Constants, genPageTitle } from "@/lib/utils";
 
 export default function About() {
-    let tiles = [
-        new Tile(
-            <h2>Introduction</h2>,
-            (
+    let pageInfo = new PageInfo(
+        genPageTitle(__filename),
+        "About",
+        "Extra information on me as a researcher, developer, and person",
+        { backgroundColor: PageColor.LONDON_GREY },
+        [],
+        [
+            new GitLink("https://github.com/matthew-pisano/", "GitHub"),
+            new TileLink(Constants.resumeUrl, "Résumé"),
+            new TileLink("https://www.linkedin.com/in/matthew-pisano", "LinkedIn"),
+            new TileLink("https://orcid.org/0009-0001-5714-3585", "Orcid")
+        ]
+    );
+
+    return (
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile tileInfo={new TileInfo({ title: <h2>Introduction</h2>, thumbnail: "/media/image/headshot" })}>
                 <>
                     My name is Matthew Pisano. I am an Artificial Intelligence Researcher and Software Engineer. I have
                     a Master's degree in Computer Science from Rensselaer Polytechnic Institute along with extensive
@@ -23,12 +37,9 @@ export default function About() {
                     artificial ones. I enjoy learning about how the mind works and the cognitive principles that it
                     operates upon.
                 </>
-            ),
-            "/media/image/headshot"
-        ),
-        new Tile(
-            <>Software Skills</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Software Skills</> })}>
                 <>
                     While I have experience in many languages, my skills in <i>Python</i>, <i>C++</i>, <i>JavaScript</i>
                     , and <i>Java</i> are the most developed.
@@ -56,11 +67,9 @@ export default function About() {
                     I have work experience ranging from small startups to Multinational Research divisions. With each
                     new experience, I gain valuable knowledge on the unique cultures and strategies that they offer.
                 </>
-            )
-        ),
-        new Tile(
-            <>Teaching Experience</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Teaching Experience</> })}>
                 <>
                     Throughout my education and career, I have grained experience teaching at several levels. I have
                     worked as a student mentor, graduate teaching assistant, and now as an adjunct professor. One of my
@@ -83,11 +92,9 @@ export default function About() {
                         I aided other students in areas ranging from pre-algebra to calculus and differential equations.
                     </p>
                 </>
-            )
-        ),
-        new Tile(
-            <>Leadership</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Leadership</> })}>
                 <>
                     A key attribute of someone who can work well with a team, whether the focus is software development
                     or research, is leadership. My own leadership skills stem from my experience in leading development
@@ -123,12 +130,11 @@ export default function About() {
                         my current proactive and collaborative approach to leadership.
                     </p>
                 </>
-            )
-        ),
-        new SectionTile(<>Employment History</>),
-        new Tile(
-            <>IBM</>,
-            (
+            </Tile>
+
+            <SectionTile tileInfo={new TileInfo({ title: <>Employment History</> })} />
+
+            <Tile tileInfo={new TileInfo({ title: <>IBM</>, thumbnail: "/media/image/ibm.png" })}>
                 <>
                     <p>
                         <i>Staff Software Engineer</i>
@@ -137,12 +143,9 @@ export default function About() {
                     compiling PyTorch models onto IBM's new <i>Sypre</i> AI accelerator chips. I have also been tasked
                     with automating our build workflows and organize our team scrums and pull-request meetings.
                 </>
-            ),
-            "/media/image/ibm.png"
-        ),
-        new Tile(
-            <>SUNY Ulster</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>SUNY Ulster</>, thumbnail: "/media/image/suny-ulster.png" })}>
                 <>
                     <p>
                         <i>Computer Science Adjunct</i>
@@ -152,12 +155,12 @@ export default function About() {
                     lecturing to the class, managing the course curriculum and creating new modules as needed, grading
                     student work, and participating in faculty meetings.
                 </>
-            ),
-            "/media/image/suny-ulster.png"
-        ),
-        new Tile(
-            <>Substrate AI Research</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>Substrate AI Research</>, thumbnail: "/media/image/substrate-ai.png" })
+                }>
                 <>
                     <p>
                         <i>Research Engineer</i>
@@ -169,12 +172,9 @@ export default function About() {
                     primary contributor towards the training of the model and the development of the supporting
                     infrastructure for production deployment.
                 </>
-            ),
-            "/media/image/substrate-ai.png"
-        ),
-        new Tile(
-            <>FileScience</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>FileScience</>, thumbnail: "/media/image/filescience.jpg" })}>
                 <>
                     <p>
                         <i>Quality Assurance Lead Engineer</i>
@@ -190,12 +190,9 @@ export default function About() {
                     and security practices. This has given me invaluable experience in testing and architecting highly
                     distributed and parallelized software and infrastructure.
                 </>
-            ),
-            "/media/image/filescience.jpg"
-        ),
-        new Tile(
-            <>IBM Research</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>IBM Research</>, thumbnail: "/media/image/ibm-research.png" })}>
                 <>
                     <p>
                         <i>Research Extern</i>
@@ -205,12 +202,12 @@ export default function About() {
                     alignment using text-based game for safety training on moral and ethical principles. More
                     information can be found in the <Link href="/research/highGround">Moral High Ground</Link> page.
                 </>
-            ),
-            "/media/image/ibm-research.png"
-        ),
-        new Tile(
-            <>Rensselaer Polytechnic Institute</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>Rensselaer Polytechnic Institute</>, thumbnail: "/media/image/rpi.png" })
+                }>
                 <>
                     <p>
                         <i>Computer Science Teaching Assistant</i>
@@ -219,12 +216,9 @@ export default function About() {
                     teaching assistant. In this position, I hold office hours, aid the professor in grading, and help
                     students to better grasp relevant course material.
                 </>
-            ),
-            "/media/image/rpi.png"
-        ),
-        new Tile(
-            <>SUNY New Paltz</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>SUNY New Paltz</>, thumbnail: "/media/image/suny-new-paltz.jpg" })}>
                 <>
                     <p>
                         <i>Undergraduate Researcher</i>
@@ -238,12 +232,12 @@ export default function About() {
                     for the resulting paper. With this job, I worked closely with my professor to gain research
                     experience and to develop research for later publishing.
                 </>
-            ),
-            "/media/image/suny-new-paltz.jpg"
-        ),
-        new Tile(
-            <>Cyber Guardian Consulting Group</>,
-            (
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>Cyber Guardian Consulting Group</>, thumbnail: "/media/image/cgcg.jpg" })
+                }>
                 <>
                     <p>
                         <i>Software Engineer</i>
@@ -257,23 +251,7 @@ export default function About() {
                     distributed and asynchronous backup software from scratch, database management, and many full-stack
                     web applications.
                 </>
-            ),
-            "/media/image/cgcg.jpg"
-        )
-    ];
-    let pageInfo = new PageInfo(
-        genPageTitle(__filename),
-        "About",
-        "Extra information on me as a researcher, developer, and person",
-        { backgroundColor: PageColor.LONDON_GREY },
-        [],
-        [
-            new GitLink("https://github.com/matthew-pisano/", "GitHub"),
-            new TileLink(Constants.resumeUrl, "Résumé"),
-            new TileLink("https://www.linkedin.com/in/matthew-pisano", "LinkedIn"),
-            new TileLink("https://orcid.org/0009-0001-5714-3585", "Orcid")
-        ]
+            </Tile>
+        </DefaultWrapper>
     );
-
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
 }
