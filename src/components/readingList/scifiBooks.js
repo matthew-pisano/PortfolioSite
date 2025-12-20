@@ -715,9 +715,7 @@ export default (
                     common for totalitarian regimes to have popular support as long as they enforce the will of the
                     majority. The most apt (and somewhat default) example comes from 1930's Germany. At the time, the
                     Weimar government was already deeply unpopular with the majority of Germans. Similar to the state in
-                    the novel, these conditions gave the <i>NSDAP</i> an excellent opportunity. At the time, the Weimar
-                    government was already deeply unpopular with the majority of Germans. Similar to the state in the
-                    novel, these conditions gave the <i>NSDAP</i> an excellent opportunity. They implemented (or at
+                    the novel, these conditions gave the <i>NSDAP</i> an excellent opportunity. They implemented (or at
                     least promised) policies that many people actually wanted. Before (and even during) their height of
                     power, control, and malice, the Nazi Party was <i>popular</i> among many everyday Germans. To them,
                     that is all that really mattered. Most relevant to this book, many of their early, famous
