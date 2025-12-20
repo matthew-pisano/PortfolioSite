@@ -3,27 +3,35 @@ import React from "react";
 import Latex from "react-latex-next";
 
 import DefaultWrapper from "@/components/DefaultWrapper";
-import { GitLink, PageInfo, SectionTile, Tile, TileLink } from "@/lib/pageBuilder";
+import { Tile, SectionTile } from "@/components/Tiles";
+import { GitLink, PageInfo, TileInfo, TileLink } from "@/lib/pageBuilder";
 import { PageColor } from "@/lib/themes";
 import { genPageTitle } from "@/lib/utils";
 
 export default function ChipFiring() {
-    let tiles = [
-        new Tile(
-            <h2>Overview</h2>,
-            (
+    let pageInfo = new PageInfo(
+        genPageTitle(__filename),
+        "Chip Firing",
+        "A research project to examine patterns in chip firing games",
+        { backgroundColor: PageColor.URANIUM_GREEN },
+        ["research", "academic", "python"],
+        [
+            new GitLink("https://github.com/matthew-pisano/ChipFiring", "Chip Firing"),
+            new TileLink("https://www.sciencedirect.com/science/article/pii/S0024379525000771", "Research Paper")
+        ]
+    );
+    return (
+        <DefaultWrapper pageInfo={pageInfo}>
+            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2>, thumbnail: "/media/image/chipfiring.png" })}>
                 <>
                     This research was performed by myself, an advisor at <i>SUNY New Paltz</i>, and one of his
                     colleagues. In this research, we focused on the study of Chip-Firing games and how different
                     combinations of directed and undirected edges affect its winning strategies. This falls primarily
                     within the fields of linear algebra, graph theory, and combinatorics.
                 </>
-            ),
-            "/media/image/chipfiring.png"
-        ),
-        new Tile(
-            <>Abstract</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Abstract</> })}>
                 <>
                     The Picard group of an undirected graph is a finitely generated Abelian group, and the Jacobian is
                     the torsion subgroup of the Picard group. These groups can be computed by using the Smith normal
@@ -32,11 +40,9 @@ export default function ChipFiring() {
                     Picard groups and Jacobians for several classes of directed trees, cycles, wheel, and multipartite
                     graphs.
                 </>
-            )
-        ),
-        new Tile(
-            <>Submissions and Conferences</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Submissions and Conferences</> })}>
                 <>
                     This paper was accepted into the Joint Mathematics Meetings 2023 and presented on January 6th 2023.
                     This research was also published in the journal{" "}
@@ -48,12 +54,11 @@ export default function ChipFiring() {
                     </a>
                     , Volume 711, Pages 180-211 on April 15th 2025.
                 </>
-            )
-        ),
-        new SectionTile(<>Background</>),
-        new Tile(
-            <>The Chip Firing Game</>,
-            (
+            </Tile>
+
+            <SectionTile tileInfo={new TileInfo({ title: <>Background</> })} />
+
+            <Tile tileInfo={new TileInfo({ title: <>The Chip Firing Game</> })}>
                 <>
                     A Chip Firing Game is a game played on a graph structure in mathematics. Each vertex on the graph is
                     assigned a positive or negative integer, representing the number of 'chips' that vertex has. Each
@@ -63,11 +68,9 @@ export default function ChipFiring() {
                     borrow from the vertices connected to it by its <i>outgoing</i> edges only. The aim of the game is
                     to find some series of lending and borrowing moves such that every vertex has zero or more 'chips'.
                 </>
-            )
-        ),
-        new Tile(
-            <>Divisors and Equivalence Relations</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Divisors and Equivalence Relations</> })}>
                 <>
                     In the study of this game a <u>divisor</u> is an integer vector{" "}
                     <Latex>{`$v\\in\\mathbb{Z}^n$`}</Latex> where <i>n</i> is the number of vertices in the graph. The{" "}
@@ -78,11 +81,9 @@ export default function ChipFiring() {
                     An <u>equivalence class</u> <i>[D]</i> is the set of all divisors that are equivalent to each other,{" "}
                     <Latex>{`$[D] = \\{D_i~|~D_i \\sim D\\}$`}</Latex>.
                 </>
-            )
-        ),
-        new Tile(
-            <>The Picard Group and The Jacobian</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>The Picard Group and The Jacobian</> })}>
                 <>
                     The <u>Picard Group</u> of a graph is the set of all equivalence classes that the divisors of that
                     graph can be a part of. The <u>Jacobian</u> of a graph <Latex>{`$Jac(G)$`}</Latex> is a subset of{" "}
@@ -94,11 +95,9 @@ export default function ChipFiring() {
                     of the Picard group. Finding both the Jacobian and the rank is sufficient to construct the Picard
                     group.
                 </>
-            )
-        ),
-        new Tile(
-            <>The Laplacian</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>The Laplacian</> })}>
                 <>
                     The <u>laplacian</u> of a graph, in this case is an <i>n x n</i> matrix where <i>n</i> is the number
                     of vertices on the graph. Its diagonal is determined by how many outgoing connections each vertex
@@ -120,12 +119,11 @@ export default function ChipFiring() {
                     can be calculated. As the nature of a graph changes through changing the number of vertices, making
                     edges directed or undirected, the valid solutions to a game can change greatly.
                 </>
-            )
-        ),
-        new SectionTile(<>Project Details</>),
-        new Tile(
-            <>Goal</>,
-            (
+            </Tile>
+
+            <SectionTile tileInfo={new TileInfo({ title: <>Project Details</> })} />
+
+            <Tile tileInfo={new TileInfo({ title: <>Goal</> })}>
                 <>
                     The goal of this project is to study how the Picard Group of a graph can change when the direction
                     of its edges are changed. Our research primarily focuses on trees, cycle graphs, pseudotrees, and
@@ -135,27 +133,24 @@ export default function ChipFiring() {
                     of these classes. Experimentation is done using Python and the NumPy library to calculate the Picard
                     group of any given graphs and to analyze any patterns that arise from these calculations.
                 </>
-            )
-        ),
-        new Tile(
-            <>Trees</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Trees</> })}>
                 <>
                     Tree graphs are one of the simplest structures that we investigate and their Picard groups are also
                     quite simple. We have determined that the Jacobian of a tree is always the trivial group. This
                     follows from the matrix-tree theorem due to the fact that a tree graph only has one spanning tree.
-                    <br />
-                    <br />
-                    The rank of a tree's Picard group is more complex, but still follows a clear pattern. The rank is
-                    determined by the number of terminal-strong-components inside that tree. These components are areas
-                    of the tree that are strongly connected, but only have edges pointing inward to them from the
-                    greater tree. The greater the number of these components, the higher the rank of the Picard group.
+                    <p>
+                        The rank of a tree's Picard group is more complex, but still follows a clear pattern. The rank
+                        is determined by the number of terminal-strong-components inside that tree. These components are
+                        areas of the tree that are strongly connected, but only have edges pointing inward to them from
+                        the greater tree. The greater the number of these components, the higher the rank of the Picard
+                        group.
+                    </p>
                 </>
-            )
-        ),
-        new Tile(
-            <>Cycles</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Cycles</> })}>
                 <>
                     Cycle graphs are another simple graph that we study, although their Picard groups are more complex.
                     The Jacobian of a cycle graph depends on the number of paths that it has. A path, in this case, is a
@@ -170,16 +165,14 @@ export default function ChipFiring() {
                     <Latex>{`$\\mathbb{Z}_2 \\dots \\mathbb{Z}_4$`}</Latex> for sizes of graphs smaller than size
                     fifteen. We suspect that, for very large graphs, the behavior of four or more paths approaches that
                     of two paths.
-                    <br />
-                    <br />
-                    The rank of a cycle's Picard group is similar to that of a tree. Is also the number of
-                    terminal-strong-components.
+                    <p>
+                        The rank of a cycle's Picard group is similar to that of a tree. Is also the number of
+                        terminal-strong-components.
+                    </p>
                 </>
-            )
-        ),
-        new Tile(
-            <>Wheel Graphs</>,
-            (
+            </Tile>
+
+            <Tile tileInfo={new TileInfo({ title: <>Wheel Graphs</> })}>
                 <>
                     Wheel graphs are similar to cycles in their construction, but not in their playable configurations,
                     represented by the Picard group. The Jacobian of a wheel graphs can be split into four broad
@@ -192,23 +185,9 @@ export default function ChipFiring() {
                     <Latex>{`$\\mathbb{Z}_{\\beta\\phi^{n}} \\times \\mathbb{Z}_{\\beta\\phi^{n}}$`}</Latex> when the
                     size was even where <Latex>{`$\\beta \\approxeq 0.618035$`}</Latex>. In both of these patterns,{" "}
                     <Latex>{`$\\phi$`}</Latex> represents the golden ratio.
-                    <br />
-                    <br />
-                    The rank of a wheel graph is also the number of terminal-strong-components in the graph.
+                    <p>The rank of a wheel graph is also the number of terminal-strong-components in the graph.</p>
                 </>
-            )
-        )
-    ];
-    let pageInfo = new PageInfo(
-        genPageTitle(__filename),
-        "Chip Firing",
-        "A research project to examine patterns in chip firing games",
-        { backgroundColor: PageColor.URANIUM_GREEN },
-        ["research", "academic", "python"],
-        [
-            new GitLink("https://github.com/matthew-pisano/ChipFiring", "Chip Firing"),
-            new TileLink("https://www.sciencedirect.com/science/article/pii/S0024379525000771", "Research Paper")
-        ]
+            </Tile>
+        </DefaultWrapper>
     );
-    return <DefaultWrapper pageInfo={pageInfo} tiles={tiles} />;
 }
