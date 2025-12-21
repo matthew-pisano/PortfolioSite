@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 30px;
     padding: 0 10px;
     margin-bottom: 50px;
 }
@@ -82,6 +82,20 @@
 
 .displayTileContent, .displayContentTitle {
     padding: 0 25px;
+}
+
+.blogLanding .displayTile {
+    border-style: none solid;
+    max-width: 300px;
+    margin: 0;
+}
+
+.blogLanding .displayTileContent {
+    padding: 0 10px;
+}
+
+.blogLanding img {
+    max-height: 150px !important;
 }
 
 .galleryTileTitle {
