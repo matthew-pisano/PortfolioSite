@@ -1,6 +1,6 @@
 import React from "react";
 
-import BlogWrapper from "@/components/BlogWrapper";
+import BlogWrapper from "@/components/wrappers/BlogWrapper";
 
 export default function BlogOne() {
     return (

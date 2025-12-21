@@ -1,16 +1,21 @@
-import Link from "next/link";
 import React from "react";
 
+import Link from "next/link";
 import PropTypes from "prop-types";
 
-import Wrapper from "@/components/Wrapper";
+import Wrapper from "@/components/wrappers/Wrapper";
 import styles from "@/styles/pageTiles.module.css";
 
 /**
- * Wrapper for pages that require tiles to wrap.
+ * Wrapper for blog pages.
+ * @param children {JSXElement} The children of the wrapper
+ * @param pageName {string} The name of the blog page
+ * @param title {string} The title of the blog page
+ * @param subtitle {string} The subtitle of the blog page
+ * @param date {Date} The date of writing of the blog
  * @return {JSX.Element} The page wrapped in the default wrapper
  */
-function BlogWrapper({ pageName, title, subtitle, date, children }) {
+function BlogWrapper({ children, pageName, title, subtitle, date }) {
     return (
         <Wrapper pageName={pageName}>
             <div className={styles.blogTitle}>
@@ -31,11 +36,11 @@ function BlogWrapper({ pageName, title, subtitle, date, children }) {
 }
 
 BlogWrapper.propTypes = {
+    children: PropTypes.element.isRequired,
     pageName: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
-    date: PropTypes.any.isRequired,
-    children: PropTypes.element.isRequired
+    date: PropTypes.any.isRequired
 };
 
 export default BlogWrapper;
