@@ -2,18 +2,17 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-import Wrapper from "@/components/Wrapper";
-import { buildTiles } from "@/lib/pageBuilder";
+import Wrapper from "@/components/wrappers/Wrapper";
 import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/Wrapper.module.css";
 
 /**
  * Wrapper for pages that require tiles to wrap.
+ * @param children {JSXElement} The children of the wrapper
  * @param pageInfo {PageInfo} Information about the page to be displayed
- * @param tiles {Tile[]} Tiles to be displayed on the page
  * @return {JSX.Element} The page wrapped in the default wrapper
  */
-function FlexWrapper({ pageInfo, tiles }) {
+function FlexWrapper({ children, pageInfo }) {
     return (
         <Wrapper pageName={pageInfo.pageName}>
             <div className={`${styles.titleCard}`}>
@@ -25,12 +24,12 @@ function FlexWrapper({ pageInfo, tiles }) {
                 id="tileHolder"
                 className={`w3-display-container ${tileStyles.tileHolder}`}
                 style={pageInfo.holderStyle}>
-                <div className={`${tileStyles.flexTileHolder}`}>{buildTiles(tiles)}</div>
+                <div className={`${tileStyles.flexTileHolder}`}>{children}</div>
             </div>
         </Wrapper>
     );
 }
 
-FlexWrapper.propTypes = { pageInfo: PropTypes.any, tiles: PropTypes.array };
+FlexWrapper.propTypes = { children: PropTypes.node, pageInfo: PropTypes.any };
 
 export default FlexWrapper;

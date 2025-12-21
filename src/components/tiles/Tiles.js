@@ -183,8 +183,8 @@ function GalleryTile({ children, tileInfo, style }) {
             </div>
 
             <div className={`w3-mobile w3-rest`}>
-                <h4 className={`${tileStyles.displayContentTitle}`}>
-                    <b className={`${tileStyles.displayTileTitle} ${tileStyles.galleryTileTitle}`}>{tileInfo.title}</b>
+                <h4 className={`${tileStyles.displayContentTitle} ${tileStyles.galleryTileTitle}`}>
+                    {tileElements.tileTitle}
                 </h4>
                 <div style={{ position: "relative" }}>
                     <div className={`${tileStyles.displayTileContent} ${tileStyles.galleryTileContent}`}>
@@ -202,4 +202,24 @@ GalleryTile.propTypes = {
     style: PropTypes.object
 };
 
-export { Tile, SectionTile, GalleryTile, slideTilesOnScroll, resetTilesOnScroll, TRANSLUCENT };
+/**
+ * A flex tile object within a page to highlight an image
+ * @param children {JSXElement} The children of the tile
+ * @param tileInfo {TileInfo} Metadata for the tile
+ * @param style {object} The style of the tile
+ */
+function FlexTile({ children, tileInfo, style }) {
+    return (
+        <GalleryTile tileInfo={tileInfo} style={{ ...style, ...{ margin: "0px", maxWidth: "500px" } }}>
+            {children}
+        </GalleryTile>
+    );
+}
+
+FlexTile.propTypes = {
+    children: PropTypes.node,
+    tileInfo: PropTypes.object.isRequired,
+    style: PropTypes.object
+};
+
+export { Tile, SectionTile, GalleryTile, FlexTile, slideTilesOnScroll, resetTilesOnScroll, TRANSLUCENT };
