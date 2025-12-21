@@ -8,28 +8,31 @@
 }
 
 .sidebar {
-    bottom: 30px;
-    top: 27px;
+    border-radius: 10px;
+    bottom: 87px;
+    top: 35px;
+    left: 3px;
     position: fixed;
     z-index: 2;
-    overflow-y: auto;
     background-color: var(--theme-color-2);
-    border-right: var(--theme-accent) 2px solid;
+    border-style: solid;
+    border-color: var(--theme-accent);
+    border-width: 1px;
 }
 
 .collapseHolder {
     position: fixed;
     z-index: 3;
-    background-color: var(--theme-color-2);
-    border-style: none solid none none;
-    border-color: var(--theme-accent);
-    border-width: 2px;
+}
+
+.sidebarContentHolder {
+    overflow-y: auto;
+    height: calc(100% - 60px);
+    margin-top: 50px;
 }
 
 .sidebarContent {
     width: 100%;
-    margin-top: 50px;
-    margin-bottom: 50px;
 }
 
 .sidebarItem {
@@ -37,7 +40,7 @@
     border-color: var(--theme-accent);
     border-width: 2px;
     padding-left: 1px;
-    padding-right: 1px;
+    padding-right: 5px;
     width: 100%;
     border-radius: 0 5px 5px 0;
 }
@@ -108,15 +111,14 @@
 }
 
 .collapseSidebar {
+    border-radius: 10px;
     width: 38px;
     height: 40px;
-    padding: 1px;
+    padding: 5px;
     background-color: var(--theme-color-2-selected);
-    border-style: none none none solid;
-    border-color: var(--theme-accent);
     border-width: 2px;
     background-image: url("/assets/explorerIcon.svg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -149,6 +151,7 @@
 
     .sidebar {
         border: none;
+        bottom: 0;
     }
 
     .collapseSidebar {

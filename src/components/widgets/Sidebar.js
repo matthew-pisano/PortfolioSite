@@ -308,11 +308,13 @@ function Sidebar({ changeSidebarState }) {
                     Explorer
                 </span>
             </div>
-            <div
-                id="sidebarContent"
-                className={`w3-display-container w3-row ${styles.sidebarContent}`}
-                style={{ display: sidebarOpen ? "block" : "none" }}>
-                {explorerTree}
+            <div className={`${styles.sidebarContentHolder}`}>
+                <div
+                    id="sidebarContent"
+                    className={`w3-display-container w3-row ${styles.sidebarContent}`}
+                    style={{ display: sidebarOpen ? "block" : "none" }}>
+                    {explorerTree}
+                </div>
             </div>
         </div>
     );
