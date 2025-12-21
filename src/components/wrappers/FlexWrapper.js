@@ -10,11 +10,12 @@ import styles from "@/styles/Wrapper.module.css";
  * Wrapper for pages that require tiles to wrap.
  * @param children {JSXElement} The children of the wrapper
  * @param pageInfo {PageInfo} Information about the page to be displayed
+ * @param className {string} The class for the page
  * @return {JSX.Element} The page wrapped in the default wrapper
  */
-function FlexWrapper({ children, pageInfo }) {
+function FlexWrapper({ children, pageInfo, className }) {
     return (
-        <Wrapper pageName={pageInfo.pageName}>
+        <Wrapper pageName={pageInfo.pageName} pageClass={className}>
             <div className={`${styles.titleCard}`}>
                 <h1>{pageInfo.title}</h1>
                 <br />
@@ -30,6 +31,6 @@ function FlexWrapper({ children, pageInfo }) {
     );
 }
 
-FlexWrapper.propTypes = { children: PropTypes.node, pageInfo: PropTypes.any };
+FlexWrapper.propTypes = { children: PropTypes.node, pageInfo: PropTypes.any, className: PropTypes.string };
 
 export default FlexWrapper;
