@@ -1,5 +1,6 @@
 
 .terminalClose {
+    border-bottom-left-radius: 10px;
     float: right;
     visibility: hidden;
 }
@@ -14,12 +15,16 @@
 }
 
 .terminalHolder {
+    border-radius: 10px;
     background-color: var(--theme-color-3);
+    border-bottom: 1px solid var(--theme-accent);
+    border-right: 1px solid var(--theme-accent);
+    border-left: 1px solid var(--theme-accent);
     color: var(--theme-text) !important;
     position: fixed;
     bottom: 30px;
-    left: 0;
-    right: 0;
+    left: 3px;
+    right: 3px;
     z-index: 2;
 }
 
@@ -31,6 +36,7 @@
     cursor: pointer;
     height: 40px;
     user-select: none;
+    padding-left: 5px;
 }
 
 .terminalPrompt {
@@ -54,7 +60,7 @@
     overflow-wrap: break-word;
     display: none;
     border-top: var(--theme-color-3-hover) 1px solid;
-    padding-top: 10px;
+    padding: 10px 5px;
     overscroll-behavior: contain;
 }
 
@@ -79,10 +85,9 @@
 }
 
 .terminalThumb {
+    border-radius: 10px 10px 0 0;
     background-color: var(--theme-color-3-hover);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
+    border-top: 1px solid var(--theme-accent);
     cursor: row-resize;
     height: 12px;
 }
