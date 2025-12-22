@@ -37,6 +37,10 @@
     margin-bottom: 20px;
 }
 
+.blogLanding h4 {
+    font-size: medium;
+}
+
 .blogTitle {
     padding: 10px;
     text-align: center;
