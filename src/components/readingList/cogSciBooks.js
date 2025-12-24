@@ -12,7 +12,7 @@ export default (
             author={"Nick Bostrom"}
             synopsis={
                 <>
-                    The primary concern of <u>Superintelligence: Paths, Dangers, Strategies</u> is not necessarily what
+                    The primary concern of <i>Superintelligence: Paths, Dangers, Strategies</i> is not necessarily what
                     needs to happen for artificial general intelligence to be developed, but what happens soon after.
                     This could be on timescales as long as decades, or as short as seconds. After this point, the entire
                     course of human history will be altered; this much is certain. The only remaining uncertainty is
@@ -307,13 +307,13 @@ export default (
                         in the artificial case, even more so for the case of emulations.
                     </p>
                     <p>
-                        <u>Superintelligence</u> should serve as required reading for anyone interested in AI safety and
+                        <i>Superintelligence</i> should serve as required reading for anyone interested in AI safety and
                         in AGI research more broadly. Even though the landscape of AI has changed dramatically over the
                         past decade, the core ideas of the book stand largely unweathered by time. Many of the
                         strategies for control within this book come with a lot of "hand-waving" when it comes to
                         details. This was surely by design, as advancements in alignment techniques serve to fill in the
                         gaps, rather than overwrite any fundamental notions. The paperback version of this book
-                        (released a year later) contains an <i>afterword</i> section where Bostrom reflects on the books
+                        (released a year later) contains an "afterword" section where Bostrom reflects on the books
                         impact and also the state of the field. In this section, he catalogues some emerging
                         technologies including generative adversarial networks and (pre-transformer) attention-based
                         generation methods. This serves as some subtle and unintentional foreshadowing for the state of
@@ -389,7 +389,7 @@ export default (
             author={"Daniel Kahneman"}
             synopsis={
                 <>
-                    <u>Thinking Fast and Slow</u> serves as a compendium of the author's knowledge on both human
+                    <i>Thinking Fast and Slow</i> serves as a compendium of the author's knowledge on both human
                     psychology and economic theory, particularly on the intersection between the two. The core idea of
                     the book is that, in contrast to traditional economic theory where humans serve as simple, rational
                     agents, the behavior of real humans is more complex and nuanced than originally thought. This idea
@@ -430,7 +430,7 @@ export default (
             }
             thoughts={
                 <>
-                    While all of the concepts presented within <u>Thinking Fast and Slow</u> have far-reaching
+                    While all of the concepts presented within <i>Thinking Fast and Slow</i> have far-reaching
                     influences on economics, cognitive science, and psychology, I find his first set of ideas the most
                     interesting. Namely, his distinction between <i>System 1</i> and <i>System 2</i> thinking. This is
                     primarily because of its potential implications on my own field of study, artificial intelligence.
@@ -460,17 +460,18 @@ export default (
             author={"Douglas Hofstadter"}
             synopsis={
                 <>
-                    <u>GEB: EGB</u> is a work that often resists attempts at strict classification and even
-                    summarization. At first, it may seem to be building up to Gödel's proof and how it can be related to
-                    other formal systems. This, however, is only one component of the tome's content. Hofstadter also
-                    touches on themes of mathematical formalisms, number theory, geometry, recursion, self-replication,
-                    self-representation, self-modification, holism/reductionism, cognition, computers, and artificial
-                    intelligence. Towards the end, the author also adds discussions about determinism, free will, and{" "}
-                    <i>Strange Loops</i> to the list. The latter of these being one of Hofstadter's main theses: the
-                    fact that "interesting" systems, such as number theory, genetics, or the human mind must contain
-                    different levels of self-reference across levels of abstraction. These <i>Tangled Hierarchies</i>{" "}
-                    allow a system to "speak" about itself and enable emergent phenomena such as Gödel's theorems on
-                    incompleteness and consistency, genetic code replication, and human consciousness.
+                    <i>Gödel, Escher, Bach: An Eternal Golden Braid</i> is a work that often resists attempts at strict
+                    classification and even summarization. At first, it may seem to be building up to Gödel's proof and
+                    how it can be related to other formal systems. This, however, is only one component of the tome's
+                    content. Hofstadter also touches on themes of mathematical formalisms, number theory, geometry,
+                    recursion, self-replication, self-representation, self-modification, holism/reductionism, cognition,
+                    computers, and artificial intelligence. Towards the end, the author also adds discussions about
+                    determinism, free will, and <i>Strange Loops</i> to the list. The latter of these being one of
+                    Hofstadter's main theses: the fact that "interesting" systems, such as number theory, genetics, or
+                    the human mind must contain different levels of self-reference across levels of abstraction. These{" "}
+                    <i>Tangled Hierarchies</i> allow a system to "speak" about itself and enable emergent phenomena such
+                    as Gödel's theorems on incompleteness and consistency, genetic code replication, and human
+                    consciousness.
                     <p>
                         Beyond the above, surface-level themes, there resides the concept present in the book's
                         subtitle. Namely, how the works of Gödel, Escher, and Bach can, at a certain level of
@@ -549,7 +550,7 @@ export default (
             author={"Stuart Russell"}
             synopsis={
                 <>
-                    <u>Human Compatible</u> concentrates on potentially the most important field in the discipline in
+                    <i>Human Compatible</i> concentrates on potentially the most important field in the discipline in
                     artificial intelligence research: alignment and the problem of control. Within its pages, Russell
                     argues that advanced artificially intelligent systems will pose a significant, existential risk to
                     humanity. This risk also has a non-trivial chance of being realized in the near future. Despite
@@ -911,7 +912,7 @@ export default (
             synopsis={
                 <>
                     Unlike many of the other books on this list,{" "}
-                    <u>The Alignment Problem: Machine Learning and Human Values</u> concentrates primarily on the
+                    <i>The Alignment Problem: Machine Learning and Human Values</i> concentrates primarily on the
                     immediate risks of AI alignment, rather than long-term existential risks. One of the core theses of
                     this books is that we do not have to wait until artificial general intelligence to feel the negative
                     effects of misaligned AI systems. Through expert interviews, Christian lays out the full breadth of
@@ -933,7 +934,7 @@ export default (
             }
             thoughts={
                 <>
-                    While this book concentrates on similar themes to Nick Bostrom's <u>Superintelligence</u>, some of
+                    While this book concentrates on similar themes to Nick Bostrom's <i>Superintelligence</i>, some of
                     the most impactful ideas that this book presents involve much less existential, albeit still
                     harmful, examples of misalignment. Much of its length is devoted to addressing the ethical
                     implications of implementing machine learning algorithms without proper planning. For example, he
@@ -958,7 +959,7 @@ export default (
             author={"Robert M. Sapolsky"}
             synopsis={
                 <>
-                    <u>Determined: A Science of Life Without Free Will</u> examines and deconstructs one of the most
+                    <i>Determined: A Science of Life Without Free Will</i> examines and deconstructs one of the most
                     fundamental notions of the human condition: <i>the ability to freely choose</i>. The book is split
                     into two major parts. In the first part, he uses our modern understandings of psychology, sociology,
                     neuroscience, genetics, and even quantum physics, to gradually chip away at all the places that our
@@ -1014,7 +1015,7 @@ export default (
             author={"Robert M. Sapolsky"}
             synopsis={
                 <>
-                    <u>Behave: The Biology of Humans at Our Best and Worst</u> serves as an excellent exploration into
+                    <i>Behave: The Biology of Humans at Our Best and Worst</i> serves as an excellent exploration into
                     the nature of human behavior, its causes, its consequences, and how we can use that knowledge to
                     inform our own decisions. The central question of the book is this: a behavior has occurred, be it a
                     righteous act of selfless heroism or an exercise in revolting depravity, why? Sapolsky's approach to
@@ -1034,7 +1035,7 @@ export default (
                     <p>
                         Sapolsky continues, examining how behaviors evolve, how we treat in-group <i>Us'</i> and
                         out-group <i>Thems</i>, how hierarchies form and how we respond to our statuses within them, and
-                        introspections into morality, empathy, and metaphor. Similarly to <u>Determined</u>, he also
+                        introspections into morality, empathy, and metaphor. Similarly to <i>Determined</i>, he also
                         discusses the implications of these ideas on the criminal justice system. How does punishment
                         work if our behaviors are heavily, if not fully{" "}
                         <a href="https://matthewpisano.com/readingList#determined">determined</a> by factors outside of
@@ -1044,14 +1045,14 @@ export default (
             }
             thoughts={
                 <>
-                    I read <u>Behave</u> after I read <u>Determined</u> (unintentionally, but I'm glad that I did). It
+                    I read <i>Behave</i> after I read <i>Determined</i> (unintentionally, but I'm glad that I did). It
                     is very clear how the ideas Sapolsky presents in the former influenced the creation of the latter.
                     In his familiar style, the author goes into a significant amount of detail to support each facet of
                     his ideas, citing behavioral studies, observations of primates and other mammals, and his own
                     personal experience. For me, his ideas on behavior, rewards, and punishment were relatively easy to
-                    digest after being primed by <u>Determined</u>, but they are presented in such a cohesive manner
+                    digest after being primed by <i>Determined</i>, but they are presented in such a cohesive manner
                     that I would certainly be of the same opinion had I read them in the opposite order. Aside from his
-                    core argument, <u>Behave</u> also serves as an unintimidating and informative introduction to
+                    core argument, <i>Behave</i> also serves as an unintimidating and informative introduction to
                     cognitive science, behavioral analysis, neuroscience, ethology, and many other fields.
                     <p>
                         There were several sections of the book that I particularly enjoyed. Throughout the book, he
@@ -1084,7 +1085,7 @@ export default (
             author={"Marvin Minsky"}
             synopsis={
                 <>
-                    Within <u>The Emotion Machine</u>, Minsky introduces a new interpretation on familiar aspects of
+                    Within <i>The Emotion Machine</i>, Minsky introduces a new interpretation on familiar aspects of
                     human cognition. Namely that emotions, intuitions, and feelings are not isolated processes nor
                     hindrances to some perfectly rational, platonically ideal version of a human mind. Instead they make
                     up core aspects of our cognition. These altered states modify our existing behaviors and values to

@@ -9,7 +9,7 @@ export default (
             author={"George Dyson"}
             synopsis={
                 <>
-                    <u>Turing's Cathedral</u> is an in-depth historical exploration of the people, places, and events
+                    <i>Turing's Cathedral</i> is an in-depth historical exploration of the people, places, and events
                     surrounding the creation of the first general-purpose, electronic, digital computer. The{" "}
                     <i>ENIAC</i>, or Electronic Numerical Integrator and Computer, was one of the first concrete
                     realizations of Turing's <i>Universal Computing Machine</i>. The historical account, compiled by
@@ -74,7 +74,7 @@ export default (
             author={"Benjamín Labatut"}
             synopsis={
                 <>
-                    <u>The Maniac</u> is a fictionalized biography of polymath John von Neumann. It primarily explores
+                    <i>The Maniac</i> is a fictionalized biography of polymath John von Neumann. It primarily explores
                     von Neumann's life and accomplishments through a series of envisioned interviews with those he
                     interacted with. The book's prelude follows Paul Ehrenfest as he grapples with the crumbling
                     foundations of physics and mathematics that began to buckle under the weight of the quantum
@@ -98,7 +98,7 @@ export default (
                     environment or as a consequence of their own creations.
                     <p>
                         While the finer details of the book are not strictly based on historical evidence, reading{" "}
-                        <u>The Maniac</u> has changed how I think about inspiration, ideation, and invention. It also
+                        <i>The Maniac</i> has changed how I think about inspiration, ideation, and invention. It also
                         instills a sense of reverence for the geniuses who pioneered many of the ideas that underpin the
                         modern understanding of computing, artificial intelligence, and game theory. It also gave me a
                         much better understanding of John von Neumann, as his achievements are often less emphasized
@@ -115,8 +115,8 @@ export default (
             author={"Benjamín Labatut"}
             synopsis={
                 <>
-                    <u>When We Cease to Understand the World</u> reads very similarly to another of Labatut's books,{" "}
-                    <u>The Maniac</u>. It is a fictionalized account of some major developments in theoretical physics
+                    <i>When We Cease to Understand the World</i> reads very similarly to another of Labatut's books,{" "}
+                    <i>The Maniac</i>. It is a fictionalized account of some major developments in theoretical physics
                     and mathematics during the 20th century. Based on real, historical events, the book examines the
                     struggles, moral quandaries, and often madness that accompanies groundbreaking discoveries. It
                     briefly follows luminaries such as Fritz Haber, Werner Heisenberg, and Alexander Grothendieck as
@@ -158,7 +158,7 @@ export default (
                         the true, quantum reality.
                     </p>
                     <p>
-                        <u>When We Cease to Understand the World</u> expands upon a theme that I have noticed among many
+                        <i>When We Cease to Understand the World</i> expands upon a theme that I have noticed among many
                         of the books that I have read: as you examine reality at its most granular, the stranger it
                         becomes and the further your original understanding of the world begins to break down. This
                         extends beyond quantum mechanics; the continuous flow of time also increasingly appears to be a
