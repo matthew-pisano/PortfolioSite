@@ -287,26 +287,26 @@ function Sidebar() {
     }, [explorerTree]);
 
     useEffect(() => {
-        if (sidebarOpen) document.getElementById("pageHolder").classList.add(wrapperStyles.hideOnMobile);
-        else document.getElementById("pageHolder").classList.remove(wrapperStyles.hideOnMobile);
+        if (sidebarOpen) document.getElementById("page").classList.add(wrapperStyles.hideOnMobile);
+        else document.getElementById("page").classList.remove(wrapperStyles.hideOnMobile);
     }, [sidebarOpen]);
 
     let sidebarStateCls = sidebarOpen ? styles.openSidebar : styles.closeSidebar;
     return (
         <div id="sidebar" className={`${sidebarStateCls} ${styles.sidebar}`}>
-            <div id="collapseHolder" className={`w3-cell-row ${sidebarStateCls} ${styles.collapseHolder}`}>
+            <div id="sidebarHeader" className={`w3-cell-row ${sidebarStateCls} ${styles.sidebarHeader}`}>
                 <button
-                    id="collapseSidebar"
-                    className={`w3-button w3-cell ${styles.collapseSidebar}`}
+                    id="sidebarToggle"
+                    className={`w3-button w3-cell ${styles.sidebarToggle}`}
                     onClick={() => setSidebarOpen(!sidebarOpen)}></button>
                 <span
-                    id="explorerTitle"
-                    className={`w3-cell ${styles.sidebarItem} ${styles.explorerTitle}`}
+                    id="sidebarTitle"
+                    className={`w3-cell ${styles.sidebarItem} ${styles.sidebarTitle}`}
                     style={{ display: sidebarOpen ? "inline" : "none" }}>
                     Explorer
                 </span>
             </div>
-            <div className={`${styles.sidebarContentHolder}`}>
+            <div id="sidebarBody" className={`${styles.sidebarBody}`}>
                 <div
                     id="sidebarContent"
                     className={`w3-display-container w3-row ${styles.sidebarContent}`}

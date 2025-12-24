@@ -142,7 +142,7 @@ function setTheme(themeName) {
     root.style.setProperty("--theme-color-4-hover", theme.color4.hover);
 
     // Set the sidebar collapse icon based on the theme
-    document.getElementById("collapseSidebar").style.backgroundImage = ["monochrome", "light"].includes(themeName)
+    document.getElementById("sidebarToggle").style.backgroundImage = ["monochrome", "light"].includes(themeName)
         ? "url('/assets/explorerIconDark.svg')"
         : "";
     let isLightTheme = ["light"].includes(themeName);

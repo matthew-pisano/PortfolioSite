@@ -16,15 +16,15 @@ import styles from "@/styles/Wrapper.module.css";
  * Execute a command in the terminal.  This function is called when a command is passed in the URL.
  */
 function executeCommand() {
-    let terminal = document.getElementById("terminal");
+    let terminalBody = document.getElementById("terminalBody");
     let urlParams = new URLSearchParams(window.location.search);
     // Open the terminal to a specific size if specified in the URL
     let termSize = parseInt(urlParams.get("ts"));
-    if (termSize && !isNaN(termSize)) terminal.dispatchEvent(new CustomEvent("openTo", { detail: termSize }));
-    else terminal.dispatchEvent(new CustomEvent("openTo", { detail: 550 }));
+    if (termSize && !isNaN(termSize)) terminalBody.dispatchEvent(new CustomEvent("openTo", { detail: termSize }));
+    else terminalBody.dispatchEvent(new CustomEvent("openTo", { detail: 550 }));
     // Set the font size if specified in the URL
     let fontSize = parseInt(urlParams.get("fs"));
-    if (fontSize && !isNaN(fontSize)) terminal.style.fontSize = `${fontSize}px`;
+    if (fontSize && !isNaN(fontSize)) terminalBody.style.fontSize = `${fontSize}px`;
     // Execute the command
     document.getElementById("terminalInput").innerText = urlParams.get("exe");
     document.getElementById("terminalInput").dispatchEvent(new Event("submit"));
@@ -55,15 +55,15 @@ class PageInfo {
      * @param pageName {string} The name of the page
      * @param title {string} The title of the page
      * @param summary {string} A brief summary of the page
-     * @param holderStyle {object} The style of the page holder
+     * @param layoutStyle {object} The style of the page holder
      * @param tags {string[]} The tags for the page
      * @param links {JSXElement} Links to display at the top of the page
      */
-    constructor(pageName, title, summary, holderStyle = {}, tags = [], links = []) {
+    constructor(pageName, title, summary, layoutStyle = {}, tags = [], links = []) {
         this.pageName = pageName;
         this.title = title;
         this.summary = summary;
-        this.holderStyle = holderStyle;
+        this.layoutStyle = layoutStyle;
         this.links = links;
         this.tags = tags;
     }
@@ -125,11 +125,11 @@ function Wrapper({ children, pageName, pageClass }) {
             </Head>
             <HeaderMenu currentPath={currentPath} />
 
-            <div className={`${styles.wrapperInner}`}>
+            <div id="wrapperBody" className={`${styles.wrapperBody}`}>
                 <div id="wrapperContent" className={`${styles.wrapperContent}`} onScroll={slideTilesOnScroll}>
                     <Sidebar />
-                    <div id="pageHolder" className={`${styles.pageHolder} ${styles.hideOnMobile}`}>
-                        <div id="page" className={`${styles.page} ${pageClass}`}>
+                    <div id="page" className={`${styles.page} ${styles.hideOnMobile}`}>
+                        <div id="pageContent" className={`${styles.pageContent} ${pageClass}`}>
                             {children}
                         </div>
                     </div>
@@ -137,12 +137,12 @@ function Wrapper({ children, pageName, pageClass }) {
                 <Terminal />
             </div>
 
-            <DialogBox />
             <StatusFooter currentPath={currentPath} pageName={pageName} />
             <span id="dehydrateInfo" style={{ display: "none" }}>
                 {dehydratedInfo}
             </span>
 
+            <DialogBox />
             <div id="contextMenuHolder"></div>
         </div>
     );

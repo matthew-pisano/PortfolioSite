@@ -10,11 +10,11 @@
     color: var(--theme-text) !important;
 }
 
-.terminalBottom {
+.terminalTextArea {
     display: flex;
 }
 
-.terminalHolder {
+.terminal {
     border-radius: 10px;
     background-color: var(--theme-color-3);
     border-bottom: 1px solid var(--theme-accent);
@@ -51,7 +51,7 @@
     outline: none;
 }
 
-.terminal {
+.terminalBody {
     cursor: text;
     overflow: hidden scroll;
     overflow-wrap: break-word;
@@ -135,7 +135,7 @@
 
 
 @media (width <= 600px) {
-    .terminalHolder {
+    .terminal {
         display: none;
     }
 }
