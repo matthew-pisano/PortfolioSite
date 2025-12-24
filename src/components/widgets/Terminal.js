@@ -165,7 +165,7 @@ function Terminal() {
         setCwd(Commands.ENV.CWD);
         setTermColor(Commands.ENV.COLOR);
         terminalTextArea.style.visibility = "visible";
-        document.getElementById("terminalInput").focus();
+        terminalInput.focus();
     }
 
     /**
