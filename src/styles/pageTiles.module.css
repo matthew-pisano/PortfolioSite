@@ -132,8 +132,12 @@
     z-index: 1;
 }
 
+.bookTileSectionHeader {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .bookTileSection {
-    display: block;
     margin-top: 15px;
 }
 
