@@ -18,7 +18,7 @@
     margin-right: 5px;
 }
 
-.gitLink, .extraLink, .downloadLink, .pageLink {
+.pageLink {
     width: 200px;
     padding: 2px 5px;
     margin: 3px 5px;
@@ -26,17 +26,17 @@
     border-radius: 10px;
 }
 
-.pageLink {
+.selfLink {
     width: auto;
 }
 
-.gitLink div a, .extraLink div a, .downloadLink div a, .pageLink div a {
+.pageLink div a {
     width: 100%;
     display: block;
     text-align: center;
 }
 
-.gitLink img, .extraLink img, .downloadLink img, .pageLink img {
+.pageLink img {
     width: 25px;
     margin-right: 5px;
 }
@@ -53,12 +53,12 @@
     content: url("/assets/download.png");
 }
 
-.pageLink img {
+.selfLink img {
     content: url("/assets/section.png");
 }
 
-.darkTag {
-    background-color: var(--theme-color-4);
+.webLink img {
+    content: url("/assets/weblink.png");
 }
 
 /* Tags */
@@ -221,11 +221,11 @@
 
 
 @media (width <= 600px) {
-    .gitLink img, .extraLink img, .downloadLink img, .pageLink img {
+    .pageLink img {
         width: 30px;
     }
 
-    .gitLink div a, .extraLink div a, .downloadLink div a, .pageLink div a {
+    .pageLink div a {
         font-size: 1.3em;
     }
 }

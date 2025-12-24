@@ -16,7 +16,7 @@ import tagStyles from "@/styles/tags.module.css";
  */
 function TileLink({ children, href, target, className }) {
     return (
-        <div className={`w3-mobile w3-col ${tagStyles.extraLink} ${className}`}>
+        <div className={`w3-mobile w3-col ${tagStyles.extraLink} ${tagStyles.pageLink} ${className}`}>
             <img className="w3-col" alt="tileLink" />
             <div className="w3-rest">
                 <Link href={href} target={target ? target : "_blank"} rel="noreferrer" onClick={resetTilesOnScroll}>
@@ -42,7 +42,7 @@ TileLink.propTypes = {
  */
 function GitLink({ children, href }) {
     return (
-        <TileLink href={href} className={tagStyles.gitLink}>
+        <TileLink href={href} className={`${tagStyles.gitLink} ${tagStyles.pageLink}`}>
             {children}
         </TileLink>
     );
@@ -61,7 +61,7 @@ GitLink.propTypes = {
  */
 function DownloadLink({ children, href }) {
     return (
-        <TileLink href={href} className={tagStyles.downloadLink}>
+        <TileLink href={href} className={`${tagStyles.downloadLink} ${tagStyles.pageLink}`}>
             {children}
         </TileLink>
     );
@@ -78,17 +78,36 @@ DownloadLink.propTypes = {
  * @param href {string} The link target
  * @constructor
  */
-function PageLink({ children, href }) {
+function SelfLink({ children, href }) {
     return (
-        <TileLink href={href} className={tagStyles.pageLink} target={"_self"}>
+        <TileLink href={href} className={`${tagStyles.selfLink} ${tagStyles.pageLink}`} target={"_self"}>
             {children}
         </TileLink>
     );
 }
 
-PageLink.propTypes = {
+SelfLink.propTypes = {
     children: PropTypes.element,
     href: PropTypes.string.isRequired
 };
 
-export { TileLink, GitLink, DownloadLink, PageLink };
+/**
+ * An external web link element for usage in a tile or page
+ * @param children {JSXElement} The link body
+ * @param href {string} The link target
+ * @constructor
+ */
+function WebLink({ children, href }) {
+    return (
+        <TileLink href={href} className={`${tagStyles.webLink} ${tagStyles.pageLink}`}>
+            {children}
+        </TileLink>
+    );
+}
+
+WebLink.propTypes = {
+    children: PropTypes.element,
+    href: PropTypes.string.isRequired
+};
+
+export { TileLink, GitLink, DownloadLink, SelfLink, WebLink };

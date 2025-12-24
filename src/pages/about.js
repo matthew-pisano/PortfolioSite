@@ -2,7 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 
-import { GitLink, TileLink } from "@/components/tiles/Links";
+import { GitLink, TileLink, WebLink } from "@/components/tiles/Links";
 import { SectionTile, Tile } from "@/components/tiles/Tiles";
 import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
@@ -20,8 +20,8 @@ export default function About() {
             <>
                 <GitLink href={"https://github.com/matthew-pisano/"}>GitHub</GitLink>
                 <TileLink href={Constants.cvUrl}>Curriculum Vitae</TileLink>
-                <TileLink href={"https://www.linkedin.com/in/matthew-pisano"}>LinkedIn</TileLink>
-                <TileLink href={"https://orcid.org/0009-0001-5714-3585"}>Orcid</TileLink>
+                <WebLink href={"https://www.linkedin.com/in/matthew-pisano"}>LinkedIn</WebLink>
+                <WebLink href={"https://orcid.org/0009-0001-5714-3585"}>Orcid</WebLink>
             </>
         )
     );
