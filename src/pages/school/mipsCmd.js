@@ -57,7 +57,7 @@ export default function MipsCmd() {
             <Tile tileInfo={new TileInfo({ title: <>Live Demo</>, titleLink: "https://mips.matthewpisano.com" })}>
                 <iframe
                     className={wrapperStyles.hideOnMobile}
-                    src="https://mips.matthewpisano.com"
+                    src="https://mips.matthewpisano.com?embed=true"
                     width="100%"
                     height="500px"
                     style={{ border: "none", borderRadius: "10px" }}
