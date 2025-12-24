@@ -42,7 +42,7 @@ export default (
             author={"Mark Z. Danielewski"}
             synopsis={
                 <>
-                    Unlike the other entries in this list, <u>{House()} of Leaves</u> is not simply a book. Rather, it
+                    Unlike the other entries in this list, <i>{House()} of Leaves</i> is not simply a book. Rather, it
                     is a series of notes written while editing a literary analysis of a documentary about a {house()}{" "}
                     that does not exist. A {house()} that is bigger on the <big>inside</big> than <small>out</small>. It
                     is found footage in literary form. In addition to Danielewski himself, this book has two additional
@@ -134,7 +134,7 @@ export default (
             }
             thoughts={
                 <>
-                    <u>{House()} of Leaves</u> may be one of the most uniquely written (and certainly typeset) books
+                    <i>{House()} of Leaves</i> may be one of the most uniquely written (and certainly typeset) books
                     that I have ever read. The most striking aspect of Danielewski's writing is his ability to enhance
                     the pacing and tone of the story...
                     <span style={{ display: "block" }}>with...</span>
@@ -146,7 +146,7 @@ export default (
                     </span>{" "}
                     I find this to be a great example of visual storytelling in a novel that primarily consists of text.
                     <p>
-                        The story of <u>{House()} of Leaves</u> is also deepened through the use of extensive world
+                        The story of <i>{House()} of Leaves</i> is also deepened through the use of extensive world
                         building. Throughout his analysis, Zampanò demonstrates that he inhabits a world just as real as
                         our own. The text is littered with footnotes
                         <FootRef idx={3} /> from various detailed academic sources, articles, commentaries, and
@@ -928,7 +928,7 @@ export default (
             author={"Philip K. Dick"}
             synopsis={
                 <>
-                    <u>Do Androids Dream of Electric Sheep?</u> explores themes of humanity, empathy, and the nature of
+                    <i>Do Androids Dream of Electric Sheep?</i> explores themes of humanity, empathy, and the nature of
                     consciousness set in a post-apocalyptic world after most humans have fled to off-world colonies.
                     Amid this bleak landscape, Dick examines what it means to be human and the ethics of artificial
                     life. The novel follows Rick Deckard, a bounty hunter tasked with "retiring" rogue androids, and
@@ -974,7 +974,7 @@ export default (
             author={"Isaac Asimov"}
             synopsis={
                 <>
-                    <u>I, Robot</u> spans a series of nine stories detailing the fictional progression of robotic
+                    <i>I, Robot</i> spans a series of nine stories detailing the fictional progression of robotic
                     technology as it advanced from simple childcare agents to fully autonomous general intelligences.
                     Each story is framed as part of an interview between an unnamed journalist and Dr. Susan Calvin, the
                     chief <i>robo-psychologist</i> of <i>U.S. Robots and Mechanical Men, Inc.</i>. Presented in
@@ -1002,8 +1002,8 @@ export default (
             }
             thoughts={
                 <>
-                    Similar to other pioneering works such as <u>2001: A Space Odyssey</u> or{" "}
-                    <u>Do Androids Dream of Electric Sheep?</u>, many of <u>I, Robot's</u> elements are familiar tropes
+                    Similar to other pioneering works such as <i>2001: A Space Odyssey</i> or{" "}
+                    <i>Do Androids Dream of Electric Sheep?</i>, many of <i>I, Robot's</i> elements are familiar tropes
                     to modern readers. However, it is vital to acknowledge that many of these familiar story beats{" "}
                     <i>originated from</i> Asimov and his writings. The author impressively anticipated many ethical and
                     practical issues surrounding artificial intelligence before the phrase was even coined in 1955. For
@@ -1025,7 +1025,7 @@ export default (
                         have eyes and arms. At this point in fiction, robots were often depicted as simply "mechanical
                         men", essentially one-to-one copies of humans with most of our features having robotic
                         counterparts (Asimov's robots even have eyelids!); when these were written in the 1940s, notions
-                        of disembodied minds were not as often represented. <u>I, Robot</u> also imagined robots to be
+                        of disembodied minds were not as often represented. <i>I, Robot</i> also imagined robots to be
                         fundamentally predictable with a set of high-level rules. The three fundamental and
                         human-understandable laws were very difficult to modify or train out of the minds' positronic
                         pathways, something that is largely absent from all but toy AI models today. As a consequence of
@@ -1045,7 +1045,7 @@ export default (
             author={"qntm (Sam Hughes)"}
             synopsis={
                 <>
-                    <u>There is No Antimemetics Division</u> follows Marion Wheeler, the head of the titular
+                    <i>There is No Antimemetics Division</i> follows Marion Wheeler, the head of the titular
                     <i>Antimemetics Division</i> within the{" "}
                     <Link href="https://scp-wiki.wikidot.com/" target="_blank">
                         SCP Foundation
@@ -1079,7 +1079,7 @@ export default (
                     </i>
                     . <i>What was I saying again?</i>
                     <p>
-                        <u>There is No Antimemetics Division</u> makes brilliant use of these themes of memory,
+                        <i>There is No Antimemetics Division</i> makes brilliant use of these themes of memory,
                         forgetfulness, and how the human brain is shockingly good at filling in the gaps (even those of
                         immense scale). Multiple characters throughout the story are made to forget too much that they
                         have to rebuild their very personality from scratch over the following months or weeks (so
