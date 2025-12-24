@@ -125,17 +125,19 @@ function Wrapper({ children, pageName, pageClass }) {
             </Head>
             <HeaderMenu currentPath={currentPath} />
 
-            <div id="wrapperContent" className={`${styles.wrapperContent}`} onScroll={slideTilesOnScroll}>
-                <Sidebar />
-                <div id="pageHolder" className={`${styles.pageHolder}`}>
-                    <div id="page" className={`${styles.page} ${pageClass}`}>
-                        {children}
+            <div className={`${styles.wrapperInner}`}>
+                <div id="wrapperContent" className={`${styles.wrapperContent}`} onScroll={slideTilesOnScroll}>
+                    <Sidebar />
+                    <div className={`${styles.pageHolder}`}>
+                        <div id="page" className={`${styles.page} ${pageClass}`}>
+                            {children}
+                        </div>
                     </div>
                 </div>
+                <Terminal />
             </div>
 
             <DialogBox />
-            <Terminal />
             <StatusFooter currentPath={currentPath} pageName={pageName} />
             <span id="dehydrateInfo" style={{ display: "none" }}>
                 {dehydratedInfo}

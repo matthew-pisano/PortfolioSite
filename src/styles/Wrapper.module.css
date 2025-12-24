@@ -19,12 +19,21 @@
 }
 
 .wrapperContent {
-    inset: 35px 10px 87px 5px;
-    position: fixed;
     background-color: var(--theme-color-1);
     display: flex;
     align-items: stretch;
     gap: 10px;
+    flex: 1;
+    overflow: auto;
+}
+
+.wrapperInner {
+    position: fixed;
+    inset: 30px 10px 30px 5px;
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    flex-direction: column;
 }
 
 .titleCard {
