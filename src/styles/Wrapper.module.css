@@ -1,10 +1,10 @@
-.page {
+.pageContent {
     padding-bottom: 100px;
     display: grid;
     place-items: center;
 }
 
-.pageHolder {
+.page {
     overflow-y: scroll;
     flex: 1;
     border-radius: 10px;
@@ -27,7 +27,7 @@
     overflow: auto;
 }
 
-.wrapperInner {
+.wrapperBody {
     position: fixed;
     inset: 30px 10px 30px 5px;
     display: flex;
@@ -71,7 +71,7 @@
         display: initial;
     }
 
-    .pageHolder {
+    .page {
         /* Overlap with closed sidebar on mobile */
         margin-left: -50px;
     }

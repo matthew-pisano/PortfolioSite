@@ -89,10 +89,10 @@ let headerMenus = [
         "Terminal",
         [
             new MenuItem("Open Terminal", "action", () =>
-                document.getElementById("terminal").dispatchEvent(new CustomEvent("open"))
+                document.getElementById("terminalBody").dispatchEvent(new CustomEvent("open"))
             ),
             new MenuItem("Close Terminal", "action", () =>
-                document.getElementById("terminal").dispatchEvent(new CustomEvent("close"))
+                document.getElementById("terminalBody").dispatchEvent(new CustomEvent("close"))
             )
         ],
         true
@@ -104,7 +104,7 @@ let headerMenus = [
             "Terminal Help",
             "action",
             () => {
-                document.getElementById("terminal").dispatchEvent(new CustomEvent("openTo", { detail: 700 }));
+                document.getElementById("terminalBody").dispatchEvent(new CustomEvent("openTo", { detail: 700 }));
                 document.getElementById("terminalInput").innerText = "help";
                 document.getElementById("terminalInput").dispatchEvent(new Event("submit"));
             },
@@ -299,7 +299,7 @@ function HeaderMenu({ currentPath }) {
     }
 
     return (
-        <header className={`w3-row ${styles.menuBar}`}>
+        <header id="wrapperHeader" className={`w3-row ${styles.menuBar}`}>
             {headerMenus.map((menu, index) => {
                 let className = `w3-button w3-col ${styles.menuItem}`;
                 if (menu.hideOnMobile) className += ` ${wrapperStyles.hideOnMobile}`;
@@ -328,7 +328,7 @@ HeaderMenu.propTypes = { currentPath: PropTypes.string };
  */
 function MenuDrop({ currentPath }) {
     return (
-        <div id="menuDropHolder" className={styles.menuDropHolder}>
+        <div id="manuDropdownContainer" className={styles.manuDropdownContainer}>
             {headerMenus.map((menu, index) => {
                 return (
                     <div key={index} id={menu.name.toLowerCase() + "MenuDropdown"} className={styles.menuDropdown}>
@@ -396,7 +396,7 @@ function StatusFooter({ currentPath, pageName }) {
     if (pStats.size === undefined) pStats.size = 0;
 
     return (
-        <footer className={`w3-row ${styles.infoBar}`}>
+        <footer id="wrapperFooter" className={`w3-row ${styles.infoBar}`}>
             <div id="langStatus" className={`w3-col ${styles.infoBarItem}`}>
                 HTML
             </div>

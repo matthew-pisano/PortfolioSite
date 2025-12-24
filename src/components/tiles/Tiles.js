@@ -14,20 +14,20 @@ const TRANSLUCENT_TEXT = "rgb(238,251,255)";
  * Resets the horizontal position of all tiles by removing the hiddenTile class
  */
 function resetTilesOnScroll() {
-    let tileHolder = document.getElementById("tileHolder");
-    if (!tileHolder) return;
+    let tileLayout = document.getElementById("tileLayout");
+    if (!tileLayout) return;
 
-    for (let tileElement of tileHolder.children) tileElement.classList.remove(tileStyles.hiddenTile);
+    for (let tileElement of tileLayout.children) tileElement.classList.remove(tileStyles.hiddenTile);
 }
 
 /**
  * Slides the tiles into view as the user scrolls down the page
  */
 function slideTilesOnScroll() {
-    let tileHolder = document.getElementById("tileHolder");
-    if (!tileHolder) return;
+    let tileLayout = document.getElementById("tileLayout");
+    if (!tileLayout) return;
 
-    for (let tileElement of tileHolder.children) {
+    for (let tileElement of tileLayout.children) {
         // For each tile, check if it is in view
         if (tileElement.id === "") continue;
 
@@ -120,7 +120,7 @@ function Tile({ children, tileInfo, style }) {
             <div className={`w3-mobile w3-rest`}>
                 <h4 className={`${tileStyles.displayContentTitle}`}>{tileElements.tileTitle}</h4>
                 {tileElements.tileContent}
-                <div className={`w3-row ${tagStyles.tagHolder}`}>
+                <div className={`w3-row ${tagStyles.tileLayoutHeader}`}>
                     {tileInfo.links}
                     {tagFactory(tileInfo.tags)}
                 </div>

@@ -545,7 +545,7 @@ class Commands {
         let height = parseInt(args[0]);
         if (isNaN(height)) throw new CommandError(`Invalid height: ${args[0]}`);
 
-        document.getElementById("terminal").dispatchEvent(new CustomEvent("openTo", { detail: height }));
+        document.getElementById("terminalBody").dispatchEvent(new CustomEvent("openTo", { detail: height }));
     }
 
     /**
@@ -606,7 +606,7 @@ class Commands {
 
         if (args.length > 0 && isNaN(parseInt(args[0]))) throw new CommandError(`Invalid exit code: ${args[0]}`);
 
-        document.getElementById("terminal").dispatchEvent(new CustomEvent("close"));
+        document.getElementById("terminalBody").dispatchEvent(new CustomEvent("close"));
     }
 
     /**

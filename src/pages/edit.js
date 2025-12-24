@@ -30,7 +30,7 @@ export default function Edit() {
         if (errorMsg) {
             let errElem = document.createElement("p");
             errElem.innerText = errorMsg;
-            document.getElementById("page").appendChild(errElem);
+            document.getElementById("pageContent").appendChild(errElem);
             return;
         }
 
@@ -68,7 +68,7 @@ export default function Edit() {
         });
         let editor = new EditorView({
             state,
-            parent: document.getElementById("page")
+            parent: document.getElementById("pageContent")
         });
 
         document.getElementsByClassName("cm-editor")[0].minHeight = `${Math.round(window.innerHeight * 0.7)}px`;

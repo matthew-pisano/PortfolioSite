@@ -35,24 +35,24 @@ function Terminal() {
 
     useEffect(() => {
         // Show the terminal thumb and add event listeners
-        document.getElementById("terminalHolder").classList.remove("gone");
+        document.getElementById("terminal").classList.remove("gone");
 
-        let terminal = document.getElementById("terminal");
-        terminal.addEventListener("openTo", (evt) => {
+        let terminalBody = document.getElementById("terminalBody");
+        terminalBody.addEventListener("openTo", (evt) => {
             resize(evt.detail ? evt.detail : 210);
         });
-        terminal.addEventListener("open", open);
-        terminal.addEventListener("close", close);
+        terminalBody.addEventListener("open", open);
+        terminalBody.addEventListener("close", close);
 
         document.getElementById("terminalInput").addEventListener("submit", submit);
 
         // Add zoom functionality to the terminal
-        terminal.addEventListener("wheel", (evt) => {
+        terminalBody.addEventListener("wheel", (evt) => {
             if (evt.ctrlKey === true) {
                 evt.preventDefault();
-                let fontSize = parseFloat(window.getComputedStyle(terminal).fontSize);
-                if (evt.deltaY > 0 && fontSize > 11) terminal.style.fontSize = `${fontSize - 1}px`;
-                else if (evt.deltaY < 0 && fontSize < 40) terminal.style.fontSize = `${fontSize + 1}px`;
+                let fontSize = parseFloat(window.getComputedStyle(terminalBody).fontSize);
+                if (evt.deltaY > 0 && fontSize > 11) terminalBody.style.fontSize = `${fontSize - 1}px`;
+                else if (evt.deltaY < 0 && fontSize < 40) terminalBody.style.fontSize = `${fontSize + 1}px`;
             }
         });
 
@@ -65,11 +65,11 @@ function Terminal() {
 
     useEffect(() => {
         // Set the prompt and color
-        let terminalHolder = document.getElementById("terminalHolder");
-        if (!terminalHolder) return;
+        let terminal = document.getElementById("terminal");
+        if (!terminal) return;
         let newPrompt = genPrompt(cwd, true);
         setPrompt(newPrompt);
-        terminalHolder.style.color = termColor;
+        terminal.style.color = termColor;
         document.getElementById("terminalPrompt").innerHTML = newPrompt;
     }, [cwd, termColor]);
 
@@ -84,10 +84,10 @@ function Terminal() {
      * Closes/hides the terminal pageComponents and updates the environment
      */
     function close() {
+        let terminalBody = document.getElementById("terminalBody");
+        terminalBody.style.display = "none";
         let terminal = document.getElementById("terminal");
-        terminal.style.display = "none";
-        let terminalHolder = document.getElementById("terminalHolder");
-        terminalHolder.style.height = `${Constants.minTerminalHeight}px`;
+        terminal.style.height = `${Constants.minTerminalHeight}px`;
         document.getElementById("terminalFileHandler").style.height = `${Constants.minTerminalHeight}px`;
         document.getElementById("terminalOutput").innerText = "";
         document.getElementById("terminalClose").style.visibility = "hidden";
@@ -101,8 +101,8 @@ function Terminal() {
      * @param height {number} The height to resize to
      */
     function resize(height) {
-        let terminalHolder = document.getElementById("terminalHolder");
         let terminal = document.getElementById("terminal");
+        let terminalBody = document.getElementById("terminalBody");
         let terminalFileHandler = document.getElementById("terminalFileHandler");
         // Ensure the terminal is not too tall
         if (height > window.innerHeight - 300) height = window.innerHeight - 300;
@@ -110,8 +110,8 @@ function Terminal() {
         EventHandlers.terminalHeight = height;
 
         // Resize the terminal to the given height
-        terminalHolder.style.height = `${height}px`;
-        terminal.style.height = `${height - 50}px`;
+        terminal.style.height = `${height}px`;
+        terminalBody.style.height = `${height - 50}px`;
         terminalFileHandler.style.height = `${height}px`;
 
         // If the terminal was closed, show its pageComponents
@@ -119,7 +119,7 @@ function Terminal() {
             terminalFileHandler.style.display = "block";
             terminalFileHandler.style.visibility = "hidden";
             document.getElementById("terminalClose").style.visibility = "visible";
-            terminal.style.display = "block";
+            terminalBody.style.display = "block";
 
             setClosed(false);
         }
@@ -132,7 +132,7 @@ function Terminal() {
      */
     async function submit() {
         let terminalInput = document.getElementById("terminalInput");
-        let terminalBottom = document.getElementById("terminalBottom");
+        let terminalTextArea = document.getElementById("terminalTextArea");
         let terminalOutput = document.getElementById("terminalOutput");
 
         // Sanitize the command from the input
@@ -143,7 +143,7 @@ function Terminal() {
         command = command.replace(/\xa0/g, " ");
         // Clear the terminal input area
         terminalInput.innerText = "";
-        terminalBottom.style.visibility = "hidden";
+        terminalTextArea.style.visibility = "hidden";
 
         // Add the command to the history
         EventHandlers.submitCommand(command);
@@ -164,7 +164,7 @@ function Terminal() {
 
         setCwd(Commands.ENV.CWD);
         setTermColor(Commands.ENV.COLOR);
-        terminalBottom.style.visibility = "visible";
+        terminalTextArea.style.visibility = "visible";
         document.getElementById("terminalInput").focus();
     }
 
@@ -174,7 +174,7 @@ function Terminal() {
      * @returns {Promise<void>}
      */
     async function processCommandOutput(outputGen) {
-        let terminal = document.getElementById("terminal");
+        let terminalBody = document.getElementById("terminalBody");
         let terminalOutput = document.getElementById("terminalOutput");
 
         let lastColor = null;
@@ -192,12 +192,12 @@ function Terminal() {
             }
             terminalOutput.innerHTML += `<span>${partial}</span>`.replace(/\n/g, "<br>");
 
-            terminal.scrollTop = terminal.scrollHeight;
+            terminalBody.scrollTop = terminalBody.scrollHeight;
         }
     }
 
     return (
-        <div id="terminalHolder" className={`w3-row gone ${styles.terminalHolder}`}>
+        <div id="terminal" className={`w3-row gone ${styles.terminal}`}>
             <div id="spriteContainer" className={`${styles.terminalSpriteContainer}`}></div>
             <div id="terminalFileHandler" className={styles.terminalFileHandler}>
                 <span className={styles.terminalFileIndicator}>Drag Files Here</span>
@@ -205,15 +205,15 @@ function Terminal() {
             <div id="terminalThumb" className={styles.terminalThumb} onMouseDown={EventHandlers.thumbDragStart}>
                 <span className={styles.terminalThumbDots}>• • •</span>
             </div>
-            <div className={styles.terminalHeader} onClick={open}>
+            <div id="terminalHeader" className={styles.terminalHeader} onClick={open}>
                 <span>/bin/mash</span>
                 <button id="terminalClose" className={`w3-button ${styles.terminalClose}`} onClick={close}>
                     X
                 </button>
             </div>
             <div
-                id="terminal"
-                className={styles.terminal}
+                id="terminalBody"
+                className={styles.terminalBody}
                 onClick={(e) => {
                     // Focus the terminal input if the user clicks on the terminal
                     // Ensure the user is not selecting text, and it is a single click
@@ -224,7 +224,7 @@ function Terminal() {
                 onDragLeave={EventHandlers.onDragLeave}
                 onDrop={EventHandlers.onDrop}>
                 <div id="terminalOutput" className={styles.terminalOutput}></div>
-                <div id="terminalBottom" className={styles.terminalBottom}>
+                <div id="terminalTextArea" className={styles.terminalTextArea}>
                     <div id="terminalPrompt" className={styles.terminalPrompt}></div>
                     <div
                         id="terminalInput"

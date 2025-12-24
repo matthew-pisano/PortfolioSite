@@ -167,13 +167,13 @@ async function* rmRoot() {
     let currentFileName = document.getElementById("itemStatus").innerText;
 
     // Remove status elements
-    document.getElementById("menuDropHolder").remove();
+    document.getElementById("manuDropdownContainer").remove();
     for (let statusElem of ["langStatus", "encodingStatus", "linesStatus", "sizeStatus", "itemStatus"]) {
         document.getElementById(statusElem).innerText = "???";
         await new Promise((resolve) => setTimeout(resolve, 100));
     }
 
-    let pageElem = document.getElementById("page");
+    let pageElem = document.getElementById("pageContent");
     // Remove all elements under the page element
     let children = Array.from(pageElem.childNodes);
     for (let child of children) await removeElement(child, 15);
@@ -189,7 +189,7 @@ async function* rmRoot() {
 
     // Remove terminal
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    document.getElementById("terminalHolder").remove();
+    document.getElementById("terminal").remove();
 
     // Remove Styles
     await new Promise((resolve) => setTimeout(resolve, 1500));

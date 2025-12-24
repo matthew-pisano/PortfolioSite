@@ -23,10 +23,10 @@ function DefaultWrapper({ children, pageInfo }) {
                 <h3>{pageInfo.summary}</h3>
             </div>
             <div
-                id="tileHolder"
-                className={`w3-display-container ${tileStyles.tileHolder}`}
-                style={pageInfo.holderStyle}>
-                <div className={`w3-row ${tagStyles.tagHolder}`}>
+                id="tileLayout"
+                className={`w3-display-container ${tileStyles.tileLayout}`}
+                style={pageInfo.layoutStyle}>
+                <div className={`w3-row ${tagStyles.tileLayoutHeader}`}>
                     {pageInfo.links}
                     {tagFactory(pageInfo.tags)}
                 </div>
