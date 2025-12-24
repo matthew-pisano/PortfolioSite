@@ -10,6 +10,7 @@ import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
 import { showDialog } from "@/lib/util/utils";
 import styles from "@/styles/Sidebar.module.css";
+import wrapperStyles from "@/styles/Wrapper.module.css";
 
 /**
  * Create a directory element in the sidebar
@@ -284,6 +285,11 @@ function Sidebar() {
         let selectedLink = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`)[0];
         if (selectedLink) selectedLink.classList.add(styles.selectedSidebarLink);
     }, [explorerTree]);
+
+    useEffect(() => {
+        if (sidebarOpen) document.getElementById("pageHolder").classList.add(wrapperStyles.hideOnMobile);
+        else document.getElementById("pageHolder").classList.remove(wrapperStyles.hideOnMobile);
+    }, [sidebarOpen]);
 
     let sidebarStateCls = sidebarOpen ? styles.openSidebar : styles.closeSidebar;
     return (

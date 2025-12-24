@@ -63,18 +63,17 @@
 
 
 @media (width <= 600px) {
-    .page {
-        margin-bottom: 70px;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
     .hideOnMobile {
         display: none;
     }
 
     .showOnMobile {
         display: initial;
+    }
+
+    .pageHolder {
+        /* Overlap with closed sidebar on mobile */
+        margin-left: -50px;
     }
 
 }
