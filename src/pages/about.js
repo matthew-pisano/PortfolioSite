@@ -19,7 +19,7 @@ export default function About() {
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/"}>GitHub</GitLink>
-                <TileLink href={Constants.resumeUrl}>Résumé</TileLink>
+                <TileLink href={Constants.cvUrl}>Curriculum Vitae</TileLink>
                 <TileLink href={"https://www.linkedin.com/in/matthew-pisano"}>LinkedIn</TileLink>
                 <TileLink href={"https://orcid.org/0009-0001-5714-3585"}>Orcid</TileLink>
             </>
