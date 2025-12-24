@@ -128,7 +128,7 @@ function Wrapper({ children, pageName, pageClass }) {
             <div className={`${styles.wrapperInner}`}>
                 <div id="wrapperContent" className={`${styles.wrapperContent}`} onScroll={slideTilesOnScroll}>
                     <Sidebar />
-                    <div className={`${styles.pageHolder}`}>
+                    <div id="pageHolder" className={`${styles.pageHolder} ${styles.hideOnMobile}`}>
                         <div id="page" className={`${styles.page} ${pageClass}`}>
                             {children}
                         </div>
