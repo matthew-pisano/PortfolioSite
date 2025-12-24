@@ -2,6 +2,8 @@
 
 import React from "react";
 
+import Link from "next/link";
+
 import { GitLink, TileLink } from "@/components/tiles/Links";
 import { TileTag } from "@/components/tiles/Tags";
 import { SectionTile, Tile } from "@/components/tiles/Tiles";
@@ -28,6 +30,19 @@ export default function Home() {
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <h3>Welcome</h3>
+                    })
+                }>
+                This website serves as a repository for my research, projects, experience, and writings. For a more
+                formal and detailed introduction to me, please visit the <Link href="/about/about">about</Link> page.
+                For some more information on the site itself and it's interactive features, see the{" "}
+                <Link href="/help">help</Link> page. My lectures, presentations, writings, and projects can be found
+                within the menu to the left. To see what I consider my most important research and projects, see the
+                remainder of this page.
+            </Tile>
             <SectionTile tileInfo={new TileInfo({ title: <>Featured Research</> })} />
             <Tile
                 tileInfo={
@@ -315,27 +330,6 @@ export default function Home() {
                 <p>
                     Simplex also features an IDE to both help programming and educate users on how programming languages
                     work.
-                </p>
-            </Tile>
-
-            <Tile
-                tileInfo={
-                    new TileInfo({
-                        title: <>Imperium</>,
-                        thumbnail: "/media/image/imperiumLogo.png",
-                        tags: [TileTag.PERSONAL, TileTag.JAVA, TileTag.ANDROID],
-                        links: (
-                            <>
-                                <GitLink href={"https://github.com/matthew-pisano/Imperium"}>Imperium</GitLink>
-                            </>
-                        ),
-                        titleLink: "personal/imperium"
-                    })
-                }>
-                <p>Imperium is an android grand strategy game modeled after other popular titles on the PC platform.</p>
-                <p>
-                    The goal of this project is to provide mobile users with a fun empire simulator in either historical
-                    settings within Europe or blank maps with game play more similar to the <i>RISK</i> board game.
                 </p>
             </Tile>
         </DefaultWrapper>

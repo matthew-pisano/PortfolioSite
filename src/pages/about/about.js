@@ -13,7 +13,7 @@ export default function About() {
     let pageInfo = new PageInfo(
         genPageTitle(__filename),
         "About",
-        "Extra information on me as a researcher, developer, and person",
+        "Extra information on me as a researcher, engineer, and person",
         { backgroundColor: PageColor.LONDON_GREY },
         [],
         (
