@@ -79,7 +79,7 @@ function patchReadingList(fileSystem) {
         totaSize += fileStats.size;
         if (fileStats.mtimeMs > latestModified) latestModified = fileStats.mtimeMs;
     }
-    let readingListFile = fileSystem.getItem(pathJoin(SysEnv.PUBLIC_FOLDER, "readingList.html"));
+    let readingListFile = fileSystem.getItem(pathJoin(SysEnv.PUBLIC_FOLDER, "works/readingList.html"));
     readingListFile.modified = latestModified;
     readingListFile.spoofSize(totaSize); // Set the file's size without actually setting the text
 }

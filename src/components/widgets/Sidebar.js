@@ -216,21 +216,11 @@ function buildSidebar() {
     let subTreeCopy = [...publicFolder.subTree];
     let homeFile = spliceFromSubTree(subTreeCopy, "home.html");
     let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
-    let readingListFile = spliceFromSubTree(subTreeCopy, "readingList.html");
-    let lecturesFile = spliceFromSubTree(subTreeCopy, "lectures.html");
-    let aboutFolder = spliceFromSubTree(subTreeCopy, "about");
+    let aboutFile = spliceFromSubTree(subTreeCopy, "about.html");
+    let worksFolder = spliceFromSubTree(subTreeCopy, "works");
     let researchFolder = spliceFromSubTree(subTreeCopy, "research");
     let customFolder = spliceFromSubTree(subTreeCopy, "custom");
-    subTreeCopy = [
-        homeFile,
-        helpFile,
-        readingListFile,
-        lecturesFile,
-        aboutFolder,
-        researchFolder,
-        ...subTreeCopy,
-        customFolder
-    ];
+    subTreeCopy = [homeFile, aboutFile, helpFile, worksFolder, researchFolder, ...subTreeCopy, customFolder];
     publicFolder.subTree = subTreeCopy;
     return buildHierarchy(publicFolder);
 }
