@@ -85,8 +85,8 @@ function Terminal() {
      */
     function close() {
         let terminal = document.getElementById("terminal");
-        let sidebar = document.getElementById("sidebar");
-        sidebar.style.bottom = 87 + "px";
+        let wrapperContent = document.getElementById("wrapperContent");
+        wrapperContent.style.bottom = 87 + "px";
         terminal.style.display = "none";
         terminal.style.height = `${Constants.minTerminalHeight}px`;
         document.getElementById("terminalFileHandler").style.height = `${Constants.minTerminalHeight}px`;
@@ -104,13 +104,13 @@ function Terminal() {
     function resize(height) {
         let terminal = document.getElementById("terminal");
         let terminalFileHandler = document.getElementById("terminalFileHandler");
-        let sidebar = document.getElementById("sidebar");
+        let wrapperContent = document.getElementById("wrapperContent");
         // Ensure the terminal is not too tall
         if (height > window.innerHeight - 300) height = window.innerHeight - 300;
         else if (height < Constants.minTerminalHeight) height = Constants.minTerminalHeight;
         EventHandlers.terminalHeight = height;
 
-        sidebar.style.bottom = height + 87 + "px";
+        wrapperContent.style.bottom = height + 87 + "px";
         // Resize the terminal to the given height
         terminal.style.height = `${height}px`;
         terminalFileHandler.style.height = `${height}px`;

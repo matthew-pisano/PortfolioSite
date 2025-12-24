@@ -220,15 +220,6 @@
         max-height: none;
     }
 
-    .openSidebarPage {
-        margin-left: 10px !important;
-        display: none;
-    }
-
-    .closeSidebarPage {
-        margin-left: 10px !important;
-    }
-
     .tileHolder {
         margin-top: 300px;
         padding-right: 10px;

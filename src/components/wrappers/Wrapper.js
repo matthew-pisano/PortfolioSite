@@ -101,11 +101,6 @@ class TileInfo {
  */
 function Wrapper({ children, pageName, pageClass }) {
     const [currentPath, setCurrentPath] = useState(null);
-    const [sidebarOpen, setSidebarOpen] = useState(true);
-
-    const changeSidebarState = (newState) => {
-        setSidebarOpen(newState);
-    };
 
     let dehydratedInfo;
     if (typeof window === "undefined") dehydratedInfo = buildServerside();
@@ -123,7 +118,6 @@ function Wrapper({ children, pageName, pageClass }) {
         setTheme(localStorage.getItem("theme"));
     }, []);
 
-    let pageStateCls = sidebarOpen ? styles.openSidebarPage : styles.closeSidebarPage;
     return (
         <div id="wrapper" className={`w3-display-container ${styles.wrapper}`}>
             <Head>
@@ -131,13 +125,12 @@ function Wrapper({ children, pageName, pageClass }) {
             </Head>
             <HeaderMenu currentPath={currentPath} />
 
-            <div
-                id="wrapperContent"
-                className={`w3-display-container w3-row ${styles.wrapperContent}`}
-                onScroll={slideTilesOnScroll}>
-                <Sidebar changeSidebarState={changeSidebarState} />
-                <div id="page" className={`w3-rest ${styles.page} ${pageStateCls} ${pageClass}`}>
-                    {children}
+            <div id="wrapperContent" className={`${styles.wrapperContent}`} onScroll={slideTilesOnScroll}>
+                <Sidebar />
+                <div id="pageHolder" className={`${styles.pageHolder}`}>
+                    <div id="page" className={`${styles.page} ${pageClass}`}>
+                        {children}
+                    </div>
                 </div>
             </div>
 

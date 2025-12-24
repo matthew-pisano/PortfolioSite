@@ -236,10 +236,9 @@ function buildSidebar() {
 
 /**
  * The sidebar component that displays the file system hierarchy, used for navigation and file management
- * @param changeSidebarState {function} The callback function to change the sidebar state
  * @returns {JSX.Element} The sidebar component
  */
-function Sidebar({ changeSidebarState }) {
+function Sidebar() {
     const [explorerTree, setExplorerTree] = useState(buildSidebar());
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
@@ -278,10 +277,6 @@ function Sidebar({ changeSidebarState }) {
     }, []);
 
     useEffect(() => {
-        changeSidebarState(sidebarOpen);
-    }, [sidebarOpen]);
-
-    useEffect(() => {
         // Highlight the current page in the sidebar
         let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
         if (pagePath.endsWith("display") || pagePath.endsWith("edit"))
@@ -292,7 +287,7 @@ function Sidebar({ changeSidebarState }) {
 
     let sidebarStateCls = sidebarOpen ? styles.openSidebar : styles.closeSidebar;
     return (
-        <div id="sidebar" className={`w3-col ${sidebarStateCls} ${styles.sidebar}`}>
+        <div id="sidebar" className={`${sidebarStateCls} ${styles.sidebar}`}>
             <div id="collapseHolder" className={`w3-cell-row ${sidebarStateCls} ${styles.collapseHolder}`}>
                 <button
                     id="collapseSidebar"
