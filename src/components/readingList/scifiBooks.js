@@ -160,9 +160,9 @@ export default (
                         examples of calculations that demonstrate that it would have been completely implausible for
                         Navidson to fake the events of the film
                         <FootRef idx={4} />, despite the outright impossibility of its content. I find it particularly
-                        amusing that many are convinced Navidson's
-                        {house()} truly does contain a gaping hole in the very fabric of reality, yet most references to
-                        his film are discussions of cinematography and Navidson's own editing.
+                        amusing that many are convinced Navidson's {house()} truly does contain a gaping hole in the
+                        very fabric of reality, yet most references to his film are discussions of cinematography and
+                        Navidson's own editing.
                     </p>
                     <p>
                         The text also makes several references to real-life figures. At one point, Karen submits a draft
