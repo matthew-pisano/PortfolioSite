@@ -20,7 +20,7 @@ const nextConfig = {
             },
             {
                 source: "/about/resume",
-                destination: "/works/resume",
+                destination: "/works/curriculumVitae",
                 permanent: true
             },
             {
