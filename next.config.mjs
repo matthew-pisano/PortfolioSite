@@ -12,6 +12,26 @@ const nextConfig = {
                 destination: "/",
                 permanent: true,
                 basePath: false
+            },
+            {
+                source: "/about/about",
+                destination: "/about",
+                permanent: true
+            },
+            {
+                source: "/about/resume",
+                destination: "/works/curriculumVitae",
+                permanent: true
+            },
+            {
+                source: "/readingList",
+                destination: "/works/readingList",
+                permanent: true
+            },
+            {
+                source: "/lectures",
+                destination: "/works/lectures",
+                permanent: true
             }
         ];
     },

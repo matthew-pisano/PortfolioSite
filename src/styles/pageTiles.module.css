@@ -1,5 +1,5 @@
 
-.tileHolder {
+.tileLayout {
     width: 100%;
     background-color: var(--theme-color-1);
     margin-top: 250px;
@@ -190,20 +190,17 @@
     z-index: 1;
 }
 
+.bookTileSectionHeader {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .bookTileSection {
-    display: block;
     margin-top: 15px;
 }
 
 .bookTileSection p {
     text-indent: 20px;
-}
-
-.resumePage {
-    border-radius: 5px;
-    padding-top: 60px;
-    position: fixed;
-    inset: 0;
 }
 
 .mirrored {
@@ -242,6 +239,18 @@
     font-style: italic;
 }
 
+.cvPage {
+    display: flex !important;
+    padding-bottom: 0 !important;
+}
+
+.cvEmbed {
+    flex: 1;
+    width: 100%;
+    height: 800px;
+    border-radius: 10px;
+}
+
 @media (width >= 1500px) {
     .displayTile {
          margin: 50px 15% 20px;
@@ -274,16 +283,7 @@
         max-height: none;
     }
 
-    .openSidebarPage {
-        margin-left: 10px !important;
-        display: none;
-    }
-
-    .closeSidebarPage {
-        margin-left: 10px !important;
-    }
-
-    .tileHolder {
+    .tileLayout {
         margin-top: 300px;
         padding-right: 10px;
     }
@@ -301,4 +301,9 @@
      .blogTitle {
         width: 90%;
      }
+
+    .cvEmbed {
+        margin-top: 75px;
+        height: 750px;
+    }
 }

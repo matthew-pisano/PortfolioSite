@@ -70,28 +70,19 @@ function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anc
         <BookAnchorContext.Provider value={contextValue}>
             <Tile tileInfo={new TileInfo({ title: <>{title}</>, thumbnail: thumbnail, anchor: anchor })}>
                 <div className={`${tileStyles.bookTileContent}`}>
-                    <span className={tileStyles.bookTileSection}>
-                        <b>
-                            <i>Author:</i>
-                        </b>{" "}
-                        {author}
-                    </span>
-                    <span className={tileStyles.bookTileSection}>
-                        <b>
-                            <i>Synopsis:</i>
-                        </b>{" "}
-                        {synopsis}
-                    </span>
-                    <span className={tileStyles.bookTileSection}>
-                        <b>
-                            <i>Thoughts:</i>
-                        </b>{" "}
-                        {thoughts}
-                    </span>
-                    <span className={tileStyles.bookTileSection}>
+                    <div className={tileStyles.bookTileSection}>
+                        <span className={tileStyles.bookTileSectionHeader}>Author:</span> {author}
+                    </div>
+                    <div className={tileStyles.bookTileSection}>
+                        <span className={tileStyles.bookTileSectionHeader}>Synopsis:</span> {synopsis}
+                    </div>
+                    <div className={tileStyles.bookTileSection}>
+                        <span className={tileStyles.bookTileSectionHeader}>Thoughts:</span> {thoughts}
+                    </div>
+                    <div className={tileStyles.bookTileSection}>
                         {footnotes && footnotes.props.children ? <hr /> : null}
                         {footnotes}
-                    </span>
+                    </div>
                 </div>
             </Tile>
         </BookAnchorContext.Provider>

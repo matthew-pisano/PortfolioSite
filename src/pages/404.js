@@ -52,7 +52,7 @@ export default function PageNotFound() {
                 <h3 style={{ margin: "auto", width: "auto", textAlign: "center" }}>{pageInfo.summary}</h3>
             </div>
             <div
-                className={`w3-display-container ${tileStyles.tileHolder}`}
+                className={`w3-display-container ${tileStyles.tileLayout}`}
                 style={{ backgroundColor: "#000000", marginTop: "200px" }}>
                 <div className={`w3-container w3-row ${tileStyles.displayTile}`}>
                     <h3>

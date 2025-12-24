@@ -6,8 +6,8 @@ import $ from "jquery";
  * Class to hold constants used throughout the site.
  */
 class Constants {
-    static resumeUrl = "/media/documents/resume.pdf";
-    static minTerminalHeight = 70;
+    static cvUrl = "/media/documents/curriculum_vitae.pdf";
+    static minTerminalHeight = 50;
 }
 
 /**

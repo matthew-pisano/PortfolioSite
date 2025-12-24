@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import { BookTile } from "@/components/readingList/BookTile";
 
-
 export default (
     <>
         <BookTile
@@ -12,7 +11,7 @@ export default (
             author={"Kevin Kelly"}
             synopsis={
                 <>
-                    <u>The Inevitable: Understanding the 12 technological forces that will shape our future</u> asserts
+                    <i>The Inevitable: Understanding the 12 technological forces that will shape our future</i> asserts
                     that much of what will happen in the next thirty years is inevitable, driven by technological trends
                     that are already in motion. In this book, Kevin Kelly provides an optimistic roadmap for the future,
                     showing how the coming changes in our lives—from virtual reality in the home to an on-demand economy
@@ -62,7 +61,7 @@ export default (
             author={"Michio Kaku"}
             synopsis={
                 <>
-                    <u>Physics of the Impossible</u> analyzes the feasibility and hypothetical scientific basis for many
+                    <i>Physics of the Impossible</i> analyzes the feasibility and hypothetical scientific basis for many
                     fantastical, and not-so-fantastical, science fiction technologies. From phasers to force-fields and
                     from teleportation to time travel, Kaku explores some real-world analogues that approximate the form
                     and function of these fictional concepts. Along the way, the book also explains the real science

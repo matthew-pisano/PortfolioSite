@@ -10,22 +10,19 @@
     color: var(--theme-text) !important;
 }
 
-.terminalBottom {
+.terminalTextArea {
     display: flex;
 }
 
-.terminalHolder {
+.terminal {
     border-radius: 10px;
     background-color: var(--theme-color-3);
     border-bottom: 1px solid var(--theme-accent);
     border-right: 1px solid var(--theme-accent);
     border-left: 1px solid var(--theme-accent);
     color: var(--theme-text) !important;
-    position: fixed;
-    bottom: 30px;
-    left: 3px;
-    right: 3px;
-    z-index: 2;
+    flex-shrink: 0;
+    height: 50px;
 }
 
 .terminalOutput {
@@ -54,7 +51,7 @@
     outline: none;
 }
 
-.terminal {
+.terminalBody {
     cursor: text;
     overflow: hidden scroll;
     overflow-wrap: break-word;
@@ -138,7 +135,7 @@
 
 
 @media (width <= 600px) {
-    .terminalHolder {
+    .terminal {
         display: none;
     }
 }

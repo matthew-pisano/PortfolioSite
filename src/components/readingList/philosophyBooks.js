@@ -9,7 +9,7 @@ export default (
             author={"Albert Camus"}
             synopsis={
                 <>
-                    <u>The Stranger</u> is told from the perspective of Meursault, a French settler in Algiers, at the
+                    <i>The Stranger</i> is told from the perspective of Meursault, a French settler in Algiers, at the
                     time a part of France's colonial empire. The first part of the book opens with the death of
                     Meursault's mother and his travel to her old-age home and the subsequent funeral. Meursault's
                     general indifference and lack of grief during the process is our first introduction to his

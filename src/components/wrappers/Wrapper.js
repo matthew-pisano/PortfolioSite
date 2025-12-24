@@ -16,15 +16,15 @@ import styles from "@/styles/Wrapper.module.css";
  * Execute a command in the terminal.  This function is called when a command is passed in the URL.
  */
 function executeCommand() {
-    let terminal = document.getElementById("terminal");
+    let terminalBody = document.getElementById("terminalBody");
     let urlParams = new URLSearchParams(window.location.search);
     // Open the terminal to a specific size if specified in the URL
     let termSize = parseInt(urlParams.get("ts"));
-    if (termSize && !isNaN(termSize)) terminal.dispatchEvent(new CustomEvent("openTo", { detail: termSize }));
-    else terminal.dispatchEvent(new CustomEvent("openTo", { detail: 550 }));
+    if (termSize && !isNaN(termSize)) terminalBody.dispatchEvent(new CustomEvent("openTo", { detail: termSize }));
+    else terminalBody.dispatchEvent(new CustomEvent("openTo", { detail: 550 }));
     // Set the font size if specified in the URL
     let fontSize = parseInt(urlParams.get("fs"));
-    if (fontSize && !isNaN(fontSize)) terminal.style.fontSize = `${fontSize}px`;
+    if (fontSize && !isNaN(fontSize)) terminalBody.style.fontSize = `${fontSize}px`;
     // Execute the command
     document.getElementById("terminalInput").innerText = urlParams.get("exe");
     document.getElementById("terminalInput").dispatchEvent(new Event("submit"));
@@ -55,15 +55,15 @@ class PageInfo {
      * @param pageName {string} The name of the page
      * @param title {string} The title of the page
      * @param summary {string} A brief summary of the page
-     * @param holderStyle {object} The style of the page holder
+     * @param layoutStyle {object} The style of the page holder
      * @param tags {string[]} The tags for the page
      * @param links {JSXElement} Links to display at the top of the page
      */
-    constructor(pageName, title, summary, holderStyle = {}, tags = [], links = []) {
+    constructor(pageName, title, summary, layoutStyle = {}, tags = [], links = []) {
         this.pageName = pageName;
         this.title = title;
         this.summary = summary;
-        this.holderStyle = holderStyle;
+        this.layoutStyle = layoutStyle;
         this.links = links;
         this.tags = tags;
     }
@@ -101,11 +101,6 @@ class TileInfo {
  */
 function Wrapper({ children, pageName, pageClass }) {
     const [currentPath, setCurrentPath] = useState(null);
-    const [sidebarOpen, setSidebarOpen] = useState(true);
-
-    const changeSidebarState = (newState) => {
-        setSidebarOpen(newState);
-    };
 
     let dehydratedInfo;
     if (typeof window === "undefined") dehydratedInfo = buildServerside();
@@ -123,7 +118,6 @@ function Wrapper({ children, pageName, pageClass }) {
         setTheme(localStorage.getItem("theme"));
     }, []);
 
-    let pageStateCls = sidebarOpen ? styles.openSidebarPage : styles.closeSidebarPage;
     return (
         <div id="wrapper" className={`w3-display-container ${styles.wrapper}`}>
             <Head>
@@ -131,23 +125,24 @@ function Wrapper({ children, pageName, pageClass }) {
             </Head>
             <HeaderMenu currentPath={currentPath} />
 
-            <div
-                id="wrapperContent"
-                className={`w3-display-container w3-row ${styles.wrapperContent}`}
-                onScroll={slideTilesOnScroll}>
-                <Sidebar changeSidebarState={changeSidebarState} />
-                <div id="page" className={`w3-rest ${styles.page} ${pageStateCls} ${pageClass}`}>
-                    {children}
+            <div id="wrapperBody" className={`${styles.wrapperBody}`}>
+                <div id="wrapperContent" className={`${styles.wrapperContent}`} onScroll={slideTilesOnScroll}>
+                    <Sidebar />
+                    <div id="page" className={`${styles.page} ${styles.hideOnMobile}`}>
+                        <div id="pageContent" className={`${styles.pageContent} ${pageClass}`}>
+                            {children}
+                        </div>
+                    </div>
                 </div>
+                <Terminal />
             </div>
 
-            <DialogBox />
-            <Terminal />
             <StatusFooter currentPath={currentPath} pageName={pageName} />
             <span id="dehydrateInfo" style={{ display: "none" }}>
                 {dehydratedInfo}
             </span>
 
+            <DialogBox />
             <div id="contextMenuHolder"></div>
         </div>
     );

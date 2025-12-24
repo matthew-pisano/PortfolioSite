@@ -19,7 +19,9 @@ function Error({ statusCode }) {
             </Head>
 
             <div className={`w3-display-container ${styles.wrapper}`}>
-                <div className={`${styles.page} container w3-rest`} style={{ marginLeft: "10%", marginRight: "10%" }}>
+                <div
+                    className={`${styles.pageContent} container w3-rest`}
+                    style={{ marginLeft: "10%", marginRight: "10%" }}>
                     <div className={styles.titleCard}>
                         <h1>
                             <b>Server Error</b>
@@ -28,7 +30,7 @@ function Error({ statusCode }) {
                         <h3>Something has prevented the site from loading!</h3>
                     </div>
                     <div
-                        className={`${tileStyles.tileHolder} w3-display-container`}
+                        className={`${tileStyles.tileLayout} w3-display-container`}
                         style={{ backgroundColor: "#3b934a", minHeight: "auto", paddingTop: "10px" }}>
                         <div className={`${tileStyles.displayTile} w3-container w3-row`}>
                             <h3>

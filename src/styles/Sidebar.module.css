@@ -1,6 +1,6 @@
 
 .openSidebar {
-    width: 240px;
+    width: 260px;
 }
 
 .closeSidebar {
@@ -9,26 +9,22 @@
 
 .sidebar {
     border-radius: 10px;
-    bottom: 87px;
-    top: 35px;
-    left: 3px;
-    position: fixed;
-    z-index: 2;
     background-color: var(--theme-color-2);
     border-style: solid;
     border-color: var(--theme-accent);
     border-width: 1px;
 }
 
-.collapseHolder {
+.sidebarHeader {
     position: fixed;
     z-index: 3;
 }
 
-.sidebarContentHolder {
+.sidebarBody {
     overflow-y: auto;
     height: calc(100% - 60px);
     margin-top: 50px;
+    padding-right: 5px;
 }
 
 .sidebarContent {
@@ -43,6 +39,10 @@
     padding-right: 5px;
     width: 100%;
     border-radius: 0 5px 5px 0;
+}
+
+.sidebarFolderItem {
+    padding-right: 0;
 }
 
 .sidebarFolderHeader {
@@ -102,7 +102,7 @@
     padding-left: 15px;
 }
 
-.explorerTitle {
+.sidebarTitle {
     text-align: left;
     border-style: none;
     vertical-align: middle;
@@ -110,7 +110,7 @@
     cursor: default;
 }
 
-.collapseSidebar {
+.sidebarToggle {
     border-radius: 10px;
     width: 38px;
     height: 40px;
@@ -123,7 +123,7 @@
     background-position: center center;
 }
 
-.collapseSidebar:hover {
+.sidebarToggle:hover {
     background-color: var(--theme-color-2-hover) !important;
 }
 
@@ -145,7 +145,7 @@
 
 
 @media (width <= 600px) {
-    .explorerTitle {
+    .sidebarTitle {
         visibility: hidden;
     }
 
@@ -154,7 +154,7 @@
         bottom: 0 !important;
     }
 
-    .collapseSidebar {
+    .sidebarToggle {
         border: var(--theme-accent) 2px solid;
     }
 
@@ -170,7 +170,7 @@
         display: none;
     }
 
-    .collapseHolder {
+    .sidebarHeader {
         border-style: none;
     }
 }

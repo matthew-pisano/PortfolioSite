@@ -29,7 +29,7 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
             <div className={`${styles.blogHolder}`}>
                 {children} <hr />
                 <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>
-                <Link href={"/blog"}>Back to Blogs</Link>
+                <Link href={"/works/blog"}>Back to Blogs</Link>
             </div>
         </Wrapper>
     );

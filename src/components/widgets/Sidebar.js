@@ -10,6 +10,7 @@ import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
 import { showDialog } from "@/lib/util/utils";
 import styles from "@/styles/Sidebar.module.css";
+import wrapperStyles from "@/styles/Wrapper.module.css";
 
 /**
  * Create a directory element in the sidebar
@@ -21,13 +22,13 @@ function buildDirectory(directory, path) {
     let name = directory.name + "-Folder";
     let dirStyle = directory.name === "public" ? { borderStyle: "none" } : {};
     return (
-        <div key={name} id={name} className={`sidebarItem sidebarFolder w3-row ${styles.sidebarItem}`} style={dirStyle}>
+        <div key={name} id={name} className={`${styles.sidebarItem} ${styles.sidebarFolderItem}`} style={dirStyle}>
             <div className={`${styles.sidebarFolderHeader}`}>
                 <img className={`${styles.folderIcon}`} alt="" />
                 <span>{directory.name}</span>
             </div>
 
-            <div id={directory.name + "Content"} className={`w3-row ${styles.sidebarItemContent}`}>
+            <div id={directory.name + "Content"} className={`${styles.sidebarItemContent}`}>
                 {directory.subTree.map((child) => buildHierarchy(child, path + "/" + directory.name))}
             </div>
         </div>
@@ -55,7 +56,7 @@ function buildFile(file, path) {
         linkPath = `${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
         editIcon = (
             <img
-                className={`editorButton ${styles.editorButton}`}
+                className={`${styles.editorButton}`}
                 alt=""
                 onClick={() => {
                     window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`);
@@ -95,7 +96,7 @@ function buildFile(file, path) {
             id={fileName + "-File"}
             linkpath={linkPath}
             onContextMenu={onContextMenu}
-            className={`sidebarItem sidebarLink w3-row ${styles.sidebarItem} ${styles.sidebarLink}`}>
+            className={`${styles.sidebarItem} ${styles.sidebarLink}`}>
             <img className={`${styles.htmlIcon}`} alt="" />
             {pageLink}
             {editIcon}
@@ -216,33 +217,20 @@ function buildSidebar() {
     let subTreeCopy = [...publicFolder.subTree];
     let homeFile = spliceFromSubTree(subTreeCopy, "home.html");
     let helpFile = spliceFromSubTree(subTreeCopy, "help.html");
-    let blogFile = spliceFromSubTree(subTreeCopy, "blog.html");
-    let readingListFile = spliceFromSubTree(subTreeCopy, "readingList.html");
-    let lecturesFile = spliceFromSubTree(subTreeCopy, "lectures.html");
-    let aboutFolder = spliceFromSubTree(subTreeCopy, "about");
+    let aboutFile = spliceFromSubTree(subTreeCopy, "about.html");
+    let worksFolder = spliceFromSubTree(subTreeCopy, "works");
     let researchFolder = spliceFromSubTree(subTreeCopy, "research");
     let customFolder = spliceFromSubTree(subTreeCopy, "custom");
-    subTreeCopy = [
-        homeFile,
-        helpFile,
-        readingListFile,
-        lecturesFile,
-        blogFile,
-        aboutFolder,
-        researchFolder,
-        ...subTreeCopy,
-        customFolder
-    ];
+    subTreeCopy = [homeFile, aboutFile, helpFile, worksFolder, researchFolder, ...subTreeCopy, customFolder];
     publicFolder.subTree = subTreeCopy;
     return buildHierarchy(publicFolder);
 }
 
 /**
  * The sidebar component that displays the file system hierarchy, used for navigation and file management
- * @param changeSidebarState {function} The callback function to change the sidebar state
  * @returns {JSX.Element} The sidebar component
  */
-function Sidebar({ changeSidebarState }) {
+function Sidebar() {
     const [explorerTree, setExplorerTree] = useState(buildSidebar());
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
@@ -281,37 +269,38 @@ function Sidebar({ changeSidebarState }) {
     }, []);
 
     useEffect(() => {
-        changeSidebarState(sidebarOpen);
-    }, [sidebarOpen]);
-
-    useEffect(() => {
         // Highlight the current page in the sidebar
         let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
         if (pagePath.endsWith("display") || pagePath.endsWith("edit"))
             pagePath = window.location.search.split("file=")[1];
-        let selectedLink = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`)[0];
+        let selectedLink = document.querySelectorAll(`.${styles.sidebarItem}[linkpath="${pagePath}"]`)[0];
         if (selectedLink) selectedLink.classList.add(styles.selectedSidebarLink);
     }, [explorerTree]);
 
+    useEffect(() => {
+        if (sidebarOpen) document.getElementById("page").classList.add(wrapperStyles.hideOnMobile);
+        else document.getElementById("page").classList.remove(wrapperStyles.hideOnMobile);
+    }, [sidebarOpen]);
+
     let sidebarStateCls = sidebarOpen ? styles.openSidebar : styles.closeSidebar;
     return (
-        <div id="sidebar" className={`w3-col ${sidebarStateCls} ${styles.sidebar}`}>
-            <div id="collapseHolder" className={`w3-cell-row ${sidebarStateCls} ${styles.collapseHolder}`}>
+        <div id="sidebar" className={`${sidebarStateCls} ${styles.sidebar}`}>
+            <div id="sidebarHeader" className={`${sidebarStateCls} ${styles.sidebarHeader}`}>
                 <button
-                    id="collapseSidebar"
-                    className={`w3-button w3-cell ${styles.collapseSidebar}`}
+                    id="sidebarToggle"
+                    className={`w3-button ${styles.sidebarToggle}`}
                     onClick={() => setSidebarOpen(!sidebarOpen)}></button>
                 <span
-                    id="explorerTitle"
-                    className={`w3-cell ${styles.sidebarItem} ${styles.explorerTitle}`}
+                    id="sidebarTitle"
+                    className={`${styles.sidebarItem} ${styles.sidebarTitle}`}
                     style={{ display: sidebarOpen ? "inline" : "none" }}>
                     Explorer
                 </span>
             </div>
-            <div className={`${styles.sidebarContentHolder}`}>
+            <div id="sidebarBody" className={`${styles.sidebarBody}`}>
                 <div
                     id="sidebarContent"
-                    className={`w3-display-container w3-row ${styles.sidebarContent}`}
+                    className={`${styles.sidebarContent}`}
                     style={{ display: sidebarOpen ? "block" : "none" }}>
                     {explorerTree}
                 </div>

@@ -11,7 +11,7 @@ export default (
             author={"Richard Feynman"}
             synopsis={
                 <>
-                    <u>QED: The Strange Theory of Light and Matter</u> is an adaptation of four lectures given by
+                    <i>QED: The Strange Theory of Light and Matter</i> is an adaptation of four lectures given by
                     Richard Feynman at UCLA. Designed for readers without an in-depth knowledge in the field of{" "}
                     <i>quantum electrodynamics</i>, the book is able to effectively convey the complex notions of the
                     theory while remaining understandable to general audiences. Feynman uses analogies, diagrams, and
@@ -42,7 +42,7 @@ export default (
             author={"Carlo Rovelli"}
             synopsis={
                 <>
-                    <u>Reality is Not What It Seems</u> is an exploration of the theory of <i>Loop Quantum Gravity</i>{" "}
+                    <i>Reality is Not What It Seems</i> is an exploration of the theory of <i>Loop Quantum Gravity</i>{" "}
                     and of its millennia-long origin story. Rovelli, a renowned theoretical physicist, makes the
                     decision to start this book not with his own theory, but with the very origins of western scientific
                     thought in pre-Socratic ancient Greece. Beginning with Anaximander and his assertions that the
@@ -117,7 +117,7 @@ export default (
             author={"Steven Gubser"}
             synopsis={
                 <>
-                    <u>The Little Book of String Theory</u> offers a short, accessible, and entertaining introduction to
+                    <i>The Little Book of String Theory</i> offers a short, accessible, and entertaining introduction to
                     one of the most talked-about areas of physics today. String theory has been called the "theory of
                     everything". It seeks to describe all the fundamental forces of nature. It encompasses gravity and
                     quantum mechanics in one unifying theory. But it is unproven and fraught with controversy. After
@@ -138,7 +138,7 @@ export default (
             }
             thoughts={
                 <>
-                    Similarly to <u>QED</u>, this served as my first semi-serious introduction to <i>String Theory</i>.
+                    Similarly to <i>QED</i>, this served as my first semi-serious introduction to <i>String Theory</i>.
                     Gubser manages to fit an impressive amount of information into this relatively short book. From the
                     strings themselves to D-branes, M-theory, and Supersymmetry, the book is able to convey the basic
                     concepts behind these theories through the usage of diagrams and how they may help to explain
@@ -161,7 +161,7 @@ export default (
             author={"Carlo Rovelli"}
             synopsis={
                 <>
-                    <u>The Order of Time</u> explores the nature of time and its relationship to the universe. Within
+                    <i>The Order of Time</i> explores the nature of time and its relationship to the universe. Within
                     its pages, Rovelli argues that time is not a fundamental aspect of the universe, but rather an
                     emergent consequence of the most basic properties of the universe. The book is broken into three
                     parts: "The Crumbling of Time", "The World Without Time", and "The Sources of Time". The first part

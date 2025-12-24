@@ -5,6 +5,7 @@
     background-color: var(--theme-color-3);
     z-index: 3;
     top: 0;
+    height: 30px;
 }
 
 .infoBar {
@@ -19,6 +20,7 @@
 .menuItem, .infoBarItem {
     width: auto;
     padding: 2px 8px;
+    height: 30px;
 }
 
 .infoBarItem {
@@ -26,9 +28,9 @@
     float: right;
 }
 
-.menuDropHolder {
+.manuDropdownContainer {
     position: fixed;
-    top: 27px;
+    top: 30px;
     right: 0;
     left: 0;
     z-index: 3;

@@ -13,13 +13,13 @@ export default function About() {
     let pageInfo = new PageInfo(
         genPageTitle(__filename),
         "About",
-        "Extra information on me as a researcher, developer, and person",
+        "Extra information on me as a researcher, engineer, and person",
         { backgroundColor: PageColor.LONDON_GREY },
         [],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/"}>GitHub</GitLink>
-                <TileLink href={Constants.resumeUrl}>Résumé</TileLink>
+                <TileLink href={Constants.cvUrl}>Curriculum Vitae</TileLink>
                 <TileLink href={"https://www.linkedin.com/in/matthew-pisano"}>LinkedIn</TileLink>
                 <TileLink href={"https://orcid.org/0009-0001-5714-3585"}>Orcid</TileLink>
             </>

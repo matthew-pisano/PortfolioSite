@@ -23,8 +23,8 @@ function FlexWrapper({ children, pageInfo, className }) {
             </div>
             <div
                 id="tileHolder"
-                className={`w3-display-container ${tileStyles.tileHolder}`}
-                style={pageInfo.holderStyle}>
+                className={`w3-display-container ${tileStyles.tileLayout}`}
+                style={pageInfo.layoutStyle}>
                 <div className={`${tileStyles.flexTileHolder}`}>{children}</div>
             </div>
         </Wrapper>
