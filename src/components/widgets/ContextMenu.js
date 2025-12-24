@@ -87,7 +87,7 @@ function destroyContextMenu() {
     else if (window.location.pathname === "/display")
         pagePath = new URLSearchParams(window.location.search).get("file");
 
-    let selectedLinks = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`);
+    let selectedLinks = document.querySelectorAll(`.${sidebarStyles.sidebarItem}[linkpath="${pagePath}"]`);
 
     let fileElement = document.getElementById(fileName + "-File");
     if (selectedLinks[0].id !== fileName + "-File" && fileElement)
