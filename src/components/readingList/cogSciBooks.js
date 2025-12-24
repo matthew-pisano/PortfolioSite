@@ -119,8 +119,9 @@ export default (
                         non-zero possibility of suffering (even in a perfect utopia) and a dead human can no longer
                         suffer. Adding on more and more "but also" conditions to this goal is also not likely to work as
                         there is a strong incentive to find a loophole that leads to goal achievement faster and more
-                        thoroughly <FootRef idx={3} />. It will not act this way out of some sense of spite or malice,
-                        this is simply the best way of achieving <i>exactly</i> what it has been asked to do.
+                        thoroughly
+                        <FootRef idx={3} />. It will not act this way out of some sense of spite or malice, this is
+                        simply the best way of achieving <i>exactly</i> what it has been asked to do.
                     </p>
                     <p>
                         These outcomes are undesirable. Naturally, the question of mitigation arises. In order to
@@ -690,29 +691,29 @@ export default (
                         measures, Russell offers some practical solutions that he thinks will make future AI systems
                         more manageable to control. One of the biggest difficulties of working with modern AI is that it
                         uses training to empirically predict behavior instead of formal methods that guarantee
-                        correctness. The ideal solution likely will contain a combination of both <FootRef idx={8} />,
-                        but our current techniques heavily rely on the former and rarely employ the latter (for complex
-                        systems). Russell has noticed this as well and introduces the concept of provably beneficial AI.
-                        The text suggests that a more formal process for machine learning is employed. Soe some set of
-                        machines, some algorithms, and some environments, it can be proven that the probability of
-                        something unexpected happening is acceptably low. His suggestion for such a predictable learning
-                        process is one that learns what to learn, based on observations. To make this sentiment more
-                        concrete, he introduces his concept of <i>inverse reinforcement learning</i> (IRL). Whereas a
-                        normal reinforcement learning (RL) system learns to optimize for a predetermined reward
-                        function, an IRL system will first have to learn the reward function itself based on observing
-                        an idealized entity. When generalizing this framework to more complex tasks, we run into a
-                        problem, however. A human teaching a robot a task will not act in the same way as if they were
-                        simply doing the task themselves. As we perform some task, we are not always quietly muttering
-                        step-by-step instructions to ourselves as if we were teaching someone else; we simply do the
-                        task in a manner that would not be as helpful to an outside observer. Instead of pure IRL, we
-                        would like artificial observers to learn human preferences implicitly, rather than directly
-                        copying observed behaviors. To aid in this goal, Russell introduces <i>assistance games</i>. In
-                        an assistance game, a human is paired with a robot. As the human interacts with the automata,
-                        they make constant observations and learn to anticipate their behavior, not my acting as the
-                        human, but acting as the human wanted them to act (shown through the human's actions). By always
-                        assigning some reward to deferring to human action (and assigning a degree of uncertainty to its
-                        own actions), autonomous systems may be significantly less resistant to human interference with
-                        their initial plans.
+                        correctness. The ideal solution likely will contain a combination of both
+                        <FootRef idx={8} />, but our current techniques heavily rely on the former and rarely employ the
+                        latter (for complex systems). Russell has noticed this as well and introduces the concept of
+                        provably beneficial AI. The text suggests that a more formal process for machine learning is
+                        employed. Soe some set of machines, some algorithms, and some environments, it can be proven
+                        that the probability of something unexpected happening is acceptably low. His suggestion for
+                        such a predictable learning process is one that learns what to learn, based on observations. To
+                        make this sentiment more concrete, he introduces his concept of{" "}
+                        <i>inverse reinforcement learning</i> (IRL). Whereas a normal reinforcement learning (RL) system
+                        learns to optimize for a predetermined reward function, an IRL system will first have to learn
+                        the reward function itself based on observing an idealized entity. When generalizing this
+                        framework to more complex tasks, we run into a problem, however. A human teaching a robot a task
+                        will not act in the same way as if they were simply doing the task themselves. As we perform
+                        some task, we are not always quietly muttering step-by-step instructions to ourselves as if we
+                        were teaching someone else; we simply do the task in a manner that would not be as helpful to an
+                        outside observer. Instead of pure IRL, we would like artificial observers to learn human
+                        preferences implicitly, rather than directly copying observed behaviors. To aid in this goal,
+                        Russell introduces <i>assistance games</i>. In an assistance game, a human is paired with a
+                        robot. As the human interacts with the automata, they make constant observations and learn to
+                        anticipate their behavior, not my acting as the human, but acting as the human wanted them to
+                        act (shown through the human's actions). By always assigning some reward to deferring to human
+                        action (and assigning a degree of uncertainty to its own actions), autonomous systems may be
+                        significantly less resistant to human interference with their initial plans.
                     </p>
                     <p>
                         Another important component of provably beneficial AI is its interpretation of goals.
