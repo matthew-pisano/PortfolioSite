@@ -7,7 +7,7 @@ import $ from "jquery";
  */
 class Constants {
     static resumeUrl = "/media/documents/resume.pdf";
-    static minTerminalHeight = 70;
+    static minTerminalHeight = 50;
 }
 
 /**

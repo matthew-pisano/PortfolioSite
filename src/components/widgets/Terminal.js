@@ -111,7 +111,7 @@ function Terminal() {
 
         // Resize the terminal to the given height
         terminal.style.height = `${height}px`;
-        terminalBody.style.height = `${height - 50}px`;
+        terminalBody.style.height = `${height - 55}px`;
         terminalFileHandler.style.height = `${height}px`;
 
         // If the terminal was closed, show its pageComponents

@@ -22,7 +22,7 @@
     border-left: 1px solid var(--theme-accent);
     color: var(--theme-text) !important;
     flex-shrink: 0;
-    height: 70px;
+    height: 50px;
 }
 
 .terminalOutput {
