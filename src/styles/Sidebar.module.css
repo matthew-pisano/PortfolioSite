@@ -1,6 +1,6 @@
 
 .openSidebar {
-    width: 240px;
+    width: 260px;
 }
 
 .closeSidebar {
@@ -24,6 +24,7 @@
     overflow-y: auto;
     height: calc(100% - 60px);
     margin-top: 50px;
+    padding-right: 5px;
 }
 
 .sidebarContent {
@@ -38,6 +39,10 @@
     padding-right: 5px;
     width: 100%;
     border-radius: 0 5px 5px 0;
+}
+
+.sidebarFolderItem {
+    padding-right: 0;
 }
 
 .sidebarFolderHeader {

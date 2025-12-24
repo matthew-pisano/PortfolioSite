@@ -22,13 +22,13 @@ function buildDirectory(directory, path) {
     let name = directory.name + "-Folder";
     let dirStyle = directory.name === "public" ? { borderStyle: "none" } : {};
     return (
-        <div key={name} id={name} className={`sidebarItem sidebarFolder w3-row ${styles.sidebarItem}`} style={dirStyle}>
+        <div key={name} id={name} className={`${styles.sidebarItem} ${styles.sidebarFolderItem}`} style={dirStyle}>
             <div className={`${styles.sidebarFolderHeader}`}>
                 <img className={`${styles.folderIcon}`} alt="" />
                 <span>{directory.name}</span>
             </div>
 
-            <div id={directory.name + "Content"} className={`w3-row ${styles.sidebarItemContent}`}>
+            <div id={directory.name + "Content"} className={`${styles.sidebarItemContent}`}>
                 {directory.subTree.map((child) => buildHierarchy(child, path + "/" + directory.name))}
             </div>
         </div>
@@ -56,7 +56,7 @@ function buildFile(file, path) {
         linkPath = `${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`;
         editIcon = (
             <img
-                className={`editorButton ${styles.editorButton}`}
+                className={`${styles.editorButton}`}
                 alt=""
                 onClick={() => {
                     window.location.replace(`/edit?file=${pathJoin(SysEnv.HOME_FOLDER, path.substring(1), file.name)}`);
@@ -96,7 +96,7 @@ function buildFile(file, path) {
             id={fileName + "-File"}
             linkpath={linkPath}
             onContextMenu={onContextMenu}
-            className={`sidebarItem sidebarLink w3-row ${styles.sidebarItem} ${styles.sidebarLink}`}>
+            className={`${styles.sidebarItem} ${styles.sidebarLink}`}>
             <img className={`${styles.htmlIcon}`} alt="" />
             {pageLink}
             {editIcon}
@@ -272,7 +272,7 @@ function Sidebar() {
         let pagePath = window.location.pathname === "/" ? "/home" : window.location.pathname;
         if (pagePath.endsWith("display") || pagePath.endsWith("edit"))
             pagePath = window.location.search.split("file=")[1];
-        let selectedLink = document.querySelectorAll(`.sidebarItem[linkpath="${pagePath}"]`)[0];
+        let selectedLink = document.querySelectorAll(`.${styles.sidebarItem}[linkpath="${pagePath}"]`)[0];
         if (selectedLink) selectedLink.classList.add(styles.selectedSidebarLink);
     }, [explorerTree]);
 
@@ -284,14 +284,14 @@ function Sidebar() {
     let sidebarStateCls = sidebarOpen ? styles.openSidebar : styles.closeSidebar;
     return (
         <div id="sidebar" className={`${sidebarStateCls} ${styles.sidebar}`}>
-            <div id="sidebarHeader" className={`w3-cell-row ${sidebarStateCls} ${styles.sidebarHeader}`}>
+            <div id="sidebarHeader" className={`${sidebarStateCls} ${styles.sidebarHeader}`}>
                 <button
                     id="sidebarToggle"
-                    className={`w3-button w3-cell ${styles.sidebarToggle}`}
+                    className={`w3-button ${styles.sidebarToggle}`}
                     onClick={() => setSidebarOpen(!sidebarOpen)}></button>
                 <span
                     id="sidebarTitle"
-                    className={`w3-cell ${styles.sidebarItem} ${styles.sidebarTitle}`}
+                    className={`${styles.sidebarItem} ${styles.sidebarTitle}`}
                     style={{ display: sidebarOpen ? "inline" : "none" }}>
                     Explorer
                 </span>
@@ -299,7 +299,7 @@ function Sidebar() {
             <div id="sidebarBody" className={`${styles.sidebarBody}`}>
                 <div
                     id="sidebarContent"
-                    className={`w3-display-container w3-row ${styles.sidebarContent}`}
+                    className={`${styles.sidebarContent}`}
                     style={{ display: sidebarOpen ? "block" : "none" }}>
                     {explorerTree}
                 </div>
