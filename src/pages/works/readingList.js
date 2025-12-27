@@ -1,11 +1,11 @@
 import React from "react";
 
-import cogSciBooks from "@/components/readingList/cogSciBooks";
-import futurismBooks from "@/components/readingList/futurismBooks";
-import historyBooks from "@/components/readingList/historyBooks";
-import philosophyBooks from "@/components/readingList/philosophyBooks";
-import physicsBooks from "@/components/readingList/physicsBooks";
-import scifiBooks from "@/components/readingList/scifiBooks";
+import cogSciBooks from "@/components/readingList/cogsci/cogSciBooks";
+import futurismBooks from "@/components/readingList/futurism/futurismBooks";
+import historyBooks from "@/components/readingList/history/historyBooks";
+import philosophyBooks from "@/components/readingList/philosophy/philosophyBooks";
+import physicsBooks from "@/components/readingList/physics/physicsBooks";
+import scifiBooks from "@/components/readingList/scifi/scifiBooks";
 import { SelfLink } from "@/components/tiles/Links";
 import { SectionTile, Tile } from "@/components/tiles/Tiles";
 import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
