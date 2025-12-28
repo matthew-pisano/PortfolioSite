@@ -102,7 +102,77 @@ export default (
                     only learn a few dozen commands and tricks before reaching their cognitive capacity. Humans,
                     Hofstadter claims, have an <i>arbitrarily</i> extensible set of symbols. We can define a near
                     limitless number of concepts in terms of existing symbols and learned experiences. This generality
-                    is the missing component when comparing humans to creatures of "lesses" souls.
+                    is the missing component when comparing humans to creatures of "lesser" souls.
+                </p>
+                <p>
+                    Using the preceding knowledge of recursion and self-reference as background, the text introduces one
+                    of the most prominent examples of strange "loopiness" in mathematics. To understand the full impact
+                    of Gödel's proof, the reader must first understand what Hofstadter deems "the Mathematician's
+                    Credo": all mathematical phenomena occur completely due to stable and understandable reasons. In the
+                    early twentieth century, the prevailing extrapolation of this belief was that a single, unified
+                    system of mathematics could be created that fully describes all of mathematics without
+                    contradiction. This was the goal of Russell and Whitehead's <i>Principia Mathematica</i> (PM) and
+                    many mathematicians at the time hoped that this would represent such a unified system. Within PM,
+                    <i>theorems</i> (proved assertions) are very strictly derived from <i>axioms</i> (assumed
+                    assertions). The rules of inference within PM are constructed in such a way that the string of
+                    symbols that represent a given theorem is created only from mechanistic manipulations of the symbols
+                    from previous theorems of axioms. Recall that the objects that these proofs described lied within a
+                    strict hierarchy, such that objects could only be defined in terms of hierarchically lower objects.
+                    This rule was specifically implemented to avoid self-referential paradoxes. The perceived importance
+                    of PM came from two core assumptions. Given that the axioms were true, all theorems produced by the
+                    symbol manipulation of those axioms was also true (consistency) and that the axioms were chosen in
+                    such a manner that all truths could be proved by deriving intermediate truths only from the axioms
+                    and rules of inference. "X is true <i>because</i> there is a proof of X" and "X is true{" "}
+                    <i>and so</i> there is a proof of X".
+                </p>
+                <p>
+                    The first of Gödel's key insights was that the rule-based symbol manipulation of PM's rules of
+                    inference would be faithfully recreated within number theory itself. This was done by assigning each
+                    typographical symbol of PM's notation to a unique, arbitrary integer. Strings were then comprised of
+                    these integers as exponents for the sequence of prime numbers. Importantly, when input axioms
+                    underwent symbolic transformations that resulted in output theorems, input Gödel numbers for those
+                    axioms underwent numerical transformations that resulted in output Gödel numbers that corresponded
+                    with the logically correct theorem
+                    <FootRef idx={5} />! These integer strings would be unimaginably large and infeasible to work with,
+                    however Gödel did not have to do these calculations himself, he only needed to show that his
+                    assertions were mathematically sound
+                    <FootRef idx={6} />. Hofstadter dubs such a Gödel number that can be derived from PM's axioms
+                    (therefore representing a statement provable within PM) as a <i>prim</i> number. With this notion,
+                    the "Gödelian" Strange Loop can be closed. Gödel first considers a statement that assets that "An
+                    integer, <i>g</i>, is not a <i>prim</i> number". This statement, of course, can be encoded as a
+                    unique Gödel number. What if such a statement could be constructed such that g was the Gödel number
+                    of the statement itself? Such a statement would say: "The Gödel number, <i>g</i>, for this statement
+                    is not a <i>prim</i> number". In other words: "This statement is not provable via PM's rules of
+                    inference" or, more tersely, "I am unprovable"
+                    <FootRef idx={7} />. If such a statement
+                    <FootRef idx={8} /> could be constructed, it would imply paradox after paradox present within the
+                    supposedly paradox-free <i>Principia Mathematica</i>!
+                </p>
+                <p>
+                    However, there is still one important detail missing from this explanation: how can a formula
+                    contain its own symbols with room to spare for other boilerplate? The answer lies in the fact that a
+                    number can be fully described without having to be fully written out. For example, you can either
+                    write "10077696" or the much shorter "6<sup>9</sup>". Gödel achieves this through a process
+                    analogous to a notion that the text refers to as "Qunining"
+                    <FootRef idx={9} />. This form of indirect self-reference is exemplified by the statement:
+                    <blockquote>
+                        "Yields falsehood when preceded by its quotation" yields falsehood when preceded by its
+                        quotation.
+                    </blockquote>
+                    This statement contains two duplicate subjectless sentence fragments which, when combined, result in
+                    a coherent statement. The PM analog for such a fragment would be a statement, not about a specific
+                    number, but about the variable <i>x</i>. Taking this fragment's Gödel number, <i>k</i>, and
+                    replacing <i>x</i> with it yields a formula that makes a claim about a much larger number, <i>g</i>,
+                    the Gödel number of the new composite formula itself! To encode this logic back into Quinean terms,
+                    we get something like:
+                    <blockquote>
+                        "when fed its own Gödel number yields a non-prim number" when fed its own Gödel number yields a
+                        non-prim number.
+                    </blockquote>
+                    In concrete terms, quoting a sequence means to take it's Gödel number (<i>k</i>) and then inputting
+                    that back into the same sequence. Thus, we can reference a formula's own Gödel number without
+                    explicitly embedding that number into the formula itself. Instead, that number is only{" "}
+                    <i>described</i> by the formula in more compact terms.
                 </p>
             </>
         }
@@ -119,6 +189,33 @@ export default (
                 </FootNote>
                 <FootNote idx={3}>More to come on this notion later.</FootNote>
                 <FootNote idx={4}>Except for, perhaps, some exceptionally devout, animist physicist.</FootNote>
+                <FootNote idx={5}>
+                    Importantly, valid Gödel numbers do not assert truthful theorems, they merely assert that they are
+                    well-formed. "2+2=5" is comprehensible (well-formed), though false, while "==0+]" is
+                    incomprehensible (not well-formed). The "truthfulness" of a theorem comes only from the notion that
+                    it can be derived (directly or through intermediate theorems) from axioms assumed to be true,{" "}
+                    <i>a priori</i>.
+                </FootNote>
+                <FootNote idx={6}>
+                    This represents an excellent example if an <i>isomorphism</i>. The two domains: PM proof strings and
+                    number theory only seem related in the fact that they involve mathematics in some respect. However,
+                    Gödel showed that they are simply two different manifestations of the same fundamental concept. One
+                    can perfectly understand the logic of PM's proof strings without once invoking number theory (like
+                    Russell and Whitehead had) and one can also manipulate Gödel numbers without knowing of their
+                    possible implications on the truthfulness of falsity of the PM theorem they represent!
+                </FootNote>
+                <FootNote idx={7}>
+                    The connection to the classic Liar's Paradox ("This statement is false") is not coincidental here!
+                </FootNote>
+                <FootNote idx={8}>
+                    Gödel's statement is particularly insidious here, as it represents one of an infinite family of
+                    similar paradoxes. Therefore one cannot simply make <i>g</i> (or its negation <i>~g</i>) an axiom of
+                    some new "fortified" PM, as there will always be another <i>g</i>-shaped hole to plug in this new
+                    system.
+                </FootNote>
+                <FootNote idx={9}>
+                    Named after logician Willard Van Orman Quine and his study of indirect self-reference.
+                </FootNote>
             </>
         }
         thumbnail={"/media/image/i-am-a-strange-loop.jpg"}
