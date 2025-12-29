@@ -2,6 +2,9 @@ import React from "react";
 
 import $ from "jquery";
 
+// Used in the calculation of reading time for book tiles
+const WORDS_PER_MINUTE = 200;
+
 /**
  * Class to hold constants used throughout the site.
  */
@@ -100,4 +103,4 @@ function redact(length) {
     );
 }
 
-export { Constants, showDialog, genPageTitle, redact };
+export { Constants, showDialog, genPageTitle, redact, WORDS_PER_MINUTE };

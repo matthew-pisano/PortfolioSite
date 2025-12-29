@@ -5,13 +5,11 @@ import PropTypes from "prop-types";
 
 import { Tile } from "@/components/tiles/Tiles";
 import { TileInfo } from "@/components/wrappers/Wrapper";
+import { WORDS_PER_MINUTE } from "@/lib/util/utils";
 import tileStyles from "@/styles/pageTiles.module.css";
 
 // Create a context for the book anchor
 const BookAnchorContext = createContext(null);
-
-// Used in the calculation of reading time for book tiles
-const WORDS_PER_MINUTE = 200;
 
 /**
  * A tile representing a book review
