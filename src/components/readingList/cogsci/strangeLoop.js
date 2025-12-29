@@ -155,20 +155,23 @@ export default (
                     write "10077696" or the much shorter "6<sup>9</sup>". Gödel achieves this through a process
                     analogous to a notion that the text refers to as "Qunining"
                     <FootRef idx={9} />. This form of indirect self-reference is exemplified by the statement:
-                    <blockquote>
-                        "Yields falsehood when preceded by its quotation" yields falsehood when preceded by its
-                        quotation.
-                    </blockquote>
+                </p>
+                <blockquote>
+                    "Yields falsehood when preceded by its quotation" yields falsehood when preceded by its quotation.
+                </blockquote>
+                <p>
                     This statement contains two duplicate subjectless sentence fragments which, when combined, result in
                     a coherent statement. The PM analog for such a fragment would be a statement, not about a specific
                     number, but about the variable <i>x</i>. Taking this fragment's Gödel number, <i>k</i>, and
                     replacing <i>x</i> with it yields a formula that makes a claim about a much larger number, <i>g</i>,
                     the Gödel number of the new composite formula itself! To encode this logic back into Quinean terms,
                     we get something like:
-                    <blockquote>
-                        "when fed its own Gödel number yields a non-prim number" when fed its own Gödel number yields a
-                        non-prim number.
-                    </blockquote>
+                </p>
+                <blockquote>
+                    "when fed its own Gödel number yields a non-prim number" when fed its own Gödel number yields a
+                    non-prim number.
+                </blockquote>
+                <p>
                     In concrete terms, quoting a sequence means to take it's Gödel number (<i>k</i>) and then inputting
                     that back into the same sequence. Thus, we can reference a formula's own Gödel number without
                     explicitly embedding that number into the formula itself. Instead, that number is only{" "}
