@@ -174,6 +174,64 @@ export default (
                     explicitly embedding that number into the formula itself. Instead, that number is only{" "}
                     <i>described</i> by the formula in more compact terms.
                 </p>
+                <p>
+                    Regardless of Gödel's clever trickery, any statement of logic is either true or false, never both.
+                    With reference to a well-defined and powerful system such as PM, a statement is either provable or
+                    not. How can we then classify Gödel's statement that essentially says "I am unprovable"? Suppose,
+                    first, that it is false: this would suggest that the statement is indeed provable within PM.
+                    However, that would man that PM would be able to prove a false statement, a blatant contradiction!
+                    Instead, let's assume that the statement is true. Then it truly is unprovable within PM. Here, the
+                    system is consistent with itself, but it means it is incomplete.{" "}
+                    <i>
+                        There are some true statements that cannot be proved by PM, nor any other formal systems of
+                        mathematics.
+                    </i>{" "}
+                    In other words, all logical systems sufficiently powerful to perform number-theoretical operation
+                    are <i>either</i> inconsistent <i>or</i> incomplete.
+                </p>
+                <p>
+                    Aside from the sheer mathematical and philosophical impact of this result, how does this relate back
+                    to the motion of a Strange Loop? The connection lies within the isomorphism of{" "}
+                    <i>Principia Mathematica</i>, between Russel and Whitehead's symbolic interpretation of PM and
+                    Gödel's number-theoretical angle. Similarly, human brains can be thought of having two (very broad)
+                    levels. At one extreme, there is the low-level particle interactions describable within the real of
+                    physics (Russel and Whitehead's symbol shunting within PM). At the other, there are complex symbols
+                    triggering each other along with input from the environment (Gödel's interpretation of the theorems
+                    as statements of number theory). Both seem to contradict each other, yet are two different ways of
+                    faithfully describing the same object. At the level of symbols in our minds, there is one that
+                    appears to trigger symbols without first needing to be triggered itself; an event with no cause, a{" "}
+                    <i>prime mover</i>. This <i>I</i> symbol is likely the most complex of them all within a given mind.
+                    Additionally, minds often contain other <i>I</i> symbols for other people, though notably less rich
+                    than the originals. To Hofstadter, this special symbol for ourselves begins as a hopelessly vague
+                    notion as soon as the developing brain has developed the faculties to support it. Over time, this
+                    symbol accretes countless experiences, interactions, and beliefs, forming them into a (mostly)
+                    coherent sense of self. Somewhat of an illusion in the author's eyes, but one of unparalleled
+                    persistence nonetheless. The "loopiness" of this symbol comes into view when one's actions affect
+                    others, or their environment, which then affect the original <i>I</i> symbol. Furthermore, humans
+                    have a (seemingly) unique ability for introspection, where it can reason and reflect upon the past
+                    triggering of its self-symbol.
+                </p>
+                <p>
+                    The loop here is fairly straightforward, but its classification as "strange" is less obvious.
+                    Feedback loops are interesting, but few will say there is really a "light on" within a toilet's
+                    float or video feedback. The text briefly considers the notion that "I-ness" is tied to a particular
+                    substrate, namely carbon (and neuron) based brains. If that were the only contributing factor, then
+                    mosquitoes
+                    <FootRef idx={10} />, cows, and dogs would have the same capacity for a self as humans do. Instead,
+                    Hofstadter argues that a sense of self, a "light on", comes only from the patterns of activation
+                    within a system of symbols. As he quotes Daniel Dennett, "It ain't the meat, it's the motion"
+                    <FootRef idx={11} />. The meaning within a system <i>tracks</i> its physical patterns, but is not
+                    composed of them in isolation, just as Gödel's numbers <i>track</i> the symbol manipulation of PM
+                    strings, but are not directly implied by them. The "strangeness" within our own loopy feedback
+                    mechanisms comes not from the feedback itself, but from the symbols that feedback creates. These
+                    symbols <i>perceive</i> incoming signals and can perform more meaningful processing of that input
+                    through complex patterns of symbol manipulation. "We" are only aware of our own <i>I</i> symbol
+                    precisely due to the fact that is all we can see. Even if we intellectually know of the very real
+                    particle interactions that make up our selves, we still personally believe in the complex <i>I</i>{" "}
+                    pattern that those particles create through their interactions. Our inability to directly obverse
+                    our own low-level interactions forces us to only reason in top-level symbols, forming a sense of
+                    self.
+                </p>
             </>
         }
         thoughts={<></>}
@@ -215,6 +273,10 @@ export default (
                 </FootNote>
                 <FootNote idx={9}>
                     Named after logician Willard Van Orman Quine and his study of indirect self-reference.
+                </FootNote>
+                <FootNote idx={10}>Especially so.</FootNote>
+                <FootNote idx={11}>
+                    Only one <i>entendre</i> allowed at a time, please.
                 </FootNote>
             </>
         }
