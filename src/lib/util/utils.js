@@ -32,6 +32,7 @@ String.prototype.hashCode = function () {
  * @type {{title: string, body: string, duration: number}[]}
  */
 let dialogQueue = [];
+
 /**
  * Lock to prevent multiple dialogs from being shown at once.
  * @type {boolean}
