@@ -25,7 +25,8 @@ const lostQuotes = [
     "You know, I used to be an adventurer like you, but then I took an arrow to the knee",
     "The horrors persist, yet so do I",
     "Number go up!",
-    '"Those that fail to learn from history are doomed to repeat it." -Winston Churchill'
+    '"Those that fail to learn from history are doomed to repeat it." -Winston Churchill',
+    "Yields falsehood when preceded by its quotation!"
 ];
 
 export default function PageNotFound() {
