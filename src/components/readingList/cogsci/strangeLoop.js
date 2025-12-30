@@ -114,7 +114,7 @@ export default (
                     early twentieth century, the prevailing extrapolation of this belief was that a single, unified
                     system of mathematics could be created that fully describes all of mathematics without
                     contradiction. This was the goal of Russell and Whitehead's <i>Principia Mathematica</i> (PM) and
-                    many mathematicians at the time hoped that this would represent such a unified system. Within PM,
+                    many mathematicians at the time hoped that this would represent such a unified system. Within PM,{" "}
                     <i>theorems</i> (proved assertions) are very strictly derived from <i>axioms</i> (assumed
                     assertions). The rules of inference within PM are constructed in such a way that the string of
                     symbols that represent a given theorem is created only from mechanistic manipulations of the symbols
@@ -297,7 +297,88 @@ export default (
                 </p>
             </>
         }
-        thoughts={<></>}
+        thoughts={
+            <>
+                In my opinion, Hofstadter certainly achieves his stated goals with this book. It is part retelling of{" "}
+                <i>Gödel, Escher, Bach</i> with most of the symbolism and dialogues stripped off and part focused
+                exploration into our private conscious experience in a more detailed manner than his original work.
+                While this is less of an "experience" to read in the way that <i>GEB: BEG</i> was, it communicates
+                Hofstadter's ideas on the human mind much more clearly. Additionally, while this may be simply recency
+                bias on my part, this book's explanation of Gödel's incompleteness theorem is more understandable and
+                grounded, despite his first attempt having significantly more in-text build up and context. Both{" "}
+                <i>gitLogo I Am a Strange Loop</i> and <i>Gödel, Escher, Bach</i> can fully stand on their own as
+                effective explorations of cognitive science, yet they are inexorably tied to one another.
+                <p>
+                    His approach of quantifying an entity's level of consciousness into different sized "souls" is
+                    certainly a unique approach. It's a clever way of measuring the different cognitive capabilities of
+                    different animals and giving that measurement a unit which can be referenced and manipulated
+                    independently of a particular species. Throughout the text, concrete <i>Huneker</i> values are given
+                    to mosquitoes, dogs, humans, etc. However, since the book readily admits that these values are
+                    arbitrary, a more complete approach may have been to make the <i>Huneker</i> an ordinal (only
+                    defined in relative terms) rather than cardinal (defined by absolute values) unit. The 100{" "}
+                    <i>Huneker</i> upper-bound
+                    <FootRef idx={14} /> is artificially limiting. It seems unreasonably anthropocentric to assume that
+                    it is impossible for other entities (or machines, even) to be <i>more</i> conscious than we are,
+                    though I'm not sure if it is even possible for us to conceptualize such a case.
+                </p>
+                <p>
+                    The theme of determinism comes up frequently in this text, though it is never mentioned by name.
+                    First appearing in his <i>Careenium</i> analogy, the purely physical nature of our brains is a core
+                    pillar of many of the book's arguments. The later chapters of this work, especially the dialogue
+                    between Strange Loops #641 and #642, focus on this aspect specifically. There is nothing that could
+                    influence our minds from beyond our physical universe, therefore our minds, and therefore our
+                    private experiences, must be fully determined by the fundamental laws of our universe. Our "selves"
+                    merely occupy a world of abstractions and chunking, build upon that low-level foundation. This
+                    aspect of the book pairs very well with the works of Robert M. Sapolsky and his similar opinions on
+                    the topic of determinism.
+                </p>
+                <p>
+                    Aside from Hofstadter's clear and concise explanation of Gödel's proof for his (first)
+                    incompleteness theorem, his historical contextualization also makes an otherwise abstract discussion
+                    very grounded. The first half of the twentieth century was a time of significant upheaval, not only
+                    in politics, but also in physics and mathematics. While relativity and quantum theory were shaking
+                    the centuries-old foundations of Newtonian mechanics, mathematician David Hilbert was championing
+                    his famous program for grounding mathematics in pure logic. Most contemporaries in the field
+                    believed that Russell and Whitehead's <i>Principia Mathematica</i> would be the final realization of
+                    this program. It would be the first successful attempt at grounding all of the complexity of
+                    mathematics in pure logic and proof. It is difficult to overstate the sheer amount of time and
+                    effort spent on this program, not just from Russell and Whitehead, but also from Ernst Zermelo,
+                    Abraham Fraenkel, John von Neumann, and many others. Ths idea that a single young logician turned
+                    this impenetrable fortress of logic and proof into a fragile house of cards with a single paper is
+                    overwhelming. Hofstadter conveys this sentiment to the reader through his analogies and analysis
+                    (though with a slightly less dramatic approach).
+                </p>
+                <p>
+                    I also find Hofstadter's notion of "guest" strange loops residing (though with low-fidelity) along
+                    with a separate "host" loop to be interesting. On the surface, this idea may appear to be only a
+                    romanticization of our relationships with others. It is certainly poetic that the consciousness of
+                    the lost may "live on" within the minds of others, albeit in a diminished sense. However, since the
+                    text argues that the host loops are no more "real" than the guests, I find that the notion holds
+                    water in a literal sense, not just an abstract one (if the premise is accepted, of course). If our
+                    own conscious experiences are merely an emergent quality from the sea of particles within our own
+                    brains, there is good reason to think that they are equally real when emerging from the particles of
+                    a brain different from the original's. In computing terms, a virtual machine is just as real as the
+                    host machine, from the perspective of the electrons (there are no <i>virtual</i> electrons
+                    <FootRef idx={15} /> for the virtual machines). While Hofstadter's argument somewhat diminishes the
+                    existence of our selves, it reinforces the existence of those that we are close to.{" "}
+                    <i>Cogito, ergo sum, et ergo tu quoque</i>.
+                </p>
+                <p>
+                    To support his exploration of "guest" loops, Hofstadter proposes that our brains have a certain kind
+                    of "universality". In a similar manner to how universal turing machines can simulate any arbitrary
+                    turing machine, so too can our minds simulate any other. In a similar vein, I have often wondered if
+                    our minds have a similar sort of "universality" with respect to learning. Not just with respect to
+                    what other humans have already learned, but in a much more general sense. Are our systems of
+                    learning also "Gödel-incomplete" in some manner? Are there some undeniable truths that directly
+                    follow from observations and reasoning, but are simply too complex for us to grasp? Even more
+                    concerning, are there ideas that simply cannot be faithfully distilled in a manner that can be
+                    understood by a human brain? I can teach my dog quite a few tricks and commands, but even if I was
+                    fluent in dog, I am confident that quantum theory would forever be beyond her reach. Is the
+                    self-referential nature of our minds sufficient for learning <i>arbitrarily complex</i> truths
+                    (given sufficient time and effort)?
+                </p>
+            </>
+        }
         footnotes={
             <>
                 <FootNote idx={1}>
@@ -347,6 +428,12 @@ export default (
                     <Link href={"https://en.wikipedia.org/wiki/No-cloning_theorem"}>No-cloning theorem</Link> for this
                     to work.
                 </FootNote>
+                <FootNote idx={14}>
+                    Hofstadter notes that this cap is placed not for logical reasons, but for ethical ones. In my
+                    opinion, this was a tactful decision, as the ethical implications of giving different (healthy,
+                    adult) people different values for consciousness would be beyond the scope of this work.
+                </FootNote>
+                <FootNote idx={15}>Though, I'm sure that Richard Feynman would disagree!</FootNote>
             </>
         }
         thumbnail={"/media/image/i-am-a-strange-loop.jpg"}
