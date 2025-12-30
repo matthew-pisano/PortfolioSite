@@ -1,5 +1,7 @@
 import React from "react";
 
+import Link from "next/link";
+
 import { BookTile, FootNote, FootRef } from "@/components/readingList/BookTile";
 
 export default (
@@ -235,6 +237,64 @@ export default (
                     our own low-level interactions forces us to only reason in top-level symbols, forming a sense of
                     self.
                 </p>
+                <p>
+                    Though our own <i>I</i> symbols are the most privileged (and complex) human-symbols in our minds,
+                    they are not the only ones. From our time as infants, as our self-symbol grows with experience, so
+                    too do our symbols for those around us. These "copies" of the other <i>I</i> symbols begin as mere
+                    surface-level references. As we learn more information or have more shared experiences with a
+                    specific person, the "resolution" of this guest symbol increases. Though our symbolic others can
+                    never become a true clone of their interiority, we can still form a relatively high-fidelity copy
+                    through a very close interpersonal bond. In Hofstadter's opinion, a portion of someone's "soul",
+                    scaled to the resolution of the guest symbol, can live on within the mind of a host. Even long after
+                    the original guest has passed, it continues to survive in the minds of others that have a
+                    sufficiently detailed model of their inner experience. To support this notion, the text asserts that
+                    human minds support mental architecture that allows them to simulate other human minds, based on
+                    their symbolic representation of the other.
+                </p>
+                <p>
+                    With regards to consciousness, the book denotes the difference between it and a self-symbol. We are
+                    not just how we view ourselves, but also how we view others, and the world around us. Consciousness
+                    is both our knowledge and our reasoning. It is an emergent phenomena that arrises from the complex
+                    dance of symbols within our minds. As these symbols act, react, reference, and self-reference, our
+                    personal <i>qualia</i> materialize. Consciousness' classification as emergent phenomena also means
+                    that ot need not be some fundamental property of matter or energy. It can emerge from non-conscious
+                    material (particles, hormones, neurons, etc.) in the same way that an apple can be red without its
+                    atoms having some fundamental "redness" property. The Strange Loops within our minds are not
+                    conscious themselves, but their self-referential and recursive nature does give rise to it. An
+                    important consequence of this stance is that our <i>I</i>'s, our <i>selves</i>, are reduced to
+                    nothing more than a stubbornly persistent illusion. While this may seem very unsatisfying,
+                    Hofstadter maintains that this approach is the only one consistent with out knowledge and
+                    observations of the world.
+                </p>
+                <p>
+                    A more palatable theory of consciousness (from a naive perspective) may be <i>Cartesian Dualism</i>.
+                    This philosophy proposes that the mind and body are two fundamentally different and separate
+                    objects. The body is physical, while the mind (not literally the brain, mind you) is supernatural.
+                    The non-physical mind is the core of a person, it's what makes them, them. Each mind contains one{" "}
+                    <i>quantum</i> of soul
+                    <FootRef idx={12} />, immutable and indivisible. This approach also implies a struct binary, a brain
+                    (human or otherwise) either has a conscious soul or it does not. The text touches on several thought
+                    experiments that call the validity of this framework into question. Suppose we create a perfect
+                    clone of someone (perfect down to the level of quarks and gluons
+                    <FootRef idx={13} />
+                    ). This clone either behaves exactly as the original does, or it behaves differently (or is even
+                    inert), both pose issues for the dualist. If the behavior is different, then somewhere along the
+                    chain of particle interactions, there must be a missing "nudge" that would have come from the
+                    extra-physical soul in the original. This implies that at least one particle-particle interaction
+                    within the original is causeless; these objects that only obey strict physical laws can somehow
+                    deviate from those laws at the behest of some external entity. This seems inconsistent with our
+                    observed reality. Conversely, if the clone behaves exactly like the original, then what exactly is
+                    the role of the non-physical soul? Would it just be a passive observer? The clone would become a
+                    "philosophical zombie", an entity with all the outward signs of consciousness, but without a "light
+                    on" inside. The supposed zombie could even have a conversation with the original about how they are
+                    both conscious, aware beings with their own internal qualia. Hofstadter argues that these zombies
+                    are indeed real, but there is no need to be scared of them. The idea that non-zombies could exist is
+                    another consequence of the illusory nature of an <i>I</i>. The notion that two physically identical
+                    entities can exist, yet have differing internal experiences, is inconsistent with a purely physical
+                    world. It would require extra-physical materials/entities/forces that, by definition, cannot be
+                    observed or falsified. However, the text is not asserting that private qualia does not exist on a
+                    subjective level, such qualia is simply as much as a figment as our consciousness.
+                </p>
             </>
         }
         thoughts={<></>}
@@ -280,6 +340,12 @@ export default (
                 <FootNote idx={10}>Especially so.</FootNote>
                 <FootNote idx={11}>
                     Only one <i>entendre</i> allowed at a time, please.
+                </FootNote>
+                <FootNote idx={12}>This time, much closer to the traditional, spiritual idea of a soul.</FootNote>
+                <FootNote idx={13}>
+                    We will have to suspend the{" "}
+                    <Link href={"https://en.wikipedia.org/wiki/No-cloning_theorem"}>No-cloning theorem</Link> for this
+                    to work.
                 </FootNote>
             </>
         }
