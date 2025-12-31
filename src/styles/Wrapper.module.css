@@ -64,7 +64,7 @@
 
 @media (width <= 600px) {
     .hideOnMobile {
-        display: none;
+        display: none !important;
     }
 
     .showOnMobile {
