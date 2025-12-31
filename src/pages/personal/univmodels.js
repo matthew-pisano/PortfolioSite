@@ -2,7 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 
-import { GitLink, TileLink, WebLink } from "@/components/tiles/Links";
+import { GitLink, WebLink } from "@/components/tiles/Links";
 import { TileTag } from "@/components/tiles/Tags";
 import { Tile } from "@/components/tiles/Tiles";
 import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
