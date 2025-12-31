@@ -221,10 +221,6 @@
 
 
 @media (width <= 600px) {
-    .bookTileContent {
-        max-height: none;
-    }
-
     .tileLayout {
         margin-top: 300px;
         padding-right: 10px;
@@ -232,7 +228,7 @@
 
     .displayTile {
         margin-right: 0;
-        margin-left: 3%;
+        margin-left: 10px;
     }
 
     .cvEmbed {
