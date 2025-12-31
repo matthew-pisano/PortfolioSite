@@ -20,9 +20,9 @@ export default function Help() {
         <DefaultWrapper pageInfo={pageInfo}>
             <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2> })}>
                 <p>
-                    This website is modeled after <i>Visual Studio Code</i> and the suite of
-                    <i>Jetbrains</i> IDEs that I write many of my projects in. This site features many of the navigation
-                    and editing characteristics of VS Code and other IDEs that I use regularly.
+                    This website is modeled after <i>Visual Studio Code</i> and the suite of <i>Jetbrains</i> IDEs that
+                    I write many of my projects in. This site features many of the navigation and editing
+                    characteristics of VS Code and other IDEs that I use regularly.
                 </p>
             </Tile>
 
