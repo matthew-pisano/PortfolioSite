@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import { Tile } from "@/components/tiles/Tiles";
 import { TileInfo } from "@/components/wrappers/Wrapper";
-import { WORDS_PER_MINUTE } from "@/lib/util/utils";
+import { elementReadingTime } from "@/lib/util/utils";
 import tileStyles from "@/styles/pageTiles.module.css";
 
 // Create a context for the book anchor
@@ -28,11 +28,7 @@ function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anc
     const [bookTime, setBookTime] = useState(0);
 
     useEffect(() => {
-        let bookElem = document.getElementById(anchor);
-        if (bookElem) {
-            let readingTime = Math.round(bookElem.innerText.split(" ").length / WORDS_PER_MINUTE);
-            setBookTime(readingTime);
-        }
+        setBookTime(elementReadingTime(anchor));
     }, []);
 
     useEffect(() => {
