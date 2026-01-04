@@ -1,6 +1,6 @@
 import React from "react";
 
-import BlogWrapper from "@/components/wrappers/BlogWrapper";
+import BlogWrapper, { BlogSection } from "@/components/wrappers/BlogWrapper";
 
 export default function BlogOne() {
     return (
@@ -26,7 +26,7 @@ export default function BlogOne() {
                 risus eu magna hendrerit, id maximus tellus euismod. Ut in blandit justo. Donec consequat elit non
                 accumsan egestas.
             </p>
-            <h3>Section Header</h3>
+            <BlogSection anchor={"header-first"}>Section Header</BlogSection>
             <p>
                 Etiam vel imperdiet massa. Maecenas vitae justo dignissim, maximus tortor id, porta quam. Fusce vehicula
                 ultricies cursus. In mollis tempor condimentum. Cras nulla dolor, dictum vitae tellus at, ullamcorper
@@ -58,7 +58,7 @@ export default function BlogOne() {
                 aliquet dignissim, sapien enim laoreet sem, vel luctus ligula neque ut mauris. Nunc sed rutrum ligula.
                 Fusce ac pulvinar erat.
             </p>
-            <h3>Section Header The Second</h3>
+            <BlogSection anchor={"header-second"}>Section Header The Second</BlogSection>
             <p>
                 Integer a odio lorem. Suspendisse hendrerit, libero ut eleifend porta, libero leo posuere risus, porta
                 rhoncus justo dolor eu felis. Vivamus ex est, elementum nec luctus vel, euismod ut quam. Nam at odio
