@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
+import { resetTilesOnScroll } from "@/components/tiles/Tiles";
 import Wrapper from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
-import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/pageTiles.module.css";
 
 /**
@@ -15,7 +15,7 @@ import styles from "@/styles/pageTiles.module.css";
  * @param title {string} The title of the blog page
  * @param subtitle {string} The subtitle of the blog page
  * @param date {Date} The date of writing of the blog
- * @return {JSX.Element} The page wrapped in the default wrapper
+ * @return {JSX.Element} The page wrapped in the blog wrapper
  */
 function BlogWrapper({ children, pageName, title, subtitle, date }) {
     const blockContentId = "blogContent";
@@ -31,8 +31,13 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
                 <h1>
                     <b>{title}</b>
                 </h1>
-                <br />
-                <h3>{subtitle}</h3>
+
+                {subtitle ? (
+                    <>
+                        <br />
+                        <h3>{subtitle}</h3>
+                    </>
+                ) : null}
             </div>
 
             <div className={`${styles.blogHolder}`}>
@@ -58,4 +63,33 @@ BlogWrapper.propTypes = {
     date: PropTypes.any.isRequired
 };
 
+/**
+ * A section header for blog sections
+ * @param children The children of the header
+ * @param anchor The anchor for the header
+ * @param level The header level
+ * @returns {JSX.Element} The header element
+ */
+function BlogSection({ children, anchor, level }) {
+    let sectionContent = (
+        <>
+            {children}
+            <Link href={`#${anchor}`} className={`${styles.anchorLink}`}>
+                <img className={`${styles.anchorIcon}`} alt="" />
+            </Link>
+        </>
+    );
+
+    if (!level || level === 1) return <h3 id={anchor}>{sectionContent}</h3>;
+    else if (level === 2) return <h4 id={anchor}>{sectionContent}</h4>;
+    else if (level === 3) return <h5 id={anchor}>{sectionContent}</h5>;
+    throw new Error("Unknown blog section level " + level);
+}
+BlogSection.propTypes = {
+    children: PropTypes.element.isRequired,
+    anchor: PropTypes.string.isRequired,
+    level: PropTypes.number
+};
+
 export default BlogWrapper;
+export { BlogSection };
