@@ -2,6 +2,20 @@ import React from "react";
 
 import $ from "jquery";
 
+// Used in the calculation of reading time for book tiles
+const WORDS_PER_MINUTE = 200;
+
+/**
+ * Get the time (in minutes) it would take to read the contents of the element's inner text
+ * @param elemId The ID of the element
+ * @return The number of minutes to read the text
+ */
+function elementReadingTime(elemId) {
+    let bookElem = document.getElementById(elemId);
+    if (bookElem) return Math.round(bookElem.innerText.split(" ").length / WORDS_PER_MINUTE);
+    return 0;
+}
+
 /**
  * Class to hold constants used throughout the site.
  */
@@ -32,6 +46,7 @@ String.prototype.hashCode = function () {
  * @type {{title: string, body: string, duration: number}[]}
  */
 let dialogQueue = [];
+
 /**
  * Lock to prevent multiple dialogs from being shown at once.
  * @type {boolean}
@@ -99,4 +114,4 @@ function redact(length) {
     );
 }
 
-export { Constants, showDialog, genPageTitle, redact };
+export { Constants, showDialog, genPageTitle, redact, elementReadingTime };

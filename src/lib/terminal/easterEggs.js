@@ -19,14 +19,17 @@ let lastEightballTime = 0;
  * @yields {string} The eightball response
  */
 async function* eightBall(question) {
+    // Lower case question
+    question = question.toLowerCase();
+
     // Ensure question is of right form
     if (question === "") return yield "You need to give me a question to answer :/";
     if (!question.endsWith("?")) return yield "That doesn't look like a question to me...try adding a '?' at the end";
 
     let spaces = (question.match(/\S \S/g) || []).length;
-    if (spaces < 2) {
+    if (spaces < 2)
         return yield "You dare ask me such a trivial question?  I need something longer, something more complex...";
-    }
+
     if (spaces < 4 && Math.random() < 0.6)
         return yield "I'm getting tired of these simple questions...try again with something longer and more interesting!";
 
@@ -50,7 +53,7 @@ async function* eightBall(question) {
         if (previousOcurences === 1) yield "Again?  Fine, one second; I don't like repeat questions too much...\n\n";
         else if (previousOcurences === 2) return yield "That question seems...oddly familiar...";
         else if (previousOcurences === 3) return yield "I am no one to be trifled with.";
-        else if (previousOcurences === 4) yield "Alright, last chance!  I'll humor you once more...\n\n";
+        else if (previousOcurences === 4) yield "Alright, I'll humor you once more...\n\n";
         else if (previousOcurences === 5) return yield "I do not appreciate being messed with.";
         else if (previousOcurences === 6) return yield "I will not even dignify that with a response.";
         else if (previousOcurences > 10) {

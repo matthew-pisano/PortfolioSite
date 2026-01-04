@@ -126,9 +126,9 @@ function Wrapper({ children, pageName, pageClass }) {
             <HeaderMenu currentPath={currentPath} />
 
             <div id="wrapperBody" className={`${styles.wrapperBody}`}>
-                <div id="wrapperContent" className={`${styles.wrapperContent}`} onScroll={slideTilesOnScroll}>
+                <div id="wrapperContent" className={`${styles.wrapperContent}`}>
                     <Sidebar />
-                    <div id="page" className={`${styles.page} ${styles.hideOnMobile}`}>
+                    <div id="page" className={`${styles.page} ${styles.hideOnMobile}`} onScroll={slideTilesOnScroll}>
                         <div id="pageContent" className={`${styles.pageContent} ${pageClass}`}>
                             {children}
                         </div>

@@ -6,7 +6,7 @@ import historyBooks from "@/components/readingList/historyBooks";
 import philosophyBooks from "@/components/readingList/philosophyBooks";
 import physicsBooks from "@/components/readingList/physicsBooks";
 import scifiBooks from "@/components/readingList/scifiBooks";
-import { PageLink } from "@/components/tiles/Links";
+import { SelfLink } from "@/components/tiles/Links";
 import { SectionTile, Tile } from "@/components/tiles/Tiles";
 import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
@@ -30,12 +30,12 @@ export default function ReadingList() {
         [],
         (
             <>
-                <PageLink href={`/readingList#${sections.cogSci}`}>AI & Cognitive Science</PageLink>
-                <PageLink href={`/readingList#${sections.history}`}>History and Historical Fiction</PageLink>
-                <PageLink href={`/readingList#${sections.scifi}`}>Science Fiction</PageLink>
-                <PageLink href={`/readingList#${sections.physics}`}>Physics</PageLink>
-                <PageLink href={`/readingList#${sections.philosophy}`}>Philosophy</PageLink>
-                <PageLink href={`/readingList#${sections.futurism}`}>Futurism</PageLink>
+                <SelfLink href={`/readingList#${sections.cogSci}`}>AI & Cognitive Science</SelfLink>
+                <SelfLink href={`/readingList#${sections.history}`}>History and Historical Fiction</SelfLink>
+                <SelfLink href={`/readingList#${sections.scifi}`}>Science Fiction</SelfLink>
+                <SelfLink href={`/readingList#${sections.physics}`}>Physics</SelfLink>
+                <SelfLink href={`/readingList#${sections.philosophy}`}>Philosophy</SelfLink>
+                <SelfLink href={`/readingList#${sections.futurism}`}>Futurism</SelfLink>
             </>
         )
     );

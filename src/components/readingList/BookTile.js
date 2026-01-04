@@ -1,10 +1,11 @@
-import React, { createContext, useContext, useEffect, useRef } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 import PropTypes from "prop-types";
 
 import { Tile } from "@/components/tiles/Tiles";
 import { TileInfo } from "@/components/wrappers/Wrapper";
+import { elementReadingTime } from "@/lib/util/utils";
 import tileStyles from "@/styles/pageTiles.module.css";
 
 // Create a context for the book anchor
@@ -21,10 +22,14 @@ const BookAnchorContext = createContext(null);
  * @param anchor {string} The anchor id for the tile
  * @constructor
  */
-
 function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anchor }) {
     const footnotesRef = useRef([]);
     const footRefsRef = useRef([]);
+    const [bookTime, setBookTime] = useState(0);
+
+    useEffect(() => {
+        setBookTime(elementReadingTime(anchor));
+    }, []);
 
     useEffect(() => {
         const refs = footRefsRef.current;
@@ -71,6 +76,11 @@ function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anc
             <Tile tileInfo={new TileInfo({ title: <>{title}</>, thumbnail: thumbnail, anchor: anchor })}>
                 <div className={`${tileStyles.bookTileContent}`}>
                     <div className={tileStyles.bookTileSection}>
+                        <small style={{ display: "block", width: "100%", textAlign: "right" }}>
+                            {bookTime} minute read
+                        </small>
+                    </div>
+                    <div>
                         <span className={tileStyles.bookTileSectionHeader}>Author:</span> {author}
                     </div>
                     <div className={tileStyles.bookTileSection}>

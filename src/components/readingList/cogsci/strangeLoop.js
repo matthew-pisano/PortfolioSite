@@ -1,0 +1,462 @@
+import React from "react";
+
+import Link from "next/link";
+
+import { BookTile, FootNote, FootRef } from "@/components/readingList/BookTile";
+
+export default (
+    <BookTile
+        title={"I Am a Strange Loop"}
+        author={"Douglas Hofstadter"}
+        synopsis={
+            <>
+                <i>I Am a Strange Loop</i> serves as a refinement of the ideas Douglas Hofstadter originally presented
+                in <i>Gödel, Escher, Bach: An Eternal Golden Braid</i>, thirty years earlier. In his prior work,
+                Hofstadter attempted to explore his ideas on Souls, Selves and <i>I's</i> through the lense of the
+                book's three namesakes. The "strange" recursive and self-referential natures of their work served as an
+                anchor for the author's own ideas on the human mind. By contrast, <i>I Am a Strange Loop</i> uses these
+                references less as the core of his thesis and more as supporting elements. Instead, he uses less
+                abstract examples to present his ideas to the reader. <i>Symballs</i>, <i>Huneker</i> units, video
+                feedback, and others are used to illustrate the text's thesis on what an <i>I</i> exactly is, what can
+                be assigned the coveted status of an <i>I</i>, and how an <i>I</i> can be created from <i>I</i>-less
+                material.
+                <p>
+                    What exactly is an <i>I</i>? To Hofstadter, it relates closely to the degree of consciousness
+                    associated with a being. Tying this ephemeral quality to something more "real", the text introduces
+                    the notion of a <i>Soul</i>, though only in a secular sense. Small souled beings have no, or very
+                    limited, conscious thought, higher aspirations, or self-referential manners of thinking. Examples
+                    include rocks, microorganisms, or mosquitoes
+                    <FootRef idx={1} />. According to the book, larger souled beings (measured in <i>Huneker</i> units),
+                    in roughly increasing order, include bees, fish, chickens, dogs, infants, adults with severe
+                    cognitive impairments, and finally healthy adult humans. Notably, this list is not based simply on
+                    an entity's similarity to humans
+                    <FootRef idx={2} />. Instead, the size of an entity's soul correlates only to its theory of mind or
+                    ability for self-referential thought. This measurement of a soul is also completely divorced from
+                    the substrate for cognition. Fictional robots, like <i>C-3PO</i> and <i>R2-D2</i> are made of
+                    seemingly inert metal, yet they appear to have souls comparable to humans. How can this be?
+                </p>
+                <p>
+                    Upon closer inspection, humans appear to be made of similarly inert "stuff" to robots or inanimate
+                    objects. We reside, more or less
+                    <FootRef idx={3} />, within our own brains. However our brains are composed of neurons, which are
+                    composed of organelles, which are made up by various proteins and molecules, which themselves are
+                    made of atoms, then sub-atomic particles. You would be hard-pressed to find someone claiming that
+                    quarks or strings or hypergraphs are themselves conscious
+                    <FootRef idx={4} />. So how can we be conscious ourselves?
+                </p>
+                <p>
+                    The key, Hofstadter argues, is not in the material, it lies in patterns of interaction. To better
+                    illustrate this thesis, the text introduces Small Interacting Magnetic Marbles (<i>Simms</i>). These
+                    Simms are constantly in motion, bouncing around within the billiard table-like <i>Careenium</i>.
+                    Suppose that the walls of this table occasionally flex inward, changing the trajectory of Simms as
+                    they bounce off of it. Suppose further that these magnetic marbles can fuse together in clumps or
+                    fission into components, depending on how other Simms interact with them. From the perspective of a
+                    Simm, these <i>Simmballs</i> appear to be massive, immovable conglomerates of Simms. Zooming out and
+                    speeding up, the Simms themselves disappear into a background blur and the much larger Simmballs
+                    begin to noticeably move. Now, we only see the Simmballs as they interact with each other, fission
+                    apart, fuse, and evolve into complex patterns. Though they compose the Simballs, the Simms know
+                    nothing of these complex movements that they orchestrate. Only when zooming out do emergent patterns
+                    of interaction emerge. Importantly, there is no <i>Prime Mover</i> here, no special Simms with free
+                    will of their own or dualist homunculi determining how the Simmballs interact. The only determining
+                    factor here is simple physics, yet diverse patterns still emerge.
+                </p>
+                <p>
+                    As a prelude for further discussion on "Strange" loops, the book first introduces more mundane forms
+                    of "loopiness". On the journey to self-reference, we must first consider feedback. The float-ball of
+                    a toilet is a very rudimentary form of feedback. As the water level in its tank increases, the float
+                    rises, eventually shutting off the valve that is filling the tank in the first place. Feedback and
+                    self-reapplication is found at the core of exponential functions as well; the output of the last
+                    multiplication is fed back into subsequent multiplications. Similarly, the familiar screech of audio
+                    feedback is the result of an amplified sound being fed back into the amplifier through the
+                    microphone. Video feedback is somewhat different, however. In the case of a simple camera pointing
+                    at a screen, very little amplification is present. Instead of an explosion of intensity, the
+                    recursion of images converges on a single, seemingly infinitely far vanishing point. Here, the
+                    original image is faithfully recreated within successor images in a basic form of self-reference.
+                </p>
+                <p>
+                    This self-reference was a major concern among early twentieth century mathematicians. Near the turn
+                    of the century, Bertrand Russell had been working on grounding all of mathematics inside a basic
+                    theory of sets. Self-reference plagued this early attempt, leading to contradictions at the core of
+                    his framework. <i>Russell's paradox</i>, as it became known, concerns the "set of all sets that do
+                    not contain themselves", namely, does it contain itself? A system that allowed this paradox quickly
+                    became unworkable, therefore Russell and his colleague Alfred Whitehead sought to purge it from
+                    their theories. Their new approach, published in <i>Principia Mathematica</i> was designed to be
+                    immune to such self-references and paradoxes. Here, mathematical objects were structured in a rigid
+                    hierarchy. Objects within this hierarchy could only be defined in terms of objects in lower strata.
+                    Their <i>magnum opus</i> was intended to be a fortress, impregnable by inconsistencies or
+                    incompleteness. Unfortunately, even the most hardened strongholds still contain innumerable,
+                    microscopic cracks.
+                </p>
+                <p>
+                    When contemplating self-reference, one must consider two broad categories: reception and perception.
+                    Simple forms of feedback, such as infinitely regressing video, only receive information. They take
+                    in stimuli and echo it back after some form of static transformation. More complex systems may gain
+                    the ability to perceive. Incoming information may be stored and later synthesized into more complex
+                    transformations on later information. These auxiliary quanta of information function as{" "}
+                    <i>symbols</i> that are dormant until selectively triggered by other symbols. As an example,
+                    Hofstadter describes mosquitoes as simple feedback mechanisms without access to higher-level
+                    symbols. These creatures have no need to differentiate between different types of animals or
+                    threats. To survive, it must only know to fly towards warm, flesh-like materials and to fly away
+                    from anything rapidly approaching their position that may pose a threat. As a consequence of this,
+                    Hofstadter argues that they do not have any capacity for self-reference, no <i>I</i> symbol to use
+                    in reasoning about themselves.
+                </p>
+                <p>
+                    Moving up in <i>Huneker</i> units, the text considers the dog. Through still below humans in terms
+                    of cognitive capacity, the imprint of an <i>I</i> begins to emerge. Dogs have a limited scope of
+                    symbols to draw from, for example: their owner(s), their favorite toy, their least-favorite dog, or
+                    the local postal worker. Each symbol is activated by a different set of other symbols and stimuli.
+                    Notably, the symbol repertoire of a dog has limited extensibility: most can only learn a dozen,
+                    maybe two dozen, commands and tricks before reaching their cognitive capacity. Humans, Hofstadter
+                    claims, have an <i>arbitrarily</i> extensible set of symbols. We can define a near limitless number
+                    of concepts in terms of existing symbols and learned experiences. This generality is the missing
+                    component when comparing humans to creatures of "lesser" souls.
+                </p>
+                <p>
+                    Using the preceding knowledge of recursion and self-reference as background, the text introduces one
+                    of the most prominent examples of strange "loopiness" in mathematics. To understand the full impact
+                    of Gödel's proof, the reader must first understand what Hofstadter deems "the Mathematician's
+                    Credo": all mathematical phenomena occur completely due to stable and understandable reasons. In the
+                    early twentieth century, the prevailing extrapolation of this belief was that a single, unified
+                    system of mathematics could be created that fully describes all of mathematics without
+                    contradiction.
+                </p>
+                <p>
+                    This was the goal of Russell and Whitehead's <i>Principia Mathematica</i> (PM). Many mathematicians
+                    at the time hoped that this would represent such a unified system. Within PM, <i>theorems</i>{" "}
+                    (proved assertions) are very strictly derived from <i>axioms</i> (assumed assertions). The rules of
+                    inference within PM are constructed in such a way that the string of symbols that represent a given
+                    theorem is created only from mechanistic manipulations of the symbols from previous theorems of
+                    axioms. Recall that objects within PM lie within a strict hierarchy, such that objects could only be
+                    defined in terms of hierarchically lower objects. This rule was specifically implemented to avoid
+                    self-referential paradoxes. The perceived importance of PM came from two core assumptions. Given
+                    that the axioms were true, all theorems produced by the symbol manipulation of those axioms was also
+                    true (consistency) and that the axioms were chosen in such a manner that all truths could be proved
+                    only from the axioms and rules of inference (completeness). "X is true <i>because</i> there is a
+                    proof of X" and "X is true <i>and so</i> there is a proof of X".
+                </p>
+                <p>
+                    The first of Gödel's key insights was that the rule-based symbol manipulation of PM's rules of
+                    inference would be faithfully recreated within number theory itself. This was done by assigning each
+                    typographical symbol of PM's notation to a unique, arbitrary integer. Strings were then constructed
+                    from these integers by using them as exponents for the sequence of prime numbers. Importantly, when
+                    input axioms underwent symbolic transformations that resulted in output theorems, input Gödel
+                    numbers for those axioms underwent numerical transformations that resulted in output Gödel numbers
+                    that corresponded with the logically correct theorem
+                    <FootRef idx={5} />! These integer strings would be unimaginably large and infeasible to work with,
+                    however Gödel did not have to do these calculations himself, he only needed to show that his
+                    assertions were mathematically sound
+                    <FootRef idx={6} />. Hofstadter dubs such a Gödel number that can be derived from PM's axioms
+                    (therefore representing a statement provable within PM) as a <i>prim</i> number.
+                </p>
+                <p>
+                    With this notion, the "Gödelian" Strange Loop can be closed. Gödel first considers a statement that
+                    assets that "An integer, <i>g</i>, is not a <i>prim</i> number". This statement, of course, can be
+                    encoded as a unique Gödel number. What if such a statement could be constructed such that <i>g</i>{" "}
+                    was the Gödel number of the statement itself? Such a statement would say: "The Gödel number,{" "}
+                    <i>g</i>, for this statement is not a <i>prim</i> number". In other words: "This statement is not
+                    provable via PM's rules of inference" or, more tersely, "I am unprovable"
+                    <FootRef idx={7} />. If such a statement
+                    <FootRef idx={8} /> could be constructed, it would imply paradox after paradox present within the
+                    supposedly paradox-free <i>Principia Mathematica</i>!
+                </p>
+                <p>
+                    However, there is still one important detail missing from this explanation: how can a formula
+                    contain its own symbols with room to spare for other boilerplate? The answer lies in the fact that a
+                    number can be fully described without having to be fully written out. For example, you can either
+                    write "10077696" or the much shorter "6<sup>9</sup>". Gödel achieves this through a process
+                    analogous to a notion that the text refers to as "Qunining"
+                    <FootRef idx={9} />. This form of indirect self-reference is exemplified by the statement:
+                </p>
+                <blockquote>
+                    "Yields falsehood when preceded by its quotation" yields falsehood when preceded by its quotation.
+                </blockquote>
+                <p>
+                    This statement contains two duplicate subjectless sentence fragments which, when combined, result in
+                    a coherent statement. The PM analog for such a fragment would be a statement, not about a specific
+                    number, but about the variable <i>x</i>. Taking this fragment's Gödel number, <i>k</i>, and
+                    replacing <i>x</i> with it yields a formula that makes a claim about a much larger number, <i>g</i>,
+                    the Gödel number of the new composite formula itself! To encode this logic back into Quinean terms,
+                    we get something like:
+                </p>
+                <blockquote>
+                    "when fed its own Gödel number yields a non-prim number" when fed its own Gödel number yields a
+                    non-prim number.
+                </blockquote>
+                <p>
+                    In concrete terms, quoting a sequence means to take it's Gödel number (<i>k</i>) and then inputting
+                    that back into the same sequence. Thus, we can reference a formula's own Gödel number without
+                    explicitly embedding that number into the formula itself. Instead, that number is only{" "}
+                    <i>described</i> by the formula in more compact terms.
+                </p>
+                <p>
+                    Regardless of Gödel's clever trickery, any statement of logic is either true or false, never both.
+                    With reference to a well-defined and powerful system such as PM, a statement is either provable or
+                    not. How can we then classify Gödel's statement that essentially says "I am unprovable"? Suppose,
+                    first, that it is false: this would suggest that the statement is indeed provable within PM.
+                    However, that would man that PM would be able to prove a false statement, a blatant contradiction!
+                    Instead, let's assume that the statement is true. Then it truly is unprovable within PM. Here, the
+                    system is consistent with itself, but it means it is incomplete.{" "}
+                    <i>
+                        There are some true statements that cannot be proved by PM, nor any other formal systems of
+                        mathematics.
+                    </i>{" "}
+                    In other words, all logical systems sufficiently powerful to perform number-theoretical operation
+                    are <i>either</i> inconsistent <i>or</i> incomplete.
+                </p>
+                <p>
+                    Aside from the sheer mathematical and philosophical impact of this result, how does this relate back
+                    to the motion of a Strange Loop? The connection lies within the isomorphism of{" "}
+                    <i>Principia Mathematica</i>, between Russel and Whitehead's symbolic interpretation of PM and
+                    Gödel's number-theoretical angle. Similarly, human brains can be thought of having two (very broad)
+                    levels. At one extreme, there is the low-level particle interactions describable within the realm of
+                    physics (Russel and Whitehead's symbol shunting within PM). At the other, there are complex symbols
+                    triggering each other along with input from the environment (Gödel's interpretation of the theorems
+                    as statements of number theory). Both seem to contradict each other, yet are two different ways of
+                    faithfully describing the same object.
+                </p>
+                <p>
+                    At the level of symbols in our minds, there is one that appears to trigger symbols without first
+                    needing to be triggered itself; an event with no cause, a <i>prime mover</i>. This <i>I</i> symbol
+                    is likely the most complex of them all within a given mind. To Hofstadter, this special symbol for
+                    ourselves begins as a hopelessly vague notion as soon as the developing brain has developed the
+                    faculties to support it. Over time, this symbol accretes countless experiences, interactions, and
+                    beliefs, forming them into a (mostly) coherent sense of self. Somewhat of an illusion in the
+                    author's eyes, but one of unparalleled persistence nonetheless. The "loopiness" of this symbol comes
+                    into view when one's actions affect others, or their environment, which then affect the original{" "}
+                    <i>I</i> symbol. Furthermore, humans have a (seemingly) unique ability for introspection, where we
+                    can reason about and reflect upon the past triggerings of our self-symbols.
+                </p>
+                <p>
+                    The loop here is fairly straightforward, but its classification as "strange" is less obvious.
+                    Feedback loops are interesting, but few will say there is really a "light on" within a toilet's
+                    float or video feedback. The text briefly considers the notion that "I-ness" is tied to a particular
+                    substrate, namely carbon (and neuron) based brains. If that were the only contributing factor, then
+                    mosquitoes
+                    <FootRef idx={10} />, cows, and dogs would have the same capacity for a self as humans do. Instead,
+                    Hofstadter argues that a sense of self, a "light on", comes only from the patterns of activation
+                    within a system of symbols. As he quotes Daniel Dennett, "It ain't the meat, it's the motion"
+                    <FootRef idx={11} />. The meaning within a system <i>tracks</i> its physical patterns, but is not
+                    composed of them in isolation, just as Gödel's numbers <i>track</i> the symbol manipulation of PM
+                    strings, but are not directly implied by them. The "strangeness" within our own loopy feedback
+                    mechanisms comes not from the feedback itself, but from the symbols that feedback creates. These
+                    symbols <i>perceive</i> incoming signals and can perform more meaningful processing of that input
+                    through complex patterns of symbol manipulation. "We" are only aware of our own <i>I</i> symbol
+                    precisely due to the fact that is all we can see. Even if we intellectually know of the very real
+                    particle interactions that make up our selves, we still subjectively believe in the complex <i>I</i>{" "}
+                    pattern that those particles create through their interactions. Our inability to directly obverse
+                    our own low-level interactions forces us to only reason in top-level symbols, forming a sense of
+                    self.
+                </p>
+                <p>
+                    Though our own <i>I</i> symbols are the most privileged (and complex) human-symbols in our minds,
+                    they are not the only ones. As our self-symbol grows with life experience, so too do our symbols for
+                    those around us. These "copies" of the other <i>I</i> symbols begin as mere surface-level
+                    references. As we learn more information or have more shared experiences with a specific person, the
+                    "resolution" of this guest symbol increases. Though our symbolic others can never become a true
+                    clone of their original interiority, we can still form a relatively high-fidelity copy through a
+                    very close interpersonal bond. In Hofstadter's opinion, a portion of someone's "soul" can be scaled
+                    to the resolution of such a guest symbol. This "soul" lives on within the mind of a host, even long
+                    after the original that the guest is based on has passed. It continues to survive in the minds of
+                    others that have a sufficiently detailed model of their inner experience. To support this notion,
+                    the text claims that human minds support mental architecture that allows them to simulate other
+                    human minds, based on their symbolic representation of the other.
+                </p>
+                <p>
+                    With regards to consciousness, the book denotes the difference between it and a self-symbol. We are
+                    not just how we view ourselves, but also how we view others, and the world around us. Consciousness
+                    is both our knowledge and our reasoning. It is an emergent phenomena that arrises from the complex
+                    dance of symbols within our minds. As these symbols act, react, reference, and self-reference, our
+                    personal <i>qualia</i> materializes. Consciousness' classification as emergent phenomena also means
+                    that it needs not be some fundamental property of matter or energy. It can emerge from non-conscious
+                    material (particles, hormones, neurons, etc.) in the same way that an apple can be red without its
+                    atoms having some fundamental "redness" property. The Strange Loops within our minds are not
+                    conscious themselves, but their self-referential and recursive nature does give rise to it. An
+                    important consequence of this stance is that our <i>I</i>'s, our <i>selves</i>, are reduced to
+                    nothing more than a stubbornly persistent illusion. While this may seem very unsatisfying,
+                    Hofstadter maintains that this approach is the only one consistent with our knowledge and
+                    observations of the world.
+                </p>
+                <p>
+                    In contrast, a more palatable theory of consciousness may be <i>Cartesian Dualism</i>. This
+                    philosophy proposes that the mind and body are two fundamentally different and separate objects. The
+                    body is physical, while the mind (not literally the brain, mind you) is supernatural. The
+                    non-physical mind is the core of a person, it's what makes them, them. Each mind contains one{" "}
+                    <i>quantum</i> of soul
+                    <FootRef idx={12} />, immutable and indivisible. This approach also implies a strict binary, a brain
+                    (human or otherwise) either has a conscious soul or it does not. The text touches on several thought
+                    experiments that call the validity of this framework into question.
+                </p>
+                <p>
+                    Suppose we create a perfect clone of someone (perfect down to the level of quarks and gluons
+                    <FootRef idx={13} />
+                    ). This clone either behaves exactly as the original does, or it behaves differently (or is even
+                    inert). Both scenarios pose issues for the dualist. If the behavior is different, then somewhere
+                    along the chain of particle interactions, there must be a missing "nudge" that would have come from
+                    the extra-physical soul in the original. This implies that at least one particle-particle
+                    interaction within the original is causeless; these objects that only obey strict physical laws can
+                    somehow deviate from those laws at the behest of some external entity. This seems inconsistent with
+                    our observed reality. Conversely, if the clone behaves exactly like the original, then what exactly
+                    is the role of the non-physical soul? Would it just be a passive observer? The clone would become a
+                    "philosophical zombie", an entity with all the outward signs of consciousness, but without a "light
+                    on" inside. The supposed zombie could even have a conversation with the original about how they are
+                    both conscious and aware beings with their own internal qualia.
+                </p>
+                <p>
+                    Hofstadter argues that these zombies are indeed real, but there is no need to be scared of them. The
+                    false idea that non-zombies could ever exist is another consequence of the illusory nature of an{" "}
+                    <i>I</i>. The notion that two physically identical entities can exist, yet have differing internal
+                    experiences, is inconsistent with a purely physical world. It would require extra-physical
+                    materials/entities/forces that, by definition, cannot be observed or falsified. However, the text is
+                    not asserting that private qualia does not exist on a subjective level, such qualia is simply as
+                    much as a figment as our consciousness. It is real to us, that is what is most relevant for our{" "}
+                    <i>I</i> symbols to form and for consciousness to emerge.
+                </p>
+            </>
+        }
+        thoughts={
+            <>
+                In my opinion, Hofstadter certainly achieves his stated goals with this book. It is part retelling of{" "}
+                <i>Gödel, Escher, Bach</i>, with most of the symbolism and dialogues stripped off, and part focused
+                exploration into our private conscious experience in a more detailed manner than his original work.
+                While this is less of an "experience" to read in the way that <i>GEB: BEG</i> was, it communicates
+                Hofstadter's ideas on the human mind much more clearly. Additionally, while this may simply be recency
+                bias on my part, this book's explanation of Gödel's incompleteness theorem is more understandable and
+                grounded, despite his first attempt having significantly more in-text build up and context. Both{" "}
+                <i>I Am a Strange Loop</i> and <i>Gödel, Escher, Bach</i> can fully stand on their own as effective
+                explorations of cognitive science, yet they are inexorably tied to one another.
+                <p>
+                    Hofstadter's approach of quantifying an entity's level of consciousness into different sized "souls"
+                    is certainly a unique approach. It's a clever way of measuring the different cognitive capabilities
+                    of different animals and giving that measurement a unit which can be referenced and manipulated
+                    independently of a particular species. Throughout the text, concrete <i>Huneker</i> values are given
+                    to mosquitoes, dogs, humans, etc. However, since the book readily admits that these values are
+                    arbitrary, a more complete approach may have been to make the <i>Huneker</i> an ordinal (only
+                    defined in relative terms) rather than cardinal (defined by absolute values) unit. The 100{" "}
+                    <i>Huneker</i> upper-bound
+                    <FootRef idx={14} /> is also artificially limiting. It seems unreasonably anthropocentric to assume
+                    that it is impossible for other entities (or machines, even) to be <i>more</i> conscious than we
+                    are, though I'm not sure if it is even possible for us to conceptualize such a case.
+                </p>
+                <p>
+                    The theme of determinism comes up frequently in this text, though it is never mentioned by name.
+                    First appearing in his <i>Careenium</i> analogy, the purely physical nature of our brains is a core
+                    pillar of many of the book's arguments. The later chapters of this work, especially the dialogue
+                    between Strange Loops #641 and #642, focus on this aspect specifically. There is nothing that could
+                    influence our minds from beyond our physical universe, therefore our minds, and therefore our
+                    private experiences, must be fully determined by the fundamental laws of our universe. Our "selves"
+                    merely occupy a world of abstractions and chunking, build upon that low-level foundation. This
+                    aspect of the book pairs very well with the works of Robert M. Sapolsky and his similar opinions on
+                    the topic of determinism.
+                </p>
+                <p>
+                    Aside from Hofstadter's clear and concise explanation of Gödel's proofs for his incompleteness
+                    theorems, his historical contextualization also makes an otherwise abstract discussion very
+                    engaging. The first half of the twentieth century was a time of significant upheaval, not only in
+                    politics, but also in physics and mathematics. While relativity and quantum theory were shaking the
+                    centuries-old foundations of Newtonian mechanics, mathematician David Hilbert was championing his
+                    famous program for grounding mathematics in pure logic. Most contemporaries in the field believed
+                    that Russell and Whitehead's <i>Principia Mathematica</i> would be the final realization of this
+                    program. This was to be the first successful attempt at grounding all of the complexity of
+                    mathematics in pure logic and proof. It is difficult to overstate the sheer amount of time and
+                    effort spent on this program, not just from Russell and Whitehead, but also from Ernst Zermelo,
+                    Abraham Fraenkel, John von Neumann, and many others. The idea that a single young logician turned
+                    this impenetrable fortress of logic and proof into a fragile house of cards with a single paper is
+                    overwhelming. Hofstadter conveys this sentiment to the reader through his analogies and analysis
+                    (though with a slightly less dramatic approach).
+                </p>
+                <p>
+                    I also find Hofstadter's notion of "guest" strange loops residing (though with low-fidelity) along
+                    with a separate "host" loop to be interesting. On the surface, this idea may appear to be only a
+                    romanticization of our relationships with others. It is certainly poetic that the consciousness of
+                    the lost may "live on" within the minds of others, albeit in a diminished sense. However, since the
+                    text argues that the host loops are no more "real" than the guests, I find that the notion holds
+                    water in a literal sense, not just an abstract one (if the premise is accepted, of course). If our
+                    own conscious experiences are merely an emergent quality from the sea of particles within our own
+                    brains, there is good reason to think that they are equally real when emerging from the particles of
+                    a brain different from the original's. In computing terms, a virtual machine is just as real as the
+                    host machine, from the perspective of the electrons (there are no <i>virtual</i> electrons
+                    <FootRef idx={15} /> for the virtual machines). While Hofstadter's argument somewhat diminishes the
+                    existence of our selves, it reinforces the existence of those that we are close to.{" "}
+                    <i>Cogito, ergo sum, et ergo tu quoque</i>.
+                </p>
+                <p>
+                    To support his exploration of "guest" loops, Hofstadter proposes that our brains have a certain kind
+                    of "universality". In a similar manner to how universal turing machines can simulate any arbitrary
+                    turing machine, so too can our minds simulate any other. In a similar vein, I have often wondered if
+                    our minds have a similar sort of "universality" with respect to learning. Not just with respect to
+                    what other humans have already learned, but in a much more general sense. Are our systems of
+                    learning also "Gödel-incomplete" in some analogous manner? Are there some undeniable truths that
+                    directly follow from observations and reasoning, but are simply too complex for us to grasp? Even
+                    more concerning, are there ideas that simply cannot be faithfully distilled in a manner that can be
+                    understood by a human brain? I can teach my dog quite a few tricks and commands, but even if I was
+                    fluent in dog, I am confident that quantum theory would forever be beyond her reach. Is the
+                    self-referential nature of our minds sufficient for learning <i>arbitrarily complex</i> truths
+                    (given sufficient time and effort)? Or are we fundamentally limited in what we can learn and
+                    understand, regardless of our efforts?
+                </p>
+            </>
+        }
+        footnotes={
+            <>
+                <FootNote idx={1}>
+                    Though Hofstadter describes himself as valuing nearly all living beings, he makes it a point that
+                    mosquitoes, specifically, are very much not on that list.
+                </FootNote>
+                <FootNote idx={2}>
+                    I think it is probable that the author would place the most advanced corvids above our most
+                    primitive, yet still closely related, primate cousins.
+                </FootNote>
+                <FootNote idx={3}>More to come on this notion later.</FootNote>
+                <FootNote idx={4}>Except for, perhaps, some exceptionally devout, animist physicist.</FootNote>
+                <FootNote idx={5}>
+                    Importantly, valid Gödel numbers do not assert truthful theorems, they merely assert that they are
+                    well-formed. "2+2=5" is comprehensible (well-formed), though false, while "==0+]" is
+                    incomprehensible (not well-formed). The "truthfulness" of a theorem comes only from the notion that
+                    it can be derived (directly or through intermediate theorems) from axioms, which are assumed to be
+                    true, <i>a priori</i>.
+                </FootNote>
+                <FootNote idx={6}>
+                    This represents an excellent example if an <i>isomorphism</i>. The two domains: PM proof strings and
+                    number theory only seem related in the fact that they involve mathematics in some respect. However,
+                    Gödel showed that they are simply two different manifestations of the same fundamental concept. One
+                    can perfectly understand the logic of PM's proof strings without once invoking number theory (like
+                    Russell and Whitehead had) and one can also manipulate Gödel numbers without knowing of their
+                    possible implications on the truthfulness of falsity of the PM theorem they represent!
+                </FootNote>
+                <FootNote idx={7}>
+                    The connection to the classic Liar's Paradox ("This statement is false") is not coincidental here!
+                </FootNote>
+                <FootNote idx={8}>
+                    Gödel's statement is particularly insidious here, as it represents one of an infinite family of
+                    similar paradoxes. Therefore one cannot simply make <i>g</i> (or its negation <i>~g</i>) an axiom of
+                    some new "fortified" PM, as there will always be another <i>g</i>-shaped hole to plug in this new
+                    system.
+                </FootNote>
+                <FootNote idx={9}>
+                    Named after logician Willard Van Orman Quine and his study of indirect self-reference.
+                </FootNote>
+                <FootNote idx={10}>Especially so.</FootNote>
+                <FootNote idx={11}>
+                    Only one <i>entendre</i> allowed at a time, please.
+                </FootNote>
+                <FootNote idx={12}>This time, much closer to the traditional, spiritual idea of a soul.</FootNote>
+                <FootNote idx={13}>
+                    We will have to suspend the{" "}
+                    <Link href={"https://en.wikipedia.org/wiki/No-cloning_theorem"} target={"_blank"}>
+                        No-cloning theorem
+                    </Link>{" "}
+                    for this to work.
+                </FootNote>
+                <FootNote idx={14}>
+                    Hofstadter notes that this cap is placed not for logical reasons, but for ethical ones. In my
+                    opinion, this was a tactful decision, as the ethical implications of giving different (healthy,
+                    adult) people different values for consciousness would be beyond the scope of this work.
+                </FootNote>
+                <FootNote idx={15}>Though, I'm sure that Richard Feynman would disagree!</FootNote>
+            </>
+        }
+        thumbnail={"/media/image/i-am-a-strange-loop.jpg"}
+        anchor={"i-am-a-strange-loop"}
+    />
+);

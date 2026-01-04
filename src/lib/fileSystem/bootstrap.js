@@ -63,25 +63,41 @@ let initialHierarchy = new Directory(
 );
 
 /**
- * Updates the reading list page with accurate sizes from its composing files
- * @param fileSystem {FileSystem}
+ * Gathers the total size of all files in a directory
+ * @param fileSystem {FileSystem} The file system to read
+ * @param dirPath {string} The directory path to start with
  */
-function patchReadingList(fileSystem) {
-    let dir = "src/components/readingList";
+function gatherFileSize(fileSystem, dirPath) {
     let totaSize = 0;
     let latestModified = 0;
-    const dirents = readdirSync(dir, { withFileTypes: true });
+    const dirents = readdirSync(dirPath, { withFileTypes: true });
     for (const dirent of dirents) {
-        if (dirent.isDirectory()) continue;
-
-        const filePath = resolve(dir, dirent.name);
-        let fileStats = statSync(filePath);
-        totaSize += fileStats.size;
-        if (fileStats.mtimeMs > latestModified) latestModified = fileStats.mtimeMs;
+        const direntPath = resolve(dirPath, dirent.name);
+        if (dirent.isDirectory()) {
+            const { size, modified } = gatherFileSize(fileSystem, direntPath);
+            totaSize += size;
+            if (modified.mtimeMs > latestModified) latestModified = modified;
+        } else {
+            let fileStats = statSync(direntPath);
+            totaSize += fileStats.size;
+            if (fileStats.mtimeMs > latestModified) latestModified = fileStats.mtimeMs;
+        }
     }
+
+    return { size: totaSize, modified: latestModified };
+}
+
+/**
+ * Updates the reading list page with accurate sizes from its composing files
+ * @param fileSystem {FileSystem} The file system to read
+ */
+function patchReadingList(fileSystem) {
+    let dirPath = "src/components/readingList";
+    const { size, modified } = gatherFileSize(fileSystem, dirPath);
+
     let readingListFile = fileSystem.getItem(pathJoin(SysEnv.PUBLIC_FOLDER, "works/readingList.html"));
-    readingListFile.modified = latestModified;
-    readingListFile.spoofSize(totaSize); // Set the file's size without actually setting the text
+    readingListFile.modified = modified;
+    readingListFile.spoofSize(size); // Set the file's size without actually setting the text
 }
 
 /**
@@ -131,7 +147,7 @@ function bootstrapServerside() {
             // Skip the secure directory
             if (dirent.name.endsWith("secure")) continue;
             masterFileSystem.mkdir(pathJoin(hierarchyPath, dirent.name));
-            // Recurse into the sub-directory
+            // Recurse into the subdirectory
             walkPages(res);
         }
     }

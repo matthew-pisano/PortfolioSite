@@ -2,7 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 
-import { GitLink, TileLink } from "@/components/tiles/Links";
+import { GitLink, WebLink } from "@/components/tiles/Links";
 import { TileTag } from "@/components/tiles/Tags";
 import { Tile } from "@/components/tiles/Tiles";
 import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
@@ -20,7 +20,7 @@ export default function UnivModels() {
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/UniversalModels"}>UniversalModels</GitLink>
-                <TileLink href={"https://pypi.org/project/universalmodels/"}>PyPi Project</TileLink>
+                <WebLink href={"https://pypi.org/project/universalmodels/"}>PyPi Project</WebLink>
             </>
         )
     );
