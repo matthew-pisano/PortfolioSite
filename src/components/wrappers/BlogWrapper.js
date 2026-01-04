@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import PropTypes from "prop-types";
 
 import Wrapper from "@/components/wrappers/Wrapper";
+import { elementReadingTime } from "@/lib/util/utils";
+import tileStyles from "@/styles/pageTiles.module.css";
 import styles from "@/styles/pageTiles.module.css";
 
 /**
@@ -16,6 +18,13 @@ import styles from "@/styles/pageTiles.module.css";
  * @return {JSX.Element} The page wrapped in the default wrapper
  */
 function BlogWrapper({ children, pageName, title, subtitle, date }) {
+    const blockContentId = "blogContent";
+    const [blogTime, setBlogTime] = useState(0);
+
+    useEffect(() => {
+        setBlogTime(elementReadingTime(blockContentId));
+    }, []);
+
     return (
         <Wrapper pageName={pageName}>
             <div className={styles.blogTitle}>
@@ -27,7 +36,13 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
             </div>
 
             <div className={`${styles.blogHolder}`}>
-                {children} <hr />
+                <div style={{ marginBottom: "30px" }}>
+                    <small style={{ display: "block", width: "100%", textAlign: "right" }}>
+                        {blogTime} minute read
+                    </small>
+                </div>
+                <div id={blockContentId}>{children}</div>
+                <hr />
                 <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>
                 <Link href={"/works/blog"}>Back to Blogs</Link>
             </div>
