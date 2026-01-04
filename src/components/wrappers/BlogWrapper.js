@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { resetTilesOnScroll } from "@/components/tiles/Tiles";
 import Wrapper from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
 import styles from "@/styles/pageTiles.module.css";
+
+// Context to track section count
+const SectionContext = createContext(null);
 
 /**
  * Wrapper for blog pages.
@@ -20,6 +22,16 @@ import styles from "@/styles/pageTiles.module.css";
 function BlogWrapper({ children, pageName, title, subtitle, date }) {
     const blockContentId = "blogContent";
     const [blogTime, setBlogTime] = useState(0);
+
+    const sectionCountRef = useRef([0, 0, 0]);
+
+    const getNextId = (level = null) => {
+        let currRef = sectionCountRef.current;
+        if (!level || level === 1) sectionCountRef.current = [currRef[0] + 1, 0, 0];
+        else if (level === 2) sectionCountRef.current = [currRef[0], currRef[1] + 1, 0];
+        else if (level === 3) sectionCountRef.current = [currRef[0], currRef[1], currRef[2] + 1];
+        return sectionCountRef.current;
+    };
 
     useEffect(() => {
         setBlogTime(elementReadingTime(blockContentId));
@@ -46,7 +58,9 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
                         {blogTime} minute read
                     </small>
                 </div>
-                <div id={blockContentId}>{children}</div>
+                <SectionContext.Provider value={getNextId}>
+                    <div id={blockContentId}>{children}</div>
+                </SectionContext.Provider>
                 <hr />
                 <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>
                 <Link href={"/works/blog"}>Back to Blogs</Link>
@@ -66,28 +80,55 @@ BlogWrapper.propTypes = {
 /**
  * A section header for blog sections
  * @param children The children of the header
- * @param anchor The anchor for the header
  * @param level The header level
  * @returns {JSX.Element} The header element
  */
-function BlogSection({ children, anchor, level }) {
+function BlogSection({ children, level }) {
+    const getNextId = useContext(SectionContext);
+    const idRef = useRef(null);
+
+    if (idRef.current === null) idRef.current = getNextId(level);
+
+    let sectionNumber = `${idRef.current[0]}`;
+    if (idRef.current[1] || idRef.current[2]) sectionNumber += `.${idRef.current[1]}`;
+    if (idRef.current[2]) sectionNumber += `.${idRef.current[2]}`;
+
+    let sectionId = `section-${sectionNumber}`;
     let sectionContent = (
         <>
+            <span style={{ marginRight: "30px" }}>{sectionNumber}</span>
             {children}
-            <Link href={`#${anchor}`} className={`${styles.anchorLink}`}>
+            <Link href={`#${sectionId}`} className={`${styles.anchorLink}`}>
                 <img className={`${styles.anchorIcon}`} alt="" />
             </Link>
         </>
     );
+    let sectionStyle = { textIndent: "0px" };
 
-    if (!level || level === 1) return <h3 id={anchor}>{sectionContent}</h3>;
-    else if (level === 2) return <h4 id={anchor}>{sectionContent}</h4>;
-    else if (level === 3) return <h5 id={anchor}>{sectionContent}</h5>;
+    if (!level || level === 1)
+        return (
+            <>
+                <h3 id={sectionId} style={sectionStyle}>
+                    {sectionContent}
+                </h3>
+            </>
+        );
+    else if (level === 2)
+        return (
+            <h4 id={sectionId} style={sectionStyle}>
+                {sectionContent}
+            </h4>
+        );
+    else if (level === 3)
+        return (
+            <h5 id={sectionId} style={sectionStyle}>
+                {sectionContent}
+            </h5>
+        );
     throw new Error("Unknown blog section level " + level);
 }
 BlogSection.propTypes = {
     children: PropTypes.element.isRequired,
-    anchor: PropTypes.string.isRequired,
     level: PropTypes.number
 };
 
