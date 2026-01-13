@@ -51,8 +51,57 @@ export default (
                         frequented. Based on his observations, the man believes that Roquentin is a humanist and
                         socialist, just as he is. Though he is sparse in details, the Self-Taught Man reveals that he
                         had fallen in love with humanity after his time as a German POW during the first world war.
-                        Determined to get Roquentin to admit to his beliefs, the Self-Taught Man pressures him to
-                        reciprocate humanist ideals.
+                        Convinced that the two men think alike, he tries to get Roquentin to admit to being a humanist
+                        himself. Under this pressure, Roquentin criticises him for what he thinks are naive beliefs: the
+                        Self-Taught Man only loves the labels he assigns to people, rather than the complex nature of
+                        each person themselves. He argues that claiming to love someone only after stripping them down
+                        to their essence is meaningless as that ideal person does not exist. Consumed once again by a
+                        wave of the <i>Nausea</i>, Roquentin abruptly gets up, holding a knife which he contemplates
+                        turning upon his lunch guest. However, his mind is grounded by the feeling of the knife's handle
+                        in his hand.
+                    </p>
+                    <p>
+                        Roquentin realized what his <i>Nausea</i> actually is: the fear of his own existence. The knife
+                        handle, the table, the patrons, the cafe, they all loose their essence: the merely exist.
+                        Escaping to the park, he sits on a bench with his foot next to the root of a chessnut tree. As
+                        he sits these, he contemplates the root. He cannot find the words to describe it, it also merely
+                        exists, independent of any description or label. When he tries to describe the root, he is no
+                        longer speaking of the root itself, but of abstract concepts that he assigns to it. There is no
+                        reason for the root, or anything else to exist, to emerge from nothingness. Roquentin thinks
+                        that it is wholly random and without reason. People describe and assign categories to things in
+                        an attempt to justify the existence of those things, but those things exist independently of any
+                        classification. Roquentin realizes that his <i>Nausea</i> is from his attempts to assign meaning
+                        to the meaningless.
+                    </p>
+                    <p>
+                        Roquentin only moved to Bouville to enable his research on the Marquis de Rollebon. Now that he
+                        no longer sees the purpose of that research, he has no reason to remain in town. After seeing
+                        Anny, he plans to pack up his belongings, settle his debts, and move to Paris. As he sets off to
+                        see Anny, he hopes that he can explain the <i>Nausea</i> to her ad find commonality in it. When
+                        he arrives at her hotel room, he finds it different than expected. He always knew Anny to
+                        decorate even short stays with art pieces and artifacts from around the world that she had
+                        packed. However, the room is nearly bare. Anny herself looked different, she had aged, gained
+                        weight, and she no longer had some of the vigour that he had known her to have. Anny is pleased
+                        to see him, but not for his company, she is still frustrated at his awkward conversation. She is
+                        pleased because she believes that Roquentin is a static person: he never changes, a milestone.
+                        She can always measure how much she has changed by using him as a reference. She called him here
+                        to get a sense of hos much she has changed over the past siz years and to explain that to him.
+                    </p>
+                    <p>
+                        Roquentin disagrees with her assessment, especially due to his recent revelations on the nature
+                        of his <i>Nausea</i>. He tries to explain, but she interrupts him. Her memory is precise and she
+                        is able to recall exact moments in the past when Roquentin failed to do or say the right thing.
+                        She explains her concept of "privileged situations" to him, specific scenes that have been
+                        preordained to happen, like reference images in an old history book that was taken from her as a
+                        child. In her mind, these situations must be turned into "perfect moments" by acting them out
+                        just as they appear in her idealized world. This is why she was often frustrated with Roquentin,
+                        but unable to explain why. He always said or did the wrong thing, ruining these potential
+                        moments. This was also the reasoning for her starting, and later quitting acting. She was unable
+                        to always control the realization of her ideal scenes. Roquentin is excited to hear this,
+                        thinking that Anny has independently come to the same conclusion about <i>Nausea</i> as he had.
+                        He describes his ideas about existence being independent form essence, but Anny disagrees. To
+                        her, the existence of a moment in time is tied closely to its essence in her mind. She asks him
+                        to leave.
                     </p>
                 </>
             }
