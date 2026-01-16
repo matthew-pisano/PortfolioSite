@@ -63,6 +63,70 @@ export default (
                         from self-imposed nostalgia or schedules. This ensures a quantity of life experiences that can
                         serve as a psychological substitute for a higher purpose to life.
                     </p>
+                    <p>
+                        Camus sees three archetypes that emulate the absurd principles of revolt, freedom, and passion:
+                        the seducer, the actor, and the conquerer. Though he does not directly endorse any of these
+                        three lifestyles, they help to illustrate his idea of "the absurd man". These roles are free
+                        from traditional morals, only guided by their own integrity and internal moral compas, free from
+                        religious or cultural pressures. The fictional character Don Juan embodies Camus' seduces. He
+                        moves from woman to woman, convincing them to fall for him with the same repetitions of
+                        techniques and never stating for too long with any of them. Don Juan lives for his own form of
+                        conquest, unconcerned with the wellbeing of others or the implications of his actions. The actor
+                        also embraces the absurd. Throughout their career, an actor dons countless roles, experiencing
+                        the world through the eyes of their character. Unlike authors, Camus argues, the fame and
+                        influence of actors is limited to their lifetime. In contrast to the writer, it is rare for the
+                        actor to experience a surge in popularity and notoriety years after their death. The actor must
+                        therefore live their life with the fullest intensity, for there will be no resurgence after
+                        death. Recognizing this inevitability ties the actor to the absurd. The conquerer embodies
+                        Camus' ideas at their most intense. The conquerer knows that countless leaders came before them
+                        and countless came after; there is no illusion of eternal empire or legacy. Navigating the risky
+                        world of politics and warfare, the conqueror must live their life at the highest intensity, lest
+                        they be consumed by those around them. The act of political or military revolt is therefore tied
+                        to a revolt against the absurd so long as the participants are aware of its futility yet push
+                        onward regardless.
+                    </p>
+                    <p>
+                        In previous sections, Camus has described his absurd man as someone who lives a life of
+                        contradiction: they live a full and intense life, fully aware of the meaninglessness of their
+                        actions. Camus connects this lifestyle to the of the artist, writers of fiction in particular.
+                        These people create entire worlds of their own, fleshing out characters, plots, and environments
+                        while fully ware of its detachment from reality. This fiction cannot add anything real to base
+                        reality, but can enrich its experience and convey a point of view to the audience. Art cannot
+                        transcend the meaninglessness of life, but it can form a revolt against it as the artist asserts
+                        their own perspective upon the world.
+                    </p>
+                    <p>
+                        The absurd artist must continue their work fully aware that it is ultimately in vain. Camus
+                        asserts that, if there is no life after death, one can only assert themselves to the world
+                        around them during their natural life. This act requires discipline and the ability to resist
+                        notions of legacy or salvation. An artists work exists to present their perspective to the
+                        greater world, but not to make grand statements about its underlying meaning. For the absurd
+                        man, the nature of the universe forbids such statements from ever holding any real meaning. To
+                        Camus, life ends with the finality of death, but any time before then is fully up to our
+                        discretion. The will of the absurd man is unbounded by traditional morals or divine judgement,
+                        they are free to live precisely as they choose.
+                    </p>
+                    <p>
+                        Camus ends his essay with the myth of Sisyphus itself
+                        <FootRef idx={2} />. Sisyphus, the man, was the King of Ephyra, known for his greed, cunning,
+                        and trickery. Sisyphus blackmails Zeus into granting his city a natural spring for water.
+                        Enraged, Zeus banishes him to the underworld for his treachery. Here, he tricks both Thanatos
+                        and Persephone, allowing him to cheat death twice. Eventually he is dragged back ti the
+                        underworld and condemned to his eternal punishment. Here, he is doomed to roll a rock up to the
+                        top of a mountain every day, only for it to roll back down as soon as it reaches the top in a
+                        never ending cycle. The gods reasoned that this eternal, futile labor constituted the most
+                        insulting of punishments. Camus sees this differently, however. To him, Sisyphus is an absurdist
+                        archetype. His trickery of the gods and determination to live for himself embodies Camus' absurd
+                        man. As he toils in the underworld, he is conscious and aware of his eternal fate. Specifically,
+                        Camus is interested in his state of mind just after the rock begins to roll back down the
+                        mountain. As he climbs back down, he contemplates the absurdity of his life after death. He
+                        understands the futility of his work, yet strains against the rock day after day regardless. Any
+                        feelings of sorrow that he may retain are tied to his nostalgia for his previous life and his
+                        hope for an end to his condemnation. Accepting his fate, Camus argues, frees Sisyphus from these
+                        feelings. As Sisyphus rolls the rock up the mountain every day, his only option is to approach
+                        his work with joy after he has accepted the absurdity of his condition. To Camus, there is only
+                        one rational conclusion: that one must imagine Sisyphus happy.
+                    </p>
                 </>
             }
             thoughts={<></>}
@@ -74,6 +138,10 @@ export default (
                         natural phenomena, something to be coldly theorized about. This reminds me of fictions with
                         complex and rule-based magic systems. At a certain point, it ceases to be magic and morphs into
                         yet another branch of the sciences, something to be studied and replicated, devoid of whimsy.
+                    </FootNote>
+                    <FootNote idx={2}>
+                        Camus spends very little time explaining how Sisyphus came into his famous punishment, but I
+                        think it is worth a few words here for context.
                     </FootNote>
                 </>
             }
