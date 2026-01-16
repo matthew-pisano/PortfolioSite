@@ -130,7 +130,59 @@ export default (
                     </p>
                 </>
             }
-            thoughts={<></>}
+            thoughts={
+                <>
+                    The version of absurdism that Camus presents in this work strongly advocates for individualism.
+                    Camus' absurd man, in his revolt against the absurd, fills his life with an extreme quantity of
+                    experiences for himself. Crucially, the absurd man should not be concerned with traditional morals
+                    or religious dogma, only with his internal code of ethics, whatever that may be. To live one's life
+                    according to external ethical systems would be to assign intrinsic meaning to those systems. This
+                    runs counter to the apparent meaninglessness of an absurd universe. If there is no meaning to
+                    existence, Camus appears to suggest that it is every man for themselves. My opinion is that Camus'
+                    argument for absurdity is consistent with our observations, but how he incorporates that knowledge
+                    into his behavior is contradictory.
+                    <p>
+                        Taking absurdity at its extreme, then the extremely absurd man would not allow any set of rules
+                        or dogma to govern his behavior. His only core value would be to acknowledge the absurdity of
+                        his life. Camus' suggestion of radical individualism through revolt, freedom, and passion can in
+                        and of themselves be considered a sort of dogma. "You are not truly living the absurd if you do
+                        not hold these core tenets." This represents a sort of contradiction, though not in the absurd
+                        sense. Suggesting that "There is no intrinsic meaning to life, therefore everyone should revolt
+                        and live life to their own fullest" suddenly constitutes the sort of intrinsic meaning that
+                        absurdism rejects. The absurd man, in his revolt against the absurd becomes closer to a
+                        traditional existentialist, recognizing the absurdity of existence, yet striving to forge his
+                        own meaning regardless through individual experience.
+                    </p>
+                    <p>
+                        If the complete rejection of meaning and dogma simply results in different meaning and dogma,
+                        what then? The search for meaning in an absurd universe is doomed to come up short. We as humans
+                        (even those that accept the absurd) will still tend to prefer concrete behavioral frameworks.
+                        Why not select a framework that at least pretends to have an ethical foundation? From the
+                        standpoint of the uncaring universe, this would be no more "meaningful" than Camus' individual
+                        revolt or even acting randomly. Though, it may be easier to justify to the social proclivities
+                        of every healthy human brain (absurd or not). "The localized regions of particles are still
+                        following the strict rules of the universe, but at least they think they are being nice to each
+                        other in the process." Now, this sort of humanist absurdism is also in contradiction with
+                        itself: it also tries to materialize meaning from nothingness. It, like any moral system or
+                        philosophy
+                        <FootRef idx={3} />, requires some <i>doublethink</i> to be compatible with an acknowledgement
+                        of the absurd. I do not consider this stance a rejection or dilution of the absurd, as it always
+                        remains in the background. With this in mind, a more humanist approach to the absurd is as valid
+                        as any other as long as it is not mistaken for an objective purpose to existence.
+                    </p>
+                    <p>
+                        From a realist point of view, humans are not automata. Each of us carries millions of years of
+                        social evolution in the backs of our minds. Basing a system of human behavior on philosophy
+                        alone may seem elegant in principle, but often faces headwinds in practice. This is similar to
+                        how the elegance of mathematical theory is often diluted by physical assumptions and caveats. If
+                        a significant minority adopted an absurd individualist philosophy, the lack of social cohesion
+                        would limit others from exercising similar philosophies as effectively. Acknowledging the
+                        importance of our evolved senses of collaboration would allow for a more uniform application of
+                        this variety of absurd philosophy. Denying our cognitive nature is as counterproductive as
+                        denying the absurd itself.
+                    </p>
+                </>
+            }
             footnotes={
                 <>
                     <FootNote idx={1}>
@@ -144,6 +196,7 @@ export default (
                         Camus spends very little time explaining how Sisyphus came into his famous punishment, but I
                         think it is worth a few words here for context.
                     </FootNote>
+                    <FootNote idx={3}>Including absurdism itself, in my opinion.</FootNote>
                 </>
             }
             thumbnail={"/media/image/myth-of-sisyphus.jpg"}
