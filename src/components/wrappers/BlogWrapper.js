@@ -3,6 +3,7 @@ import React, { createContext, useContext, useEffect, useRef, useState } from "r
 import Link from "next/link";
 import PropTypes from "prop-types";
 
+import { FootNoteContext } from "@/components/widgets/FootNote";
 import Wrapper from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
 import styles from "@/styles/pageTiles.module.css";
@@ -17,10 +18,13 @@ const SectionContext = createContext(null);
  * @param title {string} The title of the blog page
  * @param subtitle {string} The subtitle of the blog page
  * @param date {Date} The date of writing of the blog
+ * @param footnoteContext {Context} The context to use for footnotes
  * @return {JSX.Element} The page wrapped in the blog wrapper
  */
-function BlogWrapper({ children, pageName, title, subtitle, date }) {
+function BlogWrapper({ children, pageName, title, subtitle, date, footnoteContext }) {
     const blockContentId = "blogContent";
+    const footnotesRef = useRef([]);
+    const footRefsRef = useRef([]);
     const [blogTime, setBlogTime] = useState(0);
 
     const sectionCountRef = useRef([0, 0, 0]);
@@ -36,6 +40,9 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
     useEffect(() => {
         setBlogTime(elementReadingTime(blockContentId));
     }, []);
+
+    const blogContextValue = new FootNoteContext(pageName, footnotesRef, footRefsRef);
+    if (!footnoteContext) footnoteContext = createContext(null);
 
     return (
         <Wrapper pageName={pageName}>
@@ -58,9 +65,11 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
                         {blogTime} minute read
                     </small>
                 </div>
-                <SectionContext.Provider value={getNextId}>
-                    <div id={blockContentId}>{children}</div>
-                </SectionContext.Provider>
+                <footnoteContext.Provider value={blogContextValue}>
+                    <SectionContext.Provider value={getNextId}>
+                        <div id={blockContentId}>{children}</div>
+                    </SectionContext.Provider>
+                </footnoteContext.Provider>
                 <hr />
                 <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>
                 <Link href={"/works/blog"}>Back to Blogs</Link>
@@ -74,7 +83,8 @@ BlogWrapper.propTypes = {
     pageName: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
-    date: PropTypes.any.isRequired
+    date: PropTypes.any.isRequired,
+    footnoteContext: PropTypes.any
 };
 
 /**
@@ -136,10 +146,11 @@ BlogSection.propTypes = {
  * An object containing common blog metadata
  */
 class BlogInfo {
-    constructor(title, subtitle, date) {
+    constructor(title, subtitle, date, anchor) {
         this.title = title;
         this.subtitle = subtitle;
         this.date = date;
+        this.anchor = anchor;
     }
 }
 
