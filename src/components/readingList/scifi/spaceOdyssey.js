@@ -1,7 +1,9 @@
-import React from "react";
+import React, { createContext } from "react";
 
 import { BookTile } from "@/components/readingList/BookTile";
 import { FootNote, FootRef } from "@/components/widgets/FootNote";
+
+const footCtx = createContext(null);
 
 export default (
     <BookTile
@@ -74,7 +76,7 @@ export default (
                         Daisy, Daisy, Give me your answer, do! I'm half crazy, All for the love of you! It won't be a
                         stylish marriage, I can't afford a carriage, But you'll look sweet{" "}
                         <small>upon the seat Of a bicycle built forrrr tttwwwoooo...</small>
-                        <FootRef idx={1} />
+                        <FootRef idx={1} context={footCtx} />
                     </i>
                 </p>
                 <p>
@@ -135,7 +137,7 @@ export default (
         }
         footnotes={
             <>
-                <FootNote idx={1}>
+                <FootNote idx={1} context={footCtx}>
                     In 1962, Clarke witnessed researchers at Bell Labs program an IBM 7094 machine to sing this song in
                     the earliest example of computer speech synthesis.
                 </FootNote>
@@ -143,5 +145,6 @@ export default (
         }
         thumbnail={"/media/image/2001.jpg"}
         anchor={"space-odyssey"}
+        footnoteContext={footCtx}
     />
 );

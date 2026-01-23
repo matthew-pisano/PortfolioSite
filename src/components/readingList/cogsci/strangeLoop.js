@@ -1,9 +1,11 @@
-import React from "react";
+import React, { createContext } from "react";
 
 import Link from "next/link";
 
 import { BookTile } from "@/components/readingList/BookTile";
 import { FootNote, FootRef } from "@/components/widgets/FootNote";
+
+const footCtx = createContext(null);
 
 export default (
     <BookTile
@@ -27,23 +29,24 @@ export default (
                     the notion of a <i>Soul</i>, though only in a secular sense. Small souled beings have no, or very
                     limited, conscious thought, higher aspirations, or self-referential manners of thinking. Examples
                     include rocks, microorganisms, or mosquitoes
-                    <FootRef idx={1} />. According to the book, larger souled beings (measured in <i>Huneker</i> units),
-                    in roughly increasing order, include bees, fish, chickens, dogs, infants, adults with severe
-                    cognitive impairments, and finally healthy adult humans. Notably, this list is not based simply on
-                    an entity's similarity to humans
-                    <FootRef idx={2} />. Instead, the size of an entity's soul correlates only to its theory of mind or
-                    ability for self-referential thought. This measurement of a soul is also completely divorced from
-                    the substrate for cognition. Fictional robots, like <i>C-3PO</i> and <i>R2-D2</i> are made of
-                    seemingly inert metal, yet they appear to have souls comparable to humans. How can this be?
+                    <FootRef idx={1} context={footCtx} />. According to the book, larger souled beings (measured in{" "}
+                    <i>Huneker</i> units), in roughly increasing order, include bees, fish, chickens, dogs, infants,
+                    adults with severe cognitive impairments, and finally healthy adult humans. Notably, this list is
+                    not based simply on an entity's similarity to humans
+                    <FootRef idx={2} context={footCtx} />. Instead, the size of an entity's soul correlates only to its
+                    theory of mind or ability for self-referential thought. This measurement of a soul is also
+                    completely divorced from the substrate for cognition. Fictional robots, like <i>C-3PO</i> and{" "}
+                    <i>R2-D2</i> are made of seemingly inert metal, yet they appear to have souls comparable to humans.
+                    How can this be?
                 </p>
                 <p>
                     Upon closer inspection, humans appear to be made of similarly inert "stuff" to robots or inanimate
                     objects. We reside, more or less
-                    <FootRef idx={3} />, within our own brains. However our brains are composed of neurons, which are
-                    composed of organelles, which are made up by various proteins and molecules, which themselves are
-                    made of atoms, then sub-atomic particles. You would be hard-pressed to find someone claiming that
-                    quarks or strings or hypergraphs are themselves conscious
-                    <FootRef idx={4} />. So how can we be conscious ourselves?
+                    <FootRef idx={3} context={footCtx} />, within our own brains. However our brains are composed of
+                    neurons, which are composed of organelles, which are made up by various proteins and molecules,
+                    which themselves are made of atoms, then sub-atomic particles. You would be hard-pressed to find
+                    someone claiming that quarks or strings or hypergraphs are themselves conscious
+                    <FootRef idx={4} context={footCtx} />. So how can we be conscious ourselves?
                 </p>
                 <p>
                     The key, Hofstadter argues, is not in the material, it lies in patterns of interaction. To better
@@ -144,11 +147,11 @@ export default (
                     input axioms underwent symbolic transformations that resulted in output theorems, input Gödel
                     numbers for those axioms underwent numerical transformations that resulted in output Gödel numbers
                     that corresponded with the logically correct theorem
-                    <FootRef idx={5} />! These integer strings would be unimaginably large and infeasible to work with,
-                    however Gödel did not have to do these calculations himself, he only needed to show that his
-                    assertions were mathematically sound
-                    <FootRef idx={6} />. Hofstadter dubs such a Gödel number that can be derived from PM's axioms
-                    (therefore representing a statement provable within PM) as a <i>prim</i> number.
+                    <FootRef idx={5} context={footCtx} />! These integer strings would be unimaginably large and
+                    infeasible to work with, however Gödel did not have to do these calculations himself, he only needed
+                    to show that his assertions were mathematically sound
+                    <FootRef idx={6} context={footCtx} />. Hofstadter dubs such a Gödel number that can be derived from
+                    PM's axioms (therefore representing a statement provable within PM) as a <i>prim</i> number.
                 </p>
                 <p>
                     With this notion, the "Gödelian" Strange Loop can be closed. Gödel first considers a statement that
@@ -157,9 +160,9 @@ export default (
                     was the Gödel number of the statement itself? Such a statement would say: "The Gödel number,{" "}
                     <i>g</i>, for this statement is not a <i>prim</i> number". In other words: "This statement is not
                     provable via PM's rules of inference" or, more tersely, "I am unprovable"
-                    <FootRef idx={7} />. If such a statement
-                    <FootRef idx={8} /> could be constructed, it would imply paradox after paradox present within the
-                    supposedly paradox-free <i>Principia Mathematica</i>!
+                    <FootRef idx={7} context={footCtx} />. If such a statement
+                    <FootRef idx={8} context={footCtx} /> could be constructed, it would imply paradox after paradox
+                    present within the supposedly paradox-free <i>Principia Mathematica</i>!
                 </p>
                 <p>
                     However, there is still one important detail missing from this explanation: how can a formula
@@ -167,7 +170,8 @@ export default (
                     number can be fully described without having to be fully written out. For example, you can either
                     write "10077696" or the much shorter "6<sup>9</sup>". Gödel achieves this through a process
                     analogous to a notion that the text refers to as "Qunining"
-                    <FootRef idx={9} />. This form of indirect self-reference is exemplified by the statement:
+                    <FootRef idx={9} context={footCtx} />. This form of indirect self-reference is exemplified by the
+                    statement:
                 </p>
                 <blockquote>
                     "Yields falsehood when preceded by its quotation" yields falsehood when preceded by its quotation.
@@ -234,20 +238,21 @@ export default (
                     float or video feedback. The text briefly considers the notion that "I-ness" is tied to a particular
                     substrate, namely carbon (and neuron) based brains. If that were the only contributing factor, then
                     mosquitoes
-                    <FootRef idx={10} />, cows, and dogs would have the same capacity for a self as humans do. Instead,
-                    Hofstadter argues that a sense of self, a "light on", comes only from the patterns of activation
-                    within a system of symbols. As he quotes Daniel Dennett, "It ain't the meat, it's the motion"
-                    <FootRef idx={11} />. The meaning within a system <i>tracks</i> its physical patterns, but is not
-                    composed of them in isolation, just as Gödel's numbers <i>track</i> the symbol manipulation of PM
-                    strings, but are not directly implied by them. The "strangeness" within our own loopy feedback
-                    mechanisms comes not from the feedback itself, but from the symbols that feedback creates. These
-                    symbols <i>perceive</i> incoming signals and can perform more meaningful processing of that input
-                    through complex patterns of symbol manipulation. "We" are only aware of our own <i>I</i> symbol
-                    precisely due to the fact that is all we can see. Even if we intellectually know of the very real
-                    particle interactions that make up our selves, we still subjectively believe in the complex <i>I</i>{" "}
-                    pattern that those particles create through their interactions. Our inability to directly obverse
-                    our own low-level interactions forces us to only reason in top-level symbols, forming a sense of
-                    self.
+                    <FootRef idx={10} context={footCtx} />, cows, and dogs would have the same capacity for a self as
+                    humans do. Instead, Hofstadter argues that a sense of self, a "light on", comes only from the
+                    patterns of activation within a system of symbols. As he quotes Daniel Dennett, "It ain't the meat,
+                    it's the motion"
+                    <FootRef idx={11} context={footCtx} />. The meaning within a system <i>tracks</i> its physical
+                    patterns, but is not composed of them in isolation, just as Gödel's numbers <i>track</i> the symbol
+                    manipulation of PM strings, but are not directly implied by them. The "strangeness" within our own
+                    loopy feedback mechanisms comes not from the feedback itself, but from the symbols that feedback
+                    creates. These symbols <i>perceive</i> incoming signals and can perform more meaningful processing
+                    of that input through complex patterns of symbol manipulation. "We" are only aware of our own{" "}
+                    <i>I</i> symbol precisely due to the fact that is all we can see. Even if we intellectually know of
+                    the very real particle interactions that make up our selves, we still subjectively believe in the
+                    complex <i>I</i> pattern that those particles create through their interactions. Our inability to
+                    directly obverse our own low-level interactions forces us to only reason in top-level symbols,
+                    forming a sense of self.
                 </p>
                 <p>
                     Though our own <i>I</i> symbols are the most privileged (and complex) human-symbols in our minds,
@@ -284,13 +289,13 @@ export default (
                     body is physical, while the mind (not literally the brain, mind you) is supernatural. The
                     non-physical mind is the core of a person, it's what makes them, them. Each mind contains one{" "}
                     <i>quantum</i> of soul
-                    <FootRef idx={12} />, immutable and indivisible. This approach also implies a strict binary, a brain
-                    (human or otherwise) either has a conscious soul or it does not. The text touches on several thought
-                    experiments that call the validity of this framework into question.
+                    <FootRef idx={12} context={footCtx} />, immutable and indivisible. This approach also implies a
+                    strict binary, a brain (human or otherwise) either has a conscious soul or it does not. The text
+                    touches on several thought experiments that call the validity of this framework into question.
                 </p>
                 <p>
                     Suppose we create a perfect clone of someone (perfect down to the level of quarks and gluons
-                    <FootRef idx={13} />
+                    <FootRef idx={13} context={footCtx} />
                     ). This clone either behaves exactly as the original does, or it behaves differently (or is even
                     inert). Both scenarios pose issues for the dualist. If the behavior is different, then somewhere
                     along the chain of particle interactions, there must be a missing "nudge" that would have come from
@@ -335,9 +340,10 @@ export default (
                     arbitrary, a more complete approach may have been to make the <i>Huneker</i> an ordinal (only
                     defined in relative terms) rather than cardinal (defined by absolute values) unit. The 100{" "}
                     <i>Huneker</i> upper-bound
-                    <FootRef idx={14} /> is also artificially limiting. It seems unreasonably anthropocentric to assume
-                    that it is impossible for other entities (or machines, even) to be <i>more</i> conscious than we
-                    are, though I'm not sure if it is even possible for us to conceptualize such a case.
+                    <FootRef idx={14} context={footCtx} /> is also artificially limiting. It seems unreasonably
+                    anthropocentric to assume that it is impossible for other entities (or machines, even) to be{" "}
+                    <i>more</i> conscious than we are, though I'm not sure if it is even possible for us to
+                    conceptualize such a case.
                 </p>
                 <p>
                     The theme of determinism comes up frequently in this text, though it is never mentioned by name.
@@ -377,9 +383,9 @@ export default (
                     brains, there is good reason to think that they are equally real when emerging from the particles of
                     a brain different from the original's. In computing terms, a virtual machine is just as real as the
                     host machine, from the perspective of the electrons (there are no <i>virtual</i> electrons
-                    <FootRef idx={15} /> for the virtual machines). While Hofstadter's argument somewhat diminishes the
-                    existence of our selves, it reinforces the existence of those that we are close to.{" "}
-                    <i>Cogito, ergo sum, et ergo tu quoque</i>.
+                    <FootRef idx={15} context={footCtx} /> for the virtual machines). While Hofstadter's argument
+                    somewhat diminishes the existence of our selves, it reinforces the existence of those that we are
+                    close to. <i>Cogito, ergo sum, et ergo tu quoque</i>.
                 </p>
                 <p>
                     To support his exploration of "guest" loops, Hofstadter proposes that our brains have a certain kind
@@ -400,24 +406,28 @@ export default (
         }
         footnotes={
             <>
-                <FootNote idx={1}>
+                <FootNote idx={1} context={footCtx}>
                     Though Hofstadter describes himself as valuing nearly all living beings, he makes it a point that
                     mosquitoes, specifically, are very much not on that list.
                 </FootNote>
-                <FootNote idx={2}>
+                <FootNote idx={2} context={footCtx}>
                     I think it is probable that the author would place the most advanced corvids above our most
                     primitive, yet still closely related, primate cousins.
                 </FootNote>
-                <FootNote idx={3}>More to come on this notion later.</FootNote>
-                <FootNote idx={4}>Except for, perhaps, some exceptionally devout, animist physicist.</FootNote>
-                <FootNote idx={5}>
+                <FootNote idx={3} context={footCtx}>
+                    More to come on this notion later.
+                </FootNote>
+                <FootNote idx={4} context={footCtx}>
+                    Except for, perhaps, some exceptionally devout, animist physicist.
+                </FootNote>
+                <FootNote idx={5} context={footCtx}>
                     Importantly, valid Gödel numbers do not assert truthful theorems, they merely assert that they are
                     well-formed. "2+2=5" is comprehensible (well-formed), though false, while "==0+]" is
                     incomprehensible (not well-formed). The "truthfulness" of a theorem comes only from the notion that
                     it can be derived (directly or through intermediate theorems) from axioms, which are assumed to be
                     true, <i>a priori</i>.
                 </FootNote>
-                <FootNote idx={6}>
+                <FootNote idx={6} context={footCtx}>
                     This represents an excellent example if an <i>isomorphism</i>. The two domains: PM proof strings and
                     number theory only seem related in the fact that they involve mathematics in some respect. However,
                     Gödel showed that they are simply two different manifestations of the same fundamental concept. One
@@ -425,39 +435,46 @@ export default (
                     Russell and Whitehead had) and one can also manipulate Gödel numbers without knowing of their
                     possible implications on the truthfulness of falsity of the PM theorem they represent!
                 </FootNote>
-                <FootNote idx={7}>
+                <FootNote idx={7} context={footCtx}>
                     The connection to the classic Liar's Paradox ("This statement is false") is not coincidental here!
                 </FootNote>
-                <FootNote idx={8}>
+                <FootNote idx={8} context={footCtx}>
                     Gödel's statement is particularly insidious here, as it represents one of an infinite family of
                     similar paradoxes. Therefore one cannot simply make <i>g</i> (or its negation <i>~g</i>) an axiom of
                     some new "fortified" PM, as there will always be another <i>g</i>-shaped hole to plug in this new
                     system.
                 </FootNote>
-                <FootNote idx={9}>
+                <FootNote idx={9} context={footCtx}>
                     Named after logician Willard Van Orman Quine and his study of indirect self-reference.
                 </FootNote>
-                <FootNote idx={10}>Especially so.</FootNote>
-                <FootNote idx={11}>
+                <FootNote idx={10} context={footCtx}>
+                    Especially so.
+                </FootNote>
+                <FootNote idx={11} context={footCtx}>
                     Only one <i>entendre</i> allowed at a time, please.
                 </FootNote>
-                <FootNote idx={12}>This time, much closer to the traditional, spiritual idea of a soul.</FootNote>
-                <FootNote idx={13}>
+                <FootNote idx={12} context={footCtx}>
+                    This time, much closer to the traditional, spiritual idea of a soul.
+                </FootNote>
+                <FootNote idx={13} context={footCtx}>
                     We will have to suspend the{" "}
                     <Link href={"https://en.wikipedia.org/wiki/No-cloning_theorem"} target={"_blank"}>
                         No-cloning theorem
                     </Link>{" "}
                     for this to work.
                 </FootNote>
-                <FootNote idx={14}>
+                <FootNote idx={14} context={footCtx}>
                     Hofstadter notes that this cap is placed not for logical reasons, but for ethical ones. In my
                     opinion, this was a tactful decision, as the ethical implications of giving different (healthy,
                     adult) people different values for consciousness would be beyond the scope of this work.
                 </FootNote>
-                <FootNote idx={15}>Though, I'm sure that Richard Feynman would disagree!</FootNote>
+                <FootNote idx={15} context={footCtx}>
+                    Though, I'm sure that Richard Feynman would disagree!
+                </FootNote>
             </>
         }
         thumbnail={"/media/image/i-am-a-strange-loop.jpg"}
         anchor={"i-am-a-strange-loop"}
+        footnoteContext={footCtx}
     />
 );
