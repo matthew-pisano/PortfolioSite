@@ -1,6 +1,7 @@
 import React from "react";
 
-import { BookTile, FootNote, FootRef } from "@/components/readingList/BookTile";
+import { BookTile } from "@/components/readingList/BookTile";
+import { FootNote, FootRef } from "@/components/widgets/FootNote";
 
 export default (
     <BookTile

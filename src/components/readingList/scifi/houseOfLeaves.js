@@ -2,7 +2,8 @@ import React from "react";
 
 import Link from "next/link";
 
-import { BookTile, FootNote, FootRef } from "@/components/readingList/BookTile";
+import { BookTile } from "@/components/readingList/BookTile";
+import { FootNote, FootRef } from "@/components/widgets/FootNote";
 import { redact } from "@/lib/util/utils";
 import styles from "@/styles/pageTiles.module.css";
 

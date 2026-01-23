@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import React, { createContext, useEffect, useRef, useState } from "react";
 
-import Link from "next/link";
 import PropTypes from "prop-types";
 
 import { Tile } from "@/components/tiles/Tiles";
@@ -109,71 +108,4 @@ BookTile.propTypes = {
     anchor: PropTypes.string.isRequired
 };
 
-/**
- * A footnote reference to appear in the text
- * @param idx The index of the footnote
- * @returns {JSX.Element} A footnote reference in the main text body
- * @constructor
- */
-function FootRef({ idx }) {
-    const context = useContext(BookAnchorContext);
-    if (!context) throw new Error("FootRef must be used within a BookTile");
-
-    const { anchor, registerFootRef } = context;
-    const registeredRef = useRef(false);
-
-    useEffect(() => {
-        if (!registeredRef.current) {
-            registerFootRef(idx);
-            registeredRef.current = true;
-        }
-    }, [idx, registerFootRef]);
-
-    return (
-        <Link href={`#footnote-${anchor}-${idx}`}>
-            <sup id={`footref-${anchor}-${idx}`}>{idx}</sup>
-        </Link>
-    );
-}
-
-FootRef.propTypes = { idx: PropTypes.number.isRequired };
-
-/**
- * A footnote to appear at the bottom of the text
- * @param idx The index of the footnote
- * @param style The style to apply to the footnote
- * @param children The content of the footnote
- * @returns {JSX.Element} A footnote at the bottom of the text
- * @constructor
- */
-function FootNote({ idx, style, children }) {
-    const context = useContext(BookAnchorContext);
-    if (!context) throw new Error("FootNote must be used within a BookTile");
-
-    const { anchor, registerFootNote } = context;
-    const registeredRef = useRef(false);
-
-    useEffect(() => {
-        if (!registeredRef.current) {
-            registerFootNote(idx);
-            registeredRef.current = true;
-        }
-    }, [idx, registerFootNote]);
-
-    return (
-        <span style={{ ...style, textIndent: 0, display: "block", marginBottom: "10px" }}>
-            <Link href={`#footref-${anchor}-${idx}`}>
-                <sup id={`footnote-${anchor}-${idx}`}>{idx}</sup>
-            </Link>{" "}
-            <small>{children}</small>
-        </span>
-    );
-}
-
-FootNote.propTypes = {
-    idx: PropTypes.number.isRequired,
-    style: PropTypes.object,
-    children: PropTypes.node.isRequired
-};
-
-export { BookTile, FootRef, FootNote };
+export { BookTile };
