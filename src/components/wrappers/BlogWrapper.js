@@ -132,5 +132,16 @@ BlogSection.propTypes = {
     level: PropTypes.number
 };
 
+/**
+ * An object containing common blog metadata
+ */
+class BlogInfo {
+    constructor(title, subtitle, date) {
+        this.title = title;
+        this.subtitle = subtitle;
+        this.date = date;
+    }
+}
+
 export default BlogWrapper;
-export { BlogSection };
+export { BlogSection, BlogInfo };

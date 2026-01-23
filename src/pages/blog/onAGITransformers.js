@@ -1,22 +1,27 @@
 import React from "react";
 
-import BlogWrapper, { BlogSection } from "@/components/wrappers/BlogWrapper";
+import BlogWrapper, { BlogInfo, BlogSection } from "@/components/wrappers/BlogWrapper";
+
+const blogInfo = new BlogInfo(
+    "On Generally Intelligent Transformers",
+    "An exploration of the theoretical capabilities and limitations of transformer models",
+    new Date(2026, 0, 22)
+);
 
 export default function OnAGITransformers() {
     return (
         <BlogWrapper
             pageName={"onAGITransformers"}
-            title={"On Generally Intelligent Transformers"}
-            subtitle={"An exploration of the theoretical capabilities and limitations of transformer models"}
-            date={new Date(2026, 1, 22)}>
+            title={blogInfo.title}
+            subtitle={blogInfo.subtitle}
+            date={blogInfo.date}>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur iaculis accumsan mollis. Ut interdum
-                in tellus a auctor. Duis sollicitudin, neque in rutrum dictum, libero tellus sagittis ligula, sed
-                condimentum nulla arcu ut ex. Donec eu felis lectus. Nulla tempor quam sit amet purus cursus, at euismod
-                eros faucibus. Vestibulum facilisis, nibh eu elementum eleifend, massa tortor bibendum elit, ac porta
-                neque neque sit amet sapien. Integer id elementum nibh. Aliquam vel elit lacus. Sed lobortis, sapien vel
-                aliquet dignissim, sapien enim laoreet sem, vel luctus ligula neque ut mauris. Nunc sed rutrum ligula.
-                Fusce ac pulvinar erat.
+                It goes without saying that the past three years have represented an unprecedented growth in both the
+                capabilities of AI models and corresponding investments. As 2022 gave way to 2023, progress appeared to
+                be accelerating without bounds. It seemed as if new models represented fundamental jumps in capability
+                over their predecessors. GPT-3.5 could answer simple questions and maintain a polite conversation and
+                suddenly GPT-4 was passing the Bar exam only a few months later. Throughout 2023 and 2024, the
+                capabilities of these models continued to grow significantly, though not quite at its original clip.
             </p>
             <p>
                 Integer a odio lorem. Suspendisse hendrerit, libero ut eleifend porta, libero leo posuere risus, porta
@@ -100,3 +105,5 @@ export default function OnAGITransformers() {
         </BlogWrapper>
     );
 }
+
+export { blogInfo };

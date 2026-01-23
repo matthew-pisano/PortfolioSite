@@ -7,6 +7,7 @@ import FlexWrapper from "@/components/wrappers/FlexWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
+import { blogInfo as onAGITransformers } from "@/pages/blog/onAGITransformers";
 import tileStyles from "@/styles/pageTiles.module.css";
 
 /**
@@ -44,53 +45,13 @@ export default function Blog() {
             <BlogTile
                 tileInfo={
                     new TileInfo({
-                        title: <>Lorem Ipsum</>,
+                        title: <>{onAGITransformers.title}</>,
                         thumbnail: "/media/image/void.png",
                         titleLink: "/blog/onAGITransformers"
                     })
                 }
-                date={new Date(2025, 11, 18)}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
-            </BlogTile>
-
-            <BlogTile
-                tileInfo={
-                    new TileInfo({
-                        title: <>Lorem Ipsum</>,
-                        thumbnail: "/media/image/void.png",
-                        titleLink: "/blog/blogTwo"
-                    })
-                }
-                date={new Date(2025, 11, 18)}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
-            </BlogTile>
-
-            <BlogTile
-                tileInfo={
-                    new TileInfo({
-                        title: <>Lorem Ipsum</>,
-                        thumbnail: "/media/image/void.png",
-                        titleLink: "/blog/blogThree"
-                    })
-                }
-                date={new Date(2025, 11, 18)}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
-            </BlogTile>
-
-            <BlogTile
-                tileInfo={
-                    new TileInfo({
-                        title: <>Lorem Ipsum</>,
-                        thumbnail: "/media/image/void.png",
-                        titleLink: "/blog/blogFour"
-                    })
-                }
-                date={new Date(2025, 11, 18)}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
+                date={onAGITransformers.date}>
+                {onAGITransformers.subtitle}
             </BlogTile>
         </FlexWrapper>
     );
