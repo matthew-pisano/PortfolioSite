@@ -34,6 +34,55 @@ export default function Lectures() {
             <Tile
                 tileInfo={
                     new TileInfo({
+                        title: <>Foundations Lecture Series</>,
+                        thumbnail: "/media/image/ibm.png",
+                        tags: [TileTag.ACADEMIC, TileTag.AI]
+                    })
+                }>
+                <p>
+                    This is a series of five lectures designed to build up the foundations needed to understand
+                    transformers, PyTorch compilation, and its interation with accelerator devices. These lectures are
+                    given over the course of ten lecture sessions. Each lecture builds upon the skills of the last,
+                    starting from a sampling of mathematics and ending with an in-depth exploration of how AI models are
+                    compiled and run on real hardware. While the primary audience of these lectures is intended to be
+                    new hires, its progressive design allows even experienced engineers can begin with the first lecture
+                    that matches their own level of expertise.
+                </p>
+                <p>
+                    The first lecture, on the mathematical foundations of language modeling, covers probability, linear
+                    algebra, embedding spaces, neural networks, and deep learning. The section on probability covers
+                    maximum likelihood estimation, markov chains, Bayesian reasoning, and n-grams. Linear algebra spans
+                    vectors, matrices, tensors, linear and affine transforms, vector spaces, and embedding spaces. For
+                    neural networks, I cover linear seperability, universal function approximation, forward passes,
+                    gradients, and backpropagation.
+                </p>
+                <p>
+                    The second lecture in the series covers a wide breadth of machine learning architectures, building
+                    up to the transformer. I cover more traditional machine learning architectures like naive Bayes,
+                    SVMs, and k-means clustering. Next I move on to DNNs, RNNs, LSTMs, and GRUs. N-grams make another
+                    appearance along with Word2Vec, GloVe, and encoder-decoder architectures. After an aside on vision
+                    models like CNNs and ViTs, the lecture moves on to common pre-training and fine-tuning learning
+                    methods as its conclusion.
+                </p>
+                <p>
+                    The first two lectures primarily serve as a foundation for the third, on transformers themselves.
+                    This lecture is a more detailed and comprehensive version of my original transformer models lecture.
+                </p>
+                <p>
+                    The fourth lecture centers on PyTorch and compilation. Here, I mainly cover ATen, AOT Autograd,
+                    dynamo, inductor compilation, and GPUs. For PyTorch I also touch on TorchScript and parallelism
+                    methods such as DDP or FSDP. In my GPU discussion, I mainly focus on NVIDIA GPUs and CUDA. Here, I
+                    cover the Fermi architecture, memory hierarchy, kernels, and execution/dispatch.
+                </p>
+                <p>
+                    The final lecture in this series concerns IBM's Spyre accelerator. Though it is perhaps the most
+                    technical lecture, I unfortunately cannot share many details due to its internal subject manner.
+                </p>
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
                         title: <>Transformer Models: Architectures and Use Cases</>,
                         thumbnail: "/media/image/ibm.png",
                         tags: [TileTag.ACADEMIC, TileTag.AI],
