@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
@@ -21,6 +21,8 @@ function Ink({ style, children }) {
     );
 }
 Ink.propTypes = { style: PropTypes.object, children: PropTypes.node.isRequired };
+
+const footCtx = createContext(null);
 
 export default (
     <BookTile
@@ -239,14 +241,15 @@ export default (
                 <p>
                     After meeting the students on their facility tour, Lenina Crowne, a beta worker in the embryo
                     storage, gossips with her friend Fanny Crowne
-                    <FootRef idx={1} />. The topic of conversation shifts to her apparent obsession with D.H.C assistant
-                    Henry Foster; she has been seeing him for four entire months without tying someone else. Absolutely
-                    unheard of. Lenina yields, admitting that she somewhat fancies Bernard Marx, a strange,
-                    shorter-than-average, Alpha, sleep-learning specialist at the Hatchery and Conditioning Center.
-                    Bernard overhears this conversation. Privately, he disdains the notion of passing lovers around like
-                    portions of meat. He is an outsider, technically an Alpha by caste and ability, but his stature is
-                    stunted and causes him to look more like an Epsilon than an Alpha, something he deeply resents.
-                    Cruel rumours often spread about alcohol accidentally being injected into his bottle as a fetus.
+                    <FootRef idx={1} context={footCtx} />. The topic of conversation shifts to her apparent obsession
+                    with D.H.C assistant Henry Foster; she has been seeing him for four entire months without tying
+                    someone else. Absolutely unheard of. Lenina yields, admitting that she somewhat fancies Bernard
+                    Marx, a strange, shorter-than-average, Alpha, sleep-learning specialist at the Hatchery and
+                    Conditioning Center. Bernard overhears this conversation. Privately, he disdains the notion of
+                    passing lovers around like portions of meat. He is an outsider, technically an Alpha by caste and
+                    ability, but his stature is stunted and causes him to look more like an Epsilon than an Alpha,
+                    something he deeply resents. Cruel rumours often spread about alcohol accidentally being injected
+                    into his bottle as a fetus.
                 </p>
                 <p>
                     Some time later, Lenina meets Bernard on the roof of the complex. After expressing her interest in
@@ -364,17 +367,17 @@ export default (
                     The inclusion of John and the "savages" is also an excellent plot device. Oftentimes in dystopian
                     stories, the focus of the story is on a character from within the dystopia that rises against it in
                     some act of rebellion
-                    <FootRef idx={2} />. <i>1984</i> and <i>Fahrenheit 451</i> are two such examples. In this novel, the
-                    reader is thrown for a loop. Upon his introduction and his immediate display of disdain for their
-                    society, something the reader may agree with, Bernard Marx seems like a good candidate for a
-                    protagonist. As the story progresses, however, we see that his motivations are not rooted in some
-                    moral core, but only in his own self-interest. He takes no issue with scapegoating his friends or
-                    abusing the lower castes. He chooses to remain an agent of the system as long as it fits his needs.
-                    He merely is a plot device that introduces John to his world, the character that creates meaningful
-                    tension with the status quo, coming from outside of the system and later engulfed by it. John comes
-                    from a more traditional culture, even backwards in some respects. This creates an excellent counter
-                    to the hyper-modern world of England. This places the reader in the temporal and moral middle
-                    ground. A place where they are prepared to understand both John's and Mond's opinions.
+                    <FootRef idx={2} context={footCtx} />. <i>1984</i> and <i>Fahrenheit 451</i> are two such examples.
+                    In this novel, the reader is thrown for a loop. Upon his introduction and his immediate display of
+                    disdain for their society, something the reader may agree with, Bernard Marx seems like a good
+                    candidate for a protagonist. As the story progresses, however, we see that his motivations are not
+                    rooted in some moral core, but only in his own self-interest. He takes no issue with scapegoating
+                    his friends or abusing the lower castes. He chooses to remain an agent of the system as long as it
+                    fits his needs. He merely is a plot device that introduces John to his world, the character that
+                    creates meaningful tension with the status quo, coming from outside of the system and later engulfed
+                    by it. John comes from a more traditional culture, even backwards in some respects. This creates an
+                    excellent counter to the hyper-modern world of England. This places the reader in the temporal and
+                    moral middle ground. A place where they are prepared to understand both John's and Mond's opinions.
                 </p>
                 <p>
                     In a similar vein of thought, <i>Brave New World</i> serves as a foil to more traditional dystopian
@@ -417,11 +420,16 @@ export default (
         }
         footnotes={
             <>
-                <FootNote idx={1}>No relation.</FootNote>
-                <FootNote idx={2}>Results may vary.</FootNote>
+                <FootNote idx={1} context={footCtx}>
+                    No relation.
+                </FootNote>
+                <FootNote idx={2} context={footCtx}>
+                    Results may vary.
+                </FootNote>
             </>
         }
         thumbnail={"/media/image/brave-new-world.jpg"}
         anchor={"brave-new-world"}
+        footnoteContext={footCtx}
     />
 );

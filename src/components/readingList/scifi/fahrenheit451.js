@@ -1,7 +1,9 @@
-import React from "react";
+import React, { createContext } from "react";
 
 import { BookTile } from "@/components/readingList/BookTile";
 import { FootNote, FootRef } from "@/components/widgets/FootNote";
+
+const footCtx = createContext(null);
 
 export default (
     <BookTile
@@ -136,20 +138,20 @@ export default (
                     military jets, another is an offhanded remark about rising geopolitical tensions, Montag even
                     mentions that the U.S. has won two nuclear wars since 2022. This all comes to a head at the end of
                     the book. Guy Montag and his new conspirator, Professor Faber
-                    <FootRef idx={1} />, plan to use the impending war as a catalyst for their plan to destabilize the
-                    government. Their plan quickly unravels after Chief Beatty discovers Montag's book stash. However,
-                    as Montag is on the run, war is invariably declared. Standing with the group of forsaken professors,
-                    he watches as the bombs hit the city that he has just escaped. This is implied to immediately kill
-                    Mildred and perhaps even Professor Faber, as it is uncertain that he has gotten far enough from the
-                    city. The destruction of the city, and perhaps even the nation, leaves the book off on a bittersweet
-                    note as Bradbury implies that the group of scholars will work to spread their knowledge of books in
-                    the aftermath.
+                    <FootRef idx={1} context={footCtx} />, plan to use the impending war as a catalyst for their plan to
+                    destabilize the government. Their plan quickly unravels after Chief Beatty discovers Montag's book
+                    stash. However, as Montag is on the run, war is invariably declared. Standing with the group of
+                    forsaken professors, he watches as the bombs hit the city that he has just escaped. This is implied
+                    to immediately kill Mildred and perhaps even Professor Faber, as it is uncertain that he has gotten
+                    far enough from the city. The destruction of the city, and perhaps even the nation, leaves the book
+                    off on a bittersweet note as Bradbury implies that the group of scholars will work to spread their
+                    knowledge of books in the aftermath.
                 </p>
             </>
         }
         footnotes={
             <>
-                <FootNote idx={1}>
+                <FootNote idx={1} context={footCtx}>
                     During my summary, I do not mention Professor Faber explicitly in the interest of brevity, but he
                     plays an important role in motivating Montag and helping him resist the persuasions of Chief Beatty.
                 </FootNote>
@@ -157,5 +159,6 @@ export default (
         }
         thumbnail={"/media/image/fahrenheit-451.jpg"}
         anchor={"fahrenheit-451"}
+        footnoteContext={footCtx}
     />
 );

@@ -3,12 +3,10 @@ import React, { createContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 import { Tile } from "@/components/tiles/Tiles";
+import { FootNoteContext } from "@/components/widgets/FootNote";
 import { TileInfo } from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
 import tileStyles from "@/styles/pageTiles.module.css";
-
-// Create a context for the book anchor
-const BookAnchorContext = createContext(null);
 
 /**
  * A tile representing a book review
@@ -19,9 +17,10 @@ const BookAnchorContext = createContext(null);
  * @param footnotes {JSXElement} Any footnotes from the text
  * @param thumbnail {string} The book cover thumbnail
  * @param anchor {string} The anchor id for the tile
+ * @param footnoteContext {Context} The context to use for footnotes
  * @constructor
  */
-function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anchor }) {
+function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anchor, footnoteContext }) {
     const footnotesRef = useRef([]);
     const footRefsRef = useRef([]);
     const [bookTime, setBookTime] = useState(0);
@@ -60,18 +59,11 @@ function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anc
             throw new Error(`Book "${title}": FootNote(s) without matching FootRef(s): ${unusedNotes.join(", ")}`);
     }, [title, anchor, synopsis, thoughts, footnotes]);
 
-    const contextValue = {
-        anchor,
-        registerFootNote: (idx) => {
-            footnotesRef.current.push(idx);
-        },
-        registerFootRef: (idx) => {
-            footRefsRef.current.push(idx);
-        }
-    };
+    const contextValue = new FootNoteContext(anchor, footnotesRef, footRefsRef);
+    if (!footnoteContext) footnoteContext = createContext(null);
 
     return (
-        <BookAnchorContext.Provider value={contextValue}>
+        <footnoteContext.Provider value={contextValue}>
             <Tile tileInfo={new TileInfo({ title: <>{title}</>, thumbnail: thumbnail, anchor: anchor })}>
                 <div className={`${tileStyles.bookTileContent}`}>
                     <div className={tileStyles.bookTileSection}>
@@ -94,7 +86,7 @@ function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anc
                     </div>
                 </div>
             </Tile>
-        </BookAnchorContext.Provider>
+        </footnoteContext.Provider>
     );
 }
 
@@ -105,7 +97,8 @@ BookTile.propTypes = {
     thoughts: PropTypes.element.isRequired,
     footnotes: PropTypes.element,
     thumbnail: PropTypes.string.isRequired,
-    anchor: PropTypes.string.isRequired
+    anchor: PropTypes.string.isRequired,
+    footnoteContext: PropTypes.any
 };
 
 export { BookTile };
