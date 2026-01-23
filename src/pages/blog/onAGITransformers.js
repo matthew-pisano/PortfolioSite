@@ -2,9 +2,13 @@ import React from "react";
 
 import BlogWrapper, { BlogSection } from "@/components/wrappers/BlogWrapper";
 
-export default function BlogOne() {
+export default function OnAGITransformers() {
     return (
-        <BlogWrapper pageName={"blogOne"} title={"blogOne"} subtitle={"Blog the first"} date={new Date(2025, 11, 18)}>
+        <BlogWrapper
+            pageName={"onAGITransformers"}
+            title={"On Generally Intelligent Transformers"}
+            subtitle={"An exploration of the theoretical capabilities and limitations of transformer models"}
+            date={new Date(2026, 1, 22)}>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur iaculis accumsan mollis. Ut interdum
                 in tellus a auctor. Duis sollicitudin, neque in rutrum dictum, libero tellus sagittis ligula, sed
