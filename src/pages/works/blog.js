@@ -46,7 +46,7 @@ export default function Blog() {
                     new TileInfo({
                         title: <>Lorem Ipsum</>,
                         thumbnail: "/media/image/void.png",
-                        titleLink: "/blog/blogOne"
+                        titleLink: "/blog/onAGITransformers"
                     })
                 }
                 date={new Date(2025, 11, 18)}>
