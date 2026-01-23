@@ -1,6 +1,9 @@
-import React from "react";
+import React, { createContext } from "react";
 
-import { BookTile, FootNote, FootRef } from "@/components/readingList/BookTile";
+import { BookTile } from "@/components/readingList/BookTile";
+import { FootNote, FootRef } from "@/components/widgets/FootNote";
+
+const footCtx = createContext(null);
 
 export default (
     <>
@@ -35,13 +38,13 @@ export default (
                         There lies a contradiction at the heart of Camus' absurd. Instinctively, we are driven to search
                         for patterns and meaning in our observations. This is contrasted by a universe that does not
                         provide the rich meaning that we desire, only cold and self-perpetuating patterns
-                        <FootRef idx={1} />. The absurd is not a property of ourselves or the universe in isolation. It
-                        only appears once the two are juxtaposed with each other. One of Camus' central points is that
-                        being aware of this contradiction is not a comfortable experience. However, any attempt to
-                        mitigate it would be simply evading the absurd, rather than acknowledging it. He asks if we can
-                        live with ourselves while fully acknowledging the absurd, not whether we can bury it. Camus
-                        calls the act of evading the absurd in this manner "philosophical suicide", a confession that
-                        the absurd is not worth the stress of consideration.
+                        <FootRef idx={1} context={footCtx} />. The absurd is not a property of ourselves or the universe
+                        in isolation. It only appears once the two are juxtaposed with each other. One of Camus' central
+                        points is that being aware of this contradiction is not a comfortable experience. However, any
+                        attempt to mitigate it would be simply evading the absurd, rather than acknowledging it. He asks
+                        if we can live with ourselves while fully acknowledging the absurd, not whether we can bury it.
+                        Camus calls the act of evading the absurd in this manner "philosophical suicide", a confession
+                        that the absurd is not worth the stress of consideration.
                     </p>
                     <p>
                         The text introduces the notion of "the absurd man". This person is fully aware of the absurd,
@@ -109,10 +112,10 @@ export default (
                     </p>
                     <p>
                         Camus ends his essay with the myth of Sisyphus itself
-                        <FootRef idx={2} />. Sisyphus, the man, was once the King of Ephyra, known for his greed,
-                        cunning, and trickery. According to some Greek legends, Sisyphus blackmails Zeus into granting
-                        his city a natural spring for water. Enraged, Zeus banishes him to the underworld for his
-                        treachery. Here, he tricks both Thanatos and Persephone, allowing him to cheat death twice.
+                        <FootRef idx={2} context={footCtx} />. Sisyphus, the man, was once the King of Ephyra, known for
+                        his greed, cunning, and trickery. According to some Greek legends, Sisyphus blackmails Zeus into
+                        granting his city a natural spring for water. Enraged, Zeus banishes him to the underworld for
+                        his treachery. Here, he tricks both Thanatos and Persephone, allowing him to cheat death twice.
                         Eventually he is dragged back to the underworld and condemned to his eternal punishment. Here,
                         he is doomed to roll a rock up to the top of a mountain every day, only for it to roll back down
                         as soon as it reaches the top. The gods reasoned that this eternal, futile labor constituted the
@@ -165,10 +168,11 @@ export default (
                         other in the process." Now, this sort of humanist absurdism is also in contradiction with
                         itself: it also tries to materialize meaning from nothingness. It, like any moral system or
                         philosophy
-                        <FootRef idx={3} />, requires some <i>doublethink</i> to be compatible with an acknowledgement
-                        of the absurd. I do not consider this stance a rejection or dilution of the absurd, as it always
-                        remains in the background. With this in mind, a more humanist approach to the absurd is as valid
-                        as any other as long as it is not mistaken for an objective purpose to existence.
+                        <FootRef idx={3} context={footCtx} />, requires some <i>doublethink</i> to be compatible with an
+                        acknowledgement of the absurd. I do not consider this stance a rejection or dilution of the
+                        absurd, as it always remains in the background. With this in mind, a more humanist approach to
+                        the absurd is as valid as any other as long as it is not mistaken for an objective purpose to
+                        existence.
                     </p>
                     <p>
                         From a realist point of view, humans are not automata. Each of us carries millions of years of
@@ -185,22 +189,25 @@ export default (
             }
             footnotes={
                 <>
-                    <FootNote idx={1}>
+                    <FootNote idx={1} context={footCtx}>
                         It is interesting to contemplate what it would look like if that were not the case. Any attempt
                         of the universe to show us some sort of true meaning would, by definition, be yet another
                         natural phenomena, something to be coldly theorized about. This reminds me of fictions with
                         complex and rule-based magic systems. At a certain point, it ceases to be magic and morphs into
                         yet another branch of the sciences, something to be studied and replicated, devoid of whimsy.
                     </FootNote>
-                    <FootNote idx={2}>
+                    <FootNote idx={2} context={footCtx}>
                         Camus spends very little time explaining how Sisyphus came into his famous punishment, but I
                         think it is worth a few words here for context.
                     </FootNote>
-                    <FootNote idx={3}>Including absurdism itself, in my opinion.</FootNote>
+                    <FootNote idx={3} context={footCtx}>
+                        Including absurdism itself, in my opinion.
+                    </FootNote>
                 </>
             }
             thumbnail={"/media/image/myth-of-sisyphus.jpg"}
             anchor={"sisyphus"}
+            footnoteContext={footCtx}
         />
     </>
 );

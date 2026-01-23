@@ -1,6 +1,9 @@
-import React from "react";
+import React, { createContext } from "react";
 
-import { BookTile, FootNote, FootRef } from "@/components/readingList/BookTile";
+import { BookTile } from "@/components/readingList/BookTile";
+import { FootNote, FootRef } from "@/components/widgets/FootNote";
+
+const footCtx = createContext(null);
 
 export default (
     <>
@@ -25,15 +28,15 @@ export default (
                         Marquis. Writing from the early 1930s, Roquentin must take frequent trips to libraries and
                         archives to track down the sparse information that remains of the Marquis. Another frequent
                         guest of the local library is someone that Roquentin calls the "Self-Taught Man"
-                        <FootRef idx={1} />. Roquentin notes that the Self-Taught Man spends the majority of his free
-                        time in the library, reading every single book in alphabetical order by author. During one of
-                        their conversations, the man asks Roquentin to show him some pictures of his travels. Before
-                        coming to Bouville, the journal's author had spent several years travelling the world
-                        extensively in search of adventure. The Self-Taught Man is amazed and inspired by the images and
-                        the stories of, what he considers to be, Roquentin's past adventures. Thinking back, however,
-                        Roquentin does not believe he has had any true adventures at all, even after six years of
-                        travel. This occurs on the backdrop of his growing frustrations with his work on the Marquis de
-                        Rollebon.
+                        <FootRef idx={1} context={footCtx} />. Roquentin notes that the Self-Taught Man spends the
+                        majority of his free time in the library, reading every single book in alphabetical order by
+                        author. During one of their conversations, the man asks Roquentin to show him some pictures of
+                        his travels. Before coming to Bouville, the journal's author had spent several years travelling
+                        the world extensively in search of adventure. The Self-Taught Man is amazed and inspired by the
+                        images and the stories of, what he considers to be, Roquentin's past adventures. Thinking back,
+                        however, Roquentin does not believe he has had any true adventures at all, even after six years
+                        of travel. This occurs on the backdrop of his growing frustrations with his work on the Marquis
+                        de Rollebon.
                     </p>
                     <p>
                         Roquentin soon gets a letter from Anny, his ex-lover whom he has not seen since he began his
@@ -159,7 +162,7 @@ export default (
             }
             footnotes={
                 <>
-                    <FootNote idx={1}>
+                    <FootNote idx={1} context={footCtx}>
                         Ogier P ..., who will be often mentioned in this journal. He was a bailiff's clerk. Roquentin
                         met him in 1930 in the Bouville library.
                     </FootNote>
@@ -167,6 +170,7 @@ export default (
             }
             thumbnail={"/media/image/nausea.jpg"}
             anchor={"nausea"}
+            footnoteContext={footCtx}
         />
     </>
 );
