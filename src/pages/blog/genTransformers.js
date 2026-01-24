@@ -7,13 +7,13 @@ const blogInfo = new BlogInfo(
     "On Generally Intelligent Transformers",
     "An exploration of the theoretical capabilities and limitations of transformer models",
     new Date(2026, 0, 22),
-    "onAGITransformers"
+    "genTransformers"
 );
 
 // Create a context for the blog
 const footnoteContext = createContext(null);
 
-export default function OnAGITransformers() {
+export default function GenTransformers() {
     return (
         <BlogWrapper
             pageName={blogInfo.anchor}
