@@ -85,7 +85,8 @@ export default function GenTransformers() {
                 undoubtedly capable of general, human-level intelligence with some extra data or more clever tweaks to
                 the attention mechanism? Or are we witnessing a subtle form of overfitting where models continue to
                 attain higher ad higher scores on benchmarks, but level-off in terms of performance on non-benchmarkable
-                tasks? My intuition is that we are solidly in the latter scenario.
+                tasks? My intuition is that we are solidly in the latter scenario and the following will serve as my
+                attempt as a more formal justification.
             </p>
             <hr />
             <FootNote idx={1} context={footnoteContext}>
