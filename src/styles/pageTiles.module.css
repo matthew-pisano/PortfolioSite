@@ -9,6 +9,50 @@
     border-radius: 10px;
 }
 
+.flexTileHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 10px;
+    margin-bottom: 50px;
+}
+
+.blogHolder {
+    width: 75%;
+    max-width: 800px;
+    margin-top: 50px;
+    text-indent: 20px;
+}
+
+.blogHolder > h3 {
+    background-color: rgb(139 166 175 / 45%);
+    padding: 10px;
+    border-radius: 10px;
+    border-width: 5px;
+    border-style: none solid none none;
+    border-color: var(--theme-accent);
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.blogLanding h4 {
+    font-size: medium;
+}
+
+.blogTitle {
+    padding: 10px;
+    text-align: center;
+    border-width: 5px;
+    border-style: none solid;
+    border-color: var(--theme-accent);
+    border-radius: 10px;
+    max-width: 700px;
+    width: 70%;
+    margin-top: 50px;
+}
+
 .displayTile {
     border-style: none solid none none;
     border-color: var(--theme-accent);
@@ -42,6 +86,20 @@
 
 .displayTileContent, .displayContentTitle {
     padding: 0 25px;
+}
+
+.blogLanding .displayTile {
+    border-style: none solid;
+    max-width: 500px;
+    margin: 0;
+}
+
+.blogLanding .displayTileContent {
+    padding: 0 10px;
+}
+
+.blogLanding img {
+    max-height: 150px !important;
 }
 
 .galleryTileTitle {
@@ -230,6 +288,15 @@
         margin-right: 0;
         margin-left: 10px;
     }
+
+    .blogHolder {
+        width: 95%;
+        max-width: 800px;
+    }
+
+     .blogTitle {
+        width: 90%;
+     }
 
     .cvEmbed {
         margin-top: 75px;
