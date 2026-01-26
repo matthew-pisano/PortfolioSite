@@ -46,7 +46,7 @@ export default function Blog() {
                 tileInfo={
                     new TileInfo({
                         title: <>{genTransformers.title}</>,
-                        thumbnail: "/media/image/void.png",
+                        thumbnail: "/media/image/hanoi.jpg",
                         titleLink: "/blog/genTransformers"
                     })
                 }
