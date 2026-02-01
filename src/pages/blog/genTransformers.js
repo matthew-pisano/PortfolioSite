@@ -99,6 +99,54 @@ export default function GenTransformers() {
                 that we are solidly in the latter scenario and the following will serve as my attempt at a more formal
                 justification for this intuition.
             </p>
+            <BlogSection>Necessary Conditions</BlogSection>
+            <p>
+                Before we can examine what general intelligence would like like when exhibited by an AI model, we must
+                first identify a few capabilities that any generally intelligent agent must have. Unfortunately, there
+                is only one
+                <FootRef idx={10} context={footnoteContext} /> example of such an agent that currently exists.
+                Fortunately, whomever is reading this is likely an example of such an agent: a human. This is
+                significant because we each have a (largely) unobscured view into our own interiorities. Through
+                observing our own behavior, how we interact with and learn about our environments, we can make some
+                educated guesses as to some characteristics that are likely necessary conditions for a being of general
+                intelligence (relative to ourselves, that is).
+            </p>
+            <p>
+                So what abilities do we have, precisely, that allow us to quickly learn about our environments,
+                generalize to new tasks from very few (or zero!) examples, execute preplanned procedures, etc. The bad
+                news is that if we knew the answer to this question with a fine enough granularity, then we would
+                already have artificial generally intelligent models. The good news is that a few of our mental
+                capabilities stand out immediately.
+            </p>
+            <BlogSection level={2}>We are not Our Environments</BlogSection>
+            <p>
+                This first quality may appear to be embarrassingly obvious. However, it directly enables some abilities
+                that we have largely been unsuccessful in emulating. Recall my usage of the concept of "interiority" a
+                moment ago. We actually have an interiority. Over an arbitrary number of time steps, we can reason,
+                practice, plan, and self-reflect without impacting our environment at all. Save for abnormal states of
+                altered consciousness, we can imagine ourselves taking some action without actually taking that action
+                and altering our environment. If we would like to sketch out a conversation, program, or mathematical
+                proof, we can develop and refine our ideas over time without needing to speak a single word, type a
+                single command, or commit any formulae to paper. Alright, but why do we need to have an internal state
+                for this? Why can we not simply think directly within our environment without an extra layer of
+                encapsulation?
+            </p>
+            <p>
+                There are two primary advantages. Most apparently, it means that we can idempotently simulate
+                modifications to our environment without actually making those modifications. Suppose that I would like
+                to improvise something for breakfast. I do not have a recipie, but I do have some breakfast-making
+                experience that I can pull from. If I decide to make an omelette, I can imagine approximately how much
+                milk to mix with the eggs, which spices may complement the omelette's flavor, and I can imagine
+                approximately what would happen if I kept the stove's heat too high or too low. Note that I do not
+                actually have to step foot into the kitchen to foresee the unworkable consistency of over-milked eggs,
+                the strange taste of cinnamon-sugar eggs, or the charred mess of a burnt meal. For better cooks than I,
+                this may seem trivially intuitive, but this scenario demonstrates how we can develop an initial plan
+                (eggs, scramble, milk, season, cook) and productively refine its parameters (ingredient ratios, slice
+                mixes, cooking intensity) over time without needing to actually carry out any actions. More
+                mechanistically, I can easily foresee the consequences of running <code>rm -rf /</code> without
+                accidentally running the command on a computer (or myself if I was a machine).
+            </p>
+            <p></p>
             <hr />
             <FootNote idx={1} context={footnoteContext}>
                 At least, in my opinion, as I paid close attention to research papers and corporate releases.
@@ -186,6 +234,9 @@ export default function GenTransformers() {
                 </Link>
                 . This is along with another widely reported quote that states that recent Erdős problem completions
                 have been "low-hanging fruit", but I was unable to find the original source in my search.
+            </FootNote>
+            <FootNote idx={10} context={footnoteContext}>
+                Or 8.273 billion examples, depending on your counting criteria.
             </FootNote>
         </BlogWrapper>
     );
