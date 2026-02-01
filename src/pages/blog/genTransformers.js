@@ -146,7 +146,30 @@ export default function GenTransformers() {
                 mechanistically, I can easily foresee the consequences of running <code>rm -rf /</code> without
                 accidentally running the command on a computer (or myself if I was a machine).
             </p>
-            <p></p>
+            <p>
+                This is useful, though perhaps a similar effect could be achieved through the usage of situated
+                cognition, writing or drawing out the consequences in advance? We could, but we would be losing some
+                conceptual fidelity in doing so. This leads neatly into the second advantage of environment-self
+                isolation. Those who design and engineer software regularly experience this "lossiness" on a regular
+                basis. Suppose I design and implement a complex piece of software that had initially undergone a
+                significant amount of planning before implementation. At some later date, I would like to make a
+                revision to this software. Even with the help of comprehensive documentation, it will still take a
+                little while to accustom myself to the code once again, to get a "feel" for how it is laid out and
+                operates. Why is this? All of the code and documentation exists; I do not need to manipulate anything
+                into a form that I can then understand. Back when I was originally planning the software's structure, I
+                had within my mind a nuanced and multifaceted representation of the problem and planned solution. This
+                includes potential implementations not taken, edge cases, and a mental mapping of what went where. When
+                the software is finally written, much of this information is lost as my brain forgets over time. Of
+                course, this information loss can be lessened with good documentation, but much of my subjective,
+                internal representation cannot be concisely represented by text or diagrams. Now imagine that for every
+                token written I forgot all of my internal representation and had to rebuild it just from what I had
+                previously written down
+                <FootRef idx={11} context={footnoteContext} />. If I was unable to isolate my subjective representation
+                of the software from the environment, his would be the case. In reality, my mind does allow for this
+                isolation so, once I have refreshed my knowledge, I can continue to directly manipulate the embedded
+                form of my plan directly without needing to lossfully convert my feature-rich representation to
+                feature-starved text at each step.
+            </p>
             <hr />
             <FootNote idx={1} context={footnoteContext}>
                 At least, in my opinion, as I paid close attention to research papers and corporate releases.
@@ -237,6 +260,13 @@ export default function GenTransformers() {
             </FootNote>
             <FootNote idx={10} context={footnoteContext}>
                 Or 8.273 billion examples, depending on your counting criteria.
+            </FootNote>
+            <FootNote idx={11} context={footnoteContext}>
+                For anyone familiar with the Key-Value cache (or KV cache) optimization for LLMs, this is exactly the
+                problem that the optimization is designed to solve! This does not completely solve our problem, though.
+                I purely KV cached mind could faithfully reload its past states, but would still need to reason{" "}
+                <i>within</i> its environment to incorporate new changes. KV caches can also become prohibitively
+                expensive for very long contexts where each token representation needs to be cached.
             </FootNote>
         </BlogWrapper>
     );
