@@ -170,7 +170,7 @@ export default function GenTransformers() {
                 form of my plan directly without needing to lossfully convert my feature-rich representation to
                 feature-starved text at each step.
             </p>
-            <BlogSection level={2}>Online Learning and Self-Play</BlogSection>
+            <BlogSection level={2}>Online Learning</BlogSection>
             <p>
                 Unlike most modern AI systems, humans do not undergo a clearly defined "training phase"
                 <FootRef idx={12} context={footnoteContext} /> where we only learn new information and do not act upon
@@ -200,6 +200,7 @@ export default function GenTransformers() {
                 label once or twice. Importantly, this is not a result of any external filtering process that selects
                 stimuli for us, this process occurs completely "in house".
             </p>
+            <BlogSection level={2}>Self-Play</BlogSection>
             <p>
                 Self-play is intimately tied to our abilities to learn online. In humans, this process happens
                 internally, with ourselves
@@ -211,6 +212,28 @@ export default function GenTransformers() {
                 the initial catalyst, our self-play occurs entirely within our minds. We can rehearse our proving
                 skills, simulate a procedure, or refine our conversational skills without needing any external input or
                 making any modifications to our environment (a direct consequence of our mind-environment isolation).
+            </p>
+            <p>
+                An important application of self-play manifests in our abilities to follow learned procedures. When
+                using self-play to simulate certain tasks, we can pull upon mental procedures that we had learned in the
+                past and execute them (fairly) reliably in order to reason through a problem. Examples could be a method
+                of logical inference, a strategy for playing a game, or a simple mathematical procedure. If we know a
+                well-defined method of unraveling a problem, we are reliably able to execute that method within our main
+                reasoning process as a sort of sub-routine. An important distinction to make here is that these
+                solutions are not a statistical inference (though many problem solving techniques do rely upon this
+                method). We can perform simple, rigidly defined procedures and reliably get exact answers instead of an
+                answer that may not be correct, but still matches some learned distribution.
+            </p>
+            <p>
+                When we engage in mental self-play, we are always constrained by the mental resources that we can
+                summon. Famously, humans have a limited pool of working memory from which we can draw
+                <FootRef idx={16} context={footnoteContext} />. This means that the complexity of procedures that our
+                minds can execute is similarly limited. This is especially true for procedures that require keeping
+                track of a number of auxiliary or intermediate states. In practice, however, this is not as constraining
+                as it may seem. The procedures of logical inference or experimental design are simple enough that we can
+                still execute them reliably, which is significantly more important. For more complex tasks, we can
+                always fall back to situated cognition and the use of external recording (like paper or computers),
+                though this is much less efficient due to the lossful conversions mentioned above.
             </p>
             <hr />
             <FootNote idx={1} context={footnoteContext}>
@@ -344,6 +367,15 @@ export default function GenTransformers() {
                 key differences here. Firstly, this did not happen "online", only in a dedicated training phase.
                 Secondly, this was not an internal process like we humans have. It is more akin to practicing an
                 argument with one's clone that still has a fully isolated mental state of their own.
+            </FootNote>
+            <FootNote idx={16} context={footnoteContext}>
+                When compared to computers, of course, but also{" "}
+                <Link href={"https://www.sciencedirect.com/science/article/abs/pii/S0959438809000269"}>
+                    Chimpanzees
+                </Link>
+                , strangely. Though this is amusing to consider, one must remember that our minds have evolved to fit
+                their environment as our bodies have. If our ancestors only needed a limited working memory to
+                accomplish basic survival tasks, then our current allowment of working memory is all that we need(ed).
             </FootNote>
         </BlogWrapper>
     );
