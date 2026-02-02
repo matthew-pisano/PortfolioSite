@@ -165,10 +165,52 @@ export default function GenTransformers() {
                 token written I forgot all of my internal representation and had to rebuild it just from what I had
                 previously written down
                 <FootRef idx={11} context={footnoteContext} />. If I was unable to isolate my subjective representation
-                of the software from the environment, his would be the case. In reality, my mind does allow for this
+                of the software from the environment, this would be the case. In reality, my mind does allow for this
                 isolation so, once I have refreshed my knowledge, I can continue to directly manipulate the embedded
                 form of my plan directly without needing to lossfully convert my feature-rich representation to
                 feature-starved text at each step.
+            </p>
+            <BlogSection level={2}>Online Learning and Self-Play</BlogSection>
+            <p>
+                Unlike most modern AI systems, humans do not undergo a clearly defined "training phase"
+                <FootRef idx={12} context={footnoteContext} /> where we only learn new information and do not act upon
+                it in any way. We learn in an "online" manner. That is, we learn actively as we interact with out
+                environment instead of experiencing a well-defined period of pure observation followed by a period of
+                experimentation. This means that, as we are learning, we can solicit feedback from a teacher or
+                environment. We can immediately test out what we think we know and update our beliefs based on feedback
+                of our experimentation. We we learn, we are also able to clearly incorporate new beliefs into our world
+                model without overwriting other, unrelated information
+                <FootRef idx={13} context={footnoteContext} />. Since we can incorporate knowledge as we interact with
+                out environment, our internal representation of the world (for the most part) stays relatively close to
+                the ground truth of the real world.
+            </p>
+            <p>
+                Our ability to automatically filter out irrelevant or incorrect information is central to online
+                learning. If our environment contains irrelevant stimuli, for example the time of day when learning to
+                identify images of tanks
+                <FootRef idx={14} context={footnoteContext} />, our brains automatically filter it out. This ensures
+                that we can more easily generalize the problem itself, instead of overfitting to situational details.
+                This extends to sources of information as well. Marvin Minsky captures this well within his concept of
+                "imprimers". An imprimer is a person, often a mentor or parent, from whom we readily take in information
+                with a diminished degree of skepticism. If a parent scolds us for doing something wrong, we are more
+                likely to change our behavior than if a complete stranger had done the same. This gives is the ability
+                to ignore (or to at least treat it with a degree of skepticism) irrelevant or untrustworthy information,
+                even after repeated exposure. If I read thousands of copies of a Reddit post one the benefits of putting
+                glue on cheese pizza, I know to ignore that information even if I had only seen a glue bottle's warning
+                label once or twice. Importantly, this is not a result of any external filtering process that selects
+                stimuli for us, this process occurs completely "in house".
+            </p>
+            <p>
+                Self-play is intimately tied to our abilities to learn online. In humans, this process happens
+                internally, with ourselves
+                <FootRef idx={15} context={footnoteContext} />. If we see someone exhibit some feat of athleticism or
+                hear someone making good use of rhetorical techniques in an argument, we can rehearse and simulate
+                ourselves emulating those actions. Anyone who has played out a debate or series of game moves in their
+                head has experienced this exact ability of ours. The most significant consequence of this internal
+                phenomena is that we can learn and update our beliefs without needing additional external input. After
+                the initial catalyst, our self-play occurs entirely within our minds. We can rehearse our proving
+                skills, simulate a procedure, or refine our conversational skills without needing any external input or
+                making any modifications to our environment (a direct consequence of our mind-environment isolation).
             </p>
             <hr />
             <FootNote idx={1} context={footnoteContext}>
@@ -267,6 +309,41 @@ export default function GenTransformers() {
                 I purely KV cached mind could faithfully reload its past states, but would still need to reason{" "}
                 <i>within</i> its environment to incorporate new changes. KV caches can also become prohibitively
                 expensive for very long contexts where each token representation needs to be cached.
+            </FootNote>
+            <FootNote idx={12} context={footnoteContext}>
+                One could point to sleeping or dreaming as an example of this since many have theorized that dreaming is
+                a way for our brains to process the day's information and commit things to long term memory. There are
+                rough similarities here, but it is not a perfect analog. While dreams may reinforce some of our
+                experiences, we do not explicitly dream of most of the things that we learn about (especially factual
+                information). As primarily social animals, social experiences are often the primary (although not
+                exclusive!) focus of our dreams. Sleeping, among other things, appears to primarily serve as a filter
+                and consolidator for recently learned information, not as the exclusive domain of learning itself. See{" "}
+                <Link href={"https://pmc.ncbi.nlm.nih.gov/articles/PMC4704085/"}>
+                    Dreaming and Offline Memory Consolidation
+                </Link>{" "}
+                from the NIH.
+            </FootNote>
+            <FootNote idx={13} context={footnoteContext}>
+                In AI research, this has a specific name: "catastrophic forgetting". Some architectures are less
+                susceptible to this than others, but transformers are not able to handle new information as gracefully.
+                If you continually train a model on new information, eventually something will contradict its training
+                data. Over time, it will begin to gradually forget older information as the associated weights are no
+                longer being reinforced. After a long enough time, the model may fully replace old information or
+                abilities with new ones.
+            </FootNote>
+            <FootNote idx={14} context={footnoteContext}>
+                This specific example has become something of an urban legend/cautionary tale in many AI safety circles.
+                Though the exact origin of the "AI tank detector" story is difficult to track down, it is likely a
+                combination of a few different examples with varying degrees of embellishment. This{" "}
+                <Link href={"https://gwern.net/tank"}>gwern.net</Link> article does some great research on the origins
+                and implications of this story.
+            </FootNote>
+            <FootNote idx={15} context={footnoteContext}>
+                Self-play as a concept is more widely known of in the context of reinforcement learning agents. This is
+                how AlphaZero could achieve superhuman performance in a wide range of adversarial games. There are two
+                key differences here. Firstly, this did not happen "online", only in a dedicated training phase.
+                Secondly, this was not an internal process like we humans have. It is more akin to practicing an
+                argument with one's clone that still has a fully isolated mental state of their own.
             </FootNote>
         </BlogWrapper>
     );
