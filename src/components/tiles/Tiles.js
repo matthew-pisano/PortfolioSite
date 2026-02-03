@@ -2,6 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 import PropTypes from "prop-types";
+import { v4 as UUIDv4 } from "uuid";
 
 import { tagFactory } from "@/components/tiles/Tags";
 import tileStyles from "@/styles/pageTiles.module.css";
@@ -62,7 +63,7 @@ class TileElements {
  * @param children {JSXElement} The children of the tile
  */
 function tileFactory(tileInfo, children = null) {
-    const tileId = tileInfo.anchor ? tileInfo.anchor : "pageTile-" + crypto.randomUUID();
+    const tileId = tileInfo.anchor ? tileInfo.anchor : "pageTile-" + UUIDv4();
 
     // The title of the tile, either a link or in bold
     let tileTitle = (
