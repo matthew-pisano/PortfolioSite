@@ -16,7 +16,7 @@ export default function ChipFiring() {
         "Chip Firing",
         "A research project to examine patterns in chip firing games",
         { backgroundColor: PageColor.URANIUM_GREEN },
-        [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.PYTHON],
+        [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.MATH, TileTag.PYTHON],
         (
             <>
                 <GitLink href={"https://github.com/matthew-pisano/ChipFiring"}>Chip Firing</GitLink>
