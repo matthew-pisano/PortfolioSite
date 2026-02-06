@@ -34,6 +34,49 @@ export default function Lectures() {
             <Tile
                 tileInfo={
                     new TileInfo({
+                        title: <>Foundations of Computability: Incompleteness and Universality</>,
+                        thumbnail: "/media/image/ibm.png",
+                        tags: [TileTag.ACADEMIC, TileTag.AI]
+                    })
+                }>
+                <p>
+                    This lecture is a part of the larger IBM colloquium initiative that have started work on. Though the
+                    subject of this lecture is somewhat abstracted away from the work that I do for IBM, is a subject
+                    that is just as important. The core of this lecture is to explore how Gödel's incompleteness
+                    theorems, Church's lambda calculus, and Turing's machines all relate to one another, Hilbert's
+                    program, and the state of mathematics in the early 20th century.
+                </p>
+                <p>
+                    The first part of this lecture sets the stage for what is to come. I explore the origins of set
+                    theory, logic, and the formalization of the foundations of mathematics. This section includes a
+                    discussion on Hilbert's famous program and Russell and Whitehead's <i>Principia Mathematica</i>.
+                </p>
+                <p>
+                    Next, I turn to Gödel and his first and second incompleteness theorems. The lecture breaks down
+                    Gödel's reasoning, starting with <i>Principia Mathematica</i>'s theory of Ramified types and walking
+                    through his famous proof step-by-step. Taking inspiration from the books that I have read on the
+                    subject, this lecture uses plain English and metaphor over strict proof to increase its
+                    understandability.
+                </p>
+                <p>
+                    Gödel's proof nicely follows into a discussion of Church's lambda calculus. While Gödel proved that
+                    a system cannot be both complete and consistent, the question of decidability, or the{" "}
+                    <i>Entscheidungsproblem</i>, remained unanswered. Church worked on reducing this to a question of
+                    pure computation with his lambda calculus. Here, I go over some of its basic rules along with where
+                    it fits into the broader field of computing.
+                </p>
+                <p>
+                    Finally, this lecture covers Turing machines, universal computing machines, computability, and
+                    computational complexity. Here, I go over the definition of a Turing machine, the concept of a
+                    universal machine, and Turing's three proofs that eventually prove that Hilbert's desire for
+                    decidability was impossible. This section also covers the halting problem, classes of recursive
+                    functions, uncomputable functions, and "Big O" computational complexity classes.
+                </p>
+            </Tile>
+
+            <Tile
+                tileInfo={
+                    new TileInfo({
                         title: <>Foundations Lecture Series</>,
                         thumbnail: "/media/image/ibm.png",
                         tags: [TileTag.ACADEMIC, TileTag.AI]
@@ -67,6 +110,8 @@ export default function Lectures() {
                 <p>
                     The first two lectures primarily serve as a foundation for the third, on transformers themselves.
                     This lecture is a more detailed and comprehensive version of my original transformer models lecture.
+                    This version goes into much more depth into tokenization, positional encoding methods and vision
+                    transformers.
                 </p>
                 <p>
                     The fourth lecture centers on PyTorch and compilation. Here, I mainly cover ATen, AOT Autograd,
