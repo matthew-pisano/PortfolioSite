@@ -391,7 +391,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>On Picard Groups and Jacobians of Directed Graphs</>,
                         thumbnail: "/media/image/jmm.jpg",
-                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.MATH],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/JMMPresentation.pdf"}>Slides</TileLink>
