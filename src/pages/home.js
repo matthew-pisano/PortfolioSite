@@ -94,7 +94,7 @@ export default function Home() {
                     new TileInfo({
                         title: <>On Picard Groups and Jacobians of Directed Graphs</>,
                         thumbnail: "/media/image/chipfiring.png",
-                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.PYTHON],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.MATH, TileTag.PYTHON],
                         links: (
                             <>
                                 <GitLink href={"https://github.com/matthew-pisano/ChipFiring"}>Chip Firing</GitLink>

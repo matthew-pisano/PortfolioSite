@@ -4,7 +4,7 @@ import React from "react";
 
 import { TileLink } from "@/components/tiles/Links";
 import { TileTag } from "@/components/tiles/Tags";
-import { Tile } from "@/components/tiles/Tiles";
+import { Tile, ScrollTile } from "@/components/tiles/Tiles";
 import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
@@ -31,7 +31,82 @@ export default function Lectures() {
                 </p>
             </Tile>
 
-            <Tile
+            <ScrollTile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Foundations of Computability: Incompleteness and Universality</>,
+                        thumbnail: "/media/image/ibm.png",
+                        tags: [TileTag.ACADEMIC, TileTag.MATH]
+                    })
+                }>
+                <p>
+                    This lecture is a part of the larger IBM colloquium initiative that have started work on. Though the
+                    subject of this lecture is somewhat abstracted away from the work that I do for IBM, is a subject
+                    that is just as important. The core of this lecture is to explore how Gödel's incompleteness
+                    theorems, Church's lambda calculus, and Turing's machines all relate to one another, Hilbert's
+                    program, and the state of mathematics in the early 20th century.
+                </p>
+                <p>
+                    The first part of this lecture sets the stage for what is to come. I explore the origins of set
+                    theory, logic, and the formalization of the foundations of mathematics. This section includes a
+                    discussion on Hilbert's famous program and Russell and Whitehead's <i>Principia Mathematica</i>.
+                </p>
+                <p>
+                    Next, I turn to Gödel and his first and second incompleteness theorems. The lecture breaks down
+                    Gödel's reasoning, starting with <i>Principia Mathematica</i>'s theory of Ramified types and walking
+                    through his famous proof step-by-step. Taking inspiration from the books that I have read on the
+                    subject, this lecture uses plain English and metaphor over strict proof to increase its
+                    understandability.
+                </p>
+                <p>
+                    Gödel's proof nicely follows into a discussion of Church's lambda calculus. While Gödel proved that
+                    a system cannot be both complete and consistent, the question of decidability (the{" "}
+                    <i>Entscheidungsproblem</i>) remained unanswered. Church worked on reducing this to a question of
+                    pure computation with his lambda calculus. Here, I go over some of its basic rules along with where
+                    it fits into the broader field of computing.
+                </p>
+                <p>
+                    Finally, this lecture covers Turing machines, universal computing machines, computability, and
+                    computational complexity. Here, I go over the definition of a Turing machine, the concept of a
+                    universal machine, and Turing's three proofs that eventually prove that Hilbert's desire for
+                    decidability was impossible. This section also covers the halting problem, classes of recursive
+                    functions, uncomputable functions, and "Big O" computational complexity classes.
+                </p>
+            </ScrollTile>
+
+            <ScrollTile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Software Engineering Lecture Series</>,
+                        thumbnail: "/media/image/suny-ulster.png",
+                        tags: [TileTag.ACADEMIC, TileTag.COLLAB]
+                    })
+                }>
+                <p>
+                    This lecture series, given over the course of one semester, covers the core concepts of agile
+                    software development, software design, documentation, and collaboration. This includes:
+                </p>
+                <ul>
+                    <li>Agile methodologies and Scrum</li>
+                    <li>ULM, diagramming, and scenarios</li>
+                    <li>User personas and client specifications</li>
+                    <li>Design patterns</li>
+                    <li>Documentation</li>
+                    <li>Devops and CI/CD</li>
+                    <li>Pull requests, code reviews, and issue scoping</li>
+                    <li>Software licensing and open source</li>
+                    <li>Responsible use of AI assistants</li>
+                </ul>
+
+                <p>
+                    This course is taught between myself and another computer science professor in collaboration. We
+                    each take on roles as customers and our students spend the semester developing a product for their
+                    assigned client. I have augmented this course with new modules on proper documentation procedures
+                    and on the responsible use of AI assistants during development.
+                </p>
+            </ScrollTile>
+
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Foundations Lecture Series</>,
@@ -67,6 +142,8 @@ export default function Lectures() {
                 <p>
                     The first two lectures primarily serve as a foundation for the third, on transformers themselves.
                     This lecture is a more detailed and comprehensive version of my original transformer models lecture.
+                    This version goes into much more depth into tokenization, positional encoding methods and vision
+                    transformers.
                 </p>
                 <p>
                     The fourth lecture centers on PyTorch and compilation. Here, I mainly cover ATen, AOT Autograd,
@@ -78,9 +155,9 @@ export default function Lectures() {
                     The final lecture in this series concerns IBM's Spyre accelerator. Though it is perhaps the most
                     technical lecture, I unfortunately cannot share many details due to its internal subject manner.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Transformer Models: Architectures and Use Cases</>,
@@ -109,9 +186,9 @@ export default function Lectures() {
                     convey this process in a more representative manner, I presented the calculations as a short
                     dialogue between several tokens within a sequence as their attention scores were updated over time.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Computer Architecture and Organization Lecture Series</>,
@@ -142,9 +219,9 @@ export default function Lectures() {
                     own, novel material. These changes, in conjunction with the existing coursework, give students a
                     more well-rounded understanding of the field of computing and low-level architectures.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Bergeron: Combating Adversarial Attacks by Emulating a Conscience</>,
@@ -171,9 +248,9 @@ export default function Lectures() {
                     RPI's Graduate Research Symposium, into which my research was accepted. At the symposium, I was
                     invited to participate in both a seminar-style lecture and a poster presentation.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Bergeron: Towards Language Models with a Conscience</>,
@@ -198,9 +275,9 @@ export default function Lectures() {
                     guest lecture for both graduate and undergraduate students in RPI's{" "}
                     <i>Topics in Cognitive Science</i> course.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Deep Reinforcement Learning and Its Neuroscientific Implications</>,
@@ -234,9 +311,9 @@ export default function Lectures() {
                     struggle with credit assignment and learning efficiency; i.e. the amount of data that a learner
                     needs to see before learning the general case for a pattern.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Moral High Ground: A Conversational Benchmark for LLM Moral Alignment</>,
@@ -252,9 +329,9 @@ export default function Lectures() {
                     student researchers and senior members of IBM's research teams.
                 </p>
                 <p>In the interest of confidentiality, I have omitted the original slide deck here.</p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>PredictChain: Empowering Collaboration for AI in a Blockchain-based Marketplace</>,
@@ -279,9 +356,9 @@ export default function Lectures() {
                     co-wrote for this project was also accepted into the <i>ChainScience 2023</i> conference where it
                     was presented by one of my collaborators on the paper.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Homophone Decoding & Speech Based Emotion Detection</>,
@@ -307,14 +384,14 @@ export default function Lectures() {
                     investigator at RPI. Our audience consisted mainly of our grantors from IBM as we gave this report
                     on our successful progress.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>On Picard Groups and Jacobians of Directed Graphs</>,
                         thumbnail: "/media/image/jmm.jpg",
-                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC],
+                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.MATH],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/JMMPresentation.pdf"}>Slides</TileLink>
@@ -335,7 +412,7 @@ export default function Lectures() {
                     invited back to New Paltz after graduation as a guest lecturer for their <i>Math and Cookies</i>{" "}
                     lecture series.
                 </p>
-            </Tile>
+            </ScrollTile>
         </DefaultWrapper>
     );
 }
