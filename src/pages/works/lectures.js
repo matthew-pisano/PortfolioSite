@@ -77,6 +77,38 @@ export default function Lectures() {
             <ScrollTile
                 tileInfo={
                     new TileInfo({
+                        title: <>Software Engineering Lecture Series</>,
+                        thumbnail: "/media/image/suny-ulster.png",
+                        tags: [TileTag.ACADEMIC, TileTag.COLLAB]
+                    })
+                }>
+                <p>
+                    This lecture series, given over the course of one semester, covers the core concepts of agile
+                    software development, software design, documentation, and collaboration. This includes:
+                </p>
+                <ul>
+                    <li>Agile methodologies and Scrum</li>
+                    <li>ULM, diagramming, and scenarios</li>
+                    <li>User personas and client specifications</li>
+                    <li>Design patterns</li>
+                    <li>Documentation</li>
+                    <li>Devops and CI/CD</li>
+                    <li>Pull requests, code reviews, and issue scoping</li>
+                    <li>Software licensing and open source</li>
+                    <li>Responsible use of AI assistants</li>
+                </ul>
+
+                <p>
+                    This course is taught between myself and another computer science professor in collaboration. We
+                    each take on roles as customers and our students spend the semester developing a product for their
+                    assigned client. I have augmented this course with new modules on proper documentation procedures
+                    and on the responsible use of AI assistants during development.
+                </p>
+            </ScrollTile>
+
+            <ScrollTile
+                tileInfo={
+                    new TileInfo({
                         title: <>Foundations Lecture Series</>,
                         thumbnail: "/media/image/ibm.png",
                         tags: [TileTag.ACADEMIC, TileTag.AI]
