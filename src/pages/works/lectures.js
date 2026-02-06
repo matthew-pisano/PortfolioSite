@@ -60,8 +60,8 @@ export default function Lectures() {
                 </p>
                 <p>
                     Gödel's proof nicely follows into a discussion of Church's lambda calculus. While Gödel proved that
-                    a system cannot be both complete and consistent, the question of decidability, or the{" "}
-                    <i>Entscheidungsproblem</i>, remained unanswered. Church worked on reducing this to a question of
+                    a system cannot be both complete and consistent, the question of decidability (the{" "}
+                    <i>Entscheidungsproblem</i>) remained unanswered. Church worked on reducing this to a question of
                     pure computation with his lambda calculus. Here, I go over some of its basic rules along with where
                     it fits into the broader field of computing.
                 </p>
