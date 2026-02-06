@@ -24,7 +24,8 @@ const TileTag = {
     PERSONAL: "personal",
     PHP: "php",
     PYTHON: "python",
-    RESEARCH: "research"
+    RESEARCH: "research",
+    MATH: "math"
 };
 
 /**

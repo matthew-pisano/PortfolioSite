@@ -219,6 +219,14 @@
     content: "CUDA";
 }
 
+.mathTag img {
+    content: url("/assets/math.png");
+}
+
+.mathTag div::after {
+    content: "Mathematics";
+}
+
 
 @media (width <= 600px) {
     .pageLink img {
