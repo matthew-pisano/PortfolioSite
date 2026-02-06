@@ -102,13 +102,13 @@
     content: url("/assets/anchorIcon.svg");
 }
 
-.bookTileContent {
-    max-height: 600px;
+.scrollTileContent {
+    max-height: 500px;
     overflow-y: auto;
     padding-bottom: 60px;
 }
 
-.bookTileContent::before {
+.scrollTileContent::before {
     content: "";
     top: 0;
     background: linear-gradient(to top, transparent, var(--theme-color-4));
@@ -120,7 +120,7 @@
     z-index: 1;
 }
 
-.bookTileContent::after {
+.scrollTileContent::after {
     content: "";
     bottom: 0;
     background: linear-gradient(to bottom, transparent, var(--theme-color-4));
@@ -130,6 +130,10 @@
     height: 80px;
     pointer-events: none;
     z-index: 1;
+}
+
+.bookTileContent {
+    max-height: 600px;
 }
 
 .bookTileSectionHeader {

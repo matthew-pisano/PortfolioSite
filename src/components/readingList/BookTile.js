@@ -74,7 +74,7 @@ function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anc
     return (
         <BookAnchorContext.Provider value={contextValue}>
             <Tile tileInfo={new TileInfo({ title: <>{title}</>, thumbnail: thumbnail, anchor: anchor })}>
-                <div className={`${tileStyles.bookTileContent}`}>
+                <div className={`${tileStyles.scrollTileContent} ${tileStyles.bookTileContent}`}>
                     <div className={tileStyles.bookTileSection}>
                         <small style={{ display: "block", width: "100%", textAlign: "right" }}>
                             {bookTime} minute read

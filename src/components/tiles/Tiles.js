@@ -102,6 +102,26 @@ function tileFactory(tileInfo, children = null) {
 }
 
 /**
+ * A helper element to define the common tile body element
+ * @param children {JSXElement} The children of the tile
+ * @param id {string} The tile's ID
+ * @param style {object} The style of the tile
+ */
+function TileBody({ children, id, style }) {
+    return (
+        <div id={id} className={`w3-container w3-row ${tileStyles.displayTile}`} style={style} data-refdata={"unslid"}>
+            {children}
+        </div>
+    );
+}
+
+TileBody.propTypes = {
+    children: PropTypes.node,
+    id: PropTypes.string,
+    style: PropTypes.object
+};
+
+/**
  * A tile object within a page
  * @param children {JSXElement} The children of the tile
  * @param tileInfo {TileInfo} Metadata for the tile
@@ -110,11 +130,7 @@ function tileFactory(tileInfo, children = null) {
 function Tile({ children, tileInfo, style }) {
     let tileElements = tileFactory(tileInfo, children);
     return (
-        <div
-            id={tileElements.tileId}
-            className={`w3-container w3-row ${tileStyles.displayTile}`}
-            style={style}
-            data-refdata={"unslid"}>
+        <TileBody id={tileElements.tileId} style={style}>
             {tileElements.tileThumbnail}
 
             <div className={`w3-mobile w3-rest`}>
@@ -125,7 +141,7 @@ function Tile({ children, tileInfo, style }) {
                     {tagFactory(tileInfo.tags)}
                 </div>
             </div>
-        </div>
+        </TileBody>
     );
 }
 
@@ -145,17 +161,13 @@ function SectionTile({ tileInfo, style }) {
 
     let tileElements = tileFactory(tileInfo);
     return (
-        <div
-            id={tileElements.tileId}
-            className={`w3-container w3-row ${tileStyles.displayTile}`}
-            style={style}
-            data-refdata={"unslid"}>
+        <TileBody id={tileElements.tileId} style={style}>
             {tileElements.tileThumbnail}
 
             <div className={`w3-mobile w3-rest`}>
                 <h2 className={`${tileStyles.displayContentTitle}`}>{tileElements.tileTitle}</h2>
             </div>
-        </div>
+        </TileBody>
     );
 }
 
@@ -173,11 +185,7 @@ SectionTile.propTypes = {
 function GalleryTile({ children, tileInfo, style }) {
     let tileElements = tileFactory(tileInfo);
     return (
-        <div
-            id={tileElements.tileId}
-            className={`w3-container w3-row ${tileStyles.displayTile}`}
-            style={style}
-            data-refdata={"unslid"}>
+        <TileBody id={tileElements.tileId} style={style}>
             <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail} ${tileStyles.galleryTileThumbnail}`}>
                 <img src={tileInfo.thumbnail} alt="gitLogo" />
             </div>
@@ -192,7 +200,7 @@ function GalleryTile({ children, tileInfo, style }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </TileBody>
     );
 }
 
@@ -202,4 +210,24 @@ GalleryTile.propTypes = {
     style: PropTypes.object
 };
 
-export { Tile, SectionTile, GalleryTile, slideTilesOnScroll, resetTilesOnScroll, TRANSLUCENT };
+/**
+ * A tile object with a limited height and scrolling content
+ * @param children {JSXElement} The children of the tile
+ * @param tileInfo {TileInfo} Metadata for the tile
+ * @param style {object} The style of the tile
+ */
+function ScrollTile({ children, tileInfo, style }) {
+    return (
+        <Tile tileInfo={tileInfo} style={style}>
+            <div className={`${tileStyles.scrollTileContent}`}>{children}</div>
+        </Tile>
+    );
+}
+
+ScrollTile.propTypes = {
+    children: PropTypes.node,
+    tileInfo: PropTypes.object.isRequired,
+    style: PropTypes.object
+};
+
+export { Tile, SectionTile, GalleryTile, ScrollTile, slideTilesOnScroll, resetTilesOnScroll, TRANSLUCENT };

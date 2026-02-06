@@ -4,7 +4,7 @@ import React from "react";
 
 import { TileLink } from "@/components/tiles/Links";
 import { TileTag } from "@/components/tiles/Tags";
-import { Tile } from "@/components/tiles/Tiles";
+import { Tile, ScrollTile } from "@/components/tiles/Tiles";
 import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
@@ -31,7 +31,7 @@ export default function Lectures() {
                 </p>
             </Tile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Foundations of Computability: Incompleteness and Universality</>,
@@ -72,9 +72,9 @@ export default function Lectures() {
                     decidability was impossible. This section also covers the halting problem, classes of recursive
                     functions, uncomputable functions, and "Big O" computational complexity classes.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Foundations Lecture Series</>,
@@ -123,9 +123,9 @@ export default function Lectures() {
                     The final lecture in this series concerns IBM's Spyre accelerator. Though it is perhaps the most
                     technical lecture, I unfortunately cannot share many details due to its internal subject manner.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Transformer Models: Architectures and Use Cases</>,
@@ -154,9 +154,9 @@ export default function Lectures() {
                     convey this process in a more representative manner, I presented the calculations as a short
                     dialogue between several tokens within a sequence as their attention scores were updated over time.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Computer Architecture and Organization Lecture Series</>,
@@ -187,9 +187,9 @@ export default function Lectures() {
                     own, novel material. These changes, in conjunction with the existing coursework, give students a
                     more well-rounded understanding of the field of computing and low-level architectures.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Bergeron: Combating Adversarial Attacks by Emulating a Conscience</>,
@@ -216,9 +216,9 @@ export default function Lectures() {
                     RPI's Graduate Research Symposium, into which my research was accepted. At the symposium, I was
                     invited to participate in both a seminar-style lecture and a poster presentation.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Bergeron: Towards Language Models with a Conscience</>,
@@ -243,9 +243,9 @@ export default function Lectures() {
                     guest lecture for both graduate and undergraduate students in RPI's{" "}
                     <i>Topics in Cognitive Science</i> course.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Deep Reinforcement Learning and Its Neuroscientific Implications</>,
@@ -279,9 +279,9 @@ export default function Lectures() {
                     struggle with credit assignment and learning efficiency; i.e. the amount of data that a learner
                     needs to see before learning the general case for a pattern.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Moral High Ground: A Conversational Benchmark for LLM Moral Alignment</>,
@@ -297,9 +297,9 @@ export default function Lectures() {
                     student researchers and senior members of IBM's research teams.
                 </p>
                 <p>In the interest of confidentiality, I have omitted the original slide deck here.</p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>PredictChain: Empowering Collaboration for AI in a Blockchain-based Marketplace</>,
@@ -324,9 +324,9 @@ export default function Lectures() {
                     co-wrote for this project was also accepted into the <i>ChainScience 2023</i> conference where it
                     was presented by one of my collaborators on the paper.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>Homophone Decoding & Speech Based Emotion Detection</>,
@@ -352,9 +352,9 @@ export default function Lectures() {
                     investigator at RPI. Our audience consisted mainly of our grantors from IBM as we gave this report
                     on our successful progress.
                 </p>
-            </Tile>
+            </ScrollTile>
 
-            <Tile
+            <ScrollTile
                 tileInfo={
                     new TileInfo({
                         title: <>On Picard Groups and Jacobians of Directed Graphs</>,
@@ -380,7 +380,7 @@ export default function Lectures() {
                     invited back to New Paltz after graduation as a guest lecturer for their <i>Math and Cookies</i>{" "}
                     lecture series.
                 </p>
-            </Tile>
+            </ScrollTile>
         </DefaultWrapper>
     );
 }
