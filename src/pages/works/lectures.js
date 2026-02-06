@@ -36,7 +36,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Foundations of Computability: Incompleteness and Universality</>,
                         thumbnail: "/media/image/ibm.png",
-                        tags: [TileTag.ACADEMIC, TileTag.AI]
+                        tags: [TileTag.ACADEMIC, TileTag.MATH]
                     })
                 }>
                 <p>
