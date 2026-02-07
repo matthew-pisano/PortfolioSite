@@ -244,6 +244,41 @@ export default function GenTransformers() {
                 back to situated cognition and the use of external recording mediums (like paper or computers), though
                 this is much less efficient due to the lossful conversions mentioned above.
             </p>
+            <BlogSection>The State of the Art</BlogSection>
+            <p>
+                As of the time of writing, Transformer models are very much the current state of the art, both in the
+                colloquial and literal sense. Colloquially, they still represent one of the most capable and
+                generalizable architectures that AI researchers have yet developed. In ths literal sense, these models
+                have been so capable and popular that the current "state of the art" of AI research seems to have been
+                wholly subsumed by them. The structure of these models (and the inordinate amount of data they are
+                trained on) has led to their lightning-in-a-bottle rise over the past several years. However, I argue,
+                this very structure is a significant barrier between the current state of the art and human-level
+                generality.
+            </p>
+            <p>
+                Certain drawbacks of these models have been widely recognized and researched already. Examples include
+                the quadratic scaling of self-attention, the (relative) learning inefficiency of neural networks, and
+                the arbitrariness of tokenization. While these individual issues are important from a practical lens, I
+                am primarily interested in the theoretical limitations of a more generic class of models. I will
+                describe this class in more detail momentarily, but for now we need not worry about the exact
+                implementation of the models that I am about to discuss, only their learning methods and behavior.
+            </p>
+            <BlogSection level={2}>Statistical Inference Models</BlogSection>
+            <p>
+                From the 1950s to around the 1970s, the processing of natural language by computers was a highly
+                rule-based process. To borrow a phrase from Eliezer Yudkowsky and Nate Soares, these models were built
+                by hand, not grown like modern models. This allowed human programmers to have fine-grained control over
+                the behavior of their models. Despite some early success, the fact that humans had to manually tweak
+                their models to improve their performance quickly led to diminishing returns. After some soul-searching
+                among AI researchers, a different paradigm began to emerge in the 1980s. Instead of manually inscribing
+                rules and relations into their models, perhaps their models could learn this for themselves through
+                statistical inference. This motivated the development of models based on N-grams, the Markov assumption
+                , and bag-of-word principles. This time period began the shift of AI being built by hand to being grown
+                by distributions of data. Even though these models were less interpretable by humans, they were far more
+                capable than their hand-crafted predecessors. Richard Sutton dubbed this realization "the bitter lesson
+                of artificial intelligence" in 2019. Despite our best efforts to imbue AI with hand-curated knowledge,
+                "blind" computation and learning appears to win out, in the end. Hold onto this thought.
+            </p>
             <hr />
             <FootNote idx={1} context={footnoteContext}>
                 At least, in my opinion, as I paid close attention to research papers and corporate releases.
