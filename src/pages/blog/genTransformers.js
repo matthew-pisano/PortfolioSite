@@ -1,6 +1,7 @@
 import React, { createContext } from "react";
 
 import Link from "next/link";
+import Latex from "react-latex-next";
 
 import { FootNote, FootRef } from "@/components/widgets/FootNote";
 import BlogWrapper, { BlogInfo, BlogSection } from "@/components/wrappers/BlogWrapper";
@@ -279,6 +280,87 @@ export default function GenTransformers() {
                 of artificial intelligence" in 2019. Despite our best efforts to imbue AI with hand-curated knowledge,
                 "blind" computation and learning appears to win out, in the end. Hold onto this thought.
             </p>
+            <p>
+                Where do modern language models fit into this? Similar to their much simpler forebearers, the main
+                training objective of these models is still statistical inference that matches their training
+                distribution. This is achieved through next-token prediction. Every poem, proof, and program produced by
+                these models comes from the simple philosophy of:
+            </p>
+            <blockquote>
+                Conditional upon the sequence of tokens present in my current context, how can I sample from my token
+                vocabulary in a way that most closely matches what I would have seen in my training data.
+            </blockquote>
+            <p>
+                This can be roughly represented as <Latex>{`$t \\sim P_\\theta(t|x_1,\\ldots,x_n)$`}</Latex> where{" "}
+                <Latex>{`$t$`}</Latex> is the output token that we sample from our distribution,{" "}
+                <Latex>{`$\\theta$`}</Latex> is the set of learned parameters from training data, and{" "}
+                <Latex>{`$x_1,\\ldots,x_n$`}</Latex> represents the sequence of tokens present in the context.
+            </p>
+            <BlogSection level={2}>Pre-training and Fine-tuning</BlogSection>
+            <p>
+                If we were only are examining the simple case of a model being pretrained on a single, static dataset,
+                this is where our analysis would end. Regardless of a model's internal implementation, if it is given
+                this type of dataset and a training objective that only maximizes prediction accuracy, it should follow
+                that our model is merely performing blind statistical inference, regardless of our capable it is. Even
+                if our model's architecture was inherently capable of learning emergent behavior, this would actively be
+                penalized during training. This is because any emergent behavior, by definition, would not fall within
+                the training distribution and would thus increase the prediction's error relative to the distribution.
+            </p>
+            <p>
+                What if we add on a second layer of training, perhaps performing supervised fine-tuning on some specific
+                objective? Most autoregressive LLMs go through this phase in order to improve their
+                conversational/assistant capabilities or to encode within them knowledge of a specialized domain. If we
+                perform supervised fine-tuning in this manner, hopefully the strong similarity to its original training
+                run is clear. Even though we are augmenting the model's target distribution with new material, we are
+                still merely updating the distribution that the model is being trained to predict. Since our training
+                objective is still predictive-error-minimization relative to a static distribution, our model is still
+                discouraged from making predictions that would not match its augmented distribution.
+            </p>
+            <BlogSection level={2}>Reinforcement Learning</BlogSection>
+            <p>
+                The training regimen of most models does not stop of supervised fine-tuning, however. Usually these
+                models undergo further optimization through reinforcement learning as their final training stage. This
+                is for several reasons. Classically, this phase primarily served to align the model with human
+                preferences. Procedures like reinforcement learning from human feedback (RLHF) built up a reward model
+                based on human preferences that was then used to reward the target LLM through proximal policy
+                optimization (PPO). Recently, we have seen more efficient methods of etching "human preferences"
+                <FootRef idx={18} context={footnoteContext} /> onto models, such as direct preference optimization (DPO)
+                or grouped relative policy optimization (GRPO).
+            </p>
+            <p>
+                Even more recently, with the rise of reasoning models, we have seen a new use for RL in LLMs. The
+                technique of reinforcement learning from verified rewards (RLVR) has become popular for improving model
+                performance on mathematics of programming. Both of these domains offer much more concrete feedback than
+                the abstract world of human preferences. A proof or program is either correct or it is not; this can be
+                (more) easily communicated to the model in a way that directly improves its performance. I find this to
+                be a very promising area of research in general, but it is still limited to specific domains. Absent
+                highly detailed simulations of human interactions, it may be difficult to scale the real-world and
+                general reasoning abilities of models with this technique alone. Most applications for human reasoning
+                offer very sparse and time-delayed rewards. From the perspective of a model, it can be difficult to
+                associate these rare rewards with actions performed in the remote past. So, while interesting,
+                techniques like RLVR are not magic bullets for bringing about AGI.
+            </p>
+            <p>
+                Looking at reinforcement learning techniques as a whole, do they offer a substantial enough difference
+                from supervised learning to allow models to generalize? At first glance, the outlook certainly appears
+                good. Before large language models, RL-based models represented our most advanced and capable attempts
+                at AI. Though, bear in mind that these two classes of model operate in very different domains. Arguably,
+                the most famous example of such an RL model is DeepMind's AlphaGo. When only supervise tuned on a
+                curated set of human Go moves, the model performed well, but was still only at the level of a strong
+                amateur. At this stage, AlphaGo was only imitating human moves and strategies from its training set.
+                This represented a single, static surface toward which it could optimize its outputs. It was unable to{" "}
+                <i>generalize</i> beyond its training set. This changed when RL was used to train an auxiliary "value
+                network" that evaluated Go board states. As AlphaGo played, this network could actively learn directly
+                from rewards based on its performance. This was taken further with AlphaGo Zero, a model solely trained
+                through reinforcement learning and self-play. This is how the model was able to achieve{" "}
+                <i>superhuman</i> performance. By playing against itself instead of emulating human experts, every time
+                it improved, it would be a greater challenge for itself to beat next iteration. This environment of
+                simple rules, self-play, and clear rewards allowed AlphaGo Zero to become <i>arbitrarily</i> good at Go.
+            </p>
+            <p>
+                Therefore it is natural to ask whether language models trained with reinforcement learning can become{" "}
+                <i>arbitrarily</i> good at modeling language?
+            </p>
             <hr />
             <FootNote idx={1} context={footnoteContext}>
                 At least, in my opinion, as I paid close attention to research papers and corporate releases.
@@ -429,6 +511,12 @@ export default function GenTransformers() {
                 , strangely. Though this is amusing to consider, one must remember that our minds have evolved to fit
                 their environment as our bodies have. If our ancestors only needed a limited working memory to
                 accomplish basic survival tasks, then our current allowment of working memory is all that we need(ed).
+            </FootNote>
+            <FootNote idx={18} context={footnoteContext}>
+                "Human preferences" is quoted here as it is still very difficult to robustly align the behavior of
+                models with what we humans would most prefer. The alignment problem is still far from solved. This is
+                why even models that undergo extensive preference tuning can still be jail-broken or otherwise
+                manipulated into acting against the human preferences they were supposed to learn.
             </FootNote>
         </BlogWrapper>
     );
