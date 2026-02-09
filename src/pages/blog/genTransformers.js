@@ -432,7 +432,7 @@ export default function GenTransformers() {
                 concept of backtracking. Once a token has been generated, it will always remain within the model context
                 (though not necessarily the context window). There is no architecture-level support for saying:
             </p>
-            <blockquote>I have tried this method and I estimate that it will not work; let me try again</blockquote>
+            <blockquote>I have tried this method and I estimate that it will not work; let me try again.</blockquote>
             <p>
                 Perhaps that we could implement a kind of scratch-pad and have specific stopping tokens that, once
                 detected, wipe the scratch space and perhaps append "do attempt <i>XYZ</i>" to the current context? This
