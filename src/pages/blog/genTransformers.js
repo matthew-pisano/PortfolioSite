@@ -26,13 +26,15 @@ export default function GenTransformers() {
             footnoteContext={footnoteContext}>
             <BlogSection>Introduction</BlogSection>
             <p>
-                It goes without saying that the past three years have represented an unprecedented growth in both the
-                capabilities of large language models and corresponding investments into them. As 2022 gave way to 2023,
-                progress appeared to be accelerating without bounds, as if each new model represented a fundamental jump
-                in capability over their predecessors. GPT-3.5 could answer simple questions and maintain a polite
-                conversation and suddenly GPT-4 was passing the Bar exam only a few months later. Throughout 2023 and
-                2024, the capabilities of these models continued to grow significantly, though not quite at its original
-                clip
+                It goes without saying that the past three years have represented unprecedented growth in both the
+                capabilities of large language models and the corresponding investments into them. While
+                transformer-based language models had been in development since 2017, the catalyst of their current
+                surge in popularity (and capability) came from the launch of ChatGPT in late 2022. As 2022 gave way to
+                2023, progress appeared to be accelerating without bounds, as if each new model represented a
+                fundamental jump in capability over their predecessors. GPT-3.5 could answer simple questions and
+                maintain a polite conversation, yet within only a few months, GPT-4 was suddenly passing the Bar exam.
+                Throughout 2023 and 2024, the capabilities of these models continued to grow significantly, though not
+                quite at its original clip
                 <FootRef idx={1} context={footnoteContext} />. AlphaCode and AlphaEvolve
                 <FootRef idx={2} context={footnoteContext} /> were pushing the bounds of scientific discovery while
                 coding assistant models were becoming ubiquitous among developers and engineers. Heading into 2025, the
@@ -61,27 +63,27 @@ export default function GenTransformers() {
                 generated code often falls short in terms of expected accuracy or security. Models may generate programs
                 with subtle, or even blatant, security vulnerabilities
                 <FootRef idx={6} context={footnoteContext} />. They may generate code that appears roughly correct, but
-                is not quite fit to the task at hand. Most obvious, they may behave erratically or have unexpected and
-                catastrophic failure modes. Developers with their databases wiped or home directories delected can
-                attest to this directly
+                is not quite fit to the task at hand. Most obvious, they may behave erratically or have catastrophic
+                failure modes. Developers with their databases wiped or home directories deleted can attest to this
+                directly
                 <FootRef idx={7} context={footnoteContext} />.
             </p>
             <p>
                 Technical debt has also become a hallmark of an artificially generated codebase. The frequency and
                 consequence of this debt has led to some software engineers taking on full-time freelance work
-                <FootRef idx={8} context={footnoteContext} /> to untangle the spaghetti code that an LLM created yet
-                could not solve for itself. This is likely a consequence of another well-documented shortcoming of these
-                models: handling complexity. While this has improved over time with longer context windows and better
-                performance on "Needle in a Haystack" benchmarks, the core issue still remains. As the scale and
+                <FootRef idx={8} context={footnoteContext} /> to untangle the spaghetti code that an LLM had created yet
+                could not maintain or debug on its own. This is a consequence of another well-documented shortcoming of
+                these models: handling complexity. While this has improved over time with longer context windows and
+                better performance on "Needle in a Haystack" benchmarks, the core issue still remains. As the scale and
                 complexity of a project grows, models often struggle to fully grasp the relationships between functional
                 units. Looking through a few of these codebases myself, it feels as if a set of engineers were hired one
                 at a time, without communication or documentation, and tasked to work independently on a single project.
                 Different files or modules feel disjoint with respect to some abstract sense of uniformity.
             </p>
             <p>
-                In the domain of mathematics, LLMs has an impressive track record for solving complex problems and even
-                for creating proofs to open questions. Looking loser, we find an eerily similar pattern. Many of these
-                more complex and unique proofs have been with significant human aid. Those that have been solved
+                In the domain of mathematics, LLMs have an impressive track record for solving complex problems and even
+                for creating proofs to open questions. Looking closer, we find an eerily similar pattern. Many of these
+                more complex and unique proofs have written been with significant human aid. Those that have been solved
                 primarily by a model are considered more mechanistic or formulaic by mathematicians
                 <FootRef idx={9} context={footnoteContext} />.
             </p>
@@ -91,8 +93,8 @@ export default function GenTransformers() {
                 improve notably. My primary concern is with the claims of "generality" that come with each new model
                 release or jump in capability. Additionally, the above is not meant as a well-formed argument by any
                 means, each example is certainly up to interpretation or rationalization. However, these examples, and a
-                more abstract feeling that is much more difficult to convey, have served as motivation for me. However,
-                I am interested in a more thorough analysis of the theoretical capabilities and limitations of
+                more abstract feeling that is much more difficult to convey, have served as motivation for me. I am
+                interested in a more thorough analysis of the theoretical capabilities and limitations of
                 transformer-based generative models. Are these models undoubtedly capable of general, human-level
                 intelligence with some extra data or more clever tweaks to the attention mechanism? Or are we witnessing
                 a subtle (and decentralized) form of overfitting where models continue to attain higher and higher
@@ -121,11 +123,11 @@ export default function GenTransformers() {
                 which characteristics that a generally intelligent agent may need.
             </p>
             <p>
-                So what abilities do we have, precisely, that allow us to quickly learn about our environments,
-                generalize to new tasks from very few (or zero!) examples, execute preplanned procedures, etc. The bad
-                news is that if we knew the answer to this question, then we would have already solved the task of
-                creating an AGI. The good news is that we can easily identify a few of our mental capabilities that
-                enable our performance on a wide range of cognitive tasks.
+                So what core cognitive abilities do we have, precisely? What allows us to quickly learn about our
+                environments, generalize to new tasks from very few (or zero!) examples, and execute preplanned
+                procedures? The bad news is that if we knew the full answer to this question, then we would have already
+                solved the task of creating an AGI. The good news is that we can easily identify a few of our mental
+                capabilities that enable our performance on a wide range of cognitive tasks.
             </p>
             <BlogSection level={2}>We are not Our Environments</BlogSection>
             <p>
@@ -136,8 +138,8 @@ export default function GenTransformers() {
                 altered consciousness, we can imagine ourselves taking some action without actually taking that action
                 and altering our environment. If we would like to sketch out a conversation, program, or mathematical
                 proof, we can develop and refine our ideas over time without needing to speak a single word, type a
-                single command, or commit any formulae to paper. Alright, but why do we need to have an internal state
-                for this? Why can we not simply think directly within our environment without an extra layer of
+                single command, or commit any formulae to paper. Why do we need to have an internal state for this,
+                though? Why can we not simply think directly within our environment without an extra layer of
                 encapsulation?
             </p>
             <p>
@@ -148,30 +150,31 @@ export default function GenTransformers() {
                 milk to mix with the eggs, which spices may complement the omelette's flavor, and what would happen if I
                 kept the stove's heat too high or too low. Note that I do not actually have to step foot into the
                 kitchen to foresee the unworkable consistency of over-milked eggs, the strange taste of cinnamon-sugar
-                eggs, or the charred mess of a burnt meal. For better cooks than I, this may seem trivially intuitive,
-                but this scenario demonstrates how we can develop an initial plan (eggs, scramble, milk, season, cook)
-                and productively refine its parameters (ingredient ratios, slice mixes, cooking intensity) over time
-                without needing to actually carry out any actions. More mechanistically, I can easily foresee the
-                consequences of running <code>rm -rf /</code> without accidentally running the command on a computer (or
-                myself if I was a machine).
+                eggs, or the charred mess of a burnt meal. This again may seem trivially intuitive, but our ability to
+                simulate environmental actions is integral to our cognition. We can, transparently and intuitively,
+                develop an initial plan (scramble, milk, season, cook) and productively refine its parameters
+                (ingredient ratios, spice mixes, cooking intensity) over time without needing to actually carry out any
+                actions. More concisely, I can easily foresee the consequences of running <code>rm -rf /</code> without
+                accidentally running the command on a computer (or myself if I was a machine).
             </p>
             <p>
-                This is useful, though perhaps a similar effect could be achieved through the usage of situated
-                cognition, writing or drawing out the consequences in advance? We could, but we would be losing some
-                conceptual fidelity in doing so. This leads neatly into the second advantage of an environment-self
-                isolation. Those who design software regularly experience this "lossiness" on a regular basis. Suppose I
-                design and implement a complex piece of software. At some later date, I would like to make a revision to
-                this software. Even with the help of comprehensive documentation, it will still take a little while to
+                This is useful, though could we not achieve a similar effect through the usage of situated cognition,
+                writing or drawing out the consequences in advance? We could, but we would be losing some conceptual
+                fidelity in doing so. This leads neatly into the second advantage of an environment-self isolation.
+                Those who design software regularly experience this "lossiness" on a regular basis. Suppose I design and
+                implement a complex piece of software. At some later date, I would like to make a revision to this
+                program. Even with the help of comprehensive documentation, it will still take a little while to
                 accustom myself to the code once again, to get a "feel" for how it is laid out and operates (even when
                 accounting for the time to physically read the documentation). Why is this? All of the code and
                 documentation exists; I do not need to manipulate anything into a form that I can then understand. Back
                 when I was originally planning the software's structure, I had within my mind a nuanced and multifaceted
                 representation of the problem and planned solution. This includes potential implementations not taken,
-                edge cases, and a mental mapping of what went where. When the software is finally written, much of this
+                edge cases, and a mental mapping of what went where. After the software is fully written, much of this
                 information is lost as my brain forgets over time. Of course, this information loss can be lessened with
                 good documentation, but much of my subjective, internal representation cannot be concisely represented
-                by text or diagrams. Now imagine that for every token written I forgot all of my internal representation
-                and had to rebuild it just from what I had previously written down
+                by text or diagrams. Now imagine that, after writing each element of my program, I forgot all of my
+                internal representation and had to rebuild it from scratch, using what I had previously written down as
+                a reference
                 <FootRef idx={12} context={footnoteContext} />. If I was unable to isolate my subjective representation
                 of the software from the environment, this would be the case. In reality, my mind does allow for this
                 isolation so, once I have refreshed my knowledge, I can continue to directly manipulate the embedded
@@ -184,7 +187,7 @@ export default function GenTransformers() {
                 <FootRef idx={13} context={footnoteContext} /> where we only learn new information and do not act upon
                 it in any way. We learn in an "online" manner. That is, we learn actively as we interact with our
                 environment, instead of experiencing a well-defined period of pure observation followed by a period of
-                pure experimentation. This means that, as we are learning, we can solicit feedback from a teacher or
+                pure experimentation. This means that, as we are learning, we can solicit feedback from a teacher or our
                 environment. We can immediately test out what we think we know and update our beliefs based on feedback.
                 When we learn, we are also able to clearly incorporate new beliefs into our world model without
                 overwriting other, unrelated information
@@ -202,11 +205,11 @@ export default function GenTransformers() {
                 concept of "imprimers". An imprimer is a person, often a mentor or parent, from whom we readily take in
                 information with a diminished degree of skepticism. If a parent tells us of a reliable home remedy for
                 an illness, we are more likely to incorporate that knowledge than if a complete stranger had told us the
-                same. This gives us the ability to ignore (or to at least treat it with a degree of skepticism)
-                irrelevant or untrustworthy information, even after repeated exposure. If I read thousands of copies of
-                a Reddit post on the benefits of putting glue on cheese pizza, I know to ignore that information after
-                only seeing a glue bottle's warning label once or twice. Importantly, this is not a result of any
-                external filtering process that selects stimuli for us, this process occurs completely "in house".
+                same. This gives us the ability to ignore (or to at least be skeptical of) irrelevant or untrustworthy
+                information, even after repeated exposure. If I read thousands of copies of a Reddit post on the
+                benefits of putting glue on cheese pizza, I know to ignore that information after only seeing a glue
+                bottle's warning label once or twice. Importantly, this is not a result of any external filtering
+                process that selects stimuli for us, this process occurs completely "in house".
             </p>
             <BlogSection level={2}>Self-Play</BlogSection>
             <p>
@@ -247,14 +250,14 @@ export default function GenTransformers() {
             </p>
             <BlogSection>The State of the Art</BlogSection>
             <p>
-                As of the time of writing, Transformer models are very much the current state of the art, both in the
+                As of the time of writing, transformer models are very much the current state of the art, both in the
                 colloquial and literal sense. Colloquially, they still represent one of the most capable and
                 generalizable architectures that AI researchers have yet developed. In ths literal sense, these models
                 have been so capable and popular that the current "state of the art" of AI research seems to have been
-                wholly subsumed by them. The structure of these models (and the inordinate amount of data they are
-                trained on) has led to their lightning-in-a-bottle rise over the past several years. However, I argue,
-                this very structure is a significant barrier between the current state of the art and human-level
-                generality.
+                wholly subsumed by them. The structure and training objectives of these models have led to their
+                lightning-in-a-bottle success over the past several years. However, I argue, the focus on this very
+                structure and training objective is a significant barrier between the current state of the art and
+                human-level generality.
             </p>
             <p>
                 Certain drawbacks of these models have been widely recognized and researched already. Examples include
@@ -273,46 +276,48 @@ export default function GenTransformers() {
                 their models to improve their performance quickly led to diminishing returns. After some soul-searching
                 among AI researchers, a different paradigm began to emerge in the 1980s. Instead of manually inscribing
                 rules and relations into their models, perhaps their models could learn this for themselves through
-                statistical inference. This motivated the development of models based on N-grams, the Markov assumption
-                , and bag-of-word principles. This time period began the shift of AI being built by hand to being grown
-                by distributions of data. Even though these models were less interpretable by humans, they were far more
-                capable than their hand-crafted predecessors. Richard Sutton dubbed this realization "The Bitter Lesson
-                of Artificial Intelligence" in 2019. Despite our best efforts to imbue AI with hand-curated knowledge,
-                "blind" computation and learning appears to win out, in the end. Hold onto this thought.
+                statistical inference. This motivated the development of models based on N-grams, the Markov assumption,
+                and bag-of-word principles. This time period began the shift of AI being built by hand to being grown by
+                distributions of training data. Even though these models were less interpretable by humans, they were
+                far more capable than their hand-crafted predecessors. Richard Sutton dubbed this realization "The
+                Bitter Lesson of Artificial Intelligence" in 2019. Despite our best efforts to imbue AI with
+                hand-curated knowledge, "blind" computation and learning appears to win out, in the end. Hold onto this
+                thought.
             </p>
             <p>
                 Where do modern language models fit into this? Similar to their much simpler forebearers, the main
-                training objective of these models is still statistical inference that matches their training
-                distribution. This is achieved through next-token prediction. Every poem, proof, and program produced by
-                these models comes from the simple philosophy of:
+                training objective of these models is still to generate a distribution of tokens that matches the
+                distribution in the training data as closely as possible. This is achieved through the optimization of
+                next-token prediction. Every poem, proof, and program produced by these models comes from the simple
+                philosophy of:
             </p>
             <blockquote>
                 Conditional upon the sequence of tokens present in my current context, how can I sample from my token
                 vocabulary in a way that most closely matches what I would have seen in my training data.
             </blockquote>
             <p>
-                This can be roughly represented as <Latex>{`$t \\sim P_\\theta(t|x_1,\\ldots,x_n)$`}</Latex> where{" "}
-                <Latex>{`$t$`}</Latex> is the output token that we sample from our distribution,{" "}
+                This can be roughly represented as <Latex>{`$t_{n+1} \\sim P_\\theta(t|t_1,\\ldots,t_n)$`}</Latex> where{" "}
+                <Latex>{`$t_{n+1}$`}</Latex> is the output token that we sample from our distribution,{" "}
                 <Latex>{`$\\theta$`}</Latex> is the set of learned parameters from training data, and{" "}
-                <Latex>{`$x_1,\\ldots,x_n$`}</Latex> represents the sequence of tokens present in the context.
+                <Latex>{`$t_1,\\ldots,t_n$`}</Latex> represents the sequence of tokens present in the context.
             </p>
             <BlogSection level={2}>Pre-training and Fine-tuning</BlogSection>
             <p>
                 If we were only are examining the simple case of a model being pretrained on a single, static dataset,
                 this is where our analysis would end. Regardless of a model's internal implementation, if it is given
                 this type of dataset and a training objective that only maximizes prediction accuracy, it should follow
-                that our model is merely performing blind statistical inference, regardless of our capable it is. Even
-                if our model's architecture was inherently capable of learning emergent behavior, this would actively be
+                that our model is merely performing blind statistical inference, regardless of how capable it is. Even
+                if our model's architecture was inherently capable of learning emergent behavior, this would be actively
                 penalized during training. This is because any emergent behavior, by definition, would not fall within
                 the training distribution and would thus increase the prediction's error relative to the distribution.
             </p>
             <p>
                 What if we add on a second layer of training, perhaps performing supervised fine-tuning on some specific
                 objective? Most autoregressive LLMs go through this phase in order to improve their
-                conversational/assistant capabilities or to encode within them knowledge of a specialized domain. If we
-                perform supervised fine-tuning in this manner, hopefully the strong similarity to its original training
-                run is clear. Even though we are augmenting the model's target distribution with new material, we are
-                still merely updating the distribution that the model is being trained to predict. Since our training
+                conversational/assistant capabilities or to encode within them knowledge of a specialized domain.
+                Hopefully the strong similarity between additional supervised fine-tuning and its original training run
+                is clear. Even though we are augmenting the model's target distribution with new material, we are still
+                merely updating the distribution that the model is being trained to predict. Since our training
                 objective is still predictive-error-minimization relative to a static distribution, our model is still
                 discouraged from making predictions that would not match its augmented distribution.
             </p>
@@ -335,25 +340,26 @@ export default function GenTransformers() {
                 the cost of generalizing outside of the observed environment.
             </p>
             <p>
-                The training regimen of most models does not stop of supervised fine-tuning, however. Usually these
-                models undergo further optimization through reinforcement learning as their final training stage. This
-                is for several reasons. Classically, this phase primarily served to align the model with human
-                preferences. Procedures like reinforcement learning from human feedback (RLHF) built up a reward model
-                based on human preferences that was then used to reward the target LLM through proximal policy
-                optimization (PPO). Recently, we have seen more efficient methods of etching "human preferences"
-                <FootRef idx={18} context={footnoteContext} /> onto models, such as direct preference optimization (DPO)
+                For most modern models, their initial supervised tuning is augmented with further optimization through
+                reinforcement learning as their final training stage. Classically, this phase primarily served to align
+                the model with human preferences. Procedures like reinforcement learning from human feedback (RLHF)
+                built up a reward model based on human preferences that was then used to reward the target LLM through
+                proximal policy optimization (PPO). Recently, we have seen more efficient methods of etching "human
+                preferences"
+                <FootRef idx={18} context={footnoteContext} /> into models, such as direct preference optimization (DPO)
                 or grouped relative policy optimization (GRPO). In the language of reinforcement learning, these are
                 primarily considered to be <i>model-free</i> methods. This means that LLMs do not need to create an
                 explicit world model to predict which future actions will yield rewards. Instead, they are rewarded
                 based on a separate reward model
-                <FootRef idx={19} context={footnoteContext} /> which approximates their environment at any given moment.
-                In a sense, this can be thought of as a simpler and more naive (though not necessarily bad!) approach to
-                RL over model-based techniques.
+                <FootRef idx={19} context={footnoteContext} /> which approximates their environment at the present
+                moment only. In a sense, this can be thought of as a simpler and more naive (though not necessarily
+                bad!) approach to RL over model-based techniques. Hold onto this distinction, as it will become
+                important later on.
             </p>
             <p>
                 Even more recently, with the rise of reasoning models, we have seen a new use for RL in LLMs. The
                 technique of reinforcement learning from verified rewards (RLVR) has become popular for improving model
-                performance on mathematics of programming. Both of these domains offer much more concrete feedback than
+                performance on mathematics or programming. Both of these domains offer much more concrete feedback than
                 the abstract world of human preferences. A proof or program is either correct or it is not; this can be
                 (more) easily communicated to the model in a way that directly improves its performance. I find this to
                 be a very promising area of research in general, but it is still limited to specific domains. Absent
@@ -367,30 +373,43 @@ export default function GenTransformers() {
                 Looking at reinforcement learning techniques as a whole, do they offer a substantial enough difference
                 from supervised learning to allow models to generalize? At first glance, the outlook certainly appears
                 good. Before large language models, RL-based models represented our most advanced and capable attempts
-                at AI. Though, bear in mind that these two classes of model operate in very different domains. Arguably,
-                the most famous example of such an RL model is DeepMind's AlphaGo. When only supervised tuned on a
-                curated set of human Go moves, the model performed well, but was still only at the level of a strong
-                amateur. At this stage, AlphaGo was only imitating human moves and strategies from its training set.
-                This represented a single, static surface toward which it could optimize its outputs. It was unable to{" "}
-                <i>generalize</i> beyond its training set. This changed when RL was used to train an auxiliary "value
-                network" that evaluated Go board states. As AlphaGo played, this network could actively learn directly
-                from rewards based on its performance. This was taken further with AlphaGo Zero, a model solely trained
-                through reinforcement learning and self-play. This is how the model was able to achieve{" "}
-                <i>superhuman</i> performance. By playing against itself instead of emulating human experts, every time
-                it improved, it would be a greater challenge for itself to beat next iteration. This environment of
-                simple rules, self-play, and clear rewards allowed AlphaGo Zero to become <i>arbitrarily</i> good at Go.
+                at AI. Certain classes of models that were trained using RL outperformed versions only trained through
+                supervised tuning. There is a catch, though. Switching from supervised tuning to RL works very well for
+                some architectures and goals, but finding new RL objectives for other models may not be obvious.
+            </p>
+            <p>
+                Though, bear in mind that these two classes of model operate in very different domains. Arguably, the
+                most famous example of such an RL model is DeepMind's AlphaGo. When only supervised tuned on a curated
+                set of human Go moves, the model performed well, but was still only at the level of a strong amateur. At
+                this stage, AlphaGo was only imitating human moves and strategies from its training set. This
+                represented a single, static surface toward which it could optimize its outputs. It was unable to{" "}
+                <i>generalize</i> beyond its training set, though. As the DeepMind team poured more and more expert
+                examples into the system, it improved, but still not to the level of the experts it should have been
+                learning from. The dataset of moves which they had curated did not capture the full distribution of
+                moves that a real expert can draw upon.
+            </p>
+            <p>
+                This quickly changed when reinforcement learning was used to train an auxiliary "value network" that
+                evaluated Go board states. As AlphaGo played, this network could actively learn directly from rewards
+                based on its performance. This was the model that finally beat Lee Sedol in 2016. AlphaGo's abilities
+                were taken even further by AlphaGo Zero, a model solely trained through reinforcement learning and
+                self-play. This is how the model was able to achieve <i>superhuman</i> performance. By playing against
+                itself instead of emulating human experts, every time it improved, it would be a greater challenge for
+                itself to beat next iteration. This environment of simple rules, self-play, and clear rewards allowed
+                AlphaGo Zero to become <i>arbitrarily</i> good at Go.
             </p>
             <BlogSection>Is Language a Game of Go?</BlogSection>
             <p>
-                Therefore it is natural to ask whether language models trained with reinforcement learning can become{" "}
-                <i>arbitrarily</i> good at modeling language? Becoming superhuman at Go has a clear indicator: your
-                model beats all humans at the game. What would indicate that a model is superhuman at modeling language?
-                Perfect grammar is not necessary condition. Being able to mimic different methods of prose is another.
-                Being able to reason or program just like the humans samples that is has seen could also support that
-                claim. Current large language models can already do these things, though. Where is our AGI?
+                After observing the impressive performance of game-based RL systems, it is therefore natural to ask
+                whether language models trained with reinforcement learning can become <i>arbitrarily</i> good at
+                modeling language? Becoming superhuman at Go has a clear indicator: your model beats all humans at the
+                game. What would indicate that a model is superhuman at modeling language? Perfect grammar is certainly
+                a necessary condition. Being able to mimic different methods of prose is another. Being able to reason
+                or program just like the humans samples that is has seen could also support that claim. Yet, current
+                large language models can already do these things. Where is our AGI?
             </p>
             <p>
-                The issue with my previous paragraph was that I was asking the wrong question. "A model that is
+                The issue with the previous paragraph was that it was asking the wrong question. "A model that is
                 superhuman at modeling language" is very different from "a generally superhuman model that can also
                 model language". A model that is extremely good at modeling language is merely extremely good at
                 matching the samples of human language that it has already been given. What we really want is a model
@@ -410,23 +429,29 @@ export default function GenTransformers() {
                 is the fact that this model could predict what would happen next{" "}
                 <i>without actually having to take an action</i>. This means that AlphaGo Zero could estimate the
                 expected future reward from a sequence of moves using its reward model, and backtrack if it was
-                unsatisfied. The ability to plan ahead was directly encoded into its architecture! A model-based
-                architecture enabled AlphaGo Zero to "think" separate from its environment, like humans do. The
-                adversarial nature of Go also contributed to the model's success. From the perspective of "player one",
-                its rewards are not only a function of the board state, but also the future actions of player two. Both
-                components constituted "the environment", meaning that when player one learned and improved, player two
-                (and this the environment) would change next round to make reward harder to obtain. Over time, this
-                encouraged AlphaGo Zero to try out more and more creative techniques that would have never shown up in a
-                static human expert dataset. This form of self-play is similar (but, recall, not quite the same as) to
-                the kind that humans intuitively practice every day. This could even be considered a form of online
-                learning, though limited in duration and scopt compared to traditional interpretations.
+                unsatisfied. The model was not committed to a sequence of moves <i>until</i> it has finished planning
+                and started actually placing stones. The ability to plan ahead was directly encoded into its
+                architecture! this model-based architecture enabled AlphaGo Zero to "think" separately from its
+                environment, like humans do.
             </p>
             <p>
-                The successes of AlphaGo Zero can help us to outline the challenges faced by modern, transformer-based
-                LLMs. These shortcomings are a fundamental consequence of both model architecture and training style.
-                Unlike AlphaGo Zero and its MCTS, transformers do not have any built-in world model. While these models
-                can make inferences and reason about the world, there is no "lookahead". When a token is being
-                generated, the model cannot know which tokens will come after it from future generation steps. For this
+                The adversarial nature of Go also contributed to the model's success. From the perspective of "player
+                one", its future rewards were not only a function of the board state, but also of the future actions of
+                player two. Both components constituted "the environment", meaning that when player one learned and
+                improved, player two (and thus the environment) would change next round to make reward harder to obtain.
+                Over time, this encouraged AlphaGo Zero to try out more and more creative techniques that would have
+                never shown up in a static human expert dataset
+                <FootRef idx={20} context={footnoteContext} />. This form of self-play is similar (but, recall, not
+                quite the same as) to the kind that humans intuitively practice every day. This could even be considered
+                a form of online learning, though limited in duration and scope compared to traditional interpretations.
+            </p>
+            <BlogSection level={2}>Limitations of Transformers</BlogSection>
+            <p>
+                The success of AlphaGo Zero can help us to outline the challenges faced by modern, transformer-based
+                LLMs. These shortcomings are a fundamental consequence of both model architecture and training
+                objectives. Unlike AlphaGo Zero and its MCTS, transformers do not have any built-in world model. While
+                these models can make inferences and reason about the world, there is no "lookahead". When a token is
+                being generated, the model cannot know which tokens will be generated after it in the future. For this
                 to happen in earnest, the model would need to have the ability to generate tokens, and self-reflect on
                 them without committing any tokens to its environment. Autoregressive transformers also do not have any
                 concept of backtracking. Once a token has been generated, it will always remain within the model context
@@ -435,9 +460,9 @@ export default function GenTransformers() {
             <blockquote>I have tried this method and I estimate that it will not work; let me try again.</blockquote>
             <p>
                 Perhaps that we could implement a kind of scratch-pad and have specific stopping tokens that, once
-                detected, wipe the scratch space and perhaps append "do attempt <i>XYZ</i>" to the current context? This
-                would visually look like what AlphaGo Zero (and humans) do during their deliberation, but would only be
-                a poor facsimile. All of the information contained in the faulty reasoning process would be lost and
+                detected, wipe the scratch space and append "do attempt <i>XYZ</i>" to the current context? This would
+                visually look like what AlphaGo Zero (and humans) do during their deliberation, but would only be a poor
+                facsimile. All of the information contained in the faulty reasoning process would be lost and
                 unavailable for the purposes of being a counterexample. In real LLMs, "reasoning tokens" can emulate
                 this process <i>within</i> its environment, but this still comes with the disadvantages outlined back in
                 section 2.
@@ -454,20 +479,21 @@ export default function GenTransformers() {
                 The researchers training these models have a goal in mind: create a model that can reason as humans do.
                 This is difficult to optimize directly, so they have found a clever proxy that is much easier to
                 optimize: create a model that can generate text that matches known patterns of human inference
-                <FootRef idx={20} context={footnoteContext} />. Achieving this goal is much more straightforward, we
-                have known training methods that can fit models to given pieces of text. This is reminiscent of AlphaGo:
-                we want a model that can master Go; this is difficult, but creating a model that can mimic expert moves
-                is much more straightforward. At first glance, these two problems appear to be isomorphisms, or at least
-                very tightly coupled. However, training only on the moves of masters will not yield a model at a
-                master's skill level. Similarly, emulating human reasoning or code will result in a model that can
-                reason and code at a respectable level, but still not quite at the quality of the original.
+                <FootRef idx={21} context={footnoteContext} />. Achieving this goal is much more straightforward. We
+                already have known training methods that can fit models to given pieces of text. This is reminiscent of
+                AlphaGo: we want a model that can master Go; this is difficult, but creating a model that can mimic
+                expert moves is much more straightforward. At first glance, earnest, human-level reasoning and
+                human-generated reasoning text appear to be isomorphisms, or at least very tightly coupled. However,
+                training only on the moves of masters will not yield a model at a master's skill level. Similarly,
+                emulating human reasoning or code will result in a model that can reason and code at a respectable
+                level, but still not quite at the quality of the original.
             </p>
             <p>
                 In 2026, we find ourselves facing the same <i>Bitter Lesson</i> as we did in 2016: attempting to
                 manually encode human knowledge into a model will not scale. Instead, a more <i>laissez faire</i>{" "}
-                approach will be more effective by allowing models to learn more generally on their own. Current
-                reasoning models are the autoregressive equivalent to training a model on expert moves. You will get
-                impressive results, but you will not reach the quality of the material that you are trying to emulate.
+                approach will allow models to learn more generally on their own. Current reasoning models are the
+                autoregressive equivalent to training a model on expert moves. You will get impressive results, but you
+                will not reach the quality of the material that you are trying to emulate.
             </p>
             <hr />
             <FootNote idx={1} context={footnoteContext}>
@@ -635,7 +661,11 @@ export default function GenTransformers() {
                 is achieved through encoding preferences directly into a loss function and updating the model in a
                 supervised manner.
             </FootNote>
-            <FootNote idx={19} context={footnoteContext}>
+            <FootNote idx={20} context={footnoteContext}>
+                Though it was played by the original AlphaGo, the famous move 37 of game 2 versus Lee Sedol is an
+                excellent example of this concept.
+            </FootNote>
+            <FootNote idx={21} context={footnoteContext}>
                 Similar methods for optimizing mathematical proof or code generation also fall into this category.
                 Instead of creating a model that can reason and make logical inferences like a mathematician or
                 engineer, we instead create a model that can emulate their measurable outputs.
