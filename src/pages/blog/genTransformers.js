@@ -276,8 +276,8 @@ export default function GenTransformers() {
                 statistical inference. This motivated the development of models based on N-grams, the Markov assumption
                 , and bag-of-word principles. This time period began the shift of AI being built by hand to being grown
                 by distributions of data. Even though these models were less interpretable by humans, they were far more
-                capable than their hand-crafted predecessors. Richard Sutton dubbed this realization "the bitter lesson
-                of artificial intelligence" in 2019. Despite our best efforts to imbue AI with hand-curated knowledge,
+                capable than their hand-crafted predecessors. Richard Sutton dubbed this realization "The Bitter Lesson
+                of Artificial Intelligence" in 2019. Despite our best efforts to imbue AI with hand-curated knowledge,
                 "blind" computation and learning appears to win out, in the end. Hold onto this thought.
             </p>
             <p>
@@ -318,6 +318,23 @@ export default function GenTransformers() {
             </p>
             <BlogSection level={2}>Reinforcement Learning</BlogSection>
             <p>
+                Before we continue, I suppose it would be worth distinguishing the training objective of a supervised
+                tuned model and a reinforcement learning tuned model. When we train a model using supervised methods,
+                this is always with respect to a known dataset. This data is composed of samples, each of which has a
+                known, specific label. During training, the model makes predictions; the deviation of those predictions
+                from the expected label is measured and the model's parameters are perturbed to minimize the error when
+                given those same inputs in the future. The model is being fit to match a static, known distribution of
+                data. Reinforcement learning is quite different. Instead of measuring from a known distribution and
+                propagating errors based on predetermined labels, RL models are updated based on rewards from its
+                environment. The information contained within a reward signal is much less explicit than a supervised
+                error, but this vagueness can allow the model to better generalize instead of overfitting to the
+                training set. In an RL environment, the exact distribution of the data is not known <i>a priori</i>, but
+                it can be approximated over time through stochastic sampling. In practice, this comes in the form of the
+                model exploring its environment and getting a feel for the "reward surface". For RL systems, if the
+                environment (and reward model) remains forever static, the model will still begin to overfit to it at
+                the cost of generalizing outside of the observed environment.
+            </p>
+            <p>
                 The training regimen of most models does not stop of supervised fine-tuning, however. Usually these
                 models undergo further optimization through reinforcement learning as their final training stage. This
                 is for several reasons. Classically, this phase primarily served to align the model with human
@@ -325,7 +342,13 @@ export default function GenTransformers() {
                 based on human preferences that was then used to reward the target LLM through proximal policy
                 optimization (PPO). Recently, we have seen more efficient methods of etching "human preferences"
                 <FootRef idx={18} context={footnoteContext} /> onto models, such as direct preference optimization (DPO)
-                or grouped relative policy optimization (GRPO).
+                or grouped relative policy optimization (GRPO). In the language of reinforcement learning, these are
+                primarily considered to be <i>model-free</i> methods. This means that LLMs do not need to create an
+                explicit world model to predict which future actions will yield rewards. Instead, they are rewarded
+                based on a separate reward model
+                <FootRef idx={19} context={footnoteContext} /> which approximates their environment at any given moment.
+                In a sense, this can be thought of as a simpler and more naive (though not necessarily bad!) approach to
+                RL over model-based techniques.
             </p>
             <p>
                 Even more recently, with the rise of reasoning models, we have seen a new use for RL in LLMs. The
@@ -345,7 +368,7 @@ export default function GenTransformers() {
                 from supervised learning to allow models to generalize? At first glance, the outlook certainly appears
                 good. Before large language models, RL-based models represented our most advanced and capable attempts
                 at AI. Though, bear in mind that these two classes of model operate in very different domains. Arguably,
-                the most famous example of such an RL model is DeepMind's AlphaGo. When only supervise tuned on a
+                the most famous example of such an RL model is DeepMind's AlphaGo. When only supervised tuned on a
                 curated set of human Go moves, the model performed well, but was still only at the level of a strong
                 amateur. At this stage, AlphaGo was only imitating human moves and strategies from its training set.
                 This represented a single, static surface toward which it could optimize its outputs. It was unable to{" "}
@@ -357,9 +380,94 @@ export default function GenTransformers() {
                 it improved, it would be a greater challenge for itself to beat next iteration. This environment of
                 simple rules, self-play, and clear rewards allowed AlphaGo Zero to become <i>arbitrarily</i> good at Go.
             </p>
+            <BlogSection>Is Language a Game of Go?</BlogSection>
             <p>
                 Therefore it is natural to ask whether language models trained with reinforcement learning can become{" "}
-                <i>arbitrarily</i> good at modeling language?
+                <i>arbitrarily</i> good at modeling language? Becoming superhuman at Go has a clear indicator: your
+                model beats all humans at the game. What would indicate that a model is superhuman at modeling language?
+                Perfect grammar is not necessary condition. Being able to mimic different methods of prose is another.
+                Being able to reason or program just like the humans samples that is has seen could also support that
+                claim. Current large language models can already do these things, though. Where is our AGI?
+            </p>
+            <p>
+                The issue with my previous paragraph was that I was asking the wrong question. "A model that is
+                superhuman at modeling language" is very different from "a generally superhuman model that can also
+                model language". A model that is extremely good at modeling language is merely extremely good at
+                matching the samples of human language that it has already been given. What we really want is a model
+                that is not only good at modeling language but is also good at modeling the kinds of deliberative
+                thought processes that eventually produce language. A model that could faithfully do this would be a
+                good candidate for real general intelligence.
+            </p>
+            <p>
+                Perhaps you are beginning to notice some similarities to AlphaGo and AlphaGo Zero here. While the
+                original AlphaGo was good at modeling the moves of experts that it had seen, AlphaGo Zero was not only
+                good at producing expert-level moves, but it was also excellent at winning Go in a more general sense.
+                How was AlphaGo Zero able achieve this level of generality with RL while current language models
+                struggle to achieve an analogous level of general reasoning while also using RL? The type of learning
+                that AlphaGo Zero underwent was the model-based variety. This means that, in addition to a reward model,
+                it also has something called a transition (next-state) model. This was implemented using a method called
+                Monte-Carlo tree search (MCTS), though the details are not important for our purposes. What is important
+                is the fact that this model could predict what would happen next{" "}
+                <i>without actually having to take an action</i>. This means that AlphaGo Zero could estimate the
+                expected future reward from a sequence of moves using its reward model, and backtrack if it was
+                unsatisfied. The ability to plan ahead was directly encoded into its architecture! A model-based
+                architecture enabled AlphaGo Zero to "think" separate from its environment, like humans do. The
+                adversarial nature of Go also contributed to the model's success. From the perspective of "player one",
+                its rewards are not only a function of the board state, but also the future actions of player two. Both
+                components constituted "the environment", meaning that when player one learned and improved, player two
+                (and this the environment) would change next round to make reward harder to obtain. Over time, this
+                encouraged AlphaGo Zero to try out more and more creative techniques that would have never shown up in a
+                static human expert dataset. This form of self-play is similar (but, recall, not quite the same as) to
+                the kind that humans intuitively practice every day. This could even be considered a form of online
+                learning, though limited in duration and scopt compared to traditional interpretations.
+            </p>
+            <p>
+                The successes of AlphaGo Zero can help us to outline the challenges faced by modern, transformer-based
+                LLMs. These shortcomings are a fundamental consequence of both model architecture and training style.
+                Unlike AlphaGo Zero and its MCTS, transformers do not have any built-in world model. While these models
+                can make inferences and reason about the world, there is no "lookahead". When a token is being
+                generated, the model cannot know which tokens will come after it from future generation steps. For this
+                to happen in earnest, the model would need to have the ability to generate tokens, and self-reflect on
+                them without committing any tokens to its environment. Autoregressive transformers also do not have any
+                concept of backtracking. Once a token has been generated, it will always remain within the model context
+                (though not necessarily the context window). There is no architecture-level support for saying:
+            </p>
+            <blockquote>I have tried this method and I estimate that it will not work; let me try again</blockquote>
+            <p>
+                Perhaps that we could implement a kind of scratch-pad and have specific stopping tokens that, once
+                detected, wipe the scratch space and perhaps append "do attempt <i>XYZ</i>" to the current context? This
+                would visually look like what AlphaGo Zero (and humans) do during their deliberation, but would only be
+                a poor facsimile. All of the information contained in the faulty reasoning process would be lost and
+                unavailable for the purposes of being a counterexample. In real LLMs, "reasoning tokens" can emulate
+                this process <i>within</i> its environment, but this still comes with the disadvantages outlined back in
+                section 2.
+            </p>
+            <p>
+                As mentioned, there are also difficulties coming from how we train state-of-the-art language models. The
+                training objective of modern LLMs essentially boils down to "emulate this human-written text". This
+                objective can be achieved through a variety of training methods (unsupervised, supervised, or
+                reinforcement learning). Though each offers a different approach towards reaching the objective, the
+                objective itself remains the same. Even in the case of advanced reasoning training, the learning goal of
+                our models is to still emulate human-curated reasoning chains.
+            </p>
+            <p>
+                The researchers training these models have a goal in mind: create a model that can reason as humans do.
+                This is difficult to optimize directly, so they have found a clever proxy that is much easier to
+                optimize: create a model that can generate text that matches known patterns of human inference
+                <FootRef idx={20} context={footnoteContext} />. Achieving this goal is much more straightforward, we
+                have known training methods that can fit models to given pieces of text. This is reminiscent of AlphaGo:
+                we want a model that can master Go; this is difficult, but creating a model that can mimic expert moves
+                is much more straightforward. At first glance, these two problems appear to be isomorphisms, or at least
+                very tightly coupled. However, training only on the moves of masters will not yield a model at a
+                master's skill level. Similarly, emulating human reasoning or code will result in a model that can
+                reason and code at a respectable level, but still not quite at the quality of the original.
+            </p>
+            <p>
+                In 2026, we find ourselves facing the same <i>Bitter Lesson</i> as we did in 2016: attempting to
+                manually encode human knowledge into a model will not scale. Instead, a more <i>laissez faire</i>{" "}
+                approach will be more effective by allowing models to learn more generally on their own. Current
+                reasoning models are the autoregressive equivalent to training a model on expert moves. You will get
+                impressive results, but you will not reach the quality of the material that you are trying to emulate.
             </p>
             <hr />
             <FootNote idx={1} context={footnoteContext}>
@@ -517,6 +625,20 @@ export default function GenTransformers() {
                 models with what we humans would most prefer. The alignment problem is still far from solved. This is
                 why even models that undergo extensive preference tuning can still be jail-broken or otherwise
                 manipulated into acting against the human preferences they were supposed to learn.
+            </FootNote>
+            <FootNote idx={19} context={footnoteContext}>
+                In methods such as PPO, this reward model is explicitly encoded into the training architecture. It is
+                first trained to predict human preference evaluations then later used to reward the target LLM. However,
+                in methods similar to DPO, we do not explicitly train a reward model, so what gives? Using this method,
+                a reward model still exists, but it is much more implicit. Instead of passing human preferences into a
+                separate network that learns, rewards instead come from the policy (the LLM being trained) itself. This
+                is achieved through encoding preferences directly into a loss function and updating the model in a
+                supervised manner.
+            </FootNote>
+            <FootNote idx={19} context={footnoteContext}>
+                Similar methods for optimizing mathematical proof or code generation also fall into this category.
+                Instead of creating a model that can reason and make logical inferences like a mathematician or
+                engineer, we instead create a model that can emulate their measurable outputs.
             </FootNote>
         </BlogWrapper>
     );
