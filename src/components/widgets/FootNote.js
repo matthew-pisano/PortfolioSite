@@ -1,103 +1,97 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-import Link from "next/link";
 import PropTypes from "prop-types";
 
-/**
- * Information needed for footnote validation and linking
- */
-class FootNoteContext {
-    constructor(anchor, footnotesRef, footRefsRef) {
-        this.anchor = anchor;
-        this.footnotesRef = footnotesRef;
-        this.footRefsRef = footRefsRef;
-    }
+import styles from "@/styles/pageTiles.module.css";
 
-    /**
-     * Registers a footnote with its index
-     * @param idx {number} The index of the footnote
-     */
-    registerFootNote(idx) {
-        this.footnotesRef.current.push(idx);
-    }
-
-    /**
-     * Registers a footnote reference with its index
-     * @param idx {number} The index of the footnote reference
-     */
-    registerFootRef(idx) {
-        this.footRefsRef.current.push(idx);
-    }
-}
+/** Context to manage footnotes */
+const FootnoteContext = createContext(null);
 
 /**
- * A footnote reference to appear in the text
- * @param idx The index of the footnote
- * @param context The react context to track state
- * @returns {JSX.Element} A footnote reference in the main text body
- * @constructor
+ * Provider component to wrap footnotes
+ * @param children {JSXElement} The main body comment
+ * @param label {string} The unique label for this set of footnotes
  */
-function FootRef({ idx, context }) {
-    const ctx = useContext(context);
-    if (!ctx) throw new Error("FootRef must be used within the given context");
-    if (!(ctx instanceof FootNoteContext)) throw new Error("FootNoteContext must be used with a FootRef");
+function FootnoteProvider({ children, label }) {
+    const [footnotes, setFootnotes] = useState([]);
 
-    const registeredRef = useRef(false);
+    // Add a footnote to the context
+    const addFootnote = (id, content) => {
+        // Ensure footnotes are not added twice
+        setFootnotes((prev) => {
+            const exists = prev.find((f) => f.id === id);
+            if (exists) return prev;
+            return [...prev, { id, content }];
+        });
+    };
 
-    useEffect(() => {
-        if (!registeredRef.current) {
-            ctx.registerFootRef(idx);
-            registeredRef.current = true;
-        }
-    }, [idx]);
+    // Remove a footnote from the page to handle dynamic refresh
+    const removeFootnote = (id) => {
+        setFootnotes((prev) => prev.filter((f) => f.id !== id));
+    };
 
+    // Send footnotes to the provider context
     return (
-        <Link href={`#footnote-${ctx.anchor}-${idx}`}>
-            <sup id={`footref-${ctx.anchor}-${idx}`}>{idx}</sup>
-        </Link>
+        <FootnoteContext.Provider value={{ footnotes, addFootnote, removeFootnote, label }}>
+            {children}
+        </FootnoteContext.Provider>
     );
 }
 
-FootRef.propTypes = { idx: PropTypes.number.isRequired, context: PropTypes.any.isRequired };
+FootnoteProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+    label: PropTypes.string.isRequired
+};
 
 /**
- * A footnote to appear at the bottom of the text
- * @param idx The index of the footnote
- * @param style The style to apply to the footnote
- * @param context The react context to track state
- * @param children The content of the footnote
- * @returns {JSX.Element} A footnote at the bottom of the text
- * @constructor
+ * A footnote component
+ * @param children {JSXElement} The content of the footnote
  */
-function FootNote({ idx, style, context, children }) {
-    const ctx = useContext(context);
-    if (!ctx) throw new Error("FootNote must be used within the given context");
-    if (!(ctx instanceof FootNoteContext)) throw new Error("FootNoteContext must be used with a FootNote");
-
-    const registeredRef = useRef(false);
+function Footnote({ children }) {
+    const { addFootnote, removeFootnote, footnotes, label } = useContext(FootnoteContext);
+    const [id] = useState(() => Math.random().toString(36).substring(2, 11));
 
     useEffect(() => {
-        if (!registeredRef.current) {
-            ctx.registerFootNote(idx);
-            registeredRef.current = true;
-        }
-    }, [idx]);
+        addFootnote(id, children);
+        return () => removeFootnote(id);
+    }, [children, id]);
 
+    const index = footnotes.findIndex((f) => f.id === id) + 1;
     return (
-        <span style={{ ...style, textIndent: 0, display: "block", marginBottom: "10px" }}>
-            <Link href={`#footref-${ctx.anchor}-${idx}`}>
-                <sup id={`footnote-${ctx.anchor}-${idx}`}>{idx}</sup>
-            </Link>{" "}
-            <small>{children}</small>
-        </span>
+        <sup>
+            <a href={`#footnote-${label}-${index}`} id={`footnote-ref-${label}-${index}`}>
+                [{index}]
+            </a>
+        </sup>
     );
 }
 
-FootNote.propTypes = {
-    idx: PropTypes.number.isRequired,
-    style: PropTypes.object,
-    context: PropTypes.any.isRequired,
+Footnote.propTypes = {
     children: PropTypes.node.isRequired
 };
 
-export { FootNote, FootRef, FootNoteContext };
+/**
+ * Container component where footnotes are eventually rendered
+ */
+function FootnoteList() {
+    const { footnotes, label } = useContext(FootnoteContext);
+    if (footnotes.length === 0) return null;
+
+    return (
+        <div>
+            <h3 style={{ textIndent: "0" }}>Footnotes</h3>
+            <div>
+                {footnotes.map((footnote, index) => (
+                    <p key={footnote.id} id={`footnote-${label}-${index + 1}`} className={`${styles.footnote}`}>
+                        <span>
+                            <a href={`#footnote-ref-${label}-${index + 1}`}>[{index + 1}]</a>
+                        </span>{" "}
+                        {footnote.content}
+                    </p>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+export { FootnoteProvider, FootnoteList, Footnote };

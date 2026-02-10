@@ -19,6 +19,11 @@
     margin-bottom: 50px;
 }
 
+.footnote {
+    text-indent: 0;
+    font-size: small;
+}
+
 .blogHolder {
     width: 75%;
     max-width: 800px;
