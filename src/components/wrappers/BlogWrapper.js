@@ -3,7 +3,6 @@ import React, { createContext, useContext, useEffect, useRef, useState } from "r
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { FootNoteContext } from "@/components/widgets/FootNote";
 import Wrapper from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
 import styles from "@/styles/pageTiles.module.css";
@@ -23,8 +22,6 @@ const SectionContext = createContext(null);
  */
 function BlogWrapper({ children, pageName, title, subtitle, date, footnoteContext }) {
     const blockContentId = "blogContent";
-    const footnotesRef = useRef([]);
-    const footRefsRef = useRef([]);
     const [blogTime, setBlogTime] = useState(0);
 
     const sectionCountRef = useRef([0, 0, 0]);
@@ -41,7 +38,6 @@ function BlogWrapper({ children, pageName, title, subtitle, date, footnoteContex
         setBlogTime(elementReadingTime(blockContentId));
     }, []);
 
-    const blogContextValue = new FootNoteContext(pageName, footnotesRef, footRefsRef);
     if (!footnoteContext) footnoteContext = createContext(null);
 
     return (
@@ -65,11 +61,9 @@ function BlogWrapper({ children, pageName, title, subtitle, date, footnoteContex
                         {blogTime} minute read
                     </small>
                 </div>
-                <footnoteContext.Provider value={blogContextValue}>
-                    <SectionContext.Provider value={getNextId}>
-                        <div id={blockContentId}>{children}</div>
-                    </SectionContext.Provider>
-                </footnoteContext.Provider>
+                <SectionContext.Provider value={getNextId}>
+                    <div id={blockContentId}>{children}</div>
+                </SectionContext.Provider>
                 <hr />
                 <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>
                 <Link href={"/works/blog"}>Back to Blogs</Link>
