@@ -79,7 +79,6 @@ function FootnoteList() {
 
     return (
         <div>
-            <h3 style={{ textIndent: "0" }}>Footnotes</h3>
             <div>
                 {footnotes.map((footnote, index) => (
                     <p key={footnote.id} id={`footnote-${label}-${index + 1}`} className={`${styles.footnote}`}>
