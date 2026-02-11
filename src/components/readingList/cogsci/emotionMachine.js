@@ -2,13 +2,15 @@ import React from "react";
 
 import Link from "next/link";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"The Emotion Machine"}
         author={"Marvin Minsky"}
-        synopsis={
+        thumbnail={"/media/image/the-emotion-machine.jpg"}
+        anchor={"emotion-machine"}>
+        <BookTileSynopsis>
             <>
                 Within <i>The Emotion Machine</i>, Minsky introduces a new interpretation on familiar aspects of human
                 cognition. Namely that emotions, intuitions, and feelings are not isolated processes nor hindrances to
@@ -28,8 +30,8 @@ export default (
                     lies upon, whether digital or biological, has no bearing on its ability to be self-aware.
                 </p>
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 This book was my first real introduction to Marvin Minsky and his unique ideas about the mind and social
                 behavior. His ideas surrounding the true nature of emotions and hierarchies of thinking were wholly
@@ -55,8 +57,6 @@ export default (
                     implementation of a simple actor-critic architecture.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/the-emotion-machine.jpg"}
-        anchor={"emotion-machine"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
