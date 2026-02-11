@@ -1,16 +1,18 @@
-import React, { createContext } from "react";
+import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
-import { FootNote, FootRef } from "@/components/widgets/FootNote";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
+import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
 
-const footCtx = createContext(null);
+let bookTileAnchor = "nausea";
 
 export default (
-    <>
-        <BookTile
-            title={"Nausea"}
-            author={"Jean-Paul Sartre"}
-            synopsis={
+    <BookTile
+        title={"Nausea"}
+        author={"Jean-Paul Sartre"}
+        thumbnail={"/media/image/nausea.jpg"}
+        anchor={bookTileAnchor}>
+        <FootnoteProvider label={bookTileAnchor}>
+            <BookTileSynopsis>
                 <>
                     The message of <i>Nausea</i> is conveyed through a series of journal entries by the text's
                     protagonist. Antoine Roquentin is a historian working in the fictional town of Bouville, France. At
@@ -28,15 +30,18 @@ export default (
                         Marquis. Writing from the early 1930s, Roquentin must take frequent trips to libraries and
                         archives to track down the sparse information that remains of the Marquis. Another frequent
                         guest of the local library is someone that Roquentin calls the "Self-Taught Man"
-                        <FootRef idx={1} context={footCtx} />. Roquentin notes that the Self-Taught Man spends the
-                        majority of his free time in the library, reading every single book in alphabetical order by
-                        author. During one of their conversations, the man asks Roquentin to show him some pictures of
-                        his travels. Before coming to Bouville, the journal's author had spent several years travelling
-                        the world extensively in search of adventure. The Self-Taught Man is amazed and inspired by the
-                        images and the stories of, what he considers to be, Roquentin's past adventures. Thinking back,
-                        however, Roquentin does not believe he has had any true adventures at all, even after six years
-                        of travel. This occurs on the backdrop of his growing frustrations with his work on the Marquis
-                        de Rollebon.
+                        <Footnote>
+                            Ogier P ..., who will be often mentioned in this journal. He was a bailiff's clerk.
+                            Roquentin met him in 1930 in the Bouville library.
+                        </Footnote>
+                        . Roquentin notes that the Self-Taught Man spends the majority of his free time in the library,
+                        reading every single book in alphabetical order by author. During one of their conversations,
+                        the man asks Roquentin to show him some pictures of his travels. Before coming to Bouville, the
+                        journal's author had spent several years travelling the world extensively in search of
+                        adventure. The Self-Taught Man is amazed and inspired by the images and the stories of, what he
+                        considers to be, Roquentin's past adventures. Thinking back, however, Roquentin does not believe
+                        he has had any true adventures at all, even after six years of travel. This occurs on the
+                        backdrop of his growing frustrations with his work on the Marquis de Rollebon.
                     </p>
                     <p>
                         Roquentin soon gets a letter from Anny, his ex-lover whom he has not seen since he began his
@@ -118,8 +123,8 @@ export default (
                         through his acts of creation.
                     </p>
                 </>
-            }
-            thoughts={
+            </BookTileSynopsis>
+            <BookTileThoughts>
                 <>
                     Similar to Camus' <i>The Stranger</i>, I enjoyed the narrative vehicle that this work uses to convey
                     its philosophy. The two characters from Camus' and Satre's works: Meursault and Roquentin,
@@ -159,18 +164,9 @@ export default (
                         within another.
                     </p>
                 </>
-            }
-            footnotes={
-                <>
-                    <FootNote idx={1} context={footCtx}>
-                        Ogier P ..., who will be often mentioned in this journal. He was a bailiff's clerk. Roquentin
-                        met him in 1930 in the Bouville library.
-                    </FootNote>
-                </>
-            }
-            thumbnail={"/media/image/nausea.jpg"}
-            anchor={"nausea"}
-            footnoteContext={footCtx}
-        />
-    </>
+            </BookTileThoughts>
+            <hr />
+            <FootnoteList />
+        </FootnoteProvider>
+    </BookTile>
 );
