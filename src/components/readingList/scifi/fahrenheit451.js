@@ -1,16 +1,18 @@
-import React, { createContext } from "react";
+import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
-import { FootNote, FootRef } from "@/components/widgets/FootNote";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
+import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
 
-const footCtx = createContext(null);
+let bookTileAnchor = "fahrenheit-451";
 
 export default (
     <BookTile
         title={"Fahrenheit 451"}
         author={"Ray Bradbury"}
-        synopsis={
-            <>
+        thumbnail={"/media/image/fahrenheit-451.jpg"}
+        anchor={bookTileAnchor}>
+        <FootnoteProvider label={bookTileAnchor}>
+            <BookTileSynopsis>
                 Guy Montag is a <i>fireman</i>. When an emergency is called into his station, he, like his comrades
                 across the country, slides down his fireman's pole, dons his flame-retardant suit, and races to the
                 scene in a fire engine. Pulling up to the fireproof house, as all houses now are, with kerosene in place
@@ -89,10 +91,8 @@ export default (
                     scapegoat, they have done their job. One rogue fugitive is a small price to pay for the state's
                     reputation.
                 </p>
-            </>
-        }
-        thoughts={
-            <>
+            </BookTileSynopsis>
+            <BookTileThoughts>
                 <i>Fahrenheit 451</i> is as beautifully written as it is disconcertingly prophetic. One aspect of the
                 story that I particularly like is how Bradbury presents the origin of the state-wide ban on books.
                 Unlike most other media, where a totalitarian state suddenly materializes and begins issuing top-down,
@@ -138,27 +138,23 @@ export default (
                     military jets, another is an offhanded remark about rising geopolitical tensions, Montag even
                     mentions that the U.S. has won two nuclear wars since 2022. This all comes to a head at the end of
                     the book. Guy Montag and his new conspirator, Professor Faber
-                    <FootRef idx={1} context={footCtx} />, plan to use the impending war as a catalyst for their plan to
-                    destabilize the government. Their plan quickly unravels after Chief Beatty discovers Montag's book
-                    stash. However, as Montag is on the run, war is invariably declared. Standing with the group of
-                    forsaken professors, he watches as the bombs hit the city that he has just escaped. This is implied
-                    to immediately kill Mildred and perhaps even Professor Faber, as it is uncertain that he has gotten
-                    far enough from the city. The destruction of the city, and perhaps even the nation, leaves the book
-                    off on a bittersweet note as Bradbury implies that the group of scholars will work to spread their
-                    knowledge of books in the aftermath.
+                    <Footnote>
+                        During my summary, I do not mention Professor Faber explicitly in the interest of brevity, but
+                        he plays an important role in motivating Montag and helping him resist the persuasions of Chief
+                        Beatty.
+                    </Footnote>
+                    , plan to use the impending war as a catalyst for their plan to destabilize the government. Their
+                    plan quickly unravels after Chief Beatty discovers Montag's book stash. However, as Montag is on the
+                    run, war is invariably declared. Standing with the group of forsaken professors, he watches as the
+                    bombs hit the city that he has just escaped. This is implied to immediately kill Mildred and perhaps
+                    even Professor Faber, as it is uncertain that he has gotten far enough from the city. The
+                    destruction of the city, and perhaps even the nation, leaves the book off on a bittersweet note as
+                    Bradbury implies that the group of scholars will work to spread their knowledge of books in the
+                    aftermath.
                 </p>
-            </>
-        }
-        footnotes={
-            <>
-                <FootNote idx={1} context={footCtx}>
-                    During my summary, I do not mention Professor Faber explicitly in the interest of brevity, but he
-                    plays an important role in motivating Montag and helping him resist the persuasions of Chief Beatty.
-                </FootNote>
-            </>
-        }
-        thumbnail={"/media/image/fahrenheit-451.jpg"}
-        anchor={"fahrenheit-451"}
-        footnoteContext={footCtx}
-    />
+            </BookTileThoughts>
+            <hr />
+            <FootnoteList />
+        </FootnoteProvider>
+    </BookTile>
 );
