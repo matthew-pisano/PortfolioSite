@@ -1,12 +1,16 @@
 import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
+
+let bookTileAnchor = "alignment-problem";
 
 export default (
     <BookTile
         title={"The Alignment Problem"}
         author={"Brian Christian"}
-        synopsis={
+        thumbnail={"/media/image/the-alignment-problem.jpg"}
+        anchor={bookTileAnchor}>
+        <BookTileSynopsis>
             <>
                 Unlike many of the other books on this list,{" "}
                 <i>The Alignment Problem: Machine Learning and Human Values</i> concentrates primarily on the immediate
@@ -27,8 +31,8 @@ export default (
                     harm misaligned systems have already caused, it is easier to mentally frame their potential impacts.
                 </p>
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 While this book concentrates on similar themes to Nick Bostrom's <i>Superintelligence</i>, some of the
                 most impactful ideas that this book presents involve much less existential, albeit still harmful,
@@ -45,8 +49,6 @@ export default (
                     how well its concepts complemented my more formal education.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/the-alignment-problem.jpg"}
-        anchor={"alignment-problem"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
