@@ -1,12 +1,14 @@
 import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"Turing's Cathedral"}
         author={"George Dyson"}
-        synopsis={
+        thumbnail={"/media/image/turings-cathedral.jpg"}
+        anchor={"cathedral"}>
+        <BookTileSynopsis>
             <>
                 <i>Turing's Cathedral</i> is an in-depth historical exploration of the people, places, and events
                 surrounding the creation of the first general-purpose, electronic, digital computer. The <i>ENIAC</i>,
@@ -38,8 +40,8 @@ export default (
                     computer could be built.
                 </p>
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 One of the more surprising aspects of Dyson's account was just how tightly linked the development of the
                 first computer was with the development of atomic weapons. Many of the scientists who worked on the
@@ -62,8 +64,6 @@ export default (
                     creation was first realized.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/turings-cathedral.jpg"}
-        anchor={"cathedral"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
