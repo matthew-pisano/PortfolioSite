@@ -2,13 +2,15 @@ import React from "react";
 
 import Link from "next/link";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"The Order of Time"}
         author={"Carlo Rovelli"}
-        synopsis={
+        thumbnail={"/media/image/the-order-of-time.jpg"}
+        anchor={"order-of-time"}>
+        <BookTileSynopsis>
             <>
                 <i>The Order of Time</i> explores the nature of time and its relationship to the universe. Within its
                 pages, Rovelli argues that time is not a fundamental aspect of the universe, but rather an emergent
@@ -20,8 +22,8 @@ export default (
                 explores how our apparent experience of time emerges from a blurred perception of irreversible
                 processes.
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 Rovelli manages to cover an impressive amount of theory and conjecture within just over 200 pages. As a
                 part of his discussion on the breakdown of <i>classical</i> time, the book explains how special
@@ -48,8 +50,6 @@ export default (
                     .
                 </p>
             </>
-        }
-        thumbnail={"/media/image/the-order-of-time.jpg"}
-        anchor={"order-of-time"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
