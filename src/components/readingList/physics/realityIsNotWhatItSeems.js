@@ -1,12 +1,14 @@
 import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"Reality is Not What It Seems"}
         author={"Carlo Rovelli"}
-        synopsis={
+        thumbnail={"/media/image/reality-is-not-what-it-seems.jpg"}
+        anchor={"not-what-it-seems"}>
+        <BookTileSynopsis>
             <>
                 <i>Reality is Not What It Seems</i> is an exploration of the theory of <i>Loop Quantum Gravity</i> and
                 of its millennia-long origin story. Rovelli, a renowned theoretical physicist, makes the decision to
@@ -59,8 +61,8 @@ export default (
                     attribute of the universe.
                 </p>
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 Rovelli's work offers an in-depth and well-written explanation of both the current state of theoretical
                 physics, from his point of view, and the long scientific journey that was needed to arrive there. This
@@ -72,8 +74,6 @@ export default (
                 a coherent narrative and give readers a clearer picture of how we evolved from understanding very little
                 about natural phenomena to peering into the fundamental inner workings of the universe.
             </>
-        }
-        thumbnail={"/media/image/reality-is-not-what-it-seems.jpg"}
-        anchor={"not-what-it-seems"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
