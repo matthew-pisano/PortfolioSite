@@ -1,9 +1,9 @@
-import React, { createContext } from "react";
+import React from "react";
 
 import Link from "next/link";
 
-import { BookTile } from "@/components/readingList/BookTile";
-import { FootNote, FootRef } from "@/components/widgets/FootNote";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
+import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
 import { redact } from "@/lib/util/utils";
 import styles from "@/styles/pageTiles.module.css";
 
@@ -19,14 +19,16 @@ function minotaur() {
     return <s style={{ color: "FireBrick" }}>Minotaur</s>;
 }
 
-const footCtx = createContext(null);
+let bookTileAnchor = "house-of-leaves";
 
 export default (
     <BookTile
         title={"House of Leaves"}
         author={"Mark Z. Danielewski"}
-        synopsis={
-            <>
+        thumbnail={"/media/image/house-of-leaves.jpg"}
+        anchor={bookTileAnchor}>
+        <FootnoteProvider label={bookTileAnchor}>
+            <BookTileSynopsis>
                 Unlike the other entries in this list, <i>{House()} of Leaves</i> is not simply a book. Rather, it is a
                 series of notes written while editing a literary analysis of a documentary about a {house()} that does
                 not exist. A {house()} that is bigger on the <big>inside</big> than <small>out</small>. It is found
@@ -79,8 +81,11 @@ export default (
                         hallway instead contains an ordinary patch of yard. After recovering the children and despite
                         Karen's protests, William ventures inside. Here, he nearly looses himself in the absolute
                         darkness and shifting geometry of a space far too large to exist
-                        <FootRef idx={1} context={footCtx} />. All the while hearing a dull, ominous growl emanating
-                        from the maze.
+                        <Footnote>
+                            A rigorous analysis of the geometry of this space would make <i>Postulate 5</i> look like a
+                            primary school assignment.
+                        </Footnote>
+                        . All the while hearing a dull, ominous growl emanating from the maze.
                     </span>
                 </p>
                 <p>
@@ -96,7 +101,11 @@ export default (
                     together in a {redact(10)} waiting for rescue. {redact(74)} beast {redact(123)} {minotaur()}{" "}
                     {redact(300)} consumed by the madness of the inky blackness, Holloway {redact(200)} evacuated from
                     the {house()}
-                    <FootRef idx={2} context={footCtx} />.
+                    <Footnote>
+                        Portions of the <i>Holloway Tape</i>, as it had come to be known, leaked online before the
+                        entire film's official release, prompting much speculation from the community.
+                    </Footnote>
+                    .
                 </p>
                 <p style={{ textAlign: "center" }}>
                     <i>
@@ -113,10 +122,8 @@ export default (
                     leaves off with Johnny traveling to Virginia himself to look for the {house()} that has consumed all
                     of his waking (and indeed resting) hours. The second edition picks up {redact(256)} his fate.
                 </p>
-            </>
-        }
-        thoughts={
-            <>
+            </BookTileSynopsis>
+            <BookTileThoughts>
                 <i>{House()} of Leaves</i> may be one of the most uniquely written (and certainly typeset) books that I
                 have ever read. The most striking aspect of Danielewski's writing is his ability to enhance the pacing
                 and tone of the story...
@@ -132,61 +139,43 @@ export default (
                     The story of <i>{House()} of Leaves</i> is also deepened through the use of extensive world
                     building. Throughout his analysis, Zampanò demonstrates that he inhabits a world just as real as our
                     own. The text is littered with footnotes
-                    <FootRef idx={3} context={footCtx} /> from various detailed academic sources, articles,
-                    commentaries, and interviews surrounding the fictional Navidson documentary. In this world,
-                    seemingly dozens of works have been created with the sole purpose of analyzing the plot,
-                    cinematography, framing, dialogue, etc. of the film, with many more making passing references to it.
-                    Each reference has a unique title and authors. It is not difficult for the reader to imagine a world
-                    where this film commands the same cultural impact as <i>Inception</i> or{" "}
-                    <i>The Blair Witch Project</i>. There is even an in-universe debate as to whether the film itself is
-                    a work of clever editing or rock-solid evidence of the breakdown of the fundamental laws of reality.
-                    Zampanò even presents examples of calculations that demonstrate that it would have been completely
-                    implausible for Navidson to fake the events of the film
-                    <FootRef idx={4} context={footCtx} />, despite the outright impossibility of its content. I find it
-                    particularly amusing that many are convinced Navidson's {house()} truly does contain a gaping hole
-                    in the very fabric of reality, yet most references to his film are discussions of cinematography and
-                    Navidson's own editing.
+                    <Footnote>
+                        And footnotes of footnotes
+                        <Footnote>And even one level deeper at times.</Footnote>
+                    </Footnote>{" "}
+                    from various detailed academic sources, articles, commentaries, and interviews surrounding the
+                    fictional Navidson documentary. In this world, seemingly dozens of works have been created with the
+                    sole purpose of analyzing the plot, cinematography, framing, dialogue, etc. of the film, with many
+                    more making passing references to it. Each reference has a unique title and authors. It is not
+                    difficult for the reader to imagine a world where this film commands the same cultural impact as{" "}
+                    <i>Inception</i> or <i>The Blair Witch Project</i>. There is even an in-universe debate as to
+                    whether the film itself is a work of clever editing or rock-solid evidence of the breakdown of the
+                    fundamental laws of reality. Zampanò even presents examples of calculations that demonstrate that it
+                    would have been completely implausible for Navidson to fake the events of the film
+                    <Footnote>
+                        This goes doubly so for the deaths and injuries that occurred within the {house()}.
+                    </Footnote>
+                    , despite the outright impossibility of its content. I find it particularly amusing that many are
+                    convinced Navidson's {house()} truly does contain a gaping hole in the very fabric of reality, yet
+                    most references to his film are discussions of cinematography and Navidson's own editing.
                 </p>
                 <p>
                     The text also makes several references to real-life figures. At one point, Karen submits a draft
                     version of <i>The Navidson Record</i> to several scientists, writers, and filmmakers. This
                     assortment of sources even includes Douglas Hofstadter who, in true Hofstadterian fashion,
                     immediately relates the content of the film to his friends Mr. Tortoise and Achilles
-                    <FootRef idx={5} context={footCtx} />, to my great delight.
+                    <Footnote>
+                        See{" "}
+                        <Link href="https://matthewpisano.com/readingList#geb-egb">
+                            Gödel, Escher, Bach: An Eternal Golden Braid
+                        </Link>
+                        .
+                    </Footnote>
+                    , to my great delight.
                 </p>
-            </>
-        }
-        footnotes={
-            <>
-                <FootNote idx={1} style={{ fontFamily: "verdana" }} context={footCtx}>
-                    A rigorous analysis of the geometry of this space would make <i>Postulate 5</i> look like a primary
-                    school assignment.
-                </FootNote>
-                <FootNote idx={2} context={footCtx}>
-                    Portions of the <i>Holloway Tape</i>, as it had come to be known, leaked online before the entire
-                    film's official release, prompting much speculation from the community.
-                </FootNote>
-                <FootNote idx={3} context={footCtx}>
-                    And footnotes of footnotes
-                    <FootRef idx={6} context={footCtx} />.
-                </FootNote>
-                <FootNote idx={4} context={footCtx}>
-                    This goes doubly so for the deaths and injuries that occurred within the {house()}.
-                </FootNote>
-                <FootNote idx={5} context={footCtx}>
-                    See{" "}
-                    <Link href="https://matthewpisano.com/readingList#geb-egb">
-                        Gödel, Escher, Bach: An Eternal Golden Braid
-                    </Link>
-                    .
-                </FootNote>
-                <FootNote idx={6} context={footCtx}>
-                    And even one level deeper at times.
-                </FootNote>
-            </>
-        }
-        thumbnail={"/media/image/house-of-leaves.jpg"}
-        anchor={"house-of-leaves"}
-        footnoteContext={footCtx}
-    />
+            </BookTileThoughts>
+            <hr />
+            <FootnoteList />
+        </FootnoteProvider>
+    </BookTile>
 );
