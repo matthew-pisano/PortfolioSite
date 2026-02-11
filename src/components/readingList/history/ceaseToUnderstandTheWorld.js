@@ -1,12 +1,14 @@
 import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"When We Cease to Understand the World"}
         author={"Benjamín Labatut"}
-        synopsis={
+        thumbnail={"/media/image/when-we-cease-to-understand-the-world.jpg"}
+        anchor={"cease-to-understand-the-world"}>
+        <BookTileSynopsis>
             <>
                 <i>When We Cease to Understand the World</i> reads very similarly to another of Labatut's books,{" "}
                 <i>The Maniac</i>. It is a fictionalized account of some major developments in theoretical physics and
@@ -15,8 +17,8 @@ export default (
                 luminaries such as Fritz Haber, Werner Heisenberg, and Alexander Grothendieck as they face the
                 consequences of their discoveries and their own personal struggles.
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 Through his use of fiction to fill in details that remain absent from the historical record, Labatut
                 explores the consequences of several foundational discoveries and the physical and psychological
@@ -58,8 +60,6 @@ export default (
                     much deeper discussion in the future.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/when-we-cease-to-understand-the-world.jpg"}
-        anchor={"cease-to-understand-the-world"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
