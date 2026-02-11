@@ -1,16 +1,18 @@
-import React, { createContext } from "react";
+import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
-import { FootNote, FootRef } from "@/components/widgets/FootNote";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
+import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
 
-const footCtx = createContext(null);
+let bookTileAnchor = "space-odyssey";
 
 export default (
     <BookTile
         title={"2001: A Space Odyssey"}
         author={"Arthur C. Clarke"}
-        synopsis={
-            <>
+        thumbnail={"/media/image/2001.jpg"}
+        anchor={bookTileAnchor}>
+        <FootnoteProvider label={bookTileAnchor}>
+            <BookTileSynopsis>
                 The first time we meet David Bowman, he is on his way to Saturn to conduct a study of the planet...at
                 least, this is what he was told. In reality, he is thirty days into completing the final leg of a
                 journey that humanity has been unknowingly on for millions of years.
@@ -76,7 +78,10 @@ export default (
                         Daisy, Daisy, Give me your answer, do! I'm half crazy, All for the love of you! It won't be a
                         stylish marriage, I can't afford a carriage, But you'll look sweet{" "}
                         <small>upon the seat Of a bicycle built forrrr tttwwwoooo...</small>
-                        <FootRef idx={1} context={footCtx} />
+                        <Footnote>
+                            In 1962, Clarke witnessed researchers at Bell Labs program an IBM 7094 machine to sing this
+                            song in the earliest example of computer speech synthesis.
+                        </Footnote>
                     </i>
                 </p>
                 <p>
@@ -91,10 +96,8 @@ export default (
                     impermeable threshold, he utters the last words that Earth will ever hear from him,{" "}
                     <i>"My God, it's full of stars!"</i>.
                 </p>
-            </>
-        }
-        thoughts={
-            <>
+            </BookTileSynopsis>
+            <BookTileThoughts>
                 This novel stands out for a myriad of reasons. Clarke puts a great deal of effort into ensuring that his
                 story remains as scientifically accurate as possible, while still making the plot seem plausible and
                 self-consistent. The beginning of the novel offers a unique explanation to the question of why humans
@@ -133,18 +136,9 @@ export default (
                     beginning of this journey, it is impressive that it was able to approximate so much progress that
                     was yet to be had in the field, even if the finer details were incorrect.
                 </p>
-            </>
-        }
-        footnotes={
-            <>
-                <FootNote idx={1} context={footCtx}>
-                    In 1962, Clarke witnessed researchers at Bell Labs program an IBM 7094 machine to sing this song in
-                    the earliest example of computer speech synthesis.
-                </FootNote>
-            </>
-        }
-        thumbnail={"/media/image/2001.jpg"}
-        anchor={"space-odyssey"}
-        footnoteContext={footCtx}
-    />
+            </BookTileThoughts>
+            <hr />
+            <FootnoteList />
+        </FootnoteProvider>
+    </BookTile>
 );
