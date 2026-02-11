@@ -1,12 +1,14 @@
 import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"Gödel, Escher, Bach: An Eternal Golden Braid"}
         author={"Douglas Hofstadter"}
-        synopsis={
+        thumbnail={"/media/image/geb-egb.jpg"}
+        anchor={"geb-egb"}>
+        <BookTileSynopsis>
             <>
                 <i>Gödel, Escher, Bach: An Eternal Golden Braid</i> is a work that often resists attempts at strict
                 classification and even summarization. At first, it may seem to be building up to Gödel's proof and how
@@ -40,8 +42,8 @@ export default (
                     somewhat technical and abstract ideas presented in the preceding pages.
                 </p>
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 The structure and format of this book is among the most unique and original that I have read. This is
                 before even considering the main content. I have yet to read a book that makes better (or any!) use of a
@@ -85,8 +87,6 @@ export default (
                     the sound in a thoughtful manner.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/geb-egb.jpg"}
-        anchor={"geb-egb"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
