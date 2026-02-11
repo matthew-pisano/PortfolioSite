@@ -1,12 +1,16 @@
 import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
+
+let bookTileAnchor = "thinking-fast-slow";
 
 export default (
     <BookTile
         title={"Thinking Fast and Slow"}
         author={"Daniel Kahneman"}
-        synopsis={
+        thumbnail={"/media/image/thinking-fast-and-slow.jpg"}
+        anchor={bookTileAnchor}>
+        <BookTileSynopsis>
             <>
                 <i>Thinking Fast and Slow</i> serves as a compendium of the author's knowledge on both human psychology
                 and economic theory, particularly on the intersection between the two. The core idea of the book is
@@ -45,8 +49,8 @@ export default (
                     future experiencing self.
                 </p>
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 While all of the concepts presented within <i>Thinking Fast and Slow</i> have far-reaching influences on
                 economics, cognitive science, and psychology, I find his first set of ideas the most interesting.
@@ -67,8 +71,6 @@ export default (
                     suggest that a different approach is needed in conjunction with modern strategies.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/thinking-fast-and-slow.jpg"}
-        anchor={"thinking-fast-slow"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );

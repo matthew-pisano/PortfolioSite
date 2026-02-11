@@ -8,12 +8,12 @@ import React from "react";
 // import humanCompatible from "@/components/readingList/cogsci/humanCompatible";
 // import strangeLoop from "@/components/readingList/cogsci/strangeLoop";
 import superintelligence from "@/components/readingList/cogsci/superintelligence";
-// import thinkingFastAndSlow from "@/components/readingList/cogsci/thinkingFastAndSlow";
+import thinkingFastAndSlow from "@/components/readingList/cogsci/thinkingFastAndSlow";
 
 export default (
     <>
         {superintelligence}
-        {/*{thinkingFastAndSlow}*/}
+        {thinkingFastAndSlow}
         {/*{humanCompatible}*/}
         {/*{alignmentProblem}*/}
         {/*{godelEscherBach}*/}
