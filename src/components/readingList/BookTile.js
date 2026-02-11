@@ -1,104 +1,83 @@
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import PropTypes from "prop-types";
 
 import { Tile } from "@/components/tiles/Tiles";
-import { FootNoteContext } from "@/components/widgets/FootNote";
 import { TileInfo } from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
 import tileStyles from "@/styles/pageTiles.module.css";
 
 /**
+ * The synopsis section of a book tile's content
+ * @param children {JSXElement} The synopsis section
+ */
+function BookTileSynopsis({ children }) {
+    return (
+        <div className={tileStyles.bookTileSection}>
+            <span className={tileStyles.bookTileSectionHeader}>Synopsis:</span> {children}
+        </div>
+    );
+}
+
+BookTileSynopsis.propTypes = {
+    children: PropTypes.node.isRequired
+};
+
+/**
+ * The thoughts section of a book tile's content
+ * @param {JSXElement} children The thoughts section
+ */
+function BookTileThoughts({ children }) {
+    return (
+        <div className={tileStyles.bookTileSection}>
+            <span className={tileStyles.bookTileSectionHeader}>Thoughts:</span> {children}
+        </div>
+    );
+}
+
+BookTileThoughts.propTypes = {
+    children: PropTypes.node.isRequired
+};
+
+/**
  * A tile representing a book review
+ * @param children {JSXElement} The book review content
  * @param title {string} The title of the book
  * @param author {string} The author of the book
- * @param synopsis {JSXElement} A synopsis of the book
- * @param thoughts {JSXElement} An analysis of the book
- * @param footnotes {JSXElement} Any footnotes from the text
  * @param thumbnail {string} The book cover thumbnail
  * @param anchor {string} The anchor id for the tile
- * @param footnoteContext {Context} The context to use for footnotes
  * @constructor
  */
-function BookTile({ title, author, synopsis, thoughts, footnotes, thumbnail, anchor, footnoteContext }) {
-    const footnotesRef = useRef([]);
-    const footRefsRef = useRef([]);
+function BookTile({ children, title, author, thumbnail, anchor }) {
     const [bookTime, setBookTime] = useState(0);
 
     useEffect(() => {
         setBookTime(elementReadingTime(anchor));
     }, []);
 
-    useEffect(() => {
-        const refs = footRefsRef.current;
-        const notes = footnotesRef.current;
-
-        // Check for duplicates
-        const duplicateFootRefs = refs.filter((idx, i) => refs.indexOf(idx) !== i);
-        const duplicateFootNotes = notes.filter((idx, i) => notes.indexOf(idx) !== i);
-
-        const duplicateFootnoteIndices = [...new Set(duplicateFootNotes)].join(", ");
-        if (duplicateFootNotes.length > 0)
-            throw new Error(`Book "${title}": Duplicate FootNote index(es): ${duplicateFootnoteIndices}`);
-
-        const duplicateFootRefIndices = [...new Set(duplicateFootRefs)].join(", ");
-        if (duplicateFootRefs.length > 0)
-            throw new Error(`Book "${title}": Duplicate FootRef index(es): ${duplicateFootRefIndices}`);
-
-        // Validate that all FootRefs have corresponding FootNotes
-        const uniqueRefs = [...new Set(refs)];
-        const uniqueNotes = [...new Set(notes)];
-
-        const missingNotes = uniqueRefs.filter((idx) => !uniqueNotes.includes(idx));
-        const unusedNotes = uniqueNotes.filter((idx) => !uniqueRefs.includes(idx));
-
-        if (missingNotes.length > 0)
-            throw new Error(`Book "${title}": FootRef(s) without matching FootNote(s): ${missingNotes.join(", ")}`);
-
-        if (unusedNotes.length > 0)
-            throw new Error(`Book "${title}": FootNote(s) without matching FootRef(s): ${unusedNotes.join(", ")}`);
-    }, [title, anchor, synopsis, thoughts, footnotes]);
-
-    const contextValue = new FootNoteContext(anchor, footnotesRef, footRefsRef);
-    if (!footnoteContext) footnoteContext = createContext(null);
-
     return (
-        <footnoteContext.Provider value={contextValue}>
-            <Tile tileInfo={new TileInfo({ title: <>{title}</>, thumbnail: thumbnail, anchor: anchor })}>
-                <div className={`${tileStyles.scrollTileContent} ${tileStyles.bookTileContent}`}>
-                    <div className={tileStyles.bookTileSection}>
-                        <small style={{ display: "block", width: "100%", textAlign: "right" }}>
-                            {bookTime} minute read
-                        </small>
-                    </div>
-                    <div>
-                        <span className={tileStyles.bookTileSectionHeader}>Author:</span> {author}
-                    </div>
-                    <div className={tileStyles.bookTileSection}>
-                        <span className={tileStyles.bookTileSectionHeader}>Synopsis:</span> {synopsis}
-                    </div>
-                    <div className={tileStyles.bookTileSection}>
-                        <span className={tileStyles.bookTileSectionHeader}>Thoughts:</span> {thoughts}
-                    </div>
-                    <div className={tileStyles.bookTileSection}>
-                        {footnotes && footnotes.props.children ? <hr /> : null}
-                        {footnotes}
-                    </div>
+        <Tile tileInfo={new TileInfo({ title: <>{title}</>, thumbnail: thumbnail, anchor: anchor })}>
+            <div className={`${tileStyles.scrollTileContent} ${tileStyles.bookTileContent}`}>
+                <div className={tileStyles.bookTileSection}>
+                    <small style={{ display: "block", width: "100%", textAlign: "right" }}>
+                        {bookTime} minute read
+                    </small>
                 </div>
-            </Tile>
-        </footnoteContext.Provider>
+                <div>
+                    <span className={tileStyles.bookTileSectionHeader}>Author:</span> {author}
+                </div>
+                {children}
+            </div>
+        </Tile>
     );
 }
 
 BookTile.propTypes = {
+    children: PropTypes.node.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
-    synopsis: PropTypes.element.isRequired,
-    thoughts: PropTypes.element.isRequired,
-    footnotes: PropTypes.element,
     thumbnail: PropTypes.string.isRequired,
-    anchor: PropTypes.string.isRequired,
-    footnoteContext: PropTypes.any
+    anchor: PropTypes.string.isRequired
 };
 
-export { BookTile };
+export { BookTile, BookTileSynopsis, BookTileThoughts };

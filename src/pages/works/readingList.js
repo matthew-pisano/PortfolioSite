@@ -1,11 +1,11 @@
 import React from "react";
 
 import cogSciBooks from "@/components/readingList/cogSciBooks";
-import futurismBooks from "@/components/readingList/futurismBooks";
-import historyBooks from "@/components/readingList/historyBooks";
-import philosophyBooks from "@/components/readingList/philosophyBooks";
-import physicsBooks from "@/components/readingList/physicsBooks";
-import scifiBooks from "@/components/readingList/scifiBooks";
+// import futurismBooks from "@/components/readingList/futurismBooks";
+// import historyBooks from "@/components/readingList/historyBooks";
+// import philosophyBooks from "@/components/readingList/philosophyBooks";
+// import physicsBooks from "@/components/readingList/physicsBooks";
+// import scifiBooks from "@/components/readingList/scifiBooks";
 import { SelfLink } from "@/components/tiles/Links";
 import { SectionTile, Tile } from "@/components/tiles/Tiles";
 import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
@@ -77,18 +77,18 @@ export default function ReadingList() {
                 }
             />
             {cogSciBooks}
-            <SectionTile
-                tileInfo={new TileInfo({ title: <>History and Historical Fiction</>, anchor: sections.history })}
-            />
-            {historyBooks}
-            <SectionTile tileInfo={new TileInfo({ title: <>Science Fiction</>, anchor: sections.scifi })} />
-            {scifiBooks}
-            <SectionTile tileInfo={new TileInfo({ title: <>Physics</>, anchor: sections.physics })} />
-            {physicsBooks}
-            <SectionTile tileInfo={new TileInfo({ title: <>Philosophy</>, anchor: sections.philosophy })} />
-            {philosophyBooks}
-            <SectionTile tileInfo={new TileInfo({ title: <>Futurism</>, anchor: sections.futurism })} />
-            {futurismBooks}
+            {/*<SectionTile*/}
+            {/*    tileInfo={new TileInfo({ title: <>History and Historical Fiction</>, anchor: sections.history })}*/}
+            {/*/>*/}
+            {/*{historyBooks}*/}
+            {/*<SectionTile tileInfo={new TileInfo({ title: <>Science Fiction</>, anchor: sections.scifi })} />*/}
+            {/*{scifiBooks}*/}
+            {/*<SectionTile tileInfo={new TileInfo({ title: <>Physics</>, anchor: sections.physics })} />*/}
+            {/*{physicsBooks}*/}
+            {/*<SectionTile tileInfo={new TileInfo({ title: <>Philosophy</>, anchor: sections.philosophy })} />*/}
+            {/*{philosophyBooks}*/}
+            {/*<SectionTile tileInfo={new TileInfo({ title: <>Futurism</>, anchor: sections.futurism })} />*/}
+            {/*{futurismBooks}*/}
         </DefaultWrapper>
     );
 }
