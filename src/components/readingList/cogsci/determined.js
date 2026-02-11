@@ -1,12 +1,14 @@
 import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"Determined: A Science of Life Without Free Will"}
         author={"Robert M. Sapolsky"}
-        synopsis={
+        thumbnail={"/media/image/determined.jpg"}
+        anchor={"determined"}>
+        <BookTileSynopsis>
             <>
                 <i>Determined: A Science of Life Without Free Will</i> examines and deconstructs one of the most
                 fundamental notions of the human condition: <i>the ability to freely choose</i>. The book is split into
@@ -28,8 +30,8 @@ export default (
                     and consequences for mental health, motivation, and criminal justice.
                 </p>
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 Reading Sapolsky's thoughts and expansions on this subject have been thoroughly illuminating. While I
                 initially chose this book to reinforce, rather than revise, my own views on <i>free will</i>, I found
@@ -53,8 +55,6 @@ export default (
                     come).
                 </p>
             </>
-        }
-        thumbnail={"/media/image/determined.jpg"}
-        anchor={"determined"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
