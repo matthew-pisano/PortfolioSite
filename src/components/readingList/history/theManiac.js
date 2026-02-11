@@ -1,12 +1,14 @@
 import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"The Maniac"}
         author={"Benjamín Labatut"}
-        synopsis={
+        thumbnail={"/media/image/the-maniac.jpg"}
+        anchor={"maniac"}>
+        <BookTileSynopsis>
             <>
                 <i>The Maniac</i> is a fictionalized biography of polymath John von Neumann. It primarily explores von
                 Neumann's life and accomplishments through a series of envisioned interviews with those he interacted
@@ -16,8 +18,8 @@ export default (
                 contributions to game theory and computer science. The concluding chapters concentrate on Demis Hassabis
                 and his work on AlphaGo, a computer program that defeated the world Go champion.
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 In this book, Labatut effectively employs fictionalized interactions and interviews to instill a sense
                 of awe within the reader and contextualize historical events with a sense of gravity that traditional
@@ -38,8 +40,6 @@ export default (
                     from Turing or Gödel during undergraduate education.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/the-maniac.jpg"}
-        anchor={"maniac"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
