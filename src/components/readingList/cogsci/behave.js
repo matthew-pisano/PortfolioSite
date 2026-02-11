@@ -1,12 +1,14 @@
 import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"Behave: The Biology of Humans at Our Best and Worst"}
         author={"Robert M. Sapolsky"}
-        synopsis={
+        thumbnail={"/media/image/behave.jpg"}
+        anchor={"behave"}>
+        <BookTileSynopsis>
             <>
                 <i>Behave: The Biology of Humans at Our Best and Worst</i> serves as an excellent exploration into the
                 nature of human behavior, its causes, its consequences, and how we can use that knowledge to inform our
@@ -35,8 +37,8 @@ export default (
                     control?
                 </p>
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 I read <i>Behave</i> after I read <i>Determined</i> (unintentionally, but I'm glad that I did). It is
                 very clear how the ideas Sapolsky presents in the former influenced the creation of the latter. In his
@@ -67,8 +69,6 @@ export default (
                     nurturing and caring to in-group members, but more wary of out-group members.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/behave.jpg"}
-        anchor={"behave"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
