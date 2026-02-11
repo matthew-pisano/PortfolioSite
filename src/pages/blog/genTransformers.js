@@ -680,6 +680,103 @@ export default function GenTransformers() {
                     autoregressive equivalent to training a model on expert moves. You will get impressive results, but
                     you will not reach the quality of the material that you are trying to emulate.
                 </p>
+                <BlogSection>Quick Inference</BlogSection>
+                <p>
+                    Despite their limitations, current large language models are undoubtedly useful. Any system that can
+                    collate and inference upon the quantity data that they can should not be discarded outright. To deny
+                    their usefulness would be as erroneous as overstating it. If these models do not themselves
+                    constitute a generally intelligent agent, what is the best use case for their abilities?
+                </p>
+                <p>
+                    If we look back upon the history of machine learning development, we see a fairly common pattern
+                    emerge.
+                </p>
+                <ol>
+                    <li>A new technology is invented.</li>
+                    <li>Many people become excited over its potential capabilities.</li>
+                    <li>We discover its practical limitations.</li>
+                    <li>It falls out of favor as a standalone emulation of human capabilities</li>
+                </ol>
+                <p>However, there is a fifth step that is often overlooked:</p>
+                <ol start={"5"}>
+                    <li>It is later incorporated into an even more capable technology.</li>
+                </ol>
+                <BlogSection level={2}>Standing on the shoulders of Giants</BlogSection>
+                <p>
+                    The first example of this came after the introduction of Rosenblatt's Perceptron. Shortly following
+                    its announcement in 1958, many were quick to speculate on the potential capabilities and
+                    applications of a technology that could teach itself. A, now famous, <i>New York Times</i>
+                    <Footnote>
+                        See:{" "}
+                        <Link href={"https://www.nytimes.com/1958/07/13/archives/electronic-brain-teaches-itself.html"}>
+                            Electronic 'Brain' Teaches Itself
+                        </Link>
+                        .
+                    </Footnote>{" "}
+                    article described the Perceptron as an "Electronic Brain" that could teach itself, with a Navy
+                    representative further commenting that it could the basis for machines which could read and write on
+                    their own! It was true that this model could learn some impressive things, such as the position of
+                    shapes on a grid and simple functions of boolean logic. In 1969, Minsky and Papert put a damper on
+                    these speculation in their book <i>Perceptrons</i> where they pointed out that these models that
+                    could only learn functions which were linearly separable. A good example of this would be the XOR
+                    function from boolean logic. Linearly separable functions represented the fundamental upper bound of
+                    this models capability. This resulted in what Minsky later referred to as the "First AI Winter"
+                    where enthusiasm for AI research sharply diminished.
+                </p>
+                <p>
+                    A decade or so later, the same neurons that the Perceptron was built upon, began to comprise
+                    multi-layered networks
+                    <Footnote>
+                        This is evident in the term Multi-Layered Perceptron (MLP), which is still sometimes used to
+                        describe deep neural networks today.
+                    </Footnote>
+                    . The training (and therefore the utility) of these networks was enabled by the emerging technique
+                    of backpropagation. The development of this technique was very much a collective effort of
+                    Linnainmaa, Werbos
+                    <Footnote>
+                        Originally, Werbos developed his version of backpropagation to model Freud's concept of the
+                        "flow of psychic energy". This area of machine learning was probably the last place I expected
+                        to fine a reference to Freud, but here we are.
+                    </Footnote>
+                    , Rumelhart, LeCun, and Hinton. These more complex networks were significantly more capable than the
+                    original Perceptron. Not only could they model non-linearly separable functions, but they could
+                    approximate <i>any</i> continuous function (as long as it has at least one hidden layer)! This again
+                    sparked significant excitement from those that followed AI research. It was used within LeCun's{" "}
+                    <i>LeNet</i> system to recognize handwritten digits (à la MNIST) and by IBM's (Tesauro's) TD-Gammon
+                    backgammon playing agent. Despite the fact that these networks represented a significant jump in
+                    capability, not every problem could be represented as a combination of continuous function that
+                    could be optimized towards. By the early 2000s, AI had once again fallen out of favor in research
+                    circles.
+                </p>
+                <p>
+                    Interest remained low for another decade until 2011. IBM's Watson system sparked public interest
+                    once again, but it was not until AlexNet in 2012 that AI researchers themselves once again took
+                    notice. The difficulty with backpropagation is that it is very intensive in terms of data and
+                    compute cycles. It was difficult to scale these networks by just running them on a CPU. One of
+                    AlexNet's core contributions was the fact that it was trained on GPUs instead. By using a highly
+                    parallelized architecture like a GPU, the AlexNet team could train on significantly more data
+                    significantly faster. Even though the core inefficiencies of backpropagation had not been
+                    eliminated, they could be mitigated by simply "throwing more compute at the problem until it goes
+                    away". This philosophy very much persists into contemporary AI research. After this popularization,
+                    other neural network approaches such as RNNs, LSTMs, and GRUs became much more feasible to train and
+                    run. Interestingly enough, RNNs were actually the original substrate for an attention-like mechanism
+                    in 2015
+                    <Footnote>
+                        See{" "}
+                        <Link href={"https://arxiv.org/pdf/1409.0473"}>
+                            Neural Machine Translation by Jointly Learning to Align and Translate
+                        </Link>
+                        , but the effectiveness of the algorithm was limited by the strictly sequential processing of
+                        RNNs.
+                    </Footnote>
+                </p>
+                <p>
+                    This essentially brings us up-to-date with the current transformer-centric paradigm. Since the
+                    1950s, there has been a long history of development-limitations-adaptation cycles in artificial
+                    intelligence research. I believe transformers fall within one of these cycles, rather than a
+                    permanent departure from it.
+                </p>
+                <BlogSection level={2}>Capabilities of Transformers</BlogSection>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
