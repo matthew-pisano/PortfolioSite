@@ -17,10 +17,9 @@ const SectionContext = createContext(null);
  * @param title {string} The title of the blog page
  * @param subtitle {string} The subtitle of the blog page
  * @param date {Date} The date of writing of the blog
- * @param footnoteContext {Context} The context to use for footnotes
  * @return {JSX.Element} The page wrapped in the blog wrapper
  */
-function BlogWrapper({ children, pageName, title, subtitle, date, footnoteContext }) {
+function BlogWrapper({ children, pageName, title, subtitle, date }) {
     const blockContentId = "blogContent";
     const [blogTime, setBlogTime] = useState(0);
 
@@ -37,8 +36,6 @@ function BlogWrapper({ children, pageName, title, subtitle, date, footnoteContex
     useEffect(() => {
         setBlogTime(elementReadingTime(blockContentId));
     }, []);
-
-    if (!footnoteContext) footnoteContext = createContext(null);
 
     return (
         <Wrapper pageName={pageName}>
