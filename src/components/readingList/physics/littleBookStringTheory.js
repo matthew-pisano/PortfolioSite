@@ -2,19 +2,21 @@ import React from "react";
 
 import Link from "next/link";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"The Little Book of String Theory"}
         author={"Steven Gubser"}
-        synopsis={
+        thumbnail={"/media/image/the-little-book-of-string-theory.jpg"}
+        anchor={"string-theory"}>
+        <BookTileSynopsis>
             <>
                 <i>The Little Book of String Theory</i> offers a short, accessible, and entertaining introduction to one
                 of the most talked-about areas of physics today. String theory has been called the "theory of
                 everything". It seeks to describe all the fundamental forces of nature. It encompasses gravity and
                 quantum mechanics in one unifying theory. But it is unproven and fraught with controversy. After reading
-                this book, you’ll be able to draw your own conclusions about string theory.{" "}
+                this book, you'll be able to draw your own conclusions about string theory.{" "}
                 <i>
                     Source:{" "}
                     <Link
@@ -28,8 +30,8 @@ export default (
                     </Link>
                 </i>
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 Similarly to <i>QED</i>, this served as my first semi-serious introduction to <i>String Theory</i>.
                 Gubser manages to fit an impressive amount of information into this relatively short book. From the
@@ -44,8 +46,6 @@ export default (
                     re-frame it using string theory.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/the-little-book-of-string-theory.jpg"}
-        anchor={"string-theory"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
