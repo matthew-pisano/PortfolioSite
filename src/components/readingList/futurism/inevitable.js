@@ -2,13 +2,15 @@ import React from "react";
 
 import Link from "next/link";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"The Inevitable: Understanding the 12 technological forces that will shape our future"}
         author={"Kevin Kelly"}
-        synopsis={
+        thumbnail={"/media/image/the-inevitable.jpg"}
+        anchor={"inevitable"}>
+        <BookTileSynopsis>
             <>
                 <i>The Inevitable: Understanding the 12 technological forces that will shape our future</i> asserts that
                 much of what will happen in the next thirty years is inevitable, driven by technological trends that are
@@ -32,8 +34,8 @@ export default (
                     </Link>
                 </i>
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 I first read this book when it originally came out. At that point, it was uncertain whether any of
                 Kelly's predictions would materialize. Looking back nearly ten years after publication, his theories
@@ -48,8 +50,6 @@ export default (
                     and the decreasing emphasis on digital ownership.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/the-inevitable.jpg"}
-        anchor={"inevitable"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
