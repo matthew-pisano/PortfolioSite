@@ -7,7 +7,7 @@ const WORDS_PER_MINUTE = 200;
 
 /**
  * Get the time (in minutes) it would take to read the contents of the element's inner text
- * @param elemId The ID of the element
+ * @param elemId {string} The ID of the element
  * @return The number of minutes to read the text
  */
 function elementReadingTime(elemId) {
