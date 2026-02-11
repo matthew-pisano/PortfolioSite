@@ -1,12 +1,14 @@
 import React from "react";
 
-import { BookTile } from "@/components/readingList/BookTile";
+import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
     <BookTile
         title={"QED: The Strange Theory of Light and Matter"}
         author={"Richard Feynman"}
-        synopsis={
+        thumbnail={"/media/image/qed.jpg"}
+        anchor={"quantum-electrodynamics"}>
+        <BookTileSynopsis>
             <>
                 <i>QED: The Strange Theory of Light and Matter</i> is an adaptation of four lectures given by Richard
                 Feynman at UCLA. Designed for readers without an in-depth knowledge in the field of{" "}
@@ -15,8 +17,8 @@ export default (
                 well-known <i>Feynman diagrams</i> to describe this subset of quantum field theory in terms that anyone
                 can understand.
             </>
-        }
-        thoughts={
+        </BookTileSynopsis>
+        <BookTileThoughts>
             <>
                 This book served as my first (informal) introduction to QED, specifically, and even QFT in general. His
                 analogies and examples, such as the connection he makes between photons reflecting off of a glass
@@ -29,8 +31,6 @@ export default (
                     of particle interactions within a series of simple lines.
                 </p>
             </>
-        }
-        thumbnail={"/media/image/qed.jpg"}
-        anchor={"quantum-electrodynamics"}
-    />
+        </BookTileThoughts>
+    </BookTile>
 );
