@@ -7,7 +7,7 @@ import FlexWrapper from "@/components/wrappers/FlexWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
-import { blogInfo as genTransformers } from "@/pages/blog/genTransformers";
+import { blogInfo as genTransformers } from "@/pages/works/blog/genTransformers";
 import tileStyles from "@/styles/pageTiles.module.css";
 
 /**
@@ -47,7 +47,7 @@ export default function Blog() {
                     new TileInfo({
                         title: <>{genTransformers.title}</>,
                         thumbnail: "/media/image/hanoi.jpg",
-                        titleLink: "/blog/genTransformers"
+                        titleLink: "/works/blog/genTransformers"
                     })
                 }
                 date={genTransformers.date}>
