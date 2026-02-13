@@ -680,7 +680,7 @@ export default function GenTransformers() {
                     autoregressive equivalent to training a model on expert moves. You will get impressive results, but
                     you will not reach the quality of the material that you are trying to emulate.
                 </p>
-                <BlogSection>Quick Inference</BlogSection>
+                <BlogSection>One Piece of the Puzzle</BlogSection>
                 <p>
                     Despite their limitations, current large language models are undoubtedly useful. Any system that can
                     collate and inference upon the quantity data that they can should not be discarded outright. To deny
@@ -776,7 +776,80 @@ export default function GenTransformers() {
                     intelligence research. I believe transformers fall within one of these cycles, rather than a
                     permanent departure from it.
                 </p>
-                <BlogSection level={2}>Capabilities of Transformers</BlogSection>
+                <BlogSection level={2}>Quick Inference</BlogSection>
+                <p>
+                    We have seen that transformer-based models are not capable of perfectly emulating the environment of
+                    human cognition. Some of these consequences can be mitigated, for example the use of a scratchpad to
+                    emulate an interiority or iterative self-calls to serve as a stand-in for self-play. Techniques like
+                    these can result in significant performance improvements on reasoning-intensive tasks, but it is
+                    still not a true replacement. As noted in the opening, even frontier models still make simple and
+                    inexplicable mistakes. In my opinion, building the above human-like features directly into a novel
+                    architecture is the most viable path away from simply being a "stochastic parrot".
+                </p>
+                <p>
+                    That being said, these models are far from useless. The attention mechanism is one of the best
+                    algorithms that we have for collating large sequences of data and performing efficient recall on
+                    them. The issue is that slow, deliberative reasoning is not necessarily a use case well fit for this
+                    algorithm. However, quick, heuristic inference still plays a central role in human cognition, though
+                    it is often overlooked.
+                </p>
+                <p>
+                    When we walk into a crowded room at a social event, we quickly take stock of what is going on around
+                    us. We immediately notice people that we know, snippets of nearby conversations, and (most
+                    importantly) where the food is likely to be. Humans are excellent at quickly estimating social
+                    hierarchies and where we fit into those hierarchies. This sort of inference also happens quicky and
+                    subconsciously when we enter unfamiliar area. This is an ability that we naturally have at ous
+                    disposal. For those who are experts in some domain, for example mathematics or software engineering,
+                    a similar, domain-specific ability develops with experience. We can often, at a glance, form an
+                    opinion on something related to our field of study. An awkward proof or inelegant code is
+                    immediately recognizable, even if we have yet to fully interrogate the logic or control flow. A
+                    similar effect can be found in practitioners of the arts. While many can immediately recognize an
+                    awkward musical note or poorly executed art restoration, an experienced person can also get an
+                    intuitive feel about <i>why</i> exactly something is off. How can we do this seemingly so
+                    effortlessly? Additionally, this would seem to be a reasoning-intensive process, figuring out
+                    exactly what is wrong and why, yet it seems to shortcut any conscious deliberation.
+                </p>
+                <p>
+                    In cognitive psychology, this is sometimes referred to as a "system of cognition". When we perform
+                    some cognitive task, our brain does not just have a single way of approaching the problem. We think
+                    and behave in notably different ways depending on the ease of the problem, our familiarity with it,
+                    and any resource or time constraints placed upon us. Most notably for our purposes, Daniel Kahneman
+                    popularized the idea of a "two systems" approach to cognition in <i>Thinking Fast and Slow</i>
+                    <Footnote>
+                        See <Link href={"/works/readingList#thinking-fast-slow"}>my own thoughts on the book</Link>.
+                    </Footnote>
+                    . He proposed that human cognition can be classified into two categories. When we normally think of
+                    thinking, we imagine a very dlow, deliberative process. We slowly examine a problem and reason our
+                    way to a solution. This often takes many iterations of applying the reasoning process until we
+                    arrive at a final answer. Our brains are quite lazy, though, and this is a very resource-intensive
+                    process. Instead, Kahneman argues, we spend the vast majority of our time in a sort of "quick
+                    inference" mode. Here, our judgements are much quicker, but rely heavily on intuition and learned
+                    heuristics. This is often good enough to produce a satisfying result, like the examples mentioned
+                    above, but it can also serve as a catalyst for a longer reasoning process later on. This is our "gut
+                    feeling", an intuition that can short circuit long winded deliberation. Hopefully this is sounding
+                    somewhat familiar.
+                </p>
+                <p>
+                    I would argue that transformers (more specifically the attention mechanism at their core) would
+                    serve as an excellent candidate for this king of quick inference in a larger AI system. While their
+                    performance at long-horizon and complex tasks remains limited, their abilities to process large
+                    amounds of information and return a heuristic analysis can far exceed our own in some cases. For
+                    example, using an LLM to extract information from a body of text can be much more efficient than
+                    assigning a human to the task. Of course, there are not rigorous guarantees that the analysis will
+                    be correct, it is right enough, often enough, that it is still useful. This is similar to our own
+                    reflexive judgements of situations or content. Our initial analysis may not be right, but it often
+                    does uncover viable avenues for further inquiry. If I look at some deeply nested and complex
+                    function, I can immediately tell you that something is off, but it will take a little while for me
+                    to trace the logic and give a comprehensive refactor.
+                </p>
+                <p>
+                    While I think it is unlikely that transformers alone can fulfil a satisfying definition of a
+                    generally intelligent agent, I think it is very reasonable to infer that they could serve as a
+                    component. Just as the perceptron and neural networks were unable to achieve human-levels of
+                    intelligence on their own, they later served as components in much more capable systems. I think
+                    that there is a very good chance that modern LLMs still lie within this cycle, rather than outside
+                    of it entirely.
+                </p>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
