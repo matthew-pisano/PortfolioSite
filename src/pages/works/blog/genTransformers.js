@@ -310,20 +310,23 @@ export default function GenTransformers() {
                     that, as we are learning, we can solicit feedback from a teacher or our environment. We can
                     immediately test out what we think we know and update our beliefs based on feedback. When we learn,
                     we are also able to clearly incorporate new beliefs into our world model without overwriting other,
-                    unrelated information
+                    unrelated information. In AI research, this has a specific name: "catastrophic forgetting"
                     <Footnote>
-                        In AI research, this has a specific name: "catastrophic forgetting". Some architectures are less
-                        susceptible to this than others, but transformers fall on the "more susceptible" end of the
-                        spectrum. If you continually train a model on new information, eventually something will
-                        contradict its training data. Over time, it will begin to gradually forget older information as
-                        the associated weights are no longer being reinforced. After a long enough time, the model may
-                        fully replace old information or abilities with new ones. Importantly, there is no priority
-                        hierarchy for this replacement. New information will overwrite old, even if the old information
-                        is much more valuable to the model. We will cover this in more detail shortly.
+                        Some architectures are less susceptible to this than others, but transformers fall on the "more
+                        susceptible" end of the spectrum. If you continually train a model on new information,
+                        eventually something will contradict its training data. Over time, it will begin to gradually
+                        forget older information as the associated weights are no longer being reinforced. After a long
+                        enough time, the model may fully replace old information or abilities with new ones.
+                        Importantly, there is no priority hierarchy for this replacement. New information will overwrite
+                        old, even if the old information is much more valuable to the model. We will cover this in more
+                        detail shortly.
                     </Footnote>
-                    . Since we can incorporate new knowledge as we interact with our environment, our internal
-                    representation of the world (for the most part) stays relatively close to the ground truth of the
-                    real world.
+                    . Additionally, when shown many low quality or AI-generated training samples, these models may
+                    suffer from "model collapse". This often results in the test performance of a model degrading
+                    significantly. Once in a collapsed state, it is difficult for a model to recover without targeted
+                    intervention from its trainers. Since we can incorporate new knowledge as we interact with our
+                    environment, our internal representation of the world (for the most part) stays relatively close to
+                    the ground truth of the real world.
                 </p>
                 <p>
                     Our ability to automatically filter out irrelevant or incorrect information is central to online
@@ -851,7 +854,42 @@ export default function GenTransformers() {
                     that there is a very good chance that modern LLMs still lie within this cycle, rather than outside
                     of it entirely.
                 </p>
-                <BlogSection></BlogSection>
+                <BlogSection>The Current State of Affairs</BlogSection>
+                <p>
+                    Transformer models currently represent the forefront of our artificial intelligence capabilities. It
+                    is the architecture that has gotten us the closest to something that is generally intelligent (or at
+                    least acts like it outwardly). This has resulted in highly significant amounts of research and
+                    development funding going into training larger and larger models on more and more data. This
+                    scaling, combined with many clever engineering tweaks to the attention mechanism, has resulted in
+                    the capability of these models growing significantly over the past few years.
+                </p>
+                <p>
+                    However, despite impressive benchmark achievements, the capabilities these models within
+                    low-noise/high-signal, controlled environments does not fully translate to real-world performance.
+                    This is in the best case. On more rare occasions, these models can exhibit unexpected and exotic
+                    failure modes that even a low-performing human would be unlikely to express. The prevailing notion
+                    over the past few years is that this is a question of scale: simply adding more data, parameters, or
+                    test-time compute would solve these issues if only there were more resources available. At least,
+                    this has been the opinion of most model vendors.
+                </p>
+                <p>
+                    Perhaps this may be the case, but as we have seen, more scrutiny is warranted. These models poses
+                    many, but not all, capabilities that are central to human intelligence. They can relate disparate
+                    features of an input and make useful connections and they can store and retrieve vast quantities of
+                    information. However, they lack an interiority that is isolated from their environments. This means
+                    that their abilities for self-play and internal experimentation. Additionally, the transformer
+                    architecture has no native way of prioritizing which information to learn and which to forget. This
+                    limits their ability to learn online without suffering from "catastrophic forgetting" or "model
+                    collapse". While we cannot guarantee that these qualities are a necessary condition for an AGI, we
+                    may put a significant weight on their importance since these are qualities core to human cognition.
+                    For humans, the ability to experiment internally and selectively learn information allow us to
+                    reason effectively about ourselves, our goals, and our environments.
+                </p>
+                <p>
+                    Starting in late 2024, great effort has been made by researchers to remedy the poor reasoning
+                    performance of language models by training them specifically on high-quality human reasoning chains.
+                    This has boosted the reasoning performance of these models significantly, though at great cost.
+                </p>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
