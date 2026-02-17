@@ -809,6 +809,7 @@ export default function GenTransformers() {
                     effortlessly? Additionally, this would seem to be a reasoning-intensive process, figuring out
                     exactly what is wrong and why, yet it seems to shortcut any conscious deliberation.
                 </p>
+                <BlogSection level={2}>Attention is Half of All You Need</BlogSection>
                 <p>
                     In cognitive psychology, this is sometimes referred to as a "system of cognition". When we perform
                     some cognitive task, our brain does not just have a single way of approaching the problem. We think
@@ -850,6 +851,7 @@ export default function GenTransformers() {
                     that there is a very good chance that modern LLMs still lie within this cycle, rather than outside
                     of it entirely.
                 </p>
+                <BlogSection></BlogSection>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
