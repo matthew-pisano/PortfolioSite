@@ -406,6 +406,45 @@ export default function GenTransformers() {
                     and the use of external recording mediums (like paper or computers), though this is much less
                     efficient due to the lossful conversions mentioned above.
                 </p>
+                <BlogSection level={2}>Complexity</BlogSection>
+                <p>
+                    When analyzing the theoretical performance of an algorithm, computer scientists frequently rely on
+                    complexity classes for establishing its theoretical upper and lower bounds. The exact time or space
+                    complexity given depends on which algorithm is actually being measured and how the input and output
+                    spaces are defined. Do human minds have a specific complexity class?
+                </p>
+                <p>
+                    There are a lof of ambiguities here that make a single, definite answer very difficult, if not
+                    impossible, to decide upon
+                    <Footnote>
+                        This entire subsection is contingent on at least a weak version of the Church-Turing thesis
+                        being true. Suppose the "strong" (Copeland) version, that asserts that the entire universe is
+                        Turing computable, is false. Even then, perhaps at the resolution of a brain, finer elements of
+                        non-computability "smooth out". To give an example: even if the full thesis is false, computers
+                        still compute regardless. Similarly, it is conceivable that the wider universe is not Turing
+                        computable, but the high-level behavior of our brains may still be.
+                    </Footnote>
+                    . Due to the constant plasticity of human brains, I find it doubtful that each brain executes a
+                    single, well-defined algorithm throughout its entire life, perhaps not even through a single chain
+                    of thought. To get something even resembling a coherent answer, we will have to severely restrict
+                    the type of human "computations" that we are concerned with.
+                </p>
+                <p>
+                    Even if the human brain as a whole cannot be represented by a Turing machine, we know that at least
+                    a subset of it can under certain circumstances. How do we know this? Because we can act (very
+                    approximately) as universal Turing machines ourselves! Keep in mind, this is not technically true
+                    because we cannot have access to an infinite tape to which we can write out answers, but we can
+                    still approximate one just as traditional computers can. When simulating an arbitrary Turing machine
+                    that halts in <Latex>{`$N$`}</Latex> steps, the number of steps that a universal Turing machine
+                    takes is proportional to <Latex>{`$N log N$`}</Latex>. The amount of space needed to simulate such a
+                    machine grows linearly with the number of simulation steps
+                    <Footnote>
+                        Hennie and Stearns, <i>Two-tape simulation of multitape Turing machines</i>, (1966).
+                    </Footnote>
+                    . If we narrow our view of human reasoning only to our simulation of Turing computable algorithms,
+                    these complexities can serve as (at least reasonable) lower bounds for our performance.
+                </p>
+                <p></p>
                 <BlogSection>The State of the Art</BlogSection>
                 <p>
                     As of the time of writing, transformer models are very much the current state of the art, both in
@@ -682,6 +721,15 @@ export default function GenTransformers() {
                     approach will allow models to learn more generally on their own. Current reasoning models are the
                     autoregressive equivalent to training a model on expert moves. You will get impressive results, but
                     you will not reach the quality of the material that you are trying to emulate.
+                </p>
+                <p>
+                    Relative to context length, the number of computations that an LLM must compute grows roughly
+                    quadratically
+                    <Footnote>
+                        This can be partially remedied by techniques such as KV caching which bring the time complexity
+                        down to linear, but at the cost of greatly increasing space complexity from constant to linear.
+                    </Footnote>
+                    .
                 </p>
                 <BlogSection>One Piece of the Puzzle</BlogSection>
                 <p>
