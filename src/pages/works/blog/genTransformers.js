@@ -963,38 +963,80 @@ export default function GenTransformers() {
                 <BlogSection>The Current State of Affairs</BlogSection>
                 <p>
                     Transformer models currently represent the forefront of our artificial intelligence capabilities. It
-                    is the architecture that has gotten us the closest to something that is generally intelligent (or at
-                    least acts like it outwardly). This has resulted in highly significant amounts of research and
+                    is the architecture that has gotten us the closest to something that appears (at least outwardly) to
+                    be generally intelligent. This has resulted in highly significant amounts of research and
                     development funding going into training larger and larger models on more and more data. This
-                    scaling, combined with many clever engineering tweaks to the attention mechanism, has resulted in
-                    the capability of these models growing significantly over the past few years.
+                    scaling, combined with many clever engineering tweaks to the attention mechanism and embedding
+                    caching, has resulted in the capability of these models growing significantly over the past few
+                    years.
                 </p>
                 <p>
-                    However, despite impressive benchmark achievements, the capabilities these models within
-                    low-noise/high-signal, controlled environments does not fully translate to real-world performance.
-                    This is in the best case. On more rare occasions, these models can exhibit unexpected and exotic
-                    failure modes that even a low-performing human would be unlikely to express. The prevailing notion
-                    over the past few years is that this is a question of scale: simply adding more data, parameters, or
-                    test-time compute would solve these issues if only there were more resources available. At least,
-                    this has been the opinion of most model vendors.
+                    However, despite impressive benchmark achievements, the capabilities these models within these
+                    controlled environments does not fully translate to real-world performance. This is in the best
+                    case. On more rare occasions, these models can exhibit unexpected and exotic failure modes that even
+                    a low-performing human would be unlikely to express. The prevailing notion over the past few years
+                    is that this is a question of scale: simply adding more data, parameters, or test-time compute would
+                    solve these issues if only there were more resources available. At least, this has been the opinion
+                    of most model vendors.
                 </p>
                 <p>
                     Perhaps this may be the case, but as we have seen, more scrutiny is warranted. These models poses
                     many, but not all, capabilities that are central to human intelligence. They can relate disparate
-                    features of an input and make useful connections and they can store and retrieve vast quantities of
+                    features of an input to make useful connections and they can store and retrieve vast quantities of
                     information. However, they lack an interiority that is isolated from their environments. This means
-                    that their abilities for self-play and internal experimentation. Additionally, the transformer
-                    architecture has no native way of prioritizing which information to learn and which to forget. This
-                    limits their ability to learn online without suffering from "catastrophic forgetting" or "model
-                    collapse". While we cannot guarantee that these qualities are a necessary condition for an AGI, we
-                    may put a significant weight on their importance since these are qualities core to human cognition.
-                    For humans, the ability to experiment internally and selectively learn information allow us to
-                    reason effectively about ourselves, our goals, and our environments.
+                    that their abilities for self-play and internal experimentation are limited. Additionally, the
+                    transformer architecture has no native way of prioritizing which information to learn and which to
+                    forget. This limits their ability to learn online without suffering from "catastrophic forgetting"
+                    or "model collapse". While we cannot guarantee that these qualities are a necessary condition for an
+                    AGI, we may put a significant weight on their importance since these are qualities core to human
+                    cognition. For humans, the ability to experiment internally and selectively learn information allow
+                    us to reason effectively about ourselves, our goals, and our environments.
                 </p>
                 <p>
                     Starting in late 2024, great effort has been made by researchers to remedy the poor reasoning
                     performance of language models by training them specifically on high-quality human reasoning chains.
-                    This has boosted the reasoning performance of these models significantly, though at great cost.
+                    This has boosted the reasoning performance of these models significantly, though at great cost in
+                    terms of time and compute. This looks especially impressive on benchmarks, but real-world instances
+                    may get stuck in circular loops, fail to understand core details of a problem, or fail to follow the
+                    guidelines of a solution. These issues can be temporarily patched with more and more specific
+                    prompts, but models often struggle to generalize patches for one problem to similar problems. Why
+                    does this happen? This plateau in terms of performance may be another instance of the "Bitter
+                    Lesson" of AI. Instead of modifying our training approach or architecture to allow models to learn
+                    more freely and naturally, we are attempting to manually encode the human reasoning process within
+                    them. This works excellently on problems which are simple or substantially similar to their trained
+                    reasoning chains, but this specific manner of next-token prediction is still only an emulation of
+                    human reasoning.
+                </p>
+                <p>
+                    Where does this leave us now, with respect to the transformer architecture as a whole? The
+                    usefulness of these models is hard to deny. In my opinion, it is even counterproductive to do so
+                    wholesale. To scientists and engineers, as well as many other people, these models can act as
+                    excellent assistants for surveying research, collating documentation, and performing repetitive (and
+                    even complex!) boilerplate tasks. When augmented with such a model, humans may even uncover new
+                    ideas or inspirations that they would not have otherwise. However, it believe it is equally
+                    counterproductive to overinflate the theoretical capabilities of these models. Empirically, they
+                    have proven unreliable when tasked with solving complex problems, sometimes intolerably so.
+                    Theoretically, a comparison of the transformer architecture and our current training procedures to
+                    human cognition reveals the inconsistencies mentioned above. While we cannot yet prove that these
+                    discrepancies indicate an upper bound on generality, we may still make educated assumptions on model
+                    limits based on observing the only generally intelligent system that we know of: ourselves.
+                </p>
+                <p>
+                    While the set of human and LLM capabilities are certainly not equal, they are not fully disjoint
+                    either! The ability of these models to make quick, heuristic inferences based on learned patterns
+                    is, at least conceptually, similar ot how humans make snap judgements about certain problems of
+                    situations. When operating on short sequences, the quadratic scaling of transformer models is not
+                    yet too costly and the attention mechanism performs its best at relating token embeddings. I am of
+                    the opinion that we are currently pushing these models beyond their optimal usefulness. Trying to
+                    manually encode reasoning processes into these models helps their abilities, but suffers from
+                    diminishing returns
+                    <Footnote>
+                        Not to mention the significant number of tokens that these models must consume and produce at
+                        inference in order to approximate the human reasoning process.
+                    </Footnote>
+                    . A better allocation for our computational and research-allotted resources may be towards composite
+                    models which still utilize the attention mechanism for a fast inference engine, while relying on a
+                    different architecture to handle long, deliberative reasoning tasks.
                 </p>
                 <hr />
                 <FootnoteList />
