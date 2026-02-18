@@ -411,7 +411,9 @@ export default function GenTransformers() {
                     When analyzing the theoretical performance of an algorithm, computer scientists frequently rely on
                     complexity classes for establishing its theoretical upper and lower bounds. The exact time or space
                     complexity given depends on which algorithm is actually being measured and how the input and output
-                    spaces are defined. Do human minds have a specific complexity class?
+                    spaces are defined. If our goal is to identify the necessary properties for human cognition (in the
+                    context of machine cognition), it is natural to ask whether human minds themselves have a specific
+                    complexity class?
                 </p>
                 <p>
                     There are a lof of ambiguities here that make a single, definite answer very difficult, if not
@@ -421,8 +423,8 @@ export default function GenTransformers() {
                         being true. Suppose the "strong" (Copeland) version, that asserts that the entire universe is
                         Turing computable, is false. Even then, perhaps at the resolution of a brain, finer elements of
                         non-computability "smooth out". To give an example: even if the full thesis is false, computers
-                        still compute regardless. Similarly, it is conceivable that the wider universe is not Turing
-                        computable, but the high-level behavior of our brains may still be.
+                        still compute regardless. Similarly, it is conceivable that even if the wider universe is not
+                        Turing computable, the high-level behavior of our brains may still be.
                     </Footnote>
                     . Due to the constant plasticity of human brains, I find it doubtful that each brain executes a
                     single, well-defined algorithm throughout its entire life, perhaps not even through a single chain
@@ -444,7 +446,33 @@ export default function GenTransformers() {
                     . If we narrow our view of human reasoning only to our simulation of Turing computable algorithms,
                     these complexities can serve as (at least reasonable) lower bounds for our performance.
                 </p>
-                <p></p>
+                <p>
+                    This appears reasonable, at least from an intuitive standpoint. If we are given a program to
+                    simulate, even a complex one, each mental "step" does not appear to take significantly longer than
+                    the last. Anyone who has experience manually tracing and internalizing large programs (with the goal
+                    of a refactor, perhaps) may be able to attest to this. While simpler programs are much easier to
+                    reason about, each "step" that we take in our reasoning process does not appear to grow
+                    monotonically in duration. While it would be difficult to justify a specific complexity class for
+                    this type of reasoning, I would argue that it is at least better than quadratic relative to problem
+                    size.
+                </p>
+                <p>
+                    However, this narrow analysis struggles to generalize to the full range of human cognition. Our
+                    brains regularly employ a wide range of mental shortcuts, approximations, and other measures that
+                    sacrifice rigour for efficiency. With respect to our general reasoning abilities, this likely serves
+                    a great benefit to us, allowing our minds to focus mental resources toward complex areas of a
+                    problem while making quick and intuitive inferences on its simpler facets. For the majority of
+                    problems, our brains go through great effort to approximate a constant-resource solution as much as
+                    possible. Even when we cannot make snap judgements, it appears as if the resource requirements of
+                    our mental processes do not baloon as we reason about a problem for longer. When augmented with an
+                    external scratchpad to place intermediate work, we can work for an arbitrarily long amount of time
+                    on a problem without fully exhausting our mental resources or taking progressively longer amounts of
+                    time to make each marking on our scratchpads
+                    <Footnote>
+                        Whether we actually make process on the task at hand is another question entirely, though.
+                    </Footnote>
+                    .
+                </p>
                 <BlogSection>The State of the Art</BlogSection>
                 <p>
                     As of the time of writing, transformer models are very much the current state of the art, both in
@@ -723,11 +751,41 @@ export default function GenTransformers() {
                     you will not reach the quality of the material that you are trying to emulate.
                 </p>
                 <p>
-                    Relative to context length, the number of computations that an LLM must compute grows roughly
-                    quadratically
+                    We may find another limitation in how transformers approach problems, from an architectural
+                    standpoint. For these models, it takes the same number of computations to reason through a
+                    mathematical proof as it does to count natural numbers (assuming identical sequence lengths). This
+                    seems incongruous with how we would expect an efficient reasoner to behave. These models execute a
+                    fixed algorithm at every inference, regardless of the content of their input: there is no concept of
+                    informed resource distribution. Relative to context length, the number of computations that an
+                    un-optimized LLM must perform grows roughly quadratically
                     <Footnote>
                         This can be partially remedied by techniques such as KV caching which bring the time complexity
                         down to linear, but at the cost of greatly increasing space complexity from constant to linear.
+                    </Footnote>
+                    . This inefficiency places constraints on how long these models can run, while still retaining their
+                    full context. Context compression methods are an active area of research, but this is fundamentally
+                    a lossy method that may fail to capture the nuances of a problem
+                    <Footnote>
+                        See:{" "}
+                        <Link href={"https://openreview.net/forum?id=8Pi6Du0n7F"}>
+                            Autoencoding-Free Context Compression for LLMs via Contextual Semantic Anchors
+                        </Link>{" "}
+                        and{" "}
+                        <Link href={"https://arxiv.org/abs/2406.13618"}>
+                            In-Context Former: Lightning-fast Compressing Context for Large Language Model
+                        </Link>
+                        .
+                    </Footnote>
+                    . A counter to this point may be that humans experience a similar effect due to our limited working
+                    memories and unreliable long-term memories. However, we benefit significantly (and uniquely) from
+                    our ability to make quick inferences on the solution to some problems, while thinking slowly and
+                    deliberatively about other problems
+                    <Footnote>
+                        This may sound slightly like the relationship between non-reasoning and reasoning LLMs, but
+                        non-reasoning models still need a quadratic (or linear with KV caching) amount of time to
+                        compute responses to even simple queries. Ideally, we would like a fundamentally different
+                        algorithm that deliberately sacrifices accuracy for resource efficiency (not simply time
+                        savings).
                     </Footnote>
                     .
                 </p>
