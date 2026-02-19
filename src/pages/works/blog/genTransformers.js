@@ -3,8 +3,9 @@ import React from "react";
 import Link from "next/link";
 import Latex from "react-latex-next";
 
+import { BlogInfo, BlogSection } from "@/components/widgets/BlogSection";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
-import BlogWrapper, { BlogInfo, BlogSection } from "@/components/wrappers/BlogWrapper";
+import BlogWrapper from "@/components/wrappers/BlogWrapper";
 
 const blogInfo = new BlogInfo(
     "On Generally Intelligent Transformers",

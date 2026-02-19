@@ -1,15 +1,13 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { BlogSidebarProvider, BlogSidebarContent, useBlogSidebar } from "@/components/widgets/BlogSidebar";
+import { SectionContext } from "@/components/widgets/BlogSection";
+import { BlogSidebarProvider, BlogSidebarContent } from "@/components/widgets/BlogSidebar";
 import Wrapper from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
 import styles from "@/styles/pageTiles.module.css";
-
-// Context to track section count
-const SectionContext = createContext(null);
 
 /**
  * Wrapper for blog pages.
@@ -84,82 +82,4 @@ BlogWrapper.propTypes = {
     footnoteContext: PropTypes.any
 };
 
-/**
- * A section header for blog sections
- * @param children The children of the header
- * @param level The header level
- * @returns {JSX.Element} The header element
- */
-function BlogSection({ children, level }) {
-    const getNextId = useContext(SectionContext);
-    const { addSection, removeSection } = useBlogSidebar();
-    const idRef = useRef(null);
-    const sectionIdRef = useRef(null);
-
-    if (idRef.current === null) idRef.current = getNextId(level);
-
-    let sectionNumber = `${idRef.current[0]}`;
-    if (idRef.current[1] || idRef.current[2]) sectionNumber += `.${idRef.current[1]}`;
-    if (idRef.current[2]) sectionNumber += `.${idRef.current[2]}`;
-
-    let sectionId = `section-${sectionNumber}`;
-
-    // Register with sidebar on mount
-    useEffect(() => {
-        sectionIdRef.current = sectionId;
-        addSection(sectionId, children, level || 1, sectionNumber);
-        return () => removeSection(sectionId);
-    }, [sectionId, addSection, removeSection]);
-
-    let sectionContent = (
-        <>
-            <span style={{ marginRight: "30px" }}>{sectionNumber}</span>
-            {children}
-            <Link href={`#${sectionId}`} className={`${styles.anchorLink}`}>
-                <img className={`${styles.anchorIcon}`} alt="" />
-            </Link>
-        </>
-    );
-    let sectionStyle = { textIndent: "0px" };
-
-    if (!level || level === 1)
-        return (
-            <>
-                <h3 id={sectionId} style={sectionStyle}>
-                    {sectionContent}
-                </h3>
-            </>
-        );
-    else if (level === 2)
-        return (
-            <h4 id={sectionId} style={sectionStyle}>
-                {sectionContent}
-            </h4>
-        );
-    else if (level === 3)
-        return (
-            <h5 id={sectionId} style={sectionStyle}>
-                {sectionContent}
-            </h5>
-        );
-    throw new Error("Unknown blog section level " + level);
-}
-BlogSection.propTypes = {
-    children: PropTypes.element.isRequired,
-    level: PropTypes.number
-};
-
-/**
- * An object containing common blog metadata
- */
-class BlogInfo {
-    constructor(title, subtitle, date, anchor) {
-        this.title = title;
-        this.subtitle = subtitle;
-        this.date = date;
-        this.anchor = anchor;
-    }
-}
-
 export default BlogWrapper;
-export { BlogSection, BlogInfo };
