@@ -5,7 +5,7 @@ import Link from "next/link";
 import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
 import { redact } from "@/lib/util/utils";
-import styles from "@/styles/pageTiles.module.css";
+import styles from "@/styles/tiles/BookTile.module.css";
 
 function house() {
     return <span style={{ color: "CornflowerBlue" }}>house</span>;

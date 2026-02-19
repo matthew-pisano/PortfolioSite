@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 import { Tile } from "@/components/tiles/Tiles";
 import { TileInfo } from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
-import tileStyles from "@/styles/pageTiles.module.css";
+import styles from "@/styles/tiles/BookTile.module.css";
+import tileStyles from "@/styles/tiles/Tiles.module.css";
 
 /**
  * The synopsis section of a book tile's content
@@ -13,8 +14,8 @@ import tileStyles from "@/styles/pageTiles.module.css";
  */
 function BookTileSynopsis({ children }) {
     return (
-        <div className={tileStyles.bookTileSection}>
-            <span className={tileStyles.bookTileSectionHeader}>Synopsis:</span> {children}
+        <div className={styles.bookTileSection}>
+            <span className={styles.bookTileSectionHeader}>Synopsis:</span> {children}
         </div>
     );
 }
@@ -29,8 +30,8 @@ BookTileSynopsis.propTypes = {
  */
 function BookTileThoughts({ children }) {
     return (
-        <div className={tileStyles.bookTileSection}>
-            <span className={tileStyles.bookTileSectionHeader}>Thoughts:</span> {children}
+        <div className={styles.bookTileSection}>
+            <span className={styles.bookTileSectionHeader}>Thoughts:</span> {children}
         </div>
     );
 }
@@ -57,14 +58,14 @@ function BookTile({ children, title, author, thumbnail, anchor }) {
 
     return (
         <Tile tileInfo={new TileInfo({ title: <>{title}</>, thumbnail: thumbnail, anchor: anchor })}>
-            <div className={`${tileStyles.scrollTileContent} ${tileStyles.bookTileContent}`}>
-                <div className={tileStyles.bookTileSection}>
+            <div className={`${tileStyles.scrollTileContent} ${styles.bookTileContent}`}>
+                <div className={styles.bookTileSection}>
                     <small style={{ display: "block", width: "100%", textAlign: "right" }}>
                         {bookTime} minute read
                     </small>
                 </div>
                 <div>
-                    <span className={tileStyles.bookTileSectionHeader}>Author:</span> {author}
+                    <span className={styles.bookTileSectionHeader}>Author:</span> {author}
                 </div>
                 {children}
             </div>

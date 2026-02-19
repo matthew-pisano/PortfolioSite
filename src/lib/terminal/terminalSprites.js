@@ -1,4 +1,4 @@
-import styles from "@/styles/Terminal.module.css";
+import styles from "@/styles/widgets/Terminal.module.css";
 
 class Sprite {
     static HEIGHT_PX = 100;

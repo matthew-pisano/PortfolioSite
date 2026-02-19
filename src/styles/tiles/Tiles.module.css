@@ -1,0 +1,158 @@
+.displayTile {
+    border-style: none solid none none;
+    border-color: var(--theme-accent);
+    border-width: 5px;
+    background-color: var(--theme-color-4);
+    border-radius: 10px;
+    margin: 50px 3% 20px;
+    padding: 10px;
+    transition: all 700ms;
+}
+
+.hiddenTile {
+    margin-left: 90%;
+    margin-right: -84%;
+    transition: none;
+}
+
+.displayTileTitle > * {
+    font-weight: bolder;
+}
+
+.displayTileThumbnail {
+    width: 300px;
+}
+
+.displayTileThumbnail > img {
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.displayTileContent, .displayContentTitle {
+    padding: 0 25px;
+}
+
+.galleryTileTitle {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.galleryTileThumbnail {
+    display: block;
+    float: none;
+    width: 100%;
+    margin: auto;
+    max-width: 800px;
+    max-height: 400px;
+}
+
+.galleryTileThumbnail > img {
+    max-height: 400px;
+    display: block;
+    margin: auto;
+}
+
+.galleryTileContent, .textOnlyTileContent {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.tagsLinksHolder {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.anchorLink img {
+    width: 20px;
+    max-width: 20px;
+    margin-left: 10px;
+}
+
+.anchorIcon {
+    content: url("/assets/anchorIcon.svg");
+}
+
+.scrollTileContent {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-bottom: 60px;
+}
+
+.scrollTileContent::before {
+    content: "";
+    top: 0;
+    background: linear-gradient(to top, transparent, var(--theme-color-4));
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.scrollTileContent::after {
+    content: "";
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent, var(--theme-color-4));
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 80px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Special error pages */
+
+.choiceTile {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.confirmTile {
+    background-color: var(--theme-color-2-selected);
+}
+
+.denyTile {
+    background-color: #000;
+    background-image: url("/assets/matrix.gif");
+}
+
+@media (width >= 1500px) {
+    .displayTile {
+        margin: 50px 15% 20px;
+    }
+
+    .hiddenTile {
+        margin-left: 90%;
+        margin-right: -60%;
+    }
+}
+
+@media (width <= 1300px) {
+    .displayTileContent {
+        width: 100%;
+    }
+
+    .displayTileThumbnail {
+        width: 100%;
+        display: block;
+        float: none;
+        margin: auto;
+        max-width: 300px;
+        min-width: 50px;
+    }
+}
+
+@media (width <= 600px) {
+    .displayTile {
+        margin-right: 0;
+        margin-left: 10px;
+    }
+}

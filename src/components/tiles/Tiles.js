@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 import { v4 as UUIDv4 } from "uuid";
 
 import { tagFactory } from "@/components/tiles/Tags";
-import tileStyles from "@/styles/pageTiles.module.css";
-import tagStyles from "@/styles/tags.module.css";
+import styles from "@/styles/tiles/Tiles.module.css";
 
 const TRANSLUCENT = "rgba(139,166,175,0.45)";
 const TRANSLUCENT_TEXT = "rgb(238,251,255)";
@@ -18,7 +17,7 @@ function resetTilesOnScroll() {
     let tileLayout = document.getElementById("tileLayout");
     if (!tileLayout) return;
 
-    for (let tileElement of tileLayout.children) tileElement.classList.remove(tileStyles.hiddenTile);
+    for (let tileElement of tileLayout.children) tileElement.classList.remove(styles.hiddenTile);
 }
 
 /**
@@ -34,12 +33,12 @@ function slideTilesOnScroll() {
 
         if (tileElement.getBoundingClientRect().top <= window.innerHeight - 100) {
             // If the tile is in view and offset, slide it into view
-            tileElement.classList.remove(tileStyles.hiddenTile);
+            tileElement.classList.remove(styles.hiddenTile);
             tileElement.setAttribute("data-refdata", "slid");
         }
         // Avoid adding hidden class if tile has already been shown or if the page has an anchor link (prevents visual scrolling errors)
         else if (tileElement.getAttribute("data-refdata") === "unslid" && !window.location.hash.length) {
-            tileElement.classList.add(tileStyles.hiddenTile); // Sides the tile off-screen if it is out of view as the page initially loads
+            tileElement.classList.add(styles.hiddenTile); // Sides the tile off-screen if it is out of view as the page initially loads
             tileElement.setAttribute("data-refdata", "slid");
         }
     }
@@ -69,16 +68,16 @@ function tileFactory(tileInfo, children = null) {
     let tileTitle = (
         <>
             {tileInfo.titleLink ? (
-                <Link className={`${tileStyles.displayTileTitle}`} href={tileInfo.titleLink}>
+                <Link className={`${styles.displayTileTitle}`} href={tileInfo.titleLink}>
                     <u>{tileInfo.title}</u>
                 </Link>
             ) : (
-                <b className={`${tileStyles.displayTileTitle}`}>{tileInfo.title}</b>
+                <b className={`${styles.displayTileTitle}`}>{tileInfo.title}</b>
             )}
 
             {tileInfo.anchor ? (
-                <Link href={`#${tileInfo.anchor}`} className={`${tileStyles.anchorLink}`} onClick={resetTilesOnScroll}>
-                    <img className={`${tileStyles.anchorIcon}`} alt="" />
+                <Link href={`#${tileInfo.anchor}`} className={`${styles.anchorLink}`} onClick={resetTilesOnScroll}>
+                    <img className={`${styles.anchorIcon}`} alt="" />
                 </Link>
             ) : null}
         </>
@@ -86,16 +85,16 @@ function tileFactory(tileInfo, children = null) {
 
     // The thumbnail image for the tile, if it exists
     let tileThumbnail = tileInfo.thumbnail ? (
-        <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail}`}>
+        <div className={`w3-mobile w3-col ${styles.displayTileThumbnail}`}>
             <img src={tileInfo.thumbnail} alt="gitLogo" />
         </div>
     ) : null;
 
     // The content element for the tile
-    let contentTypeClass = !tileInfo.thumbnail ? tileStyles.textOnlyTileContent : "";
+    let contentTypeClass = !tileInfo.thumbnail ? styles.textOnlyTileContent : "";
     let tileContent = children ? (
         <div style={{ position: "relative" }}>
-            <div className={`${tileStyles.displayTileContent} ${contentTypeClass}`}>{children}</div>
+            <div className={`${styles.displayTileContent} ${contentTypeClass}`}>{children}</div>
         </div>
     ) : null;
 
@@ -110,7 +109,7 @@ function tileFactory(tileInfo, children = null) {
  */
 function TileBody({ children, id, style }) {
     return (
-        <div id={id} className={`w3-container w3-row ${tileStyles.displayTile}`} style={style} data-refdata={"unslid"}>
+        <div id={id} className={`w3-container w3-row ${styles.displayTile}`} style={style} data-refdata={"unslid"}>
             {children}
         </div>
     );
@@ -135,9 +134,9 @@ function Tile({ children, tileInfo, style }) {
             {tileElements.tileThumbnail}
 
             <div className={`w3-mobile w3-rest`}>
-                <h4 className={`${tileStyles.displayContentTitle}`}>{tileElements.tileTitle}</h4>
+                <h4 className={`${styles.displayContentTitle}`}>{tileElements.tileTitle}</h4>
                 {tileElements.tileContent}
-                <div className={`w3-row ${tagStyles.tileLayoutHeader}`}>
+                <div className={`w3-row ${styles.tagsLinksHolder}`}>
                     {tileInfo.links}
                     {tagFactory(tileInfo.tags)}
                 </div>
@@ -166,7 +165,7 @@ function SectionTile({ tileInfo, style }) {
             {tileElements.tileThumbnail}
 
             <div className={`w3-mobile w3-rest`}>
-                <h2 className={`${tileStyles.displayContentTitle}`}>{tileElements.tileTitle}</h2>
+                <h2 className={`${styles.displayContentTitle}`}>{tileElements.tileTitle}</h2>
             </div>
         </TileBody>
     );
@@ -187,18 +186,14 @@ function GalleryTile({ children, tileInfo, style }) {
     let tileElements = tileFactory(tileInfo);
     return (
         <TileBody id={tileElements.tileId} style={style}>
-            <div className={`w3-mobile w3-col ${tileStyles.displayTileThumbnail} ${tileStyles.galleryTileThumbnail}`}>
+            <div className={`w3-mobile w3-col ${styles.displayTileThumbnail} ${styles.galleryTileThumbnail}`}>
                 <img src={tileInfo.thumbnail} alt="gitLogo" />
             </div>
 
             <div className={`w3-mobile w3-rest`}>
-                <h4 className={`${tileStyles.displayContentTitle} ${tileStyles.galleryTileTitle}`}>
-                    {tileElements.tileTitle}
-                </h4>
+                <h4 className={`${styles.displayContentTitle} ${styles.galleryTileTitle}`}>{tileElements.tileTitle}</h4>
                 <div style={{ position: "relative" }}>
-                    <div className={`${tileStyles.displayTileContent} ${tileStyles.galleryTileContent}`}>
-                        {children}
-                    </div>
+                    <div className={`${styles.displayTileContent} ${styles.galleryTileContent}`}>{children}</div>
                 </div>
             </div>
         </TileBody>
@@ -220,7 +215,7 @@ GalleryTile.propTypes = {
 function ScrollTile({ children, tileInfo, style }) {
     return (
         <Tile tileInfo={tileInfo} style={style}>
-            <div className={`${tileStyles.scrollTileContent}`}>{children}</div>
+            <div className={`${styles.scrollTileContent}`}>{children}</div>
         </Tile>
     );
 }

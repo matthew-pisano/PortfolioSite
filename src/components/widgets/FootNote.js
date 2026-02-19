@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 import PropTypes from "prop-types";
 
-import styles from "@/styles/pageTiles.module.css";
+import styles from "@/styles/widgets/FootNote.module.css";
 
 /** Context to manage footnotes */
 const FootnoteContext = createContext(null);

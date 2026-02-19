@@ -3,8 +3,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Wrapper from "@/components/wrappers/Wrapper";
-import tileStyles from "@/styles/pageTiles.module.css";
-import styles from "@/styles/Wrapper.module.css";
+import styles from "@/styles/wrappers/FlexWrapper.module.css";
+import wrapperStyles from "@/styles/wrappers/Wrapper.module.css";
 
 /**
  * Wrapper for pages that require tiles to wrap.
@@ -16,16 +16,16 @@ import styles from "@/styles/Wrapper.module.css";
 function FlexWrapper({ children, pageInfo, className }) {
     return (
         <Wrapper pageName={pageInfo.pageName} pageClass={className}>
-            <div className={`${styles.titleCard}`}>
+            <div className={`${wrapperStyles.titleCard}`}>
                 <h1>{pageInfo.title}</h1>
                 <br />
                 <h3>{pageInfo.summary}</h3>
             </div>
             <div
                 id="tileHolder"
-                className={`w3-display-container ${tileStyles.tileLayout}`}
+                className={`w3-display-container ${wrapperStyles.tileLayout}`}
                 style={pageInfo.layoutStyle}>
-                <div className={`${tileStyles.flexTileHolder}`}>{children}</div>
+                <div className={`${styles.flexTileHolder}`}>{children}</div>
             </div>
         </Wrapper>
     );

@@ -9,8 +9,8 @@ import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 // eslint-disable-next-line no-unused-vars
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
 import { showDialog } from "@/lib/util/utils";
-import styles from "@/styles/Sidebar.module.css";
-import wrapperStyles from "@/styles/Wrapper.module.css";
+import styles from "@/styles/widgets/Sidebar.module.css";
+import wrapperStyles from "@/styles/wrappers/Wrapper.module.css";
 
 /**
  * Create a directory element in the sidebar

@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useCallback } from "react";
 
 import PropTypes from "prop-types";
 
-import styles from "@/styles/pageTiles.module.css";
+import styles from "@/styles/widgets/BlogSidebar.module.css";
 
 /** Context to manage blog sections in sidebar */
 const BlogSidebarContext = createContext(null);

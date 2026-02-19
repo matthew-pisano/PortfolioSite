@@ -4,9 +4,8 @@ import PropTypes from "prop-types";
 
 import { tagFactory } from "@/components/tiles/Tags";
 import Wrapper from "@/components/wrappers/Wrapper";
-import tileStyles from "@/styles/pageTiles.module.css";
-import tagStyles from "@/styles/tags.module.css";
-import styles from "@/styles/Wrapper.module.css";
+import tileStyles from "@/styles/tiles/Tiles.module.css";
+import wrapperStyles from "@/styles/wrappers/Wrapper.module.css";
 
 /**
  * Default wrapper for pages that do not need any special handling.
@@ -17,16 +16,16 @@ import styles from "@/styles/Wrapper.module.css";
 function DefaultWrapper({ children, pageInfo }) {
     return (
         <Wrapper pageName={pageInfo.pageName}>
-            <div className={`${styles.titleCard}`}>
+            <div className={`${wrapperStyles.titleCard}`}>
                 <h1>{pageInfo.title}</h1>
                 <br />
                 <h3>{pageInfo.summary}</h3>
             </div>
             <div
                 id="tileLayout"
-                className={`w3-display-container ${tileStyles.tileLayout}`}
+                className={`w3-display-container ${wrapperStyles.tileLayout}`}
                 style={pageInfo.layoutStyle}>
-                <div className={`w3-row ${tagStyles.tileLayoutHeader}`}>
+                <div className={`w3-row ${tileStyles.tagsLinksHolder}`}>
                     {pageInfo.links}
                     {tagFactory(pageInfo.tags)}
                 </div>

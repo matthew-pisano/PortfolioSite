@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
-import styles from "@/styles/pageTiles.module.css";
+import styles from "@/styles/tiles/BookTile.module.css";
 
 /**
  * An element styled to look like handwritten ink

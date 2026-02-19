@@ -4,7 +4,7 @@ import { ANSI, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { Commands } from "@/lib/terminal/commands";
 import { EventHandlers } from "@/lib/terminal/eventHandlers";
 import { Constants } from "@/lib/util/utils";
-import styles from "@/styles/Terminal.module.css";
+import styles from "@/styles/widgets/Terminal.module.css";
 
 /**
  * The terminal div component

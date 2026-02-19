@@ -3,8 +3,8 @@ import React from "react";
 import Head from "next/head";
 import PropTypes from "prop-types";
 
-import tileStyles from "@/styles/pageTiles.module.css";
-import styles from "@/styles/Wrapper.module.css";
+import tileStyles from "@/styles/tiles/Tiles.module.css";
+import styles from "@/styles/wrappers/Wrapper.module.css";
 
 function Error({ statusCode }) {
     return (
@@ -30,7 +30,7 @@ function Error({ statusCode }) {
                         <h3>Something has prevented the site from loading!</h3>
                     </div>
                     <div
-                        className={`${tileStyles.tileLayout} w3-display-container`}
+                        className={`${styles.tileLayout} w3-display-container`}
                         style={{ backgroundColor: "#3b934a", minHeight: "auto", paddingTop: "10px" }}>
                         <div className={`${tileStyles.displayTile} w3-container w3-row`}>
                             <h3>

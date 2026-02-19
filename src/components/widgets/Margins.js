@@ -8,8 +8,8 @@ import { masterFileSystem, pathJoin } from "@/lib/fileSystem/fileSystem";
 import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { setTheme } from "@/lib/util/themes";
 import { showDialog } from "@/lib/util/utils";
-import styles from "@/styles/Margins.module.css";
-import wrapperStyles from "@/styles/Wrapper.module.css";
+import styles from "@/styles/widgets/Margins.module.css";
+import wrapperStyles from "@/styles/wrappers/Wrapper.module.css";
 
 /**
  * Whether the menu bar is primed for animation by clicking it
