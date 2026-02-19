@@ -692,7 +692,7 @@ export default function GenTransformers() {
                     intuitively practice every day. This could even be considered a form of online learning, though
                     limited in duration and scope compared to traditional interpretations.
                 </p>
-                <BlogSection level={2}>Limitations of Transformers</BlogSection>
+                <BlogSection level={2}>Difficulties when Scaling</BlogSection>
                 <p>
                     The success of AlphaGo Zero can help us to outline the challenges faced by modern, transformer-based
                     LLMs. These shortcomings are a fundamental consequence of both model architecture and training
@@ -750,6 +750,40 @@ export default function GenTransformers() {
                     autoregressive equivalent to training a model on expert moves. You will get impressive results, but
                     you will not reach the quality of the material that you are trying to emulate.
                 </p>
+                <p>
+                    Research has begin to observe this in practice. Most notably is Apple's "The Illusion of Thinking"
+                    <Footnote>
+                        See:{" "}
+                        <Link href={"https://arxiv.org/pdf/2506.06941"}>
+                            The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models
+                            via the Lens of Problem Complexity
+                        </Link>
+                        .
+                    </Footnote>
+                    paper, first released in June 2025. It measures the performance of reasoning-tuned LLMs versus
+                    similar models that had not undergone this process. These models were tasked with solving basic
+                    logic puzzles like "The Tower of Hanoi", checkers jumping, a river crossing puzzle, and a blocks
+                    world puzzle. They found that non-reasoning models actually often out performed their reasoning
+                    counterparts on simpler versions of the puzzles. On versions of medium complexity, like a Hanoi
+                    tower with around 10 blocks, the reasoning models begin to dominate. However, the most interesting
+                    effect arises when the problem complexity grows further: both reasoning and non-reasoning models
+                    quickly collapse in accuracy. This effect persists even when the models are given the explicit
+                    algorithms to use for solving each puzzle. This is due to the fact that large language models have
+                    no inherent was of deterministically executing algorithms. They can learn easily learn the tokenized
+                    representation of the algorithm and even mimic it for a small number of steps. However, when their
+                    goal is to execute an algorithm beyond the point of pattern matching to its training set,
+                    performance degrades. For similar reasons, LLMs may still make illegal moves in chess, even after
+                    memorizing the rulesets and being trained on many thousands of game transcripts
+                    <Footnote>
+                        {" "}
+                        See:{" "}
+                        <Link href={"https://jenshahade.substack.com/p/chatgpt-is-weirdly-bad-at-chess"}>
+                            ChatGPT is Weirdly Bad at Chess
+                        </Link>
+                        .
+                    </Footnote>
+                </p>
+                <BlogSection level={2}>Computational Discrepancies</BlogSection>
                 <p>
                     We may find another limitation in how transformers approach problems, from an architectural
                     standpoint. For these models, it takes the same number of computations to reason through a
