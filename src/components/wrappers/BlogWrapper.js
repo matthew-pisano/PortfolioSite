@@ -109,7 +109,7 @@ function BlogSection({ children, level }) {
         sectionIdRef.current = sectionId;
         addSection(sectionId, children, level || 1, sectionNumber);
         return () => removeSection(sectionId);
-    }, [children, level, sectionId, addSection, removeSection]);
+    }, [sectionId, addSection, removeSection]);
 
     let sectionContent = (
         <>
