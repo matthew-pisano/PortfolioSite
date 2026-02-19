@@ -92,17 +92,22 @@ const buildSectionTree = (sectionList) => {
  */
 const renderSectionTree = (tree) => {
     return (
-        <ul className={`${styles.blogSidebarList}`}>
-            {tree.map((section) => (
-                <li key={section.id} className={`${styles.blogSidebarItem}`}>
-                    <a href={`#${section.id}`}>
-                        <span className={`${styles.blogSidebarNumber}`}>{section.sectionNumber}</span>
-                        {section.title}
-                    </a>
-                    {section.children && section.children.length > 0 && renderSectionTree(section.children)}
-                </li>
-            ))}
-        </ul>
+        <div>
+            {tree.map((section) => {
+                let children = null;
+                if (section.children && section.children.length)
+                    children = <div style={{ marginLeft: "10px" }}>{renderSectionTree(section.children)}</div>;
+                return (
+                    <div key={section.id} className={`${styles.blogSidebarItem}`}>
+                        <a href={`#${section.id}`}>
+                            <span className={`${styles.blogSidebarNumber}`}>{section.sectionNumber}</span>
+                            {section.title}
+                        </a>
+                        {children}
+                    </div>
+                );
+            })}
+        </div>
     );
 };
 
@@ -114,12 +119,7 @@ function BlogSidebarContent() {
     if (sections.length === 0) return null;
 
     const tree = buildSectionTree(sections);
-    return (
-        <div className={`${styles.blogSidebar}`}>
-            <h4 className={`${styles.blogSidebarTitle}`}>Table of Contents</h4>
-            {renderSectionTree(tree)}
-        </div>
-    );
+    return <div className={`${styles.blogSidebar}`}>{renderSectionTree(tree)}</div>;
 }
 
 export { BlogSidebarProvider, BlogSidebarContent, useBlogSidebar };
