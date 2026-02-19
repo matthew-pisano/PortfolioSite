@@ -407,7 +407,7 @@ export default function GenTransformers() {
                     and the use of external recording mediums (like paper or computers), though this is much less
                     efficient due to the lossful conversions mentioned above.
                 </p>
-                <BlogSection level={2}>Complexity</BlogSection>
+                <BlogSection level={2}>Adaptive Complexity</BlogSection>
                 <p>
                     When analyzing the theoretical performance of an algorithm, computer scientists frequently rely on
                     complexity classes for establishing its theoretical upper and lower bounds. The exact time or space
@@ -652,6 +652,7 @@ export default function GenTransformers() {
                     able to reason or program just like the humans samples that is has seen could also support that
                     claim. Yet, current large language models can already do these things. Where is our AGI?
                 </p>
+                <BlogSection level={2}>Optimize Language</BlogSection>
                 <p>
                     The issue with the previous paragraph was that it was asking the wrong question. "A model that is
                     superhuman at modeling language" is very different from "a generally superhuman model that can also
@@ -693,7 +694,7 @@ export default function GenTransformers() {
                     intuitively practice every day. This could even be considered a form of online learning, though
                     limited in duration and scope compared to traditional interpretations.
                 </p>
-                <BlogSection level={2}>Difficulties when Scaling</BlogSection>
+                <BlogSection level={2}>Fitting LLMs into a Go-shaped Hole</BlogSection>
                 <p>
                     The success of AlphaGo Zero can help us to outline the challenges faced by modern, transformer-based
                     LLMs. These shortcomings are a fundamental consequence of both model architecture and training
@@ -784,7 +785,7 @@ export default function GenTransformers() {
                         .
                     </Footnote>
                 </p>
-                <BlogSection level={2}>Computational Discrepancies</BlogSection>
+                <BlogSection level={2}>Load-Balancing Effort</BlogSection>
                 <p>
                     We may find another limitation in how transformers approach problems, from an architectural
                     standpoint. For these models, it takes the same number of computations to reason through a
