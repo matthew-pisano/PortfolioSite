@@ -8,7 +8,7 @@ import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
-import wrapperStyles from "@/styles/Wrapper.module.css";
+import wrapperStyles from "@/styles/wrappers/Wrapper.module.css";
 
 export default function MipsCmd() {
     let pageInfo = new PageInfo(

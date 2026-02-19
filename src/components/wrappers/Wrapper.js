@@ -10,7 +10,7 @@ import Sidebar from "@/components/widgets/Sidebar";
 import Terminal from "@/components/widgets/Terminal";
 import { buildClientside, buildServerside } from "@/lib/fileSystem/fileSystem";
 import { setTheme } from "@/lib/util/themes";
-import styles from "@/styles/Wrapper.module.css";
+import styles from "@/styles/wrappers/Wrapper.module.css";
 
 /**
  * Execute a command in the terminal.  This function is called when a command is passed in the URL.

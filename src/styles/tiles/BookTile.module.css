@@ -1,0 +1,40 @@
+.bookTileContent {
+    max-height: 600px;
+}
+
+.bookTileSectionHeader {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.bookTileSection {
+    margin-top: 15px;
+}
+
+.bookTileSection p {
+    text-indent: 20px;
+}
+
+.mirrored {
+    display: inline-block; /* Essential for applying transform correctly */
+    transform: scaleX(-1);
+}
+
+.linedPaper {
+    background-image:
+            linear-gradient(90deg, transparent 40px, #7ac3cf 40px, #7ac3cf 42px, transparent 42px),
+            linear-gradient(var(--theme-text) .1em, transparent .1em);
+    background-size: 100% 1.2em;
+    padding-left: 50px;
+}
+
+.linedPaper > span {
+    display: block;
+    line-height: 1.2em;
+}
+
+.inkWriting {
+    color: #6786d3;
+    font-family: sans-serif;
+    font-style: italic;
+}

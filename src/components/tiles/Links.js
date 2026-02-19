@@ -4,7 +4,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 
 import { resetTilesOnScroll } from "@/components/tiles/Tiles";
-import tagStyles from "@/styles/tags.module.css";
+import styles from "@/styles/tiles/Links.module.css";
 
 /**
  * A link element for usage in a tile or page
@@ -16,7 +16,7 @@ import tagStyles from "@/styles/tags.module.css";
  */
 function TileLink({ children, href, target, className }) {
     return (
-        <div className={`w3-mobile w3-col ${tagStyles.extraLink} ${tagStyles.pageLink} ${className}`}>
+        <div className={`w3-mobile w3-col ${styles.extraLink} ${styles.pageLink} ${className}`}>
             <img className="w3-col" alt="tileLink" />
             <div className="w3-rest">
                 <Link href={href} target={target ? target : "_blank"} rel="noreferrer" onClick={resetTilesOnScroll}>
@@ -42,7 +42,7 @@ TileLink.propTypes = {
  */
 function GitLink({ children, href }) {
     return (
-        <TileLink href={href} className={`${tagStyles.gitLink} ${tagStyles.pageLink}`}>
+        <TileLink href={href} className={`${styles.gitLink} ${styles.pageLink}`}>
             {children}
         </TileLink>
     );
@@ -61,7 +61,7 @@ GitLink.propTypes = {
  */
 function DownloadLink({ children, href }) {
     return (
-        <TileLink href={href} className={`${tagStyles.downloadLink} ${tagStyles.pageLink}`}>
+        <TileLink href={href} className={`${styles.downloadLink} ${styles.pageLink}`}>
             {children}
         </TileLink>
     );
@@ -80,7 +80,7 @@ DownloadLink.propTypes = {
  */
 function SelfLink({ children, href }) {
     return (
-        <TileLink href={href} className={`${tagStyles.selfLink} ${tagStyles.pageLink}`} target={"_self"}>
+        <TileLink href={href} className={`${styles.selfLink} ${styles.pageLink}`} target={"_self"}>
             {children}
         </TileLink>
     );
@@ -99,7 +99,7 @@ SelfLink.propTypes = {
  */
 function WebLink({ children, href }) {
     return (
-        <TileLink href={href} className={`${tagStyles.webLink} ${tagStyles.pageLink}`}>
+        <TileLink href={href} className={`${styles.webLink} ${styles.pageLink}`}>
             {children}
         </TileLink>
     );

@@ -8,7 +8,7 @@ import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
 import { blogInfo as genTransformers } from "@/pages/works/blog/genTransformers";
-import tileStyles from "@/styles/pageTiles.module.css";
+import styles from "@/styles/wrappers/BlogWrapper.module.css";
 
 /**
  * A blog tile on the landing page
@@ -41,7 +41,7 @@ export default function Blog() {
         []
     );
     return (
-        <FlexWrapper pageInfo={pageInfo} className={tileStyles.blogLanding}>
+        <FlexWrapper pageInfo={pageInfo} className={styles.blogLanding}>
             <BlogTile
                 tileInfo={
                     new TileInfo({

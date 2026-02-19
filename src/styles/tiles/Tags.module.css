@@ -1,10 +1,4 @@
 
-.tileLayoutHeader {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}
-
 .tag {
     width: 160px !important;
     padding: 2px 5px;
@@ -17,51 +11,6 @@
     width: 25px;
     margin-right: 5px;
 }
-
-.pageLink {
-    width: 200px;
-    padding: 2px 5px;
-    margin: 3px 5px;
-    background-color: var(--theme-color-4-selected);
-    border-radius: 10px;
-}
-
-.selfLink {
-    width: auto;
-}
-
-.pageLink div a {
-    width: 100%;
-    display: block;
-    text-align: center;
-}
-
-.pageLink img {
-    width: 25px;
-    margin-right: 5px;
-}
-
-.extraLink img {
-    content: url("/assets/paper.png");
-}
-
-.gitLink img {
-    content: url("/assets/github.png");
-}
-
-.downloadLink img {
-    content: url("/assets/download.png");
-}
-
-.selfLink img {
-    content: url("/assets/section.png");
-}
-
-.webLink img {
-    content: url("/assets/weblink.png");
-}
-
-/* Tags */
 
 .paperTag img {
     content: url("/assets/paper.png");
@@ -225,17 +174,6 @@
 
 .mathTag div::after {
     content: "Mathematics";
-}
-
-
-@media (width <= 600px) {
-    .pageLink img {
-        width: 30px;
-    }
-
-    .pageLink div a {
-        font-size: 1.3em;
-    }
 }
 
 

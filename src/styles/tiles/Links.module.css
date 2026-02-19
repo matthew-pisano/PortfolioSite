@@ -1,0 +1,52 @@
+.pageLink {
+    width: 200px;
+    padding: 2px 5px;
+    margin: 3px 5px;
+    background-color: var(--theme-color-4-selected);
+    border-radius: 10px;
+}
+
+.selfLink {
+    width: auto;
+}
+
+.pageLink div a {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.pageLink img {
+    width: 25px;
+    margin-right: 5px;
+}
+
+.extraLink img {
+    content: url("/assets/paper.png");
+}
+
+.gitLink img {
+    content: url("/assets/github.png");
+}
+
+.downloadLink img {
+    content: url("/assets/download.png");
+}
+
+.selfLink img {
+    content: url("/assets/section.png");
+}
+
+.webLink img {
+    content: url("/assets/weblink.png");
+}
+
+@media (width <= 600px) {
+    .pageLink img {
+        width: 30px;
+    }
+
+    .pageLink div a {
+        font-size: 1.3em;
+    }
+}

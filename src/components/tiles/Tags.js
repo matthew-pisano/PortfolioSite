@@ -2,7 +2,7 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-import tagStyles from "@/styles/tags.module.css";
+import styles from "@/styles/tiles/Tags.module.css";
 
 const TileTag = {
     ACADEMIC: "academic",
@@ -50,7 +50,7 @@ function tagFactory(tags) {
  */
 function Tag({ tagId }) {
     return (
-        <div className={`w3-col w3-mobile ${tagStyles.tag} ${tagStyles[tagId + "Tag"]}`} key={tagId}>
+        <div className={`w3-col w3-mobile ${styles.tag} ${styles[tagId + "Tag"]}`} key={tagId}>
             <img className="w3-col" alt={tagId} />
             <div className="w3-rest"></div>
         </div>

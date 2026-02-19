@@ -45,6 +45,16 @@
     padding-right: 10px;
 }
 
+.tileLayout {
+    width: 100%;
+    background-color: var(--theme-color-1);
+    margin-top: 250px;
+    min-height: 500px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
 .titleCard h1 {
     margin: auto;
     width: 100%;
@@ -63,6 +73,11 @@
 
 
 @media (width <= 600px) {
+    .tileLayout {
+        margin-top: 300px;
+        padding-right: 10px;
+    }
+
     .hideOnMobile {
         display: none !important;
     }

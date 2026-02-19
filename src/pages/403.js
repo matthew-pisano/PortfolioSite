@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import Wrapper, { PageInfo } from "@/components/wrappers/Wrapper";
-import tileStyles from "@/styles/pageTiles.module.css";
-import styles from "@/styles/Wrapper.module.css";
+import tileStyles from "@/styles/tiles/Tiles.module.css";
+import styles from "@/styles/wrappers/Wrapper.module.css";
 
 const authQuotes = [
     "You appear to have been misinformed.",
@@ -38,7 +38,7 @@ export default function Unauthorized() {
                 <h3 style={{ margin: "auto", width: "auto", textAlign: "center" }}>{pageInfo.summary}</h3>
             </div>
             <div
-                className={`w3-display-container ${tileStyles.tileLayout}`}
+                className={`w3-display-container ${styles.tileLayout}`}
                 style={{ backgroundColor: "#000000", marginTop: "200px" }}>
                 <div className={`w3-container w3-row ${tileStyles.displayTile}`}>
                     <h3>

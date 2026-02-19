@@ -3,8 +3,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom/client";
 
-import styles from "@/styles/ContextMenu.module.css";
-import sidebarStyles from "@/styles/Sidebar.module.css";
+import styles from "@/styles/widgets/ContextMenu.module.css";
+import sidebarStyles from "@/styles/widgets/Sidebar.module.css";
 
 /**
  * The root element of the context menu

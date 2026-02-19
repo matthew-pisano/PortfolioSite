@@ -2,7 +2,7 @@ import React from "react";
 
 import Wrapper from "@/components/wrappers/Wrapper";
 import { Constants } from "@/lib/util/utils";
-import styles from "@/styles/pageTiles.module.css";
+import styles from "@/styles/wrappers/CurriculumVitae.module.css";
 
 export default function CurriculumVitae() {
     return (

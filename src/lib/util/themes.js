@@ -1,5 +1,5 @@
-import tileStyles from "@/styles/pageTiles.module.css";
-import sidebarStyles from "@/styles/Sidebar.module.css";
+import tileStyles from "@/styles/tiles/Tiles.module.css";
+import sidebarStyles from "@/styles/widgets/Sidebar.module.css";
 
 /**
  * Map of possible page background colors

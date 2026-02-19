@@ -4,7 +4,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 
 import { useBlogSidebar } from "@/components/widgets/BlogSidebar";
-import styles from "@/styles/pageTiles.module.css";
+import tileStyles from "@/styles/tiles/Tiles.module.css";
 
 // Context to track section count
 const SectionContext = createContext(null);
@@ -41,8 +41,8 @@ function BlogSection({ children, level }) {
         <>
             <span style={{ marginRight: "30px" }}>{sectionNumber}</span>
             {children}
-            <Link href={`#${sectionId}`} className={`${styles.anchorLink}`}>
-                <img className={`${styles.anchorIcon}`} alt="" />
+            <Link href={`#${sectionId}`} className={`${tileStyles.anchorLink}`}>
+                <img className={`${tileStyles.anchorIcon}`} alt="" />
             </Link>
         </>
     );

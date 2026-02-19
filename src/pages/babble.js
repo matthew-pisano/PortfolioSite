@@ -4,8 +4,8 @@ import { TileTag } from "@/components/tiles/Tags";
 import { Tile } from "@/components/tiles/Tiles";
 import DefaultWrapper from "@/components/wrappers/DefaultWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
-import tileStyles from "@/styles/pageTiles.module.css";
-import styles from "@/styles/Wrapper.module.css";
+import tileStyles from "@/styles/tiles/Tiles.module.css";
+import styles from "@/styles/wrappers/Wrapper.module.css";
 
 /**
  * Generate a random string of text

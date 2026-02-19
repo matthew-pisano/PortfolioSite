@@ -7,7 +7,7 @@ import { SectionContext } from "@/components/widgets/BlogSection";
 import { BlogSidebarProvider, BlogSidebarContent } from "@/components/widgets/BlogSidebar";
 import Wrapper from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
-import styles from "@/styles/pageTiles.module.css";
+import styles from "@/styles/wrappers/BlogWrapper.module.css";
 
 /**
  * Wrapper for blog pages.

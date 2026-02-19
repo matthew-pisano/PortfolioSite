@@ -1,0 +1,9 @@
+.flexTileHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 10px;
+    margin-bottom: 50px;
+}
