@@ -53,7 +53,6 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
 
             <BlogSidebarProvider>
                 <div className={`${styles.blogContainer}`}>
-                    <BlogSidebarContent />
                     <div className={`${styles.blogHolder}`}>
                         <div style={{ marginBottom: "30px" }}>
                             <small style={{ display: "block", width: "100%", textAlign: "right" }}>
@@ -67,6 +66,7 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
                         <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>
                         <Link href={"/works/blog"}>Back to Blogs</Link>
                     </div>
+                    <BlogSidebarContent />
                 </div>
             </BlogSidebarProvider>
         </Wrapper>

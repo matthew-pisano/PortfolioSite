@@ -25,21 +25,10 @@
 }
 
 .blogHolder {
-    width: 75%;
+    width: 85%;
     max-width: 800px;
-    margin-top: 50px;
     text-indent: 20px;
-}
-
-.blogHolder > h3 {
-    background-color: rgb(139 166 175 / 45%);
-    padding: 10px;
-    border-radius: 10px;
-    border-width: 5px;
-    border-style: none solid none none;
-    border-color: var(--theme-accent);
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin: 50px auto;
 }
 
 .blogLanding h4 {
@@ -315,102 +304,43 @@
 
 /* Blog Sidebar Styles */
 .blogContainer {
-    display: flex;
-    gap: 30px;
-    margin-top: 50px;
-    justify-content: center;
-    align-items: flex-start;
+    width: 100%;
+    position: relative;
 }
 
 .blogSidebar {
-    position: sticky;
-    top: 20px;
-    width: 200px;
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
+    width: 220px;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    padding: 5px;
     background-color: var(--theme-color-2);
-    padding: 15px;
     border-radius: 10px;
     border: 2px solid var(--theme-accent);
 }
 
-.blogSidebarTitle {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: medium;
-    text-decoration: underline;
-    color: var(--theme-text);
-}
-
-.blogSidebarList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.blogSidebarItem {
-    margin-bottom: 8px;
-    padding-left: 10px;
-}
-
 .blogSidebarItem a {
+    display: flex;
     text-decoration: none;
     color: var(--theme-text);
     font-size: small;
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    transition: color 200ms;
+    border-radius: 5px;
+    padding: 2px;
+    margin-bottom: 2px;
 }
 
 .blogSidebarItem a:hover {
-    color: var(--theme-accent);
+    background-color: var(--theme-color-2-hover);
 }
 
 .blogSidebarNumber {
     font-weight: bold;
-    color: var(--theme-accent);
-    min-width: 30px;
+    margin-right: 5px;
 }
 
-.blogSidebarItem ul {
-    list-style: none;
-    margin-top: 5px;
-    margin-left: 10px;
-    border-left: 2px solid var(--theme-accent);
-    padding: 0 0 0 10px;
-}
-
-.blogSidebarItem ul .blogSidebarItem {
-    margin-bottom: 6px;
-    padding-left: 0;
-}
-
-.blogSidebarItem ul .blogSidebarItem a {
-    font-size: 0.85em;
-}
-
-@media (width <= 1200px) {
-    .blogContainer {
-        flex-direction: column;
-        align-items: center;
-    }
-
+@media (width <= 1550px) {
     .blogSidebar {
-        width: 100%;
-        max-width: 800px;
-        max-height: none;
-        position: static;
-    }
-}
-
-@media (width <= 600px) {
-    .blogContainer {
-        gap: 15px;
-    }
-
-    .blogSidebar {
-        width: 95%;
+        display: none;
     }
 }
 
