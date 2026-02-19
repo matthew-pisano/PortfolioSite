@@ -3,6 +3,7 @@ import React, { createContext, useContext, useEffect, useRef, useState } from "r
 import Link from "next/link";
 import PropTypes from "prop-types";
 
+import { BlogSidebarProvider, BlogSidebarContent, useBlogSidebar } from "@/components/widgets/BlogSidebar";
 import Wrapper from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
 import styles from "@/styles/pageTiles.module.css";
@@ -52,19 +53,24 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
                 ) : null}
             </div>
 
-            <div className={`${styles.blogHolder}`}>
-                <div style={{ marginBottom: "30px" }}>
-                    <small style={{ display: "block", width: "100%", textAlign: "right" }}>
-                        {blogTime} minute read
-                    </small>
+            <BlogSidebarProvider>
+                <div className={`${styles.blogContainer}`}>
+                    <BlogSidebarContent />
+                    <div className={`${styles.blogHolder}`}>
+                        <div style={{ marginBottom: "30px" }}>
+                            <small style={{ display: "block", width: "100%", textAlign: "right" }}>
+                                {blogTime} minute read
+                            </small>
+                        </div>
+                        <SectionContext.Provider value={getNextId}>
+                            <div id={blockContentId}>{children}</div>
+                        </SectionContext.Provider>
+                        <hr />
+                        <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>
+                        <Link href={"/works/blog"}>Back to Blogs</Link>
+                    </div>
                 </div>
-                <SectionContext.Provider value={getNextId}>
-                    <div id={blockContentId}>{children}</div>
-                </SectionContext.Provider>
-                <hr />
-                <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>
-                <Link href={"/works/blog"}>Back to Blogs</Link>
-            </div>
+            </BlogSidebarProvider>
         </Wrapper>
     );
 }
@@ -86,7 +92,9 @@ BlogWrapper.propTypes = {
  */
 function BlogSection({ children, level }) {
     const getNextId = useContext(SectionContext);
+    const { addSection, removeSection } = useBlogSidebar();
     const idRef = useRef(null);
+    const sectionIdRef = useRef(null);
 
     if (idRef.current === null) idRef.current = getNextId(level);
 
@@ -95,6 +103,14 @@ function BlogSection({ children, level }) {
     if (idRef.current[2]) sectionNumber += `.${idRef.current[2]}`;
 
     let sectionId = `section-${sectionNumber}`;
+
+    // Register with sidebar on mount
+    useEffect(() => {
+        sectionIdRef.current = sectionId;
+        addSection(sectionId, children, level || 1, sectionNumber);
+        return () => removeSection(sectionId);
+    }, [children, level, sectionId, addSection, removeSection]);
+
     let sectionContent = (
         <>
             <span style={{ marginRight: "30px" }}>{sectionNumber}</span>
