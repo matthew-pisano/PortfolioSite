@@ -71,7 +71,7 @@ export default function GenTransformers() {
                         , and <Link href={"https://x.com/AcerFur/status/2010054423398232080"}>#729</Link>.
                     </Footnote>
                     . At a cursory glance, it seems as if all tasks primarily solved through intellectual rigour will
-                    soon be completed (or at lest significantly aided) by transformer-based models.
+                    soon be completed (or at least significantly aided) by transformer-based models.
                 </p>
                 <p>
                     And yet, something still feels a little off about this. These accomplishments feel slightly hollow,
@@ -156,7 +156,7 @@ export default function GenTransformers() {
                 <p>
                     In the domain of mathematics, LLMs have an impressive track record for solving complex problems and
                     even for creating proofs to open questions. Looking closer, we find an eerily similar pattern. Many
-                    of these more complex and unique proofs have written been with significant human aid. Those that
+                    of these more complex and unique proofs have been written with significant human aid. Those that
                     have been solved primarily by a model are considered more mechanistic or formulaic by mathematicians
                     <Footnote>
                         This{" "}
@@ -210,12 +210,12 @@ export default function GenTransformers() {
                 </p>
                 <BlogSection>Necessary Conditions</BlogSection>
                 <p>
-                    Before we can examine what general intelligence would like like when exhibited by an AI model, we
+                    Before we can examine what general intelligence would look like when exhibited by an AI model, we
                     must first identify a few capabilities that any generally intelligent agent must have. From there,
                     we can understand the properties that many contemporary AI systems lack. Unfortunately, there is
                     only one
                     <Footnote>Or 8.273 billion examples, depending on your counting criteria.</Footnote> example of such
-                    an agent that currently exists. Fortunately, whomever is reading this is (likely) an example of such
+                    an agent that currently exists. Fortunately, whoever is reading this is (likely) an example of such
                     an agent: a human. This is significant because we each have a (largely) unobscured view into our own
                     interiorities. Through observing how we interact with and learn about our environments, we can make
                     some educated guesses as to which characteristics that a generally intelligent agent may need.
@@ -243,11 +243,11 @@ export default function GenTransformers() {
                 <p>
                     There are two primary advantages. Most apparently, it means that we can idempotently simulate
                     modifications to our environment without actually making those modifications. Suppose that I would
-                    like to improvise something for breakfast. I do not have a recipie, but I do have some
+                    like to improvise something for breakfast. I do not have a recipe, but I do have some
                     breakfast-making experience that I can pull from. If I decide to make an omelette, I can imagine
                     approximately how much milk to mix with the eggs, which spices may complement the omelette's flavor,
                     and what would happen if I kept the stove's heat too high or too low. Note that I do not actually
-                    have to step foot into the kitchen to foresee the unworkable consistency of over-milked eggs, the
+                    have to set foot into the kitchen to foresee the unworkable consistency of over-milked eggs, the
                     strange taste of cinnamon-sugar eggs, or the charred mess of a burnt meal. This again may seem
                     trivially intuitive, but our ability to simulate environmental actions is integral to our cognition.
                     We can, transparently and intuitively, develop an initial plan (scramble, milk, season, cook) and
@@ -284,9 +284,9 @@ export default function GenTransformers() {
                         representations (tokens, in this case).
                     </Footnote>
                     . If I was unable to isolate my subjective representation of the software from the environment, this
-                    would be the case. In reality, my mind does allow for this isolation so, once I have refreshed my
-                    knowledge, I can continue to directly manipulate the embedded form of my plan directly without
-                    needing to lossfully convert my feature-rich representation to feature-starved text at each step.
+                    would be the case. In reality, my mind does allow for this isolation. So, once I have refreshed my
+                    knowledge, I can continue to directly manipulate the embedded form of my plan. I can do this without
+                    needing to lossily convert my feature-rich representation to feature-starved text at each step.
                 </p>
                 <BlogSection level={2}>Online Learning</BlogSection>
                 <p>
@@ -368,7 +368,7 @@ export default function GenTransformers() {
                     techniques in an argument, we can rehearse and simulate ourselves emulating those actions. Anyone
                     who has played out a debate or series of game moves in their head has experienced this exact ability
                     of ours. In certain circumstances, like after a lost debate or game of chess, these replays may be
-                    more compulsory than voluntary. The most significant consequence of this internal phenomena is that
+                    more compulsory than voluntary. The most significant consequence of this internal phenomenon is that
                     we can learn and update our beliefs without needing additional external input. After the initial
                     catalyst, our self-play occurs entirely within our minds. We can rehearse our proving skills,
                     simulate a procedure, or refine our conversational skills without needing any external input or
@@ -405,7 +405,7 @@ export default function GenTransformers() {
                     inference or experimental design are simple enough that we can still execute them reliably, which is
                     significantly more important. For more complex tasks, we can always fall back to situated cognition
                     and the use of external recording mediums (like paper or computers), though this is much less
-                    efficient due to the lossful conversions mentioned above.
+                    efficient due to the lossy conversions mentioned above.
                 </p>
                 <BlogSection level={2}>Adaptive Complexity</BlogSection>
                 <p>
@@ -417,8 +417,8 @@ export default function GenTransformers() {
                     complexity class?
                 </p>
                 <p>
-                    There are a lof of ambiguities here that make a single, definite answer very difficult, if not
-                    impossible, to decide upon
+                    There are numerous ambiguities here that make a single, definite answer very difficult, if not
+                    impossible to decide upon
                     <Footnote>
                         This entire subsection is contingent on at least a weak version of the Church-Turing thesis
                         being true. Suppose the "strong" (Copeland) version, that asserts that the entire universe is
@@ -428,9 +428,9 @@ export default function GenTransformers() {
                         Turing computable, the high-level behavior of our brains may still be.
                     </Footnote>
                     . Due to the constant plasticity of human brains, I find it doubtful that each brain executes a
-                    single, well-defined algorithm throughout its entire life, perhaps not even through a single chain
-                    of thought. To get something even resembling a coherent answer, we will have to severely restrict
-                    the type of human "computations" that we are concerned with.
+                    single, well-defined algorithm throughout its entire life, perhaps not even throughout a single
+                    chain of thought. To get something even resembling a coherent answer, we will have to severely
+                    restrict the type of human "computations" that we are concerned with.
                 </p>
                 <p>
                     Even if the human brain as a whole cannot be represented by a Turing machine, we know that at least
@@ -465,12 +465,12 @@ export default function GenTransformers() {
                     problem while making quick and intuitive inferences on its simpler facets. For the majority of
                     problems, our brains go through great effort to approximate a constant-resource solution as much as
                     possible. Even when we cannot make snap judgements, it appears as if the resource requirements of
-                    our mental processes do not baloon as we reason about a problem for longer. When augmented with an
+                    our mental processes do not balloon as we reason about a problem for longer. When augmented with an
                     external scratchpad to place intermediate work, we can work for an arbitrarily long amount of time
                     on a problem without fully exhausting our mental resources or taking progressively longer amounts of
                     time to make each marking on our scratchpads
                     <Footnote>
-                        Whether we actually make process on the task at hand is another question entirely, though.
+                        Whether we actually make progress on the task at hand is another question entirely, though.
                     </Footnote>
                     .
                 </p>
@@ -478,7 +478,7 @@ export default function GenTransformers() {
                 <p>
                     As of the time of writing, transformer models are very much the current state of the art, both in
                     the colloquial and literal sense. Colloquially, they still represent one of the most capable and
-                    generalizable architectures that AI researchers have yet developed. In ths literal sense, these
+                    generalizable architectures that AI researchers have yet developed. In the literal sense, these
                     models have been so capable and popular that the current "state of the art" of AI research seems to
                     have been wholly subsumed by them. The structure and training objectives of these models have led to
                     their lightning-in-a-bottle success over the past several years. However, I argue, the focus on this
@@ -515,7 +515,7 @@ export default function GenTransformers() {
                     appears to win out, in the end. Hold onto this thought.
                 </p>
                 <p>
-                    Where do modern language models fit into this? Similar to their much simpler forebearers, the main
+                    Where do modern language models fit into this? Similar to their much simpler forebears, the main
                     training objective of these models is still to generate a distribution of tokens that matches the
                     distribution in the training data as closely as possible. This is achieved through the optimization
                     of next-token prediction. Every poem, proof, and program produced by these models comes from the
@@ -577,7 +577,7 @@ export default function GenTransformers() {
                     served to align the model with human preferences. Procedures like reinforcement learning from human
                     feedback (RLHF) built up a reward model based on human preferences that was then used to reward the
                     target LLM through proximal policy optimization (PPO). Recently, we have seen more efficient methods
-                    of etching "human preferences"
+                    of encoding "human preferences"
                     <Footnote>
                         "Human preferences" is quoted here as it is still very difficult to robustly align the behavior
                         of models with what we humans would most prefer. The alignment problem is still far from solved.
@@ -655,7 +655,7 @@ export default function GenTransformers() {
                     modeling language? Becoming superhuman at Go has a clear indicator: your model beats all humans at
                     the game. What would indicate that a model is superhuman at modeling language? Perfect grammar is
                     certainly a necessary condition. Being able to mimic different methods of prose is another. Being
-                    able to reason or program just like the humans samples that is has seen could also support that
+                    able to reason or program just like the human samples that it has seen could also support that
                     claim. Yet, current large language models can already do these things. Where is our AGI?
                 </p>
                 <BlogSection level={2}>Optimize Language</BlogSection>
@@ -717,7 +717,7 @@ export default function GenTransformers() {
                     I have tried this method and I estimate that it will not work; let me try again.
                 </blockquote>
                 <p>
-                    Perhaps that we could implement a kind of scratch-pad and have specific stopping tokens that, once
+                    Perhaps we could implement a kind of scratch-pad and have specific stopping tokens that, once
                     detected, wipe the scratch space and append "do attempt <i>XYZ</i>" to the current context? This
                     would visually look like what AlphaGo Zero (and humans) do during their deliberation, but would only
                     be a poor facsimile. All of the information contained in the faulty reasoning process would be lost
@@ -835,9 +835,9 @@ export default function GenTransformers() {
                 <BlogSection>One Piece of the Puzzle</BlogSection>
                 <p>
                     Despite their limitations, current large language models are undoubtedly useful. Any system that can
-                    collate and inference upon the quantity data that they can should not be discarded outright. To deny
-                    their usefulness would be as erroneous as overstating it. If these models do not themselves
-                    constitute a generally intelligent agent, what is the best use case for their abilities?
+                    collate and perform inference upon the quantity of data that they can should not be discarded
+                    outright. To deny their usefulness would be as erroneous as overstating it. If these models do not
+                    themselves constitute a generally intelligent agent, what is the best use case for their abilities?
                 </p>
                 <p>
                     If we look back upon the history of machine learning development, we see a fairly common pattern
@@ -888,7 +888,7 @@ export default function GenTransformers() {
                     <Footnote>
                         Originally, Werbos developed his version of backpropagation to model Freud's concept of the
                         "flow of psychic energy". This area of machine learning was probably the last place I expected
-                        to fine a reference to Freud, but here we are.
+                        to find a reference to Freud, but here we are.
                     </Footnote>
                     , Rumelhart, LeCun, and Hinton. These more complex networks were significantly more capable than the
                     original Perceptron. Not only could they model non-linearly separable functions, but they could
@@ -938,7 +938,7 @@ export default function GenTransformers() {
                     emulate an interiority or iterative self-calls to serve as a stand-in for self-play. Techniques like
                     these can result in significant performance improvements on reasoning-intensive tasks, but it is
                     still not a true replacement. As noted in the opening, even frontier models still make simple and
-                    inexplicable mistakes. In my opinion, building the above human-like features directly into a novel
+                    inexplicable mistakes. In my opinion, building such human-like features directly into a novel
                     architecture is the most viable path away from simply being a "stochastic parrot".
                 </p>
                 <p>
@@ -952,8 +952,8 @@ export default function GenTransformers() {
                     When we walk into a crowded room at a social event, we quickly take stock of what is going on around
                     us. We immediately notice people that we know, snippets of nearby conversations, and (most
                     importantly) where the food is likely to be. Humans are excellent at quickly estimating social
-                    hierarchies and where we fit into those hierarchies. This sort of inference also happens quicky and
-                    subconsciously when we enter unfamiliar area. This is an ability that we naturally have at ous
+                    hierarchies and where we fit into those hierarchies. This sort of inference also happens quickly and
+                    subconsciously when we enter unfamiliar area. This is an ability that we naturally have at our
                     disposal. For those who are experts in some domain, for example mathematics or software engineering,
                     a similar, domain-specific ability develops with experience. We can often, at a glance, form an
                     opinion on something related to our field of study. An awkward proof or inelegant code is
@@ -975,7 +975,7 @@ export default function GenTransformers() {
                         See <Link href={"/works/readingList#thinking-fast-slow"}>my own thoughts on the book</Link>.
                     </Footnote>
                     . He proposed that human cognition can be classified into two categories. When we normally think of
-                    thinking, we imagine a very dlow, deliberative process. We slowly examine a problem and reason our
+                    thinking, we imagine a very slow, deliberative process. We slowly examine a problem and reason our
                     way to a solution. This often takes many iterations of applying the reasoning process until we
                     arrive at a final answer. Our brains are quite lazy, though, and this is a very resource-intensive
                     process. Instead, Kahneman argues, we spend the vast majority of our time in a sort of "quick
@@ -987,9 +987,9 @@ export default function GenTransformers() {
                 </p>
                 <p>
                     I would argue that transformers (more specifically the attention mechanism at their core) would
-                    serve as an excellent candidate for this king of quick inference in a larger AI system. While their
+                    serve as an excellent candidate for this kind of quick inference in a larger AI system. While their
                     performance at long-horizon and complex tasks remains limited, their abilities to process large
-                    amounds of information and return a heuristic analysis can far exceed our own in some cases. For
+                    amounts of information and return a heuristic analysis can far exceed our own in some cases. For
                     example, using an LLM to extract information from a body of text can be much more efficient than
                     assigning a human to the task. Of course, there are not rigorous guarantees that the analysis will
                     be correct, it is right enough, often enough, that it is still useful. This is similar to our own
@@ -1017,7 +1017,7 @@ export default function GenTransformers() {
                     years.
                 </p>
                 <p>
-                    However, despite impressive benchmark achievements, the capabilities these models within these
+                    However, despite impressive benchmark achievements, the capabilities of these models within such
                     controlled environments does not fully translate to real-world performance. This is in the best
                     case. On more rare occasions, these models can exhibit unexpected and exotic failure modes that even
                     a low-performing human would be unlikely to express. The prevailing notion over the past few years
@@ -1026,7 +1026,7 @@ export default function GenTransformers() {
                     of most model vendors.
                 </p>
                 <p>
-                    Perhaps this may be the case, but as we have seen, more scrutiny is warranted. These models poses
+                    Perhaps this may be the case, but as we have seen, more scrutiny is warranted. These models possess
                     many, but not all, capabilities that are central to human intelligence. They can relate disparate
                     features of an input to make useful connections and they can store and retrieve vast quantities of
                     information. However, they lack an interiority that is isolated from their environments. This means
@@ -1059,7 +1059,7 @@ export default function GenTransformers() {
                     wholesale. To scientists and engineers, as well as many other people, these models can act as
                     excellent assistants for surveying research, collating documentation, and performing repetitive (and
                     even complex!) boilerplate tasks. When augmented with such a model, humans may even uncover new
-                    ideas or inspirations that they would not have otherwise. However, it believe it is equally
+                    ideas or inspirations that they would not have otherwise. However, I believe it is equally
                     counterproductive to overinflate the theoretical capabilities of these models. Empirically, they
                     have proven unreliable when tasked with solving complex problems, sometimes intolerably so.
                     Theoretically, a comparison of the transformer architecture and our current training procedures to
@@ -1070,7 +1070,7 @@ export default function GenTransformers() {
                 <p>
                     While the set of human and LLM capabilities are certainly not equal, they are not fully disjoint
                     either! The ability of these models to make quick, heuristic inferences based on learned patterns
-                    is, at least conceptually, similar ot how humans make snap judgements about certain problems of
+                    is, at least conceptually, similar to how humans make snap judgements about certain problems or
                     situations. When operating on short sequences, the quadratic scaling of transformer models is not
                     yet too costly and the attention mechanism performs its best at relating token embeddings. I am of
                     the opinion that we are currently pushing these models beyond their optimal usefulness. Trying to
