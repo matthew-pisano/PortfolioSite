@@ -792,14 +792,24 @@ export default function GenTransformers() {
                         .
                     </Footnote>
                 </p>
-                <BlogSection level={2}>Load-Balancing Effort</BlogSection>
+                <BlogSection level={2}>Adaptive Reasoning</BlogSection>
                 <p>
-                    We may find another limitation in how transformers approach problems, from an architectural
-                    standpoint. For these models, it takes the same number of computations to reason through a
-                    mathematical proof as it does to count natural numbers (assuming identical sequence lengths). This
-                    seems incongruous with how we would expect an efficient reasoner to behave. These models execute a
-                    fixed algorithm at every inference, regardless of the content of their input: there is no concept of
-                    informed resource distribution. Relative to context length, the number of computations that an
+                    Examining the transformer architecture specifically, we can identify another issue: they are unable
+                    to reliably reallocate effort away from trivial tasks and towards more consequential ones. For these
+                    models, it takes the same number of computations to reason through a mathematical proof as it does
+                    to count natural numbers (assuming identical sequence lengths). This seems incongruous with how we
+                    would expect an efficient reasoner to behave. As we previously discussed, human minds tend to
+                    aggressively optimize how cognitive effort is spent. Problems that can afford to lose some accuracy
+                    are solved quickly and intuitively, often before we are even conscious of it. More complex tasks are
+                    left for our slower, more rigid reasoning processes. AlphaGo and AlphaZero employed a roughly
+                    analogous method. These models could look at potential board states, evaluate their usefulness, and
+                    decide whether to continue their Monte-Carlo tree search along that branch. This acts as a way for
+                    efficiently pruning off problems that are not worth the model's full effort.
+                </p>
+                <p>
+                    Transformer models, however, always execute a fixed algorithm at every inference. This always occurs
+                    regardless of the content of their input: there is no concept of informed resource distribution or
+                    pruning of unpromising paths. Relative to context length, the number of computations that an
                     un-optimized LLM must perform grows roughly quadratically
                     <Footnote>
                         This can be partially remedied by techniques such as KV caching which bring the time complexity
@@ -819,18 +829,23 @@ export default function GenTransformers() {
                         </Link>
                         .
                     </Footnote>
-                    . A counter to this point may be that humans experience a similar effect due to our limited working
+                    .
+                </p>
+                <p>
+                    A counter to this point may be that humans experience a similar effect due to our limited working
                     memories and unreliable long-term memories. However, we benefit significantly (and uniquely) from
                     our ability to make quick inferences on the solution to some problems, while thinking slowly and
-                    deliberatively about other problems
-                    <Footnote>
-                        This may sound slightly like the relationship between non-reasoning and reasoning LLMs, but
-                        non-reasoning models still need a quadratic (or linear with KV caching) amount of time to
-                        compute responses to even simple queries. Ideally, we would like a fundamentally different
-                        algorithm that deliberately sacrifices accuracy for resource efficiency (not simply time
-                        savings).
-                    </Footnote>
-                    .
+                    deliberatively about other problems. This may sound slightly like the relationship between
+                    non-reasoning and reasoning LLMs, but non-reasoning models still need a quadratic (or linear with KV
+                    caching) amount of time to compute responses to even simple queries. Ideally, we would like a
+                    fundamentally different algorithm that deliberately sacrifices accuracy for resource efficiency (not
+                    simply time savings).
+                </p>
+                <p>
+                    The difficulty that transformer models face in identifying areas that are not worth considering
+                    stems from their lack of an internal world model. Human minds and artificial ones like AlphaGo have
+                    internal models of the world that they can manipulate and explore without impacting the real
+                    environment. As we discussed earlier, this feature is missing from the transformer architecture.
                 </p>
                 <BlogSection>One Piece of the Puzzle</BlogSection>
                 <p>
