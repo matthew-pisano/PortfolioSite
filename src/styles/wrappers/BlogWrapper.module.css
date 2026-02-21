@@ -5,6 +5,27 @@
     margin: 50px auto;
 }
 
+.blogImage {
+    text-indent: 0;
+    text-align: center;
+    margin: 50px 0;
+    font-style: italic;
+}
+
+.blogImage > :first-child {
+    border-radius: 10px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: var(--theme-accent);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.blogImage img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
 .blogTitle {
     padding: 10px;
     text-align: center;

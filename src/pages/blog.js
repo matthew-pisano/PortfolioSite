@@ -8,7 +8,6 @@ import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
 import { blogInfo as genTransformers } from "@/pages/works/blog/genTransformers";
-import styles from "@/styles/wrappers/FlexWrapper.module.css";
 
 /**
  * A blog tile on the landing page
