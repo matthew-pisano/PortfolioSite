@@ -1044,14 +1044,15 @@ export default function GenTransformers() {
                     Perhaps this may be the case, but as we have seen, more scrutiny is warranted. These models possess
                     many, but not all, capabilities that are central to human intelligence. They can relate disparate
                     features of an input to make useful connections and they can store and retrieve vast quantities of
-                    information. However, they lack an interiority that is isolated from their environments. This means
-                    that their abilities for self-play and internal experimentation are limited. Additionally, the
-                    transformer architecture has no native way of prioritizing which information to learn and which to
-                    forget. This limits their ability to learn online without suffering from "catastrophic forgetting"
-                    or "model collapse". While we cannot guarantee that these qualities are a necessary condition for an
-                    AGI, we may put a significant weight on their importance since these are qualities core to human
-                    cognition. For humans, the ability to experiment internally and selectively learn information allow
-                    us to reason effectively about ourselves, our goals, and our environments.
+                    information. However, their reasoning and procedure following abilities still cannot compare to
+                    those of a human. Transformer models lack an interiority that is isolated from their environments.
+                    This means that their abilities for self-play and internal experimentation are limited.
+                    Additionally, the transformer architecture has no native way of prioritizing which information to
+                    learn and which to forget. This limits their ability to learn online without suffering from
+                    "catastrophic forgetting" or "model collapse". While we cannot guarantee that these qualities are a
+                    necessary condition for an AGI, we may put a significant weight on their importance since these are
+                    qualities core to human cognition. For humans, the ability to experiment internally and selectively
+                    learn information allow us to reason effectively about ourselves, our goals, and our environments.
                 </p>
                 <p>
                     Starting in late 2024, great effort has been made by researchers to remedy the poor reasoning
@@ -1076,11 +1077,12 @@ export default function GenTransformers() {
                     even complex!) boilerplate tasks. When augmented with such a model, humans may even uncover new
                     ideas or inspirations that they would not have otherwise. However, I believe it is equally
                     counterproductive to overinflate the theoretical capabilities of these models. Empirically, they
-                    have proven unreliable when tasked with solving complex problems, sometimes intolerably so.
-                    Theoretically, a comparison of the transformer architecture and our current training procedures to
-                    human cognition reveals the inconsistencies mentioned above. While we cannot yet prove that these
-                    discrepancies indicate an upper bound on generality, we may still make educated assumptions on model
-                    limits based on observing the only generally intelligent system that we know of: ourselves.
+                    have proven unreliable when tasked with solving complex problems, often intolerably so. A
+                    theoretical comparison between the transformer architecture (with our current training procedures)
+                    and human cognition reveals the inconsistencies mentioned above. While we cannot yet prove that
+                    these discrepancies indicate an upper bound on the generality of LLMs, we may still make educated
+                    assumptions of their limits. We may do this through observing the only generally intelligent system
+                    that we currently know of: ourselves.
                 </p>
                 <p>
                     While the set of human and LLM capabilities are certainly not equal, they are not fully disjoint
@@ -1098,6 +1100,10 @@ export default function GenTransformers() {
                     . A better allocation for our computational and research-allotted resources may be towards composite
                     models which still utilize the attention mechanism for a fast inference engine, while relying on a
                     different architecture to handle long, deliberative reasoning tasks.
+                </p>
+                <p>
+                    If you are searching for something that has yet to be found, a remote area holds a greater promise
+                    of discovery than does a well-trodden path.
                 </p>
                 <hr />
                 <FootnoteList />
