@@ -474,7 +474,7 @@ export default function GenTransformers() {
                     </Footnote>
                     .
                 </p>
-                <BlogSection>The State of the Art</BlogSection>
+                <BlogSection>Modeling Language</BlogSection>
                 <p>
                     As of the time of writing, transformer models are very much the current state of the art, both in
                     the colloquial and literal sense. Colloquially, they still represent one of the most capable and
@@ -658,7 +658,7 @@ export default function GenTransformers() {
                     able to reason or program just like the human samples that it has seen could also support that
                     claim. Yet, current large language models can already do these things. Where is our AGI?
                 </p>
-                <BlogSection level={2}>Optimize Language</BlogSection>
+                <BlogSection level={2}>Optimizing Language</BlogSection>
                 <p>
                     The issue with the previous paragraph was that it was asking the wrong question. "A model that is
                     superhuman at modeling language" is very different from "a generally superhuman model that can also
