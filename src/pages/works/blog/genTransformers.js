@@ -125,14 +125,14 @@ export default function GenTransformers() {
                     <Footnote>
                         See a{" "}
                         <Link href={"https://x.com/jasonlk/status/1946069562723897802?lang=en"}>Replit agent</Link>{" "}
-                        deleting a database or removing a user's{" "}
+                        deleting a database or{" "}
                         <Link
                             href={
                                 "https://www.reddit.com/r/ClaudeAI/comments/1pgxckk/claude_cli_deleted_my_entire_home_directory_wiped/"
                             }>
-                            home directory
-                        </Link>
-                        , in addition to innumerable, similar horror stories.
+                            Claude Code
+                        </Link>{" "}
+                        removing a user's home directory, in addition to innumerable, similar horror stories.
                     </Footnote>
                     .
                 </p>
@@ -172,8 +172,8 @@ export default function GenTransformers() {
                         <Link href={"https://www.nytimes.com/2026/01/14/technology/ai-ideas-chat-gpt-openai.html"}>
                             New York Times
                         </Link>
-                        . This is along with another widely reported quote that states that recent Erdős problem
-                        completions have been "low-hanging fruit", but I was unable to find the original source in my
+                        . This is along with another widely reported quote in which Tao states that recent Erdős problem
+                        completions have been "low-hanging fruit", but I was unable to find its original source in my
                         search.
                     </Footnote>
                     .
@@ -315,12 +315,12 @@ export default function GenTransformers() {
                     <Footnote>
                         Some architectures are less susceptible to this than others, but transformers fall on the "more
                         susceptible" end of the spectrum. If you continually train a model on new information,
-                        eventually something will contradict its training data. Over time, it will begin to gradually
-                        forget older information as the associated weights are no longer being reinforced. After a long
-                        enough time, the model may fully replace old information or abilities with new ones.
-                        Importantly, there is no priority hierarchy for this replacement. New information will overwrite
-                        old, even if the old information is much more valuable to the model. We will cover this in more
-                        detail shortly.
+                        eventually something will contradict its training data. Over time, the model will begin to
+                        gradually forget older information as the associated weights are no longer being reinforced.
+                        After a long enough time, the model may fully replace old information or abilities with new
+                        ones. Importantly, there is no priority hierarchy for this replacement. New information will
+                        overwrite old, even if the old information is much more valuable to the model. We will cover
+                        this in more detail shortly.
                     </Footnote>
                     . Additionally, when shown many low quality or AI-generated training samples, these models may
                     suffer from "model collapse". This often results in the test performance of a model degrading
@@ -593,10 +593,10 @@ export default function GenTransformers() {
                         In methods such as PPO, this reward model is explicitly encoded into the training architecture.
                         It is first trained to predict human preference evaluations then later used to reward the target
                         LLM. However, in methods similar to DPO, we do not explicitly train a reward model, so what
-                        gives? Using this method, a reward model still exists, but it is much more implicit. Instead of
-                        passing human preferences into a separate network that learns, rewards instead come from the
-                        policy (the LLM being trained) itself. This is achieved through encoding preferences directly
-                        into a loss function and updating the model in a supervised manner.
+                        gives? When using this method, a reward model still exists, but it is much more implicit.
+                        Instead of passing human preferences into a separate network that learns, rewards instead come
+                        from the policy (the LLM being trained) itself. This is achieved through encoding preferences
+                        directly into a loss function and updating the model in a supervised manner.
                     </Footnote>{" "}
                     which approximates their environment at the present moment only. In a sense, this can be thought of
                     as a simpler and more naive (though not necessarily bad!) approach to RL over model-based
