@@ -485,6 +485,9 @@ export default function GenTransformers() {
                     very structure and training objective is a significant barrier between the current state of the art
                     and human-level generality.
                 </p>
+                <BlogImage src={"/media/image/attention-mechanism.png"}>
+                    The attention mechanism that serves as the backbone of modern transformers.
+                </BlogImage>
                 <p>
                     Certain drawbacks of these models have been widely recognized and researched already. Examples
                     include the quadratic scaling of self-attention, the (relative) learning inefficiency of neural
@@ -632,6 +635,9 @@ export default function GenTransformers() {
                     have been learning from. The dataset of moves which they had curated did not capture the full
                     distribution of moves that a real expert can draw upon.
                 </p>
+                <BlogImage src={"/media/image/lee-sedol-alpha-go.jpg"}>
+                    Lee Sedol during his match against AlphaGo in March of 2016. (Getty: Handout)
+                </BlogImage>
                 <p>
                     This quickly changed when reinforcement learning was used to train an auxiliary "value network" that
                     evaluated Go board states. As AlphaGo played, this network could actively learn directly from
@@ -894,6 +900,9 @@ export default function GenTransformers() {
                     could be optimized towards. By the early 2000s, AI had once again fallen out of favor in research
                     circles.
                 </p>
+                <BlogImage src={"/media/image/watson-jeopardy.jpg"}>
+                    IBM Watson's 2011 Jeopardy! match against Ken Jennings and Brad Rutter. (IBM Research)
+                </BlogImage>
                 <p>
                     Interest remained low for another decade until 2011. IBM's Watson system sparked public interest
                     once again, but it was not until AlexNet in 2012 that AI researchers themselves once again took
