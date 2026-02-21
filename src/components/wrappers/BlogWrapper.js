@@ -10,6 +10,43 @@ import { elementReadingTime } from "@/lib/util/utils";
 import styles from "@/styles/wrappers/BlogWrapper.module.css";
 
 /**
+ * An object containing common blog metadata
+ */
+class BlogInfo {
+    constructor(title, subtitle, date, anchor) {
+        this.title = title;
+        this.subtitle = subtitle;
+        this.date = date;
+        this.anchor = anchor;
+    }
+}
+
+/**
+ * An imagine object with a caption
+ * @param children {JSXElement} The caption elements
+ * @param src {string} The image source
+ * @param alt {string} The alt message for the image
+ * @returns {JSX.Element}
+ * @constructor
+ */
+function BlogImage({ children, src, alt }) {
+    return (
+        <div className={`${styles.blogImage}`}>
+            <div>
+                <img src={src} alt={alt} />
+            </div>
+            <div>{children}</div>
+        </div>
+    );
+}
+
+BlogImage.propTypes = {
+    children: PropTypes.node.isRequired,
+    src: PropTypes.string,
+    alt: PropTypes.string
+};
+
+/**
  * Wrapper for blog pages.
  * @param children {JSXElement} The children of the wrapper
  * @param pageName {string} The name of the blog page
@@ -83,3 +120,4 @@ BlogWrapper.propTypes = {
 };
 
 export default BlogWrapper;
+export { BlogInfo, BlogImage };

@@ -3,9 +3,9 @@ import React from "react";
 import Link from "next/link";
 import Latex from "react-latex-next";
 
-import { BlogInfo, BlogSection } from "@/components/widgets/BlogSection";
+import { BlogSection } from "@/components/widgets/BlogSection";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
-import BlogWrapper from "@/components/wrappers/BlogWrapper";
+import BlogWrapper, { BlogInfo, BlogImage } from "@/components/wrappers/BlogWrapper";
 
 const blogInfo = new BlogInfo(
     "On Generally Intelligent Transformers",
@@ -752,6 +752,7 @@ export default function GenTransformers() {
                     autoregressive equivalent to training a model on expert moves. You will get impressive results, but
                     you will not reach the quality of the material that you are trying to emulate.
                 </p>
+                <BlogImage src={"/media/image/hanoi.jpg"}>The Tower of Hanoi puzzle.</BlogImage>
                 <p>
                     Research has begin to observe this in practice. Most notably is Apple's "The Illusion of Thinking"
                     <Footnote>
