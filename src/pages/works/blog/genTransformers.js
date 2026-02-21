@@ -40,6 +40,8 @@ export default function GenTransformers() {
                     <Footnote>
                         See DeepMind's{" "}
                         <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
                             href={
                                 "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
                             }>
@@ -56,6 +58,8 @@ export default function GenTransformers() {
                     <Footnote>
                         At time of writing, this includes{" "}
                         <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
                             href={
                                 "https://x.com/neelsomani/status/2010215162146607128?utm_source=www.theneurondaily.com&utm_medium=referral&utm_campaign=ai-cracks-legendary-erdos-problems"
                             }>
@@ -63,12 +67,21 @@ export default function GenTransformers() {
                         </Link>
                         ,{" "}
                         <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
                             href={
                                 "https://www.erdosproblems.com/728?utm_source=www.theneurondaily.com&utm_medium=referral&utm_campaign=ai-cracks-legendary-erdos-problems"
                             }>
                             #728
                         </Link>
-                        , and <Link href={"https://x.com/AcerFur/status/2010054423398232080"}>#729</Link>.
+                        , and{" "}
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://x.com/AcerFur/status/2010054423398232080"}>
+                            #729
+                        </Link>
+                        .
                     </Footnote>
                     . At a cursory glance, it seems as if all tasks primarily solved through intellectual rigour will
                     soon be completed (or at least significantly aided) by transformer-based models.
@@ -87,6 +100,8 @@ export default function GenTransformers() {
                     <Footnote>
                         See this{" "}
                         <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
                             href={"https://sloanreview.mit.edu/article/the-hidden-costs-of-coding-with-generative-ai/"}>
                             article
                         </Link>{" "}
@@ -97,6 +112,8 @@ export default function GenTransformers() {
                         For example, models can struggle on languages that appear less frequently in their training set
                         like{" "}
                         <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
                             href={
                                 "https://datafloq.com/why-the-hardest-coding-languages-are-still-difficult-for-ai-in-2025/"
                             }>
@@ -108,10 +125,21 @@ export default function GenTransformers() {
                     expected accuracy or security. Models may generate programs with subtle, or even blatant, security
                     vulnerabilities
                     <Footnote>
-                        See an <Link href={"https://dl.acm.org/doi/10.1145/3610721"}>NYU study</Link> on GitHub copilot,
-                        this <Link href={"https://owaspai.org/docs/2_threats_through_use/"}>OWASP report</Link> on
-                        manipulation by bad actors, and another report from the{" "}
+                        See an{" "}
+                        <Link target="_blank" rel="noopener noreferrer" href={"https://dl.acm.org/doi/10.1145/3610721"}>
+                            NYU study
+                        </Link>{" "}
+                        on GitHub copilot, this{" "}
                         <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://owaspai.org/docs/2_threats_through_use/"}>
+                            OWASP report
+                        </Link>{" "}
+                        on manipulation by bad actors, and another report from the{" "}
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
                             href={
                                 "https://cloudsecurityalliance.org/blog/2025/07/09/understanding-security-risks-in-ai-generated-code"
                             }>
@@ -124,9 +152,16 @@ export default function GenTransformers() {
                     databases wiped or home directories deleted can attest to this directly
                     <Footnote>
                         See a{" "}
-                        <Link href={"https://x.com/jasonlk/status/1946069562723897802?lang=en"}>Replit agent</Link>{" "}
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://x.com/jasonlk/status/1946069562723897802?lang=en"}>
+                            Replit agent
+                        </Link>{" "}
                         deleting a database or{" "}
                         <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
                             href={
                                 "https://www.reddit.com/r/ClaudeAI/comments/1pgxckk/claude_cli_deleted_my_entire_home_directory_wiped/"
                             }>
@@ -141,7 +176,12 @@ export default function GenTransformers() {
                     consequence of this debt has led to some software engineers taking on full-time freelance work
                     <Footnote>
                         See this{" "}
-                        <Link href={"https://www.kuow.org/stories/the-human-coders-hired-to-mop-up-ai-slop"}>KUOW</Link>{" "}
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://www.kuow.org/stories/the-human-coders-hired-to-mop-up-ai-slop"}>
+                            KUOW
+                        </Link>{" "}
                         article on the subject.
                     </Footnote>{" "}
                     to untangle the spaghetti code that an LLM had created yet could not maintain or debug on its own.
@@ -161,6 +201,8 @@ export default function GenTransformers() {
                     <Footnote>
                         This{" "}
                         <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
                             href={
                                 "https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems"
                             }>
@@ -169,7 +211,10 @@ export default function GenTransformers() {
                         gives a good real-time summary of results as they come out. Terence Tao has described LLMs
                         trained for mathematical proof as "a really clever student who has memorized everything for the
                         test but doesn’t have a deep understanding of the concept", according to the{" "}
-                        <Link href={"https://www.nytimes.com/2026/01/14/technology/ai-ideas-chat-gpt-openai.html"}>
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://www.nytimes.com/2026/01/14/technology/ai-ideas-chat-gpt-openai.html"}>
                             New York Times
                         </Link>
                         . This is along with another widely reported quote in which Tao states that recent Erdős problem
@@ -300,7 +345,10 @@ export default function GenTransformers() {
                         exclusive!) focus of our dreams. Sleeping, among other things, appears to primarily serve as a
                         filter and consolidator for recently learned information, not as the exclusive domain of
                         learning itself. See:{" "}
-                        <Link href={"https://pmc.ncbi.nlm.nih.gov/articles/PMC4704085/"}>
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://pmc.ncbi.nlm.nih.gov/articles/PMC4704085/"}>
                             Dreaming and Offline Memory Consolidation
                         </Link>{" "}
                         from the NIH.
@@ -337,8 +385,10 @@ export default function GenTransformers() {
                         This specific example has become something of an urban legend/cautionary tale in many AI safety
                         circles. Though the exact origin of the "AI tank detector" story is difficult to track down, it
                         is likely a combination of a few different examples with varying degrees of embellishment. This{" "}
-                        <Link href={"https://gwern.net/tank"}>gwern.net</Link> article does some great research on the
-                        origins and implications of this story.
+                        <Link target="_blank" rel="noopener noreferrer" href={"https://gwern.net/tank"}>
+                            gwern.net
+                        </Link>{" "}
+                        article does some great research on the origins and implications of this story.
                     </Footnote>
                     , our brains automatically filter it out. This ensures that we can more easily create general
                     solutions to our problem instead of overfitting to situational details. This extends to sources of
@@ -391,7 +441,10 @@ export default function GenTransformers() {
                     summon. Famously, humans have a fairly limited pool of working memory from which we can draw
                     <Footnote>
                         When compared to computers, of course, but also{" "}
-                        <Link href={"https://www.sciencedirect.com/science/article/abs/pii/S0959438809000269"}>
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://www.sciencedirect.com/science/article/abs/pii/S0959438809000269"}>
                             Chimpanzees
                         </Link>
                         , strangely. Though this is amusing to consider, one must remember that our minds have evolved
@@ -763,7 +816,7 @@ export default function GenTransformers() {
                     Research has begin to observe this in practice. Most notably is Apple's "The Illusion of Thinking"
                     <Footnote>
                         See:{" "}
-                        <Link href={"https://arxiv.org/pdf/2506.06941"}>
+                        <Link target="_blank" rel="noopener noreferrer" href={"https://arxiv.org/pdf/2506.06941"}>
                             The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models
                             via the Lens of Problem Complexity
                         </Link>
@@ -786,7 +839,10 @@ export default function GenTransformers() {
                     <Footnote>
                         {" "}
                         See:{" "}
-                        <Link href={"https://jenshahade.substack.com/p/chatgpt-is-weirdly-bad-at-chess"}>
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://jenshahade.substack.com/p/chatgpt-is-weirdly-bad-at-chess"}>
                             ChatGPT is Weirdly Bad at Chess
                         </Link>
                         .
@@ -820,11 +876,14 @@ export default function GenTransformers() {
                     a lossy method that may fail to capture the nuances of a problem
                     <Footnote>
                         See:{" "}
-                        <Link href={"https://openreview.net/forum?id=8Pi6Du0n7F"}>
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://openreview.net/forum?id=8Pi6Du0n7F"}>
                             Autoencoding-Free Context Compression for LLMs via Contextual Semantic Anchors
                         </Link>{" "}
                         and{" "}
-                        <Link href={"https://arxiv.org/abs/2406.13618"}>
+                        <Link target="_blank" rel="noopener noreferrer" href={"https://arxiv.org/abs/2406.13618"}>
                             In-Context Former: Lightning-fast Compressing Context for Large Language Model
                         </Link>
                         .
@@ -875,7 +934,10 @@ export default function GenTransformers() {
                     applications of a technology that could teach itself. A, now famous, <i>New York Times</i>
                     <Footnote>
                         See:{" "}
-                        <Link href={"https://www.nytimes.com/1958/07/13/archives/electronic-brain-teaches-itself.html"}>
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://www.nytimes.com/1958/07/13/archives/electronic-brain-teaches-itself.html"}>
                             Electronic 'Brain' Teaches Itself
                         </Link>
                         .
@@ -933,7 +995,7 @@ export default function GenTransformers() {
                     in 2015
                     <Footnote>
                         See{" "}
-                        <Link href={"https://arxiv.org/pdf/1409.0473"}>
+                        <Link target="_blank" rel="noopener noreferrer" href={"https://arxiv.org/pdf/1409.0473"}>
                             Neural Machine Translation by Jointly Learning to Align and Translate
                         </Link>
                         , but the effectiveness of the algorithm was limited by the strictly sequential processing of
@@ -987,7 +1049,11 @@ export default function GenTransformers() {
                     and any resource or time constraints placed upon us. Most notably for our purposes, Daniel Kahneman
                     popularized the idea of a "two systems" approach to cognition in <i>Thinking Fast and Slow</i>
                     <Footnote>
-                        See <Link href={"/works/readingList#thinking-fast-slow"}>my own thoughts on the book</Link>.
+                        See{" "}
+                        <Link target="_blank" rel="noopener noreferrer" href={"/works/readingList#thinking-fast-slow"}>
+                            my own thoughts on the book
+                        </Link>
+                        .
                     </Footnote>
                     . He proposed that human cognition can be classified into two categories. When we normally think of
                     thinking, we imagine a very slow, deliberative process. We slowly examine a problem and reason our
