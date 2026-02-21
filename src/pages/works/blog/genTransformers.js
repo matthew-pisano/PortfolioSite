@@ -1101,10 +1101,10 @@ export default function GenTransformers() {
                     models which still utilize the attention mechanism for a fast inference engine, while relying on a
                     different architecture to handle long, deliberative reasoning tasks.
                 </p>
-                <p>
+                <blockquote>
                     If you are searching for something that has yet to be found, a remote area holds a greater promise
                     of discovery than does a well-trodden path.
-                </p>
+                </blockquote>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
