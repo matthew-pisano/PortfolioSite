@@ -32,9 +32,8 @@ export default (
                     <i>Thems</i>, how hierarchies form and how we respond to our statuses within them, and
                     introspections into morality, empathy, and metaphor. Similarly to <i>Determined</i>, he also
                     discusses the implications of these ideas on the criminal justice system. How does punishment work
-                    if our behaviors are heavily, if not fully{" "}
-                    <a href="https://matthewpisano.com/readingList#determined">determined</a> by factors outside of our
-                    control?
+                    if our behaviors are heavily, if not fully <a href="/readingList#determined">determined</a> by
+                    factors outside of our control?
                 </p>
             </>
         </BookTileSynopsis>

@@ -188,7 +188,7 @@ export default (
                         it would (after a certain point) have no need to collaborate with us, and deciding the "right"
                         goals, if any, is a highly non-trivial problem. Each of these points, and an AI's motivation for
                         insubordination, are discussed more thoroughly in my analysis of
-                        <Link href={"https://matthewpisano.com/readingList#superintelligence"}>
+                        <Link href={"/readingList#superintelligence"}>
                             <i>Superintelligence</i>
                         </Link>
                         .
@@ -305,10 +305,9 @@ export default (
             <BookTileThoughts>
                 <>
                     This book was recommended to me by Selmer Bringsjord of RPI after I gave one of my first
-                    presentations on my{" "}
-                    <Link href={"https://matthewpisano.com/research/bergeron"}>Master's thesis research</Link>. Reading
-                    this book gave theoretical foundations to my ill-defined concerns about alignment at the time.
-                    Through this work, Russel's thoughts helped to influence both this and my future research.
+                    presentations on my <Link href={"/research/bergeron"}>Master's thesis research</Link>. Reading this
+                    book gave theoretical foundations to my ill-defined concerns about alignment at the time. Through
+                    this work, Russel's thoughts helped to influence both this and my future research.
                     <p>
                         In this book, Russell both introduces technical topics to the reader and challenges some
                         conventional thinking about artificial intelligence in a concrete and understandable manner. He
