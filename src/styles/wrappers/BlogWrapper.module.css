@@ -5,10 +5,6 @@
     margin: 50px auto;
 }
 
-.blogLanding h4 {
-    font-size: medium;
-}
-
 .blogTitle {
     padding: 10px;
     text-align: center;
@@ -19,20 +15,6 @@
     max-width: 700px;
     width: 70%;
     margin-top: 50px;
-}
-
-.blogLanding .displayTile {
-    border-style: none solid;
-    max-width: 500px;
-    margin: 0;
-}
-
-.blogLanding .displayTileContent {
-    padding: 0 10px;
-}
-
-.blogLanding img {
-    max-height: 150px !important;
 }
 
 .blogContainer {

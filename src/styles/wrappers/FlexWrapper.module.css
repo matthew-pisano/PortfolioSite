@@ -7,3 +7,18 @@
     padding: 0 10px;
     margin-bottom: 50px;
 }
+
+.flexTileHolder h4 {
+    font-size: medium;
+}
+
+
+.flexTileHolder > div {
+    border-style: none solid;
+    max-width: 500px;
+    margin: 0;
+}
+
+.flexTileHolder img {
+    max-height: 150px !important;
+}
