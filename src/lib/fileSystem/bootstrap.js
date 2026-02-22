@@ -130,7 +130,7 @@ function bootstrapServerside() {
             if (name[0] === "/") name = name.substring(1); // Remove the leading slash
 
             let fullPath = pathJoin(hierarchyPath, fileName + ".html");
-            let newFile = masterFileSystem.touch(fullPath, "--" + Perms.EXECUTE);
+            let newFile = masterFileSystem.touch(fullPath, Perms.EXECUTE_ONLY);
             newFile.modified = fileStats.mtimeMs;
             newFile.spoofSize(fileStats.size); // Set the file's size without actually setting the text
             newFile.markAsPage();

@@ -290,7 +290,7 @@ class Commands {
 
         // List file
         let displayName = lsObj.name.includes(" ") ? `'${lsObj.name}'` : lsObj.name;
-        if (lsObj.permission === "--x") displayName = ANSI.GREEN + displayName + ANSI.DEFAULT;
+        if (lsObj.permission === Perms.EXECUTE_ONLY) displayName = ANSI.GREEN + displayName + ANSI.DEFAULT;
 
         let fileTime = fileTimestamp(lsObj);
         if (showDetails) yield `-${lsObj.permission}${pad}${paddedSize}${pad}${fileTime}${pad}${displayName}`;
