@@ -25,6 +25,7 @@ class Perms {
     static ALLOW = this.READ + this.WRITE + this.EXECUTE;
     static READ_ONLY = this.READ + "-" + this.EXECUTE;
     static NO_EXECUTE = this.READ + "--";
+    static EXECUTE_ONLY = "--" + this.EXECUTE;
 
     static validate(permString) {
         if (permString.length !== 3) throw Error("Expected a permission string of length 3!");
