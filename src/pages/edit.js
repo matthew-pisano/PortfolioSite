@@ -23,7 +23,7 @@ export default function Edit() {
             currentFile = masterFileSystem.getItem(filePath);
             if (!currentFile) errorMsg = `Cannot find file at ${filePath}!`;
             else if (currentFile instanceof Directory) errorMsg = "Cannot open a directory!";
-            else if (!currentFile.permission.includes(Perms.WRITE))
+            else if (!(currentFile.permission & Perms.WRITE))
                 errorMsg = `Insufficient permissions to write ${filePath}!`;
         }
 

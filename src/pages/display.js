@@ -22,7 +22,7 @@ export default function Display() {
         // Show error message if file is not found, is a directory, or does not have read permissions
         if (!currentFile) setPageText(`Cannot find file at ${filePath}!`);
         else if (currentFile instanceof Directory) setPageText("Cannot open a directory!");
-        else if (!currentFile.permission.includes(Perms.READ))
+        else if (!(currentFile.permission & Perms.READ))
             setPageText(`Insufficient permissions to access source of ${filePath}!`);
         else {
             // Load the file text into the page

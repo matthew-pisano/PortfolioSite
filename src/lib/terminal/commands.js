@@ -205,7 +205,7 @@ class Commands {
 
         if (!targetItem) throw new CommandError(`Cannot enter directory.  Directory at ${cdPath} does not exist!`);
         else if (targetItem instanceof File) throw new CommandError(`Cannot enter ${cdPath}, it is a file!`);
-        else if (!targetItem.permission.includes(Perms.EXECUTE)) {
+        else if (!(targetItem.permission & Perms.EXECUTE)) {
             // Secret admin access
             if (cdPath === "/home/admin") {
                 window.location.href = "/admin";
@@ -245,8 +245,7 @@ class Commands {
 
         // List directory
         if (lsObj instanceof Directory) {
-            if (!lsObj.permission.includes(Perms.READ))
-                throw new CommandError(`Cannot list ${path}.  Permission denied!`);
+            if (!(lsObj.permission & Perms.READ)) throw new CommandError(`Cannot list ${path}.  Permission denied!`);
 
             // Gather the information for each file and directory in the directory
             let list = [];
@@ -261,7 +260,7 @@ class Commands {
                 let displayName = child.name.includes(" ") ? `'${child.name}'` : child.name;
                 if (showDetails)
                     list.push([
-                        `d${child.permission}${pad}${paddedSize}${pad}${fileTimestamp(lsObj)}` +
+                        `d${Perms.toStringFormat(child.permission)}${pad}${paddedSize}${pad}${fileTimestamp(lsObj)}` +
                             `${pad}${ANSI.CYAN}${displayName}${ANSI.DEFAULT}`,
                         child.name
                     ]);
@@ -290,10 +289,11 @@ class Commands {
 
         // List file
         let displayName = lsObj.name.includes(" ") ? `'${lsObj.name}'` : lsObj.name;
-        if (lsObj.permission === Perms.EXECUTE_ONLY) displayName = ANSI.GREEN + displayName + ANSI.DEFAULT;
+        if (lsObj.permission === Perms.EXECUTE) displayName = ANSI.GREEN + displayName + ANSI.DEFAULT;
 
         let fileTime = fileTimestamp(lsObj);
-        if (showDetails) yield `-${lsObj.permission}${pad}${paddedSize}${pad}${fileTime}${pad}${displayName}`;
+        if (showDetails)
+            yield `-${Perms.toStringFormat(lsObj.permission)}${pad}${paddedSize}${pad}${fileTime}${pad}${displayName}`;
         else yield displayName;
     }
 
@@ -455,7 +455,7 @@ class Commands {
         else if (currentFile.isPage()) {
             let relPath = pagePath.replace(SysEnv.PUBLIC_FOLDER, "");
             window.open(relPath.replace(".html", ""), "_self");
-        } else if (currentFile.permission.includes(Perms.EXECUTE)) window.open(`/display?file=${pagePath}`, "_self");
+        } else if (currentFile.permission & Perms.EXECUTE) window.open(`/display?file=${pagePath}`, "_self");
         else throw new CommandError(`Insufficient permissions to open ${pagePath}!`);
     }
 
@@ -477,7 +477,7 @@ class Commands {
         if (!masterFileSystem.exists(pagePath))
             throw new CommandError(`Cannot edit file.  File at ${pagePath} does not exist!`);
         else if (currentFile instanceof Directory) throw new CommandError(`Cannot edit a directory!`);
-        else if (currentFile.permission.includes(Perms.WRITE)) window.location.replace(`/edit?file=${pagePath}`);
+        else if (currentFile.permission & Perms.WRITE) window.location.replace(`/edit?file=${pagePath}`);
         else throw new CommandError(`Insufficient permissions to edit ${pagePath}!`);
     }
 

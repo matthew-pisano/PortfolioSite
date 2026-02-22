@@ -50,8 +50,8 @@ let initialHierarchy = new Directory(
             new File("IMPORTANT_README.txt", "Do NOT rm C:/Windows/System32"),
             new Directory(
                 "C:",
-                [new Directory("Windows", [new Directory("System32", [], Perms.NO_EXECUTE)], Perms.NO_EXECUTE)],
-                Perms.NO_EXECUTE
+                [new Directory("Windows", [new Directory("System32", [], Perms.READ)], Perms.READ)],
+                Perms.READ
             )
         ]),
         new Directory("opt", [], Perms.DENY),
@@ -130,7 +130,7 @@ function bootstrapServerside() {
             if (name[0] === "/") name = name.substring(1); // Remove the leading slash
 
             let fullPath = pathJoin(hierarchyPath, fileName + ".html");
-            let newFile = masterFileSystem.touch(fullPath, Perms.EXECUTE_ONLY);
+            let newFile = masterFileSystem.touch(fullPath, Perms.EXECUTE);
             newFile.modified = fileStats.mtimeMs;
             newFile.spoofSize(fileStats.size); // Set the file's size without actually setting the text
             newFile.markAsPage();

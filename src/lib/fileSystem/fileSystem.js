@@ -123,7 +123,7 @@ class FileSystem {
         if (!parent)
             throw new FileSystemError(`Cannot make directory.  Parent directory at ${parentPath} does not exist!`);
 
-        if (!parent.permission.includes(Perms.WRITE))
+        if (!(parent.permission & Perms.WRITE))
             throw new FileSystemError(`Cannot make directory under ${parentPath}.  Permission denied!`);
 
         let childDir = new Directory(childName);
@@ -136,7 +136,7 @@ class FileSystem {
     /**
      * Creates a new file at the given path
      * @param path {string} The path to create the file at
-     * @param permission {string} The permission of the file
+     * @param permission {number} The permission of the file
      * @return {File} The created file
      */
     touch(path, permission = Perms.ALLOW) {
@@ -149,7 +149,7 @@ class FileSystem {
         if (!parent)
             throw new FileSystemError(`Cannot create file.  Parent directory at ${parentPath} does not exist!`);
 
-        if (!parent.permission.includes(Perms.WRITE))
+        if (!(parent.permission & Perms.WRITE))
             throw new FileSystemError(`Cannot make file under ${parentPath}.  Permission denied!`);
 
         let childFile = new File(childName, "", permission);
@@ -183,9 +183,9 @@ class FileSystem {
         let newParentObj = this.getItem(newParentPath);
         let oldObj = this.getItem(oldPath);
 
-        if (!newParentObj.permission.includes(Perms.WRITE))
+        if (!(newParentObj.permission & Perms.WRITE))
             throw new FileSystemError(`Cannot make copy to ${newParentPath}.  Permission denied!`);
-        if (!oldObj.permission.includes(Perms.READ))
+        if (!(oldObj.permission & Perms.READ))
             throw new FileSystemError(`Cannot make copy from ${oldPath}.  Permission denied!`);
 
         let copied = oldObj.copy();
@@ -214,7 +214,7 @@ class FileSystem {
         for (let i in parentDir.subTree) {
             let target = parentDir.subTree[i];
             if (target.name === childName) {
-                if (!target.permission.includes(Perms.WRITE))
+                if (!(target.permission & Perms.WRITE))
                     throw new FileSystemError(`Cannot remove ${path}.  Permission denied!`);
 
                 if (target instanceof Directory) for (let child of target.subTree) this.rm(pathJoin(path, child.name));
@@ -241,8 +241,7 @@ class FileSystem {
 
         if (file instanceof Directory) throw new FileSystemError(`Cannot write to directory at ${path}!`);
 
-        if (!file.permission.includes(Perms.WRITE))
-            throw new FileSystemError(`Cannot write to ${path}.  Permission denied!`);
+        if (!(file.permission & Perms.WRITE)) throw new FileSystemError(`Cannot write to ${path}.  Permission denied!`);
 
         file.write(text, append);
 
@@ -258,11 +257,8 @@ class FileSystem {
     readText(path) {
         let file = this.getItem(path);
         if (!file) throw new FileSystemError(`Cannot read from file.  File at ${path} does not exist!`);
-
         if (file instanceof Directory) throw new FileSystemError(`Cannot read: Is a directory at ${path}!`);
-
-        if (!file.permission.includes(Perms.READ))
-            throw new FileSystemError(`Cannot read from ${path}.  Permission denied!`);
+        if (!(file.permission & Perms.READ)) throw new FileSystemError(`Cannot read from ${path}.  Permission denied!`);
 
         return file.text();
     }

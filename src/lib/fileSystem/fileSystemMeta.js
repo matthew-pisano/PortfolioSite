@@ -16,24 +16,42 @@ class SysEnv {
 
 /**
  * Class to hold permission constants for the file system.
+ * Uses Unix octal notation where:
+ * - 4 = read (r)
+ * - 2 = write (w)
+ * - 1 = execute (x)
  */
 class Perms {
-    static READ = "r";
-    static WRITE = "w";
-    static EXECUTE = "x";
-    static DENY = "---";
-    static ALLOW = this.READ + this.WRITE + this.EXECUTE;
-    static READ_ONLY = this.READ + "-" + this.EXECUTE;
-    static NO_EXECUTE = this.READ + "--";
-    static EXECUTE_ONLY = "--" + this.EXECUTE;
+    static READ = 4;
+    static WRITE = 2;
+    static EXECUTE = 1;
+    static DENY = 0;
+    static ALLOW = this.READ + this.WRITE + this.EXECUTE; // 7
+    static READ_ONLY = this.READ + this.EXECUTE; // 5
 
-    static validate(permString) {
-        if (permString.length !== 3) throw Error("Expected a permission string of length 3!");
-        if (![this.READ, "-"].includes(permString[0])) throw Error(`Expected '${this.READ}' or '-' at permissions[0]!`);
-        if (![this.WRITE, "-"].includes(permString[1]))
-            throw Error(`Expected '${this.WRITE}' or '-' at permissions[1]!`);
-        if (![this.EXECUTE, "-"].includes(permString[2]))
-            throw Error(`Expected '${this.EXECUTE}' or '-' at permissions[2]!`);
+    /**
+     * Converts an octal permission number to a Unix permission string
+     * @param permNumber {number} The octal permission number (0-7)
+     * @return {string} The Unix permission string (e.g., "rwx", "r--")
+     */
+    static toStringFormat(permNumber) {
+        if (typeof permNumber !== "number" || permNumber < 0 || permNumber > 7) {
+            throw Error("Expected a permission number between 0 and 7!");
+        }
+        let str = "";
+        str += permNumber & this.READ ? "r" : "-";
+        str += permNumber & this.WRITE ? "w" : "-";
+        str += permNumber & this.EXECUTE ? "x" : "-";
+        return str;
+    }
+
+    /**
+     * Validates that a given number is a valid permission
+     * @param permNumber {number} The number to check
+     */
+    static validate(permNumber) {
+        if (typeof permNumber !== "number" || permNumber < 0 || permNumber > 7)
+            throw Error("Expected a permission number between 0 and 7!");
     }
 }
 
