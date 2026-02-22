@@ -130,7 +130,7 @@ function renameFile(file, parentPath) {
 
     let fileName = file.name.split(".")[0];
     // Check if the user has permission to rename the file
-    if (!file.permission.includes(Perms.WRITE)) {
+    if (!(file.permission & Perms.WRITE)) {
         showDialog("Permission Denied", "You do not have permission to rename this file!");
         return;
     }
@@ -184,7 +184,7 @@ function removeCustom(file, parentPath) {
     }
 
     // Check if the user has permission to remove the file
-    if (!file.permission.includes(Perms.WRITE)) {
+    if (!(file.permission & Perms.WRITE)) {
         showDialog("Permission Denied", "You do not have permission to remove this file!");
         return;
     }

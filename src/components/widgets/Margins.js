@@ -193,7 +193,7 @@ function editPage(currentPath) {
     // If the current path is not a custom file and the file is not a page, show a dialog box error
     if (!file) showDialog("File Not Found", "The file that you are attempting to edit does not exist!");
     // If the current path is not a custom file, show a dialog box error
-    else if (!file.permission.includes(Perms.WRITE))
+    else if (!(file.permission & Perms.WRITE))
         showDialog("Permission Denied", "You do not have permission to edit this file!");
     // Open the editor
     else window.location.replace(`/edit?file=${filePath}`);

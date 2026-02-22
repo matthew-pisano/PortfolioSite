@@ -11,7 +11,7 @@ class File {
     /**
      * @param name {string} The name of the file
      * @param text {string} The text content of the file
-     * @param permission {string} The permission of the file
+     * @param permission {number} The permission of the file
      */
     constructor(name, text = "", permission = Perms.ALLOW) {
         Perms.validate(permission);
@@ -124,7 +124,7 @@ class Directory {
     /**
      * @param name {string} The name of the directory
      * @param subTree {Directory[] | File[]} The sub-tree of the directory
-     * @param permission {string} The permission of the directory
+     * @param permission {number} The permission of the directory
      */
     constructor(name, subTree = null, permission = Perms.ALLOW) {
         Perms.validate(permission);
