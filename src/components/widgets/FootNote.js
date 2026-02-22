@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useRef } from "react";
 
 import PropTypes from "prop-types";
 
@@ -9,30 +9,24 @@ const FootnoteContext = createContext(null);
 
 /**
  * Provider component to wrap footnotes
- * @param children {JSXElement} The main body comment
+ * Collects footnotes synchronously during server-side render phase
+ *
+ * @param children {JSXElement} The main body content
  * @param label {string} The unique label for this set of footnotes
  */
 function FootnoteProvider({ children, label }) {
-    const [footnotes, setFootnotes] = useState([]);
+    // Store footnotes collected during this render pass
+    const collectedRef = useRef([]);
+    // Clear collected footnotes at start of each render
+    collectedRef.current = [];
 
-    // Add a footnote to the context
+    // Add a footnote during render phase (synchronous)
     const addFootnote = (id, content) => {
-        // Ensure footnotes are not added twice
-        setFootnotes((prev) => {
-            const exists = prev.find((f) => f.id === id);
-            if (exists) return prev;
-            return [...prev, { id, content }];
-        });
+        if (!collectedRef.current.find((f) => f.id === id)) collectedRef.current.push({ id, content });
     };
 
-    // Remove a footnote from the page to handle dynamic refresh
-    const removeFootnote = (id) => {
-        setFootnotes((prev) => prev.filter((f) => f.id !== id));
-    };
-
-    // Send footnotes to the provider context
     return (
-        <FootnoteContext.Provider value={{ footnotes, addFootnote, removeFootnote, label }}>
+        <FootnoteContext.Provider value={{ footnotes: collectedRef.current, addFootnote, label }}>
             {children}
         </FootnoteContext.Provider>
     );
@@ -48,15 +42,19 @@ FootnoteProvider.propTypes = {
  * @param children {JSXElement} The content of the footnote
  */
 function Footnote({ children }) {
-    const { addFootnote, removeFootnote, footnotes, label } = useContext(FootnoteContext);
-    const [id] = useState(() => Math.random().toString(36).substring(2, 11));
+    const context = useContext(FootnoteContext);
+    if (!context) throw new Error("Footnote must be used inside FootnoteProvider");
 
-    useEffect(() => {
-        addFootnote(id, children);
-        return () => removeFootnote(id);
-    }, [children, id]);
+    const { addFootnote, footnotes, label } = context;
+    const idRef = useRef(null);
 
-    const index = footnotes.findIndex((f) => f.id === id) + 1;
+    // Generate stable ID once
+    if (idRef.current === null) idRef.current = Math.random().toString(36).substring(2, 11);
+    // Register footnote synchronously during render
+    addFootnote(idRef.current, children);
+
+    // Find the index of this footnote
+    const index = footnotes.findIndex((f) => f.id === idRef.current) + 1;
     return (
         <sup>
             <a href={`#footnote-${label}-${index}`} id={`footnote-ref-${label}-${index}`}>
@@ -71,12 +69,14 @@ Footnote.propTypes = {
 };
 
 /**
- * Container component where footnotes are eventually rendered
+ * Container component where footnotes are rendered
  */
 function FootnoteList() {
-    const { footnotes, label } = useContext(FootnoteContext);
-    if (footnotes.length === 0) return null;
+    const context = useContext(FootnoteContext);
+    if (!context) throw new Error("FootnoteList must be used inside FootnoteProvider");
 
+    const { footnotes, label } = context;
+    if (footnotes.length === 0) return null;
     return (
         <div>
             <div>
