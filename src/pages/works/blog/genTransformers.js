@@ -10,7 +10,7 @@ import BlogWrapper, { BlogInfo, BlogImage } from "@/components/wrappers/BlogWrap
 const blogInfo = new BlogInfo(
     "On Generally Intelligent Transformers",
     "An exploration of the theoretical capabilities and limitations of transformer models",
-    new Date(2026, 0, 22),
+    new Date(2026, 1, 22),
     "genTransformers"
 );
 
