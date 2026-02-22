@@ -6,6 +6,7 @@ import Latex from "react-latex-next";
 import { BlogSection } from "@/components/widgets/BlogSection";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
 import BlogWrapper, { BlogInfo, BlogImage } from "@/components/wrappers/BlogWrapper";
+import { genPageTitle } from "@/lib/util/utils";
 
 const blogInfo = new BlogInfo(
     "On Generally Intelligent Transformers",
@@ -17,7 +18,7 @@ const blogInfo = new BlogInfo(
 export default function GenTransformers() {
     return (
         <BlogWrapper
-            pageName={blogInfo.anchor}
+            pageName={genPageTitle(__filename)}
             title={blogInfo.title}
             subtitle={blogInfo.subtitle}
             date={blogInfo.date}>
