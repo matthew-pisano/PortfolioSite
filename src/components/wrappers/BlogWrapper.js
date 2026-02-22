@@ -73,6 +73,8 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
         setBlogTime(elementReadingTime(blockContentId));
     }, []);
 
+    let dateElem = <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>;
+
     return (
         <Wrapper pageName={pageName}>
             <div className={styles.blogTitle}>
@@ -91,6 +93,7 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
             <BlogSidebarProvider>
                 <div className={`${styles.blogContainer}`}>
                     <div className={`${styles.blogHolder}`}>
+                        {dateElem}
                         <div style={{ marginBottom: "30px" }}>
                             <small style={{ display: "block", width: "100%", textAlign: "right" }}>
                                 {blogTime} minute read
@@ -100,7 +103,7 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
                             <div id={blockContentId}>{children}</div>
                         </SectionContext.Provider>
                         <hr />
-                        <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>
+                        {dateElem}
                         <Link href={"/works/blog"}>Back to Blogs</Link>
                     </div>
                     <BlogSidebarContent />
