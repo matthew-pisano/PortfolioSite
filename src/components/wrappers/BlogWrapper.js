@@ -70,6 +70,8 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
     };
 
     useEffect(() => {
+        // Reset section count on component mount so count restarts on re-renders
+        sectionCountRef.current = [0, 0, 0];
         setBlogTime(elementReadingTime(blockContentId));
     }, []);
 
