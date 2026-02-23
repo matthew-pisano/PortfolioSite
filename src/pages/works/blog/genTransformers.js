@@ -32,8 +32,21 @@ export default function GenTransformers() {
                     to 2023, progress appeared to be accelerating without bounds, as if each new model represented a
                     fundamental jump in capability over their predecessors. GPT-3.5 could answer simple questions and
                     maintain a polite conversation, yet within only a few months, GPT-4 was suddenly passing the Bar
-                    exam. Throughout 2023 and 2024, the capabilities of these models continued to grow significantly,
-                    though not quite at its original clip
+                    exam
+                    <Footnote>
+                        See:{" "}
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={
+                                "https://law.stanford.edu/2023/04/19/gpt-4-passes-the-bar-exam-what-that-means-for-artificial-intelligence-tools-in-the-legal-industry/"
+                            }>
+                            GPT-4 Passes the Bar Exam: What That Means for Artificial Intelligence Tools in the Legal
+                            Profession
+                        </Link>
+                    </Footnote>
+                    . Throughout 2023 and 2024, the capabilities of these models continued to grow significantly, though
+                    not quite at its original clip
                     <Footnote>
                         At least, in my opinion, as I paid close attention to research papers and corporate releases.
                     </Footnote>
@@ -243,9 +256,11 @@ export default function GenTransformers() {
                     Throughout this essay, we will frequently be referencing "generality" or an artificial general
                     intelligence (AGI). Therefore, a more precise definition is in order. An agent (an AI system in this
                     case) that is "general" or "generally intelligent" is able to perform at, or over, human levels of
-                    capability for the vast majority of cognitive tasks. Some narrow this definition to "the vast
-                    majority of economically relevant tasks", but I would argue that solving such a task set would be
-                    AI-complete
+                    capability for the vast majority of cognitive tasks. That is, an AGI is not only able to outperform
+                    humans within some narrow domain, we have had specialized models that could do this for decades.
+                    Rather, a generally intelligent model could almost fully replace humans for the vast majority of
+                    cognitive tasks. Some narrow this definition to "the vast majority of economically relevant tasks",
+                    but I would argue that solving such a task set would be AI-complete
                     <Footnote>
                         A term coined by computer scientist Fanya Montalvo in 1988. A task (or set of tasks) is
                         considered AI-complete if it requires artificial general intelligence to solve. Any attempt to
@@ -306,9 +321,9 @@ export default function GenTransformers() {
                     This is useful, though could we not achieve a similar effect through the usage of situated
                     cognition, writing or drawing out the consequences in advance? We could, but we would be losing some
                     conceptual fidelity in doing so. This leads neatly into the second advantage of an environment-self
-                    isolation. Those who design software regularly experience this "lossiness" on a regular basis.
-                    Suppose I design and implement a complex piece of software. At some later date, I would like to make
-                    a revision to this program. Even with the help of comprehensive documentation, it will still take a
+                    isolation. Those who design software regularly experience this "lossiness" as they work. Suppose I
+                    design and implement a complex piece of software. At some later date, I would like to make a
+                    revision to this program. Even with the help of comprehensive documentation, it will still take a
                     little while to accustom myself to the code once again, to get a "feel" for how it is laid out and
                     operates (even when accounting for the time to physically read the documentation). Why is this? All
                     of the code and documentation exists; I do not need to manipulate anything into a form that I can
@@ -324,10 +339,10 @@ export default function GenTransformers() {
                         For anyone familiar with the Key-Value cache (or KV cache) optimization for LLMs, this is
                         exactly the problem that the KV cache is designed to solve! This does not completely solve our
                         problem, though. A purely KV cached mind could faithfully reload its past states, but would
-                        still need to reason <i>within</i> its environment to incorporate new changes. KV caches can
-                        also become prohibitively expensive for very long contexts where each token representation needs
-                        to be cached. By their very nature, dense embeddings require much more storage than their sparse
-                        representations (tokens, in this case).
+                        still need to reason <i>within</i> its environment to incorporate new changes, bringing us back
+                        to the problem of idempotency. KV caches can also become prohibitively expensive for very long
+                        contexts where each token representation needs to be cached. By their very nature, dense
+                        embeddings require much more storage than their sparse representations (tokens, in this case).
                     </Footnote>
                     . If I was unable to isolate my subjective representation of the software from the environment, this
                     would be the case. In reality, my mind does allow for this isolation. So, once I have refreshed my
@@ -374,9 +389,11 @@ export default function GenTransformers() {
                     . Additionally, when shown many low quality or AI-generated training samples, these models may
                     suffer from "model collapse". This often results in the test performance of a model degrading
                     significantly. Once in a collapsed state, it is difficult for a model to recover without targeted
-                    intervention from its trainers. Since we can incorporate new knowledge as we interact with our
-                    environment, our internal representation of the world (for the most part) stays relatively close to
-                    the ground truth of the real world.
+                    intervention from its trainers. Contemporary AI models have difficulty ignoring information that may
+                    be counterproductive to learn, something we can often do intuitively. Since we can incorporate new
+                    knowledge as we interact with our environment, our internal representation of the world (for the
+                    most part) stays relatively close to the ground truth of the real world. This helps to prevent our
+                    own minds from "collapsing", or becoming detached from reality.
                 </p>
                 <p>
                     Our ability to automatically filter out irrelevant or incorrect information is central to online
@@ -393,20 +410,37 @@ export default function GenTransformers() {
                     </Footnote>
                     , our brains automatically filter it out. This ensures that we can more easily create general
                     solutions to our problem instead of overfitting to situational details. This extends to sources of
-                    information as well. Marvin Minsky captures this well within his concept of "imprimers". An imprimer
-                    is a person, often a mentor or parent, from whom we readily take in information with a diminished
-                    degree of skepticism. If a parent tells us of a reliable home remedy for an illness, we are more
-                    likely to incorporate that knowledge than if a complete stranger had told us the same. This gives us
-                    the ability to ignore (or to at least be skeptical of) irrelevant or untrustworthy information, even
-                    after repeated exposure. If I read thousands of copies of a Reddit post on the benefits of putting
-                    glue on cheese pizza, I know to ignore that information after only seeing a glue bottle's warning
-                    label once or twice. Importantly, this is not a result of any external filtering process that
-                    selects stimuli for us, this process occurs completely "in house".
+                    information as well. Marvin Minsky captures this well within his concept of "imprimers"
+                    <Footnote>
+                        See: <i>The Emotion Machine</i> (Minsky, 2006).
+                    </Footnote>
+                    . An imprimer is a person, often a mentor or parent, from whom we readily take in information with a
+                    diminished degree of skepticism. If a parent tells us of a reliable home remedy for an illness, we
+                    are more likely to incorporate that knowledge than if a complete stranger had told us the same. This
+                    gives us the ability to ignore (or to at least be skeptical of) irrelevant or untrustworthy
+                    information, even after repeated exposure. If I read thousands of copies of a Reddit post on the
+                    benefits of putting glue on cheese pizza
+                    <Footnote>
+                        See{" "}
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={
+                                "https://www.forbes.com/sites/jackkelly/2024/05/31/google-ai-glue-to-pizza-viral-blunders/"
+                            }>
+                            this early error in Google's AI search
+                        </Link>{" "}
+                        stemming from a single Reddit post that it picked up into its context (and perhaps also its
+                        training data).
+                    </Footnote>
+                    , I know to ignore that information after only seeing a glue bottle's warning label once or twice.
+                    Importantly, this is not a result of any external filtering process that selects stimuli for us,
+                    this process occurs completely "in house".
                 </p>
                 <BlogSection level={2}>Self-Play</BlogSection>
                 <p>
                     Self-play is intimately tied to our abilities to learn online. In humans, this process happens
-                    internally, with ourselves
+                    internally, within ourselves
                     <Footnote>
                         Self-play as a concept is more widely known of in the context of reinforcement learning agents.
                         This is how AlphaZero could achieve superhuman performance in a wide range of adversarial games.
@@ -423,7 +457,7 @@ export default function GenTransformers() {
                     we can learn and update our beliefs without needing additional external input. After the initial
                     catalyst, our self-play occurs entirely within our minds. We can rehearse our proving skills,
                     simulate a procedure, or refine our conversational skills without needing any external input or
-                    making any modifications to our environment (a direct consequence of our mind-environment
+                    making any modifications to our environment (another direct consequence of our mind-environment
                     isolation).
                 </p>
                 <p>
@@ -434,7 +468,7 @@ export default function GenTransformers() {
                     we know a well-defined method of unraveling a problem, we are reliably able to execute that method
                     within our main reasoning process as a sort of sub-routine. An important distinction to make here is
                     that these solutions are not a statistical inference (though many problem solving techniques do rely
-                    upon this method). We can perform simple, rigidly defined procedures and reliably get exact answers
+                    upon this method). We can perform simple, rigidly defined procedures and reliably get exact answers,
                     instead of an answer that may not always be correct, but still matches some learned distribution.
                 </p>
                 <p>
@@ -487,19 +521,20 @@ export default function GenTransformers() {
                     restrict the type of human "computations" that we are concerned with.
                 </p>
                 <p>
-                    Even if the human brain as a whole cannot be represented by a Turing machine, we know that at least
-                    a subset of it can under certain circumstances. How do we know this? Because we can act (very
-                    approximately) as universal Turing machines ourselves! Keep in mind, this is not technically true
-                    because we cannot have access to an infinite tape to which we can write out answers, but we can
-                    still approximate one just as traditional computers can. When simulating an arbitrary Turing machine
-                    that halts in <Latex>{`$N$`}</Latex> steps, the number of steps that a universal Turing machine
-                    takes is proportional to <Latex>{`$N log N$`}</Latex>. The amount of space needed to simulate such a
-                    machine grows linearly with the number of simulation steps
+                    Even if the human brain as a whole cannot be represented by a Turing machine (our standard reference
+                    point for computability), we know that at least a subset of it can under certain circumstances. How
+                    do we know this? Because we can act (very approximately) as universal Turing machines ourselves!
+                    Keep in mind, this is not technically true because we cannot have access to an infinite tape to
+                    which we can write out answers, but we can still approximate one just as traditional computers can.
+                    When simulating an arbitrary Turing machine that halts in <Latex>{`$N$`}</Latex> steps, the number
+                    of steps that a universal Turing machine takes is proportional to{" "}
+                    <Latex>{`$N \\cdot log N$`}</Latex>. The amount of space needed to simulate such a machine grows
+                    linearly with the number of simulation steps
                     <Footnote>
-                        Hennie and Stearns, <i>Two-tape simulation of multitape Turing machines</i>, (1966).
+                        See: <i>Two-tape simulation of multitape Turing machines</i>, (Hennie and Stearns, 1966).
                     </Footnote>
                     . If we narrow our view of human reasoning only to our simulation of Turing computable algorithms,
-                    these complexities can serve as (at least reasonable) lower bounds for our performance.
+                    these complexities can serve as (at least coherent) lower bounds for our performance.
                 </p>
                 <p>
                     This appears reasonable, at least from an intuitive standpoint. If we are given a program to
@@ -549,7 +584,7 @@ export default function GenTransformers() {
                     practical lens, I am primarily interested in the theoretical limitations of a more generic class of
                     models. I will describe this class in more detail momentarily, but for now we need not worry about
                     the exact implementation of the models that I am about to discuss, only their learning methods and
-                    behavior.
+                    behavior. Later, we will look more into the specific drawbacks of this particular architecture.
                 </p>
                 <BlogSection level={2}>Statistical Inference Models</BlogSection>
                 <p>
@@ -557,16 +592,16 @@ export default function GenTransformers() {
                     rule-based process. To borrow a phrase from Eliezer Yudkowsky and Nate Soares, these models were
                     built by hand, not grown like modern models. This allowed human programmers to have fine-grained
                     control over the behavior of their models. Despite some early success, the fact that humans had to
-                    manually tweak their models to improve their performance quickly led to diminishing returns. After
-                    some soul-searching among AI researchers, a different paradigm began to emerge in the 1980s. Instead
-                    of manually inscribing rules and relations into their models, perhaps their models could learn this
-                    for themselves through statistical inference. This motivated the development of models based on
-                    N-grams, the Markov assumption, and bag-of-word principles. This time period began the shift of AI
-                    being built by hand to being grown by distributions of training data. Even though these models were
-                    less interpretable by humans, they were far more capable than their hand-crafted predecessors.
-                    Richard Sutton dubbed this realization "The Bitter Lesson of Artificial Intelligence" in 2019.
-                    Despite our best efforts to imbue AI with hand-curated knowledge, "blind" computation and learning
-                    appears to win out, in the end. Hold onto this thought.
+                    manually tweak their models to improve their performance quickly led to diminishing returns. After a
+                    significant lull in AI research interest, a different paradigm began to emerge in the 1980s. Instead
+                    of manually inscribing rules and relations into their models, perhaps AI researchers could design
+                    models that would learn this for themselves through statistical inference. This motivated the
+                    development of models based on N-grams, the Markov assumption, and bag-of-word principles. This time
+                    period began the shift of AI being built by hand to being grown by distributions of training data.
+                    Even though these models were less interpretable by humans, they were far more capable than their
+                    hand-crafted predecessors. Richard Sutton dubbed this realization "The Bitter Lesson of Artificial
+                    Intelligence" in 2019. Despite our best efforts to imbue AI with hand-curated knowledge, "blind"
+                    computation and learning appears to win out, in the end. Hold onto this thought.
                 </p>
                 <p>
                     Where do modern language models fit into this? Similar to their much simpler forebears, the main
@@ -587,7 +622,7 @@ export default function GenTransformers() {
                 </p>
                 <BlogSection level={2}>Pre-training and Fine-tuning</BlogSection>
                 <p>
-                    If we were only are examining the simple case of a model being pretrained on a single, static
+                    If we were only are examining the simple case of a model being pre-trained on a single, static
                     dataset, this is where our analysis would end. Regardless of a model's internal implementation, if
                     it is given this type of dataset and a training objective that only maximizes prediction accuracy,
                     it should follow that our model is merely performing blind statistical inference, regardless of how
@@ -629,7 +664,7 @@ export default function GenTransformers() {
                     For most modern models, their initial supervised tuning is augmented with further optimization
                     through reinforcement learning as their final training stage. Classically, this phase primarily
                     served to align the model with human preferences. Procedures like reinforcement learning from human
-                    feedback (RLHF) built up a reward model based on human preferences that was then used to reward the
+                    feedback (RLHF) build up a reward model based on human preferences that is then used to reward the
                     target LLM through proximal policy optimization (PPO). Recently, we have seen more efficient methods
                     of encoding "human preferences"
                     <Footnote>
@@ -654,7 +689,9 @@ export default function GenTransformers() {
                     </Footnote>{" "}
                     which approximates their environment at the present moment only. In a sense, this can be thought of
                     as a simpler and more naive (though not necessarily bad!) approach to RL over model-based
-                    techniques. Hold onto this distinction, as it will become important later on.
+                    techniques. Model-free RL tuned models often have greater difficulty in planning and modeling future
+                    environment states due to their lack of a dedicated world model. Hold onto this distinction, as it
+                    will become important later on.
                 </p>
                 <p>
                     Even more recently, with the rise of reasoning models, we have seen a new use for RL in LLMs. The
@@ -663,8 +700,9 @@ export default function GenTransformers() {
                     feedback than the abstract world of human preferences. A proof or program is either correct or it is
                     not; this can be (more) easily communicated to the model in a way that directly improves its
                     performance. I find this to be a very promising area of research in general, but it is still limited
-                    to specific domains. Absent highly detailed simulations of human interactions, it may be difficult
-                    to scale the real-world and general reasoning abilities of models with this technique alone. Most
+                    to specific domains. Additionally, this does not fully make up for transformers' lack of a dedicated
+                    world model. Absent highly detailed simulations of human interactions, it may be difficult to scale
+                    the real-world and general reasoning abilities of models with this technique alone. Most
                     applications for human reasoning offer very sparse and time-delayed rewards. From the perspective of
                     a model, it can be difficult to associate these rare rewards with actions performed in the remote
                     past. So, while interesting, techniques like RLVR are not magic bullets for bringing about AGI.
@@ -729,15 +767,15 @@ export default function GenTransformers() {
                     sense. How was AlphaGo Zero able achieve this level of generality with RL while current language
                     models struggle to achieve an analogous level of general reasoning while also using RL? The type of
                     learning that AlphaGo Zero underwent was the model-based variety. This means that, in addition to a
-                    reward model, it also has something called a transition (next-state) model. This was implemented
-                    using a method called Monte-Carlo tree search (MCTS), though the details are not important for our
-                    purposes. What is important is the fact that this model could predict what would happen next{" "}
-                    <i>without actually having to take an action</i>. This means that AlphaGo Zero could estimate the
-                    expected future reward from a sequence of moves using its reward model, and backtrack if it was
-                    unsatisfied. The model was not committed to a sequence of moves <i>until</i> it has finished
-                    planning and started actually placing stones. The ability to plan ahead was directly encoded into
-                    its architecture! this model-based architecture enabled AlphaGo Zero to "think" separately from its
-                    environment, like humans do.
+                    reward model, it also has something called a transition (next-state) model: its world model. This
+                    was implemented using a method called Monte-Carlo tree search (MCTS), though the details are not
+                    important for our purposes. What is important is the fact that this model could predict what would
+                    happen next <i>without actually having to take an action</i>. This means that AlphaGo Zero could
+                    estimate the expected future reward from a sequence of moves using its reward model, and backtrack
+                    if it was unsatisfied. The model was not committed to a sequence of moves <i>until</i> it has
+                    finished planning and started actually placing stones. The ability to plan ahead was directly
+                    encoded into its architecture! This model-based architecture enabled AlphaGo Zero to "think"
+                    separately from its environment, like humans do.
                 </p>
                 <p>
                     The adversarial nature of Go also contributed to the model's success. From the perspective of
@@ -822,7 +860,7 @@ export default function GenTransformers() {
                             via the Lens of Problem Complexity
                         </Link>
                         .
-                    </Footnote>
+                    </Footnote>{" "}
                     paper, first released in June 2025. It measures the performance of reasoning-tuned LLMs versus
                     similar models that had not undergone this process. These models were tasked with solving basic
                     logic puzzles like "The Tower of Hanoi", checkers jumping, a river crossing puzzle, and a blocks
@@ -848,6 +886,7 @@ export default function GenTransformers() {
                         </Link>
                         .
                     </Footnote>
+                    .
                 </p>
                 <BlogSection level={2}>Adaptive Reasoning</BlogSection>
                 <p>
@@ -899,7 +938,7 @@ export default function GenTransformers() {
                     non-reasoning and reasoning LLMs, but non-reasoning models still need a quadratic (or linear with KV
                     caching) amount of time to compute responses to even simple queries. Ideally, we would like a
                     fundamentally different algorithm that deliberately sacrifices accuracy for resource efficiency (not
-                    simply time savings).
+                    simply token savings).
                 </p>
                 <p>
                     The difficulty that transformer models face in identifying areas that are not worth considering
@@ -916,7 +955,7 @@ export default function GenTransformers() {
                 </p>
                 <p>
                     If we look back upon the history of machine learning development, we see a fairly common pattern
-                    emerge.
+                    emerge:
                 </p>
                 <ol>
                     <li>A new technology is invented.</li>
@@ -926,7 +965,7 @@ export default function GenTransformers() {
                 </ol>
                 <p>However, there is a fifth step that is often overlooked:</p>
                 <ol start={"5"}>
-                    <li>It is later incorporated into an even more capable technology.</li>
+                    <li>It is often later incorporated into an even more capable technology.</li>
                 </ol>
                 <BlogSection level={2}>Standing on the shoulders of Giants</BlogSection>
                 <p>
@@ -943,15 +982,15 @@ export default function GenTransformers() {
                         </Link>
                         .
                     </Footnote>{" "}
-                    article described the Perceptron as an "Electronic Brain" that could teach itself, with a Navy
-                    representative further commenting that it could the basis for machines which could read and write on
-                    their own! It was true that this model could learn some impressive things, such as the position of
-                    shapes on a grid and simple functions of boolean logic. In 1969, Minsky and Papert put a damper on
-                    these speculation in their book <i>Perceptrons</i> where they pointed out that these models that
-                    could only learn functions which were linearly separable. A good example of this would be the XOR
-                    function from boolean logic. Linearly separable functions represented the fundamental upper bound of
-                    this models capability. This resulted in what Minsky later referred to as the "First AI Winter"
-                    where enthusiasm for AI research sharply diminished.
+                    article described the Perceptron as an "Electronic Brain" that could teach itself. A Navy
+                    representative further commented that it could even be the basis for machines which could read and
+                    write on their own! It was true that this model could learn some impressive things, such as the
+                    position of shapes on a grid and simple functions of boolean logic. In 1969, Minsky and Papert put a
+                    damper on these speculations with their book <i>Perceptrons</i>. Here, they pointed out that these
+                    models that could only learn functions which were linearly separable. A good example of this would
+                    be the XOR function from boolean logic. Linearly separable functions represented the fundamental
+                    upper bound of this models capability. This resulted in what Minsky later referred to as the "First
+                    AI Winter" where enthusiasm for AI research sharply diminished.
                 </p>
                 <p>
                     A decade or so later, the same neurons that the Perceptron was built upon, began to comprise
@@ -972,11 +1011,11 @@ export default function GenTransformers() {
                     original Perceptron. Not only could they model non-linearly separable functions, but they could
                     approximate <i>any</i> continuous function (as long as it has at least one hidden layer)! This again
                     sparked significant excitement from those that followed AI research. It was used within LeCun's{" "}
-                    <i>LeNet</i> system to recognize handwritten digits (à la MNIST) and by IBM's (Tesauro's) TD-Gammon
-                    backgammon playing agent. Despite the fact that these networks represented a significant jump in
-                    capability, not every problem could be represented as a combination of continuous function that
-                    could be optimized towards. By the early 2000s, AI had once again fallen out of favor in research
-                    circles.
+                    <i>LeNet</i> system to recognize handwritten digits (<i>à la</i> MNIST) and by IBM's (Tesauro's)
+                    TD-Gammon backgammon playing agent. Despite the fact that these networks represented a significant
+                    jump in capability, not every problem could be represented as a non-linear combination of continuous
+                    functions that could be optimized towards. By the early 2000s, AI had once again fallen out of favor
+                    in research circles.
                 </p>
                 <BlogImage src={"/media/image/watson-jeopardy.jpg"}>
                     IBM Watson's 2011 Jeopardy! match against Ken Jennings and Brad Rutter. (IBM Research)
@@ -1006,8 +1045,8 @@ export default function GenTransformers() {
                 <p>
                     This essentially brings us up-to-date with the current transformer-centric paradigm. Since the
                     1950s, there has been a long history of development-limitations-adaptation cycles in artificial
-                    intelligence research. I believe transformers fall within one of these cycles, rather than a
-                    permanent departure from it.
+                    intelligence research. I believe transformers represent another one of these cycles, rather than a
+                    permanent departure from them.
                 </p>
                 <BlogSection level={2}>Quick Inference</BlogSection>
                 <p>
@@ -1029,18 +1068,20 @@ export default function GenTransformers() {
                 <p>
                     When we walk into a crowded room at a social event, we quickly take stock of what is going on around
                     us. We immediately notice people that we know, snippets of nearby conversations, and (most
-                    importantly) where the food is likely to be. Humans are excellent at quickly estimating social
-                    hierarchies and where we fit into those hierarchies. This sort of inference also happens quickly and
-                    subconsciously when we enter unfamiliar area. This is an ability that we naturally have at our
-                    disposal. For those who are experts in some domain, for example mathematics or software engineering,
-                    a similar, domain-specific ability develops with experience. We can often, at a glance, form an
-                    opinion on something related to our field of study. An awkward proof or inelegant code is
-                    immediately recognizable, even if we have yet to fully interrogate the logic or control flow. A
-                    similar effect can be found in practitioners of the arts. While many can immediately recognize an
-                    awkward musical note or poorly executed art restoration, an experienced person can also get an
-                    intuitive feel about <i>why</i> exactly something is off. How can we do this seemingly so
-                    effortlessly? Additionally, this would seem to be a reasoning-intensive process, figuring out
-                    exactly what is wrong and why, yet it seems to shortcut any conscious deliberation.
+                    importantly) where the food is likely to be. Humans are also excellent at quickly estimating social
+                    hierarchies and where we fit into those hierarchies. We can nearly immediately tell who is popular,
+                    who looks to be an expert in their current topic conversation, and who may be be there alone. This
+                    sort of inference also happens quickly and subconsciously when we enter unfamiliar area. This is an
+                    ability that we naturally have at our disposal. For those who are experts in some domain, for
+                    example mathematics or software engineering, a similar, domain-specific ability develops with
+                    experience. We can often, at a glance, form an opinion on something related to our field of study.
+                    An awkward proof or inelegant code is immediately recognizable, even if we have yet to fully
+                    interrogate the logic or control flow. A similar effect can be found in practitioners of the arts.
+                    While many can immediately recognize an awkward musical note or poorly executed art restoration, an
+                    experienced person can also get an intuitive feel about <i>why</i> exactly something is off. How can
+                    we do this seemingly so effortlessly? Additionally, this would seem to be a reasoning-intensive
+                    process, figuring out exactly what is wrong and why, yet it seems to shortcut any conscious
+                    deliberation.
                 </p>
                 <BlogSection level={2}>Attention is Half of All You Need</BlogSection>
                 <p>
@@ -1100,10 +1141,10 @@ export default function GenTransformers() {
                 </p>
                 <p>
                     However, despite impressive benchmark achievements, the capabilities of these models within such
-                    controlled environments does not fully translate to real-world performance. This is in the best
-                    case. On more rare occasions, these models can exhibit unexpected and exotic failure modes that even
-                    a low-performing human would be unlikely to express. The prevailing notion over the past few years
-                    is that this is a question of scale: simply adding more data, parameters, or test-time compute would
+                    controlled environments may not fully translate to real-world performance. This is in the best case.
+                    On more rare occasions, these models can exhibit unexpected and exotic failure modes that even a
+                    low-performing human would be unlikely to express. The prevailing notion over the past few years is
+                    that this is a question of scale: simply adding more data, parameters, or test-time compute would
                     solve these issues if only there were more resources available. At least, this has been the opinion
                     of most model vendors.
                 </p>
@@ -1132,9 +1173,9 @@ export default function GenTransformers() {
                     does this happen? This plateau in terms of performance may be another instance of the "Bitter
                     Lesson" of AI. Instead of modifying our training approach or architecture to allow models to learn
                     more freely and naturally, we are attempting to manually encode the human reasoning process within
-                    them. This works excellently on problems which are simple or substantially similar to their trained
-                    reasoning chains, but this specific manner of next-token prediction is still only an emulation of
-                    human reasoning.
+                    them. Our current methods work excellently on problems which are simple or substantially similar to
+                    our models' trained reasoning chains, but this specific manner of next-token prediction is still
+                    only an approximation of human reasoning.
                 </p>
                 <p>
                     Where does this leave us now, with respect to the transformer architecture as a whole? The
@@ -1164,9 +1205,9 @@ export default function GenTransformers() {
                         Not to mention the significant number of tokens that these models must consume and produce at
                         inference in order to approximate the human reasoning process.
                     </Footnote>
-                    . A better allocation for our computational and research-allotted resources may be towards composite
-                    models which still utilize the attention mechanism for a fast inference engine, while relying on a
-                    different architecture to handle long, deliberative reasoning tasks.
+                    . A better allocation for our computational and research-allotted resources may be towards novel,
+                    composite architectures which utilize the attention mechanism for a fast inference engine, while
+                    relying on a different architecture entirely to handle long, deliberative reasoning tasks.
                 </p>
                 <blockquote>
                     If you are searching for something that has yet to be found, a remote area holds a greater promise
