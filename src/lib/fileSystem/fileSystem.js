@@ -1,5 +1,5 @@
 import { bootstrapServerside } from "@/lib/fileSystem/bootstrap";
-import { Perms } from "@/lib/fileSystem/fileSystemMeta";
+import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
 
 /**
@@ -23,6 +23,32 @@ class FileSystemError extends Error {
         this.code = code;
         this.name = "CommandError";
     }
+}
+
+/**
+ * Reads the content of a page file as if it were a static file
+ * @param path {string} The path to the file
+ * @returns {string} The content of the remote page
+ */
+async function fetchRemotePageContent(path) {
+    let url = path.replace(SysEnv.PUBLIC_FOLDER, "").replace(".html", "");
+    let text = "";
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        text = await response.text();
+    } catch (error) {
+        console.error("Error fetching remote file content:", error);
+        return text;
+    }
+
+    // Use Parser to select elements
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, "text/html");
+    // Remove dehydrateInfo element
+    doc.querySelector("#dehydrateInfo")?.remove();
+    doc.querySelector("script")?.remove();
+    return new XMLSerializer().serializeToString(doc.body);
 }
 
 /**
@@ -251,16 +277,21 @@ class FileSystem {
 
     /**
      * Reads text from a file at the given path
+     *
+     * NOTE: For pages without text, a GET request is made to fetch content. This may be costlier than expected
+     *
      * @param path {string} The path to read from
      * @return {string} The text read from the file
      */
-    readText(path) {
+    async readText(path) {
         let file = this.getItem(path);
         if (!file) throw new FileSystemError(`Cannot read from file.  File at ${path} does not exist!`);
         if (file instanceof Directory) throw new FileSystemError(`Cannot read: Is a directory at ${path}!`);
         if (!(file.permission & Perms.READ)) throw new FileSystemError(`Cannot read from ${path}.  Permission denied!`);
 
-        return file.text();
+        // Return plain file text if it exists or the file is not a page
+        if (file.text() || !file.isPage()) return file.text();
+        return fetchRemotePageContent(path);
     }
 
     /**
