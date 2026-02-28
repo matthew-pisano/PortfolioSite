@@ -45,7 +45,7 @@ const nextConfig = {
             },
             {
                 source: "/research/predictChain",
-                destination: "/research/predictChain",
+                destination: "/research/predict-chain",
                 permanent: true
             },
             {
