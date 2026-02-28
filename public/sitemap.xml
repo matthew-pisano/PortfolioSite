@@ -10,6 +10,9 @@
         <priority>1.00</priority>
     </url>
     <url>
+        <loc>https://matthewpisano.com/help</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
+        <priority>0.80</priority>
     </url>
     <url>
         <loc>https://matthewpisano.com/about</loc>
@@ -47,9 +50,7 @@
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>
-            https://matthewpisano.com/research/moral-high-ground
-        </loc>
+        <loc>https://matthewpisano.com/research/moral-high-ground</loc>
         <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
@@ -84,9 +85,7 @@
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>
-            https://matthewpisano.com/personal/universal-models
-        </loc>
+        <loc>https://matthewpisano.com/personal/universal-models</loc>
         <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
@@ -111,16 +110,12 @@
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>
-            https://matthewpisano.com/media/documents/professional-summary/curriculum_vitae.pdf
-        </loc>
+        <loc>https://matthewpisano.com/media/documents/professional-summary/curriculum_vitae.pdf</loc>
         <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>
-            https://matthewpisano.com/works/blog/on-general-transformers
-        </loc>
+        <loc>https://matthewpisano.com/works/blog/on-general-transformers</loc>
         <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.64</priority>
     </url>
