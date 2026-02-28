@@ -25,7 +25,7 @@ const nextConfig = {
             },
             {
                 source: "/readingList",
-                destination: "/works/readingList",
+                destination: "/works/reading-list",
                 permanent: true
             },
             {

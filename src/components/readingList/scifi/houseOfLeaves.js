@@ -165,7 +165,7 @@ export default (
                     assortment of sources even includes Douglas Hofstadter who, in true Hofstadterian fashion,
                     immediately relates the content of the film to his friends Mr. Tortoise and Achilles
                     <Footnote>
-                        See <Link href="/readingList#geb-egb">Gödel, Escher, Bach: An Eternal Golden Braid</Link>.
+                        See <Link href="#geb-egb">Gödel, Escher, Bach: An Eternal Golden Braid</Link>.
                     </Footnote>
                     , to my great delight.
                 </p>

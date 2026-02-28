@@ -15,7 +15,7 @@ const blogInfo = new BlogInfo(
     "genTransformers"
 );
 
-export default function GenTransformers() {
+export default function OnGeneralTransformers() {
     return (
         <BlogWrapper
             pageName={genPageTitle(__filename)}
@@ -1092,7 +1092,10 @@ export default function GenTransformers() {
                     popularized the idea of a "two systems" approach to cognition in <i>Thinking Fast and Slow</i>
                     <Footnote>
                         See{" "}
-                        <Link target="_blank" rel="noopener noreferrer" href={"/works/readingList#thinking-fast-slow"}>
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"/works/reading-list.js#thinking-fast-slow"}>
                             my own thoughts on the book
                         </Link>
                         .

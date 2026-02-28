@@ -21,7 +21,7 @@ class FileSystemError extends Error {
     constructor(message, code = 1) {
         super(message);
         this.code = code;
-        this.name = "CommandError";
+        this.name = "FileSystemError";
     }
 }
 

@@ -30,12 +30,12 @@ export default function ReadingList() {
         [],
         (
             <>
-                <SelfLink href={`/readingList#${sections.cogSci}`}>AI & Cognitive Science</SelfLink>
-                <SelfLink href={`/readingList#${sections.history}`}>History and Historical Fiction</SelfLink>
-                <SelfLink href={`/readingList#${sections.scifi}`}>Science Fiction</SelfLink>
-                <SelfLink href={`/readingList#${sections.physics}`}>Physics</SelfLink>
-                <SelfLink href={`/readingList#${sections.philosophy}`}>Philosophy</SelfLink>
-                <SelfLink href={`/readingList#${sections.futurism}`}>Futurism</SelfLink>
+                <SelfLink href={`#${sections.cogSci}`}>AI & Cognitive Science</SelfLink>
+                <SelfLink href={`#${sections.history}`}>History and Historical Fiction</SelfLink>
+                <SelfLink href={`#${sections.scifi}`}>Science Fiction</SelfLink>
+                <SelfLink href={`#${sections.physics}`}>Physics</SelfLink>
+                <SelfLink href={`#${sections.philosophy}`}>Philosophy</SelfLink>
+                <SelfLink href={`#${sections.futurism}`}>Futurism</SelfLink>
             </>
         )
     );
