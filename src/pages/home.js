@@ -39,9 +39,9 @@ export default function Home() {
                 This website serves as a repository for my research, projects, experience, and writings. For a more
                 formal and detailed introduction to me, please visit the <Link href="/about">about</Link> page. For some
                 more information on the site itself and it's interactive features, see the{" "}
-                <Link href="/help">help</Link> page. My lectures, presentations, writings, and projects can be found
-                within the menu to the left. To see what I consider my most important research and projects, see the
-                remainder of this page.
+                <Link href="/help">help</Link> page. My <Link href="/works/lectures">lectures</Link>, presentations,{" "}
+                <Link href="/works/blog">writings</Link>, and projects can be found within the menu to the left. To see
+                what I consider my most important research and projects, see the remainder of this page.
             </Tile>
             <SectionTile tileInfo={new TileInfo({ title: <>Featured Research</> })} />
             <Tile
