@@ -20,7 +20,12 @@ const nextConfig = {
             },
             {
                 source: "/about/resume",
-                destination: "/works/curriculumVitae",
+                destination: "/works/curriculum-vitae",
+                permanent: true
+            },
+            {
+                source: "/works/curriculumVitae",
+                destination: "/works/curriculum-vitae",
                 permanent: true
             },
             {
@@ -31,6 +36,21 @@ const nextConfig = {
             {
                 source: "/lectures",
                 destination: "/works/lectures",
+                permanent: true
+            },
+            {
+                source: "/research/highGround",
+                destination: "/research/moral-high-ground",
+                permanent: true
+            },
+            {
+                source: "/research/predictChain",
+                destination: "/research/predictChain",
+                permanent: true
+            },
+            {
+                source: "/research/chipFiring",
+                destination: "/research/chip-firing",
                 permanent: true
             }
         ];
