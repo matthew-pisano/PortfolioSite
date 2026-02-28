@@ -188,7 +188,7 @@ export default (
                         it would (after a certain point) have no need to collaborate with us, and deciding the "right"
                         goals, if any, is a highly non-trivial problem. Each of these points, and an AI's motivation for
                         insubordination, are discussed more thoroughly in my analysis of
-                        <Link href={"/readingList#superintelligence"}>
+                        <Link href={"#superintelligence"}>
                             <i>Superintelligence</i>
                         </Link>
                         .

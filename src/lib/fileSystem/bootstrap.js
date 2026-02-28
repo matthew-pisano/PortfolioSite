@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, statSync } from "fs";
 import { resolve } from "path";
 
 import { DontPanic, SSH } from "@/lib/fileSystem/fileStrings";
-import { FileSystem, pathJoin } from "@/lib/fileSystem/fileSystem";
+import { FileSystem, FileSystemError, pathJoin } from "@/lib/fileSystem/fileSystem";
 import { Perms, SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 import { Directory, File } from "@/lib/fileSystem/fileSystemObjects";
 import { bashrc } from "@/lib/terminal/strings";
@@ -95,7 +95,9 @@ function patchReadingList(fileSystem) {
     let dirPath = "src/components/readingList";
     const { size, modified } = gatherFileSize(fileSystem, dirPath);
 
-    let readingListFile = fileSystem.getItem(pathJoin(SysEnv.PUBLIC_FOLDER, "works/readingList.html"));
+    let readingListFile = fileSystem.getItem(pathJoin(SysEnv.PUBLIC_FOLDER, "works/reading-list.html"));
+    if (!readingListFile) throw new FileSystemError("No reading list found.");
+
     readingListFile.modified = modified;
     readingListFile.spoofSize(size); // Set the file's size without actually setting the text
 }

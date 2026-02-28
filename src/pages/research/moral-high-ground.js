@@ -9,7 +9,7 @@ import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
 
-export default function HighGround() {
+export default function MoralHighGround() {
     let pageInfo = new PageInfo(
         genPageTitle(__filename),
         "Moral High Ground",

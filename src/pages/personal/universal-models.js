@@ -10,7 +10,7 @@ import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
 
-export default function UnivModels() {
+export default function UniversalModels() {
     let pageInfo = new PageInfo(
         genPageTitle(__filename),
         "Universal Models",
