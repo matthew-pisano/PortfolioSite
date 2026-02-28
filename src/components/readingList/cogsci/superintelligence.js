@@ -12,7 +12,7 @@ export default (
     <BookTile
         title={"Superintelligence: Paths, Dangers, Strategies"}
         author={"Nick Bostrom"}
-        thumbnail={"/media/image/superintelligence.jpg"}
+        thumbnail={"/media/image/books/superintelligence.jpg"}
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>

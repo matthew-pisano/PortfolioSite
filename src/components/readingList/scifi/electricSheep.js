@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"Do Androids Dream of Electric Sheep?"}
         author={"Philip K. Dick"}
-        thumbnail={"/media/image/do-androids-dream-of-electric-sheep.jpg"}
+        thumbnail={"/media/image/books/do-androids-dream-of-electric-sheep.jpg"}
         anchor={"electric-sheep"}>
         <BookTileSynopsis>
             <i>Do Androids Dream of Electric Sheep?</i> explores themes of humanity, empathy, and the nature of

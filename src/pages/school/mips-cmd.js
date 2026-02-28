@@ -45,7 +45,13 @@ export default function MipsCmd() {
                 style={{ backgroundColor: TRANSLUCENT }}
             />
 
-            <Tile tileInfo={new TileInfo({ title: <>Features and Function</>, thumbnail: "/media/image/mipscmd.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Features and Function</>,
+                        thumbnail: "/media/image/pages/mips-cmd/mipscmd.png"
+                    })
+                }>
                 <p>
                     This command processor in input from the <i>Mars</i> console emulator, and outputs to that same
                     interface. It has the ability to preform mathematical operations, bidirectional decimal and

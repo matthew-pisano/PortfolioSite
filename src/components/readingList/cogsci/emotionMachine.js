@@ -8,7 +8,7 @@ export default (
     <BookTile
         title={"The Emotion Machine"}
         author={"Marvin Minsky"}
-        thumbnail={"/media/image/the-emotion-machine.jpg"}
+        thumbnail={"/media/image/books/the-emotion-machine.jpg"}
         anchor={"emotion-machine"}>
         <BookTileSynopsis>
             <>

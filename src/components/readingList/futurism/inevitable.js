@@ -8,7 +8,7 @@ export default (
     <BookTile
         title={"The Inevitable: Understanding the 12 technological forces that will shape our future"}
         author={"Kevin Kelly"}
-        thumbnail={"/media/image/the-inevitable.jpg"}
+        thumbnail={"/media/image/books/the-inevitable.jpg"}
         anchor={"inevitable"}>
         <BookTileSynopsis>
             <>

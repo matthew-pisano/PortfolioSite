@@ -48,7 +48,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>Bergeron</>,
-                        thumbnail: "/media/image/bergeron.png",
+                        thumbnail: "/media/image/pages/bergeron/bergeron.png",
                         tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.ALIGNMENT, TileTag.PYTHON],
                         links: (
                             <>
@@ -75,7 +75,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>Moral High Ground</>,
-                        thumbnail: "/media/image/tw-llm.png",
+                        thumbnail: "/media/image/pages/moral-high-ground/tw-llm.png",
                         tags: [TileTag.RESEARCH, TileTag.AI, TileTag.ALIGNMENT, TileTag.PYTHON],
                         titleLink: "research/highGround"
                     })
@@ -93,7 +93,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>On Picard Groups and Jacobians of Directed Graphs</>,
-                        thumbnail: "/media/image/chipfiring.png",
+                        thumbnail: "/media/image/pages/chip-firing/chipfiring.png",
                         tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.MATH, TileTag.PYTHON],
                         links: (
                             <>
@@ -128,7 +128,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>PredictChain</>,
-                        thumbnail: "/media/image/predictChain.png",
+                        thumbnail: "/media/image/pages/predict-chain/predictChain.png",
                         tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.PYTHON, TileTag.HACKATHON],
                         links: (
                             <>
@@ -155,7 +155,9 @@ export default function Home() {
                         links: (
                             <>
                                 <GitLink href={"https://github.com/AIRC-ASR/AIRC-ASR-Experimental"}>AIRC ASR</GitLink>
-                                <TileLink href={"/media/documents/Homophone+Decoding.pdf"}>Slides</TileLink>
+                                <TileLink href={"/media/documents/presentations/Homophone+Decoding.pdf"}>
+                                    Slides
+                                </TileLink>
                             </>
                         )
                     })
@@ -176,7 +178,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>Masm</>,
-                        thumbnail: "/media/image/assembly.png",
+                        thumbnail: "/media/image/pages/masm/assembly.png",
                         tags: [TileTag.PERSONAL, TileTag.CPP, TileTag.ASSEMBLY, TileTag.PYTHON],
                         links: (
                             <>
@@ -224,7 +226,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>Manifest Destiny</>,
-                        thumbnail: "/media/image/1763-timelapse.gif",
+                        thumbnail: "/media/image/pages/manifest-destiny/1763-timelapse.gif",
                         tags: [TileTag.ACADEMIC, TileTag.C, TileTag.CUDA, TileTag.COLLAB],
                         links: (
                             <>
@@ -252,7 +254,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>Image-Crypt</>,
-                        thumbnail: "/media/image/secret-message.png",
+                        thumbnail: "/media/image/pages/image-crypt/secret-message.png",
                         tags: [TileTag.PERSONAL, TileTag.CPP],
                         links: (
                             <>
@@ -311,7 +313,7 @@ export default function Home() {
                 tileInfo={
                     new TileInfo({
                         title: <>Simplex</>,
-                        thumbnail: "/media/image/simplexCode.jpg",
+                        thumbnail: "/media/image/pages/simplex/simplexCode.jpg",
                         tags: [TileTag.PERSONAL, TileTag.JAVA, TileTag.ANDROID],
                         links: (
                             <>

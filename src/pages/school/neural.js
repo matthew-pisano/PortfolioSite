@@ -92,7 +92,10 @@ export default function Neural() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Backpropagation Results</>, thumbnail: "/media/image/backproplosses.png" })
+                    new TileInfo({
+                        title: <>Backpropagation Results</>,
+                        thumbnail: "/media/image/pages/neural/backproplosses.png"
+                    })
                 }>
                 <p>
                     For the backpropagation network, a learning rate (<Latex>{`$\\alpha$`}</Latex>) of 0.18 was used.
@@ -109,7 +112,10 @@ export default function Neural() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Decision Tree Results</>, thumbnail: "/media/image/decisionlosses.png" })
+                    new TileInfo({
+                        title: <>Decision Tree Results</>,
+                        thumbnail: "/media/image/pages/neural/decisionlosses.png"
+                    })
                 }>
                 <p>
                     For the backpropagation network with the decision tree optimization, a learning rate (
@@ -130,7 +136,10 @@ export default function Neural() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Genetic Algorithm Results</>, thumbnail: "/media/image/geneticlosses.png" })
+                    new TileInfo({
+                        title: <>Genetic Algorithm Results</>,
+                        thumbnail: "/media/image/pages/neural/geneticlosses.png"
+                    })
                 }>
                 <p>
                     For the genetic algorithm, a population size of 6, a crossover rate of 0.5, and a mutation rate of

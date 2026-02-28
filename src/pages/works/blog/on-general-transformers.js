@@ -574,7 +574,7 @@ export default function OnGeneralTransformers() {
                     very structure and training objective is a significant barrier between the current state of the art
                     and human-level generality.
                 </p>
-                <BlogImage src={"/media/image/attention-mechanism.png"}>
+                <BlogImage src={"/media/image/pages/blog/on-general-transformers/attention-mechanism.png"}>
                     The attention mechanism that serves as the backbone of modern transformers.
                 </BlogImage>
                 <p>
@@ -727,7 +727,7 @@ export default function OnGeneralTransformers() {
                     have been learning from. The dataset of moves which they had curated did not capture the full
                     distribution of moves that a real expert can draw upon.
                 </p>
-                <BlogImage src={"/media/image/lee-sedol-alpha-go.jpg"}>
+                <BlogImage src={"/media/image/pages/blog/on-general-transformers/lee-sedol-alpha-go.jpg"}>
                     Lee Sedol during his match against AlphaGo in March of 2016. (Getty: Handout)
                 </BlogImage>
                 <p>
@@ -850,7 +850,9 @@ export default function OnGeneralTransformers() {
                     autoregressive equivalent to training a model on expert moves. You will get impressive results, but
                     you will not reach the quality of the material that you are trying to emulate.
                 </p>
-                <BlogImage src={"/media/image/hanoi.jpg"}>The Tower of Hanoi puzzle.</BlogImage>
+                <BlogImage src={"/media/image/pages/blog/on-general-transformers/hanoi.jpg"}>
+                    The Tower of Hanoi puzzle.
+                </BlogImage>
                 <p>
                     Research has begin to observe this in practice. Most notably is Apple's "The Illusion of Thinking"
                     <Footnote>
@@ -1017,7 +1019,7 @@ export default function OnGeneralTransformers() {
                     functions that could be optimized towards. By the early 2000s, AI had once again fallen out of favor
                     in research circles.
                 </p>
-                <BlogImage src={"/media/image/watson-jeopardy.jpg"}>
+                <BlogImage src={"/media/image/pages/blog/on-general-transformers/watson-jeopardy.jpg"}>
                     IBM Watson's 2011 Jeopardy! match against Ken Jennings and Brad Rutter. (IBM Research)
                 </BlogImage>
                 <p>

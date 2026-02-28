@@ -20,7 +20,7 @@ function elementReadingTime(elemId) {
  * Class to hold constants used throughout the site.
  */
 class Constants {
-    static cvUrl = "/media/documents/curriculum_vitae.pdf";
+    static cvUrl = "/media/documents/professional-summary/curriculum_vitae.pdf";
     static minTerminalHeight = 50;
 }
 

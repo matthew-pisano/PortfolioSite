@@ -11,7 +11,7 @@ export default (
     <BookTile
         title={"I Am a Strange Loop"}
         author={"Douglas Hofstadter"}
-        thumbnail={"/media/image/i-am-a-strange-loop.jpg"}
+        thumbnail={"/media/image/books/i-am-a-strange-loop.jpg"}
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>

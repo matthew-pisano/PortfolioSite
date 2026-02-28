@@ -25,7 +25,7 @@ export default (
     <BookTile
         title={"House of Leaves"}
         author={"Mark Z. Danielewski"}
-        thumbnail={"/media/image/house-of-leaves.jpg"}
+        thumbnail={"/media/image/books/house-of-leaves.jpg"}
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>

@@ -8,7 +8,7 @@ export default (
     <BookTile
         title={"Thinking Fast and Slow"}
         author={"Daniel Kahneman"}
-        thumbnail={"/media/image/thinking-fast-and-slow.jpg"}
+        thumbnail={"/media/image/books/thinking-fast-and-slow.jpg"}
         anchor={bookTileAnchor}>
         <BookTileSynopsis>
             <>

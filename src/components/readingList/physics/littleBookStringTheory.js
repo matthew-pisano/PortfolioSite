@@ -8,7 +8,7 @@ export default (
     <BookTile
         title={"The Little Book of String Theory"}
         author={"Steven Gubser"}
-        thumbnail={"/media/image/the-little-book-of-string-theory.jpg"}
+        thumbnail={"/media/image/books/the-little-book-of-string-theory.jpg"}
         anchor={"string-theory"}>
         <BookTileSynopsis>
             <>

@@ -11,7 +11,7 @@ export default (
     <BookTile
         title={"Human Compatible: Artificial Intelligence and the Problem of Control"}
         author={"Stuart Russell"}
-        thumbnail={"/media/image/human-compatible.jpg"}
+        thumbnail={"/media/image/books/human-compatible.jpg"}
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>

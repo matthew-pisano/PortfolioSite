@@ -9,7 +9,7 @@ export default (
     <BookTile
         title={"There is No Antimemetics Division"}
         author={"qntm (Sam Hughes)"}
-        thumbnail={"/media/image/there-is-no-antimemetics-division.jpg"}
+        thumbnail={"/media/image/books/there-is-no-antimemetics-division.jpg"}
         anchor={"antimemetics"}>
         <BookTileSynopsis>
             <i>There is No Antimemetics Division</i> follows Marion Wheeler, the head of the titular

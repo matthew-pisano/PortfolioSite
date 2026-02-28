@@ -687,7 +687,7 @@ class Commands {
         yield "ng (never gonna) - give you up\n";
 
         await new Promise((r) => setTimeout(r, 1000));
-        window.location.href = "/media/video/rick.mp4";
+        window.location.href = "/media/video/misc/rick.mp4";
     }
 
     /**

@@ -43,7 +43,7 @@ export default function ReadingList() {
         <DefaultWrapper pageInfo={pageInfo}>
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <h2>What is All This?</h2>, thumbnail: "/media/image/bookshelf.webp" })
+                    new TileInfo({ title: <h2>What is All This?</h2>, thumbnail: "/media/image/books/bookshelf.webp" })
                 }>
                 <p>
                     Below is a collection of books I have read and would recommend to others. The following may be

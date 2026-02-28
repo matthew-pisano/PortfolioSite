@@ -28,7 +28,7 @@ export default function About() {
 
     return (
         <DefaultWrapper pageInfo={pageInfo}>
-            <Tile tileInfo={new TileInfo({ title: <h2>Introduction</h2>, thumbnail: "/media/image/headshot" })}>
+            <Tile tileInfo={new TileInfo({ title: <h2>Introduction</h2>, thumbnail: "/media/image/misc/headshot" })}>
                 <p>
                     My name is Matthew Pisano. I am an Artificial Intelligence Researcher and Software Engineer. I have
                     a Master's degree in Computer Science from Rensselaer Polytechnic Institute along with extensive
@@ -138,7 +138,7 @@ export default function About() {
 
             <SectionTile tileInfo={new TileInfo({ title: <>Employment History</> })} />
 
-            <Tile tileInfo={new TileInfo({ title: <>IBM</>, thumbnail: "/media/image/ibm.png" })}>
+            <Tile tileInfo={new TileInfo({ title: <>IBM</>, thumbnail: "/media/image/organizations/ibm.png" })}>
                 <p>
                     <i>Staff Software Engineer</i>
                 </p>
@@ -149,7 +149,10 @@ export default function About() {
                 </p>
             </Tile>
 
-            <Tile tileInfo={new TileInfo({ title: <>SUNY Ulster</>, thumbnail: "/media/image/suny-ulster.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>SUNY Ulster</>, thumbnail: "/media/image/organizations/suny-ulster.png" })
+                }>
                 <p>
                     <i>Computer Science Adjunct</i>
                 </p>
@@ -163,7 +166,10 @@ export default function About() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Substrate AI Research</>, thumbnail: "/media/image/substrate-ai.png" })
+                    new TileInfo({
+                        title: <>Substrate AI Research</>,
+                        thumbnail: "/media/image/organizations/substrate-ai.png"
+                    })
                 }>
                 <p>
                     <i>Research Engineer</i>
@@ -178,7 +184,10 @@ export default function About() {
                 </p>
             </Tile>
 
-            <Tile tileInfo={new TileInfo({ title: <>FileScience</>, thumbnail: "/media/image/filescience.jpg" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>FileScience</>, thumbnail: "/media/image/organizations/filescience.jpg" })
+                }>
                 <p>
                     <i>Quality Assurance Lead Engineer</i>
                 </p>
@@ -196,7 +205,10 @@ export default function About() {
                 </p>
             </Tile>
 
-            <Tile tileInfo={new TileInfo({ title: <>IBM Research</>, thumbnail: "/media/image/ibm-research.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>IBM Research</>, thumbnail: "/media/image/organizations/ibm-research.png" })
+                }>
                 <p>
                     <i>Research Extern</i>
                 </p>
@@ -211,7 +223,10 @@ export default function About() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Rensselaer Polytechnic Institute</>, thumbnail: "/media/image/rpi.png" })
+                    new TileInfo({
+                        title: <>Rensselaer Polytechnic Institute</>,
+                        thumbnail: "/media/image/organizations/rpi.png"
+                    })
                 }>
                 <p>
                     <i>Computer Science Teaching Assistant</i>
@@ -223,7 +238,13 @@ export default function About() {
                 </p>
             </Tile>
 
-            <Tile tileInfo={new TileInfo({ title: <>SUNY New Paltz</>, thumbnail: "/media/image/suny-new-paltz.jpg" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>SUNY New Paltz</>,
+                        thumbnail: "/media/image/organizations/suny-new-paltz.jpg"
+                    })
+                }>
                 <p>
                     <i>Undergraduate Researcher</i>
                 </p>
@@ -241,7 +262,10 @@ export default function About() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Cyber Guardian Consulting Group</>, thumbnail: "/media/image/cgcg.jpg" })
+                    new TileInfo({
+                        title: <>Cyber Guardian Consulting Group</>,
+                        thumbnail: "/media/image/organizations/cgcg.jpg"
+                    })
                 }>
                 <p>
                     <i>Software Engineer</i>

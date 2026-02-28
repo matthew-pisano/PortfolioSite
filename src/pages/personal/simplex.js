@@ -43,7 +43,10 @@ export default function Simplex() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Companion Android App</>, thumbnail: "/media/image/simplexCode.jpg" })
+                    new TileInfo({
+                        title: <>Companion Android App</>,
+                        thumbnail: "/media/image/pages/simplex/simplexCode.jpg"
+                    })
                 }>
                 <p>
                     The goal of the Simplex Android IDE is to both allow easy mobile programming and serve as an
@@ -58,7 +61,10 @@ export default function Simplex() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Processing Its Source</>, thumbnail: "/media/image/simplexLex.jpg" })
+                    new TileInfo({
+                        title: <>Processing Its Source</>,
+                        thumbnail: "/media/image/pages/simplex/simplexLex.jpg"
+                    })
                 }>
                 <p>
                     When source code is given to the Simplex interpreter, it first encounters the lexer. These
@@ -84,7 +90,13 @@ export default function Simplex() {
                 </p>
             </Tile>
 
-            <Tile tileInfo={new TileInfo({ title: <>Scientific Focus</>, thumbnail: "/media/image/simplexSci.jpg" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Scientific Focus</>,
+                        thumbnail: "/media/image/pages/simplex/simplexSci.jpg"
+                    })
+                }>
                 <p>
                     One of the other notable features of Simplex is its concentration on making some physics or
                     mathematical operations easier. The language comes with a wide array of built-in mathematical and

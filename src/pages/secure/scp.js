@@ -42,7 +42,7 @@ export default function SCP() {
                 "), is to be set on high alert and stationed no more than 5km away from the containment site at all
                 times.
             </Tile>
-            <Tile tileInfo={new TileInfo({ title: <>Description</>, thumbnail: "/media/image/imageOf.png" })}>
+            <Tile tileInfo={new TileInfo({ title: <>Description</>, thumbnail: "/media/image/misc/imageOf.png" })}>
                 SCP-{anomalyId} was {redact(30)} as into {redact(60)}. Originally created as part of <i>Project</i>{" "}
                 {redact(10)} by the {redact(15)} research division of Mathesis International, {redact(90)} after the
                 initial incident. Researcher L{redact(6)} P{redact(6)} {redact(17)}.{redact(10)}, is a {redact(80)} and{" "}

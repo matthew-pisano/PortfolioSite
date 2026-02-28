@@ -9,7 +9,7 @@ export default (
     <BookTile
         title={"Nausea"}
         author={"Jean-Paul Sartre"}
-        thumbnail={"/media/image/nausea.jpg"}
+        thumbnail={"/media/image/books/nausea.jpg"}
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
