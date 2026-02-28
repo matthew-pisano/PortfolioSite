@@ -44,7 +44,7 @@ export default function UniversalModels() {
 
             <Tile tileInfo={new TileInfo({ title: <>Utility</> })}>
                 <p>
-                    Originally starting off as a utility within my <Link href="/research/bergeron">Bergeron</Link>
+                    Originally starting off as a utility within my <Link href="/research/bergeron">Bergeron</Link>{" "}
                     research, this package has grown to be a useful tool for any project that needs to use. This has
                     allowed me to eliminate significant amounts of code from my projects, as its unified interface
                     allows for the easy integration of models from different sources.
