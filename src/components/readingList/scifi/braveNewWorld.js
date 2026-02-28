@@ -28,7 +28,7 @@ export default (
     <BookTile
         title={"Brave New World"}
         author={"Aldous Huxley"}
-        thumbnail={"/media/image/brave-new-world.jpg"}
+        thumbnail={"/media/image/books/brave-new-world.jpg"}
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>

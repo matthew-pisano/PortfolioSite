@@ -26,7 +26,13 @@ export default function PredictChain() {
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
-            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2>, thumbnail: "/media/image/predictChain.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <h2>Overview</h2>,
+                        thumbnail: "/media/image/pages/predict-chain/predictChain.png"
+                    })
+                }>
                 <p>
                     <i>PredictChain</i> is a decentralized artificial intelligence marketplace that I developed,
                     primarily along with another student at RPI. It utilizes the <i>Algorand</i> blockchain to allow
@@ -80,7 +86,13 @@ export default function PredictChain() {
                 </p>
             </Tile>
 
-            <Tile tileInfo={new TileInfo({ title: <>Architecture</>, thumbnail: "/media/image/predictChainFull.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <>Architecture</>,
+                        thumbnail: "/media/image/pages/predict-chain/predictChainFull.png"
+                    })
+                }>
                 <p>
                     PredictChain is comprised of two main parts. The Oracle node is the hub of each PredictChain
                     instance. It is run by a host of the network. Users can connect to any active Oracle to interact

@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"QED: The Strange Theory of Light and Matter"}
         author={"Richard Feynman"}
-        thumbnail={"/media/image/qed.jpg"}
+        thumbnail={"/media/image/books/qed.jpg"}
         anchor={"quantum-electrodynamics"}>
         <BookTileSynopsis>
             <>

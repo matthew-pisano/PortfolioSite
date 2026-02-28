@@ -4,23 +4,23 @@ class Sprite {
     static HEIGHT_PX = 100;
     static SCRMLN = new Sprite(
         "scrmln",
-        "/media/image/scrmlnIdle.png",
-        "/media/image/scrmlnFall.png",
-        "/media/image/scrmlnBlink.png"
+        "/media/image/sprites/scrmlnIdle.png",
+        "/media/image/sprites/scrmlnFall.png",
+        "/media/image/sprites/scrmlnBlink.png"
     );
 
     static SCRBLN = new Sprite(
         "scrbln",
-        "/media/image/scrblnIdle.png",
-        "/media/image/scrblnFall.png",
-        "/media/image/scrblnBlink.png"
+        "/media/image/sprites/scrblnIdle.png",
+        "/media/image/sprites/scrblnFall.png",
+        "/media/image/sprites/scrblnBlink.png"
     );
 
     static IDTMRN = new Sprite(
         "idtmrn",
-        "/media/image/idtmrnIdle.png",
-        "/media/image/idtmrnFall.png",
-        "/media/image/idtmrnBlink.png"
+        "/media/image/sprites/idtmrnIdle.png",
+        "/media/image/sprites/idtmrnFall.png",
+        "/media/image/sprites/idtmrnBlink.png"
     );
 
     /**

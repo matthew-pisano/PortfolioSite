@@ -110,14 +110,14 @@ async function* runPacer() {
     await new Promise((resolve) => setTimeout(resolve, 500));
     yield pacerTest;
     // Play the instruction audio
-    await new Audio("/media/audio/pacer.mp3").play();
+    await new Audio("/media/audio/misc/pacer.mp3").play();
     await new Promise((resolve) => setTimeout(resolve, 42000));
 
     let numbers = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
     let delays = [2000, 1900, 1800, 1700, 1600, 1500, 1400, 1300, 1200, 1100];
 
     // Display the numbers and play the beep
-    let beep = new Audio("/media/audio/pacerBeep.mp3");
+    let beep = new Audio("/media/audio/misc/pacerBeep.mp3");
     for (let i = 0; i < numbers.length; i++) {
         await new Promise((resolve) => setTimeout(resolve, delays[i]));
         yield `\n[beep] ${numbers[i]}\n`;
@@ -205,7 +205,7 @@ async function* rmRoot() {
     // Show BSOD
     await new Promise((resolve) => setTimeout(resolve, 2000));
     window.document.documentElement.style.backgroundColor = "#020183";
-    window.document.body.innerHTML = '<img src="/media/image/bsod.png" alt="bsod" style="width: 100%;"/>';
+    window.document.body.innerHTML = '<img src="/media/image/misc/bsod.png" alt="bsod" style="width: 100%;"/>';
 }
 
 /**

@@ -26,7 +26,10 @@ export default function Bergeron() {
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
-            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2>, thumbnail: "/media/image/bergeron.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <h2>Overview</h2>, thumbnail: "/media/image/pages/bergeron/bergeron.png" })
+                }>
                 <p>
                     This research serves as both my Master's thesis and as early research into the area of
                     weak-to-strong alignment. It details my <i>Bergeron</i> framework that aims to improve the
@@ -68,7 +71,7 @@ export default function Bergeron() {
                 tileInfo={
                     new TileInfo({
                         title: <>Holes in Weight-Based Alignment</>,
-                        thumbnail: "/media/image/enrichment.png"
+                        thumbnail: "/media/image/pages/bergeron/enrichment.png"
                     })
                 }>
                 <p>
@@ -110,7 +113,10 @@ export default function Bergeron() {
 
             <GalleryTile
                 tileInfo={
-                    new TileInfo({ title: <>Adversarial Dataset</>, thumbnail: "/media/image/attackPrompts.png" })
+                    new TileInfo({
+                        title: <>Adversarial Dataset</>,
+                        thumbnail: "/media/image/pages/bergeron/attackPrompts.png"
+                    })
                 }>
                 <p>
                     To test our framework, we created a dataset of 192 attack prompts across 15 prompt templates. These
@@ -144,7 +150,7 @@ export default function Bergeron() {
                 tileInfo={
                     new TileInfo({
                         title: <>Defending against Adversarial Attacks</>,
-                        thumbnail: "/media/image/attackDefense.png"
+                        thumbnail: "/media/image/pages/bergeron/attackDefense.png"
                     })
                 }>
                 <p>
@@ -164,7 +170,7 @@ export default function Bergeron() {
                 tileInfo={
                     new TileInfo({
                         title: <>Weak-to-Strong Model Adversarial Defense</>,
-                        thumbnail: "/media/image/otherAttackDefense.png"
+                        thumbnail: "/media/image/pages/bergeron/otherAttackDefense.png"
                     })
                 }>
                 <p>
@@ -179,7 +185,7 @@ export default function Bergeron() {
                 tileInfo={
                     new TileInfo({
                         title: <>Adversarial True-Positive Rates (Left) and Mundane False-Positive Rates (Right)</>,
-                        thumbnail: "/media/image/mundaneDetections.png"
+                        thumbnail: "/media/image/pages/bergeron/mundaneDetections.png"
                     })
                 }>
                 <p>
@@ -194,7 +200,9 @@ export default function Bergeron() {
             </GalleryTile>
 
             <GalleryTile
-                tileInfo={new TileInfo({ title: <>Model F1 Scores</>, thumbnail: "/media/image/f1Scores.png" })}>
+                tileInfo={
+                    new TileInfo({ title: <>Model F1 Scores</>, thumbnail: "/media/image/pages/bergeron/f1Scores.png" })
+                }>
                 <p>
                     F1 scores for each type of secondary model, calculated using unsafe prompt detection records from
                     the adversarial and mundane datasets. Text in green indicates a score of over 0.75. GPT-4 has the

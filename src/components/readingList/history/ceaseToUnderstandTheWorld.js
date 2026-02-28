@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"When We Cease to Understand the World"}
         author={"Benjamín Labatut"}
-        thumbnail={"/media/image/when-we-cease-to-understand-the-world.jpg"}
+        thumbnail={"/media/image/books/when-we-cease-to-understand-the-world.jpg"}
         anchor={"cease-to-understand-the-world"}>
         <BookTileSynopsis>
             <>

@@ -35,7 +35,7 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>Foundations of Computability: Incompleteness and Universality</>,
-                        thumbnail: "/media/image/ibm.png",
+                        thumbnail: "/media/image/organizations/ibm.png",
                         tags: [TileTag.ACADEMIC, TileTag.MATH]
                     })
                 }>
@@ -78,7 +78,7 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>Software Engineering Lecture Series</>,
-                        thumbnail: "/media/image/suny-ulster.png",
+                        thumbnail: "/media/image/organizations/suny-ulster.png",
                         tags: [TileTag.ACADEMIC, TileTag.COLLAB]
                     })
                 }>
@@ -110,7 +110,7 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>Foundations Lecture Series</>,
-                        thumbnail: "/media/image/ibm.png",
+                        thumbnail: "/media/image/organizations/ibm.png",
                         tags: [TileTag.ACADEMIC, TileTag.AI]
                     })
                 }>
@@ -161,11 +161,13 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>Transformer Models: Architectures and Use Cases</>,
-                        thumbnail: "/media/image/ibm.png",
+                        thumbnail: "/media/image/organizations/ibm.png",
                         tags: [TileTag.ACADEMIC, TileTag.AI],
                         links: (
                             <>
-                                <TileLink href={"/media/documents/IBM+Transformer+Models.pdf"}>Slides</TileLink>
+                                <TileLink href={"/media/documents/presentations/IBM+Transformer+Models.pdf"}>
+                                    Slides
+                                </TileLink>
                             </>
                         )
                     })
@@ -192,7 +194,7 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>Computer Architecture and Organization Lecture Series</>,
-                        thumbnail: "/media/image/suny-ulster.png",
+                        thumbnail: "/media/image/organizations/suny-ulster.png",
                         tags: [TileTag.ACADEMIC, TileTag.ASSEMBLY]
                     })
                 }>
@@ -225,12 +227,16 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>Bergeron: Combating Adversarial Attacks by Emulating a Conscience</>,
-                        thumbnail: "/media/image/rpi.png",
+                        thumbnail: "/media/image/organizations/rpi.png",
                         tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.ALIGNMENT],
                         links: (
                             <>
-                                <TileLink href={"/media/documents/Bergeron+Thesis+Presentation.pdf"}>Slides</TileLink>
-                                <TileLink href={"/media/video/Bergeron+Thesis+Presentation.mp4"}>Recording</TileLink>
+                                <TileLink href={"/media/documents/presentations/Bergeron+Thesis+Presentation.pdf"}>
+                                    Slides
+                                </TileLink>
+                                <TileLink href={"/media/video/playbacks/Bergeron+Thesis+Presentation.mp4"}>
+                                    Recording
+                                </TileLink>
                             </>
                         )
                     })
@@ -254,11 +260,13 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>Bergeron: Towards Language Models with a Conscience</>,
-                        thumbnail: "/media/image/rpi.png",
+                        thumbnail: "/media/image/organizations/rpi.png",
                         tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.ALIGNMENT],
                         links: (
                             <>
-                                <TileLink href={"/media/documents/Bergeron+Cog+Sci+Series.pdf"}>Slides</TileLink>
+                                <TileLink href={"/media/documents/presentations/Bergeron+Cog+Sci+Series.pdf"}>
+                                    Slides
+                                </TileLink>
                                 <TileLink href={"https://vimeo.com/showcase/10930583/video/916811537"}>
                                     Recording
                                 </TileLink>
@@ -281,11 +289,13 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>Deep Reinforcement Learning and Its Neuroscientific Implications</>,
-                        thumbnail: "/media/image/rpi.png",
+                        thumbnail: "/media/image/organizations/rpi.png",
                         tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI],
                         links: (
                             <>
-                                <TileLink href={"/media/documents/Deep+RL+and+Implications.pdf"}>Slides</TileLink>
+                                <TileLink href={"/media/documents/presentations/Deep+RL+and+Implications.pdf"}>
+                                    Slides
+                                </TileLink>
                             </>
                         )
                     })
@@ -317,7 +327,7 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>Moral High Ground: A Conversational Benchmark for LLM Moral Alignment</>,
-                        thumbnail: "/media/image/ibm-research.png",
+                        thumbnail: "/media/image/organizations/ibm-research.png",
                         tags: [TileTag.RESEARCH, TileTag.AI, TileTag.ALIGNMENT]
                     })
                 }>
@@ -335,11 +345,13 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>PredictChain: Empowering Collaboration for AI in a Blockchain-based Marketplace</>,
-                        thumbnail: "/media/image/chainscience.png",
+                        thumbnail: "/media/image/organizations/chainscience.png",
                         tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI],
                         links: (
                             <>
-                                <TileLink href={"/media/documents/PredictChain+ChainScience+23.pdf"}>Slides</TileLink>
+                                <TileLink href={"/media/documents/presentations/PredictChain+ChainScience+23.pdf"}>
+                                    Slides
+                                </TileLink>
                             </>
                         )
                     })
@@ -362,11 +374,13 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>Homophone Decoding & Speech Based Emotion Detection</>,
-                        thumbnail: "/media/image/rpi.png",
+                        thumbnail: "/media/image/organizations/rpi.png",
                         tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI],
                         links: (
                             <>
-                                <TileLink href={"/media/documents/Homophone+Decoding.pdf"}>Slides</TileLink>
+                                <TileLink href={"/media/documents/presentations/Homophone+Decoding.pdf"}>
+                                    Slides
+                                </TileLink>
                             </>
                         )
                     })
@@ -390,11 +404,11 @@ export default function Lectures() {
                 tileInfo={
                     new TileInfo({
                         title: <>On Picard Groups and Jacobians of Directed Graphs</>,
-                        thumbnail: "/media/image/jmm.jpg",
+                        thumbnail: "/media/image/organizations/jmm.jpg",
                         tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.MATH],
                         links: (
                             <>
-                                <TileLink href={"/media/documents/JMMPresentation.pdf"}>Slides</TileLink>
+                                <TileLink href={"/media/documents/presentations/JMMPresentation.pdf"}>Slides</TileLink>
                             </>
                         )
                     })

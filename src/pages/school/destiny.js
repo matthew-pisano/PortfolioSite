@@ -40,7 +40,10 @@ export default function Destiny() {
 
             <GalleryTile
                 tileInfo={
-                    new TileInfo({ title: <>Simulation Details</>, thumbnail: "/media/image/1763-timelapse.gif" })
+                    new TileInfo({
+                        title: <>Simulation Details</>,
+                        thumbnail: "/media/image/pages/manifest-destiny/1763-timelapse.gif"
+                    })
                 }>
                 <p>
                     Our simulation uses a 2D cellular automata model of the United States. Each cell represents a square
@@ -54,7 +57,10 @@ export default function Destiny() {
 
             <GalleryTile
                 tileInfo={
-                    new TileInfo({ title: <>Cell Resources</>, thumbnail: "/media/image/manifest-preprocessing.png" })
+                    new TileInfo({
+                        title: <>Cell Resources</>,
+                        thumbnail: "/media/image/pages/manifest-destiny/manifest-preprocessing.png"
+                    })
                 }>
                 <p>
                     Each cell represents an 8 dimensional vector of attributes. These are a cell's elevation, surface

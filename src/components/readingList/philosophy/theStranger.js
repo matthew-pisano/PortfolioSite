@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"The Stranger"}
         author={"Albert Camus"}
-        thumbnail={"/media/image/the-stranger.jpg"}
+        thumbnail={"/media/image/books/the-stranger.jpg"}
         anchor={"letranger"}>
         <BookTileSynopsis>
             <i>The Stranger</i> is told from the perspective of Meursault, a French settler in Algiers, at the time a

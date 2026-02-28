@@ -35,7 +35,10 @@ export default function Imperium() {
                 </p>
             </Tile>
 
-            <Tile tileInfo={new TileInfo({ title: <>Development</>, thumbnail: "/media/image/imperiumLogo.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>Development</>, thumbnail: "/media/image/pages/imperium/imperiumLogo.png" })
+                }>
                 <p>
                     Starting as a side-project, Imperium soon became a learning exercise in Android and Java
                     development. Utilizing many techniques such as thread management, Android layout design, knowledge
@@ -48,7 +51,7 @@ export default function Imperium() {
                 tileInfo={
                     new TileInfo({
                         title: <>Publishing and Best Practices</>,
-                        thumbnail: "/media/image/imperiumGooglePlay.png"
+                        thumbnail: "/media/image/pages/imperium/imperiumGooglePlay.png"
                     })
                 }>
                 <p>
@@ -60,7 +63,10 @@ export default function Imperium() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Features and Game-play</>, thumbnail: "/media/image/imperiumMap.png" })
+                    new TileInfo({
+                        title: <>Features and Game-play</>,
+                        thumbnail: "/media/image/pages/imperium/imperiumMap.png"
+                    })
                 }>
                 <p>
                     Imperium implements many features present in the grand strategy games it emulates. Users can save

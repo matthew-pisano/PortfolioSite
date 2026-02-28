@@ -32,7 +32,10 @@ export default function Inception() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Features and Function</>, thumbnail: "/media/image/inceptionDog.bmp" })
+                    new TileInfo({
+                        title: <>Features and Function</>,
+                        thumbnail: "/media/image/pages/inception-collage/inceptionDog.bmp"
+                    })
                 }>
                 <p>
                     The GUI allows the user to select one image file as the basis of the mosaic, this is the image that

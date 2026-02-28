@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"Behave: The Biology of Humans at Our Best and Worst"}
         author={"Robert M. Sapolsky"}
-        thumbnail={"/media/image/behave.jpg"}
+        thumbnail={"/media/image/books/behave.jpg"}
         anchor={"behave"}>
         <BookTileSynopsis>
             <>

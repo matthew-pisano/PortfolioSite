@@ -19,7 +19,13 @@ export default function MoralHighGround() {
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
-            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2>, thumbnail: "/media/image/tw-llm.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <h2>Overview</h2>,
+                        thumbnail: "/media/image/pages/moral-high-ground/tw-llm.png"
+                    })
+                }>
                 <p>
                     Here, I developed a text-based games benchmark, based on Microsoft's TextWorld environment. As part
                     of my employment with <i>IBM Research</i>, I created this dataset of 30 games with the aim of using
@@ -113,7 +119,10 @@ export default function MoralHighGround() {
 
             <GalleryTile
                 tileInfo={
-                    new TileInfo({ title: <>Control Results</>, thumbnail: "/media/image/tw-llm-all-all-games.png" })
+                    new TileInfo({
+                        title: <>Control Results</>,
+                        thumbnail: "/media/image/pages/moral-high-ground/tw-llm-all-all-games.png"
+                    })
                 }>
                 <p>
                     Our control results showed the Flan models performing the best at the games, an approximately equal
@@ -126,7 +135,7 @@ export default function MoralHighGround() {
                 tileInfo={
                     new TileInfo({
                         title: <>Instruction-Tuning Results</>,
-                        thumbnail: "/media/image/tw-llm-instruction-tuned-all-games.png"
+                        thumbnail: "/media/image/pages/moral-high-ground/tw-llm-instruction-tuned-all-games.png"
                     })
                 }>
                 <p>
@@ -138,7 +147,10 @@ export default function MoralHighGround() {
 
             <GalleryTile
                 tileInfo={
-                    new TileInfo({ title: <>Control Results</>, thumbnail: "/media/image/tw-llm-tuned-all-games.png" })
+                    new TileInfo({
+                        title: <>Control Results</>,
+                        thumbnail: "/media/image/pages/moral-high-ground/tw-llm-tuned-all-games.png"
+                    })
                 }>
                 <p>
                     After fine-tuning our Flan-t5 small model, its performance rose notably as well. Despite only being

@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"Gödel, Escher, Bach: An Eternal Golden Braid"}
         author={"Douglas Hofstadter"}
-        thumbnail={"/media/image/geb-egb.jpg"}
+        thumbnail={"/media/image/books/geb-egb.jpg"}
         anchor={"geb-egb"}>
         <BookTileSynopsis>
             <>

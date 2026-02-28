@@ -23,7 +23,13 @@ export default function ImageCrypt() {
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
-            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2>, thumbnail: "/media/image/secret-message.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <h2>Overview</h2>,
+                        thumbnail: "/media/image/pages/image-crypt/secret-message.png"
+                    })
+                }>
                 <p>
                     <i>Image-Crypt</i> encodes any arbitrary byte sequence into a target image file. This is performed
                     by adding small perturbations to the pixel values within an image. The noise may optionally be

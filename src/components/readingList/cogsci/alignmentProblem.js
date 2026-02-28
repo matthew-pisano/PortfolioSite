@@ -8,7 +8,7 @@ export default (
     <BookTile
         title={"The Alignment Problem"}
         author={"Brian Christian"}
-        thumbnail={"/media/image/the-alignment-problem.jpg"}
+        thumbnail={"/media/image/books/the-alignment-problem.jpg"}
         anchor={bookTileAnchor}>
         <BookTileSynopsis>
             <>

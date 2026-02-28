@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"Determined: A Science of Life Without Free Will"}
         author={"Robert M. Sapolsky"}
-        thumbnail={"/media/image/determined.jpg"}
+        thumbnail={"/media/image/books/determined.jpg"}
         anchor={"determined"}>
         <BookTileSynopsis>
             <>

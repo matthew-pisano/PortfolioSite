@@ -3,7 +3,7 @@ const nextConfig = {
         return [
             {
                 source: "/media/:path*",
-                destination: "https://lightsail-image-repo.s3.amazonaws.com/portfolio/:path*",
+                destination: "https://portfolio-asset-repo.s3.amazonaws.com/:path*",
                 permanent: true,
                 basePath: false
             },

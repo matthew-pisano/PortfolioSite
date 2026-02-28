@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"Physics of the Impossible"}
         author={"Michio Kaku"}
-        thumbnail={"/media/image/physics-of-the-impossible.jpg"}
+        thumbnail={"/media/image/books/physics-of-the-impossible.jpg"}
         anchor={"physics-impossible"}>
         <BookTileSynopsis>
             <>

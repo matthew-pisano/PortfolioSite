@@ -31,7 +31,7 @@ export default function Masm() {
                 tileInfo={
                     new TileInfo({
                         title: <h2>Overview</h2>,
-                        thumbnail: "/media/image/assembly.png"
+                        thumbnail: "/media/image/pages/masm/assembly.png"
                     })
                 }>
                 <p>

@@ -8,7 +8,7 @@ export default (
     <BookTile
         title={"The Order of Time"}
         author={"Carlo Rovelli"}
-        thumbnail={"/media/image/the-order-of-time.jpg"}
+        thumbnail={"/media/image/books/the-order-of-time.jpg"}
         anchor={"order-of-time"}>
         <BookTileSynopsis>
             <>

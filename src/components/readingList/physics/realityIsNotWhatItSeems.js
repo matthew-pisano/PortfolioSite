@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"Reality is Not What It Seems"}
         author={"Carlo Rovelli"}
-        thumbnail={"/media/image/reality-is-not-what-it-seems.jpg"}
+        thumbnail={"/media/image/books/reality-is-not-what-it-seems.jpg"}
         anchor={"not-what-it-seems"}>
         <BookTileSynopsis>
             <>

@@ -28,7 +28,13 @@ export default function ChipFiring() {
     );
     return (
         <DefaultWrapper pageInfo={pageInfo}>
-            <Tile tileInfo={new TileInfo({ title: <h2>Overview</h2>, thumbnail: "/media/image/chipfiring.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({
+                        title: <h2>Overview</h2>,
+                        thumbnail: "/media/image/pages/chip-firing/chipfiring.png"
+                    })
+                }>
                 <p>
                     This research was performed by myself, an advisor at <i>SUNY New Paltz</i>, and one of his
                     colleagues. In this research, we focused on the study of Chip-Firing games and how different

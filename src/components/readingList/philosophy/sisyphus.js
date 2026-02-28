@@ -9,7 +9,7 @@ export default (
     <BookTile
         title={"The Myth of Sisyphus"}
         author={"Albert Camus"}
-        thumbnail={"/media/image/myth-of-sisyphus.jpg"}
+        thumbnail={"/media/image/books/myth-of-sisyphus.jpg"}
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>

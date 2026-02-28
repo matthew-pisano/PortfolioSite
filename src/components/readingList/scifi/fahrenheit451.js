@@ -9,7 +9,7 @@ export default (
     <BookTile
         title={"Fahrenheit 451"}
         author={"Ray Bradbury"}
-        thumbnail={"/media/image/fahrenheit-451.jpg"}
+        thumbnail={"/media/image/books/fahrenheit-451.jpg"}
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>

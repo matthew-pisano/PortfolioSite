@@ -3,7 +3,11 @@ import React from "react";
 import { BookTile, BookTileSynopsis, BookTileThoughts } from "@/components/readingList/BookTile";
 
 export default (
-    <BookTile title={"I, Robot"} author={"Isaac Asimov"} thumbnail={"/media/image/i-robot.jpg"} anchor={"i-robot"}>
+    <BookTile
+        title={"I, Robot"}
+        author={"Isaac Asimov"}
+        thumbnail={"/media/image/books/i-robot.jpg"}
+        anchor={"i-robot"}>
         <BookTileSynopsis>
             <i>I, Robot</i> spans a series of nine stories detailing the fictional progression of robotic technology as
             it advanced from simple childcare agents to fully autonomous general intelligences. Each story is framed as

@@ -34,7 +34,10 @@ export default function Videntium() {
 
             <Tile
                 tileInfo={
-                    new TileInfo({ title: <>Features and Function</>, thumbnail: "/media/image/videntiumMap.png" })
+                    new TileInfo({
+                        title: <>Features and Function</>,
+                        thumbnail: "/media/image/pages/videntium/videntiumMap.png"
+                    })
                 }>
                 <p>
                     Built using <i>AWS Cloud9</i>, Videntium is served to the user through PHP from AWS servers. The two
@@ -53,7 +56,10 @@ export default function Videntium() {
                 </p>
             </Tile>
 
-            <Tile tileInfo={new TileInfo({ title: <>Map Sharing</>, thumbnail: "/media/image/videntiumDB.png" })}>
+            <Tile
+                tileInfo={
+                    new TileInfo({ title: <>Map Sharing</>, thumbnail: "/media/image/pages/videntium/videntiumDB.png" })
+                }>
                 <p>
                     Users of Videntium are also able to make their maps public to all users of the website. On the page
                     that display's a user's private maps, all maps that are shared publicly are also shown. These maps

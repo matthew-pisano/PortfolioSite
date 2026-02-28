@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"The Maniac"}
         author={"Benjamín Labatut"}
-        thumbnail={"/media/image/the-maniac.jpg"}
+        thumbnail={"/media/image/books/the-maniac.jpg"}
         anchor={"maniac"}>
         <BookTileSynopsis>
             <>

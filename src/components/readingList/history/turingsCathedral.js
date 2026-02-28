@@ -6,7 +6,7 @@ export default (
     <BookTile
         title={"Turing's Cathedral"}
         author={"George Dyson"}
-        thumbnail={"/media/image/turings-cathedral.jpg"}
+        thumbnail={"/media/image/books/turings-cathedral.jpg"}
         anchor={"cathedral"}>
         <BookTileSynopsis>
             <>

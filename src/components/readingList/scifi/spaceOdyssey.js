@@ -9,7 +9,7 @@ export default (
     <BookTile
         title={"2001: A Space Odyssey"}
         author={"Arthur C. Clarke"}
-        thumbnail={"/media/image/2001.jpg"}
+        thumbnail={"/media/image/books/2001.jpg"}
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
@@ -71,7 +71,7 @@ export default (
                     taught by his instructor. <br />
                     <br />
                     <audio controls style={{ width: "100%", borderRadius: "10px" }}>
-                        <source src="/media/audio/daisy.mp3" type="audio/mpeg" />
+                        <source src="/media/audio/books/daisy.mp3" type="audio/mpeg" />
                     </audio>
                     <br />
                     <i>
