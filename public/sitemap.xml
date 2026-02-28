@@ -1,107 +1,122 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
+<urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
         <loc>https://matthewpisano.com/</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>1.00</priority>
     </url>
     <url>
-        <loc>https://matthewpisano.com/home</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://matthewpisano.com/about</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://matthewpisano.com/help</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <loc>https://matthewpisano.com/works/blog</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://matthewpisano.com/works/curriculum-vitae</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://matthewpisano.com/works/lectures</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://matthewpisano.com/works/reading-list</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>https://matthewpisano.com/research/bergeron</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://matthewpisano.com/research/chipFiring</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <loc>https://matthewpisano.com/research/chip-firing</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://matthewpisano.com/research/highGround</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <loc>
+            https://matthewpisano.com/research/moral-high-ground
+        </loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://matthewpisano.com/research/predictChain</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <loc>https://matthewpisano.com/research/predict-chain</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://matthewpisano.com/personal/imageCrypt</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <loc>https://matthewpisano.com/personal/image-crypt</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>https://matthewpisano.com/personal/imperium</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>https://matthewpisano.com/personal/inception</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://matthewpisano.com/personal/masm</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>https://matthewpisano.com/personal/simplex</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://matthewpisano.com/personal/univmodels</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <loc>
+            https://matthewpisano.com/personal/universal-models
+        </loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>https://matthewpisano.com/school/destiny</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://matthewpisano.com/school/mipsCmd</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <loc>https://matthewpisano.com/school/mips-cmd</loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>https://matthewpisano.com/school/neural</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>https://matthewpisano.com/school/videntium</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://matthewpisano.com/about/about</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
+        <loc>
+            https://matthewpisano.com/media/documents/professional-summary/curriculum_vitae.pdf
+        </loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://matthewpisano.com/about/resume</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
-        <priority>0.80</priority>
+        <loc>
+            https://matthewpisano.com/works/blog/on-general-transformers
+        </loc>
+        <lastmod>2026-02-28T22:08:13+00:00</lastmod>
+        <priority>0.64</priority>
     </url>
-    <url>
-        <loc>https://matthewpisano.com/assets/resume.pdf</loc>
-        <lastmod>2024-05-07T03:10:01+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-
-
 </urlset>
