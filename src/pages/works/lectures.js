@@ -34,6 +34,51 @@ export default function Lectures() {
             <ScrollTile
                 tileInfo={
                     new TileInfo({
+                        title: <>Artiﬁcial Intelligence and Assistants</>,
+                        thumbnail: "/media/image/organizations/suny-new-paltz.jpg",
+                        tags: [TileTag.AI, TileTag.HACKATHON],
+                        links: (
+                            <>
+                                <TileLink
+                                    href={"/media/documents/presentations/Artificial+Intelligence+and+Assistants.pdf"}>
+                                    Slides
+                                </TileLink>
+                            </>
+                        )
+                    })
+                }>
+                <p>
+                    For this lecture, I was invited to speak at SUNY New Paltz's 2026 hackathon. The theme of this
+                    hackathon was on addressing global issues. For their project development, students were encouraged
+                    to use AI assistants, but not to rely fully on them. The goal of this lecture, given at the kickoff,
+                    was to educate students not only on AI models, but also on their responsible use in software
+                    development.
+                </p>
+                <p>
+                    The primary audience for this lecture was college upperclassmen without a specialized understanding
+                    of AI or machine learning. Similar to my lectures at IBM, this begins with the basic building blocks
+                    of the field and composes more complex ideas from there. I opened on simple, rule-based systems,
+                    then on to deep nural networks, language modeling, LLMs, training methods, and finally AI
+                    assistants. For each topic, I avoided going too deep into theory, as my primary focus was for the
+                    students to develop an intuitive understanding of each topic.
+                </p>
+                <p>Particular areas of interest were:</p>
+                <ul>
+                    <li>
+                        The jump from only linear separability with perceptrons to DNNs as universal function
+                        approximators
+                    </li>
+                    <li>DNN layers as composed functions and the chain rule in backpropagation</li>
+                    <li>Vector embeddings and arithmetic</li>
+                    <li>The vector database analogy for the QKV matrices in the attention mechanism</li>
+                    <li>The purpose of different LLM training regimes</li>
+                    <li>The risks and benefits of using AI coding assistants and agents</li>
+                </ul>
+            </ScrollTile>
+
+            <ScrollTile
+                tileInfo={
+                    new TileInfo({
                         title: <>Foundations of Computability: Incompleteness and Universality</>,
                         thumbnail: "/media/image/organizations/ibm.png",
                         tags: [TileTag.ACADEMIC, TileTag.MATH]
