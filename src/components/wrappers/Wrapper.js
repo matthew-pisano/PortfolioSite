@@ -57,7 +57,7 @@ class PageInfo {
      * @param summary {string} A brief summary of the page
      * @param layoutStyle {object} The style of the page holder
      * @param tags {string[]} The tags for the page
-     * @param links {JSXElement} Links to display at the top of the page
+     * @param links {*[]} Links to display at the top of the page
      */
     constructor(pageName, title, summary, layoutStyle = {}, tags = [], links = []) {
         this.pageName = pageName;
@@ -77,15 +77,17 @@ class TileInfo {
      * A Metadata for a tile
      * @param title {JSXElement} The title of the tile
      * @param thumbnail {string} The thumbnail image for the tile
+     * @param thumbnailTag {JSXElement} An element to be displayed under the thumbnail
      * @param tags {string[]} The tags for the tile
-     * @param links {JSXElement} Links to display
+     * @param links {*[]} Links to display
      * @param titleLink {string} The link that the title should go to
      * @param anchor {string} The name of the anchor link to the tile
      */
-    constructor({ title, thumbnail = "", tags = [], links = [], titleLink = "", anchor = "" }) {
+    constructor({ title, thumbnail = "", thumbnailTag = null, tags = [], links = [], titleLink = "", anchor = "" }) {
         this.title = title;
         this.tags = tags;
         this.thumbnail = thumbnail;
+        this.thumbnailTag = thumbnailTag;
         this.titleLink = titleLink;
         this.links = links;
         this.anchor = anchor;

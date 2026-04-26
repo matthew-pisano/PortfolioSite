@@ -1,5 +1,6 @@
 import React from "react";
 
+import Link from "next/link";
 import PropTypes from "prop-types";
 
 import { GalleryTile } from "@/components/tiles/Tiles";
@@ -9,6 +10,7 @@ import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
 import { blogInfo as compiledPython } from "@/pages/works/blog/compiled-python";
 import { blogInfo as genTransformers } from "@/pages/works/blog/on-general-transformers";
+import tileStyles from "@/styles/tiles/Tiles.module.css";
 
 /**
  * A blog tile on the landing page
@@ -58,6 +60,15 @@ export default function Blog() {
                     new TileInfo({
                         title: <>{compiledPython.title}</>,
                         thumbnail: "/media/image/pages/blog/compiled-python/python-low.webp",
+                        thumbnailTag: (
+                            <Link
+                                href={"https://www.flickr.com/photos/28342603@N02"}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`${tileStyles.displayTileCreditLink}`}>
+                                Image Credit: Mark Gillow
+                            </Link>
+                        ),
                         titleLink: "/works/blog/compiled-python"
                     })
                 }

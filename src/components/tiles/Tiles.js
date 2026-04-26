@@ -87,6 +87,7 @@ function tileFactory(tileInfo, children = null) {
     let tileThumbnail = tileInfo.thumbnail ? (
         <div className={`w3-mobile w3-col ${styles.displayTileThumbnail}`}>
             <img src={tileInfo.thumbnail} alt="gitLogo" />
+            <div className={`${styles.displayTileThumbnailTag}`}>{tileInfo.thumbnailTag}</div>
         </div>
     ) : null;
 
@@ -188,6 +189,7 @@ function GalleryTile({ children, tileInfo, style }) {
         <TileBody id={tileElements.tileId} style={style}>
             <div className={`w3-mobile w3-col ${styles.displayTileThumbnail} ${styles.galleryTileThumbnail}`}>
                 <img src={tileInfo.thumbnail} alt="gitLogo" />
+                <div className={`${styles.displayTileThumbnailTag}`}>{tileInfo.thumbnailTag}</div>
             </div>
 
             <div className={`w3-mobile w3-rest`} style={{ marginTop: "10px" }}>
