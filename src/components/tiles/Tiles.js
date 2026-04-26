@@ -190,7 +190,7 @@ function GalleryTile({ children, tileInfo, style }) {
                 <img src={tileInfo.thumbnail} alt="gitLogo" />
             </div>
 
-            <div className={`w3-mobile w3-rest`}>
+            <div className={`w3-mobile w3-rest`} style={{ marginTop: "10px" }}>
                 <h4 className={`${styles.displayContentTitle} ${styles.galleryTileTitle}`}>{tileElements.tileTitle}</h4>
                 <div style={{ position: "relative" }}>
                     <div className={`${styles.displayTileContent} ${styles.galleryTileContent}`}>{children}</div>
