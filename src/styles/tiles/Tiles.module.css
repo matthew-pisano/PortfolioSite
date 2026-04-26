@@ -23,6 +23,19 @@
     width: 300px;
 }
 
+.displayTileThumbnailTag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayTileCreditLink {
+    font-size: smaller;
+    font-style: italic;
+    text-decoration: none;
+    color: var(--theme-text);
+}
+
 .displayTileThumbnail > img {
     max-width: 100%;
     object-fit: contain;
