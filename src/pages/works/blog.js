@@ -57,7 +57,7 @@ export default function Blog() {
                 tileInfo={
                     new TileInfo({
                         title: <>{compiledPython.title}</>,
-                        thumbnail: "/media/image/pages/blog/compiled-python/python.webp",
+                        thumbnail: "/media/image/pages/blog/compiled-python/python-low.webp",
                         titleLink: "/works/blog/compiled-python"
                     })
                 }
