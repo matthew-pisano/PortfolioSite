@@ -115,6 +115,18 @@ export default function CompiledPython() {
                     Python interpreters and JIT compilers are popular and widely used. Why only these two classes of
                     implementations, though. Why not implement Python as a fully compiled language?
                 </p>
+                <BlogSection>Prior Art</BlogSection>
+                <BlogSection>Why Python Works as an Interpreted Language</BlogSection>
+                <BlogSection>A Python Compiler</BlogSection>
+                <BlogSection level={2}>The Compiler Frontend</BlogSection>
+                <BlogSection level={2}>The Compiler Backend</BlogSection>
+                <BlogSection>Intermediate Representations</BlogSection>
+                <BlogSection level={2}>Python Bytecode</BlogSection>
+                <BlogSection level={2}>PyIR</BlogSection>
+                <BlogSection level={2}>LLVM IR</BlogSection>
+                <BlogSection>A Python Standard Library</BlogSection>
+                <BlogSection>Memory Management</BlogSection>
+                <BlogSection>Closing Remarks</BlogSection>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
