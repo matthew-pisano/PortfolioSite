@@ -7,6 +7,7 @@ import FlexWrapper from "@/components/wrappers/FlexWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
+import { blogInfo as compiledPython } from "@/pages/works/blog/compiled-python";
 import { blogInfo as genTransformers } from "@/pages/works/blog/on-general-transformers";
 
 /**
@@ -51,6 +52,17 @@ export default function Blog() {
                 }
                 date={genTransformers.date}>
                 {genTransformers.subtitle}
+            </BlogTile>
+            <BlogTile
+                tileInfo={
+                    new TileInfo({
+                        title: <>{compiledPython.title}</>,
+                        thumbnail: "/media/image/pages/blog/compiled-python/python.webp",
+                        titleLink: "/works/blog/compiled-python"
+                    })
+                }
+                date={compiledPython.date}>
+                {compiledPython.subtitle}
             </BlogTile>
         </FlexWrapper>
     );
