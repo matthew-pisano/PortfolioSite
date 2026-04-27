@@ -113,10 +113,102 @@ export default function CompiledPython() {
                 </p>
                 <p>
                     Python interpreters and JIT compilers are popular and widely used. Why only these two classes of
-                    implementations, though. Why not implement Python as a fully compiled language?
+                    implementations, though. Why not implement Python as a fully ahead-of-time (AOT) compiled language?
                 </p>
                 <BlogSection>Prior Art</BlogSection>
-                <BlogSection>Why Python Works as an Interpreted Language</BlogSection>
+                <p>
+                    Many different Python compiler implementation have been developed, though none are as widely used as
+                    their interpreted or JIT counterparts.{" "}
+                    <Link href={"https://github.com/lcompilers/lpython"} target="_blank" rel="noopener noreferrer">
+                        lpython
+                    </Link>{" "}
+                    is one such implementation from <i>lcompilers</i>. It focuses on compiling a typed subset of Python
+                    down to machine code. It relies upon LLVM for compilation (through their lfortran project) and
+                    implements its own custom Python parser for preprocessing.
+                </p>
+                <p>
+                    <Link href={"https://github.com/exaloop/codon"} target="_blank" rel="noopener noreferrer">
+                        codon
+                    </Link>{" "}
+                    by <i>exaloop</i> is implemented in a similar manner, with more of a focus on high-performance
+                    programming and GPU interoperability. It also relies upon LLVM for compilation and has implemented a
+                    parser for a Python-like DSL of their own design. Their Python DSL requires static typing as type
+                    checking is performed at compile-time. This eliminates some of Python dynamic typing features.
+                </p>
+                <p>
+                    Finally,{" "}
+                    <Link
+                        href={"https://github.com/Pylir/Pylir/tree/main/src"}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Pylir
+                    </Link>{" "}
+                    is a compiler for Python that lowers Python source code down to a dialect of MLIR before being
+                    compiled by LLVM. This project also uses a custom Python parser to embed Python source code into a
+                    more controlled intermediate representation. This implementation utilizes garbage collection for
+                    memory management and aims to handle vanilla Python without significant modifications.
+                </p>
+                <p>
+                    These examples follow a similar pattern: using a custom Python parser over the CPython parser and
+                    often enforcing static typing as a requirement for compilation. Why is this? Why not take in vanilla
+                    Python with all its dynamic typing conveniences and extensive Bytecode implementation?
+                </p>
+                <BlogSection>Why Python Works Best as an Interpreted Language</BlogSection>
+                <p>
+                    There is good reason as to why Python AOT compilation projects tend to modify the standard of Python
+                    that they accept and why CPython itself is not always a direct dependency. A large reason for
+                    Python's success as a language can be attributed to its shallow learning curve and ease-of-use. A
+                    core component of this is Python's dynamic typing system. Python can be classified as having strong
+                    but dynamic typing.
+                </p>
+                <p>
+                    Being a strongly typed language means that types have well-defined interactions with other types and
+                    with themselves. They have strict, user-defined properties and the attributes of a type generally do
+                    not change at runtime. This is similar to language like Java where class interactions are strictly
+                    defined and a class' variables and methods are static at runtime. You cannot add a function to a
+                    Java class during program execution where there was none before. Strict typing is not exhibited by
+                    languages like JavaScript. JS has a "type coercion" system that tries to force different types to
+                    interact, even if no well-defined interaction is defined by the programmer. A very common example of
+                    this is comparing an integer type to a string type. In JS <code>5 == '5'</code> evaluates as truthy
+                    because the string is coerced into a number before the comparison. Languages like Java or Python
+                    would evaluate to a truthy value. JavaScript also supports defining arbitrary attributes for classes
+                    at runtime through the object's <i>prototype</i>.
+                </p>
+                <p>
+                    As a dynamically typed language, Python does not associate a type with specific variables or
+                    attributes, but rather with their values. In languages like Python or JavaScript, you can define{" "}
+                    <code>a = 2</code> and later redefine <code>a = true</code>. Initially, the type of <code>a</code>{" "}
+                    will evaluate as an integer, but later it will evaluate to a boolean type. This is because Python
+                    does not associate any type with the variable itself at all. Only the value that the variable
+                    currently references has a type. This is dissimilar to languages like Java, where <code>a</code>{" "}
+                    would be declared with a specific type originally and all subsequent assignments must be compatible
+                    with that type.
+                </p>
+                <p>
+                    While many AOT compiled languages are strongly typed, not many are dynamically typed. This is
+                    because a dynamically typed language only evaluates types at runtime, while the program is actively
+                    executing. From the perspective of the compiler, assuming that a specific variable will always hold
+                    a specific type allows for more optimizations to be performed and more code to be inlined. For
+                    example, suppose a compiler for a statically typed language saw the statement <code>a + b</code>.
+                    Further assume that operators could be overloaded between arbitrary types. In this situation, it
+                    would be able to deduce which operator code was associated with the "plus" symbol for the two types
+                    and inline that in place of the original statement. For a dynamically typed language, inlining
+                    ahead-of-time in this manner would be unavailable. The program would need to dynamically choose
+                    which "plus" code to execute at runtime.
+                </p>
+                <p>
+                    Another reason why Python is best implemented as an interpreted language is that the Python Language
+                    Reference does not define any procedure for wither interpreting the language or lowering it to
+                    target machine code. This is left as an implementation detail for the interpreter designers. An
+                    interpreter is compliant as long as it is able to process the latest Python language standard,
+                    regardless of how it is implemented. CPython, the most popular implementation, utilizes Python
+                    bytecode as an intermediate representation for the interpreter to execute. This bytecode, unlike
+                    Java bytecode, is considered an internal implementation detail of CPython. It is documented, but
+                    there are no guarantees of backwards or forwards compatability. Opcodes may change, appear, or
+                    disappear between even minor releases. This instability makes relying directly upon CPython as a
+                    parser unattractive for the previously mentioned Python compilers. Therefore, they tend to implement
+                    their own Python parsers and intermediate representations.
+                </p>
                 <BlogSection>A Python Compiler</BlogSection>
                 <BlogSection level={2}>The Compiler Frontend</BlogSection>
                 <BlogSection level={2}>The Compiler Backend</BlogSection>
