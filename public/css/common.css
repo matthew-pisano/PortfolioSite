@@ -34,6 +34,10 @@ code {
     border-radius: 5px;
 }
 
+pre code {
+    background-color: transparent;
+}
+
 blockquote {
     font-style: italic;
     border-radius: 5px;
