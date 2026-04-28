@@ -1,7 +1,9 @@
 import React from "react";
 
+import mlir from "highlightjs-mlir";
 import Link from "next/link";
-import Latex from "react-latex-next";
+import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { BlogSection } from "@/components/widgets/BlogSection";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
@@ -16,6 +18,8 @@ const blogInfo = new BlogInfo(
 );
 
 export default function CompiledPython() {
+    SyntaxHighlighter.registerLanguage("mlir", mlir);
+
     return (
         <BlogWrapper
             pageName={genPageTitle(__filename)}
@@ -198,7 +202,7 @@ export default function CompiledPython() {
                 </p>
                 <p>
                     Another reason why Python is best implemented as an interpreted language is that the Python Language
-                    Reference does not define any procedure for wither interpreting the language or lowering it to
+                    Reference does not define any procedure for either interpreting the language or lowering it to
                     target machine code. This is left as an implementation detail for the interpreter designers. An
                     interpreter is compliant as long as it is able to process the latest Python language standard,
                     regardless of how it is implemented. CPython, the most popular implementation, utilizes Python
@@ -210,7 +214,130 @@ export default function CompiledPython() {
                     their own Python parsers and intermediate representations.
                 </p>
                 <BlogSection>A Python Compiler</BlogSection>
+                <p>
+                    While writing a custom Python compiler is the most maintainable avenue for beginning a Python
+                    compiler project, my goal was to focus more on the short-term process over long-term maintenance. My
+                    project aimed to create a program that would compile Python source code down to an executable binary
+                    in the minimum amount of time possible. This is because I was primarily interested in teaching
+                    myself more about Python bytecode, MLIR dialects, and the LLVM compilation API. Using the ready-made
+                    CPython API would allow me to concentrate specifically on these areas of interest.
+                </p>
+                <p>
+                    <Link
+                        href={"https://github.com/matthew-pisano/pycompile"}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        pycompile
+                    </Link>{" "}
+                    is implemented in three stages. First, the preprocessor uses the CPython API to parse Python source
+                    code into Python bytecode. Next, that bytecode is translated to a dialect of MLIR called PyIR.
+                    Finally, that dialect is translated to LLVM IR and compiled down to machine code using the LLVM
+                    compilation API. The first two stages serve as pycompile's frontend while LLVM serves as the
+                    backend, translating IR code to machine code.
+                </p>
                 <BlogSection level={2}>The Compiler Frontend</BlogSection>
+                <p>
+                    As mentioned, the frontend is broken into two parts: the Python bytecode disassembly and the
+                    conversion to PyIR. The bytecode layer takes in unmodified Python code and decodes it into{" "}
+                    <code>ByteCodeModule</code> structs which represent a module. During development, this led to the
+                    first issue of the project. The C++ API exposed by CPython does not directly offer the functionality
+                    for generating bytecode. This makes sense since, as mentioned, this is considered an internal
+                    implementation detail of the interpreter. Exposing it directly as a feature would imply official
+                    support. What to do, then?
+                </p>
+                <p>
+                    Even though the API does not directly support bytecode disassembly, Python itself does through the{" "}
+                    <code>dis</code> library. Using the interpreter I can import this module and execute its disassembly
+                    functionality s if I were calling it directly from a Python program. This yields an iterator of{" "}
+                    <code>PyObject</code> pointers which I can then translate directly to the{" "}
+                    <code>ByteCodeInstruction</code> structs which make up the module.
+                </p>
+                <p>
+                    This works surprisingly well, but CPython shifts the responsibility of memory management onto the
+                    programmer. This has two major consequences for this project. The first of which concerns the{" "}
+                    <code>PyObject</code> pointers that I use for the disassembly. To prevent memory leaks, pycompile
+                    needs to keep track of the lifetimes of each object and call <code>Py_DECREF()</code> appropriate to
+                    manage the object's reference count. The second issue has to do with the Python interpreter itself.
+                    At the beginning of any program which utilize the interpreter, <code>Py_Initialize()</code> must be
+                    called before and interaction occurs and <code>Py_Finalize()</code> must be called after. These
+                    actions are similarly the responsibility of the programmer to execute. If these are not called in
+                    the correct order, or if the original scope is deleted, the program will leak memory or outright
+                    segfault. To solve this particular issue, I created a RAII wrapper to ensure that the lifetime of
+                    the interpreter is properly managed.
+                </p>
+                <p>
+                    After the Python code is translated into a <code>ByteCodeModule</code>, it requires further
+                    processing before being passed off to LLVM. This comes in the form of a custom MLIR dialect called
+                    PyIR. Why a custom dialect, though? Why not translate directly to LLVM IR?
+                </p>
+                <p>
+                    Python and LLVM IR are very different languages. LLVM IR is statically typed and strongly
+                    opinionated. Python is neither of these. To make this translation as smooth as possible, I needed
+                    another intermediate representation to bridge this GAP. This is where PyIR is used. It is a dialect
+                    of MLIR, meaning that it shares many similarities with vanilla MLIR, but has been extended with
+                    Python-specific instructions. With this dialect, I can translate each bytecode instruction into an
+                    equivalent PyIR instruction. This also lets the program hook into a C++ runtime to handle Python's
+                    dynamic type system and unique scope management. For example, a basic Python hello world program
+                    generates the following MLIR:
+                </p>
+                <SyntaxHighlighter
+                    language="mlir"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`module {
+  func.func @__pymodule() {
+    pyir.init_module "pycompile/examples/hello_world.py", "__main__"
+    %0 = pyir.make_function "__pyfn_main_0"
+    pyir.store_name "main", %0 : !pyir.object
+    %1 = pyir.load_name "__name__"
+    %2 = pyir.load_const "__main__"
+    %3 = pyir.compare_op "bool(==)", %1, %2 : !pyir.object -> !pyir.object
+    %4 = pyir.is_truthy %3 : !pyir.object -> i1
+    cf.cond_br %4, ^bb2, ^bb1
+  ^bb1:  // pred: ^bb0
+    pyir.destroy_module
+    return
+  ^bb2:  // pred: ^bb0
+    %5 = pyir.load_name "main"
+    %6 = pyir.push_null
+    %7 = pyir.call %5() : () -> !pyir.object
+    pyir.destroy_module
+    return
+  }
+  func.func @__pyfn_main_0(%arg0: !pyir.object, %arg1: !pyir.object) -> !pyir.object {
+    pyir.push_scope
+    %0 = pyir.load_name "print"
+    %1 = pyir.push_null
+    %2 = pyir.load_const "Hello, World!"
+    %3 = pyir.call %0(%2) : (!pyir.object) -> !pyir.object
+    %4 = pyir.load_const #pyir.none
+    pyir.pop_scope
+    pyir.return_value %4 : !pyir.object
+  }
+}`}
+                </SyntaxHighlighter>
+                <p>
+                    Notice the instructions prefixed with <i>pyir</i> like <code>pyir.load_name</code>. These dialect
+                    extensions allow PyIR to get as close to Python bytecode as possible while remaining compatible with
+                    MLIR. Since it remains compatible with MLIR, it can be later translated to LLVM IR for the backend.
+                </p>
+                <p>
+                    Despite this compatibility, Python Bytecode still cannot be directly translated to PyIR without some
+                    manipulation. This is a consequence of the Python interpreter's implementation as a{" "}
+                    <i>stack machine</i>. It processes incoming instructions primarily by pushing and popping from a
+                    central stack of values. This works well for an interpreted language, but would be difficult to
+                    directly translate into register-based assembly (through MLIR). For this project, I needed a
+                    sequence of instructions that could be executed as-is, without needing to constantly reference a
+                    stack at runtime. To accommodate this, pycompile simulates a runtime stack during the translation
+                    process. If an bytecode instruction references arguments on the stack, <i>BUILD_LIST</i> for
+                    example, those arguments are popped off of the virtual stack and the result is pushed back onto it.
+                    This effectively unrolls the stack, allowing each PyIR instruction to be self-contained with
+                    arguments that reference other instruction results directly, without needing to go through the stack
+                    first.
+                </p>
                 <BlogSection level={2}>The Compiler Backend</BlogSection>
                 <BlogSection>Intermediate Representations</BlogSection>
                 <BlogSection level={2}>Python Bytecode</BlogSection>
