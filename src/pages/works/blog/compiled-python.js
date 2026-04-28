@@ -339,6 +339,38 @@ export default function CompiledPython() {
                     first.
                 </p>
                 <BlogSection level={2}>The Compiler Backend</BlogSection>
+                <p>
+                    The backend for this compiler is luckily much more straightforward. Since PyIR is a dialect of MLIR,
+                    it can almost directly be translated to LLVM IR. From there, LLVM can compile the IR code down to an
+                    object where it can be linked with a main library. The main issue for this stage is how to best
+                    translate bespoke Python operations like <code>pyir.load_name</code> to instructions in LLVM IR. The
+                    initial solution for MLIR was to simply extend it with dialect instructions, but that option is
+                    unavailable at this stage. Another option would be to translate a "variable load" operation directly
+                    into raw LLVM IR. However, Python's dynamic typing makes this straightforward option much more
+                    difficult.
+                </p>
+                <p>
+                    LLVM IR (and MLIR, hence the dialect) are strongly and statically typed languages. Simple assignment
+                    and reassignment with arbitrary types will not work here the same way it works in Python. This is
+                    likely a partial motivation for most other Python compilers to mandate strict typing. LLVM IR does
+                    have the concept of "opaque pointers", meaning that the <code>ptr</code> type contains no specific
+                    type information. However, the language still requires predetermined information on how large the
+                    pointed-to object is in memory, making true dynamic typing difficult. Another LLVM-only option would
+                    be to create custom vtables and function pointers, but this would require significant low-level
+                    translation logic to map Python primitives (and data structures) to LLVM types. Using this method to
+                    handle member functions (like <code>dict::update()</code>) would require more custom logic on top of
+                    this. Suffice to say, there is a good reason why most low-level languages are strictly typed.
+                </p>
+                <p>
+                    What, then, is the best option for handling Python's type mechanism? The solution that I settled
+                    upon for pycompile was to use LLVM's opaque pointers to point to high-level <code>pyir.object</code>
+                    s. References to these objects in memory are then passed to linked C++ runtime functions which
+                    perform the actual type resolution and handling. By routing through C++ in this manner, the program
+                    can abstract away all of the type handling logic to a standard runtime library which is
+                    knowledgeable of the concrete Python types. However, this means that C++ niceties like smart
+                    pointers are unavailable, since LLVM pointers are only raw pointers to memory. This will have
+                    consequences later when we consider memory management.
+                </p>
                 <BlogSection>Intermediate Representations</BlogSection>
                 <BlogSection level={2}>Python Bytecode</BlogSection>
                 <BlogSection level={2}>PyIR</BlogSection>
