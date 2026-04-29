@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import parse from "html-react-parser";
+import Head from "next/head";
 
 import { SysEnv } from "@/lib/fileSystem/fileSystemMeta";
 
@@ -73,7 +74,7 @@ export default function Admin() {
 
     async function accessGranted() {
         const authTTL = 60000;
-        let authToken = "screwball";
+        let authToken = "screwball"; // Very much intentionally poor security
         let authTokenName = "mathesisAdminAuth";
         let date = new Date();
         date.setTime(date.getTime() + authTTL);
@@ -83,7 +84,8 @@ export default function Admin() {
         document.getElementById("adminPw").remove();
         document.getElementById("pwPrompt").remove();
 
-        holder.innerHTML += `<p>Loading sensitive data.  Do not disclose...</p>
+        holder.innerHTML += `<p><i>Login Successful</i></p>
+            <p>Loading sensitive data.  Do not disclose...</p>
             <p>Granting temporary permission...</p>
             <p style="color: red">Re-authentication will be required shortly after this session.</p>`;
 
@@ -133,7 +135,6 @@ export default function Admin() {
             if ("" + inputCode === "228,202,220,194,210,230,230,194,220,198,202") return await renaissance();
             else if ("" + inputCode === "194,220,222,218,194,216,242") return await anomaly();
 
-            input.innerText = "incorrect";
             input.contentEditable = "false";
             holder.style.color = "red";
             await new Promise((r) => setTimeout(r, 750));
@@ -146,8 +147,11 @@ export default function Admin() {
 
     return (
         <div>
+            <Head>
+                <title>Administrator Landing Shell</title>
+            </Head>
             <p style={{ userSelect: "none" }}>{parse(mathesisIcon)}</p>
-            <span style={{ display: "none" }}>
+            <span className={"auth-status"} style={{ display: "none" }}>
                 ERROR preloadin����├-�=�▒I␌�L�|���┘�edentials for Project <i>renais��▒ce</i>. DATA CORRUP
                 GNUq���@��qvz���� <br />
                 ERROR prel:▒; .(=0?8@@BHDPdin��H�.␍H�%(H�D$␤1���┘� <i>anom@ly</i> inform◆(▒0␉8␌@␍H°P±X␤◆␋␤┐ion.
