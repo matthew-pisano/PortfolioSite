@@ -99,9 +99,10 @@ class TileInfo {
  * @param children {JSX.Element} The page content tiles and other elements
  * @param pageName {string} The name of the page
  * @param pageClass {object} The class of the inner page element
+ * @param title {string} The title of the page
  * @return {JSX.Element} The wrapper for the page
  */
-function Wrapper({ children, pageName, pageClass }) {
+function Wrapper({ children, pageName, pageClass, title }) {
     const [currentPath, setCurrentPath] = useState(null);
 
     let dehydratedInfo;
@@ -120,10 +121,12 @@ function Wrapper({ children, pageName, pageClass }) {
         setTheme(localStorage.getItem("theme"));
     }, []);
 
+    let titleContent = title ? title : pageName.substring(pageName.lastIndexOf("/") + 1) + ".html";
+
     return (
         <div id="wrapper" className={`w3-display-container ${styles.wrapper}`}>
             <Head>
-                <title>{pageName.substring(pageName.lastIndexOf("/") + 1) + ".html"}</title>
+                <title>{titleContent}</title>
             </Head>
             <HeaderMenu currentPath={currentPath} />
 
@@ -153,7 +156,8 @@ function Wrapper({ children, pageName, pageClass }) {
 Wrapper.propTypes = {
     children: PropTypes.arrayOf(PropTypes.element),
     pageName: PropTypes.string,
-    pageClass: PropTypes.object
+    pageClass: PropTypes.object,
+    title: PropTypes.string,
 };
 
 export default Wrapper;

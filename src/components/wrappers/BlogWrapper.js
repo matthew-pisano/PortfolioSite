@@ -78,7 +78,7 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
     let dateElem = <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>;
 
     return (
-        <Wrapper pageName={pageName}>
+        <Wrapper pageName={pageName} title={title}>
             <div className={styles.blogTitle}>
                 <h1>
                     <b>{title}</b>
