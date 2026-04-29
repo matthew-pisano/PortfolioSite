@@ -6,8 +6,6 @@ export default function Document() {
     return (
         <Html style={{ height: "100%" }} lang="en">
             <Head>
-                <meta name="description" content="A showcase of my projects, skills, and future goals" />
-
                 <link
                     href="https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/css/katex.css"
                     rel="stylesheet"
