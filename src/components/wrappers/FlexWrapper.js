@@ -15,7 +15,7 @@ import wrapperStyles from "@/styles/wrappers/Wrapper.module.css";
  */
 function FlexWrapper({ children, pageInfo, className }) {
     return (
-        <Wrapper pageName={pageInfo.pageName} pageClass={className}>
+        <Wrapper pageName={pageInfo.pageName} pageClass={className} title={pageInfo.title}>
             <div className={`${wrapperStyles.titleCard}`}>
                 <h1>{pageInfo.title}</h1>
                 <br />
