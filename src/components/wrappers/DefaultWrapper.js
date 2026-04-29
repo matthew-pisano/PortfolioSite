@@ -15,7 +15,7 @@ import wrapperStyles from "@/styles/wrappers/Wrapper.module.css";
  */
 function DefaultWrapper({ children, pageInfo }) {
     return (
-        <Wrapper pageName={pageInfo.pageName} title={pageInfo.title}>
+        <Wrapper pageName={pageInfo.pageName} title={pageInfo.title} description={pageInfo.summary}>
             <div className={`${wrapperStyles.titleCard}`}>
                 <h1>{pageInfo.title}</h1>
                 <br />

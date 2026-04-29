@@ -48,8 +48,6 @@ function addWrapperListeners() {
  * Metadata for a page
  */
 class PageInfo {
-    pageName;
-
     /**
      * Metadata for a page
      * @param pageName {string} The name of the page
@@ -100,9 +98,10 @@ class TileInfo {
  * @param pageName {string} The name of the page
  * @param pageClass {object} The class of the inner page element
  * @param title {string} The title of the page
+ * @param description {string} The description of the page
  * @return {JSX.Element} The wrapper for the page
  */
-function Wrapper({ children, pageName, pageClass, title }) {
+function Wrapper({ children, pageName, pageClass, title, description }) {
     const [currentPath, setCurrentPath] = useState(null);
 
     let dehydratedInfo;
@@ -127,6 +126,7 @@ function Wrapper({ children, pageName, pageClass, title }) {
         <div id="wrapper" className={`w3-display-container ${styles.wrapper}`}>
             <Head>
                 <title>{titleContent}</title>
+                <meta name="description" content={description} key="desc" />
             </Head>
             <HeaderMenu currentPath={currentPath} />
 
@@ -158,6 +158,7 @@ Wrapper.propTypes = {
     pageName: PropTypes.string,
     pageClass: PropTypes.object,
     title: PropTypes.string,
+    description: PropTypes.string
 };
 
 export default Wrapper;
