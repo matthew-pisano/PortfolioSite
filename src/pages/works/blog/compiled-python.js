@@ -372,7 +372,77 @@ export default function CompiledPython() {
                     consequences later when we consider memory management.
                 </p>
                 <BlogSection>Intermediate Representations</BlogSection>
+                <p>
+                    Before moving on, it is important to understand the different levels of intermediate representations
+                    needed to reach the eventual runtime.
+                </p>
                 <BlogSection level={2}>Python Bytecode</BlogSection>
+                <p>
+                    The first translation of the raw Python code is to CPython's Python bytecode. Related to previous
+                    points on bytecode's instability, this section is most relevant to bytecode for Python 3.14.
+                    Especially after 3.11 and 3.12 function calls and for loops have undergone significant changes.
+                    Further changes will undoubtedly occur in the future.
+                </p>
+                <p>
+                    As mentioned bytecode instructions are always processed within the context of a main stack (barring
+                    exception handling). As the interpreter executes, instructions are evaluated in sequence while
+                    modifying the contents of the data stack. Objects on this stack need not be objects in the
+                    traditional sense either. Functions, scopes, and other metadata can also be pushed and popped like
+                    data types. For example, if a <i>BUILD_LIST</i> instruction with an argument of <i>3</i> is being
+                    evaluated, then three objects will be popped from the stack and placed into a new list data
+                    structure reference which is pushed onto the top of the stack.
+                </p>
+                <p>
+                    Python bytecode provides several specialized loading and storing functions. These are the main ways
+                    of fetching from and storing to memory through variable references. Generally, load functions load
+                    an object from memory and place it at the top of the stack and store functions take the object from
+                    the top of the stack and store it in memory. For example, <i>LOAD_CONST</i> is one of the most
+                    complex functions to handle. It is responsible for loading constant literals (<code>1</code>,{" "}
+                    <code>True</code>, <code>"Hello"</code>) onto the stack. <i>LOAD_FAST</i> and <i>STORE_FAST</i> load
+                    and store variables local to the current scope. There are also global load and store instructions
+                    for loading variables from global scope. <i>LOAD_NAME</i> and <i>STORE_NAME</i> handle variables
+                    from any available scope. Generally, these operations take a single identifier as an argument.
+                </p>
+                <p>
+                    Simple logical operations are generally handled by <i>BINARY_OP</i> and <i>COMPARE_OP</i>. The
+                    binary operator takes care of arithmetic operations like addition, multiplication, modulo, or
+                    certain logical assignment operators. In contrast, unary operations like "not" are generally
+                    performed by specialized bytecode instructions like <i>UNARY_NOT</i>. Here is another example of
+                    bytecode's continually evolving nature. Before 3.11, binary operations were handled by specific
+                    instructions like <i>BINARY_ADD</i> and <i>BINARY_MULTIPLY</i>, similar to how unary operations are
+                    handled, instead of the more general <i>BINARY_OP</i>. These logical operations also present another
+                    motivation for having a C++ runtime over generated MLIR. The operation that <i>BINARY_OP +</i>{" "}
+                    performs could be a concatenation if the top two stack objects are strings or an addition if they
+                    are integers. The types of the top two stack objects is entirely runtime dependent and would
+                    therefore be difficult to encode in advance with MLIR.
+                </p>
+                <p>
+                    Jump instructions have also undergone recent changes. Instructions like <i>JUMP_FORWARD</i> or{" "}
+                    <i>JUMP_BACKWARD</i> take integer arguments. For jumping forward, this is a simple absolute offset
+                    to the target block. Previously, jumping backward was implemented with byte offsets relative to the
+                    jump instruction when it was introduced in 3.11. Post 3.12, this was changed to an absolute
+                    instruction offset like forward jumping. This one in particular is tricky since most online
+                    resources reference the old implementation as of the time of writing.
+                </p>
+                <p>
+                    Each Python function (though not builtins) contains a special <code>__code__</code> attribute. This
+                    attribute points to <code>PyCodeObject</code> structs within CPython. This object contains important
+                    metadate for the function and its scope. Namely, three tuples of references.{" "}
+                    <code>co_varnames</code> contains the names of all local variables. <code>co_cellvars</code>{" "}
+                    contains the names of local variables in this scope that are referenced by inner functions or
+                    closures. These variables may outlive their original function if the lifetime of the closure exceeds
+                    it. Finally, <code>co_freevars</code> contains the names of variables in the current scope that are
+                    defined in an outer scope, a view from the other side of <code>co_cellvars</code>. When calling{" "}
+                    <code>LOAD_FAST 0</code>, the interpreter looks up the variable name stored in{" "}
+                    <code>co_varnames[0]</code> and the top of the stack is stored in that variable.
+                </p>
+                <p>
+                    Actually calling a function often requires the use of the <i>CALL</i> instruction. When the
+                    interpreter sees <code>CALL N</code>, it pops three items from the top of the stack and uses them as
+                    arguments to the function now sitting at the top of the stack. For free functions, the interpreter
+                    will also call <i>PUSH_NULL</i> immediately before the <i>CALL</i> instruction. This null serves as
+                    a placeholder for a self reference. However, since free functions have no self, this is always null.
+                </p>
                 <BlogSection level={2}>PyIR</BlogSection>
                 <BlogSection level={2}>LLVM IR</BlogSection>
                 <BlogSection>A Python Standard Library</BlogSection>
