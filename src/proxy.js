@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function proxy(request) {
     const cookieStore = await cookies();
     const authToken = cookieStore.get("mathesisAdminAuth");
-    let hasAdminAuth = authToken && authToken.value === "screwball";
+    let hasAdminAuth = authToken && authToken.value === "screwball"; // See admin page for usage and disclaimer
 
     if (request.nextUrl.pathname.startsWith("/secure") && !hasAdminAuth)
         return NextResponse.redirect(new URL("/403", request.url));
