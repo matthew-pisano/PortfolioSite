@@ -444,6 +444,47 @@ export default function CompiledPython() {
                     a placeholder for a self reference. However, since free functions have no self, this is always null.
                 </p>
                 <BlogSection level={2}>PyIR</BlogSection>
+                <p>
+                    Before describing the translation from bytecode to PyIR, I should spend some time going over its
+                    definition. For any program defining a dialect of MLIR, the extensions to the language are defined
+                    within a <i>tablegen</i> file. One thing of note as well: the naming of the identifiers matters in a
+                    tablegen file. For example, consider:
+                </p>
+                <SyntaxHighlighter
+                    language="mlir"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`def PyIR_Dialect : Dialect {
+    let name = "pyir";
+    let summary = "Python bytecode IR dialect";
+    let cppNamespace = "::pyir";
+    let useDefaultTypePrinterParser = 1;
+    let useDefaultAttributePrinterParser = 1;
+}`}
+                </SyntaxHighlighter>
+                <p>
+                    This block defines a top-level dialect called <i>PyIR</i>, not <i>PyIR_Dialect</i>. Similarly:
+                </p>
+                <SyntaxHighlighter
+                    language="mlir"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`def PyIR_InitModule : PyIR_Op<"init_module"> {
+    let summary = "Initialize module-level metadata";
+    let arguments = (ins StrAttr:$file, StrAttr:$name);
+    let assemblyFormat = "$file \`,\` $name attr-dict";
+}`}
+                </SyntaxHighlighter>
+                <p>
+                    This defines an instruction named just <i>InitModule</i> and referenced in C++ as{" "}
+                    <code>pyir::InitModule</code>.
+                </p>
                 <BlogSection level={2}>LLVM IR</BlogSection>
                 <BlogSection>A Python Standard Library</BlogSection>
                 <BlogSection>Memory Management</BlogSection>
