@@ -3,6 +3,9 @@ import React from "react";
 import mlir from "highlightjs-mlir";
 import Link from "next/link";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import cmake from "react-syntax-highlighter/dist/cjs/languages/hljs/cmake";
+import cpp from "react-syntax-highlighter/dist/cjs/languages/hljs/cpp";
+import python from "react-syntax-highlighter/dist/cjs/languages/hljs/python";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { BlogSection } from "@/components/widgets/BlogSection";
@@ -19,6 +22,9 @@ const blogInfo = new BlogInfo(
 
 export default function CompiledPython() {
     SyntaxHighlighter.registerLanguage("mlir", mlir);
+    SyntaxHighlighter.registerLanguage("cmake", cmake);
+    SyntaxHighlighter.registerLanguage("cpp", cpp);
+    SyntaxHighlighter.registerLanguage("python", python);
 
     return (
         <BlogWrapper
@@ -443,12 +449,59 @@ export default function CompiledPython() {
                     will also call <i>PUSH_NULL</i> immediately before the <i>CALL</i> instruction. This null serves as
                     a placeholder for a self reference. However, since free functions have no self, this is always null.
                 </p>
+                <p>As an example, suppose we have a very simple Python program that prints a single message:</p>
+                <SyntaxHighlighter
+                    language="python"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`msg = "Hello World!"
+print(msg)`}
+                </SyntaxHighlighter>
+                <p>When represented with bytecode, we get:</p>
+                <SyntaxHighlighter
+                    language="python"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`*L0 offset 0    | RESUME                         [Int]      | 0
+*L1 offset 2    | LOAD_CONST                     [Str]      | 'Hello World!'
+ L1 offset 4    | STORE_NAME                     [Str]      | msg
+*L2 offset 6    | LOAD_NAME                      [Str]      | print
+ L2 offset 8    | PUSH_NULL                      [None]     | 
+ L2 offset 10   | LOAD_NAME                      [Str]      | msg
+ L2 offset 12   | CALL                           [Int]      | 1
+ L2 offset 20   | POP_TOP                        [None]     | 
+ L2 offset 22   | LOAD_CONST                     [None]     | None
+ L2 offset 24   | RETURN_VALUE                   [None]     |`}
+                </SyntaxHighlighter>
+                <p>
+                    Notice how the string is first loaded in as a constant at the top of the stack and stored into the
+                    variable <i>msg</i>. Next, the <i>print</i> name is loaded at the stack's current top, <i>msg</i> is
+                    pushed next, and the <i>CALL</i> instruction tells the interpreter to pop one argument from the
+                    stack and then call the function at the new top (after consuming the <i>None</i> placeholder).
+                </p>
                 <BlogSection level={2}>PyIR</BlogSection>
                 <p>
                     Before describing the translation from bytecode to PyIR, I should spend some time going over its
                     definition. For any program defining a dialect of MLIR, the extensions to the language are defined
-                    within a <i>tablegen</i> file. One thing of note as well: the naming of the identifiers matters in a
-                    tablegen file. For example, consider:
+                    within a <i>tablegen</i> file. There are four types of objects that we are concerned with
+                    representing. The first is a dialect. This is the top level definition that lays out PyIR's
+                    metadata. The next are types. These define custom object types for the dialect. For PyIR,{" "}
+                    <code>ByteCodeObject</code> types are often passed between instructions. This represents something
+                    analogous to a Python base object. Attributes represent constant values embedded directly into
+                    instructions instead of a variable. For example, if loading in a constant value of <i>None</i>, PyIR
+                    would represent this as loading in a <code>pyir::NoneAttr</code>, a stand-in for Python'{" "}
+                    <code>NoneType</code>. Finally, there are operations. Here, this is defined as a base{" "}
+                    <code>PyIR_Op</code>, from which specific ops inherit.
+                </p>
+                <p>
+                    With regards to how each of these four identifier types are defined, their naming is dependent on
+                    their type. For example, consider:
                 </p>
                 <SyntaxHighlighter
                     language="mlir"
@@ -484,6 +537,127 @@ export default function CompiledPython() {
                 <p>
                     This defines an instruction named just <i>InitModule</i> and referenced in C++ as{" "}
                     <code>pyir::InitModule</code>.
+                </p>
+                <p>To actually compile this tablegen file, it needs to be registered with LLVM through cmake:</p>
+                <SyntaxHighlighter
+                    language="cmake"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`set(LLVM_TARGET_DEFINITIONS pyir.td)`}
+                </SyntaxHighlighter>
+                <p>
+                    Before the tablegen file can be compiled, however, it must be compiled along with several auxiliary
+                    files. <i>pyir</i>, <i>pyir_attrs</i>, <i>pyir_ops</i>, <i>pyir_types</i> cpp/hpp pairs of files
+                    must be defined and compiled along with the tablegen file. These file include the <i>.inc</i> files
+                    generated by the tablegen, making them available to the rest of the program. When including the{" "}
+                    <i>.inc</i> files for the attributes, types, and ops, specific macros need to be defined to ensure
+                    that the right code makes it part the preprocessing stage of compilation. This in particular was
+                    fairly cumbersome to get right since different online sources list different macros and different
+                    conditions for including those macros. Oftentimes, the official MLIr documentation is the only
+                    up-to-date source of truth.
+                </p>
+                <p>
+                    Within the <i>pyir.cpp</i> file, every defined operation, type, and attribute must be registered in
+                    order to be referenced properly in the rest of the program.
+                </p>
+                <SyntaxHighlighter
+                    language="cpp"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`namespace pyir {
+    void PyIRDialect::initialize() {
+        addOperations<InitModule, DestroyModule, ToBool, IsTruthy, BinaryOp, Call, LoadConst, LoadDeref, LoadFast,
+                      LoadName, StoreName, PopTop, PushNull, Resume, ReturnValue, StoreFast, StoreDeref, UnaryNot,
+                      UnaryNegative, UnaryInvert, CompareOp, FormatSimple, BuildString, MakeFunction, PushScope,
+                      PopScope, LoadArg, BuildList, ListExtend, ListAppend, LoadAttr, ContainsOp, BuildSet, SetUpdate,
+                      SetAdd, BuildMap, StoreSubscr, ForIter, GetIter, PopIter>();
+
+        addTypes<ByteCodeObjectType>();
+        addAttributes<NoneAttr>();
+    }
+} // namespace pyir`}
+                </SyntaxHighlighter>
+                <p>
+                    After this point, operations like <i>CompareOp</i> are simply referenced as{" "}
+                    <code>pyir::CompareOp</code>.
+                </p>
+                <p>
+                    As mentioned, the translation between Python bytecode and PyIR is not trivial. Since bytecode
+                    instructions are usually executed on the stack, they contain no information about which references
+                    they take as input, only how many or their position on the stack. For example, a Python bytecode{" "}
+                    <i>CompareOp</i> instruction may look something like <code>COMPARE_OP [Str] | bool(==)</code>, while
+                    its PyIR counterpart looks like <code>%3 = pyir.compare_op "bool(==)", %1, %2</code>. The operation
+                    to perform (<i>==</i>) is embedded in the bytecode instruction, but how do we know which input
+                    objects it takes? To find out, we need to simulate the stack using a form of static analysis at
+                    compile-time. During the compilation process, pycompile pushes and pops MLIR pointers to and from
+                    the stack with each translated operation. When the program reaches the <i>CompareOp</i>, it knows
+                    which two pointers are the inputs to the operation. Looking at the conversion code, we see this
+                    explicitly:
+                </p>
+                <SyntaxHighlighter
+                    language="cpp"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`void compareOpCodegen(mlir::OpBuilder& builder, mlir::MLIRContext& ctx, const mlir::Location& loc,
+                      const ByteCodeInstruction& instr, ConversionMeta& meta) {
+    pyir::ByteCodeObjectType pyType = pyir::ByteCodeObjectType::get(&ctx);
+    const std::string opStr = instr.argrepr;
+    if (opStr.empty())
+        throw PyCompileError("COMPARE_OP must have a string argval", loc);
+    mlir::Value rhs = meta.stack.back();
+    meta.stack.pop_back();
+    mlir::Value lhs = meta.stack.back();
+    meta.stack.pop_back();
+    meta.stack.push_back(builder.create<pyir::CompareOp>(loc, pyType, opStr, lhs, rhs).getResult());
+}`}
+                </SyntaxHighlighter>
+                <p>
+                    Notice how <code>meta.stack</code> is actively modified during the conversion process, with the
+                    result pointer (the boolean result) being pushed after the conversion. Note that no actual values
+                    are being calculated yet. The literal boolean result is not being generated, only a pointer to a
+                    generic <code>pyir::ByteCodeObject</code> that will eventually hold that boolean at runtime.
+                    pycompile performs conversions like this for every bytecode instruction in the original program,
+                    generating the corresponding PyIR code as it goes.
+                </p>
+                <p>
+                    As an example, consider the simple print program from a moment ago, when compiled down to PyIR, we
+                    get:
+                </p>
+                <SyntaxHighlighter
+                    language="mlir"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`module {
+  func.func @__pymodule() {
+    pyir.init_module "simple.py", "__main__"
+    %0 = pyir.load_const "Hello World!"
+    pyir.store_name "msg", %0 : !pyir.object
+    %1 = pyir.load_name "print"
+    %2 = pyir.push_null
+    %3 = pyir.load_name "msg"
+    %4 = pyir.call %1(%3) : (!pyir.object) -> !pyir.object
+    pyir.destroy_module
+    return
+  }
+}`}
+                </SyntaxHighlighter>
+                <p>
+                    Notice the <code>pyir.call</code> instruction, instead of needing to peek back through the stack,
+                    the conversion code already popped the pointers off of the virtual stack and has associated them
+                    with the literal arguments <code>%1</code> and <code>%3</code>. The conversion to PyIR completes the
+                    transition from a stack-based IR to one geared towards register-based machines (like a CPU).
                 </p>
                 <BlogSection level={2}>LLVM IR</BlogSection>
                 <BlogSection>A Python Standard Library</BlogSection>
