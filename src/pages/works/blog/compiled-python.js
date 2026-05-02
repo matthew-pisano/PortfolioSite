@@ -940,9 +940,9 @@ define void @__pymodule() {
                     . Why? Primarily to avoid name collisions. If two modules define the same function with the same
                     name, the symbols could clash even if the functions have different parameters. This is helpful when
                     you are just compiling a single program, but can cause some headaches when working with libraries
-                    compiled in other languages. LLVM IR happens to be another language. If I had a line in LLVM lile{" "}
+                    compiled in other languages. LLVM IR happens to be another language. If I had a line in LLVM like{" "}
                     <code>declare void @foo(i64)</code> and I link it to a C++ library that defines <i>void foo(int)</i>
-                    , the linker would be looking for a symbol called eactly "foo". However, recall that C++ compiles
+                    , the linker would be looking for a symbol called exactly "foo". However, recall that C++ compiles
                     the <i>foo</i> function down to a symbol that looks like <i>_Z3fooi</i>. What to do? Luckily, the
                     fix for this is simple. Declaring the C++ function as <code>extern "C" void foo(int)</code>. The
                     "extern C" portion tells the compiler to use C linking over C++ linking, preventing name mangling.
@@ -980,6 +980,128 @@ define void @__pymodule() {
                     managing memory on its own.
                 </p>
                 <BlogSection>Memory Management</BlogSection>
+                <p>
+                    The way pycompile manages memory takes a strong influence to how vanilla Python primarily manages
+                    memory: through reference counting. Suppose the program allocates some glob of memory that is then
+                    interprets as a boolean, list, integer, etc. How can the program determine whether that memory is
+                    still "in use" billions of clock cycles later? Different languages take different approaches to this
+                    problem, but one of the most popular is simply checking if another object references the one in
+                    question. Our original object stays in memory and is not freed until the number of other objects
+                    referencing it reaches zero, its reference count.
+                </p>
+                <p>
+                    Before an object can be safely deallocated, it must release its references to all other objects
+                    first. If we were to map out the relations between all objects in memory, we would see a directed
+                    graph of dependent objects leading all the way back to the program root scope. This is the exact
+                    memory management scheme that pycompile uses to ensure that allocated memory is tracked and
+                    eventually deallocated before the program terminates. Every single byte of it.
+                </p>
+                <p>
+                    As a brief aside, note that these references exist within a directed graph, <i>not</i> a directed{" "}
+                    <i>acyclic</i> graph (DAG). Reference graphs can, and often do, contain cycles. Object A references
+                    object B, yet object B also references object A! This reference cycle cannot be reliably handled by
+                    reference counting alone, so many reference counting languages (Python included) employ a garbage
+                    collector. Often deployed in conjunction with reference counts, the job of the GC is to search and
+                    destroy circular references between objects which keep them alive long past their last time of use.
+                    It des this by detecting which objects have a reference lineage tracing all the way back to some
+                    root scope and which are only kept alive b bootstrapping their own existence through a reference
+                    cycle. that said, for the purposes of this small-scale language experiment, reference counting is
+                    sufficient for the vast majority of programs.
+                </p>
+                <p>
+                    For pycompile's runtime, each <code>PyObj</code> object (and all of its subclasses) have an explicit
+                    API for managing their own lifetime:
+                </p>
+                <SyntaxHighlighter
+                    language="cpp"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`struct PyObj {
+    PyObj() = default;
+
+    // Disable copy/move: Objects live on the heap and are managed by refcount
+    PyObj(const PyObj&) = delete;
+    // Disable constructor from pointer
+    explicit PyObj(PyObj*) = delete;
+    // Disable assignment
+    PyObj& operator=(const PyObj&) = delete;
+
+    virtual ~PyObj() = default;
+    
+    ...
+
+    virtual void incref();
+
+    [[nodiscard]] virtual bool decref();
+
+private:
+    std::atomic<int32_t> refcount{1};
+};`}
+                </SyntaxHighlighter>
+                <p>
+                    This partial <code>PyObj</code> definition contains several qualities geared directly towards memory
+                    management. First and foremost, C++ can disallow the copying and movement of certain objects through
+                    deleted constructors. <code>PyObj</code> objects cannot be moved, reassigned, or copied. The
+                    lifetime of an object must be completely and exclusively managed by reference counting. Without
+                    these restrictions, the same object could be copied with each copy maintaining different reference
+                    counts. If one object's reference count hits zero before the object, the interlying memory that both
+                    objects share would be deleted, causing a undefined behavior in the remaining copy.
+                </p>
+                <p>
+                    Next, we have the <i>incref</i> and <i>decref methods</i>, along with the <i>refcount</i> which they
+                    modify. Looking at their implementations, we see:
+                </p>
+                <SyntaxHighlighter
+                    language="cpp"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`void PyObj::incref() { refcount.fetch_add(1, std::memory_order_relaxed); }
+
+bool PyObj::decref() {
+    if (refcount == 0)
+        throw std::runtime_error("Invalid decref");
+    if (refcount.fetch_sub(1, std::memory_order_acq_rel) <= 1) {
+        delete this;
+        return true;
+    }
+    return false;
+}`}
+                </SyntaxHighlighter>
+                <p>
+                    The <i>incref</i> method is fairly transparent, it simply increments the object's reference count
+                    <Footnote>
+                        <i>refcount</i> is implemented as an atomic integer, protecting it from race conditions in a
+                        multithreading environment, though this has yet to be implemented. This does have a significant
+                        impact for now, it just means that the increment and decrement of the variable requires some
+                        extra syntax.
+                    </Footnote>
+                    . <i>decref</i> is where the interesting logic is contained. When the object's reference count hits
+                    zero, the object deletes itself and signifies that it has done so through the return statement. This
+                    both frees the object's memory and tells the caller that any pointers to this object are invalid and
+                    should be nulled.
+                </p>
+                <p>
+                    Recall the earlier <i>pyir_add</i> example. At the end of the function, both the operands had their{" "}
+                    <i>decref</i> functions called. Why only decref? Why not incref on entry and decref on exit or why
+                    not do nothing at all? In order for an object to be passed to a function, it must assigned to the
+                    name associated with a function parameter. This happens explicitly in the case of user functions and
+                    implicitly (by the immediately preceding <i>load_name</i>) in builtins. Going into a function every
+                    argument's reference count is one higher than it was previously since every argument in pycompile is
+                    passed by reference only. Upon exit, there is no <i>unload_name</i> so every variable must have its
+                    reference count decreased.
+                </p>
+                <p>
+                    By explicitly managing memory through reference counting, the standard runtime library can handle
+                    even complex programs without any memory leaks or lost data. Though, this can be partially credited
+                    to the limited scope of Python that pycompile currently supports. Managing the memory of class
+                    members would be much more complex.
+                </p>
                 <BlogSection>Closing Remarks</BlogSection>
                 <hr />
                 <FootnoteList />
