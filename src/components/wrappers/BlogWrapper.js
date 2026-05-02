@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import Head from "next/head";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
@@ -75,10 +76,33 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
         setBlogTime(elementReadingTime(blockContentId));
     }, []);
 
+    let dateISOString = date.toISOString();
     let dateElem = <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>;
+
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": title,
+        "datePublished": dateISOString,
+        "dateModified": dateISOString,
+        "author": {
+            "@type": "Person",
+            "name": "Matthew Pisano"
+        }
+    };
 
     return (
         <Wrapper pageName={pageName} title={title} description={subtitle}>
+            <Head>
+                {/* Open Graph meta tags */}
+                <meta property="article:published_time" content={dateISOString} />
+                <meta property="article:modified_time" content={dateISOString} />
+                <meta property="og:type" content="article" />
+            </Head>
+
+            {/* JSON-LD Structured Data */}
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
             <div className={styles.blogTitle}>
                 <h1>
                     <b>{title}</b>
