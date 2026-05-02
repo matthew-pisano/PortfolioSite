@@ -659,7 +659,208 @@ print(msg)`}
                     with the literal arguments <code>%1</code> and <code>%3</code>. The conversion to PyIR completes the
                     transition from a stack-based IR to one geared towards register-based machines (like a CPU).
                 </p>
+                <p>
+                    Similar to Python and the interpreter, a <code>mlir::MLIRContext</code> object must be in scope for
+                    as long as MLIR or LLVm is used. The program will segmentation fault if not.
+                </p>
                 <BlogSection level={2}>LLVM IR</BlogSection>
+                <p>
+                    PyIR is lowered down to LLVM IR (technically an LLVM dialect of MLIR) through a series of passes.
+                    These passes must be explicitly registered in order to be used. Passes in C++ are registered with:
+                </p>
+                <SyntaxHighlighter
+                    language="cpp"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`ctx.loadDialect<mlir::LLVM::LLVMDialect>();
+mlir::PassManager pm(&ctx);
+pm.addPass(mlir::createCanonicalizerPass());
+// Lower PyIR to LLVM dialect
+pm.addPass(createPyIRToLLVMPass());`}
+                </SyntaxHighlighter>
+                <p>
+                    The first line loads in the LLVm dialect of MLIR for translation and the second line creates a pass
+                    manager that handles the conversion passes. Line three adds something called a canonicalizer pass,
+                    this pass performs basic optimizations like folding constants. The last line is the most important,
+                    it registers the PyIR lowering pass to actually perform the conversion fro PyIR to LLVM IR. The
+                    inner function here simply returns a unique pointer to a <code>PyIRToLLVMPass</code> object. Within
+                    this object, the actual translation logic is encoded. Within this class, there is the{" "}
+                    <code>runOnOperation()</code> function. It is an override from the <code>mlir::PassWrapper</code>{" "}
+                    superclass. Within this function, we have:
+                </p>
+                <SyntaxHighlighter
+                    language="cpp"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`mlir::LLVMTypeConverter typeConverter(ctx);
+addPyIRTypeConversions(typeConverter);
+
+mlir::RewritePatternSet patterns(ctx);
+patterns.add<InitModuleLowering, DestroyModuleLowering, IsTruthyLowering, ToBoolLowering, UnaryNegativeLowering,
+             UnaryNotLowering, UnaryInvertLowering, BinaryOpLowering, CompareOpLowering, ...>(typeConverter, ctx);
+                 
+mlir::populateFuncToLLVMConversionPatterns(typeConverter, patterns);
+mlir::arith::populateArithToLLVMConversionPatterns(typeConverter, patterns);
+mlir::cf::populateControlFlowToLLVMConversionPatterns(typeConverter, patterns);
+
+mlir::LLVMConversionTarget target(*ctx);
+target.addIllegalDialect<pyir::PyIRDialect>();
+target.addIllegalDialect<mlir::arith::ArithDialect>();
+target.addLegalDialect<mlir::LLVM::LLVMDialect>();
+target.addLegalOp<mlir::ModuleOp>();`}
+                </SyntaxHighlighter>
+                <p>
+                    First, we register an MLIR to LLVM type converter object. The line immediately after informs the
+                    lowering code that <code>pyir::ByteCodeObjectType</code> is to be mapped to{" "}
+                    <code>mlir::LLVM::LLVMPointerType</code>. This is how our PyIR Python object pointers get translated
+                    to opaque LLVM pointers. Next, the lowering patterns for each individual instruction are added.
+                    There are many of these, so this example has been truncated. I will revisit these individual
+                    lowerings later on. After this, MLIR conversions for functions, arithmetic logic, and control flow
+                    are explicitly registered. MLIR very much uses a "pay for what you use" philosophy; very few things
+                    are implicit, features must be explicitly requested in order to be used. There is no "convert
+                    everything function", each component of the MLIR language must be explicitly registered one-by-one.
+                    Finally, we register out dialect as illegal.
+                </p>
+                <p>
+                    Hold on, why would we register our own dialect as "illegal"? That seems rather counter-productive.
+                    Notice that PyIR is being marked as illegal with respect to the general{" "}
+                    <code>mlir::LLVMConversionTarget</code>. This illegal marking essentially says "this dialect is not
+                    part of LLVM, do not attempt to lower it as such". Instead, the lowering code will fall back to our
+                    custom PyIR lowering functions from earlier. This is the exact behavior that we want.
+                </p>
+                <p>
+                    Speaking of the custom lowering functions, this is a good place to explain what they do and how they
+                    work. Once again, take <i>CompareOp</i> as an example:
+                </p>
+                <SyntaxHighlighter
+                    language="cpp"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`/**
+ * Lowers pyir.compare_op to a call to the appropriate runtime compare operator function.
+ *
+ * The operator string is mapped to a runtime function at compile time. Both operands are heap-allocated PyObj*
+ * pointers. The runtime performs the operation and returns a new heap-allocated PyObj*.
+ *
+ * pyir.compare_op "==", %lhs, %rhs
+ *     %result = llvm.call @pyir_eq(%lhs, %rhs)
+ */
+struct CompareOpLowering : PyIROpConversion {
+    CompareOpLowering(const mlir::LLVMTypeConverter& tc, mlir::MLIRContext* ctx) :
+        PyIROpConversion(pyir::CompareOp::getOperationName(), tc, ctx) {}
+
+    mlir::LogicalResult matchAndRewrite(mlir::Operation* op, mlir::ArrayRef<mlir::Value> operands,
+                                        mlir::ConversionPatternRewriter& rewriter) const override;
+};`}
+                </SyntaxHighlighter>
+                <p>
+                    This lowers a <code>pyir.compare_op</code> instruction to LLVM IR that can be directly compiled down
+                    to an executable binary. This class is explicitly registered to convert the compare operation
+                    through the superclass instantiation:{" "}
+                    <code>PyIROpConversion(pyir::CompareOp::getOperationName(), tc, ctx)</code>. The actual rewrite
+                    logic happens within <i>matchAndRewrite</i>:
+                </p>
+                <SyntaxHighlighter
+                    language="cpp"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`mlir::LogicalResult CompareOpLowering::matchAndRewrite(mlir::Operation* op, const mlir::ArrayRef<mlir::Value> operands,
+                                                       mlir::ConversionPatternRewriter& rewriter) const {
+    pyir::CompareOp compareOp = mlir::cast<pyir::CompareOp>(op);
+
+    // Map operator string to runtime function name
+    static const std::unordered_map<std::string, std::string> opToFn = \{
+            {"==", "pyir_eq"}, {"!=", "pyir_ne"}, {"<", "pyir_lt"},
+            {"<=", "pyir_le"}, {">", "pyir_gt"},  {">=", "pyir_ge"},
+    };
+
+    std::string opStr = compareOp.getOp().str();
+    if (opStr.contains("bool(")) {
+        opStr = opStr.substr(5); // Remove 'bool('
+        opStr.pop_back(); // Remove ')'
+    }
+    const auto it = opToFn.find(opStr);
+    if (it == opToFn.end())
+        return mlir::failure();
+
+    return linkOpToRuntimeFunc(it->second, op, operands, rewriter, 2);
+}
+`}
+                </SyntaxHighlighter>
+                <p>
+                    This function extracts the string operation from the instruction through{" "}
+                    <code>compareOp.getOp().str()</code> and matches it with the corresponding function to link to and
+                    run during execution. For example, if the compare operation string operation was "==", the linked
+                    function would be <i>pyir_eq</i>. On the inside of <code>linkOpToRuntimeFunc</code>, it replaces the
+                    current operation with a <code>mlir::LLVM::CallOp</code> operation which calls the linked runtime
+                    function.
+                </p>
+                <p>
+                    The conversion goes through these, instruction-by-instruction until the entire program is translated
+                    into LLVM IR with calls to the standard runtime library. Going back to the simple print program from
+                    earlier, we get:
+                </p>
+                <SyntaxHighlighter
+                    language="mlir"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`; ModuleID = 'simple.py'
+source_filename = "simple.py"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-redhat-linux-gnu"
+
+@__pyir_str_print = private constant [6 x i8] c"print\\00"
+@__pyir_str_msg = private constant [4 x i8] c"msg\\00"
+@__pyir_const_str_10571665718977150164 = private constant [13 x i8] c"Hello World!\\00"
+@__pyir_str___main__ = private constant [9 x i8] c"__main__\\00"
+@"__pyir_str_simple.py" = private constant [42 x i8] c"simple.py\\00"
+
+declare void @pyir_destroyModule()
+declare ptr @pyir_call(ptr, ptr, i64)
+declare ptr @pyir_loadName(ptr)
+declare void @pyir_storeName(ptr, ptr)
+declare ptr @pyir_loadConstStr(ptr)
+declare void @pyir_initModule(ptr, ptr)
+
+define void @__pymodule() {
+  call void @pyir_initModule(ptr @"__pyir_str_simple.py", ptr @__pyir_str___main__)
+  %1 = call ptr @pyir_loadConstStr(ptr @__pyir_const_str_10571665718977150164)
+  call void @pyir_storeName(ptr @__pyir_str_msg, ptr %1)
+  %2 = call ptr @pyir_loadName(ptr @__pyir_str_print)
+  %3 = call ptr @pyir_loadName(ptr @__pyir_str_msg)
+  %4 = alloca [1 x ptr], i64 1, align 8
+  %5 = getelementptr ptr, ptr %4, i64 0
+  store ptr %3, ptr %5, align 8
+  %6 = call ptr @pyir_call(ptr %2, ptr %4, i64 1)
+  call void @pyir_destroyModule()
+  ret void
+}
+
+!llvm.module.flags = !{!0}
+
+!0 = !{i32 2, !"Debug Info Version", i32 3}`}
+                </SyntaxHighlighter>
+                <p>
+                    It is much more verbose than out original two-line Python program, but this is the code that is
+                    ready to be compiled and run. Note the lines similar to{" "}
+                    <code>declare ptr @pyir_call(ptr, ptr, i64)</code> these are unlinked references directly to the
+                    runtime library. This code alone will compile, but it will not link! Yet.
+                </p>
                 <BlogSection>A Python Standard Library</BlogSection>
                 <BlogSection>Memory Management</BlogSection>
                 <BlogSection>Closing Remarks</BlogSection>
