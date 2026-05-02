@@ -17,7 +17,8 @@ const blogInfo = new BlogInfo(
     "Turning Python Into a Compiled Language",
     "Experimenting with Python bytecode, stack machines, and MLIR",
     new Date(2026, 3, 24),
-    "compiledPython"
+    "compiledPython",
+    new Date(2026, 4, 1)
 );
 
 export default function CompiledPython() {
@@ -31,7 +32,8 @@ export default function CompiledPython() {
             pageName={genPageTitle(__filename)}
             title={blogInfo.title}
             subtitle={blogInfo.subtitle}
-            date={blogInfo.date}>
+            pubDate={blogInfo.pubDate}
+            modDate={blogInfo.modDate}>
             <FootnoteProvider label={blogInfo.anchor}>
                 <BlogSection>Introduction</BlogSection>
                 <p>

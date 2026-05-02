@@ -52,7 +52,7 @@ export default function Blog() {
                         titleLink: "/works/blog/on-general-transformers"
                     })
                 }
-                date={genTransformers.date}>
+                date={genTransformers.pubDate}>
                 {genTransformers.subtitle}
             </BlogTile>
             <BlogTile
@@ -72,7 +72,7 @@ export default function Blog() {
                         titleLink: "/works/blog/compiled-python"
                     })
                 }
-                date={compiledPython.date}>
+                date={compiledPython.pubDate}>
                 {compiledPython.subtitle}
             </BlogTile>
         </FlexWrapper>
