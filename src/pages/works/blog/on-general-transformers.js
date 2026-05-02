@@ -21,7 +21,7 @@ export default function OnGeneralTransformers() {
             pageName={genPageTitle(__filename)}
             title={blogInfo.title}
             subtitle={blogInfo.subtitle}
-            date={blogInfo.date}>
+            pubDate={blogInfo.pubDate}>
             <FootnoteProvider label={blogInfo.anchor}>
                 <BlogSection>Introduction</BlogSection>
                 <p>

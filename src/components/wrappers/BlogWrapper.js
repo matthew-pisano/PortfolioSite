@@ -14,11 +14,12 @@ import styles from "@/styles/wrappers/BlogWrapper.module.css";
  * An object containing common blog metadata
  */
 class BlogInfo {
-    constructor(title, subtitle, date, anchor) {
+    constructor(title, subtitle, pubDate, anchor, modDate = null) {
         this.title = title;
         this.subtitle = subtitle;
-        this.date = date;
+        this.pubDate = pubDate;
         this.anchor = anchor;
+        this.modDate = modDate;
     }
 }
 
@@ -53,10 +54,11 @@ BlogImage.propTypes = {
  * @param pageName {string} The name of the blog page
  * @param title {string} The title of the blog page
  * @param subtitle {string} The subtitle of the blog page
- * @param date {Date} The date of writing of the blog
+ * @param pubDate {Date} The date of publication of the blog
+ * @param modDate {Date} The date of last modification of the blog
  * @return {JSX.Element} The page wrapped in the blog wrapper
  */
-function BlogWrapper({ children, pageName, title, subtitle, date }) {
+function BlogWrapper({ children, pageName, title, subtitle, pubDate, modDate }) {
     const blockContentId = "blogContent";
     const [blogTime, setBlogTime] = useState(0);
 
@@ -76,15 +78,18 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
         setBlogTime(elementReadingTime(blockContentId));
     }, []);
 
-    let dateISOString = date.toISOString();
-    let dateElem = <p style={{ textAlign: "right", width: "100%" }}>{date.toLocaleDateString("en-US")}</p>;
+    if (!modDate) modDate = pubDate;
+
+    let pubDateISOString = pubDate.toISOString();
+    let modDateISOString = modDate.toISOString();
+    let dateElem = <p style={{ textAlign: "right", width: "100%" }}>{pubDate.toLocaleDateString("en-US")}</p>;
 
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": title,
-        "datePublished": dateISOString,
-        "dateModified": dateISOString,
+        "datePublished": pubDateISOString,
+        "dateModified": modDateISOString,
         "author": {
             "@type": "Person",
             "name": "Matthew Pisano"
@@ -95,8 +100,8 @@ function BlogWrapper({ children, pageName, title, subtitle, date }) {
         <Wrapper pageName={pageName} title={title} description={subtitle}>
             <Head>
                 {/* Open Graph meta tags */}
-                <meta property="article:published_time" content={dateISOString} />
-                <meta property="article:modified_time" content={dateISOString} />
+                <meta property="article:published_time" content={pubDateISOString} />
+                <meta property="article:modified_time" content={modDateISOString} />
                 <meta property="og:type" content="article" />
             </Head>
 
@@ -144,7 +149,8 @@ BlogWrapper.propTypes = {
     pageName: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
-    date: PropTypes.any.isRequired,
+    pubDate: PropTypes.any.isRequired,
+    modDate: PropTypes.any,
     footnoteContext: PropTypes.any
 };
 
