@@ -796,8 +796,7 @@ struct CompareOpLowering : PyIROpConversion {
         return mlir::failure();
 
     return linkOpToRuntimeFunc(it->second, op, operands, rewriter, 2);
-}
-`}
+}`}
                 </SyntaxHighlighter>
                 <p>
                     This function extracts the string operation from the instruction through{" "}
@@ -862,6 +861,124 @@ define void @__pymodule() {
                     runtime library. This code alone will compile, but it will not link! Yet.
                 </p>
                 <BlogSection>A Python Standard Library</BlogSection>
+                <p>
+                    Instead of reimplementing the entire Python builtin library and basic operations in raw LLVM IR
+                    <Footnote>A thoroughly enjoyable task, to be sure!</Footnote>, I opted to write these functions in
+                    C++, compile them into a standalone static library, then link it to the compiled Python module to
+                    create a full executable.
+                </p>
+                <p>
+                    The runtime library is essentially a collection of basic python op implementations and builtin
+                    functions. Every <code>mlir::LLVM::LLVMPointerType</code> from earlier in the compilation process
+                    corresponds to a <code>PyObj*</code> object. This is an abstract base class for all other Python
+                    objects. Specific types like <code>PyList*</code> or <code>PyInt*</code> inherit from it.
+                </p>
+                <p>
+                    These objects are passed between functions which represent Python operations of builtins. For
+                    example, here is the implementation of the "+" operator. Remember, we can only determine the operand
+                    types at runtime, hence the conditionals:
+                </p>
+                <SyntaxHighlighter
+                    language="cpp"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`PyObj* pyir_add(PyObj* lhs, PyObj* rhs) {
+    PyObj* result = nullptr;
+    if (pyir_isInt(lhs) && pyir_isInt(rhs))
+        result = new PyInt(dynamic_cast<PyInt*>(lhs)->data() + dynamic_cast<PyInt*>(rhs)->data());
+    else if ((pyir_isFloat(lhs) || pyir_isInt(lhs)) && (pyir_isFloat(rhs) || pyir_isInt(rhs)))
+        result = new PyFloat(valueToFloat(lhs) + valueToFloat(rhs));
+    else if (pyir_isStr(lhs) && pyir_isStr(rhs))
+        result = new PyStr(dynamic_cast<PyStr*>(lhs)->data() + dynamic_cast<PyStr*>(rhs)->data());
+    else if (pyir_isList(lhs) && pyir_isList(rhs)) {
+        result = new PyList({});
+        PyList::extend(result, &lhs, 1);
+        PyList::extend(result, &rhs, 1);
+    } else if (pyir_isTuple(lhs) && pyir_isTuple(rhs)) {
+        PyListData lhsVal = dynamic_cast<PyTuple*>(lhs)->data();
+        PyListData rhsVal = dynamic_cast<PyTuple*>(rhs)->data();
+        PyListData combined;
+        combined.insert(combined.end(), lhsVal.begin(), lhsVal.end());
+        combined.insert(combined.end(), rhsVal.begin(), rhsVal.end());
+        result = new PyTuple(combined);
+    }
+
+    const std::string lhsType = lhs->typeName();
+    const std::string rhsType = rhs->typeName();
+    (void) lhs->decref();
+    (void) rhs->decref();
+
+    if (!result)
+        throw PyTypeError(formatUnsupportedOperands("+", lhsType, rhsType));
+    return result;
+}`}
+                </SyntaxHighlighter>
+                <p>
+                    Note all of the dynamic casting used to see what the actual instance type of the base <i>PyObj</i>{" "}
+                    that the pointer represents. Note the <i>decref</i> statements. This will be important in a moment.
+                </p>
+                <p>
+                    With the library functions implemented, it now needs to be linked to the module code in order to
+                    resolve the outbound references tha LLVM declared. Linking this library with the original Python
+                    module would be fairly simple if it were not for one major issue: the ABI boundary. What is an ABI
+                    boundary? An Application Programming Interface (ABI) is the surface by which two compiled code
+                    object communicate with one another. If one object has outgoing references to a function called{" "}
+                    <i>foo</i>, and another defines <code>void foo(int);</code>, the ABI establishes a common way for
+                    resolving these kinds of references. A simple C ABI is fairly stable and is the standard way for
+                    compiled binaries (even ones compiled in other languages like Rust) to link and share information.
+                    pycompile is written in C++
+                    <Footnote>For better or for worse...</Footnote>, which generates an ABI that requires more caution
+                    than one for pure C.
+                </p>
+                <p>
+                    The most obvious issue is something called "name mangling". When compiling a C++ program, most
+                    compilers "mangle" the names, adding extra characters to the original function or class name. A
+                    compiler like gcc or clang may mangle a function like <code>void foo(int)</code> into <i>_Z3fooi</i>
+                    . Why? Primarily to avoid name collisions. If two modules define the same function with the same
+                    name, the symbols could clash even if the functions have different parameters. This is helpful when
+                    you are just compiling a single program, but can cause some headaches when working with libraries
+                    compiled in other languages. LLVM IR happens to be another language. If I had a line in LLVM lile{" "}
+                    <code>declare void @foo(i64)</code> and I link it to a C++ library that defines <i>void foo(int)</i>
+                    , the linker would be looking for a symbol called eactly "foo". However, recall that C++ compiles
+                    the <i>foo</i> function down to a symbol that looks like <i>_Z3fooi</i>. What to do? Luckily, the
+                    fix for this is simple. Declaring the C++ function as <code>extern "C" void foo(int)</code>. The
+                    "extern C" portion tells the compiler to use C linking over C++ linking, preventing name mangling.
+                </p>
+                <p>
+                    The more pressing issue for our purposes concerns pointers (though, I suppose this is a tautology
+                    when speaking on C++). C and C++ leave memory management fully up to the programmer. There is no
+                    garbage collector to save you, as there is in languages like Python or Java. Once your program
+                    allocates memory, it sits there in RAM until you explicitly instruct your program to deallocate it.
+                    Failing to do so causes a memory leak as your program hordes more and more memory that it is not
+                    using
+                    <Footnote>
+                        The kernel is unable to tell whether a program is actually using the memory it requests, which
+                        is why it only steps in to resolve the issue when your machine is completely out of more memory
+                        to allocate.
+                    </Footnote>
+                    . Since pycompile compiles Python code down to a raw binary, there is no Python interpreter on-call
+                    to manage memory for our program. The runtime library must do this itself. Normally, if need to
+                    allocate fresh memory in C++, you would assign that memory to a "smart pointer". This is simply a
+                    pointer that deallocates memory automatically when it is sensible to do so. Depending on the smart
+                    pointer of choice, this is when it goes out of scope or when all references to it have gone out of
+                    scope. This seems great, and it is, so why is this a problem for pycompile? The issue is that the
+                    internal implementation of these smart pointers is considered an implementation detail of the C++
+                    compiler. The data structures that internally represent the smart pointer may be incompatible from
+                    compiler to compiler. This means that how the smart pointer appears to the ABI boundary is not
+                    always well-defined, leading to compilation errors or undefined behavior! This essentially forces
+                    the runtime library to communicate only with raw pointers across the ABI boundary between C++ and
+                    the compiled Python module
+                    <Footnote>
+                        Technically, there is nothing stopping the internals of the runtime library from using smart
+                        pointers on the inside, but since this information is stripped away at nearly every function
+                        call to the outside, it is not as helpful as it may initially seem.
+                    </Footnote>
+                    . Since we cannot rely on smart pointers to save our program, the runtime library needs some way of
+                    managing memory on its own.
+                </p>
                 <BlogSection>Memory Management</BlogSection>
                 <BlogSection>Closing Remarks</BlogSection>
                 <hr />
