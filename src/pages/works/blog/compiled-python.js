@@ -97,7 +97,7 @@ export default function CompiledPython() {
                         </Link>
                         .
                     </Footnote>
-                    . Other implementation, like PyPy or Jython do execute Python using JIT compilation.
+                    . Other implementations, like PyPy or Jython do execute Python using JIT compilation.
                 </p>
                 <BlogSection level={2}>Just-In-Time Compilation</BlogSection>
                 <p>
@@ -118,7 +118,7 @@ export default function CompiledPython() {
                     then translated into machine instructions and run in place of the much slower Python code.
                 </p>
                 <p>
-                    Jython is another JIT Python implementation what is slightly older than PyPy. Written in Java
+                    Jython is another JIT Python implementation that is slightly older than PyPy. Written in Java
                     instead of Python, this program translates Python code into Java bytecode, which is then executed by
                     the JVM. Like PyPy, Python code is compiled down to machine instructions at runtime, though these
                     instructions are for the Java virtual machine, rather than the host machine architecture.
@@ -145,7 +145,7 @@ export default function CompiledPython() {
                     by <i>exaloop</i> is implemented in a similar manner, with more of a focus on high-performance
                     programming and GPU interoperability. It also relies upon LLVM for compilation and has implemented a
                     parser for a Python-like DSL of their own design. Their Python DSL requires static typing as type
-                    checking is performed at compile-time. This eliminates some of Python dynamic typing features.
+                    checking is performed at compile-time. This eliminates some of Python's dynamic typing features.
                 </p>
                 <p>
                     Finally,{" "}
@@ -176,15 +176,15 @@ export default function CompiledPython() {
                 <p>
                     Being a strongly typed language means that types have well-defined interactions with other types and
                     with themselves. They have strict, user-defined properties and the attributes of a type generally do
-                    not change at runtime. This is similar to language like Java where class interactions are strictly
+                    not change at runtime. This is similar to languages like Java where class interactions are strictly
                     defined and a class' variables and methods are static at runtime. You cannot add a function to a
                     Java class during program execution where there was none before. Strict typing is not exhibited by
                     languages like JavaScript. JS has a "type coercion" system that tries to force different types to
                     interact, even if no well-defined interaction is defined by the programmer. A very common example of
-                    this is comparing an integer type to a string type. In JS <code>5 == '5'</code> evaluates as truthy
-                    because the string is coerced into a number before the comparison. Languages like Java or Python
-                    would evaluate to a truthy value. JavaScript also supports defining arbitrary attributes for classes
-                    at runtime through the object's <i>prototype</i>.
+                    this is comparing an integer type to a string type. In JavaScript <code>5 == '5'</code> evaluates as
+                    truthy because the string is coerced into a number before the comparison. Languages like Java or
+                    Python would evaluate to a truthy value. JavaScript also supports defining arbitrary attributes for
+                    classes at runtime through the object's <i>prototype</i>.
                 </p>
                 <p>
                     As a dynamically typed language, Python does not associate a type with specific variables or
@@ -216,7 +216,7 @@ export default function CompiledPython() {
                     regardless of how it is implemented. CPython, the most popular implementation, utilizes Python
                     bytecode as an intermediate representation for the interpreter to execute. This bytecode, unlike
                     Java bytecode, is considered an internal implementation detail of CPython. It is documented, but
-                    there are no guarantees of backwards or forwards compatability. Opcodes may change, appear, or
+                    there are no guarantees of backwards or forwards compatibility. Opcodes may change, appear, or
                     disappear between even minor releases. This instability makes relying directly upon CPython as a
                     parser unattractive for the previously mentioned Python compilers. Therefore, they tend to implement
                     their own Python parsers and intermediate representations.
@@ -256,7 +256,7 @@ export default function CompiledPython() {
                 <p>
                     Even though the API does not directly support bytecode disassembly, Python itself does through the{" "}
                     <code>dis</code> library. Using the interpreter I can import this module and execute its disassembly
-                    functionality s if I were calling it directly from a Python program. This yields an iterator of{" "}
+                    functionality as if I were calling it directly from a Python program. This yields an iterator of{" "}
                     <code>PyObject</code> pointers which I can then translate directly to the{" "}
                     <code>ByteCodeInstruction</code> structs which make up the module.
                 </p>
@@ -281,7 +281,7 @@ export default function CompiledPython() {
                 <p>
                     Python and LLVM IR are very different languages. LLVM IR is statically typed and strongly
                     opinionated. Python is neither of these. To make this translation as smooth as possible, I needed
-                    another intermediate representation to bridge this GAP. This is where PyIR is used. It is a dialect
+                    another intermediate representation to bridge this gap. This is where PyIR is used. It is a dialect
                     of MLIR, meaning that it shares many similarities with vanilla MLIR, but has been extended with
                     Python-specific instructions. With this dialect, I can translate each bytecode instruction into an
                     equivalent PyIR instruction. This also lets the program hook into a C++ runtime to handle Python's
@@ -340,11 +340,10 @@ export default function CompiledPython() {
                     directly translate into register-based assembly (through MLIR). For this project, I needed a
                     sequence of instructions that could be executed as-is, without needing to constantly reference a
                     stack at runtime. To accommodate this, Pycompile simulates a runtime stack during the translation
-                    process. If an bytecode instruction references arguments on the stack, <i>BUILD_LIST</i> for
-                    example, those arguments are popped off of the virtual stack and the result is pushed back onto it.
-                    This effectively unrolls the stack, allowing each PyIR instruction to be self-contained with
-                    arguments that reference other instruction results directly, without needing to go through the stack
-                    first.
+                    process. If a bytecode instruction references arguments on the stack, <i>BUILD_LIST</i> for example,
+                    those arguments are popped off of the virtual stack and the result is pushed back onto it. This
+                    effectively unrolls the stack, allowing each PyIR instruction to be self-contained with arguments
+                    that reference other instruction results directly, without needing to go through the stack first.
                 </p>
                 <BlogSection level={2}>The Compiler Backend</BlogSection>
                 <p>
@@ -435,7 +434,7 @@ export default function CompiledPython() {
                 <p>
                     Each Python function (though not builtins) contains a special <code>__code__</code> attribute. This
                     attribute points to <code>PyCodeObject</code> structs within CPython. This object contains important
-                    metadate for the function and its scope. Namely, three tuples of references.{" "}
+                    metadata for the function and its scope. Namely, three tuples of references.{" "}
                     <code>co_varnames</code> contains the names of all local variables. <code>co_cellvars</code>{" "}
                     contains the names of local variables in this scope that are referenced by inner functions or
                     closures. These variables may outlive their original function if the lifetime of the closure exceeds
@@ -558,7 +557,7 @@ print(msg)`}
                     <i>.inc</i> files for the attributes, types, and ops, specific macros need to be defined to ensure
                     that the right code makes it part the preprocessing stage of compilation. This in particular was
                     fairly cumbersome to get right since different online sources list different macros and different
-                    conditions for including those macros. Oftentimes, the official MLIr documentation is the only
+                    conditions for including those macros. Oftentimes, the official MLIR documentation is the only
                     up-to-date source of truth.
                 </p>
                 <p>
@@ -663,7 +662,7 @@ print(msg)`}
                 </p>
                 <p>
                     Similar to Python and the interpreter, a <code>mlir::MLIRContext</code> object must be in scope for
-                    as long as MLIR or LLVm is used. The program will segmentation fault if not.
+                    as long as MLIR or LLVM is used. The program will segmentation fault if not.
                 </p>
                 <BlogSection level={2}>LLVM IR</BlogSection>
                 <p>
@@ -684,7 +683,7 @@ pm.addPass(mlir::createCanonicalizerPass());
 pm.addPass(createPyIRToLLVMPass());`}
                 </SyntaxHighlighter>
                 <p>
-                    The first line loads in the LLVm dialect of MLIR for translation and the second line creates a pass
+                    The first line loads in the LLVM dialect of MLIR for translation and the second line creates a pass
                     manager that handles the conversion passes. Line three adds something called a canonicalizer pass,
                     this pass performs basic optimizations like folding constants. The last line is the most important,
                     it registers the PyIR lowering pass to actually perform the conversion fro PyIR to LLVM IR. The
@@ -857,7 +856,7 @@ define void @__pymodule() {
 !0 = !{i32 2, !"Debug Info Version", i32 3}`}
                 </SyntaxHighlighter>
                 <p>
-                    It is much more verbose than out original two-line Python program, but this is the code that is
+                    It is much more verbose than our original two-line Python program, but this is the code that is
                     ready to be compiled and run. Note the lines similar to{" "}
                     <code>declare ptr @pyir_call(ptr, ptr, i64)</code> these are unlinked references directly to the
                     runtime library. This code alone will compile, but it will not link! Yet.
@@ -954,7 +953,7 @@ define void @__pymodule() {
                     when speaking on C++). C and C++ leave memory management fully up to the programmer. There is no
                     garbage collector to save you, as there is in languages like Python or Java. Once your program
                     allocates memory, it sits there in RAM until you explicitly instruct your program to deallocate it.
-                    Failing to do so causes a memory leak as your program hordes more and more memory that it is not
+                    Failing to do so causes a memory leak as your program hoards more and more memory that it is not
                     using
                     <Footnote>
                         The kernel is unable to tell whether a program is actually using the memory it requests, which
@@ -1005,8 +1004,8 @@ define void @__pymodule() {
                     reference counting alone, so many reference counting languages (Python included) employ a garbage
                     collector. Often deployed in conjunction with reference counts, the job of the GC is to search and
                     destroy circular references between objects which keep them alive long past their last time of use.
-                    It des this by detecting which objects have a reference lineage tracing all the way back to some
-                    root scope and which are only kept alive b bootstrapping their own existence through a reference
+                    It does this by detecting which objects have a reference lineage tracing all the way back to some
+                    root scope and which are only kept alive by bootstrapping their own existence through a reference
                     cycle. that said, for the purposes of this small-scale language experiment, reference counting is
                     sufficient for the vast majority of programs.
                 </p>
@@ -1124,7 +1123,7 @@ bool PyObj::decref() {
                     with bytecode regardless gives me a much better feel of how the interpreter actually functions.
                     Since most low-level programmers work on classic Von Neumann register machines, having to reason
                     about a stack-based interpreter instead can be an interesting challenge. The implementation of
-                    bytecode itself also serves as a reminder that even very popular and well-resources projects still
+                    bytecode itself also serves as a reminder that even very popular and well-resourced projects still
                     have to actively manage technical debt and old implementations.
                 </p>
                 <p>
@@ -1154,13 +1153,13 @@ bool PyObj::decref() {
                     an exercise in trial and error.
                 </p>
                 <p>
-                    To be explicit, none of this it to say that Python bytecode or MLIR is poorly designed, quite the
+                    To be explicit, none of this is to say that Python bytecode or MLIR is poorly designed, quite the
                     opposite in fact. I have instead written these remarks to describe the details of my own learning
                     process. I find that most articles or blogs describing the creation of software projects like this
                     tend to leave out the learning curve that the original developer likely faced. When working with a
                     new language or process, there are always little things which seem to be unreasonably frustrating or
                     counter-intuitive. As one gains more experience, one learns either that these are important to the
-                    internal implementation or are genuine quirks that cam be handled in well-defined ways. Python
+                    internal implementation or are genuine quirks that can be handled in well-defined ways. Python
                     bytecode and MLIR have many instances of these, but getting to know them through hands-on experience
                     has given me a much better understanding of them than I originally had.
                 </p>
