@@ -18,7 +18,7 @@ const blogInfo = new BlogInfo(
     "Experimenting with Python bytecode, stack machines, and MLIR",
     new Date(2026, 3, 24),
     "compiledPython",
-    new Date(2026, 4, 1)
+    new Date(2026, 4, 3)
 );
 
 export default function CompiledPython() {
