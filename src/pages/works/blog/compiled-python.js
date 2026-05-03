@@ -1105,6 +1105,55 @@ bool PyObj::decref() {
                     members would be much more complex.
                 </p>
                 <BlogSection>Closing Remarks</BlogSection>
+                <p>
+                    In my experience, the best way to learn how to work with a tool or technology is to actually work
+                    with it yourself. pycompile is a good example of this. Informational articles or official
+                    documentation often do not fully capture the intricacies or difficulties that hands-on software
+                    engineers may actually experience. This is especially true when you are trying to wire together
+                    components that their original components never intended.
+                </p>
+                <p>
+                    Using Python bytecode directly is often discouraged for maintainability reasons, but doing so gives
+                    a much better feel of how the interpreter actually functions. Since most low-level programmers work
+                    on classic Von Neumann register-based machines, having to reason about an interpreter based
+                    primarily around a single stack can be rather jarring. It also serves as a reminder that even very
+                    popular and well-resources projects still have to actively manage technical debt and old
+                    implementations. For instance, there are three ways of creating a literal list in Python bytecode.
+                    You could use <i>BUILD_LIST</i> with the last <i>N</i> stack members, but this method was unused in
+                    all of the programs I disassembled. Instead, the interpreter uses one of two different methods,
+                    depending on the side of the list. If your list literal is less than around 30 elements, it will use{" "}
+                    <i>LIST_EXTEND</i> with a literal tuple. If not, it will use released <i>LIST_APPEND</i> for every
+                    element. The <i>JUMP_BACKWARD</i> instruction also works differently, depending on your Python
+                    version, either using relative addressing or absolute addressing like <i>JUMP_FORWARD</i>.
+                </p>
+                <p>
+                    MLIR and LLVM introduce significantly more complexity. Knowing which macros to wrap which includes
+                    with in the PyIR definition files was difficult to implement correctly at first. Adding one where it
+                    did not belong would result in missing symbol linking errors and missing one would result in
+                    duplicate symbol errors. Similarly to the include statements needed for each MLIR component, online
+                    guides and articles were often out of date. Implementing the lowering to LLVM IR also came with a
+                    steep learning curve. The lowering for calling functions exemplified this as it required knowledge
+                    of LLVM arrays, stack allocation, and GEP-ing LLVM pointers. Additionally, the knowledge of which
+                    MLIR components I needed to explicitly include and mark as illegal was primarily an exercise in
+                    trial and error.
+                </p>
+                <p>
+                    To be explicit, none of this it to say that Python bytecode or MLIR is poorly designed, quite the
+                    contrary in fact. However, most articles that describe how a project was made and how technologies
+                    were used tend to leave out the learning curve that all developers face. When working with a new
+                    language or process, there are always little things which seem to be unreasonably frustrating or
+                    counter intuitive. As one gains more experience, these are either revealed to be important details
+                    of the program's implementation or are just eccentricities that are gotten used to. Python bytecode
+                    and MLIR have many instances of these, but getting to know them hands-on has resulted in a much
+                    better understanding of them for me.
+                </p>
+                <p>
+                    Working on projects, especially unconventional ones, that include unfamiliar technologies has been
+                    one of my favorite methods for learning new things. As pycompile progressed, I found myself
+                    referencing tutorials and guides less and relying my my existing code and knowledge more, despite my
+                    earlier difficulties. It is especially satisfying to write a Python program and, instead of invoking{" "}
+                    <i>python3</i> to execute it, you instead directly run <i>./a.out</i>!
+                </p>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
