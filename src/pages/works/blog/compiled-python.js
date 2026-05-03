@@ -232,15 +232,15 @@ export default function CompiledPython() {
                 </p>
                 <p>
                     <Link
-                        href={"https://github.com/matthew-pisano/pycompile"}
+                        href={"https://github.com/matthew-pisano/Pycompile"}
                         target="_blank"
                         rel="noopener noreferrer">
-                        pycompile
+                        Pycompile
                     </Link>{" "}
                     is implemented in three stages. First, the preprocessor uses the CPython API to parse Python source
                     code into Python bytecode. Next, that bytecode is translated to a dialect of MLIR called PyIR.
                     Finally, that dialect is translated to LLVM IR and compiled down to machine code using the LLVM
-                    compilation API. The first two stages serve as pycompile's frontend while LLVM serves as the
+                    compilation API. The first two stages serve as Pycompile's frontend while LLVM serves as the
                     backend, translating IR code to machine code.
                 </p>
                 <BlogSection level={2}>The Compiler Frontend</BlogSection>
@@ -263,7 +263,7 @@ export default function CompiledPython() {
                 <p>
                     This works surprisingly well, but CPython shifts the responsibility of memory management onto the
                     programmer. This has two major consequences for this project. The first of which concerns the{" "}
-                    <code>PyObject</code> pointers that I use for the disassembly. To prevent memory leaks, pycompile
+                    <code>PyObject</code> pointers that I use for the disassembly. To prevent memory leaks, Pycompile
                     needs to keep track of the lifetimes of each object and call <code>Py_DECREF()</code> appropriate to
                     manage the object's reference count. The second issue has to do with the Python interpreter itself.
                     At the beginning of any program which utilize the interpreter, <code>Py_Initialize()</code> must be
@@ -297,7 +297,7 @@ export default function CompiledPython() {
                     }}>
                     {`module {
   func.func @__pymodule() {
-    pyir.init_module "pycompile/examples/hello_world.py", "__main__"
+    pyir.init_module "Pycompile/examples/hello_world.py", "__main__"
     %0 = pyir.make_function "__pyfn_main_0"
     pyir.store_name "main", %0 : !pyir.object
     %1 = pyir.load_name "__name__"
@@ -339,7 +339,7 @@ export default function CompiledPython() {
                     central stack of values. This works well for an interpreted language, but would be difficult to
                     directly translate into register-based assembly (through MLIR). For this project, I needed a
                     sequence of instructions that could be executed as-is, without needing to constantly reference a
-                    stack at runtime. To accommodate this, pycompile simulates a runtime stack during the translation
+                    stack at runtime. To accommodate this, Pycompile simulates a runtime stack during the translation
                     process. If an bytecode instruction references arguments on the stack, <i>BUILD_LIST</i> for
                     example, those arguments are popped off of the virtual stack and the result is pushed back onto it.
                     This effectively unrolls the stack, allowing each PyIR instruction to be self-contained with
@@ -371,7 +371,7 @@ export default function CompiledPython() {
                 </p>
                 <p>
                     What, then, is the best option for handling Python's type mechanism? The solution that I settled
-                    upon for pycompile was to use LLVM's opaque pointers to point to high-level <code>pyir.object</code>
+                    upon for Pycompile was to use LLVM's opaque pointers to point to high-level <code>pyir.object</code>
                     s. References to these objects in memory are then passed to linked C++ runtime functions which
                     perform the actual type resolution and handling. By routing through C++ in this manner, the program
                     can abstract away all of the type handling logic to a standard runtime library which is
@@ -597,7 +597,7 @@ print(msg)`}
                     its PyIR counterpart looks like <code>%3 = pyir.compare_op "bool(==)", %1, %2</code>. The operation
                     to perform (<i>==</i>) is embedded in the bytecode instruction, but how do we know which input
                     objects it takes? To find out, we need to simulate the stack using a form of static analysis at
-                    compile-time. During the compilation process, pycompile pushes and pops MLIR pointers to and from
+                    compile-time. During the compilation process, Pycompile pushes and pops MLIR pointers to and from
                     the stack with each translated operation. When the program reaches the <i>CompareOp</i>, it knows
                     which two pointers are the inputs to the operation. Looking at the conversion code, we see this
                     explicitly:
@@ -614,7 +614,7 @@ print(msg)`}
     pyir::ByteCodeObjectType pyType = pyir::ByteCodeObjectType::get(&ctx);
     const std::string opStr = instr.argrepr;
     if (opStr.empty())
-        throw PyCompileError("COMPARE_OP must have a string argval", loc);
+        throw PycompileError("COMPARE_OP must have a string argval", loc);
     mlir::Value rhs = meta.stack.back();
     meta.stack.pop_back();
     mlir::Value lhs = meta.stack.back();
@@ -627,7 +627,7 @@ print(msg)`}
                     result pointer (the boolean result) being pushed after the conversion. Note that no actual values
                     are being calculated yet. The literal boolean result is not being generated, only a pointer to a
                     generic <code>pyir::ByteCodeObject</code> that will eventually hold that boolean at runtime.
-                    pycompile performs conversions like this for every bytecode instruction in the original program,
+                    Pycompile performs conversions like this for every bytecode instruction in the original program,
                     generating the corresponding PyIR code as it goes.
                 </p>
                 <p>
@@ -931,7 +931,7 @@ define void @__pymodule() {
                     <i>foo</i>, and another defines <code>void foo(int);</code>, the ABI establishes a common way for
                     resolving these kinds of references. A simple C ABI is fairly stable and is the standard way for
                     compiled binaries (even ones compiled in other languages like Rust) to link and share information.
-                    pycompile is written in C++
+                    Pycompile is written in C++
                     <Footnote>For better or for worse...</Footnote>, which generates an ABI that requires more caution
                     than one for pure C.
                 </p>
@@ -961,12 +961,12 @@ define void @__pymodule() {
                         is why it only steps in to resolve the issue when your machine is completely out of more memory
                         to allocate.
                     </Footnote>
-                    . Since pycompile compiles Python code down to a raw binary, there is no Python interpreter on-call
+                    . Since Pycompile compiles Python code down to a raw binary, there is no Python interpreter on-call
                     to manage memory for our program. The runtime library must do this itself. Normally, if need to
                     allocate fresh memory in C++, you would assign that memory to a "smart pointer". This is simply a
                     pointer that deallocates memory automatically when it is sensible to do so. Depending on the smart
                     pointer of choice, this is when it goes out of scope or when all references to it have gone out of
-                    scope. This seems great, and it is, so why is this a problem for pycompile? The issue is that the
+                    scope. This seems great, and it is, so why is this a problem for Pycompile? The issue is that the
                     internal implementation of these smart pointers is considered an implementation detail of the C++
                     compiler. The data structures that internally represent the smart pointer may be incompatible from
                     compiler to compiler. This means that how the smart pointer appears to the ABI boundary is not
@@ -983,7 +983,7 @@ define void @__pymodule() {
                 </p>
                 <BlogSection>Memory Management</BlogSection>
                 <p>
-                    The way pycompile manages memory takes a strong influence to how vanilla Python primarily manages
+                    The way Pycompile manages memory takes a strong influence to how vanilla Python primarily manages
                     memory: through reference counting. Suppose the program allocates some glob of memory that is then
                     interprets as a boolean, list, integer, etc. How can the program determine whether that memory is
                     still "in use" billions of clock cycles later? Different languages take different approaches to this
@@ -995,7 +995,7 @@ define void @__pymodule() {
                     Before an object can be safely deallocated, it must release its references to all other objects
                     first. If we were to map out the relations between all objects in memory, we would see a directed
                     graph of dependent objects leading all the way back to the program root scope. This is the exact
-                    memory management scheme that pycompile uses to ensure that allocated memory is tracked and
+                    memory management scheme that Pycompile uses to ensure that allocated memory is tracked and
                     eventually deallocated before the program terminates. Every single byte of it.
                 </p>
                 <p>
@@ -1011,7 +1011,7 @@ define void @__pymodule() {
                     sufficient for the vast majority of programs.
                 </p>
                 <p>
-                    For pycompile's runtime, each <code>PyObj</code> object (and all of its subclasses) have an explicit
+                    For Pycompile's runtime, each <code>PyObj</code> object (and all of its subclasses) have an explicit
                     API for managing their own lifetime:
                 </p>
                 <SyntaxHighlighter
@@ -1094,65 +1094,84 @@ bool PyObj::decref() {
                     not do nothing at all? In order for an object to be passed to a function, it must assigned to the
                     name associated with a function parameter. This happens explicitly in the case of user functions and
                     implicitly (by the immediately preceding <i>load_name</i>) in builtins. Going into a function every
-                    argument's reference count is one higher than it was previously since every argument in pycompile is
+                    argument's reference count is one higher than it was previously since every argument in Pycompile is
                     passed by reference only. Upon exit, there is no <i>unload_name</i> so every variable must have its
                     reference count decreased.
                 </p>
                 <p>
                     By explicitly managing memory through reference counting, the standard runtime library can handle
                     even complex programs without any memory leaks or lost data. Though, this can be partially credited
-                    to the limited scope of Python that pycompile currently supports. Managing the memory of class
+                    to the limited scope of Python that Pycompile currently supports. Managing the memory of class
                     members would be much more complex.
                 </p>
                 <BlogSection>Closing Remarks</BlogSection>
                 <p>
-                    In my experience, the best way to learn how to work with a tool or technology is to actually work
-                    with it yourself. pycompile is a good example of this. Informational articles or official
-                    documentation often do not fully capture the intricacies or difficulties that hands-on software
-                    engineers may actually experience. This is especially true when you are trying to wire together
-                    components that their original components never intended.
+                    For me, the best way of learning how a tool or technology works is to first work with that concept
+                    yourself, rather than through extensive study beforehand. Pycompile is a good example of this.
+                    Informational articles or official documentation often do not fully capture the intricacies or
+                    difficulties that hands-on software engineers actually experience. When I would like to learn such a
+                    concept, I usually try to incorporate it into a project that I think is somewhat novel
+                    <Footnote>
+                        It is fairly difficult to come up with a truly unique idea, so what I mean here is a project
+                        that is primarily of my own design, rather than one that is created by following a set tutorial.
+                    </Footnote>{" "}
+                    and interesting. For Pycompile, these concepts were Python bytecode and MLIR.
                 </p>
                 <p>
-                    Using Python bytecode directly is often discouraged for maintainability reasons, but doing so gives
-                    a much better feel of how the interpreter actually functions. Since most low-level programmers work
-                    on classic Von Neumann register-based machines, having to reason about an interpreter based
-                    primarily around a single stack can be rather jarring. It also serves as a reminder that even very
-                    popular and well-resources projects still have to actively manage technical debt and old
-                    implementations. For instance, there are three ways of creating a literal list in Python bytecode.
-                    You could use <i>BUILD_LIST</i> with the last <i>N</i> stack members, but this method was unused in
-                    all of the programs I disassembled. Instead, the interpreter uses one of two different methods,
-                    depending on the side of the list. If your list literal is less than around 30 elements, it will use{" "}
-                    <i>LIST_EXTEND</i> with a literal tuple. If not, it will use released <i>LIST_APPEND</i> for every
-                    element. The <i>JUMP_BACKWARD</i> instruction also works differently, depending on your Python
-                    version, either using relative addressing or absolute addressing like <i>JUMP_FORWARD</i>.
+                    Using Python bytecode directly is often discouraged for maintainability and stability reasons. After
+                    all, bytecode is an implementation detail of CPython. Its developers can therefore avoid the stress
+                    of breaking someone else's program while making changes to their own. From my perspective, working
+                    with bytecode regardless gives me a much better feel of how the interpreter actually functions.
+                    Since most low-level programmers work on classic Von Neumann register machines, having to reason
+                    about a stack-based interpreter instead can be an interesting challenge. The implementation of
+                    bytecode itself also serves as a reminder that even very popular and well-resources projects still
+                    have to actively manage technical debt and old implementations.
                 </p>
                 <p>
-                    MLIR and LLVM introduce significantly more complexity. Knowing which macros to wrap which includes
-                    with in the PyIR definition files was difficult to implement correctly at first. Adding one where it
-                    did not belong would result in missing symbol linking errors and missing one would result in
-                    duplicate symbol errors. Similarly to the include statements needed for each MLIR component, online
-                    guides and articles were often out of date. Implementing the lowering to LLVM IR also came with a
-                    steep learning curve. The lowering for calling functions exemplified this as it required knowledge
-                    of LLVM arrays, stack allocation, and GEP-ing LLVM pointers. Additionally, the knowledge of which
-                    MLIR components I needed to explicitly include and mark as illegal was primarily an exercise in
-                    trial and error.
+                    For instance, there are three ways of creating a literal list in Python bytecode. You could use{" "}
+                    <i>BUILD_LIST</i> with the last <i>N</i> stack members, but this method goes mostly unused in Python
+                    3.14. Instead, the interpreter uses different methods, depending on the size of the list. If your
+                    list literal is less than 31 elements, it will use <i>LIST_EXTEND</i> with a literal tuple of
+                    elements to create the list. If the list is longer, it will use repeated <i>LIST_APPEND</i>{" "}
+                    operations to built the list element-by-element. The <i>JUMP_BACKWARD</i> instruction also works
+                    differently, depending on your Python version. It either uses relative addressing or absolute
+                    addressing like <i>JUMP_FORWARD</i> to encode the jump target.
+                </p>
+                <p>
+                    MLIR and LLVM introduce more complexity as well. Knowing which macros to define in the PyIR
+                    definition files was difficult to implement correctly at first. Adding a macro where it did not
+                    belong would result in missing symbol linkage errors and omitting one would result in duplicate
+                    symbol errors. This is a consequence of these files dynamically generating <i>.inc</i> files at
+                    compile time, which added to my unfamiliarity. Likewise, the <code>#include</code> statements needed
+                    for each MLIR component also added to the steep learning curve. Online guides and articles were
+                    often out of date, so it required some digging to find out which headers were used by LLVM 21.
+                </p>
+                <p>
+                    In a different vein, the lowering to LLVM IR was less version-dependent, but was still quite an
+                    involved learning experience. The lowering for function calls exemplified this, as it required
+                    knowledge of LLVM arrays, LLVM stack allocation, and GEP-ing LLVM pointers. Additionally, the
+                    knowledge of which MLIR components I needed to explicitly include and mark as illegal was primarily
+                    an exercise in trial and error.
                 </p>
                 <p>
                     To be explicit, none of this it to say that Python bytecode or MLIR is poorly designed, quite the
-                    contrary in fact. However, most articles that describe how a project was made and how technologies
-                    were used tend to leave out the learning curve that all developers face. When working with a new
-                    language or process, there are always little things which seem to be unreasonably frustrating or
-                    counter intuitive. As one gains more experience, these are either revealed to be important details
-                    of the program's implementation or are just eccentricities that are gotten used to. Python bytecode
-                    and MLIR have many instances of these, but getting to know them hands-on has resulted in a much
-                    better understanding of them for me.
+                    opposite in fact. I have instead written these remarks to describe the details of my own learning
+                    process. I find that most articles or blogs describing the creation of software projects like this
+                    tend to leave out the learning curve that the original developer likely faced. When working with a
+                    new language or process, there are always little things which seem to be unreasonably frustrating or
+                    counter-intuitive. As one gains more experience, one learns either that these are important to the
+                    internal implementation or are genuine quirks that cam be handled in well-defined ways. Python
+                    bytecode and MLIR have many instances of these, but getting to know them through hands-on experience
+                    has given me a much better understanding of them than I originally had.
                 </p>
                 <p>
-                    Working on projects, especially unconventional ones, that include unfamiliar technologies has been
-                    one of my favorite methods for learning new things. As pycompile progressed, I found myself
-                    referencing tutorials and guides less and relying my my existing code and knowledge more, despite my
-                    earlier difficulties. It is especially satisfying to write a Python program and, instead of invoking{" "}
-                    <i>python3</i> to execute it, you instead directly run <i>./a.out</i>!
+                    Working on projects, especially unconventional ones, that are implemented with unfamiliar
+                    technologies has been one of my favorite methods for learning new software. As Pycompile progressed,
+                    I found myself referencing tutorials and guides less and relying on my existing code and knowledge
+                    more, despite my earlier difficulties. Knowing that you can rely on your learned experience instead
+                    of reaching for assistance is always a satisfying experience. It is nearly as satisfying as writing
+                    a Python program and, instead of invoking <i>python3</i> to execute it, you can just run{" "}
+                    <i>./a.out</i>!
                 </p>
                 <hr />
                 <FootnoteList />
