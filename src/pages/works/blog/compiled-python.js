@@ -38,21 +38,21 @@ export default function CompiledPython() {
                 <BlogSection>Introduction</BlogSection>
                 <p>
                     Python is a highly popular and highly versatile language. It is commonly used for its low-barrier to
-                    entry, intuitive design, and ease of writing. This is partially due to how the language handles
-                    common complexities. The Python language standard abstracts away low level memory management and the
-                    complexity of common algorithms into its garbage collector and builtin library, respectively. This
-                    allows programmers to concentrate on the functionality of their program, without having to worry
-                    about where/how memory is allocated or about re-implementing common algorithms. These conveniences
-                    are enabled in large part by Python's design as an interpreted language.
+                    entry, intuitive design, and ease of writing. These qualities partially stem from how the language
+                    handles common complexities. The Python language standard abstracts away low level memory management
+                    and the complexity of common algorithms into its internal reference counting and builtin library,
+                    respectively. This allows programmers to concentrate on the functionality of their program, without
+                    having to worry about where/how memory is allocated or about re-implementing common algorithms.
+                    These conveniences are enabled in large part by Python's design as an interpreted language.
                 </p>
                 <p>
-                    Instead of directly compiling down to machine code, Python code is interpreted by the Python
-                    interpreter into instructions that can run on the host machine. Based on how the interpreter is
-                    implemented, any arbitrary functionality can run in the background without the original programmer
-                    needing to worry about it. The garbage collector is a good example of this. This service runs in the
-                    background of every Python program, freeing unused memory allocations to stop the program from
-                    leaking memory. This happens completely transparently without any intervention needed from the
-                    programmer
+                    Instead of directly compiling down to machine code, Python code is processed by the Python
+                    interpreter into instructions that can run on the host machine as the program is executing, not
+                    before. Based on how the interpreter is implemented, any arbitrary functionality can run in the
+                    background without the original programmer needing to worry about it. The garbage collector is a
+                    good example of this. This service runs in the background of every Python program, freeing unused
+                    memory allocations to stop the program from leaking memory. This happens completely transparently
+                    without any intervention needed from the programmer
                     <Footnote>
                         Unless the program makes use of Python's <code>gc</code> module.
                     </Footnote>
@@ -64,16 +64,19 @@ export default function CompiledPython() {
                         CPython
                     </Link>
                     . The core of the interpreter is written in C, with core libraries written in Python directly. Why
-                    is this? Why not implement the Python interpreter in Python itself?
+                    is this the case? Why not implement the Python interpreter in Python itself? Many other languages do
+                    exactly this, why not Python?
                 </p>
                 <BlogSection level={2}>Interpreters and Compilers</BlogSection>
                 <p>There is a short answer and a long answer to this question.</p>
                 <p>
                     The short answer is that it can't, at least not fully. As an interpreted language, Python source
-                    code is never translated to machine code, the language that the CPU is able to execute. This happens
-                    in an indirect way through the interpreter (how else would the language run!), but needing to go
-                    through an entire executable to get to instructions is not exactly portable. Even if it were, the
-                    actual machine code instructions are never logged, just executed immediately by the CPU.
+                    code is never translated to machine code, the language that the CPU is able to understand. This
+                    happens in an indirect way through the interpreter (how else would the language run!), but if we
+                    wanted to write the Python interpreter in Python, we would need a standalone executable.
+                    Additionally, the actual machine code instructions corresponding to the Python program are never
+                    recorded for later, just executed immediately by the CPU and discarded. We would need a program that
+                    actually outputs a binary, which the interpreter does not.
                 </p>
                 <p>
                     Compiled languages can achieve this, though. Languages like C, Rust, and Zig are <i>self-hosted</i>.
@@ -83,8 +86,8 @@ export default function CompiledPython() {
                     executed by the CPU.
                 </p>
                 <p>
-                    The long answer is that Python can, and is, used to implement different versions of Python, just not
-                    <i>the</i> most commonly used version. CPython uses a hybrid-interpreted strategy for executing
+                    The long answer is that Python can, and is, used to implement different versions of Python, just not{" "}
+                    <i>the</i> most commonly used version. CPython uses a hybrid-interpreter strategy for executing
                     Python code. This means that Python source code is never translated to machine code in a textual
                     format
                     <Footnote>
@@ -107,15 +110,16 @@ export default function CompiledPython() {
                     always goes through the complex logic within the interpreter. What a JIT compiler does is somewhat
                     similar. Opcodes are still processed sequentially, but instead of needing to go through the
                     interpreter every time, machine instructions are generated for each Python instruction and reused
-                    when executed again. This offers part of the seed of a compiled language without the upfront cost of
-                    a compilation. JIT compiled languages can self-host just like their fully compiled counterparts.
+                    when executed again. This offers part of the speed of a compiled language without the upfront cost
+                    of a compilation. JIT compiled languages can self-host just like their fully compiled counterparts.
                 </p>
                 <p>
                     Fully JIT Python interpreters already exist. PyPy is one of the foremost examples. As a Python JIT
                     compiler, it can achieve 4x to 6x speedup when compared to the CPython interpreter. It is also
-                    written in RPython, a statically typed subset of Python. During execution, PyPy analyzes executing
-                    instructions to identify regions that can execute frequently. Loops, for example. These regions are
-                    then translated into machine instructions and run in place of the much slower Python code.
+                    written in RPython, a statically typed subset of Python. During execution, PyPy analyzes
+                    instructions in flight to identify regions that can execute frequently. Loops, for example. These
+                    regions are then translated into machine instructions and run in place of the much slower Python
+                    code.
                 </p>
                 <p>
                     Jython is another JIT Python implementation that is slightly older than PyPy. Written in Java
@@ -145,7 +149,8 @@ export default function CompiledPython() {
                     by <i>exaloop</i> is implemented in a similar manner, with more of a focus on high-performance
                     programming and GPU interoperability. It also relies upon LLVM for compilation and has implemented a
                     parser for a Python-like DSL of their own design. Their Python DSL requires static typing as type
-                    checking is performed at compile-time. This eliminates some of Python's dynamic typing features.
+                    checking is performed at compile-time. Like lpython, This eliminates some of Python's dynamic typing
+                    features.
                 </p>
                 <p>
                     Finally,{" "}
@@ -163,28 +168,30 @@ export default function CompiledPython() {
                 <p>
                     These examples follow a similar pattern: using a custom Python parser over the CPython parser and
                     often enforcing static typing as a requirement for compilation. Why is this? Why not take in vanilla
-                    Python with all its dynamic typing conveniences and extensive Bytecode implementation?
+                    Python with all its dynamic typing conveniences and extensive Bytecode implementation? This would
+                    seemingly bring all of the benefits of Python along with the speed of a compiled language.
                 </p>
                 <BlogSection>Why Python Works Best as an Interpreted Language</BlogSection>
                 <p>
-                    There is good reason as to why Python AOT compilation projects tend to modify the standard of Python
-                    that they accept and why CPython itself is not always a direct dependency. A large reason for
+                    There is good reason as to why Python AOT compilation projects tend to restrict the standard of
+                    Python that they accept and why CPython itself is not always a direct dependency. A large reason for
                     Python's success as a language can be attributed to its shallow learning curve and ease-of-use. A
-                    core component of this is Python's dynamic typing system. Python can be classified as having strong
-                    but dynamic typing.
+                    core component of this is Python's dynamic typing system. More specifically, Python as a language
+                    can be classified as having strong but dynamic typing. But, what is a "strong but dynamic type
+                    system", exactly?
                 </p>
                 <p>
                     Being a strongly typed language means that types have well-defined interactions with other types and
                     with themselves. They have strict, user-defined properties and the attributes of a type generally do
-                    not change at runtime. This is similar to languages like Java where class interactions are strictly
-                    defined and a class' variables and methods are static at runtime. You cannot add a function to a
-                    Java class during program execution where there was none before. Strict typing is not exhibited by
-                    languages like JavaScript. JS has a "type coercion" system that tries to force different types to
-                    interact, even if no well-defined interaction is defined by the programmer. A very common example of
-                    this is comparing an integer type to a string type. In JavaScript <code>5 == '5'</code> evaluates as
-                    truthy because the string is coerced into a number before the comparison. Languages like Java or
-                    Python would evaluate to a truthy value. JavaScript also supports defining arbitrary attributes for
-                    classes at runtime through the object's <i>prototype</i>.
+                    not change at runtime. This is similar to languages like Java, where class interactions are strictly
+                    defined and a class' variables and method definitions are fixed at runtime. You cannot add a
+                    function to a Java class during program execution where there was none before. Strict typing is not
+                    exhibited by languages like JavaScript. JS has a "type coercion" system that tries to force
+                    different types to interact, even if no well-defined interaction is defined by the programmer. A
+                    very common example of this is comparing an integer type to a string type. In JavaScript{" "}
+                    <code>5 == '5'</code> evaluates as truthy because the string is coerced into a number before the
+                    comparison. Languages like Java or Python would evaluate to a falsy value. JavaScript also supports
+                    defining arbitrary attributes for classes at runtime through the object's <i>prototype</i>.
                 </p>
                 <p>
                     As a dynamically typed language, Python does not associate a type with specific variables or
@@ -223,16 +230,16 @@ export default function CompiledPython() {
                 </p>
                 <BlogSection>A Python Compiler</BlogSection>
                 <p>
-                    While writing a custom Python compiler is the most maintainable avenue for beginning a Python
-                    compiler project, my goal was to focus more on the short-term process over long-term maintenance. My
-                    project aimed to create a program that would compile Python source code down to an executable binary
-                    in the minimum amount of time possible. This is because I was primarily interested in teaching
-                    myself more about Python bytecode, MLIR dialects, and the LLVM compilation API. Using the ready-made
-                    CPython API would allow me to concentrate specifically on these areas of interest.
+                    Writing a custom Python compiler is generally the most maintainable avenue for beginning a Python
+                    compiler project. However, my goal was to focus more on the short-term process over long-term
+                    maintenance. The project aimed to create a program that would compile Python source code down to an
+                    executable binary in the minimum amount of time possible. This is because I was primarily interested
+                    in teaching myself more about Python bytecode, MLIR dialects, and the LLVM compilation API. Using
+                    the ready-made CPython API would allow me to concentrate specifically on these areas of interest.
                 </p>
                 <p>
                     <Link
-                        href={"https://github.com/matthew-pisano/Pycompile"}
+                        href={"https://github.com/matthew-pisano/pycompile"}
                         target="_blank"
                         rel="noopener noreferrer">
                         Pycompile
@@ -255,23 +262,23 @@ export default function CompiledPython() {
                 </p>
                 <p>
                     Even though the API does not directly support bytecode disassembly, Python itself does through the{" "}
-                    <code>dis</code> library. Using the interpreter I can import this module and execute its disassembly
-                    functionality as if I were calling it directly from a Python program. This yields an iterator of{" "}
-                    <code>PyObject</code> pointers which I can then translate directly to the{" "}
-                    <code>ByteCodeInstruction</code> structs which make up the module.
+                    <code>dis</code> library. Using the interpreter, I can import this module and execute its
+                    disassembly functionality as if I were calling it directly from a Python program. This yields an
+                    iterator of raw <code>PyObject</code> pointers which I can then translate directly to the{" "}
+                    <code>ByteCodeInstruction</code> structs which make up the <code>ByteCodeModule</code>.
                 </p>
                 <p>
-                    This works surprisingly well, but CPython shifts the responsibility of memory management onto the
-                    programmer. This has two major consequences for this project. The first of which concerns the{" "}
-                    <code>PyObject</code> pointers that I use for the disassembly. To prevent memory leaks, Pycompile
-                    needs to keep track of the lifetimes of each object and call <code>Py_DECREF()</code> appropriate to
-                    manage the object's reference count. The second issue has to do with the Python interpreter itself.
-                    At the beginning of any program which utilize the interpreter, <code>Py_Initialize()</code> must be
-                    called before and interaction occurs and <code>Py_Finalize()</code> must be called after. These
-                    actions are similarly the responsibility of the programmer to execute. If these are not called in
-                    the correct order, or if the original scope is deleted, the program will leak memory or outright
-                    segfault. To solve this particular issue, I created a RAII wrapper to ensure that the lifetime of
-                    the interpreter is properly managed.
+                    This works surprisingly well, but these raw pointers require some extra consideration. CPython
+                    shifts the responsibility of memory management onto the programmer; this fact has two major
+                    consequences for Pycompile. The first of which concerns the <code>PyObject</code> pointers that I
+                    use for the disassembly. To prevent memory leaks, Pycompile needs to keep track of the lifetimes of
+                    each object and call <code>Py_DECREF()</code> appropriately to manage the object's reference count.
+                    The second issue has to do with the Python interpreter itself. At the beginning of any program which
+                    utilizes the interpreter, <code>Py_Initialize()</code> must be called before any interaction occurs
+                    and <code>Py_Finalize()</code> must be called after. These actions are similarly the responsibility
+                    of the programmer to execute. If these are not called in the correct order, or if the original scope
+                    is deleted, the program will leak memory or outright segfault. To solve this particular issue, I
+                    created a RAII wrapper to ensure that the lifetime of the interpreter is properly managed.
                 </p>
                 <p>
                     After the Python code is translated into a <code>ByteCodeModule</code>, it requires further
@@ -285,9 +292,24 @@ export default function CompiledPython() {
                     of MLIR, meaning that it shares many similarities with vanilla MLIR, but has been extended with
                     Python-specific instructions. With this dialect, I can translate each bytecode instruction into an
                     equivalent PyIR instruction. This also lets the program hook into a C++ runtime to handle Python's
-                    dynamic type system and unique scope management. For example, a basic Python hello world program
-                    generates the following MLIR:
+                    dynamic type system and unique scope management. For example, consider a basic Python hello world
+                    program:
                 </p>
+                <SyntaxHighlighter
+                    language="python"
+                    style={dracula}
+                    customStyle={{
+                        borderRadius: "10px",
+                        textIndent: "0"
+                    }}>
+                    {`def main():
+    print("Hello, World!")
+
+if __name__ == "__main__":
+    main()
+`}
+                </SyntaxHighlighter>
+                <p>The above Python program generates the following MLIR:</p>
                 <SyntaxHighlighter
                     language="mlir"
                     style={dracula}
@@ -297,7 +319,7 @@ export default function CompiledPython() {
                     }}>
                     {`module {
   func.func @__pymodule() {
-    pyir.init_module "Pycompile/examples/hello_world.py", "__main__"
+    pyir.init_module "hello_world.py", "__main__"
     %0 = pyir.make_function "__pyfn_main_0"
     pyir.store_name "main", %0 : !pyir.object
     %1 = pyir.load_name "__name__"
@@ -363,10 +385,10 @@ export default function CompiledPython() {
                     have the concept of "opaque pointers", meaning that the <code>ptr</code> type contains no specific
                     type information. However, the language still requires predetermined information on how large the
                     pointed-to object is in memory, making true dynamic typing difficult. Another LLVM-only option would
-                    be to create custom vtables and function pointers, but this would require significant low-level
+                    be to create custom V-tables and function pointers, but this would require significant low-level
                     translation logic to map Python primitives (and data structures) to LLVM types. Using this method to
                     handle member functions (like <code>dict::update()</code>) would require more custom logic on top of
-                    this. Suffice to say, there is a good reason why most low-level languages are strictly typed.
+                    this. Suffice to say, there is a good reason why most low-level languages are statically typed.
                 </p>
                 <p>
                     What, then, is the best option for handling Python's type mechanism? The solution that I settled
@@ -387,11 +409,11 @@ export default function CompiledPython() {
                 <p>
                     The first translation of the raw Python code is to CPython's Python bytecode. Related to previous
                     points on bytecode's instability, this section is most relevant to bytecode for Python 3.14.
-                    Especially after 3.11 and 3.12 function calls and for loops have undergone significant changes.
-                    Further changes will undoubtedly occur in the future.
+                    Especially after 3.11 and 3.12 function calls and jumps have undergone significant changes. Further
+                    changes will undoubtedly occur in the future.
                 </p>
                 <p>
-                    As mentioned bytecode instructions are always processed within the context of a main stack (barring
+                    As mentioned, bytecode instructions are always processed within the context of a main stack (barring
                     exception handling). As the interpreter executes, instructions are evaluated in sequence while
                     modifying the contents of the data stack. Objects on this stack need not be objects in the
                     traditional sense either. Functions, scopes, and other metadata can also be pushed and popped like
@@ -420,7 +442,7 @@ export default function CompiledPython() {
                     handled, instead of the more general <i>BINARY_OP</i>. These logical operations also present another
                     motivation for having a C++ runtime over generated MLIR. The operation that <i>BINARY_OP +</i>{" "}
                     performs could be a concatenation if the top two stack objects are strings or an addition if they
-                    are integers. The types of the top two stack objects is entirely runtime dependent and would
+                    are integers. The types of the top two stack objects are entirely runtime dependent and would
                     therefore be difficult to encode in advance with MLIR.
                 </p>
                 <p>
@@ -433,13 +455,13 @@ export default function CompiledPython() {
                 </p>
                 <p>
                     Each Python function (though not builtins) contains a special <code>__code__</code> attribute. This
-                    attribute points to <code>PyCodeObject</code> structs within CPython. This object contains important
-                    metadata for the function and its scope. Namely, three tuples of references.{" "}
-                    <code>co_varnames</code> contains the names of all local variables. <code>co_cellvars</code>{" "}
-                    contains the names of local variables in this scope that are referenced by inner functions or
-                    closures. These variables may outlive their original function if the lifetime of the closure exceeds
-                    it. Finally, <code>co_freevars</code> contains the names of variables in the current scope that are
-                    defined in an outer scope, a view from the other side of <code>co_cellvars</code>. When calling{" "}
+                    attribute points to <code>PyCodeObject</code> structs within CPython. It contains important metadata
+                    for the function and its scope. Namely, three tuples of references. <code>co_varnames</code>{" "}
+                    contains the names of all local variables. <code>co_cellvars</code> contains the names of local
+                    variables in this scope that are referenced by inner functions or closures. These variables may
+                    outlive their original function if the lifetime of the closure exceeds it. Finally,{" "}
+                    <code>co_freevars</code> contains the names of variables in the current scope that are defined in an
+                    outer scope, a view from the other side of <code>co_cellvars</code>. When calling{" "}
                     <code>LOAD_FAST 0</code>, the interpreter looks up the variable name stored in{" "}
                     <code>co_varnames[0]</code> and the top of the stack is stored in that variable.
                 </p>
@@ -482,9 +504,9 @@ print(msg)`}
                 </SyntaxHighlighter>
                 <p>
                     Notice how the string is first loaded in as a constant at the top of the stack and stored into the
-                    variable <i>msg</i>. Next, the <i>print</i> name is loaded at the stack's current top, <i>msg</i> is
-                    pushed next, and the <i>CALL</i> instruction tells the interpreter to pop one argument from the
-                    stack and then call the function at the new top (after consuming the <i>None</i> placeholder).
+                    variable <i>msg</i>. Next, the <i>print</i> name is loaded at the stack's current top alog with{" "}
+                    <i>msg</i>. The <i>CALL</i> instruction tells the interpreter to pop one argument (<i>msg</i>) from
+                    the stack and then call the function now at the top (after consuming the <i>None</i> placeholder).
                 </p>
                 <BlogSection level={2}>PyIR</BlogSection>
                 <p>
@@ -494,7 +516,8 @@ print(msg)`}
                     representing. The first is a dialect. This is the top level definition that lays out PyIR's
                     metadata. The next are types. These define custom object types for the dialect. For PyIR,{" "}
                     <code>ByteCodeObject</code> types are often passed between instructions. This represents something
-                    analogous to a Python base object. Attributes represent constant values embedded directly into
+                    analogous to a Python base object. Since the specific type of any object is not known until runtime,
+                    this is as specific as we can get. Attributes represent constant values embedded directly into
                     instructions instead of a variable. For example, if loading in a constant value of <i>None</i>, PyIR
                     would represent this as loading in a <code>pyir::NoneAttr</code>, a stand-in for Python'{" "}
                     <code>NoneType</code>. Finally, there are operations. Here, this is defined as a base{" "}
@@ -551,11 +574,11 @@ print(msg)`}
                 </SyntaxHighlighter>
                 <p>
                     Before the tablegen file can be compiled, however, it must be compiled along with several auxiliary
-                    files. <i>pyir</i>, <i>pyir_attrs</i>, <i>pyir_ops</i>, <i>pyir_types</i> cpp/hpp pairs of files
-                    must be defined and compiled along with the tablegen file. These file include the <i>.inc</i> files
+                    files. <i>pyir</i>, <i>pyir_attrs</i>, <i>pyir_ops</i>, and <i>pyir_types</i> cpp/hpp pairs of files
+                    must be defined and compiled along with the tablegen file. These files include the <i>.inc</i> files
                     generated by the tablegen, making them available to the rest of the program. When including the{" "}
                     <i>.inc</i> files for the attributes, types, and ops, specific macros need to be defined to ensure
-                    that the right code makes it part the preprocessing stage of compilation. This in particular was
+                    that the right code makes it past the preprocessing stage of compilation. This in particular was
                     fairly cumbersome to get right since different online sources list different macros and different
                     conditions for including those macros. Oftentimes, the official MLIR documentation is the only
                     up-to-date source of truth.
@@ -661,7 +684,7 @@ print(msg)`}
                     transition from a stack-based IR to one geared towards register-based machines (like a CPU).
                 </p>
                 <p>
-                    Similar to Python and the interpreter, a <code>mlir::MLIRContext</code> object must be in scope for
+                    Similar to Python and the interpreter, an <code>mlir::MLIRContext</code> object must be in scope for
                     as long as MLIR or LLVM is used. The program will segmentation fault if not.
                 </p>
                 <BlogSection level={2}>LLVM IR</BlogSection>
@@ -686,11 +709,11 @@ pm.addPass(createPyIRToLLVMPass());`}
                     The first line loads in the LLVM dialect of MLIR for translation and the second line creates a pass
                     manager that handles the conversion passes. Line three adds something called a canonicalizer pass,
                     this pass performs basic optimizations like folding constants. The last line is the most important,
-                    it registers the PyIR lowering pass to actually perform the conversion fro PyIR to LLVM IR. The
-                    inner function here simply returns a unique pointer to a <code>PyIRToLLVMPass</code> object. Within
-                    this object, the actual translation logic is encoded. Within this class, there is the{" "}
-                    <code>runOnOperation()</code> function. It is an override from the <code>mlir::PassWrapper</code>{" "}
-                    superclass. Within this function, we have:
+                    it registers the PyIR lowering pass to actually perform the conversion from PyIR to LLVM IR. The{" "}
+                    <code>createPyIRToLLVMPass()</code> function here simply returns a unique pointer to a{" "}
+                    <code>PyIRToLLVMPass</code> object. Within this object, the actual translation logic is encoded by
+                    the <code>runOnOperation()</code> function. It is an override from the{" "}
+                    <code>mlir::PassWrapper</code> superclass. Within this function, we have:
                 </p>
                 <SyntaxHighlighter
                     language="cpp"
@@ -730,7 +753,7 @@ target.addLegalOp<mlir::ModuleOp>();`}
                 </p>
                 <p>
                     Hold on, why would we register our own dialect as "illegal"? That seems rather counter-productive.
-                    Notice that PyIR is being marked as illegal with respect to the general{" "}
+                    Though, notice that PyIR is being marked as illegal with respect to the general{" "}
                     <code>mlir::LLVMConversionTarget</code>. This illegal marking essentially says "this dialect is not
                     part of LLVM, do not attempt to lower it as such". Instead, the lowering code will fall back to our
                     custom PyIR lowering functions from earlier. This is the exact behavior that we want.
@@ -801,11 +824,11 @@ struct CompareOpLowering : PyIROpConversion {
                 </SyntaxHighlighter>
                 <p>
                     This function extracts the string operation from the instruction through{" "}
-                    <code>compareOp.getOp().str()</code> and matches it with the corresponding function to link to and
-                    run during execution. For example, if the compare operation string operation was "==", the linked
-                    function would be <i>pyir_eq</i>. On the inside of <code>linkOpToRuntimeFunc</code>, it replaces the
-                    current operation with a <code>mlir::LLVM::CallOp</code> operation which calls the linked runtime
-                    function.
+                    <code>compareOp.getOp().str()</code> and matches it with the corresponding function to link to now
+                    and to run during execution. For example, if the compare operation string operation was "==", the
+                    linked function would be <i>pyir_eq</i>. On the inside of <code>linkOpToRuntimeFunc</code>, it
+                    replaces the current operation with a <code>mlir::LLVM::CallOp</code> operation which calls the
+                    linked runtime function.
                 </p>
                 <p>
                     The conversion goes through these, instruction-by-instruction until the entire program is translated
@@ -919,18 +942,19 @@ define void @__pymodule() {
                 </SyntaxHighlighter>
                 <p>
                     Note all of the dynamic casting used to see what the actual instance type of the base <i>PyObj</i>{" "}
-                    that the pointer represents. Note the <i>decref</i> statements. This will be important in a moment.
+                    that the pointer represents. Also note the <i>decref</i> statements as they will be important in a
+                    moment.
                 </p>
                 <p>
                     With the library functions implemented, it now needs to be linked to the module code in order to
-                    resolve the outbound references tha LLVM declared. Linking this library with the original Python
+                    resolve the outbound references that LLVM declared. Linking this library with the original Python
                     module would be fairly simple if it were not for one major issue: the ABI boundary. What is an ABI
                     boundary? An Application Programming Interface (ABI) is the surface by which two compiled code
                     object communicate with one another. If one object has outgoing references to a function called{" "}
                     <i>foo</i>, and another defines <code>void foo(int);</code>, the ABI establishes a common way for
-                    resolving these kinds of references. A simple C ABI is fairly stable and is the standard way for
-                    compiled binaries (even ones compiled in other languages like Rust) to link and share information.
-                    Pycompile is written in C++
+                    linking the two. A simple C ABI is fairly stable and is the standard way for compiled binaries (even
+                    ones compiled in other languages like Rust) to link and share information. Pycompile is not
+                    implemented in C, though. It is instead written in C++
                     <Footnote>For better or for worse...</Footnote>, which generates an ABI that requires more caution
                     than one for pure C.
                 </p>
@@ -942,11 +966,12 @@ define void @__pymodule() {
                     name, the symbols could clash even if the functions have different parameters. This is helpful when
                     you are just compiling a single program, but can cause some headaches when working with libraries
                     compiled in other languages. LLVM IR happens to be another language. If I had a line in LLVM like{" "}
-                    <code>declare void @foo(i64)</code> and I link it to a C++ library that defines <i>void foo(int)</i>
-                    , the linker would be looking for a symbol called exactly "foo". However, recall that C++ compiles
-                    the <i>foo</i> function down to a symbol that looks like <i>_Z3fooi</i>. What to do? Luckily, the
-                    fix for this is simple. Declaring the C++ function as <code>extern "C" void foo(int)</code>. The
-                    "extern C" portion tells the compiler to use C linking over C++ linking, preventing name mangling.
+                    <code>declare void @foo(i64)</code> and I link it to a C++ library that defines{" "}
+                    <code>void foo(int)</code>, the linker would be looking for a symbol called exactly "foo". However,
+                    recall that C++ compiles the <i>foo</i> function down to a symbol that looks like <i>_Z3fooi</i>.
+                    What to do? Luckily, the fix for this is simple. Declaring the C++ function as{" "}
+                    <code>extern "C" void foo(int)</code>. The "extern C" portion tells the compiler to use C linking
+                    over C++ linking, preventing name mangling.
                 </p>
                 <p>
                     The more pressing issue for our purposes concerns pointers (though, I suppose this is a tautology
@@ -961,17 +986,17 @@ define void @__pymodule() {
                         to allocate.
                     </Footnote>
                     . Since Pycompile compiles Python code down to a raw binary, there is no Python interpreter on-call
-                    to manage memory for our program. The runtime library must do this itself. Normally, if need to
-                    allocate fresh memory in C++, you would assign that memory to a "smart pointer". This is simply a
-                    pointer that deallocates memory automatically when it is sensible to do so. Depending on the smart
-                    pointer of choice, this is when it goes out of scope or when all references to it have gone out of
-                    scope. This seems great, and it is, so why is this a problem for Pycompile? The issue is that the
-                    internal implementation of these smart pointers is considered an implementation detail of the C++
-                    compiler. The data structures that internally represent the smart pointer may be incompatible from
-                    compiler to compiler. This means that how the smart pointer appears to the ABI boundary is not
-                    always well-defined, leading to compilation errors or undefined behavior! This essentially forces
-                    the runtime library to communicate only with raw pointers across the ABI boundary between C++ and
-                    the compiled Python module
+                    to manage memory for our program. The runtime library must do this itself. Normally, if a C++
+                    program needs to allocate fresh memory, you would assign that memory to a "smart pointer". This is
+                    simply a pointer that deallocates memory automatically when it is sensible to do so. Depending on
+                    the smart pointer of choice, this is when it goes out of scope or when all references to it have
+                    gone out of scope. This seems great, and it is, so why is this a problem for Pycompile? The issue is
+                    that the internal implementation of these smart pointers is considered an implementation detail of
+                    the C++ compiler. The data structures that internally represent the smart pointer may be
+                    incompatible from compiler to compiler. This means that how the smart pointer appears to the ABI
+                    boundary is not always well-defined, leading to compilation errors or undefined behavior! This
+                    essentially forces the runtime library to communicate only with raw pointers across the ABI boundary
+                    between C++ and the compiled Python module
                     <Footnote>
                         Technically, there is nothing stopping the internals of the runtime library from using smart
                         pointers on the inside, but since this information is stripped away at nearly every function
@@ -988,7 +1013,7 @@ define void @__pymodule() {
                     still "in use" billions of clock cycles later? Different languages take different approaches to this
                     problem, but one of the most popular is simply checking if another object references the one in
                     question. Our original object stays in memory and is not freed until the number of other objects
-                    referencing it reaches zero, its reference count.
+                    referencing it, its reference count, reaches zero.
                 </p>
                 <p>
                     Before an object can be safely deallocated, it must release its references to all other objects
@@ -1006,8 +1031,8 @@ define void @__pymodule() {
                     destroy circular references between objects which keep them alive long past their last time of use.
                     It does this by detecting which objects have a reference lineage tracing all the way back to some
                     root scope and which are only kept alive by bootstrapping their own existence through a reference
-                    cycle. that said, for the purposes of this small-scale language experiment, reference counting is
-                    sufficient for the vast majority of programs.
+                    cycle. That said, for the purposes of this small-scale language experiment, reference counting is
+                    sufficient for the majority of programs.
                 </p>
                 <p>
                     For Pycompile's runtime, each <code>PyObj</code> object (and all of its subclasses) have an explicit
@@ -1048,8 +1073,9 @@ private:
                     deleted constructors. <code>PyObj</code> objects cannot be moved, reassigned, or copied. The
                     lifetime of an object must be completely and exclusively managed by reference counting. Without
                     these restrictions, the same object could be copied with each copy maintaining different reference
-                    counts. If one object's reference count hits zero before the object, the interlying memory that both
-                    objects share would be deleted, causing a undefined behavior in the remaining copy.
+                    counts. If one object's reference count hits zero before the other's, the underlying memory that
+                    both objects share would be deleted, causing a undefined behavior when the remaining copy next
+                    references it.
                 </p>
                 <p>
                     Next, we have the <i>incref</i> and <i>decref methods</i>, along with the <i>refcount</i> which they
@@ -1092,10 +1118,11 @@ bool PyObj::decref() {
                     <i>decref</i> functions called. Why only decref? Why not incref on entry and decref on exit or why
                     not do nothing at all? In order for an object to be passed to a function, it must assigned to the
                     name associated with a function parameter. This happens explicitly in the case of user functions and
-                    implicitly (by the immediately preceding <i>load_name</i>) in builtins. Going into a function every
-                    argument's reference count is one higher than it was previously since every argument in Pycompile is
-                    passed by reference only. Upon exit, there is no <i>unload_name</i> so every variable must have its
-                    reference count decreased.
+                    implicitly (by the immediately preceding <i>load_name</i>) in builtins. This is notable since load
+                    operations in Pycompile increment the loaded object's reference count. Going into a function, every
+                    argument's reference count is exactly one higher than it was previously, since every argument in
+                    Pycompile is passed by reference only. Upon exit, there is no <i>unload_name</i> so every variable
+                    must have its reference count decreased.
                 </p>
                 <p>
                     By explicitly managing memory through reference counting, the standard runtime library can handle
@@ -1122,17 +1149,17 @@ bool PyObj::decref() {
                     of breaking someone else's program while making changes to their own. From my perspective, working
                     with bytecode regardless gives me a much better feel of how the interpreter actually functions.
                     Since most low-level programmers work on classic Von Neumann register machines, having to reason
-                    about a stack-based interpreter instead can be an interesting challenge. The implementation of
+                    about a stack-based interpreter instead can be a welcome change of scenery. The implementation of
                     bytecode itself also serves as a reminder that even very popular and well-resourced projects still
                     have to actively manage technical debt and old implementations.
                 </p>
                 <p>
-                    For instance, there are three ways of creating a literal list in Python bytecode. You could use{" "}
-                    <i>BUILD_LIST</i> with the last <i>N</i> stack members, but this method goes mostly unused in Python
-                    3.14. Instead, the interpreter uses different methods, depending on the size of the list. If your
-                    list literal is less than 31 elements, it will use <i>LIST_EXTEND</i> with a literal tuple of
-                    elements to create the list. If the list is longer, it will use repeated <i>LIST_APPEND</i>{" "}
-                    operations to built the list element-by-element. The <i>JUMP_BACKWARD</i> instruction also works
+                    For instance, there are three ways of creating a literal list (and dict and set) in Python bytecode.
+                    You could use <i>BUILD_LIST</i> with the last <i>N</i> stack members, but this method goes mostly
+                    unused in Python 3.14. Instead, the interpreter uses different methods, depending on the size of the
+                    list. If your list literal is less than 31 elements, it will use <i>LIST_EXTEND</i> with a literal
+                    tuple of elements to create the list. If the list is longer, it will use repeated <i>LIST_APPEND</i>{" "}
+                    operations to build the list element-by-element. The <i>JUMP_BACKWARD</i> instruction also works
                     differently, depending on your Python version. It either uses relative addressing or absolute
                     addressing like <i>JUMP_FORWARD</i> to encode the jump target.
                 </p>
@@ -1160,17 +1187,16 @@ bool PyObj::decref() {
                     new language or process, there are always little things which seem to be unreasonably frustrating or
                     counter-intuitive. As one gains more experience, one learns either that these are important to the
                     internal implementation or are genuine quirks that can be handled in well-defined ways. Python
-                    bytecode and MLIR have many instances of these, but getting to know them through hands-on experience
+                    bytecode and MLIR have many instances of these and getting to know them through hands-on experience
                     has given me a much better understanding of them than I originally had.
                 </p>
                 <p>
                     Working on projects, especially unconventional ones, that are implemented with unfamiliar
                     technologies has been one of my favorite methods for learning new software. As Pycompile progressed,
                     I found myself referencing tutorials and guides less and relying on my existing code and knowledge
-                    more, despite my earlier difficulties. Knowing that you can rely on your learned experience instead
-                    of reaching for assistance is always a satisfying experience. It is nearly as satisfying as writing
-                    a Python program and, instead of invoking <i>python3</i> to execute it, you can just run{" "}
-                    <i>./a.out</i>!
+                    more. Knowing that you can rely on your learned experience instead of reaching for assistance is
+                    always a satisfying experience. It is nearly as satisfying as writing a Python program and, instead
+                    of invoking <i>python3</i> to execute it, you can just run <i>./a.out</i>!
                 </p>
                 <hr />
                 <FootnoteList />
