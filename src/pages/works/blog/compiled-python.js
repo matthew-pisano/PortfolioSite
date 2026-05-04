@@ -1098,9 +1098,9 @@ bool PyObj::decref() {
                     The <i>incref</i> method is fairly transparent, it simply increments the object's reference count
                     <Footnote>
                         <i>refcount</i> is implemented as an atomic integer, protecting it from race conditions in a
-                        multithreading environment, though this has yet to be implemented. This does have a significant
-                        impact for now, it just means that the increment and decrement of the variable requires some
-                        extra syntax.
+                        multithreading environment, though this is only an act of future-proofing for now. This does
+                        have a significant impact at present, it just means that the increment and decrement of the
+                        variable requires some extra syntax.
                     </Footnote>
                     . <i>decref</i> is where the interesting logic is contained. When the object's reference count hits
                     zero, the object deletes itself and signifies that it has done so through the return statement. This
