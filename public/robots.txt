@@ -1,26 +1,18 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
 Allow: /
-
-User-agent: *
+Disallow: /home
+Disallow: /admin
 Disallow: /secure/*
+Disallow: /void
+Disallow: /edit
+Disallow: /babble
+Disallow: /403
+Disallow: /404
+Disallow: /display
 
-User-agent: *
-Disallow: /void/*
+# Host
+Host: https://matthewpisano.com
 
-User-agent: *
-Disallow: /edit/*
-
-User-agent: *
-Disallow: /babble/*
-
-User-agent: *
-Disallow: /403/*
-
-User-agent: *
-Disallow: /404/*
-
-User-agent: *
-Disallow: /display/*
-
+# Sitemaps
 Sitemap: https://matthewpisano.com/sitemap.xml
