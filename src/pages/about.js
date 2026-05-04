@@ -118,8 +118,9 @@ export default function About() {
                 <p>
                     I have also worked on numerous different academic and research projects. In many of these, I was the
                     primary organizer of the project and in charge of delegating tasks to collaborators or teammates.
-                    This is evident in my projects like <Link href="/research/MoralHighGround">Moral High Ground</Link>{" "}
-                    where I worked with a team from IBM research to develop a conversational alignment benchmark,{" "}
+                    This is evident in my projects like{" "}
+                    <Link href="/research/moral-high-ground">Moral High Ground</Link> where I worked with a team from
+                    IBM research to develop a conversational alignment benchmark,{" "}
                     <Link href="/research/predict-chain">Predict Chain</Link> where I lead our small team to winning
                     first place globally in the Mega-Ace Algorand hackathon,{" "}
                     <Link href="/school/destiny">Manifest Destiny</Link> in which I was in charge of ideation and the
@@ -216,7 +217,7 @@ export default function About() {
                     Over the course of Summer 2023, I worked as a Visiting Researcher at IBM's research facility in
                     Yorktown as part of their extern program. During this time, I researched new techniques of model
                     alignment using text-based game for safety training on moral and ethical principles. More
-                    information can be found in the <Link href="/research/MoralHighGround">Moral High Ground</Link>{" "}
+                    information can be found in the <Link href="/research/moral-high-ground">Moral High Ground</Link>{" "}
                     page.
                 </p>
             </Tile>
