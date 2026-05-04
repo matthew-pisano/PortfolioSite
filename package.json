@@ -3,6 +3,7 @@
     "scripts": {
         "dev": "next dev --turbopack",
         "build": "next build",
+        "postbuild": "next-sitemap",
         "start": "next start",
         "deploy": "./scripts/deploy.sh",
         "lint": "eslint . --fix",
@@ -25,6 +26,7 @@
         "jquery": "^3.7.0",
         "latex.js": "^0.12.6",
         "next": "^16.1.4",
+        "next-sitemap": "^4.2.3",
         "prettier": "^3.5.3",
         "prop-types": "^15.8.1",
         "react": "^19.2.3",
