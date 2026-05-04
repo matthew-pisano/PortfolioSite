@@ -37,22 +37,22 @@ export default function CompiledPython() {
             <FootnoteProvider label={blogInfo.anchor}>
                 <BlogSection>Introduction</BlogSection>
                 <p>
-                    Python is a highly popular and highly versatile language. It is commonly used for its low-barrier to
-                    entry, intuitive design, and ease of writing. These qualities partially stem from how the language
-                    handles common complexities. The Python language standard abstracts away low level memory management
-                    and the complexity of common algorithms into its internal reference counting and builtin library,
-                    respectively. This allows programmers to concentrate on the functionality of their program, without
-                    having to worry about where/how memory is allocated or about re-implementing common algorithms.
-                    These conveniences are enabled in large part by Python's design as an interpreted language.
+                    Python is a highly popular and versatile language. It is commonly used for its low barrier to entry,
+                    intuitive design, and ease of writing. These qualities stem partially from how the language handles
+                    common complexities. The Python language standard abstracts away low-level memory management and the
+                    complexity of common algorithms into its internal reference counting and builtin library,
+                    respectively. This allows programmers to concentrate on the functionality of their program without
+                    worrying about where or how memory is allocated or about re-implementing common algorithms. These
+                    conveniences are enabled in large part by Python's design as an interpreted language.
                 </p>
                 <p>
                     Instead of directly compiling down to machine code, Python code is processed by the Python
-                    interpreter into instructions that can run on the host machine as the program is executing, not
-                    before. Based on how the interpreter is implemented, any arbitrary functionality can run in the
-                    background without the original programmer needing to worry about it. The garbage collector is a
-                    good example of this. This service runs in the background of every Python program, freeing unused
-                    memory allocations to stop the program from leaking memory. This happens completely transparently
-                    without any intervention needed from the programmer
+                    interpreter into instructions that can run on the host machine. This happens as the program
+                    executes, not before. Based on how the interpreter is implemented, any arbitrary functionality can
+                    run in the background without the original programmer needing to worry about it. The garbage
+                    collector is a good example of this. This service runs in the background of every Python program,
+                    freeing unused memory allocations to prevent the program from leaking memory. This happens
+                    completely transparently without any intervention needed from the programmer
                     <Footnote>
                         Unless the program makes use of Python's <code>gc</code> module.
                     </Footnote>
@@ -63,20 +63,18 @@ export default function CompiledPython() {
                     <Link href={"https://github.com/python/cpython"} target="_blank" rel="noopener noreferrer">
                         CPython
                     </Link>
-                    . The core of the interpreter is written in C, with core libraries written in Python directly. Why
-                    is this the case? Why not implement the Python interpreter in Python itself? Many other languages do
-                    exactly this, why not Python?
+                    . The interpreter is written in C, with the standard library written in Python. Why is this? Why
+                    haven't Python's creators implemented the interpreter entirely in Python itself?
                 </p>
                 <BlogSection level={2}>Interpreters and Compilers</BlogSection>
                 <p>There is a short answer and a long answer to this question.</p>
                 <p>
-                    The short answer is that it can't, at least not fully. As an interpreted language, Python source
-                    code is never translated to machine code, the language that the CPU is able to understand. This
-                    happens in an indirect way through the interpreter (how else would the language run!), but if we
-                    wanted to write the Python interpreter in Python, we would need a standalone executable.
-                    Additionally, the actual machine code instructions corresponding to the Python program are never
-                    recorded for later, just executed immediately by the CPU and discarded. We would need a program that
-                    actually outputs a binary, which the interpreter does not.
+                    The short answer is that it cannot, at least not fully. As an interpreted language, Python source
+                    code is never translated to machine code, the language the CPU executes. While the interpreter does
+                    translate Python code to machine instructions indirectly (how else would it run?), this process
+                    happens at runtime. The interpreter doesn't output a standalone binary, so implementing the
+                    interpreter in Python would create a chicken-and-egg problem: you would need an existing Python
+                    interpreter to run the interpreter itself.
                 </p>
                 <p>
                     Compiled languages can achieve this, though. Languages like C, Rust, and Zig are <i>self-hosted</i>.
@@ -100,41 +98,40 @@ export default function CompiledPython() {
                         </Link>
                         .
                     </Footnote>
-                    . Other implementations, like PyPy or Jython do execute Python using JIT compilation.
+                    . Other implementations, like PyPy or Jython, do execute Python using JIT compilation.
                 </p>
                 <BlogSection level={2}>Just-In-Time Compilation</BlogSection>
                 <p>
                     How is JIT compilation different from regular interpreting? Conceptually, the CPython interpreter
                     handles Python Opcodes with a giant switch statement: if Opcode A, do B, if Opcode X, do Y, and so
-                    forth. There is never a direct translation from Python Opcodes to actual machine instructions, it
+                    forth. There is never a direct translation from Python Opcodes to actual machine instructions; it
                     always goes through the complex logic within the interpreter. What a JIT compiler does is somewhat
                     similar. Opcodes are still processed sequentially, but instead of needing to go through the
                     interpreter every time, machine instructions are generated for each Python instruction and reused
                     when executed again. This offers part of the speed of a compiled language without the upfront cost
-                    of a compilation. JIT compiled languages can self-host just like their fully compiled counterparts.
+                    of compilation. JIT compiled languages can self-host just like their fully compiled counterparts.
                 </p>
                 <p>
                     Fully JIT Python interpreters already exist. PyPy is one of the foremost examples. As a Python JIT
-                    compiler, it can achieve 4x to 6x speedup when compared to the CPython interpreter. It is also
-                    written in RPython, a statically typed subset of Python. During execution, PyPy analyzes
-                    instructions in flight to identify regions that can execute frequently. Loops, for example. These
-                    regions are then translated into machine instructions and run in place of the much slower Python
-                    code.
+                    compiler, it can achieve 4x to 6x speedup compared to the CPython interpreter. It is also written in
+                    RPython, a statically typed subset of Python. During execution, PyPy analyzes instructions in flight
+                    to identify regions that execute frequently: loops, for instance. These regions are then translated
+                    into machine instructions and run in place of the much slower Python code.
                 </p>
                 <p>
                     Jython is another JIT Python implementation that is slightly older than PyPy. Written in Java
-                    instead of Python, this program translates Python code into Java bytecode, which is then executed by
-                    the JVM. Like PyPy, Python code is compiled down to machine instructions at runtime, though these
-                    instructions are for the Java virtual machine, rather than the host machine architecture.
+                    instead of Python, it translates Python code into Java bytecode, which the JVM then executes. Like
+                    PyPy, Python code is compiled down to machine instructions at runtime, though these instructions
+                    target the Java virtual machine rather than the host machine architecture.
                 </p>
                 <p>
-                    Python interpreters and JIT compilers are popular and widely used. Why only these two classes of
-                    implementations, though. Why not implement Python as a fully ahead-of-time (AOT) compiled language?
+                    Python interpreters and JIT compilers are popular and widely used. But why only these two
+                    approaches? Why not implement Python as a fully ahead-of-time (AOT) compiled language?
                 </p>
                 <BlogSection>Prior Art</BlogSection>
                 <p>
-                    Many different Python compiler implementation have been developed, though none are as widely used as
-                    their interpreted or JIT counterparts.{" "}
+                    Many different Python compiler implementations have been developed, though none are as widely used
+                    as their interpreted or JIT counterparts.{" "}
                     <Link href={"https://github.com/lcompilers/lpython"} target="_blank" rel="noopener noreferrer">
                         lpython
                     </Link>{" "}
@@ -146,11 +143,10 @@ export default function CompiledPython() {
                     <Link href={"https://github.com/exaloop/codon"} target="_blank" rel="noopener noreferrer">
                         codon
                     </Link>{" "}
-                    by <i>exaloop</i> is implemented in a similar manner, with more of a focus on high-performance
-                    programming and GPU interoperability. It also relies upon LLVM for compilation and has implemented a
-                    parser for a Python-like DSL of their own design. Their Python DSL requires static typing as type
-                    checking is performed at compile-time. Like lpython, This eliminates some of Python's dynamic typing
-                    features.
+                    by <i>exaloop</i> is implemented in a similar manner, with more emphasis on high-performance
+                    programming and GPU interoperability. It also relies upon LLVM for compilation and implements a
+                    parser for a Python-like DSL. Their Python DSL requires static typing, as type checking is performed
+                    at compile-time. Like lpython, it eliminates some of Python's dynamic typing features.
                 </p>
                 <p>
                     Finally,{" "}
@@ -176,22 +172,21 @@ export default function CompiledPython() {
                     There is good reason as to why Python AOT compilation projects tend to restrict the standard of
                     Python that they accept and why CPython itself is not always a direct dependency. A large reason for
                     Python's success as a language can be attributed to its shallow learning curve and ease-of-use. A
-                    core component of this is Python's dynamic typing system. More specifically, Python as a language
-                    can be classified as having strong but dynamic typing. But, what is a "strong but dynamic type
-                    system", exactly?
+                    core component of this is Python's dynamic typing system. Python can be classified as strongly and
+                    dynamically typed. What do these terms mean?
                 </p>
                 <p>
                     Being a strongly typed language means that types have well-defined interactions with other types and
                     with themselves. They have strict, user-defined properties and the attributes of a type generally do
-                    not change at runtime. This is similar to languages like Java, where class interactions are strictly
-                    defined and a class' variables and method definitions are fixed at runtime. You cannot add a
-                    function to a Java class during program execution where there was none before. Strict typing is not
-                    exhibited by languages like JavaScript. JS has a "type coercion" system that tries to force
-                    different types to interact, even if no well-defined interaction is defined by the programmer. A
-                    very common example of this is comparing an integer type to a string type. In JavaScript{" "}
-                    <code>5 == '5'</code> evaluates as truthy because the string is coerced into a number before the
-                    comparison. Languages like Java or Python would evaluate to a falsy value. JavaScript also supports
-                    defining arbitrary attributes for classes at runtime through the object's <i>prototype</i>.
+                    not change at runtime. This is similar to languages like Java, where class interactions and
+                    implementations are strictly defined at runtime. You cannot add a function to a Java class during
+                    program execution. Strict typing is not exhibited by languages like JavaScript. JS has a "type
+                    coercion" system that tries to force different types to interact, even if no well-defined
+                    interaction is defined by the programmer. A very common example is comparing an integer to a string.
+                    In JavaScript <code>5 == '5'</code> evaluates as truthy because the string is coerced into a number
+                    before comparison. Languages like Java or Python would evaluate this same expression as falsy.
+                    JavaScript also supports defining arbitrary attributes for classes at runtime through the object's{" "}
+                    <i>prototype</i>.
                 </p>
                 <p>
                     As a dynamically typed language, Python does not associate a type with specific variables or
@@ -262,23 +257,23 @@ export default function CompiledPython() {
                 </p>
                 <p>
                     Even though the API does not directly support bytecode disassembly, Python itself does through the{" "}
-                    <code>dis</code> library. Using the interpreter, I can import this module and execute its
-                    disassembly functionality as if I were calling it directly from a Python program. This yields an
-                    iterator of raw <code>PyObject</code> pointers which I can then translate directly to the{" "}
+                    <code>dis</code> library. I can import this module through the interpreter and execute its
+                    disassembly functionality as if calling it directly from a Python program. This yields an iterator
+                    of raw <code>PyObject</code> pointers that I can then translate directly to the{" "}
                     <code>ByteCodeInstruction</code> structs which make up the <code>ByteCodeModule</code>.
                 </p>
                 <p>
-                    This works surprisingly well, but these raw pointers require some extra consideration. CPython
-                    shifts the responsibility of memory management onto the programmer; this fact has two major
-                    consequences for Pycompile. The first of which concerns the <code>PyObject</code> pointers that I
-                    use for the disassembly. To prevent memory leaks, Pycompile needs to keep track of the lifetimes of
-                    each object and call <code>Py_DECREF()</code> appropriately to manage the object's reference count.
-                    The second issue has to do with the Python interpreter itself. At the beginning of any program which
-                    utilizes the interpreter, <code>Py_Initialize()</code> must be called before any interaction occurs
-                    and <code>Py_Finalize()</code> must be called after. These actions are similarly the responsibility
-                    of the programmer to execute. If these are not called in the correct order, or if the original scope
-                    is deleted, the program will leak memory or outright segfault. To solve this particular issue, I
-                    created a RAII wrapper to ensure that the lifetime of the interpreter is properly managed.
+                    This works surprisingly well, but it the usage of raw pointers introduces a challenge. CPython
+                    shifts the responsibility of memory management onto the programmer, which has two major consequences
+                    for Pycompile. First, the
+                    <code>PyObject</code> pointers used for disassembly must be carefully managed. To prevent memory
+                    leaks, Pycompile must track each object's lifetime and call <code>Py_DECREF()</code> appropriately.
+                    Second, the Python interpreter itself requires initialization and cleanup. Any program using the
+                    interpreter must call <code>Py_Initialize()</code> before any interaction and{" "}
+                    <code>Py_Finalize()</code> after. These calls are the programmer's responsibility. If these are
+                    called out of order or if the object goes out of scope prematurely, the program will leak memory or
+                    segfault. To address this, I created a RAII wrapper to ensure the interpreter's lifetime is properly
+                    managed.
                 </p>
                 <p>
                     After the Python code is translated into a <code>ByteCodeModule</code>, it requires further
@@ -287,13 +282,12 @@ export default function CompiledPython() {
                 </p>
                 <p>
                     Python and LLVM IR are very different languages. LLVM IR is statically typed and strongly
-                    opinionated. Python is neither of these. To make this translation as smooth as possible, I needed
-                    another intermediate representation to bridge this gap. This is where PyIR is used. It is a dialect
-                    of MLIR, meaning that it shares many similarities with vanilla MLIR, but has been extended with
-                    Python-specific instructions. With this dialect, I can translate each bytecode instruction into an
-                    equivalent PyIR instruction. This also lets the program hook into a C++ runtime to handle Python's
-                    dynamic type system and unique scope management. For example, consider a basic Python hello world
-                    program:
+                    opinionated. Python is neither. To smooth this translation, I needed an intermediate representation
+                    to bridge the gap. This is where PyIR comes in. It is a dialect of MLIR, sharing many similarities
+                    with vanilla MLIR but extended with Python-specific instructions. With this dialect, I can translate
+                    each bytecode instruction into an equivalent PyIR instruction. This also allows the program to hook
+                    into a C++ runtime to handle Python's dynamic type system and unique scope management. Consider this
+                    simple Python program:
                 </p>
                 <SyntaxHighlighter
                     language="python"
@@ -407,10 +401,10 @@ if __name__ == "__main__":
                 </p>
                 <BlogSection level={2}>Python Bytecode</BlogSection>
                 <p>
-                    The first translation of the raw Python code is to CPython's Python bytecode. Related to previous
-                    points on bytecode's instability, this section is most relevant to bytecode for Python 3.14.
-                    Especially after 3.11 and 3.12 function calls and jumps have undergone significant changes. Further
-                    changes will undoubtedly occur in the future.
+                    The first translation of the raw Python code is to CPython's Python bytecode. This section is most
+                    relevant to bytecode for Python 3.14, as bytecode is an unstable implementation detail. Notably,
+                    function calls and jumps underwent significant changes after Python 3.11 and 3.12. Further changes
+                    will undoubtedly occur in the future.
                 </p>
                 <p>
                     As mentioned, bytecode instructions are always processed within the context of a main stack (barring
