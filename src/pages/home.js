@@ -211,7 +211,7 @@ export default function Home() {
                                 <WebLink href={"https://pypi.org/project/universalmodels/"}>PyPi Project</WebLink>
                             </>
                         ),
-                        titleLink: "personal/univmodels"
+                        titleLink: "personal/universal-models"
                     })
                 }>
                 <p>
@@ -261,7 +261,7 @@ export default function Home() {
                                 <GitLink href={"https://github.com/matthew-pisano/ImageCrypt"}>ImageCrypt</GitLink>
                             </>
                         ),
-                        titleLink: "personal/imageCrypt"
+                        titleLink: "personal/image-crypt"
                     })
                 }>
                 <p>
