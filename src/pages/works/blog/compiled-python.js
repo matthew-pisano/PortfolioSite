@@ -1,16 +1,11 @@
 import React from "react";
 
-import mlir from "highlightjs-mlir";
 import Link from "next/link";
-import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import cmake from "react-syntax-highlighter/dist/cjs/languages/hljs/cmake";
-import cpp from "react-syntax-highlighter/dist/cjs/languages/hljs/cpp";
-import python from "react-syntax-highlighter/dist/cjs/languages/hljs/python";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { BlogSection } from "@/components/widgets/BlogSection";
+import CodeBlock from "@/components/widgets/CodeBlock";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
-import BlogWrapper, { BlogInfo, BlogImage } from "@/components/wrappers/BlogWrapper";
+import BlogWrapper, { BlogInfo } from "@/components/wrappers/BlogWrapper";
 import { genPageTitle } from "@/lib/util/utils";
 
 const blogInfo = new BlogInfo(
@@ -18,15 +13,10 @@ const blogInfo = new BlogInfo(
     "Experimenting with Python bytecode, stack machines, and MLIR",
     new Date(2026, 3, 24),
     "compiledPython",
-    new Date(2026, 4, 3)
+    new Date(2026, 4, 5)
 );
 
 export default function CompiledPython() {
-    SyntaxHighlighter.registerLanguage("mlir", mlir);
-    SyntaxHighlighter.registerLanguage("cmake", cmake);
-    SyntaxHighlighter.registerLanguage("cpp", cpp);
-    SyntaxHighlighter.registerLanguage("python", python);
-
     return (
         <BlogWrapper
             pageName={genPageTitle(__filename)}
@@ -289,28 +279,16 @@ export default function CompiledPython() {
                     into a C++ runtime to handle Python's dynamic type system and unique scope management. Consider this
                     simple Python program:
                 </p>
-                <SyntaxHighlighter
-                    language="python"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="python">
                     {`def main():
     print("Hello, World!")
 
 if __name__ == "__main__":
     main()
 `}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>The above Python program generates the following MLIR:</p>
-                <SyntaxHighlighter
-                    language="mlir"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="mlir">
                     {`module {
   func.func @__pymodule() {
     pyir.init_module "hello_world.py", "__main__"
@@ -342,7 +320,7 @@ if __name__ == "__main__":
     pyir.return_value %4 : !pyir.object
   }
 }`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     Notice the instructions prefixed with <i>pyir</i> like <code>pyir.load_name</code>. These dialect
                     extensions allow PyIR to get as close to Python bytecode as possible while remaining compatible with
@@ -467,24 +445,12 @@ if __name__ == "__main__":
                     a placeholder for a self reference. However, since free functions have no self, this is always null.
                 </p>
                 <p>As an example, suppose we have a very simple Python program that prints a single message:</p>
-                <SyntaxHighlighter
-                    language="python"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="python">
                     {`msg = "Hello World!"
 print(msg)`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>When represented with bytecode, we get:</p>
-                <SyntaxHighlighter
-                    language="python"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="python">
                     {`*L0 offset 0    | RESUME                         [Int]      | 0
 *L1 offset 2    | LOAD_CONST                     [Str]      | 'Hello World!'
  L1 offset 4    | STORE_NAME                     [Str]      | msg
@@ -495,7 +461,7 @@ print(msg)`}
  L2 offset 20   | POP_TOP                        [None]     | 
  L2 offset 22   | LOAD_CONST                     [None]     | None
  L2 offset 24   | RETURN_VALUE                   [None]     |`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     Notice how the string is first loaded in as a constant at the top of the stack and stored into the
                     variable <i>msg</i>. Next, the <i>print</i> name is loaded at the stack's current top alog with{" "}
@@ -521,13 +487,7 @@ print(msg)`}
                     With regards to how each of these four identifier types are defined, their naming is dependent on
                     their type. For example, consider:
                 </p>
-                <SyntaxHighlighter
-                    language="mlir"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="mlir">
                     {`def PyIR_Dialect : Dialect {
     let name = "pyir";
     let summary = "Python bytecode IR dialect";
@@ -535,37 +495,23 @@ print(msg)`}
     let useDefaultTypePrinterParser = 1;
     let useDefaultAttributePrinterParser = 1;
 }`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     This block defines a top-level dialect called <i>PyIR</i>, not <i>PyIR_Dialect</i>. Similarly:
                 </p>
-                <SyntaxHighlighter
-                    language="mlir"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="mlir">
                     {`def PyIR_InitModule : PyIR_Op<"init_module"> {
     let summary = "Initialize module-level metadata";
     let arguments = (ins StrAttr:$file, StrAttr:$name);
     let assemblyFormat = "$file \`,\` $name attr-dict";
 }`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     This defines an instruction named just <i>InitModule</i> and referenced in C++ as{" "}
                     <code>pyir::InitModule</code>.
                 </p>
                 <p>To actually compile this tablegen file, it needs to be registered with LLVM through cmake:</p>
-                <SyntaxHighlighter
-                    language="cmake"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
-                    {`set(LLVM_TARGET_DEFINITIONS pyir.td)`}
-                </SyntaxHighlighter>
+                <CodeBlock language="cmake">{`set(LLVM_TARGET_DEFINITIONS pyir.td)`}</CodeBlock>
                 <p>
                     Before the tablegen file can be compiled, however, it must be compiled along with several auxiliary
                     files. <i>pyir</i>, <i>pyir_attrs</i>, <i>pyir_ops</i>, and <i>pyir_types</i> cpp/hpp pairs of files
@@ -581,13 +527,7 @@ print(msg)`}
                     Within the <i>pyir.cpp</i> file, every defined operation, type, and attribute must be registered in
                     order to be referenced properly in the rest of the program.
                 </p>
-                <SyntaxHighlighter
-                    language="cpp"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="cpp">
                     {`namespace pyir {
     void PyIRDialect::initialize() {
         addOperations<InitModule, DestroyModule, ToBool, IsTruthy, BinaryOp, Call, LoadConst, LoadDeref, LoadFast,
@@ -600,7 +540,7 @@ print(msg)`}
         addAttributes<NoneAttr>();
     }
 } // namespace pyir`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     After this point, operations like <i>CompareOp</i> are simply referenced as{" "}
                     <code>pyir::CompareOp</code>.
@@ -618,13 +558,7 @@ print(msg)`}
                     which two pointers are the inputs to the operation. Looking at the conversion code, we see this
                     explicitly:
                 </p>
-                <SyntaxHighlighter
-                    language="cpp"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="cpp">
                     {`void compareOpCodegen(mlir::OpBuilder& builder, mlir::MLIRContext& ctx, const mlir::Location& loc,
                       const ByteCodeInstruction& instr, ConversionMeta& meta) {
     pyir::ByteCodeObjectType pyType = pyir::ByteCodeObjectType::get(&ctx);
@@ -637,7 +571,7 @@ print(msg)`}
     meta.stack.pop_back();
     meta.stack.push_back(builder.create<pyir::CompareOp>(loc, pyType, opStr, lhs, rhs).getResult());
 }`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     Notice how <code>meta.stack</code> is actively modified during the conversion process, with the
                     result pointer (the boolean result) being pushed after the conversion. Note that no actual values
@@ -650,13 +584,7 @@ print(msg)`}
                     As an example, consider the simple print program from a moment ago, when compiled down to PyIR, we
                     get:
                 </p>
-                <SyntaxHighlighter
-                    language="mlir"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="mlir">
                     {`module {
   func.func @__pymodule() {
     pyir.init_module "simple.py", "__main__"
@@ -670,7 +598,7 @@ print(msg)`}
     return
   }
 }`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     Notice the <code>pyir.call</code> instruction, instead of needing to peek back through the stack,
                     the conversion code already popped the pointers off of the virtual stack and has associated them
@@ -686,19 +614,13 @@ print(msg)`}
                     PyIR is lowered down to LLVM IR (technically an LLVM dialect of MLIR) through a series of passes.
                     These passes must be explicitly registered in order to be used. Passes in C++ are registered with:
                 </p>
-                <SyntaxHighlighter
-                    language="cpp"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="cpp">
                     {`ctx.loadDialect<mlir::LLVM::LLVMDialect>();
 mlir::PassManager pm(&ctx);
 pm.addPass(mlir::createCanonicalizerPass());
 // Lower PyIR to LLVM dialect
 pm.addPass(createPyIRToLLVMPass());`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     The first line loads in the LLVM dialect of MLIR for translation and the second line creates a pass
                     manager that handles the conversion passes. Line three adds something called a canonicalizer pass,
@@ -709,13 +631,7 @@ pm.addPass(createPyIRToLLVMPass());`}
                     the <code>runOnOperation()</code> function. It is an override from the{" "}
                     <code>mlir::PassWrapper</code> superclass. Within this function, we have:
                 </p>
-                <SyntaxHighlighter
-                    language="cpp"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="cpp">
                     {`mlir::LLVMTypeConverter typeConverter(ctx);
 addPyIRTypeConversions(typeConverter);
 
@@ -732,7 +648,7 @@ target.addIllegalDialect<pyir::PyIRDialect>();
 target.addIllegalDialect<mlir::arith::ArithDialect>();
 target.addLegalDialect<mlir::LLVM::LLVMDialect>();
 target.addLegalOp<mlir::ModuleOp>();`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     First, we register an MLIR to LLVM type converter object. The line immediately after informs the
                     lowering code that <code>pyir::ByteCodeObjectType</code> is to be mapped to{" "}
@@ -756,13 +672,7 @@ target.addLegalOp<mlir::ModuleOp>();`}
                     Speaking of the custom lowering functions, this is a good place to explain what they do and how they
                     work. Once again, take <i>CompareOp</i> as an example:
                 </p>
-                <SyntaxHighlighter
-                    language="cpp"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="cpp">
                     {`/**
  * Lowers pyir.compare_op to a call to the appropriate runtime compare operator function.
  *
@@ -779,21 +689,14 @@ struct CompareOpLowering : PyIROpConversion {
     mlir::LogicalResult matchAndRewrite(mlir::Operation* op, mlir::ArrayRef<mlir::Value> operands,
                                         mlir::ConversionPatternRewriter& rewriter) const override;
 };`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     This lowers a <code>pyir.compare_op</code> instruction to LLVM IR that can be directly compiled down
                     to an executable binary. This class is explicitly registered to convert the compare operation
-                    through the superclass instantiation:{" "}
-                    <code>PyIROpConversion(pyir::CompareOp::getOperationName(), tc, ctx)</code>. The actual rewrite
-                    logic happens within <i>matchAndRewrite</i>:
+                    through the superclass instantiation: <code>PyIROpConversion(pyir::CompareOp ...)</code>. The actual
+                    rewrite logic happens within <i>matchAndRewrite</i>:
                 </p>
-                <SyntaxHighlighter
-                    language="cpp"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="cpp">
                     {`mlir::LogicalResult CompareOpLowering::matchAndRewrite(mlir::Operation* op, const mlir::ArrayRef<mlir::Value> operands,
                                                        mlir::ConversionPatternRewriter& rewriter) const {
     pyir::CompareOp compareOp = mlir::cast<pyir::CompareOp>(op);
@@ -815,7 +718,7 @@ struct CompareOpLowering : PyIROpConversion {
 
     return linkOpToRuntimeFunc(it->second, op, operands, rewriter, 2);
 }`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     This function extracts the string operation from the instruction through{" "}
                     <code>compareOp.getOp().str()</code> and matches it with the corresponding function to link to now
@@ -829,13 +732,7 @@ struct CompareOpLowering : PyIROpConversion {
                     into LLVM IR with calls to the standard runtime library. Going back to the simple print program from
                     earlier, we get:
                 </p>
-                <SyntaxHighlighter
-                    language="mlir"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="mlir">
                     {`; ModuleID = 'simple.py'
 source_filename = "simple.py"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"
@@ -871,7 +768,7 @@ define void @__pymodule() {
 !llvm.module.flags = !{!0}
 
 !0 = !{i32 2, !"Debug Info Version", i32 3}`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     It is much more verbose than our original two-line Python program, but this is the code that is
                     ready to be compiled and run. Note the lines similar to{" "}
@@ -896,13 +793,7 @@ define void @__pymodule() {
                     example, here is the implementation of the "+" operator. Remember, we can only determine the operand
                     types at runtime, hence the conditionals:
                 </p>
-                <SyntaxHighlighter
-                    language="cpp"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="cpp">
                     {`PyObj* pyir_add(PyObj* lhs, PyObj* rhs) {
     PyObj* result = nullptr;
     if (pyir_isInt(lhs) && pyir_isInt(rhs))
@@ -933,7 +824,7 @@ define void @__pymodule() {
         throw PyTypeError(formatUnsupportedOperands("+", lhsType, rhsType));
     return result;
 }`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     Note all of the dynamic casting used to see what the actual instance type of the base <i>PyObj</i>{" "}
                     that the pointer represents. Also note the <i>decref</i> statements as they will be important in a
@@ -1032,13 +923,7 @@ define void @__pymodule() {
                     For Pycompile's runtime, each <code>PyObj</code> object (and all of its subclasses) have an explicit
                     API for managing their own lifetime:
                 </p>
-                <SyntaxHighlighter
-                    language="cpp"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="cpp">
                     {`struct PyObj {
     PyObj() = default;
 
@@ -1060,7 +945,7 @@ define void @__pymodule() {
 private:
     std::atomic<int32_t> refcount{1};
 };`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     This partial <code>PyObj</code> definition contains several qualities geared directly towards memory
                     management. First and foremost, C++ can disallow the copying and movement of certain objects through
@@ -1075,13 +960,7 @@ private:
                     Next, we have the <i>incref</i> and <i>decref methods</i>, along with the <i>refcount</i> which they
                     modify. Looking at their implementations, we see:
                 </p>
-                <SyntaxHighlighter
-                    language="cpp"
-                    style={dracula}
-                    customStyle={{
-                        borderRadius: "10px",
-                        textIndent: "0"
-                    }}>
+                <CodeBlock language="cpp">
                     {`void PyObj::incref() { refcount.fetch_add(1, std::memory_order_relaxed); }
 
 bool PyObj::decref() {
@@ -1093,7 +972,7 @@ bool PyObj::decref() {
     }
     return false;
 }`}
-                </SyntaxHighlighter>
+                </CodeBlock>
                 <p>
                     The <i>incref</i> method is fairly transparent, it simply increments the object's reference count
                     <Footnote>
