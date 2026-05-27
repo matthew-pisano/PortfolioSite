@@ -13,14 +13,17 @@ export default (
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
-                Camus' essay, <i>The Myth of Sisyphus</i>, concerns the meaning of life and the implications of this
-                ultimate question. The text first presents two options: existence has some valid meaning (subjective or
-                objective) or that we cannot justify assigning any meaning to the act of existence. To believe in the
-                former, one would need to ignore or deny the absurd. If one can see no meaning whatsoever within
-                continued existence, it can be concluded that the cessation of that existence is the only reasonable
-                conclusion. Camus disagrees, however. Must we create meaning from nothing in order to justify our own
-                continued existence to ourselves? Can a life be lived while fully embracing the absurd? He believes so;
-                the remainder of the text is dedicated to following these questions to their logical implications.
+                <p>
+                    Camus' essay, <i>The Myth of Sisyphus</i>, concerns the meaning of life and the implications of this
+                    ultimate question. The text first presents two options: existence has some valid meaning (subjective
+                    or objective) or that we cannot justify assigning any meaning to the act of existence. To believe in
+                    the former, one would need to ignore or deny the absurd. If one can see no meaning whatsoever within
+                    continued existence, it can be concluded that the cessation of that existence is the only reasonable
+                    conclusion. Camus disagrees, however. Must we create meaning from nothing in order to justify our
+                    own continued existence to ourselves? Can a life be lived while fully embracing the absurd? He
+                    believes so; the remainder of the text is dedicated to following these questions to their logical
+                    implications.
+                </p>
                 <p>
                     To better understand Camus' ideas, one must first understand what the absurd truly entails. By its
                     nature, the absurd is difficult to describe directly, so the text instead employs metaphor to convey
@@ -140,14 +143,17 @@ export default (
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
-                The version of absurdism that Camus presents in this work strongly advocates for individualism. Camus'
-                absurd man, in his revolt against the absurd, fills his life with an extreme quantity of experiences for
-                himself. Crucially, the absurd man should not be concerned with traditional morals or religious dogma,
-                only with his internal code of ethics, whatever that may be. To live one's life according to external
-                ethical systems would be to assign intrinsic meaning to those systems. This runs counter to the apparent
-                meaninglessness of an absurd universe. If there is no meaning to existence, Camus appears to suggest
-                that it is every man for themselves. My opinion is that Camus' argument for absurdity is consistent with
-                our observations, but how he incorporates that knowledge into his behavior is contradictory.
+                <p>
+                    The version of absurdism that Camus presents in this work strongly advocates for individualism.
+                    Camus' absurd man, in his revolt against the absurd, fills his life with an extreme quantity of
+                    experiences for himself. Crucially, the absurd man should not be concerned with traditional morals
+                    or religious dogma, only with his internal code of ethics, whatever that may be. To live one's life
+                    according to external ethical systems would be to assign intrinsic meaning to those systems. This
+                    runs counter to the apparent meaninglessness of an absurd universe. If there is no meaning to
+                    existence, Camus appears to suggest that it is every man for themselves. My opinion is that Camus'
+                    argument for absurdity is consistent with our observations, but how he incorporates that knowledge
+                    into his behavior is contradictory.
+                </p>
                 <p>
                     Taking absurdity at its extreme, then the extremely absurd man would not allow any set of rules or
                     dogma to govern his behavior. His only core value would be to acknowledge the absurdity of his life.

@@ -9,17 +9,19 @@ export default (
         thumbnail={"/media/image/books/geb-egb.jpg"}
         anchor={"geb-egb"}>
         <BookTileSynopsis>
-            <i>Gödel, Escher, Bach: An Eternal Golden Braid</i> is a work that often resists attempts at strict
-            classification and even summarization. At first, it may seem to be building up to Gödel's proof and how it
-            can be related to other formal systems. This, however, is only one component of the tome's content.
-            Hofstadter also touches on themes of mathematical formalisms, number theory, geometry, recursion,
-            self-replication, self-representation, self-modification, holism/reductionism, cognition, computers, and
-            artificial intelligence. Towards the end, the author also adds discussions about determinism, free will, and{" "}
-            <i>Strange Loops</i> to the list. The latter of these being one of Hofstadter's main theses: the fact that
-            "interesting" systems, such as number theory, genetics, or the human mind must contain different levels of
-            self-reference across levels of abstraction. These <i>Tangled Hierarchies</i> allow a system to "speak"
-            about itself and enable emergent phenomena such as Gödel's theorems on incompleteness and consistency,
-            genetic code replication, and human consciousness.
+            <p>
+                <i>Gödel, Escher, Bach: An Eternal Golden Braid</i> is a work that often resists attempts at strict
+                classification and even summarization. At first, it may seem to be building up to Gödel's proof and how
+                it can be related to other formal systems. This, however, is only one component of the tome's content.
+                Hofstadter also touches on themes of mathematical formalisms, number theory, geometry, recursion,
+                self-replication, self-representation, self-modification, holism/reductionism, cognition, computers, and
+                artificial intelligence. Towards the end, the author also adds discussions about determinism, free will,
+                and <i>Strange Loops</i> to the list. The latter of these being one of Hofstadter's main theses: the
+                fact that "interesting" systems, such as number theory, genetics, or the human mind must contain
+                different levels of self-reference across levels of abstraction. These <i>Tangled Hierarchies</i> allow
+                a system to "speak" about itself and enable emergent phenomena such as Gödel's theorems on
+                incompleteness and consistency, genetic code replication, and human consciousness.
+            </p>
             <p>
                 Beyond the above, surface-level themes, there resides the concept present in the book's subtitle.
                 Namely, how the works of Gödel, Escher, and Bach can, at a certain level of abstraction, braid together
@@ -42,21 +44,24 @@ export default (
             </p>
         </BookTileSynopsis>
         <BookTileThoughts>
-            The structure and format of this book is among the most unique and original that I have read. This is before
-            even considering the main content. I have yet to read a book that makes better (or any!) use of a dialogue
-            system like Hofstadter does. Even though I personally have a background in the technical subjects that the
-            book explains, the conversations between Achilles, Mr. Turtle, Mr. Crab, and others serve to improve my own
-            understanding of these abstract subjects. I especially enjoyed <i>Little Harmonic Labyrinth</i> for its
-            creative usages of recursion, geometric convergence, and infinite series and <i>...Ant Fugue</i> for its
-            commentary on reductionism (and holism), determinism, and emergent phenomena. Although the nature of the
-            book as a whole carries a serious and academic tone, the author uses these dialogues as an opportunity to
-            insert humor into the text. I thought the hiding of "Cantor" in <i>Aria with Diverse Variations</i> and the
-            reference to Goldbach's Conjecture in <i>The Magnificrab, Indeed</i> were very well thought out. Finally,
-            I'd like to point out the level of detail and effort put into each of the dialogues. Each dialogue (with the
-            exception of Carrol's) is based on one of Bach's pieces. While this is referenced in the title, the ties run
-            much deeper. The theme of each often mirrors that of the target musical score and even the voices within the
-            dialogue match the pattern of voices within the music. Occasionally this relation is referenced within the
-            dialogue, but often it is left up to the reader to draw this connection.
+            <p>
+                The structure and format of this book is among the most unique and original that I have read. This is
+                before even considering the main content. I have yet to read a book that makes better (or any!) use of a
+                dialogue system like Hofstadter does. Even though I personally have a background in the technical
+                subjects that the book explains, the conversations between Achilles, Mr. Turtle, Mr. Crab, and others
+                serve to improve my own understanding of these abstract subjects. I especially enjoyed{" "}
+                <i>Little Harmonic Labyrinth</i> for its creative usages of recursion, geometric convergence, and
+                infinite series and <i>...Ant Fugue</i> for its commentary on reductionism (and holism), determinism,
+                and emergent phenomena. Although the nature of the book as a whole carries a serious and academic tone,
+                the author uses these dialogues as an opportunity to insert humor into the text. I thought the hiding of
+                "Cantor" in <i>Aria with Diverse Variations</i> and the reference to Goldbach's Conjecture in{" "}
+                <i>The Magnificrab, Indeed</i> were very well thought out. Finally, I'd like to point out the level of
+                detail and effort put into each of the dialogues. Each dialogue (with the exception of Carrol's) is
+                based on one of Bach's pieces. While this is referenced in the title, the ties run much deeper. The
+                theme of each often mirrors that of the target musical score and even the voices within the dialogue
+                match the pattern of voices within the music. Occasionally this relation is referenced within the
+                dialogue, but often it is left up to the reader to draw this connection.
+            </p>
             <p>
                 While the author's argument on the common themes present in the works of the book's three namesakes is
                 strong on its own, the its meta-writing also reinforces that relationship. It genuinely surprised me

@@ -13,15 +13,17 @@ export default (
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
-                The message of <i>Nausea</i> is conveyed through a series of journal entries by the text's protagonist.
-                Antoine Roquentin is a historian working in the fictional town of Bouville, France. At the outset,
-                Roquentin informs the reader that he started his journal to help explain the strange feelings that he
-                has been experiencing. He describes this feeling as a <i>Nausea</i>, an overwhelming feeling somewhere
-                between dread and emptiness. He feels it permeate not only himself, but also the world around him: a
-                stone, a tree root, the wet pieces of paper he likes to pick up from the street. All are permeated with
-                a sickening feeling that they are not quite real, that ... he is not quite real. These bouts of the{" "}
-                <i>Nausea</i> come and go throughout his time journaling as he questions what he is doing, why is he
-                here, and why anything exists at all.
+                <p>
+                    The message of <i>Nausea</i> is conveyed through a series of journal entries by the text's
+                    protagonist. Antoine Roquentin is a historian working in the fictional town of Bouville, France. At
+                    the outset, Roquentin informs the reader that he started his journal to help explain the strange
+                    feelings that he has been experiencing. He describes this feeling as a <i>Nausea</i>, an
+                    overwhelming feeling somewhere between dread and emptiness. He feels it permeate not only himself,
+                    but also the world around him: a stone, a tree root, the wet pieces of paper he likes to pick up
+                    from the street. All are permeated with a sickening feeling that they are not quite real, that ...
+                    he is not quite real. These bouts of the <i>Nausea</i> come and go throughout his time journaling as
+                    he questions what he is doing, why is he here, and why anything exists at all.
+                </p>
                 <p>
                     For the last ten years, Roquentin has been working on a biography of the Marquis de Rollebon, a
                     Bouville aristocrat who lived during the late eighteenth century. As bouts of the <i>Nausea</i>{" "}
@@ -123,18 +125,20 @@ export default (
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
-                Similar to Camus' <i>The Stranger</i>, I enjoyed the narrative vehicle that this work uses to convey its
-                philosophy. The two characters from Camus' and Satre's works: Meursault and Roquentin, respectively,
-                embody two different philosophies. Whereas Meursault confronts and accepts the absurdity of his
-                existence, Roquentin tries to push back against its implications. Both characters realize that there is
-                no inherent or external meaning for their existence. However, Roquentin makes deliberate efforts to
-                distance himself from the absurd, his <i>Nausea</i>. He tries to fill his time with things that he
-                thinks will themselves justify his existence: researching the Marquis, travelling to Anny, or writing
-                his own novel. Roquentin Believes that it is necessary for him to bootstrap his own meaning to his life,
-                he must pull himself out of the nothingness into the realm of the meaningful. This is in contrast to
-                Meursault, who fully embraces the absurd. He spends the final moments of his story in revolt against the
-                absurd, aiming to bring as much entropy to the world as he is able. If there is no inherent order, chaos
-                is therefore meaningless.
+                <p>
+                    Similar to Camus' <i>The Stranger</i>, I enjoyed the narrative vehicle that this work uses to convey
+                    its philosophy. The two characters from Camus' and Satre's works: Meursault and Roquentin,
+                    respectively, embody two different philosophies. Whereas Meursault confronts and accepts the
+                    absurdity of his existence, Roquentin tries to push back against its implications. Both characters
+                    realize that there is no inherent or external meaning for their existence. However, Roquentin makes
+                    deliberate efforts to distance himself from the absurd, his <i>Nausea</i>. He tries to fill his time
+                    with things that he thinks will themselves justify his existence: researching the Marquis,
+                    travelling to Anny, or writing his own novel. Roquentin Believes that it is necessary for him to
+                    bootstrap his own meaning to his life, he must pull himself out of the nothingness into the realm of
+                    the meaningful. This is in contrast to Meursault, who fully embraces the absurd. He spends the final
+                    moments of his story in revolt against the absurd, aiming to bring as much entropy to the world as
+                    he is able. If there is no inherent order, chaos is therefore meaningless.
+                </p>
                 <p>
                     To me, Roquentin somewhat appears to be a man in denial. He acknowledges that there is no true
                     reason for his existence, that it is fundamentally random. However, he acts as if the meaning that

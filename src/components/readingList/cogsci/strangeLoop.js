@@ -15,16 +15,18 @@ export default (
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
-                <i>I Am a Strange Loop</i> serves as a refinement of the ideas Douglas Hofstadter originally presented
-                in <i>Gödel, Escher, Bach: An Eternal Golden Braid</i>, thirty years earlier. In his prior work,
-                Hofstadter attempted to explore his ideas on Souls, Selves and <i>I</i>'s through the lense of the
-                book's three namesakes. The "strange" recursive and self-referential natures of their work served as an
-                anchor for the author's own ideas on the human mind. By contrast, <i>I Am a Strange Loop</i> uses these
-                references less as the core of his thesis and more as supporting elements. Instead, he uses less
-                abstract examples to present his ideas to the reader. <i>Symballs</i>, <i>Huneker</i> units, video
-                feedback, and others are used to illustrate the text's thesis on what an <i>I</i> exactly is, what can
-                be assigned the coveted status of an <i>I</i>, and how an <i>I</i> can be created from <i>I</i>-less
-                material.
+                <p>
+                    <i>I Am a Strange Loop</i> serves as a refinement of the ideas Douglas Hofstadter originally
+                    presented in <i>Gödel, Escher, Bach: An Eternal Golden Braid</i>, thirty years earlier. In his prior
+                    work, Hofstadter attempted to explore his ideas on Souls, Selves and <i>I</i>'s through the lense of
+                    the book's three namesakes. The "strange" recursive and self-referential natures of their work
+                    served as an anchor for the author's own ideas on the human mind. By contrast,{" "}
+                    <i>I Am a Strange Loop</i> uses these references less as the core of his thesis and more as
+                    supporting elements. Instead, he uses less abstract examples to present his ideas to the reader.{" "}
+                    <i>Symballs</i>, <i>Huneker</i> units, video feedback, and others are used to illustrate the text's
+                    thesis on what an <i>I</i> exactly is, what can be assigned the coveted status of an <i>I</i>, and
+                    how an <i>I</i> can be created from <i>I</i>-less material.
+                </p>
                 <p>
                     What exactly is an <i>I</i>? To Hofstadter, it relates closely to the degree of consciousness
                     associated with a being. Tying this ephemeral quality to something more "real", the text introduces
@@ -367,15 +369,17 @@ export default (
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
-                In my opinion, Hofstadter certainly achieves his stated goals with this book. It is part retelling of{" "}
-                <i>Gödel, Escher, Bach</i>, with most of the symbolism and dialogues stripped off, and part focused
-                exploration into our private conscious experience in a more detailed manner than his original work.
-                While this is less of an "experience" to read in the way that <i>GEB: BEG</i> was, it communicates
-                Hofstadter's ideas on the human mind much more clearly. Additionally, while this may simply be recency
-                bias on my part, this book's explanation of Gödel's incompleteness theorem is more understandable and
-                grounded, despite his first attempt having significantly more in-text build up and context. Both{" "}
-                <i>I Am a Strange Loop</i> and <i>Gödel, Escher, Bach</i> can fully stand on their own as effective
-                explorations of cognitive science, yet they are inexorably tied to one another.
+                <p>
+                    In my opinion, Hofstadter certainly achieves his stated goals with this book. It is part retelling
+                    of <i>Gödel, Escher, Bach</i>, with most of the symbolism and dialogues stripped off, and part
+                    focused exploration into our private conscious experience in a more detailed manner than his
+                    original work. While this is less of an "experience" to read in the way that <i>GEB: BEG</i> was, it
+                    communicates Hofstadter's ideas on the human mind much more clearly. Additionally, while this may
+                    simply be recency bias on my part, this book's explanation of Gödel's incompleteness theorem is more
+                    understandable and grounded, despite his first attempt having significantly more in-text build up
+                    and context. Both <i>I Am a Strange Loop</i> and <i>Gödel, Escher, Bach</i> can fully stand on their
+                    own as effective explorations of cognitive science, yet they are inexorably tied to one another.
+                </p>
                 <p>
                     Hofstadter's approach of quantifying an entity's level of consciousness into different sized "souls"
                     is certainly a unique approach. It's a clever way of measuring the different cognitive capabilities

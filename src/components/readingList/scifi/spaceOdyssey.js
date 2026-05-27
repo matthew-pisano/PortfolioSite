@@ -13,9 +13,11 @@ export default (
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
-                The first time we meet David Bowman, he is on his way to Saturn to conduct a study of the planet...at
-                least, this is what he was told. In reality, he is thirty days into completing the final leg of a
-                journey that humanity has been unknowingly on for millions of years.
+                <p>
+                    The first time we meet David Bowman, he is on his way to Saturn to conduct a study of the
+                    planet...at least, this is what he was told. In reality, he is thirty days into completing the final
+                    leg of a journey that humanity has been unknowingly on for millions of years.
+                </p>
                 <p>
                     <i>Moon-Watcher</i> gazes into the pitch-darkness of the night sky. Inside of his cave, his tribe
                     huddles together for warmth. Most of those who have not already starved to death are well on their
@@ -98,14 +100,16 @@ export default (
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
-                This novel stands out for a myriad of reasons. Clarke puts a great deal of effort into ensuring that his
-                story remains as scientifically accurate as possible, while still making the plot seem plausible and
-                self-consistent. The beginning of the novel offers a unique explanation to the question of why humans
-                often appear to be fundamentally different with respect to the remainder of the animal kingdom. His
-                description of space-flight, moon-bases, and technology are impressively accurate for being written
-                before even the first moon landing. The inclusion of spinning discs that induce artificial gravity
-                through centripetal force was very forward thinking for the time and would go on to influence countless
-                other works of science fiction.
+                <p>
+                    This novel stands out for a myriad of reasons. Clarke puts a great deal of effort into ensuring that
+                    his story remains as scientifically accurate as possible, while still making the plot seem plausible
+                    and self-consistent. The beginning of the novel offers a unique explanation to the question of why
+                    humans often appear to be fundamentally different with respect to the remainder of the animal
+                    kingdom. His description of space-flight, moon-bases, and technology are impressively accurate for
+                    being written before even the first moon landing. The inclusion of spinning discs that induce
+                    artificial gravity through centripetal force was very forward thinking for the time and would go on
+                    to influence countless other works of science fiction.
+                </p>
                 <p>
                     Of course, one of the most impactful details to me was how <i>HAL</i> behaves and how his internal
                     world model motivates his actions. From the outset of the story, <i>HAL</i> has two primary

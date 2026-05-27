@@ -9,11 +9,13 @@ export default (
         thumbnail={"/media/image/books/do-androids-dream-of-electric-sheep.jpg"}
         anchor={"electric-sheep"}>
         <BookTileSynopsis>
-            <i>Do Androids Dream of Electric Sheep?</i> explores themes of humanity, empathy, and the nature of
-            consciousness set in a post-apocalyptic world after most humans have fled to off-world colonies. Amid this
-            bleak landscape, Dick examines what it means to be human and the ethics of artificial life. The novel
-            follows Rick Deckard, a bounty hunter tasked with "retiring" rogue androids, and John Isidore, a man of
-            limited intelligence due to radiation exposure who empathizes with the fugitive androids.
+            <p>
+                <i>Do Androids Dream of Electric Sheep?</i> explores themes of humanity, empathy, and the nature of
+                consciousness set in a post-apocalyptic world after most humans have fled to off-world colonies. Amid
+                this bleak landscape, Dick examines what it means to be human and the ethics of artificial life. The
+                novel follows Rick Deckard, a bounty hunter tasked with "retiring" rogue androids, and John Isidore, a
+                man of limited intelligence due to radiation exposure who empathizes with the fugitive androids.
+            </p>
             <p>
                 The central conflict of the story revolves around the new Nexus-6 model of androids. These artificial
                 humanoids are more intelligent than previous models, and therefore more capable of blending in with
@@ -26,11 +28,13 @@ export default (
             </p>
         </BookTileSynopsis>
         <BookTileThoughts>
-            One of the most striking aspects of this book is how Dick describes his androids, specifically the Nexus-6
-            models. Instead of being sentient machines made of circuit boards and metal substructures, they are much
-            more like artificial, biological humans. This further strengthens the book's central moral conflict
-            concerning the difference between humans and these 'andys'. In addition to behaving like humans outwardly,
-            they also possess similar biology to humans internally.
+            <p>
+                One of the most striking aspects of this book is how Dick describes his androids, specifically the
+                Nexus-6 models. Instead of being sentient machines made of circuit boards and metal substructures, they
+                are much more like artificial, biological humans. This further strengthens the book's central moral
+                conflict concerning the difference between humans and these 'andys'. In addition to behaving like humans
+                outwardly, they also possess similar biology to humans internally.
+            </p>
             <p>
                 This blurred distinction between humans and androids in the book is increasingly becoming applicable to
                 the ethics of real-world artificial intelligences. While I personally do not foresee the development

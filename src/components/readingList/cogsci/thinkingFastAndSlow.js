@@ -11,13 +11,15 @@ export default (
         thumbnail={"/media/image/books/thinking-fast-and-slow.jpg"}
         anchor={bookTileAnchor}>
         <BookTileSynopsis>
-            <i>Thinking Fast and Slow</i> serves as a compendium of the author's knowledge on both human psychology and
-            economic theory, particularly on the intersection between the two. The core idea of the book is that, in
-            contrast to traditional economic theory where humans serve as simple, rational agents, the behavior of real
-            humans is more complex and nuanced than originally thought. This idea is expanded upon through three more
-            targeted concepts: the two systems theory of cognition, the difference between real humans and idealized{" "}
-            <i>Econs</i>, and how humans behave differently when experiencing a stimulus and remembering that same
-            stimulus.
+            <p>
+                <i>Thinking Fast and Slow</i> serves as a compendium of the author's knowledge on both human psychology
+                and economic theory, particularly on the intersection between the two. The core idea of the book is
+                that, in contrast to traditional economic theory where humans serve as simple, rational agents, the
+                behavior of real humans is more complex and nuanced than originally thought. This idea is expanded upon
+                through three more targeted concepts: the two systems theory of cognition, the difference between real
+                humans and idealized <i>Econs</i>, and how humans behave differently when experiencing a stimulus and
+                remembering that same stimulus.
+            </p>
             <p>
                 Traditionally, people tend to view their thought process as a monolith. A uniform process of careful
                 deliberation and informed decision making. Through his experiments, however, Kahneman noticed that this
@@ -48,12 +50,15 @@ export default (
             </p>
         </BookTileSynopsis>
         <BookTileThoughts>
-            While all of the concepts presented within <i>Thinking Fast and Slow</i> have far-reaching influences on
-            economics, cognitive science, and psychology, I find his first set of ideas the most interesting. Namely,
-            his distinction between <i>System 1</i> and <i>System 2</i> thinking. This is primarily because of its
-            potential implications on my own field of study, artificial intelligence. Currently, the most successful
-            attempts at creating a <i>general</i> artificially intelligent agent have, by and large, used a monolithic
-            architecture where the same fundamental structure or algorithm serves as the basis for an entire model.
+            <p>
+                While all of the concepts presented within <i>Thinking Fast and Slow</i> have far-reaching influences on
+                economics, cognitive science, and psychology, I find his first set of ideas the most interesting.
+                Namely, his distinction between <i>System 1</i> and <i>System 2</i> thinking. This is primarily because
+                of its potential implications on my own field of study, artificial intelligence. Currently, the most
+                successful attempts at creating a <i>general</i> artificially intelligent agent have, by and large, used
+                a monolithic architecture where the same fundamental structure or algorithm serves as the basis for an
+                entire model.
+            </p>
             <p>
                 While this has thus far been impressively successful, this approach has yet to produce something nearing
                 human-level performance in the majority of domains, especially for problem solving and slow, methodical

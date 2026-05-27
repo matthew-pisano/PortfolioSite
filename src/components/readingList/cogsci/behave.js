@@ -9,11 +9,13 @@ export default (
         thumbnail={"/media/image/books/behave.jpg"}
         anchor={"behave"}>
         <BookTileSynopsis>
-            <i>Behave: The Biology of Humans at Our Best and Worst</i> serves as an excellent exploration into the
-            nature of human behavior, its causes, its consequences, and how we can use that knowledge to inform our own
-            decisions. The central question of the book is this: a behavior has occurred, be it a righteous act of
-            selfless heroism or an exercise in revolting depravity, why? Sapolsky's approach to this question is one of
-            analytic thoroughness.
+            <p>
+                <i>Behave: The Biology of Humans at Our Best and Worst</i> serves as an excellent exploration into the
+                nature of human behavior, its causes, its consequences, and how we can use that knowledge to inform our
+                own decisions. The central question of the book is this: a behavior has occurred, be it a righteous act
+                of selfless heroism or an exercise in revolting depravity, why? Sapolsky's approach to this question is
+                one of analytic thoroughness.
+            </p>
             <p>
                 His answer is delivered piecemeal as he examines what events, values, stimuli, etc. could have
                 influenced that behavior. What had occurred one second before that behavior? Which photons hit the
@@ -35,15 +37,17 @@ export default (
             </p>
         </BookTileSynopsis>
         <BookTileThoughts>
-            I read <i>Behave</i> after I read <i>Determined</i> (unintentionally, but I'm glad that I did). It is very
-            clear how the ideas Sapolsky presents in the former influenced the creation of the latter. In his familiar
-            style, the author goes into a significant amount of detail to support each facet of his ideas, citing
-            behavioral studies, observations of primates and other mammals, and his own personal experience. For me, his
-            ideas on behavior, rewards, and punishment were relatively easy to digest after being primed by{" "}
-            <i>Determined</i>, but they are presented in such a cohesive manner that I would certainly be of the same
-            opinion had I read them in the opposite order. Aside from his core argument, <i>Behave</i> also serves as an
-            unintimidating and informative introduction to cognitive science, behavioral analysis, neuroscience,
-            ethology, and many other fields.
+            <p>
+                I read <i>Behave</i> after I read <i>Determined</i> (unintentionally, but I'm glad that I did). It is
+                very clear how the ideas Sapolsky presents in the former influenced the creation of the latter. In his
+                familiar style, the author goes into a significant amount of detail to support each facet of his ideas,
+                citing behavioral studies, observations of primates and other mammals, and his own personal experience.
+                For me, his ideas on behavior, rewards, and punishment were relatively easy to digest after being primed
+                by <i>Determined</i>, but they are presented in such a cohesive manner that I would certainly be of the
+                same opinion had I read them in the opposite order. Aside from his core argument, <i>Behave</i> also
+                serves as an unintimidating and informative introduction to cognitive science, behavioral analysis,
+                neuroscience, ethology, and many other fields.
+            </p>
             <p>
                 There were several sections of the book that I particularly enjoyed. Throughout the book, he goes into
                 detail on what many of the regions of the brain specialize in. What I found most enjoyable was the

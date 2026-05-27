@@ -9,13 +9,15 @@ export default (
         thumbnail={"/media/image/books/the-stranger.jpg"}
         anchor={"letranger"}>
         <BookTileSynopsis>
-            <i>The Stranger</i> is told from the perspective of Meursault, a French settler in Algiers, at the time a
-            part of France's colonial empire. The first part of the book opens with the death of Meursault's mother and
-            his travel to her old-age home and the subsequent funeral. Meursault's general indifference and lack of
-            grief during the process is our first introduction to his character, including the fact that he is not sure
-            what day she died on or even what her age was. Throughout the evening vigil and the subsequent funeral, the
-            narrator frequently references the extreme heat of the North African environment. This induces stress and
-            clouds his judgment, a fact that will prove pivotal later on.
+            <p>
+                <i>The Stranger</i> is told from the perspective of Meursault, a French settler in Algiers, at the time
+                a part of France's colonial empire. The first part of the book opens with the death of Meursault's
+                mother and his travel to her old-age home and the subsequent funeral. Meursault's general indifference
+                and lack of grief during the process is our first introduction to his character, including the fact that
+                he is not sure what day she died on or even what her age was. Throughout the evening vigil and the
+                subsequent funeral, the narrator frequently references the extreme heat of the North African
+                environment. This induces stress and clouds his judgment, a fact that will prove pivotal later on.
+            </p>
             <p>
                 After the funeral, he returns to Algiers where he meets Marie, who previously worked as a secretary at
                 his company. After swimming and viewing a comedy film that day, they begin to form a relationship, at
@@ -104,11 +106,13 @@ export default (
             </p>
         </BookTileSynopsis>
         <BookTileThoughts>
-            The narrator, Meursault, serves as a vessel through which Camus explores a subset of 1940s French society
-            and the human condition more generally. A common theme that Camus includes in his story is that the rules
-            and customs of society are not based on any fundamental laws, but rather on vague notions of morality and
-            social convention. Serving as a detached observer, Meursault is a stranger in this society, a feeling that
-            Camus also imparts to the reader.
+            <p>
+                The narrator, Meursault, serves as a vessel through which Camus explores a subset of 1940s French
+                society and the human condition more generally. A common theme that Camus includes in his story is that
+                the rules and customs of society are not based on any fundamental laws, but rather on vague notions of
+                morality and social convention. Serving as a detached observer, Meursault is a stranger in this society,
+                a feeling that Camus also imparts to the reader.
+            </p>
             <p>
                 Several blatant absurdities and contradictions are present within the story. The police let Raymond off
                 with a warning after they determine that the woman he batters was unfaithful. Salamano derides and

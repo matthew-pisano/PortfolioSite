@@ -9,12 +9,14 @@ export default (
         thumbnail={"/media/image/books/reality-is-not-what-it-seems.jpg"}
         anchor={"not-what-it-seems"}>
         <BookTileSynopsis>
-            <i>Reality is Not What It Seems</i> is an exploration of the theory of <i>Loop Quantum Gravity</i> and of
-            its millennia-long origin story. Rovelli, a renowned theoretical physicist, makes the decision to start this
-            book not with his own theory, but with the very origins of western scientific thought in pre-Socratic
-            ancient Greece. Beginning with Anaximander and his assertions that the natural world is governed by
-            discoverable laws rather than by personified gods, to Democritus and his atomic theory and the
-            indivisibility of matter at its smallest levels.
+            <p>
+                <i>Reality is Not What It Seems</i> is an exploration of the theory of <i>Loop Quantum Gravity</i> and
+                of its millennia-long origin story. Rovelli, a renowned theoretical physicist, makes the decision to
+                start this book not with his own theory, but with the very origins of western scientific thought in
+                pre-Socratic ancient Greece. Beginning with Anaximander and his assertions that the natural world is
+                governed by discoverable laws rather than by personified gods, to Democritus and his atomic theory and
+                the indivisibility of matter at its smallest levels.
+            </p>
             <p>
                 Leaping forward to the renaissance, the author highlights Galileo and his studies of how matter on Earth
                 moves and accelerates, along with Copernicus and Kepler and their calculations and laws on how bodies
@@ -59,15 +61,17 @@ export default (
             </p>
         </BookTileSynopsis>
         <BookTileThoughts>
-            Rovelli's work offers an in-depth and well-written explanation of both the current state of theoretical
-            physics, from his point of view, and the long scientific journey that was needed to arrive there. This also
-            highlights several scientists and philosophers that are less widely known, but still serve as integral
-            foundations to those who came after. Anaximander encouraged people to seek evidence-based explanations for
-            phenomena instead of relying solely on superstition. Democritus gave rise to atomism and the indivisibility
-            of matter at its smallest levels, which Einstein demonstrated through Brownian motion, and serves as the
-            basis for Loop theory's quantization of spacetime. His approach helps to form a coherent narrative and give
-            readers a clearer picture of how we evolved from understanding very little about natural phenomena to
-            peering into the fundamental inner workings of the universe.
+            <p>
+                Rovelli's work offers an in-depth and well-written explanation of both the current state of theoretical
+                physics, from his point of view, and the long scientific journey that was needed to arrive there. This
+                also highlights several scientists and philosophers that are less widely known, but still serve as
+                integral foundations to those who came after. Anaximander encouraged people to seek evidence-based
+                explanations for phenomena instead of relying solely on superstition. Democritus gave rise to atomism
+                and the indivisibility of matter at its smallest levels, which Einstein demonstrated through Brownian
+                motion, and serves as the basis for Loop theory's quantization of spacetime. His approach helps to form
+                a coherent narrative and give readers a clearer picture of how we evolved from understanding very little
+                about natural phenomena to peering into the fundamental inner workings of the universe.
+            </p>
         </BookTileThoughts>
     </BookTile>
 );

@@ -15,19 +15,21 @@ export default (
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
-                <i>Human Compatible</i> concentrates on potentially the most important field in the discipline in
-                artificial intelligence research: alignment and the problem of control. Within its pages, Russell argues
-                that advanced artificially intelligent systems will pose a significant, existential risk to humanity.
-                This risk also has a non-trivial chance of being realized in the near future. Despite uncertainty in our
-                ability to actually develop superintelligence
-                <Footnote>At the time of writing and to a somewhat lesser extent today.</Footnote>, developing an
-                intelligence using our current techniques could be catastrophic. More specifically, he asserts that the
-                single-goal optimization objectives used to train modern AI systems could lead to dangerous and
-                unforeseen consequences. AI trained in this manner would likely not reflect the values that we intended
-                to train into it; the failure modes for this system would be dangerously unpredictable. To structure his
-                argument, Russell splits the book into three parts focusing on an overview of machine intelligence,
-                realized and foreseen problems with intelligent machines, and potential solutions for the problem of
-                control, respectively.
+                <p>
+                    <i>Human Compatible</i> concentrates on potentially the most important field in the discipline in
+                    artificial intelligence research: alignment and the problem of control. Within its pages, Russell
+                    argues that advanced artificially intelligent systems will pose a significant, existential risk to
+                    humanity. This risk also has a non-trivial chance of being realized in the near future. Despite
+                    uncertainty in our ability to actually develop superintelligence
+                    <Footnote>At the time of writing and to a somewhat lesser extent today.</Footnote>, developing an
+                    intelligence using our current techniques could be catastrophic. More specifically, he asserts that
+                    the single-goal optimization objectives used to train modern AI systems could lead to dangerous and
+                    unforeseen consequences. AI trained in this manner would likely not reflect the values that we
+                    intended to train into it; the failure modes for this system would be dangerously unpredictable. To
+                    structure his argument, Russell splits the book into three parts focusing on an overview of machine
+                    intelligence, realized and foreseen problems with intelligent machines, and potential solutions for
+                    the problem of control, respectively.
+                </p>
                 <p>
                     While our biggest threats lie within superintelligence that we cannot control, Russell still finds
                     it valuable to consider potential misuses of AI while it is still unintelligent enough for us to
@@ -290,10 +292,12 @@ export default (
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
-                This book was recommended to me by Selmer Bringsjord of RPI after I gave one of my first presentations
-                on my <Link href={"/research/bergeron"}>Master's thesis research</Link>. Reading this book gave
-                theoretical foundations to my ill-defined concerns about alignment at the time. Through this work,
-                Russel's thoughts helped to influence both this and my future research.
+                <p>
+                    This book was recommended to me by Selmer Bringsjord of RPI after I gave one of my first
+                    presentations on my <Link href={"/research/bergeron"}>Master's thesis research</Link>. Reading this
+                    book gave theoretical foundations to my ill-defined concerns about alignment at the time. Through
+                    this work, Russel's thoughts helped to influence both this and my future research.
+                </p>
                 <p>
                     In this book, Russell both introduces technical topics to the reader and challenges some
                     conventional thinking about artificial intelligence in a concrete and understandable manner. He

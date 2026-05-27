@@ -9,12 +9,15 @@ export default (
         thumbnail={"/media/image/books/i-robot.jpg"}
         anchor={"i-robot"}>
         <BookTileSynopsis>
-            <i>I, Robot</i> spans a series of nine stories detailing the fictional progression of robotic technology as
-            it advanced from simple childcare agents to fully autonomous general intelligences. Each story is framed as
-            part of an interview between an unnamed journalist and Dr. Susan Calvin, the chief <i>robo-psychologist</i>{" "}
-            of <i>U.S. Robots and Mechanical Men, Inc.</i>. Presented in chronological order from the turn of the
-            millennium to the mid twenty-first century, Calvin's narratives feature herself along with several other
-            members of her company as she recalls how they navigated the challenges that the new technologies presented.
+            <p>
+                <i>I, Robot</i> spans a series of nine stories detailing the fictional progression of robotic technology
+                as it advanced from simple childcare agents to fully autonomous general intelligences. Each story is
+                framed as part of an interview between an unnamed journalist and Dr. Susan Calvin, the chief{" "}
+                <i>robo-psychologist</i> of <i>U.S. Robots and Mechanical Men, Inc.</i>. Presented in chronological
+                order from the turn of the millennium to the mid twenty-first century, Calvin's narratives feature
+                herself along with several other members of her company as she recalls how they navigated the challenges
+                that the new technologies presented.
+            </p>
             <p>
                 Core to the book's narrative are Asimov's now-infamous three laws of robotics, and how their literal
                 interpretation (or exclusion) governed how the <i>USRMM's</i> automations behave; each law was
@@ -33,13 +36,15 @@ export default (
             </p>
         </BookTileSynopsis>
         <BookTileThoughts>
-            Similar to other pioneering works such as <i>2001: A Space Odyssey</i> or{" "}
-            <i>Do Androids Dream of Electric Sheep?</i>, many of <i>I, Robot's</i> elements are familiar tropes to
-            modern readers. However, it is vital to acknowledge that many of these familiar story beats{" "}
-            <i>originated from</i> Asimov and his writings. The author impressively anticipated many ethical and
-            practical issues surrounding artificial intelligence before the phrase was even coined in 1955. For example,
-            his stories like "Runaround" or "Liar!" give very grounded (albeit dramatized) scenarios on how hard-coding
-            specific rules into intelligent systems is fraught with exceptions and pitfalls.
+            <p>
+                Similar to other pioneering works such as <i>2001: A Space Odyssey</i> or{" "}
+                <i>Do Androids Dream of Electric Sheep?</i>, many of <i>I, Robot's</i> elements are familiar tropes to
+                modern readers. However, it is vital to acknowledge that many of these familiar story beats{" "}
+                <i>originated from</i> Asimov and his writings. The author impressively anticipated many ethical and
+                practical issues surrounding artificial intelligence before the phrase was even coined in 1955. For
+                example, his stories like "Runaround" or "Liar!" give very grounded (albeit dramatized) scenarios on how
+                hard-coding specific rules into intelligent systems is fraught with exceptions and pitfalls.
+            </p>
             <p>
                 Asimov also offers some interesting thoughts on how human society would react to the invention of
                 machines that were suddenly as capable as humans themselves. Reactionary approaches to the automation of

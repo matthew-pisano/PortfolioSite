@@ -29,12 +29,14 @@ export default (
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
-                Unlike the other entries in this list, <i>{House()} of Leaves</i> is not simply a book. Rather, it is a
-                series of notes written while editing a literary analysis of a documentary about a {house()} that does
-                not exist. A {house()} that is bigger on the <big>inside</big> than <small>out</small>. It is found
-                footage in literary form. In addition to Danielewski himself, this book has two additional authors:
-                Johnny Truant, the "top-level" author of the notes, and Zampanò, the author of the original literary
-                analysis.
+                <p>
+                    Unlike the other entries in this list, <i>{House()} of Leaves</i> is not simply a book. Rather, it
+                    is a series of notes written while editing a literary analysis of a documentary about a {house()}{" "}
+                    that does not exist. A {house()} that is bigger on the <big>inside</big> than <small>out</small>. It
+                    is found footage in literary form. In addition to Danielewski himself, this book has two additional
+                    authors: Johnny Truant, the "top-level" author of the notes, and Zampanò, the author of the original
+                    literary analysis.
+                </p>
                 <p>
                     The main "story" is written from the point of view of Johnny as he journals the changes in his life
                     after his friend, Lude, leads him to the apartment of the now deceased Zampanò. After entering the
@@ -124,17 +126,19 @@ export default (
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
-                <i>{House()} of Leaves</i> may be one of the most uniquely written (and certainly typeset) books that I
-                have ever read. The most striking aspect of Danielewski's writing is his ability to enhance the pacing
-                and tone of the story...
-                <span style={{ display: "block" }}>with...</span>
-                <span style={{ display: "block", textAlign: "center" }}>the...</span>
-                <span style={{ display: "block", textAlign: "right" }}>text...</span>
-                itself.{" "}
-                <span style={{ display: "block" }} className={styles.mirrored}>
-                    Text can even appear as mirrored, depending on the context.
-                </span>{" "}
-                I find this to be a great example of visual storytelling in a novel that primarily consists of text.
+                <p>
+                    <i>{House()} of Leaves</i> may be one of the most uniquely written (and certainly typeset) books
+                    that I have ever read. The most striking aspect of Danielewski's writing is his ability to enhance
+                    the pacing and tone of the story...
+                    <span style={{ display: "block" }}>with...</span>
+                    <span style={{ display: "block", textAlign: "center" }}>the...</span>
+                    <span style={{ display: "block", textAlign: "right" }}>text...</span>
+                    itself.{" "}
+                    <span style={{ display: "block" }} className={styles.mirrored}>
+                        Text can even appear as mirrored, depending on the context.
+                    </span>{" "}
+                    I find this to be a great example of visual storytelling in a novel that primarily consists of text.
+                </p>
                 <p>
                     The story of <i>{House()} of Leaves</i> is also deepened through the use of extensive world
                     building. Throughout his analysis, Zampanò demonstrates that he inhabits a world just as real as our

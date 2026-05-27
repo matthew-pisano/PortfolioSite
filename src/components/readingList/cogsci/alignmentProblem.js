@@ -11,11 +11,14 @@ export default (
         thumbnail={"/media/image/books/the-alignment-problem.jpg"}
         anchor={bookTileAnchor}>
         <BookTileSynopsis>
-            Unlike many of the other books on this list, <i>The Alignment Problem: Machine Learning and Human Values</i>{" "}
-            concentrates primarily on the immediate risks of AI alignment, rather than long-term existential risks. One
-            of the core theses of this books is that we do not have to wait until artificial general intelligence to
-            feel the negative effects of misaligned AI systems. Through expert interviews, Christian lays out the full
-            breadth of modern machine learning research and how each handles the problem of alignment.
+            <p>
+                Unlike many of the other books on this list,{" "}
+                <i>The Alignment Problem: Machine Learning and Human Values</i> concentrates primarily on the immediate
+                risks of AI alignment, rather than long-term existential risks. One of the core theses of this books is
+                that we do not have to wait until artificial general intelligence to feel the negative effects of
+                misaligned AI systems. Through expert interviews, Christian lays out the full breadth of modern machine
+                learning research and how each handles the problem of alignment.
+            </p>
             <p>
                 This book is divided into three parts: Prophecy, Agency, and Normativity. Prophecy covers the history of
                 AI development, from the first perceptrons to <i>AlexNet</i>, along with concrete examples of simple
@@ -30,14 +33,17 @@ export default (
             </p>
         </BookTileSynopsis>
         <BookTileThoughts>
-            While this book concentrates on similar themes to Nick Bostrom's <i>Superintelligence</i>, some of the most
-            impactful ideas that this book presents involve much less existential, albeit still harmful, examples of
-            misalignment. Much of its length is devoted to addressing the ethical implications of implementing machine
-            learning algorithms without proper planning. For example, he cites how AI criminal risk assessment /
-            recidivism prediction tools, like <i>COMPAS</i>, often exhibit biases toward minority groups. One of the
-            most interesting insights along this vein was on the fact that ML algorithms can accidentally infer data
-            that was held-out from training (for example, an 'unbiased' algorithm can accidentally condition itself on
-            someone's race or gender, despite only having names or neighborhoods in its dataset).
+            <p>
+                While this book concentrates on similar themes to Nick Bostrom's <i>Superintelligence</i>, some of the
+                most impactful ideas that this book presents involve much less existential, albeit still harmful,
+                examples of misalignment. Much of its length is devoted to addressing the ethical implications of
+                implementing machine learning algorithms without proper planning. For example, he cites how AI criminal
+                risk assessment / recidivism prediction tools, like <i>COMPAS</i>, often exhibit biases toward minority
+                groups. One of the most interesting insights along this vein was on the fact that ML algorithms can
+                accidentally infer data that was held-out from training (for example, an 'unbiased' algorithm can
+                accidentally condition itself on someone's race or gender, despite only having names or neighborhoods in
+                its dataset).
+            </p>
             <p>
                 Christian's chapters on reward systems and curiosity also helped to cement my understanding of the role
                 these concepts play in learning, both natural and artificial. A common theme with this book was how well

@@ -9,12 +9,14 @@ export default (
         thumbnail={"/media/image/books/turings-cathedral.jpg"}
         anchor={"cathedral"}>
         <BookTileSynopsis>
-            <i>Turing's Cathedral</i> is an in-depth historical exploration of the people, places, and events
-            surrounding the creation of the first general-purpose, electronic, digital computer. The <i>ENIAC</i>, or
-            Electronic Numerical Integrator and Computer, was one of the first concrete realizations of Turing's{" "}
-            <i>Universal Computing Machine</i>. The historical account, compiled by Dyson from the records of the{" "}
-            <i>Institute for Advanced Study</i> (among other sources), details the project itself, along with the
-            scientists and engineers that created it, and the institute itself.
+            <p>
+                <i>Turing's Cathedral</i> is an in-depth historical exploration of the people, places, and events
+                surrounding the creation of the first general-purpose, electronic, digital computer. The <i>ENIAC</i>,
+                or Electronic Numerical Integrator and Computer, was one of the first concrete realizations of Turing's{" "}
+                <i>Universal Computing Machine</i>. The historical account, compiled by Dyson from the records of the{" "}
+                <i>Institute for Advanced Study</i> (among other sources), details the project itself, along with the
+                scientists and engineers that created it, and the institute itself.
+            </p>
             <p>
                 From its inception in late 1945, the machine was often reserved for usage in military calculations,
                 namely those integral in predicting the behavior of thermonuclear reactions, purely theoretical at the
@@ -40,16 +42,19 @@ export default (
             </p>
         </BookTileSynopsis>
         <BookTileThoughts>
-            One of the more surprising aspects of Dyson's account was just how tightly linked the development of the
-            first computer was with the development of atomic weapons. Many of the scientists who worked on the project
-            at Los Alamos pivoted to the <i>ENIAC</i> project where their work continued in the form of thermonuclear
-            calculations. Upon further analysis, however, the nature of the fields of nuclear physics and computer
-            science shared a high degree of similarity in 1945. A significant amount of theoretical work had already
-            been established before the war. For nuclear physics this was Einstein's special relativity and the
-            discovery of fission by Hahn and Strassmann. For computer science, this came in the form of Gödel's
-            incompleteness theorems, Shannon's work on information, and Turing's theories on computation. This
-            groundwork was built upon by both American scientists and former members of Europe's intelligentsia who fled
-            the looming threat of the Third Reich, and was funded through U.S. subsidies motivated by the war effort.
+            <p>
+                One of the more surprising aspects of Dyson's account was just how tightly linked the development of the
+                first computer was with the development of atomic weapons. Many of the scientists who worked on the
+                project at Los Alamos pivoted to the <i>ENIAC</i> project where their work continued in the form of
+                thermonuclear calculations. Upon further analysis, however, the nature of the fields of nuclear physics
+                and computer science shared a high degree of similarity in 1945. A significant amount of theoretical
+                work had already been established before the war. For nuclear physics this was Einstein's special
+                relativity and the discovery of fission by Hahn and Strassmann. For computer science, this came in the
+                form of Gödel's incompleteness theorems, Shannon's work on information, and Turing's theories on
+                computation. This groundwork was built upon by both American scientists and former members of Europe's
+                intelligentsia who fled the looming threat of the Third Reich, and was funded through U.S. subsidies
+                motivated by the war effort.
+            </p>
             <p>
                 I also enjoyed Dyson's detailed explorations of the series of rapid advancements made in the post-war
                 years; many of which still serve as foundations of computer science today. The author not only offers

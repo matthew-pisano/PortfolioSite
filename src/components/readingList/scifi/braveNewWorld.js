@@ -32,13 +32,15 @@ export default (
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
-                <i>Brave New World</i> is a book that describes a perfect utopia. Free from nearly all disease, old age,
-                social strife, and the very notion of discomfort itself! The world government has been keeping
-                everything running smoothly for hundreds of years. Alphas, Betas, Gammas, Deltas, and even the lowly
-                Epsilons leave their <i>Hatching and Conditioning</i> centers and live lives of idyllic{" "}
-                <i>Community, Identity, and Stability</i> (and a healthy amount of consumption) thanks to the world
-                state's stewardship and the help of a little <i>soma</i>. Nothing could be closer to the platonic ideal
-                of a perfect society. At least...that's what anyone who lived there would tell you...
+                <p>
+                    <i>Brave New World</i> is a book that describes a perfect utopia. Free from nearly all disease, old
+                    age, social strife, and the very notion of discomfort itself! The world government has been keeping
+                    everything running smoothly for hundreds of years. Alphas, Betas, Gammas, Deltas, and even the lowly
+                    Epsilons leave their <i>Hatching and Conditioning</i> centers and live lives of idyllic{" "}
+                    <i>Community, Identity, and Stability</i> (and a healthy amount of consumption) thanks to the world
+                    state's stewardship and the help of a little <i>soma</i>. Nothing could be closer to the platonic
+                    ideal of a perfect society. At least...that's what anyone who lived there would tell you...
+                </p>
                 <p>
                     Huxley opens the book by introducing us to the Director of London's own H&C facility as he gives a
                     group of Alpha students a tour of the squat, grey, and clinical facility. Beginning in the
@@ -339,12 +341,15 @@ export default (
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
-                There is quite a lot to say about <i>Brave New World</i>. One of its standout qualities is its world
-                building. The Hatchery and Conditioning facility serves as a microcosm of the World Society. The casual
-                attitude toward sexual experiences, the castes, the bio-engineering, the social conditioning, the social
-                dynamics, all represented here and introduced to the reader from the perspective of touring students.
-                Even Mustapha Mond at the end of the sequence giving an overview of their society's history and
-                organization. It is a very clever method of both world building and delivering exposition.
+                <p>
+                    There is quite a lot to say about <i>Brave New World</i>. One of its standout qualities is its world
+                    building. The Hatchery and Conditioning facility serves as a microcosm of the World Society. The
+                    casual attitude toward sexual experiences, the castes, the bio-engineering, the social conditioning,
+                    the social dynamics, all represented here and introduced to the reader from the perspective of
+                    touring students. Even Mustapha Mond at the end of the sequence giving an overview of their
+                    society's history and organization. It is a very clever method of both world building and delivering
+                    exposition.
+                </p>
                 <p>
                     Class, or caste, plays a central role in the story. It is the central governing influence on
                     people's lives and is deeply ingrained into their culture and thinking. This is made all the more

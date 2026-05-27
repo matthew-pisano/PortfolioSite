@@ -16,12 +16,14 @@ export default (
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
-                The primary concern of <i>Superintelligence: Paths, Dangers, Strategies</i> is not necessarily what
-                needs to happen for artificial general intelligence to be developed, but what happens soon after. This
-                could be on timescales as long as decades, or as short as seconds. After this point, the entire course
-                of human history will be altered; this much is certain. The only remaining uncertainty is whether it
-                will result in our extinction or maximal utopia. In this book, Nick Bostrom explores how we can minimize
-                the probability of the former and maximize that of the latter.
+                <p>
+                    The primary concern of <i>Superintelligence: Paths, Dangers, Strategies</i> is not necessarily what
+                    needs to happen for artificial general intelligence to be developed, but what happens soon after.
+                    This could be on timescales as long as decades, or as short as seconds. After this point, the entire
+                    course of human history will be altered; this much is certain. The only remaining uncertainty is
+                    whether it will result in our extinction or maximal utopia. In this book, Nick Bostrom explores how
+                    we can minimize the probability of the former and maximize that of the latter.
+                </p>
                 <p>
                     One of the core theses of this work is that an agent of general intelligence, which could incur
                     substantial risk, may evolve into a superintelligent agent, which certainly implies an existential
@@ -255,11 +257,13 @@ export default (
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
-                This book almost single-handedly inspired me to pursue an education in artificial intelligence and
-                specifically in the theory of alignment. When this book released in 2014, Bostrom was one of only a
-                handful of authors that treated superintelligent (or even generally intelligent) systems as credible
-                existential threats to humanity. Ideas such as this had been explored extensively in the realm of
-                fiction, but it was not until the last decade or so that X-risks could be foreseen in reality.
+                <p>
+                    This book almost single-handedly inspired me to pursue an education in artificial intelligence and
+                    specifically in the theory of alignment. When this book released in 2014, Bostrom was one of only a
+                    handful of authors that treated superintelligent (or even generally intelligent) systems as credible
+                    existential threats to humanity. Ideas such as this had been explored extensively in the realm of
+                    fiction, but it was not until the last decade or so that X-risks could be foreseen in reality.
+                </p>
                 <p>
                     I especially enjoy this book because it helped to dispel several misconceptions about
                     superintelligent AI that I held upon my first read. In fiction and in popular culture, powerful

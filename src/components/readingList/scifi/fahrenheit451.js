@@ -13,11 +13,14 @@ export default (
         anchor={bookTileAnchor}>
         <FootnoteProvider label={bookTileAnchor}>
             <BookTileSynopsis>
-                Guy Montag is a <i>fireman</i>. When an emergency is called into his station, he, like his comrades
-                across the country, slides down his fireman's pole, dons his flame-retardant suit, and races to the
-                scene in a fire engine. Pulling up to the fireproof house, as all houses now are, with kerosene in place
-                of water and a need to destroy, rather than protect, he stokes the flames until all threats to the state
-                have been immolated. Every precaution must be taken when it comes to the threat of the printed word.
+                <p>
+                    Guy Montag is a <i>fireman</i>. When an emergency is called into his station, he, like his comrades
+                    across the country, slides down his fireman's pole, dons his flame-retardant suit, and races to the
+                    scene in a fire engine. Pulling up to the fireproof house, as all houses now are, with kerosene in
+                    place of water and a need to destroy, rather than protect, he stokes the flames until all threats to
+                    the state have been immolated. Every precaution must be taken when it comes to the threat of the
+                    printed word.
+                </p>
                 <p>
                     Guy Montag is a <i>stranger</i>. On his way home from his shift, Montag meets a strange young girl,
                     Clarisse McClellan. After identifying him as a fireman through his odor of accelerant, she begins
@@ -93,21 +96,24 @@ export default (
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
-                <i>Fahrenheit 451</i> is as beautifully written as it is disconcertingly prophetic. One aspect of the
-                story that I particularly like is how Bradbury presents the origin of the state-wide ban on books.
-                Unlike most other media, where a totalitarian state suddenly materializes and begins issuing top-down,
-                draconian edicts, the American state in <i>Fahrenheit 451</i> implements policies that already have
-                widespread public support. Being written shortly after the second world war, it does not surprise me
-                that the state is portrayed in this manner. The unnerving reality is that it is common for totalitarian
-                regimes to have popular support as long as they enforce the will of the majority. The most apt (and
-                somewhat default) example comes from 1930's Germany. At the time, the Weimar government was already
-                deeply unpopular with the majority of Germans. Similar to the state in the novel, these conditions gave
-                the <i>NSDAP</i> an excellent opportunity. They implemented (or at least promised) policies that many
-                people actually wanted. Before (and even during) their height of power, control, and malice, the Nazi
-                Party was <i>popular</i> among many everyday Germans. To them, that is all that really mattered. Most
-                relevant to this book, many of their early, famous book-burnings were not top-down directives from party
-                leadership. Instead, they were perpetrated by radicalized university students, a demographic that often
-                serves as a "canary in the coal mine" for future social upheaval.
+                <p>
+                    <i>Fahrenheit 451</i> is as beautifully written as it is disconcertingly prophetic. One aspect of
+                    the story that I particularly like is how Bradbury presents the origin of the state-wide ban on
+                    books. Unlike most other media, where a totalitarian state suddenly materializes and begins issuing
+                    top-down, draconian edicts, the American state in <i>Fahrenheit 451</i> implements policies that
+                    already have widespread public support. Being written shortly after the second world war, it does
+                    not surprise me that the state is portrayed in this manner. The unnerving reality is that it is
+                    common for totalitarian regimes to have popular support as long as they enforce the will of the
+                    majority. The most apt (and somewhat default) example comes from 1930's Germany. At the time, the
+                    Weimar government was already deeply unpopular with the majority of Germans. Similar to the state in
+                    the novel, these conditions gave the <i>NSDAP</i> an excellent opportunity. They implemented (or at
+                    least promised) policies that many people actually wanted. Before (and even during) their height of
+                    power, control, and malice, the Nazi Party was <i>popular</i> among many everyday Germans. To them,
+                    that is all that really mattered. Most relevant to this book, many of their early, famous
+                    book-burnings were not top-down directives from party leadership. Instead, they were perpetrated by
+                    radicalized university students, a demographic that often serves as a "canary in the coal mine" for
+                    future social upheaval.
+                </p>
                 <p>
                     This book also holds a significant amount of contemporary relevance. This is aside from modern
                     book-burnings and book-bannings, of which there are unfortunately still many. Instead, I would like
