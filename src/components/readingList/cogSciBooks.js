@@ -6,6 +6,8 @@ import determined from "@/components/readingList/cogsci/determined";
 import emotionMachine from "@/components/readingList/cogsci/emotionMachine";
 import godelEscherBach from "@/components/readingList/cogsci/godelEscherBach";
 import humanCompatible from "@/components/readingList/cogsci/humanCompatible";
+import nexus from "@/components/readingList/cogsci/nexus";
+import sapiens from "@/components/readingList/cogsci/sapiens";
 import strangeLoop from "@/components/readingList/cogsci/strangeLoop";
 import superintelligence from "@/components/readingList/cogsci/superintelligence";
 import thinkingFastAndSlow from "@/components/readingList/cogsci/thinkingFastAndSlow";
@@ -20,6 +22,8 @@ export default (
         {strangeLoop}
         {determined}
         {behave}
+        {sapiens}
+        {nexus}
         {emotionMachine}
     </>
 );
