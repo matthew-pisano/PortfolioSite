@@ -10,7 +10,11 @@ export default (
         author={"Yuval Noah Harari"}
         thumbnail={"/media/image/books/nexus.jpg"}
         anchor={bookTileAnchor}>
-        <BookTileSynopsis></BookTileSynopsis>
-        <BookTileThoughts></BookTileThoughts>
+        <BookTileSynopsis>
+            <p></p>
+        </BookTileSynopsis>
+        <BookTileThoughts>
+            <p></p>
+        </BookTileThoughts>
     </BookTile>
 );
