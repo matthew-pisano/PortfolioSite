@@ -208,6 +208,76 @@ export default (
                     while religious and moral disagreements are common, most well-connected cultures can readily agree
                     upon basic measurement standards or the fundamental truths of the universe.
                 </p>
+                <p>
+                    Since the very beginnings of human history trade has persisted in one form or another. Throughout
+                    the vast majority of this history, the primary method of exchange was bartering. A talented milliner
+                    could barter a high quality hat for a few bushels of apples. Though, when happens when the orchard
+                    owner already had all the hats that they fancied? Third and fourth parties could be involved to
+                    craft three or four-way trade deals, but this indirect method of trade becomes very complicated very
+                    quickly (exponentially so!). Even ancient cultures realized this, leading to rudimentary forms of
+                    money. In ancient China, these were Cowry shells, Sumerians used bowls of barley seeds, and Romans
+                    used gold coins. This form of grounded and basic money helped to lubricate the great flywheels of
+                    commerce throughout the ancient world. It acted as a sort of universal conversion medium. Hats could
+                    be converted into apples, mercenaries into new imperial territory, or harvests into church
+                    indulgences. Why does money work in this manner? Why would someone agree to give up valuable
+                    resources in exchange for some pretty shells or yellow metal? The answer lies in trust. A rice
+                    farmer would trust that the shells they receive in exchange for their harvest could then be further
+                    exchanged for a new parcel of land, a local delicacy, or a fancy hat. The defining characteristic of
+                    money over any other medium of bartering is that the belief in the value of money far outweighs the
+                    intrinsic value of the money itself. You cannot eat a gold coin or sea snail shell, but through
+                    mutual trust you could easily turn it into all the food you could want. Similar to myths, culture,
+                    and writing, money serves as yet another vehicle for mess cooperation between people who do know
+                    know each other personally. As societies cooperated more, territories grew, and administration
+                    ballooned. Slowly, visions of empire formed in the mind of leaders throughout the ancient world.
+                </p>
+                <p>
+                    <i>Sapiens</i> defines an empire as a political order with two defining characteristics: it must
+                    rule over a significant number of distinct cultures and it must have flexible borders with a desire
+                    for expansion. These qualities enables empires to be engines of cultural consolidation. The Roman
+                    Empire conquered countless individual tribes and people, subsuming them into the latin culture of
+                    the empire. Even when it fell in the first millennium, the number of cultures which emerged from its
+                    ashes were far fewer than those that originally inhabited the Europe a thousand years earlier.
+                    Harari argues that the modern conception of empire harbors two myths that obscure their realities.
+                    One is that empires cannot last; they are too unstable and rule over too many people to persist for
+                    long periods of time. However, the most common form of human government for the last several
+                    thousand years was empire. The Roman empire lasted for a thousand years, two if you cound the
+                    byzantines. The middle east has been ruled over by one empire or another since the Neo-assyrian
+                    empire in the eighth century BCE. Much of China has been ruled by different incarnations of the
+                    Celestial Empire from the Zhou dynasty in 1046 BCE to the Qing, which fell just over a hundred years
+                    ago. Additionally, these administrative goliaths were not felled by a noble uprising of oppressed
+                    peoples, rather they were primarily upended by internal divisions or outside pressures.
+                </p>
+                <p>
+                    The second myth is that empires are inherently immoral, that they obliterate native cultures and
+                    exploit their populace. A strong justification for this claim could be made about ancient empires
+                    like the Assyrian, Babylonian, and Hittite empires which conquered and plundered neighboring lands,
+                    bringing riches back to their capitols. Empire existed only for the benefit of the conquering
+                    peoples. This conception, at least internally changed in 550 BCE with Cyrus the Great of Persia. He
+                    saw himself not as a Persian king ruling over other cultures, but also as a king of those cultures
+                    as well. Instead of obstacles in need of oppression, Cyrus and the rulers of simular empires, began
+                    to see conquered people as future citizens. Outsiders became targets for assimilation, rather than
+                    for annihilation. A prime example of a similar empire was the Chinese Han from 206 BCE. The Han so
+                    thoroughly assimilated conquered peoples that the majority of Eastern, Northern, and Southern China
+                    considers themselves as Han over 2000 years later. This is where the immorality of empire becomes
+                    messy. When empires conquer new territory they tend to encourage (peacefully or not) its new
+                    subjects to assimilate into imperial culture. As empires rise and fall, a newly <i>conquered</i>{" "}
+                    culture likely once belonged to a <i>conquering</i> culture themselves. When the British colonized
+                    Northern India, they were wresting control away from Muslim empires which themselves had previously
+                    invaded the subcontinent, displacing yet more empires which had once conquered the land for
+                    themselves many centuries before. By reducing the participation in empire to a sin, it becomes
+                    exceedingly difficult to find cultures which are not tainted by some empire in the recent or distant
+                    past
+                    <Footnote>
+                        This chapter, along with any discussion of past empires, comes with the weight of significant
+                        cultural and moral baggage. Harari's point here is not to argue that empires are somehow an
+                        unambiguously good and unifying force. The tendency of modern empires to assimilate rather than
+                        annihilate does not make any atrocities committed in the name of that assimilation and less
+                        immoral. The main goal of this chapter was to discuss what an empire is, why they have tended to
+                        be the dominant form of government in "recent" millennia, and why it is difficult to cleanly
+                        separate conquerors from the conquered.
+                    </Footnote>
+                    .
+                </p>
             </BookTileSynopsis>
             <BookTileThoughts>
                 <p></p>
