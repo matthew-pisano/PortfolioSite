@@ -311,14 +311,32 @@ export default (
                     centered around one supreme being that cared deeply in the actions of humans. Yet, these fresh
                     monotheistic religions were often localized, with their chosen God mainly concerned with specific
                     peoples. Harari highlights Judaism as an example, as they believe that God is chiefly interested in
-                    the plight of the Jewish people and the holy land in particular. One of the first evangelizing,
-                    non-localized monotheistic religions was Christianity. Christians did (and still do) believe that
-                    God is concerned with all humans and that it is the duty of every member of their religion to spread
-                    belief in the gospel to all other humans. Centuries later, early muslims emerged from the deserts of
-                    Arabia harboring similar beliefs about the universal goal of their religion. One key difference
-                    between these religions and polytheistic ones is that, since monotheists commonly believe that their
-                    chosen God is universal, belief in other gods is forbidden. After two millennia of evangelization
-                    and conversions, the majority of all humans now believe in one monotheistic religion or another.
+                    the plight of the Jewish people and the holy land in particular
+                    <Footnote>
+                        The history of early Judaism offers a microcosm of how this process occurred within other
+                        monotheistic religions as the emerged from polytheistic ones. Judaism originated in the
+                        levantine province of Yehud, from within the Achaemenid Empire that was originally founded by
+                        Cyrus the Great. Approximately 3200 years ago, the Iron Age semetic peoples of the levant
+                        largely believed in the polytheistic Canaanite religion. This religion worshiped a diverse
+                        pantheon of gods with the supreme creator god "El" as their patriarch. Over time, ancient
+                        Israelites formed their own sect known as Yahwism, a monolatristic religion which believed in
+                        many gods, but primarily worshiped a single god. Their chosen god, who serves was the namesake
+                        for the religion, began to overshadow the importance of the others, eventually taking on a role
+                        similar to El. In fact, the word El and relationships originally associated with the Canaanite
+                        god, were eventually associated directly with the God of Yahwism in scripture. Over time,
+                        ancient Yahwism denied the existence of other Canaanite gods as it evolved into a strictly
+                        monotheistic religion. This religion served as the foundation upon which Judaism grew over the
+                        next three thousand years.
+                    </Footnote>
+                    . One of the first evangelizing, non-localized monotheistic religions was Christianity. Christians
+                    did (and still do) believe that God is concerned with all humans and that it is the duty of every
+                    member of their religion to spread belief in the gospel to all other humans. Centuries later, early
+                    muslims emerged from the deserts of Arabia harboring similar beliefs about the universal goal of
+                    their religion. One key difference between these religions and polytheistic ones is that, since
+                    monotheists commonly believe that their chosen God is universal, belief in other gods is forbidden.
+                    After two millennia of evangelization and conversions, the majority of all humans now believe in one
+                    monotheistic religion or another. Between adherents of a common religion, their belief served as
+                    another way in which strangers could trust and cooperate with each other.
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
