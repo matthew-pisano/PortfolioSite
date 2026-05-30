@@ -338,6 +338,45 @@ export default (
                     monotheistic religion or another. Between adherents of a common religion, their belief served as
                     another way in which strangers could trust and cooperate with each other.
                 </p>
+                <p>
+                    Suppose an ancient Canaanite fell asleep in 1200 BCE and awoke 2500 years later in 1300 CE. The
+                    people around them would speak a strange language, worship unfamiliar gods, and follow alian
+                    traditions. Yet, it would likely be possible to convince the Canaanite that they had simply woken up
+                    in some far-off kingdom. Most people were still farmers, artisans, or shepherds. They still wore
+                    robes and jewelry made of identifiable materials, and they still lived in dwellings similar to those
+                    that the Canaanite had themselves. Now suppose someone else in the same area, then ruled over by the
+                    Mamluk Sultanate, slept and did not wake until merely 700 years had passed. Less than a third of the
+                    time has elapsed in this scenario, but the medieval levantine would hardley believe they were on the
+                    same planet had they found themselves looking up at the shining skyscrapers of the modern Tel Aviv
+                    skyline.
+                </p>
+                <p>
+                    Something very strange has happened over the last few centuries of human history. Technological,
+                    economic, and imperial development have all advanced far more rapidly than at any other time. A
+                    handful of nations, from a continent that was once a backwater of the medieval world, had token over
+                    the planet before other nations adopted their technology and rose to meet them. In many modern
+                    nations, there are far more economists, bureaucrats, and engineers than there are farmers,
+                    shepherds, and blacksmiths. How? Harari argues that, by discovering our own ignorance about the
+                    universe, were we able to uncover more of its truth than ever before. Since the scientific
+                    revolution, three core beliefs have emerged that have enabled believers to make groundbreaking
+                    discovery after groundbreaking discovery. The first is that we do not know everything. In the
+                    seventeenth century, this was a very unorthodox way of thinking. Many religions, especially modern
+                    religions, claim to know all universal and unalterable truths. By believing in their God or gods and
+                    studying their scriptures, one can know all that is worth knowing. The second core tenet of
+                    scientific thought is that empirical observation and calculation can reveal new truths to us. For
+                    millennia, if a scholar wanted new knowledge revealed to them, they need only ask a religious
+                    thought leader, study an ancient text, or pray for an answer to come to them. Finally, those that
+                    believed in the scientific process also believed hat they could derive new capabilities and
+                    predictions from their theories. Prior to the late modern era, the majority of new technologies were
+                    discovered through blind trial and error. A blacksmith would forge swords and armour out of
+                    different alloys repeatedly until they happened upon a new metal that they found to be stronger and
+                    more durable than before. The idea that mere humans could suddenly derive radically new abilities
+                    without divine intervention was the height of hubris. Not only do scientists believe that this is
+                    possible, they believe that old discoveries, even those which had enabled significant technological
+                    advancement, could be proven false! Instead of becoming embroiled in dogmatic debate, scientists can
+                    rely on mathematical proof or empirical observation. Unless a flaw in the execution of a proof or in
+                    the quality of an observation, scientists consider the matter as settled for now.
+                </p>
             </BookTileSynopsis>
             <BookTileThoughts>
                 <p></p>
