@@ -278,6 +278,48 @@ export default (
                     </Footnote>
                     .
                 </p>
+                <p>
+                    Following the unitary and cooperative powers of money and empire, Harari argues that religion
+                    represents a third great unifier of humanity. He defines religions as "a system of human norms and
+                    values that is founded on belief in a superhuman order". For millennia, nearly all religions
+                    embodied these basic principles. Locan bands or tribes observed local customs, myths, and
+                    superstitions, all rooted in the belief in some supernatural force. For the majority of modern
+                    humans, these localized of religions seem somewhat unfamiliar. Around the first millennium BCE, a
+                    new class of religions began to emerge: those that claimed to know not only local truths, but
+                    universal truths that applied to all humans. These religions were also very commonly missionary.
+                    Since adherents believed that their system of myths and customs was universal, it was their duty to
+                    spread their religion to all humans. Modern exemplars of this category include Christianity, Islam,
+                    or Buddhism. The earliest human religions were likely some form of animism, the belief that the
+                    natural world was permeated with sprits. Human spirits were embedded within this natural order,
+                    rather than above it. As agriculture began to spread, humans began to settle into villages and later
+                    cities.
+                </p>
+                <p>
+                    Throughout this process, humans began to observe their unique changes on the natural world. As
+                    Humans built great cities and tamed nature, the notion that our spirits were equal to those that we
+                    conquered grew less believable. Over time, spirits began to morph into gods, humanized gods which
+                    held humans as special as we saw ourselves. These new polytheistic religions believed that gods
+                    influenced the natural world with human-like agency and could therefore be bargained with like
+                    humans as well. However, unlike the God of monotheism, the powers of polytheistic god were not
+                    universal. They too were bound by yet greater powers: the ancient Greeks had the three sisters of
+                    Fate and Hindus had the all-encompassing power of Atman. While lesser gods could be prayed to and
+                    bargained with, these forces had not interest in the struggles of humans. Due to this plurality of
+                    lesser gods, it was common for interacting peoples to adopt each other's deities into their own
+                    religions. Conquering empires tended to tolerate local religions so long as conquered peoples
+                    incorporated the empire's chosen pantheon. Between two and three thousand years ago, another shift
+                    began. In some cultures, the importance of one God began to eclipse all others until belief was
+                    centered around one supreme being that cared deeply in the actions of humans. Yet, these fresh
+                    monotheistic religions were often localized, with their chosen God mainly concerned with specific
+                    peoples. Harari highlights Judaism as an example, as they believe that God is chiefly interested in
+                    the plight of the Jewish people and the holy land in particular. One of the first evangelizing,
+                    non-localized monotheistic religions was Christianity. Christians did (and still do) believe that
+                    God is concerned with all humans and that it is the duty of every member of their religion to spread
+                    belief in the gospel to all other humans. Centuries later, early muslims emerged from the deserts of
+                    Arabia harboring similar beliefs about the universal goal of their religion. One key difference
+                    between these religions and polytheistic ones is that, since monotheists commonly believe that their
+                    chosen God is universal, belief in other gods is forbidden. After two millennia of evangelization
+                    and conversions, the majority of all humans now believe in one monotheistic religion or another.
+                </p>
             </BookTileSynopsis>
             <BookTileThoughts>
                 <p></p>
