@@ -377,6 +377,39 @@ export default (
                     rely on mathematical proof or empirical observation. Unless a flaw in the execution of a proof or in
                     the quality of an observation, scientists consider the matter as settled for now.
                 </p>
+                <p>
+                    Science, however, is a very costly endeavours. Those doing research do not have time to grow crops
+                    and feed themselves. They cannot craft all of their instruments on their own either. The pursuit of
+                    scientific inquiry requires the cooperation of many individuals and strong mechanisms of trust. To
+                    gain access to these resources and this level of organization, scientists oftentimes must turn to
+                    their governments for enablement. In recent history, the pursuit of science has been entangled with
+                    the pursuit of empire. A vast empire's worth of resources enabled scientific advancement and
+                    scientific advancement enabled the further expansion of the empire. This feedback loop is obvious in
+                    twenty-first century retrospect, but even during the enlightenment in seventeenth century Europe,
+                    this was far from apparent. Science had uncovered truths about the laws of Earth and the laws of the
+                    heavens, but had yet to give Europe a decisive advantage over other old-world empires. By this time,
+                    many European states, such as France or Britain, had conquered vast empires from native peoples of
+                    Iron Age technology. The empires of Asia, like the Ottomans, Mughals, or Chinese, were still their
+                    technological equals. How, then, was Europe able to later defeat these great powers rather than the
+                    inverse? The core difference between European and Asian empires at this time, <i>Sapiens</i> argues,
+                    was their attitude towards conquest. Throughout most of history, a conquering empire did not expand
+                    to discover anything new about the world; they had all the truth they needed from their religion.
+                    Rather, the goal was to enforce their universal truth upon others: the truth of their culture, of
+                    their beliefs, and of their emperor. Early-modern Europeans took a slightly different approach.
+                    Conquests were still a means to an end of territory, glory, and religious conversions, but there was
+                    another goal as well: discovery. As scientific thought became more common in Europe, empire began to
+                    admit that they did not have the complete truth within their empire. The only way to uncover
+                    remaining truths was to expand. Botanists were brought along military expeditions to indonesia,
+                    biologists to the Galapagos, and historians to Egypt. Each new conquest brought new knowledge back
+                    to the capitol. Importantly, many capitols developed a culture of discovery and trust in scientific
+                    thought. This aspect of Western European cultures, largely unique at the time, enabled empires to
+                    convert this knowledge into new weapons and a means for further expansion. By the mid eighteenth
+                    century, this feedback loop had enabled European empires to subjugate vast territories in the
+                    Americas, Africa, and Oceania. Yet, the empires of Asia remained beyond Europe's strength. Conquest,
+                    however, was a very costly affair and traditional monetary systems were unable to distribute
+                    resources with the required speed and efficiency that empires needed to fully exploit their
+                    technological advantages.
+                </p>
             </BookTileSynopsis>
             <BookTileThoughts>
                 <p></p>
