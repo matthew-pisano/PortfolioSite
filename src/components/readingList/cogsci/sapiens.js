@@ -483,7 +483,146 @@ export default (
                     many similar examples: The Great Bangal Famine and Leopold II's Congo Free State are other examples
                     of the prioritization of capital over human wellbeing.
                 </p>
-                <p>Capitalism's promise of an eternally growing pie sounds a bit too good to be true, though</p>
+                <p>
+                    Capitalism's promise of an eternally growing pie sounds a bit too good to be true, though. The
+                    eternal cycle of investment and reinvestment only works if there is always something new to invest
+                    in. After several hundred years of exponentially increasing our production and consumption, one
+                    might understandably assume they we are running out of raw materials and energy stores. This is
+                    Capitalism's secret to success, however: instead of relying on the same materials and energy
+                    transfer, investment can be put into discovering new, more efficient materials or energy! At least
+                    thus far, every time we have run low on a natural resource, or when a means of energy transfer grew
+                    too inefficient, we invented a new one. For example, by the 1600s, Britain had become so deforested
+                    that the population was experiencing an acute timber crisis. Instead of reducing consumption, they
+                    invested into coal mining technologies. When that could not meet demain, they pivoted to oil
+                    <Footnote>
+                        Ideally, this trend will continue in a much less destructive manner. In a similar manner, one of
+                        the main motivations of green energy investment is to mitigate the impact of depleting fossil
+                        fuel reserves and to avert a climate catastrophe.
+                    </Footnote>
+                    . The discovery of denser and more efficient energy stores saw use when old reserves were depleted.
+                    A similar revolution has occurred in agriculture. For thousands of years, our primary food source
+                    were plants and animals that many farmers bred, raised, and slaughtered by hand. This was energy
+                    intense on the part of the farmer and inefficient. Today, there are only a fraction of the number of
+                    farmers left, yet they can rely upon industrial farms and slaughterhouses to leverage the
+                    efficiencies of economies of scale
+                    <Footnote>
+                        In this chapter, Harari also takes some time to consider the experiences of the animals on the
+                        other side of the conveyor belt. While industrial farming has been a significant boon to the
+                        human population, it has resulted in incalculable suffering on the part of the animals that we
+                        consume. Even for animals which we do not destroy right away, conditions are far from humane for
+                        the innumerable milk cows and egg hens which we contain.
+                    </Footnote>
+                    . This allows this relatively tiny population of farmers to feed a vast population of non-farmers.
+                </p>
+                <p>
+                    Within a capitalist economy, in order to drive innovations in supply, there must be a sustained rise
+                    in demand. This naturally fosters a strong culture of consumerism. This seems very natural to us
+                    now, but would have seemed very alien in previous centuries. For the vast majority of the human
+                    population, the simple act of buying something new was a luxury. Clothes, carts, and cookware were
+                    almost prohibitively expensive to a peasant or early industrial laborer. Instead of buying new, they
+                    would mend or hand down used goods. Regularly buying new goods was an activity reserved for royalty
+                    and the nobility. This culture of frugalism is heavily discouraged in modern economies, though. In
+                    order to keep the pie growing, participants in an economy must consume more and more endlessly. This
+                    is aided by the fact that many goods, which were once considered rare luxuries, have sharply dropped
+                    in value. Consider how common and culturally acceptable it is to throw away clothes with a small
+                    hole or noticeable wear, such an act would have been unheard of several hundred years ago.
+                </p>
+                <p>
+                    The strict efficiencies of modern industry have greatly impacted not only what we consume, but also
+                    when and how we do that consumption. Consider timekeeping, in pre-industrial societies time was a
+                    very flexible concept mainly tied to the cycles of the moon, the sun, and seasons. A farmhand
+                    arriving to the farm a half-hour late was common and difficult to even verify. However, a farmer
+                    arriving on the farm in the dead of winter was almost entirely useless. In industrial societies,
+                    this is flipped. If an assembly line worker is late, everyone down the line from them is unable to
+                    do their jobs. A worker starting in one season or another only slightly impacted the overall profits
+                    of the factory for a few months. This reliance on precise timekeeping has spilled over to society
+                    outside of work. If the factory opens at 8:00 sharp, busses, schools, and eateries must bend to
+                    accommodate that schedule. Transportation between cities required an even greater shift in
+                    timekeeping. Previously, every city had their own local time, based approximately on the position of
+                    the sun. Being precise beyond the hour had limited use. However, once carriages and later trains
+                    began to run on tight schedules, these inconsistencies needed to be rectified. In nineteenth century
+                    Britain, this need for precision motivated the creation of a national standard for timekeeping, and
+                    later proper time zones. As the rules of society reoriented themselves around time, knowing what
+                    time it precisely was became evermore important. This has led to the mass proliferation of clocks
+                    and timekeeping devices. Today, it is rare to not have a direct line of sight to a physical or
+                    digital clock at any given time.
+                </p>
+                <p>
+                    An even greater shift has happened in how we interact with other people directly. Since our
+                    ancestors' days within hunter-gatherer bands, the basic family structure had remained constant. The
+                    nuclear family was at the core, then an extended family, then the local community or band. For any
+                    given pre-historic hunter-gatherer, ancient shepard, medieval farmer, or early-modern labourer, the
+                    people in these groups were the only ones they would regularly interact with. The family and
+                    community would perform the basic social services that organized states do today. This changed with
+                    industrialization. As industrial societies took shape, people were forced to interact regularly with
+                    perfect strangers from within cities of millions. As communication technology advanced, governments
+                    were able to exert more control over the populace. Before this shift, the local community acted as
+                    public utilities, a police force, a judiciary system, and a news outlet all at once. Afterwards,
+                    these responsibilities became centralized into government or private corporations. Social safety
+                    nets too, for better or for worse, were now government instead of community institutions. Too offset
+                    this atomization of family, <i>Sapiens</i> suggests, churches and states needed to invent new
+                    communities to replace the old. In the middle ages, this was religion and loyalty. In industrial
+                    societies, even this has been replaced with consumerism and nationalism: powerful networks of belief
+                    and trust that encourage large groups of people to cooperate.
+                </p>
+                <p>
+                    To cap off <i>Sapiens</i>, Harari ends with two major discussions. Have the myriad of changes that
+                    humanity has undergone throughout history actually made us happier than our hunter-gathered
+                    ancestors? And, given rapidly steepening curve of progress, what will come next? So, how does our
+                    modern happiness collectively compare to our paleolithic ancestors? Naively, it seems as if we do
+                    indeed lead better, more fulfilling lives. After all, recent technologies have raised standards of
+                    living, provided us with limitless entertainment, and eliminated afflictions that plagued our
+                    forebearers. That may not be quite true. In developed countries, people still work much more and are
+                    generally more stressed than what we predict from hunter-gatherers. In the developing world, things
+                    are even worse, with crushing poverty and starvation still very real concerns. Yet, the opposite
+                    belief, that pre-agricultural societies were universally better-off, does not capture the full
+                    picture either. The leaps that we have made in terms of healthcare and wellbeing are nothing to
+                    disregard. If we cannot directly compare levels of happiness, perhaps we could then calculate it? A
+                    sensible metric could perhaps be subjective happiness, how happy someone feels when asked. However,
+                    this is a frustratingly flexible and conflicting metric. The same event or life situation could
+                    translate different happiness changes in individuals
+                    <Footnote>
+                        This relates closely to the concept of a "utility monster". First named by Robert Nozick, a
+                        utility monster is some entity which derives vastly more utility from each unit of resource
+                        (e.g. happiness per pat on the head) than a typical human would. If we were to follow the thread
+                        of subjective happiness to its utilitarian extreme, it would be perfectly ethical to divert
+                        resources from man humans and towards the utility monster.
+                    </Footnote>
+                    and compounding upon this is the fact that happiness levels tend to regress towards the mean in many
+                    scenarios. Another angle could be to measure happiness through chemical or biological traits. This
+                    too runs into moral quagmire. Some humans tend to experience different ranges of happiness than
+                    others, bound by genetic or psychological factors. Meaning that the same chemical hormone levels in
+                    one person could imply a different level of happiness than another. To further compound this, Harari
+                    points out, is the observation that the enjoyment of an experience is not the sum of its parts. Most
+                    parents would consider having a child to be a great benefit, but, citing a study by Daniel Kahneman,
+                    the most individual moments spent raising children are rather unpleasant. It is difficult to pin
+                    down how to best measure happiness, or whether it is possible at all. For now, we simply do not
+                    know.
+                </p>
+                <p>
+                    Finally, <i>Sapiens</i> examines where our historical journey may take us next. For the last 4
+                    billion years, organisms have evolved almost exclusively through natural selection
+                    <Footnote>
+                        I use the word "almost" here as there have been examples of domestication long before humans.
+                        For example, the fungus-farming Attini ants have been domesticating fungus for tens of millions
+                        of years!
+                    </Footnote>
+                    . The largest departure from this order was when humans first began to domesticate plants and
+                    animals between 10000 and 15000 years ago. Though this rapidly increased and specified evolutionary
+                    pressures, the process still took many human generations and was a comparatively blunt instrument.
+                    The the modern way, human genetic engineering is a precise scalpel, ablating or introducing traits
+                    in species that we deliberately fine-tune. Within a single human lifetime, this form of engineering
+                    has yielded fantastical results. Frost-resistant potatoes, insulin producing bacteria, fatter
+                    chickens, and disease-resistant cow udders. The success of this technology thus begs the question:
+                    should we deliberately tamper with the human genome as well? Our capabilities in the real of
+                    robotics has also advanced dramatically. Though, <i>Sapiens</i> was published in 2014, contemporary
+                    roboticists had succeeded in many impressive feats. From bionic fish, to human hearing implants, to
+                    neurally-operated prostheses, our bionic capabilities had no end in sight. Similarly with the
+                    prospect of artificial intelligence. Though still in its infancy, the complexity AI of the time
+                    still prompted serious discussion on its ethics and how (if at all) we could press onward
+                    responsibly. Ultimately, Harari concludes that the tides of innovation cannot likely be stopped,
+                    only steered in a direction that is beneficial to all <i>Sapiens</i>.
+                </p>
             </BookTileSynopsis>
             <BookTileThoughts>
                 <p></p>
