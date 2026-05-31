@@ -410,6 +410,80 @@ export default (
                     resources with the required speed and efficiency that empires needed to fully exploit their
                     technological advantages.
                 </p>
+                <p>
+                    Until the early eighteenth century in Europe, money had largely played the same role in the economy
+                    as it had for thousands of years. It was a medium of exchange from one physical good to another. You
+                    could exchange a hat for money and that same money for a trip to the barber. It was rare to exchange
+                    money for something that had yet to exist, or for something that may never exist at all. Simple
+                    loans had existed as well, but were often small, short, and with high interest rates. People were
+                    very risk-averse when it came to their precious ducats, livres, or pounds. If someone defaulted on
+                    their debt, legal methods for recovering that debt was rare, especially if the debtor was a state.
+                    As scientific and legal thought advanced, so too did economic thought. After breaking away form the
+                    Spanish empire in 1648, the Netherlands soon became Europe's financial hub. Why, the low-lying
+                    marshland had little to offer in terms of people or resources. What they did have to offer, however,
+                    was rule of law. Lending in early modern Europe was risky business, especially if the lendee had
+                    government connections. If the lender themselves was not well connected, someone could simply refuse
+                    to pay and there was not much the lender could do about it. The Dutch, however, had strong private
+                    property rights and a relatively independent judicial system for the time. This encouraged lending
+                    and investment unlike any other place in Europe, since there was at least some recourse if a loan or
+                    investment went sour. Banks could lend money to upstart enterprises, get paid back with interest,
+                    and stimulate further investment back into the economy. Prior to this, economics was viewed as a
+                    zero-sum game, in order for one person to gain resources, those resources must be taken from someone
+                    else (conceptually or not). As the cycle of investment and reinvestment grew the Dutch economy, a
+                    new idea began to take hold: perhaps the economic prosperity of some could benefit the economic
+                    prosperity of all, a growing pie! This idea meshed very well with the new notion of scientific
+                    process. This became a self-fulfilling prophecy, the more people trusted that the economy could
+                    grow, the more it grew indeed. Adam Smith further popularized this notion in{" "}
+                    <i>The Wealth of Nations</i>, encouraging a portion of present profits to be reinvested to generate
+                    yet greater profits in the future. With this, modern capitalism was born. Whereas traditional money
+                    was used for the transaction of physical goods, capital could be used for goods, but also
+                    investments and speculative assets. Ideas or technologies that once seemed outlandish could be
+                    realized if enough investors believed that it could be made real
+                    <Footnote>And ideally make them fabulously wealthy along the way.</Footnote>.
+                </p>
+                <p>
+                    Like and economic manifesto, <i>The Wealth of Nations</i> reads as a very optimistic take on the
+                    future potential of capitalism. While it provides unparalleled opportunities for growth and
+                    advancement, it also leads to many perverse incentives that were yet unrealized in past economic
+                    systems. Capital is an extremely efficient vehicle for concentrating power and influence. And like
+                    anything to do with power and influence, it inevitably finds itself intertwined with politics.
+                    Opinions as to the nature of the political-capital relationship are often reducible to opinions of
+                    the free market, Harari asserts. The strictest believers in the free market argue that capital, the
+                    market, should be free to influence itself and the political machinery that supports it, but not the
+                    other way around. The market should be free to evolve due only to internal pressures, with external
+                    government control limited as much as possible. This purist view, says Harari, is naive. At the core
+                    of any economic system is trust, trust that the system will work in a manner that (more or less)
+                    benefits the people. The market on its own offers no protections of this trust from fraud, theft, or
+                    violence, this is the exclusive domain of government. When states fail to regulate markets
+                    effectively, market speculation and monopolies can cause economic ruin and damage the trust that
+                    people have in the system. Capitalism, <i>Sapiens</i> argues, not only influences how we treat
+                    capital, but also other humans. In the Middle Ages slavery in Europe was relatively rare. Peasants
+                    largely provided all the cheap labour that states needed to function. This changed dramatically
+                    after Europeans became aware of the New World and the resources it offered. Sugar was one such
+                    resource. Prior to the Colombian exchange, sugar was prohibitively expensive in Europe as Europeans
+                    rarely controlled land where sugar cane could grow. When Spaniards began to colonize the caribbean,
+                    they found sugar in abundance. They established large sugar plantations, along with tobacco, gold,
+                    and silver mines, and began exporting sugar to Europe en masse. Consequently, sugar prices plummeted
+                    and demand soared for the myriad of confections and sweets that used it. There was a problem,
+                    however. Despite the high demand, supply remained constrained as few people were able to work the
+                    plantations. Europeans were few in number and susceptible to local diseases like malaria and the
+                    native population had shrunk dramatically through genocide and plague. With free market and capital
+                    incentives encouraging more and more plantations, their owners needed to find a source of labour.
+                    They soon turned their attention towards Africa which had a large population that was resistant to
+                    tropical disease, and was technologically behind Europe. Thus the slave trade was born, not out of
+                    callous hatred for Africans
+                    <Footnote>
+                        Though hatred was not the primary driving factor, early modern Europeans were in no shortage of
+                        marginalized groups, it certainly played a powerful role in the decision fo enslave ten million
+                        people. Many Europeans of the time overtly believed themselves to be superior towards
+                        non-Europeans of different races, different cultures, and different religions. The power of "the
+                        other" and the ability for humans to dehumanize other humans should never be underestimated.
+                    </Footnote>
+                    , but out of the cold indifference of the free market. And this is merely the most egregious out of
+                    many similar examples: The Great Bangal Famine and Leopold II's Congo Free State are other examples
+                    of the prioritization of capital over human wellbeing.
+                </p>
+                <p>Capitalism's promise of an eternally growing pie sounds a bit too good to be true, though</p>
             </BookTileSynopsis>
             <BookTileThoughts>
                 <p></p>
