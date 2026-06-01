@@ -194,19 +194,22 @@ export default (
                     contact with Dutch sailors, they would have struggled to find any similarities between this alien
                     culture and their own! Even in total isolation from the outside world, human cultures shift an
                     evolve. Smaller cultures coalesce into larger ones, and well-established cultures splinter into more
-                    localized tribes. However, Harari argues, there is still a pattern to be seen here. Not from merely
-                    a birds-eye view, nor even a ten-thousand foot view. Rather, form the view of some cultural spy
-                    satellite, a general pattern begins to emerge. Buy-in-large, many isolated cultures gradually begin
-                    to unify into much larger ones. In the sixth centura CE, Arabia was populated by hundreds of
-                    isolated Bedouin tribes, each with a unique dialect and culture. Less than a centry later, they were
-                    nearly all unified under the unitary Rashidun Caliphate. While there are countless counter-examples
-                    to this trend, such as how the once mighty Mongol empire shattered into dozens of autonomous
-                    Khanates, there is a trend nonetheless. Thousands of years ago, the world was made up of thousands
-                    of cultural islands, almost entirely isolated from each other. Each with their own time-keeping
-                    systems, languages, and universal myths. Today, there are still many distinct cultures, but the
-                    number has shrunk from many hundreds of thousands to a few hundred major cultures. Additionally,
-                    while religious and moral disagreements are common, most well-connected cultures can readily agree
-                    upon basic measurement standards or the fundamental truths of the universe.
+                    localized tribes.
+                </p>
+                <p>
+                    However, Harari argues, there is still a pattern to be seen here. Not from merely a birds-eye view,
+                    nor even a ten-thousand foot view. Rather, form the view of some cultural spy satellite, a general
+                    pattern begins to emerge. Buy-in-large, many isolated cultures gradually begin to unify into much
+                    larger ones. In the sixth centura CE, Arabia was populated by hundreds of isolated Bedouin tribes,
+                    each with a unique dialect and culture. Less than a centry later, they were nearly all unified under
+                    the unitary Rashidun Caliphate. While there are countless counter-examples to this trend, such as
+                    how the once mighty Mongol empire shattered into dozens of autonomous Khanates, there is a trend
+                    nonetheless. Thousands of years ago, the world was made up of thousands of cultural islands, almost
+                    entirely isolated from each other. Each with their own time-keeping systems, languages, and
+                    universal myths. Today, there are still many distinct cultures, but the number has shrunk from many
+                    hundreds of thousands to a few hundred major cultures. Additionally, while religious and moral
+                    disagreements are common, most well-connected cultures can readily agree upon basic measurement
+                    standards or the fundamental truths of the universe.
                 </p>
                 <p>
                     Since the very beginnings of human history trade has persisted in one form or another. Throughout
@@ -306,12 +309,15 @@ export default (
                     bargained with, these forces had not interest in the struggles of humans. Due to this plurality of
                     lesser gods, it was common for interacting peoples to adopt each other's deities into their own
                     religions. Conquering empires tended to tolerate local religions so long as conquered peoples
-                    incorporated the empire's chosen pantheon. Between two and three thousand years ago, another shift
-                    began. In some cultures, the importance of one God began to eclipse all others until belief was
-                    centered around one supreme being that cared deeply in the actions of humans. Yet, these fresh
-                    monotheistic religions were often localized, with their chosen God mainly concerned with specific
-                    peoples. Harari highlights Judaism as an example, as they believe that God is chiefly interested in
-                    the plight of the Jewish people and the holy land in particular
+                    incorporated the empire's chosen pantheon.
+                </p>
+                <p>
+                    Between two and three thousand years ago, another shift began. In some cultures, the importance of
+                    one God began to eclipse all others until belief was centered around one supreme being that cared
+                    deeply in the actions of humans. Yet, these fresh monotheistic religions were often localized, with
+                    their chosen God mainly concerned with specific peoples. Harari highlights Judaism as an example, as
+                    they believe that God is chiefly interested in the plight of the Jewish people and the holy land in
+                    particular
                     <Footnote>
                         The history of early Judaism offers a microcosm of how this process occurred within other
                         monotheistic religions as the emerged from polytheistic ones. Judaism originated in the
@@ -357,18 +363,20 @@ export default (
                     the planet before other nations adopted their technology and rose to meet them. In many modern
                     nations, there are far more economists, bureaucrats, and engineers than there are farmers,
                     shepherds, and blacksmiths. How? Harari argues that, by discovering our own ignorance about the
-                    universe, were we able to uncover more of its truth than ever before. Since the scientific
-                    revolution, three core beliefs have emerged that have enabled believers to make groundbreaking
-                    discovery after groundbreaking discovery. The first is that we do not know everything. In the
-                    seventeenth century, this was a very unorthodox way of thinking. Many religions, especially modern
-                    religions, claim to know all universal and unalterable truths. By believing in their God or gods and
-                    studying their scriptures, one can know all that is worth knowing. The second core tenet of
-                    scientific thought is that empirical observation and calculation can reveal new truths to us. For
-                    millennia, if a scholar wanted new knowledge revealed to them, they need only ask a religious
-                    thought leader, study an ancient text, or pray for an answer to come to them. Finally, those that
-                    believed in the scientific process also believed hat they could derive new capabilities and
-                    predictions from their theories. Prior to the late modern era, the majority of new technologies were
-                    discovered through blind trial and error. A blacksmith would forge swords and armour out of
+                    universe, were we able to uncover more of its truth than ever before.
+                </p>
+                <p>
+                    Since the scientific revolution, three core beliefs have emerged that have enabled believers to make
+                    groundbreaking discovery after groundbreaking discovery. The first is that we do not know
+                    everything. In the seventeenth century, this was a very unorthodox way of thinking. Many religions,
+                    especially modern religions, claim to know all universal and unalterable truths. By believing in
+                    their God or gods and studying their scriptures, one can know all that is worth knowing. The second
+                    core tenet of scientific thought is that empirical observation and calculation can reveal new truths
+                    to us. For millennia, if a scholar wanted new knowledge revealed to them, they need only ask a
+                    religious thought leader, study an ancient text, or pray for an answer to come to them. Finally,
+                    those that believed in the scientific process also believed hat they could derive new capabilities
+                    and predictions from their theories. Prior to the late modern era, the majority of new technologies
+                    were discovered through blind trial and error. A blacksmith would forge swords and armour out of
                     different alloys repeatedly until they happened upon a new metal that they found to be stronger and
                     more durable than before. The idea that mere humans could suddenly derive radically new abilities
                     without divine intervention was the height of hubris. Not only do scientists believe that this is
@@ -392,23 +400,25 @@ export default (
                     Iron Age technology. The empires of Asia, like the Ottomans, Mughals, or Chinese, were still their
                     technological equals. How, then, was Europe able to later defeat these great powers rather than the
                     inverse? The core difference between European and Asian empires at this time, <i>Sapiens</i> argues,
-                    was their attitude towards conquest. Throughout most of history, a conquering empire did not expand
-                    to discover anything new about the world; they had all the truth they needed from their religion.
-                    Rather, the goal was to enforce their universal truth upon others: the truth of their culture, of
-                    their beliefs, and of their emperor. Early-modern Europeans took a slightly different approach.
-                    Conquests were still a means to an end of territory, glory, and religious conversions, but there was
-                    another goal as well: discovery. As scientific thought became more common in Europe, empire began to
-                    admit that they did not have the complete truth within their empire. The only way to uncover
-                    remaining truths was to expand. Botanists were brought along military expeditions to indonesia,
-                    biologists to the Galapagos, and historians to Egypt. Each new conquest brought new knowledge back
-                    to the capitol. Importantly, many capitols developed a culture of discovery and trust in scientific
-                    thought. This aspect of Western European cultures, largely unique at the time, enabled empires to
-                    convert this knowledge into new weapons and a means for further expansion. By the mid eighteenth
-                    century, this feedback loop had enabled European empires to subjugate vast territories in the
-                    Americas, Africa, and Oceania. Yet, the empires of Asia remained beyond Europe's strength. Conquest,
-                    however, was a very costly affair and traditional monetary systems were unable to distribute
-                    resources with the required speed and efficiency that empires needed to fully exploit their
-                    technological advantages.
+                    was their attitude towards conquest.
+                </p>
+                <p>
+                    Throughout most of history, a conquering empire did not expand to discover anything new about the
+                    world; they had all the truth they needed from their religion. Rather, the goal was to enforce their
+                    universal truth upon others: the truth of their culture, of their beliefs, and of their emperor.
+                    Early-modern Europeans took a slightly different approach. Conquests were still a means to an end of
+                    territory, glory, and religious conversions, but there was another goal as well: discovery. As
+                    scientific thought became more common in Europe, empire began to admit that they did not have the
+                    complete truth within their empire. The only way to uncover remaining truths was to expand.
+                    Botanists were brought along military expeditions to indonesia, biologists to the Galapagos, and
+                    historians to Egypt. Each new conquest brought new knowledge back to the capitol. Importantly, many
+                    capitols developed a culture of discovery and trust in scientific thought. This aspect of Western
+                    European cultures, largely unique at the time, enabled empires to convert this knowledge into new
+                    weapons and a means for further expansion. By the mid eighteenth century, this feedback loop had
+                    enabled European empires to subjugate vast territories in the Americas, Africa, and Oceania. Yet,
+                    the empires of Asia remained beyond Europe's strength. Conquest, however, was a very costly affair
+                    and traditional monetary systems were unable to distribute resources with the required speed and
+                    efficiency that empires needed to fully exploit their technological advantages.
                 </p>
                 <p>
                     Until the early eighteenth century in Europe, money had largely played the same role in the economy
@@ -419,7 +429,7 @@ export default (
                     very risk-averse when it came to their precious ducats, livres, or pounds. If someone defaulted on
                     their debt, legal methods for recovering that debt was rare, especially if the debtor was a state.
                     As scientific and legal thought advanced, so too did economic thought. After breaking away form the
-                    Spanish empire in 1648, the Netherlands soon became Europe's financial hub. Why, the low-lying
+                    Spanish empire in 1648, the Netherlands soon became Europe's financial hub. Why? The low-lying
                     marshland had little to offer in terms of people or resources. What they did have to offer, however,
                     was rule of law. Lending in early modern Europe was risky business, especially if the lendee had
                     government connections. If the lender themselves was not well connected, someone could simply refuse
@@ -427,18 +437,20 @@ export default (
                     property rights and a relatively independent judicial system for the time. This encouraged lending
                     and investment unlike any other place in Europe, since there was at least some recourse if a loan or
                     investment went sour. Banks could lend money to upstart enterprises, get paid back with interest,
-                    and stimulate further investment back into the economy. Prior to this, economics was viewed as a
-                    zero-sum game, in order for one person to gain resources, those resources must be taken from someone
-                    else (conceptually or not). As the cycle of investment and reinvestment grew the Dutch economy, a
-                    new idea began to take hold: perhaps the economic prosperity of some could benefit the economic
-                    prosperity of all, a growing pie! This idea meshed very well with the new notion of scientific
-                    process. This became a self-fulfilling prophecy, the more people trusted that the economy could
-                    grow, the more it grew indeed. Adam Smith further popularized this notion in{" "}
-                    <i>The Wealth of Nations</i>, encouraging a portion of present profits to be reinvested to generate
-                    yet greater profits in the future. With this, modern capitalism was born. Whereas traditional money
-                    was used for the transaction of physical goods, capital could be used for goods, but also
-                    investments and speculative assets. Ideas or technologies that once seemed outlandish could be
-                    realized if enough investors believed that it could be made real
+                    and stimulate further investment back into the economy.
+                </p>
+                <p>
+                    Prior to this, economics was viewed as a zero-sum game, in order for one person to gain resources,
+                    those resources must be taken from someone else (conceptually or not). As the cycle of investment
+                    and reinvestment grew the Dutch economy, a new idea began to take hold: perhaps the economic
+                    prosperity of some could benefit the economic prosperity of all, a growing pie! This idea meshed
+                    very well with the new notion of scientific process. This became a self-fulfilling prophecy, the
+                    more people trusted that the economy could grow, the more it grew indeed. Adam Smith further
+                    popularized this notion in <i>The Wealth of Nations</i>, encouraging a portion of present profits to
+                    be reinvested to generate yet greater profits in the future. With this, modern capitalism was born.
+                    Whereas traditional money was used for the transaction of physical goods, capital could be used for
+                    goods, but also investments and speculative assets. Ideas or technologies that once seemed
+                    outlandish could be realized if enough investors believed that it could be made real
                     <Footnote>And ideally make them fabulously wealthy along the way.</Footnote>.
                 </p>
                 <p>
@@ -456,22 +468,25 @@ export default (
                     benefits the people. The market on its own offers no protections of this trust from fraud, theft, or
                     violence, this is the exclusive domain of government. When states fail to regulate markets
                     effectively, market speculation and monopolies can cause economic ruin and damage the trust that
-                    people have in the system. Capitalism, <i>Sapiens</i> argues, not only influences how we treat
-                    capital, but also other humans. In the Middle Ages slavery in Europe was relatively rare. Peasants
-                    largely provided all the cheap labour that states needed to function. This changed dramatically
-                    after Europeans became aware of the New World and the resources it offered. Sugar was one such
-                    resource. Prior to the Colombian exchange, sugar was prohibitively expensive in Europe as Europeans
-                    rarely controlled land where sugar cane could grow. When Spaniards began to colonize the caribbean,
-                    they found sugar in abundance. They established large sugar plantations, along with tobacco, gold,
-                    and silver mines, and began exporting sugar to Europe en masse. Consequently, sugar prices plummeted
-                    and demand soared for the myriad of confections and sweets that used it. There was a problem,
-                    however. Despite the high demand, supply remained constrained as few people were able to work the
-                    plantations. Europeans were few in number and susceptible to local diseases like malaria and the
-                    native population had shrunk dramatically through genocide and plague. With free market and capital
-                    incentives encouraging more and more plantations, their owners needed to find a source of labour.
-                    They soon turned their attention towards Africa which had a large population that was resistant to
-                    tropical disease, and was technologically behind Europe. Thus the slave trade was born, not out of
-                    callous hatred for Africans
+                    people have in the system.
+                </p>
+                <p>
+                    Capitalism, <i>Sapiens</i> argues, not only influences how we treat capital, but also other humans.
+                    In the Middle Ages slavery in Europe was relatively rare. Peasants largely provided all the cheap
+                    labour that states needed to function. This changed dramatically after Europeans became aware of the
+                    New World and the resources it offered. Sugar was one such resource. Prior to the Colombian
+                    exchange, sugar was prohibitively expensive in Europe as Europeans rarely controlled land where
+                    sugar cane could grow. When Spaniards began to colonize the caribbean, they found sugar in
+                    abundance. They established large sugar plantations, along with tobacco, gold, and silver mines, and
+                    began exporting sugar to Europe en masse. Consequently, sugar prices plummeted and demand soared for
+                    the myriad of confections and sweets that used it. There was a problem, however. Despite the high
+                    demand, supply remained constrained as few people were able to work the plantations. Europeans were
+                    few in number and susceptible to local diseases like malaria and the native population had shrunk
+                    dramatically through genocide and plague. With free market and capital incentives encouraging more
+                    and more plantations, their owners needed to find a source of labour. They soon turned their
+                    attention towards Africa which had a large population that was resistant to tropical disease, and
+                    was technologically behind Europe. Thus the slave trade was born, not out of callous hatred for
+                    Africans
                     <Footnote>
                         Though hatred was not the primary driving factor, early modern Europeans were in no shortage of
                         marginalized groups, it certainly played a powerful role in the decision fo enslave ten million
