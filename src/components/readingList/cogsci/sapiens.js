@@ -57,7 +57,7 @@ export default (
                     event that the book refers to as the "Cognitive Revolution".
                 </p>
                 <p>
-                    Between 70,000 and 30,000 years ago, and for unknown reasons, a change happened in how Sapiens bagan
+                    Between 70,000 and 30,000 years ago, and for unknown reasons, a change happened in how Sapiens began
                     to organize themselves. Before this, and similar to many of our Homo compatriots, our ancestors
                     primarily organized themselves into bands. Tightly knit groups of ten to fifty individuals. Every
                     member of a band shared a personal relationship with each other and many were directly related
@@ -66,7 +66,7 @@ export default (
                         reliably maintain. Commonly referred to as Dunbar's number, most humans can only maintain 150
                         stable, personal relationships. The closest of which reduce down to only fifty.
                     </Footnote>
-                    . These bands were largely egalitarian and relied in trust and personal relationships to persist. If
+                    . These bands were largely egalitarian and relied on trust and personal relationships to persist. If
                     a band grew much beyond this size, members could no longer reliably maintain a relationship with all
                     others. Without this glue, bands fissioned and lost contact. Around the time of the cognitive
                     revolution, this changed. Bands within an area began to coalesce into larger tribes. This was not
@@ -86,21 +86,21 @@ export default (
                         language with which we originally evolved to think in.
                     </Footnote>
                     . Soon, our tribes grew larger and better organized with rudimentary political structures. This is
-                    what allowed ous species to force other humans to extinction: a single Sapien was unlikely to best a
+                    what allowed our species to force other humans to extinction: a single Sapien was unlikely to best a
                     Neanderthal in combat, but a well organized tribe of hundreds of Sapiens could handily defeat even
                     the most hardened band of a few dozen Neanderthals. We did not out-smart or physically overpower
                     other humans, we simply out-communicated them.
                 </p>
                 <p>
-                    Even after the cognitive revolution, tribes of Sapiens were overwhelmingly hunter-gathers. They
+                    Even after the cognitive revolution, tribes of Sapiens were overwhelmingly hunter-gatherers. They
                     worked relatively little, gathered what they found, and hunted to make up for any difference. If the
                     land became spare with resources, they simply moved somewhere else. While it is difficult to be
-                    sure, violence was also likely relatively rare. While there are sites of notable hunter-gather
+                    sure, violence was also likely relatively rare. While there are sites of notable hunter-gatherer
                     violence, like Jebel Sahaba in Sudan or Nataruk in Kenya, these appear to be relatively rare and
                     fought primarily over local resources.
                 </p>
                 <p>
-                    Around 10,000 BCE, this began to change with the dawn of agriculture in mesopotamia. Instead of
+                    Around 10,000 BCE, this began to change with the dawn of agriculture in Mesopotamia. Instead of
                     freely moving about a large area in search of resources, humans began to stay in a single location
                     and create the resources themselves. This is when we see evidence for the majority of domesticated
                     plants and animals
@@ -127,7 +127,7 @@ export default (
                     even more plants next season. Perhaps burying the seeds produced even better results! On and on this
                     went as groups became tied even tighter to specific areas of land. By the time each stage had
                     completed, nobody was able to remember that any previous stage ever existed. Our myopia has a
-                    history as old as our own. This may not have been entirely accidental too. Sites like Göbeklitepe
+                    history as old as our own. This may not have been entirely accidental too. Sites like Göbekli Tepe
                     indicate that early farmers may have endured this harsher life in service of strong religious or
                     cultural beliefs. A direct consequence of the last revolution.
                 </p>
@@ -137,7 +137,7 @@ export default (
                     would last months. To help cope with these stresses, people invented new myths: societies. Early
                     governments acted as a method for distributing resources, deciding what to store and what to
                     consume. A failed harvest impacted entire villages, not just individual farmers. This meant that
-                    villagers were not just worried for themselves, but for their community as a while, encouraging
+                    villagers were not just worried for themselves, but for their community as a whole, encouraging
                     strong beliefs in a shared culture and the burgeoning political leadership. Around this time,
                     shortly after agriculture took hold, we begin to see evidence of well-defined elites in farming
                     cultures. Administration was a fair amount of work, and thus necessitated that the administrators
@@ -173,37 +173,37 @@ export default (
                     progressed, more and more records were kept. This soon turned the once simple act of retrieval into
                     a complex problem which required deliberate planning to overcome. From within our own minds, we can
                     effortlessly summon nearly any piece of information from our memories almost effortlessly. What are
-                    the names of your parents? Which great conquerer founded your home empire? What is the minimum
+                    the names of your parents? Which great conqueror founded your home empire? What is the minimum
                     number of goat sacrifices are usually needed to appease your local rain god? Despite the vast hordes
                     of knowledge each mind contained, retrieval oftentimes took no longer than a moment. A vast archive
-                    overflowing with bunky clay tablets was another story entirely. The need to organize and retrieve
+                    overflowing with bulky clay tablets was another story entirely. The need to organize and retrieve
                     data in this very physical manner necessitated ever more complex organization and indexing schemes.
-                    Unfortunately, the full script of language was unsuitable for conversing concise numerical
-                    information. This changed sometime in the ninth centry CE, as Arab scholars first began to adopt a
+                    Unfortunately, the full script of language was unsuitable for conveying concise numerical
+                    information. This changed sometime in the ninth century CE, as Arab scholars first began to adopt a
                     strange limited script from newly conquered Indian provinces. It contained far fewer characters than
                     standard Arabic and was only useful when describing very specific things. While this sounds rather
                     limiting, the scholars and bureaucrats of the Abbasid Caliphate quickly realized their usefulness
                     for indexing and calculation. We may recognize these odd symbols as 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
                 </p>
                 <p>
-                    Shifting focus towards the evolution of culture over bureaucracy, <i>Sapiens</i> whether there are
-                    patterns in cultural changes or if they largely occur at random. One thing that is for certain is
-                    that these cultures do indeed change. When the first Tasmanians arrived 40,000 years ago from across
-                    a land bridge to Australia, they brought their native culture with them. However, if you were to
-                    introduce one of these founding Tasmanians to their ancestors living in 1641, just before first
-                    contact with Dutch sailors, they would have struggled to find any similarities between this alien
-                    culture and their own! Even in total isolation from the outside world, human cultures shift an
-                    evolve. Smaller cultures coalesce into larger ones, and well-established cultures splinter into more
-                    localized tribes.
+                    Shifting focus towards the evolution of culture over bureaucracy, <i>Sapiens</i> considers whether
+                    there are patterns in cultural changes or if they largely occur at random. One thing that is for
+                    certain is that these cultures do indeed change. When the first Tasmanians arrived 40,000 years ago
+                    from across a land bridge to Australia, they brought their native culture with them. However, if you
+                    were to introduce one of these founding Tasmanians to their descendants living in 1641, just before
+                    first contact with Dutch sailors, they would have struggled to find any similarities between this
+                    alien culture and their own! Even in total isolation from the outside world, human cultures shift
+                    and evolve. Smaller cultures coalesce into larger ones, and well-established cultures splinter into
+                    more localized tribes.
                 </p>
                 <p>
                     However, Harari argues, there is still a pattern to be seen here. Not from merely a birds-eye view,
-                    nor even a ten-thousand foot view. Rather, form the view of some cultural spy satellite, a general
-                    pattern begins to emerge. Buy-in-large, many isolated cultures gradually begin to unify into much
-                    larger ones. In the sixth centura CE, Arabia was populated by hundreds of isolated Bedouin tribes,
-                    each with a unique dialect and culture. Less than a centry later, they were nearly all unified under
-                    the unitary Rashidun Caliphate. While there are countless counter-examples to this trend, such as
-                    how the once mighty Mongol empire shattered into dozens of autonomous Khanates, there is a trend
+                    nor even a ten-thousand foot view. Rather, from the view of some cultural spy satellite, a general
+                    pattern begins to emerge. By and large, many isolated cultures gradually begin to unify into much
+                    larger ones. In the sixth century CE, Arabia was populated by hundreds of isolated Bedouin tribes,
+                    each with a unique dialect and culture. Less than a century later, they were nearly all unified
+                    under the unitary Rashidun Caliphate. While there are countless counter-examples to this trend, such
+                    as how the once mighty Mongol empire shattered into dozens of autonomous Khanates, there is a trend
                     nonetheless. Thousands of years ago, the world was made up of thousands of cultural islands, almost
                     entirely isolated from each other. Each with their own time-keeping systems, languages, and
                     universal myths. Today, there are still many distinct cultures, but the number has shrunk from many
@@ -214,7 +214,7 @@ export default (
                 <p>
                     Since the very beginnings of human history trade has persisted in one form or another. Throughout
                     the vast majority of this history, the primary method of exchange was bartering. A talented milliner
-                    could barter a high quality hat for a few bushels of apples. Though, when happens when the orchard
+                    could barter a high quality hat for a few bushels of apples. Though, what happens when the orchard
                     owner already had all the hats that they fancied? Third and fourth parties could be involved to
                     craft three or four-way trade deals, but this indirect method of trade becomes very complicated very
                     quickly (exponentially so!). Even ancient cultures realized this, leading to rudimentary forms of
@@ -229,35 +229,35 @@ export default (
                     money over any other medium of bartering is that the belief in the value of money far outweighs the
                     intrinsic value of the money itself. You cannot eat a gold coin or sea snail shell, but through
                     mutual trust you could easily turn it into all the food you could want. Similar to myths, culture,
-                    and writing, money serves as yet another vehicle for mess cooperation between people who do know
-                    know each other personally. As societies cooperated more, territories grew, and administration
-                    ballooned. Slowly, visions of empire formed in the mind of leaders throughout the ancient world.
+                    and writing, money serves as yet another vehicle for mass cooperation between people who do not know
+                    each other personally. As societies cooperated more, territories grew, and administration ballooned.
+                    Slowly, visions of empire formed in the mind of leaders throughout the ancient world.
                 </p>
                 <p>
                     <i>Sapiens</i> defines an empire as a political order with two defining characteristics: it must
                     rule over a significant number of distinct cultures and it must have flexible borders with a desire
-                    for expansion. These qualities enables empires to be engines of cultural consolidation. The Roman
-                    Empire conquered countless individual tribes and people, subsuming them into the latin culture of
+                    for expansion. These qualities enable empires to be engines of cultural consolidation. The Roman
+                    Empire conquered countless individual tribes and people, subsuming them into the Latin culture of
                     the empire. Even when it fell in the first millennium, the number of cultures which emerged from its
-                    ashes were far fewer than those that originally inhabited the Europe a thousand years earlier.
-                    Harari argues that the modern conception of empire harbors two myths that obscure their realities.
-                    One is that empires cannot last; they are too unstable and rule over too many people to persist for
-                    long periods of time. However, the most common form of human government for the last several
-                    thousand years was empire. The Roman empire lasted for a thousand years, two if you cound the
-                    byzantines. The middle east has been ruled over by one empire or another since the Neo-assyrian
-                    empire in the eighth century BCE. Much of China has been ruled by different incarnations of the
-                    Celestial Empire from the Zhou dynasty in 1046 BCE to the Qing, which fell just over a hundred years
-                    ago. Additionally, these administrative goliaths were not felled by a noble uprising of oppressed
-                    peoples, rather they were primarily upended by internal divisions or outside pressures.
+                    ashes were far fewer than those that originally inhabited Europe a thousand years earlier. Harari
+                    argues that the modern conception of empire harbors two myths that obscure their realities. One is
+                    that empires cannot last; they are too unstable and rule over too many people to persist for long
+                    periods of time. However, the most common form of human government for the last several thousand
+                    years was empire. The Roman empire lasted for a thousand years, two if you count the Byzantines. The
+                    middle east has been ruled over by one empire or another since the Neo-Assyrian empire in the eighth
+                    century BCE. Much of China has been ruled by different incarnations of the Celestial Empire from the
+                    Zhou dynasty in 1046 BCE to the Qing, which fell just over a hundred years ago. Additionally, these
+                    administrative goliaths were not felled by a noble uprising of oppressed peoples, rather they were
+                    primarily upended by internal divisions or outside pressures.
                 </p>
                 <p>
                     The second myth is that empires are inherently immoral, that they obliterate native cultures and
                     exploit their populace. A strong justification for this claim could be made about ancient empires
                     like the Assyrian, Babylonian, and Hittite empires which conquered and plundered neighboring lands,
-                    bringing riches back to their capitols. Empire existed only for the benefit of the conquering
-                    peoples. This conception, at least internally changed in 550 BCE with Cyrus the Great of Persia. He
+                    bringing riches back to their capitals. Empire existed only for the benefit of the conquering
+                    peoples. This conception, at least internally, changed in 550 BCE with Cyrus the Great of Persia. He
                     saw himself not as a Persian king ruling over other cultures, but also as a king of those cultures
-                    as well. Instead of obstacles in need of oppression, Cyrus and the rulers of simular empires, began
+                    as well. Instead of obstacles in need of oppression, Cyrus and the rulers of similar empires began
                     to see conquered people as future citizens. Outsiders became targets for assimilation, rather than
                     for annihilation. A prime example of a similar empire was the Chinese Han from 206 BCE. The Han so
                     thoroughly assimilated conquered peoples that the majority of Eastern, Northern, and Southern China
@@ -274,7 +274,7 @@ export default (
                         This chapter, along with any discussion of past empires, comes with the weight of significant
                         cultural and moral baggage. Harari's point here is not to argue that empires are somehow an
                         unambiguously good and unifying force. The tendency of modern empires to assimilate rather than
-                        annihilate does not make any atrocities committed in the name of that assimilation and less
+                        annihilate does not make any atrocities committed in the name of that assimilation any less
                         immoral. The main goal of this chapter was to discuss what an empire is, why they have tended to
                         be the dominant form of government in "recent" millennia, and why it is difficult to cleanly
                         separate conquerors from the conquered.
@@ -285,28 +285,27 @@ export default (
                     Following the unitary and cooperative powers of money and empire, Harari argues that religion
                     represents a third great unifier of humanity. He defines religions as "a system of human norms and
                     values that is founded on belief in a superhuman order". For millennia, nearly all religions
-                    embodied these basic principles. Locan bands or tribes observed local customs, myths, and
+                    embodied these basic principles. Local bands or tribes observed local customs, myths, and
                     superstitions, all rooted in the belief in some supernatural force. For the majority of modern
-                    humans, these localized of religions seem somewhat unfamiliar. Around the first millennium BCE, a
-                    new class of religions began to emerge: those that claimed to know not only local truths, but
-                    universal truths that applied to all humans. These religions were also very commonly missionary.
-                    Since adherents believed that their system of myths and customs was universal, it was their duty to
-                    spread their religion to all humans. Modern exemplars of this category include Christianity, Islam,
-                    or Buddhism. The earliest human religions were likely some form of animism, the belief that the
-                    natural world was permeated with sprits. Human spirits were embedded within this natural order,
-                    rather than above it. As agriculture began to spread, humans began to settle into villages and later
-                    cities.
+                    humans, these localized religions seem somewhat unfamiliar. Around the first millennium BCE, a new
+                    class of religions began to emerge: those that claimed to know not only local truths, but universal
+                    truths that applied to all humans. These religions were also very commonly missionary. Since
+                    adherents believed that their system of myths and customs was universal, it was their duty to spread
+                    their religion to all humans. Modern exemplars of this category include Christianity, Islam, or
+                    Buddhism. The earliest human religions were likely some form of animism, the belief that the natural
+                    world was permeated with spirits. Human spirits were embedded within this natural order, rather than
+                    above it. As agriculture began to spread, humans began to settle into villages and later cities.
                 </p>
                 <p>
                     Throughout this process, humans began to observe their unique changes on the natural world. As
-                    Humans built great cities and tamed nature, the notion that our spirits were equal to those that we
+                    humans built great cities and tamed nature, the notion that our spirits were equal to those that we
                     conquered grew less believable. Over time, spirits began to morph into gods, humanized gods which
                     held humans as special as we saw ourselves. These new polytheistic religions believed that gods
                     influenced the natural world with human-like agency and could therefore be bargained with like
-                    humans as well. However, unlike the God of monotheism, the powers of polytheistic god were not
+                    humans as well. However, unlike the God of monotheism, the powers of polytheistic gods were not
                     universal. They too were bound by yet greater powers: the ancient Greeks had the three sisters of
                     Fate and Hindus had the all-encompassing power of Atman. While lesser gods could be prayed to and
-                    bargained with, these forces had not interest in the struggles of humans. Due to this plurality of
+                    bargained with, these forces had no interest in the struggles of humans. Due to this plurality of
                     lesser gods, it was common for interacting peoples to adopt each other's deities into their own
                     religions. Conquering empires tended to tolerate local religions so long as conquered peoples
                     incorporated the empire's chosen pantheon.
@@ -320,13 +319,13 @@ export default (
                     particular
                     <Footnote>
                         The history of early Judaism offers a microcosm of how this process occurred within other
-                        monotheistic religions as the emerged from polytheistic ones. Judaism originated in the
-                        levantine province of Yehud, from within the Achaemenid Empire that was originally founded by
-                        Cyrus the Great. Approximately 3200 years ago, the Iron Age semetic peoples of the levant
+                        monotheistic religions as they emerged from polytheistic ones. Judaism originated in the
+                        Levantine province of Yehud, from within the Achaemenid Empire that was originally founded by
+                        Cyrus the Great. Approximately 3200 years ago, the Iron Age Semitic peoples of the levant
                         largely believed in the polytheistic Canaanite religion. This religion worshiped a diverse
                         pantheon of gods with the supreme creator god "El" as their patriarch. Over time, ancient
                         Israelites formed their own sect known as Yahwism, a monolatristic religion which believed in
-                        many gods, but primarily worshiped a single god. Their chosen god, who serves was the namesake
+                        many gods, but primarily worshiped a single god. Their chosen god, who serves as the namesake
                         for the religion, began to overshadow the importance of the others, eventually taking on a role
                         similar to El. In fact, the word El and relationships originally associated with the Canaanite
                         god, were eventually associated directly with the God of Yahwism in scripture. Over time,
@@ -337,7 +336,7 @@ export default (
                     . One of the first evangelizing, non-localized monotheistic religions was Christianity. Christians
                     did (and still do) believe that God is concerned with all humans and that it is the duty of every
                     member of their religion to spread belief in the gospel to all other humans. Centuries later, early
-                    muslims emerged from the deserts of Arabia harboring similar beliefs about the universal goal of
+                    Muslims emerged from the deserts of Arabia harboring similar beliefs about the universal goal of
                     their religion. One key difference between these religions and polytheistic ones is that, since
                     monotheists commonly believe that their chosen God is universal, belief in other gods is forbidden.
                     After two millennia of evangelization and conversions, the majority of all humans now believe in one
@@ -346,20 +345,20 @@ export default (
                 </p>
                 <p>
                     Suppose an ancient Canaanite fell asleep in 1200 BCE and awoke 2500 years later in 1300 CE. The
-                    people around them would speak a strange language, worship unfamiliar gods, and follow alian
+                    people around them would speak a strange language, worship unfamiliar gods, and follow alien
                     traditions. Yet, it would likely be possible to convince the Canaanite that they had simply woken up
                     in some far-off kingdom. Most people were still farmers, artisans, or shepherds. They still wore
                     robes and jewelry made of identifiable materials, and they still lived in dwellings similar to those
                     that the Canaanite had themselves. Now suppose someone else in the same area, then ruled over by the
                     Mamluk Sultanate, slept and did not wake until merely 700 years had passed. Less than a third of the
-                    time has elapsed in this scenario, but the medieval levantine would hardley believe they were on the
+                    time has elapsed in this scenario, but the medieval Levantine would hardly believe they were on the
                     same planet had they found themselves looking up at the shining skyscrapers of the modern Tel Aviv
                     skyline.
                 </p>
                 <p>
                     Something very strange has happened over the last few centuries of human history. Technological,
                     economic, and imperial development have all advanced far more rapidly than at any other time. A
-                    handful of nations, from a continent that was once a backwater of the medieval world, had token over
+                    handful of nations, from a continent that was once a backwater of the medieval world, had taken over
                     the planet before other nations adopted their technology and rose to meet them. In many modern
                     nations, there are far more economists, bureaucrats, and engineers than there are farmers,
                     shepherds, and blacksmiths. How? Harari argues that, by discovering our own ignorance about the
@@ -374,7 +373,7 @@ export default (
                     core tenet of scientific thought is that empirical observation and calculation can reveal new truths
                     to us. For millennia, if a scholar wanted new knowledge revealed to them, they need only ask a
                     religious thought leader, study an ancient text, or pray for an answer to come to them. Finally,
-                    those that believed in the scientific process also believed hat they could derive new capabilities
+                    those that believed in the scientific process also believed that they could derive new capabilities
                     and predictions from their theories. Prior to the late modern era, the majority of new technologies
                     were discovered through blind trial and error. A blacksmith would forge swords and armour out of
                     different alloys repeatedly until they happened upon a new metal that they found to be stronger and
@@ -386,7 +385,7 @@ export default (
                     the quality of an observation, scientists consider the matter as settled for now.
                 </p>
                 <p>
-                    Science, however, is a very costly endeavours. Those doing research do not have time to grow crops
+                    Science, however, is a very costly endeavour. Those doing research do not have time to grow crops
                     and feed themselves. They cannot craft all of their instruments on their own either. The pursuit of
                     scientific inquiry requires the cooperation of many individuals and strong mechanisms of trust. To
                     gain access to these resources and this level of organization, scientists oftentimes must turn to
@@ -410,9 +409,9 @@ export default (
                     territory, glory, and religious conversions, but there was another goal as well: discovery. As
                     scientific thought became more common in Europe, empire began to admit that they did not have the
                     complete truth within their empire. The only way to uncover remaining truths was to expand.
-                    Botanists were brought along military expeditions to indonesia, biologists to the Galapagos, and
-                    historians to Egypt. Each new conquest brought new knowledge back to the capitol. Importantly, many
-                    capitols developed a culture of discovery and trust in scientific thought. This aspect of Western
+                    Botanists were brought along military expeditions to Indonesia, biologists to the Galapagos, and
+                    historians to Egypt. Each new conquest brought new knowledge back to the capital. Importantly, many
+                    capitals developed a culture of discovery and trust in scientific thought. This aspect of Western
                     European cultures, largely unique at the time, enabled empires to convert this knowledge into new
                     weapons and a means for further expansion. By the mid eighteenth century, this feedback loop had
                     enabled European empires to subjugate vast territories in the Americas, Africa, and Oceania. Yet,
@@ -427,8 +426,8 @@ export default (
                     money for something that had yet to exist, or for something that may never exist at all. Simple
                     loans had existed as well, but were often small, short, and with high interest rates. People were
                     very risk-averse when it came to their precious ducats, livres, or pounds. If someone defaulted on
-                    their debt, legal methods for recovering that debt was rare, especially if the debtor was a state.
-                    As scientific and legal thought advanced, so too did economic thought. After breaking away form the
+                    their debt, legal methods for recovering that debt were rare, especially if the debtor was a state.
+                    As scientific and legal thought advanced, so too did economic thought. After breaking away from the
                     Spanish empire in 1648, the Netherlands soon became Europe's financial hub. Why? The low-lying
                     marshland had little to offer in terms of people or resources. What they did have to offer, however,
                     was rule of law. Lending in early modern Europe was risky business, especially if the lendee had
@@ -454,7 +453,7 @@ export default (
                     <Footnote>And ideally make them fabulously wealthy along the way.</Footnote>.
                 </p>
                 <p>
-                    Like and economic manifesto, <i>The Wealth of Nations</i> reads as a very optimistic take on the
+                    Like any economic manifesto, <i>The Wealth of Nations</i> reads as a very optimistic take on the
                     future potential of capitalism. While it provides unparalleled opportunities for growth and
                     advancement, it also leads to many perverse incentives that were yet unrealized in past economic
                     systems. Capital is an extremely efficient vehicle for concentrating power and influence. And like
@@ -474,9 +473,9 @@ export default (
                     Capitalism, <i>Sapiens</i> argues, not only influences how we treat capital, but also other humans.
                     In the Middle Ages slavery in Europe was relatively rare. Peasants largely provided all the cheap
                     labour that states needed to function. This changed dramatically after Europeans became aware of the
-                    New World and the resources it offered. Sugar was one such resource. Prior to the Colombian
+                    New World and the resources it offered. Sugar was one such resource. Prior to the Columbian
                     exchange, sugar was prohibitively expensive in Europe as Europeans rarely controlled land where
-                    sugar cane could grow. When Spaniards began to colonize the caribbean, they found sugar in
+                    sugar cane could grow. When Spaniards began to colonize the Caribbean, they found sugar in
                     abundance. They established large sugar plantations, along with tobacco, gold, and silver mines, and
                     began exporting sugar to Europe en masse. Consequently, sugar prices plummeted and demand soared for
                     the myriad of confections and sweets that used it. There was a problem, however. Despite the high
@@ -489,26 +488,26 @@ export default (
                     Africans
                     <Footnote>
                         Though hatred was not the primary driving factor, early modern Europeans were in no shortage of
-                        marginalized groups, it certainly played a powerful role in the decision fo enslave ten million
+                        marginalized groups, it certainly played a powerful role in the decision to enslave ten million
                         people. Many Europeans of the time overtly believed themselves to be superior towards
                         non-Europeans of different races, different cultures, and different religions. The power of "the
                         other" and the ability for humans to dehumanize other humans should never be underestimated.
                     </Footnote>
                     , but out of the cold indifference of the free market. And this is merely the most egregious out of
-                    many similar examples: The Great Bangal Famine and Leopold II's Congo Free State are other examples
+                    many similar examples: The Great Bengal Famine and Leopold II's Congo Free State are other examples
                     of the prioritization of capital over human wellbeing.
                 </p>
                 <p>
                     Capitalism's promise of an eternally growing pie sounds a bit too good to be true, though. The
                     eternal cycle of investment and reinvestment only works if there is always something new to invest
                     in. After several hundred years of exponentially increasing our production and consumption, one
-                    might understandably assume they we are running out of raw materials and energy stores. This is
+                    might understandably assume that we are running out of raw materials and energy stores. This is
                     Capitalism's secret to success, however: instead of relying on the same materials and energy
                     transfer, investment can be put into discovering new, more efficient materials or energy! At least
                     thus far, every time we have run low on a natural resource, or when a means of energy transfer grew
                     too inefficient, we invented a new one. For example, by the 1600s, Britain had become so deforested
                     that the population was experiencing an acute timber crisis. Instead of reducing consumption, they
-                    invested into coal mining technologies. When that could not meet demain, they pivoted to oil
+                    invested into coal mining technologies. When that could not meet demand, they pivoted to oil
                     <Footnote>
                         Ideally, this trend will continue in a much less destructive manner. In a similar manner, one of
                         the main motivations of green energy investment is to mitigate the impact of depleting fossil
@@ -517,8 +516,8 @@ export default (
                     . The discovery of denser and more efficient energy stores saw use when old reserves were depleted.
                     A similar revolution has occurred in agriculture. For thousands of years, our primary food source
                     were plants and animals that many farmers bred, raised, and slaughtered by hand. This was energy
-                    intense on the part of the farmer and inefficient. Today, there are only a fraction of the number of
-                    farmers left, yet they can rely upon industrial farms and slaughterhouses to leverage the
+                    intensive on the part of the farmer and inefficient. Today, there are only a fraction of the number
+                    of farmers left, yet they can rely upon industrial farms and slaughterhouses to leverage the
                     efficiencies of economies of scale
                     <Footnote>
                         In this chapter, Harari also takes some time to consider the experiences of the animals on the
@@ -551,7 +550,7 @@ export default (
                     this is flipped. If an assembly line worker is late, everyone down the line from them is unable to
                     do their jobs. A worker starting in one season or another only slightly impacted the overall profits
                     of the factory for a few months. This reliance on precise timekeeping has spilled over to society
-                    outside of work. If the factory opens at 8:00 sharp, busses, schools, and eateries must bend to
+                    outside of work. If the factory opens at 8:00 sharp, trolleys, schools, and eateries must bend to
                     accommodate that schedule. Transportation between cities required an even greater shift in
                     timekeeping. Previously, every city had their own local time, based approximately on the position of
                     the sun. Being precise beyond the hour had limited use. However, once carriages and later trains
@@ -566,7 +565,7 @@ export default (
                     An even greater shift has happened in how we interact with other people directly. Since our
                     ancestors' days within hunter-gatherer bands, the basic family structure had remained constant. The
                     nuclear family was at the core, then an extended family, then the local community or band. For any
-                    given pre-historic hunter-gatherer, ancient shepard, medieval farmer, or early-modern labourer, the
+                    given pre-historic hunter-gatherer, ancient shepherd, medieval farmer, or early-modern labourer, the
                     people in these groups were the only ones they would regularly interact with. The family and
                     community would perform the basic social services that organized states do today. This changed with
                     industrialization. As industrial societies took shape, people were forced to interact regularly with
@@ -574,7 +573,7 @@ export default (
                     were able to exert more control over the populace. Before this shift, the local community acted as
                     public utilities, a police force, a judiciary system, and a news outlet all at once. Afterwards,
                     these responsibilities became centralized into government or private corporations. Social safety
-                    nets too, for better or for worse, were now government instead of community institutions. Too offset
+                    nets too, for better or for worse, were now government instead of community institutions. To offset
                     this atomization of family, <i>Sapiens</i> suggests, churches and states needed to invent new
                     communities to replace the old. In the middle ages, this was religion and loyalty. In industrial
                     societies, even this has been replaced with consumerism and nationalism: powerful networks of belief
@@ -582,8 +581,8 @@ export default (
                 </p>
                 <p>
                     To cap off <i>Sapiens</i>, Harari ends with two major discussions. Have the myriad of changes that
-                    humanity has undergone throughout history actually made us happier than our hunter-gathered
-                    ancestors? And, given rapidly steepening curve of progress, what will come next? So, how does our
+                    humanity has undergone throughout history actually made us happier than our hunter-gatherer
+                    ancestors? And, given a rapidly steepening curve of progress, what will come next? So, how does our
                     modern happiness collectively compare to our paleolithic ancestors? Naively, it seems as if we do
                     indeed lead better, more fulfilling lives. After all, recent technologies have raised standards of
                     living, provided us with limitless entertainment, and eliminated afflictions that plagued our
@@ -595,13 +594,13 @@ export default (
                     disregard. If we cannot directly compare levels of happiness, perhaps we could then calculate it? A
                     sensible metric could perhaps be subjective happiness, how happy someone feels when asked. However,
                     this is a frustratingly flexible and conflicting metric. The same event or life situation could
-                    translate different happiness changes in individuals
+                    translate to different happiness changes in individuals
                     <Footnote>
                         This relates closely to the concept of a "utility monster". First named by Robert Nozick, a
                         utility monster is some entity which derives vastly more utility from each unit of resource
                         (e.g. happiness per pat on the head) than a typical human would. If we were to follow the thread
                         of subjective happiness to its utilitarian extreme, it would be perfectly ethical to divert
-                        resources from man humans and towards the utility monster.
+                        resources from many humans and towards the utility monster.
                     </Footnote>
                     and compounding upon this is the fact that happiness levels tend to regress towards the mean in many
                     scenarios. Another angle could be to measure happiness through chemical or biological traits. This
@@ -625,15 +624,15 @@ export default (
                     . The largest departure from this order was when humans first began to domesticate plants and
                     animals between 10000 and 15000 years ago. Though this rapidly increased and specified evolutionary
                     pressures, the process still took many human generations and was a comparatively blunt instrument.
-                    The the modern way, human genetic engineering is a precise scalpel, ablating or introducing traits
-                    in species that we deliberately fine-tune. Within a single human lifetime, this form of engineering
-                    has yielded fantastical results. Frost-resistant potatoes, insulin producing bacteria, fatter
-                    chickens, and disease-resistant cow udders. The success of this technology thus begs the question:
-                    should we deliberately tamper with the human genome as well? Our capabilities in the real of
-                    robotics has also advanced dramatically. Though, <i>Sapiens</i> was published in 2014, contemporary
-                    roboticists had succeeded in many impressive feats. From bionic fish, to human hearing implants, to
+                    In the modern day, human genetic engineering is a precise scalpel, ablating or introducing traits in
+                    species that we deliberately fine-tune. Within a single human lifetime, this form of engineering has
+                    yielded fantastical results. Frost-resistant potatoes, insulin producing bacteria, fatter chickens,
+                    and disease-resistant cow udders. The success of this technology thus begs the question: should we
+                    deliberately tamper with the human genome as well? Our capabilities in the realm of robotics has
+                    also advanced dramatically. Though <i>Sapiens</i> was published in 2014, contemporary roboticists
+                    had succeeded in many impressive feats. From bionic fish, to human hearing implants, to
                     neurally-operated prostheses, our bionic capabilities had no end in sight. Similarly with the
-                    prospect of artificial intelligence. Though still in its infancy, the complexity AI of the time
+                    prospect of artificial intelligence. Though still in its infancy, the complexity of AI of the time
                     still prompted serious discussion on its ethics and how (if at all) we could press onward
                     responsibly. Ultimately, Harari concludes that the tides of innovation cannot likely be stopped,
                     only steered in a direction that is beneficial to all <i>Sapiens</i>.
