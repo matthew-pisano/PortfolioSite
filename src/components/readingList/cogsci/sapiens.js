@@ -149,10 +149,9 @@ export default (
                 </p>
                 <p>
                     A point that this book stresses is that the most important ingredient for a society's success is not
-                    a strong people or plentiful resources. Instead, it is belief in a set of common myths. These
-                    include more traditional definitions like religion or cultural identity, but also includes the myth
-                    of society, money, and collective trust. Without these strong myths, even resource-rich societies
-                    crumble.
+                    a strong people or plentiful resources, but belief in a set of common myths. These encompass more
+                    traditional examples like religion or cultural identity, but also extend to the myths of society,
+                    money, and collective trust. Without these shared fictions, even resource-rich societies crumble.
                 </p>
                 <p>
                     Tribes and villages required very little administration. At most you may have some central
@@ -236,8 +235,8 @@ export default (
                 </p>
                 <p>
                     <i>Sapiens</i> defines an empire as a political order with two defining characteristics: it must
-                    rule over a significant number of distinct cultures and it must have flexible borders with a desire
-                    for expansion. These qualities enable empires to be engines of cultural consolidation. The Roman
+                    rule over a significant number of distinct peoples and it must have flexible borders with an
+                    appetite for expansion. These qualities make empires engines of cultural consolidation. The Roman
                     Empire conquered countless individual tribes and people, subsuming them into the Latin culture of
                     the empire. Even when it fell in the first millennium, the number of cultures which emerged from its
                     ashes were far fewer than those that originally inhabited Europe a thousand years earlier. Harari
@@ -253,14 +252,14 @@ export default (
                 </p>
                 <p>
                     The second myth is that empires are inherently immoral, that they obliterate native cultures and
-                    exploit their populace. A strong justification for this claim could be made about ancient empires
-                    like the Assyrian, Babylonian, and Hittite empires which conquered and plundered neighboring lands,
-                    bringing riches back to their capitals. Empire existed only for the benefit of the conquering
-                    peoples. This conception, at least internally, changed in 550 BCE with Cyrus the Great of Persia. He
-                    saw himself not as a Persian king ruling over other cultures, but also as a king of those cultures
-                    as well. Instead of obstacles in need of oppression, Cyrus and the rulers of similar empires began
-                    to see conquered people as future citizens. Outsiders became targets for assimilation, rather than
-                    for annihilation. A prime example of a similar empire was the Chinese Han from 206 BCE. The Han so
+                    exploit their populace. A strong case for this could be made about ancient empires like the
+                    Assyrian, Babylonian, and Hittite empires, which conquered and plundered neighboring lands, bringing
+                    riches back to their capitals. Empire existed only for the benefit of the conquering people. This
+                    conception began to change, at least internally, in 550 BCE with Cyrus the Great of Persia. He saw
+                    himself not as a Persian king ruling over other cultures, but also as a king of those cultures as
+                    well. Instead of obstacles in need of oppression, Cyrus and the rulers of similar empires began to
+                    see conquered people as future citizens. Outsiders became targets for assimilation, rather than for
+                    annihilation. A prime example of a similar empire was the Chinese Han from 206 BCE. The Han so
                     thoroughly assimilated conquered peoples that the majority of Eastern, Northern, and Southern China
                     considers themselves as Han over 2000 years later. This is where the immorality of empire becomes
                     messy. When empires conquer new territory they tend to encourage (peacefully or not) its new
@@ -284,15 +283,15 @@ export default (
                 </p>
                 <p>
                     Following the unitary and cooperative powers of money and empire, Harari argues that religion
-                    represents a third great unifier of humanity. He defines religions as "a system of human norms and
+                    represents a third great unifier of humanity. He defines religion as "a system of human norms and
                     values that is founded on belief in a superhuman order". For millennia, nearly all religions
                     embodied these basic principles. Local bands or tribes observed local customs, myths, and
-                    superstitions, all rooted in the belief in some supernatural force. For the majority of modern
-                    humans, these localized religions seem somewhat unfamiliar. Around the first millennium BCE, a new
-                    class of religions began to emerge: those that claimed to know not only local truths, but universal
-                    truths that applied to all humans. These religions were also very commonly missionary. Since
-                    adherents believed that their system of myths and customs was universal, it was their duty to spread
-                    their religion to all humans. Modern exemplars of this category include Christianity, Islam, or
+                    superstitions, all rooted in belief in some supernatural force. For the majority of modern humans,
+                    these localized religions feel somewhat unfamiliar. Around the first millennium BCE, a new class of
+                    religions began to emerge: those that claimed to know not only local truths, but universal truths
+                    applicable to all humans. These religions were also very commonly missionary: since adherents
+                    believed that their system of myths and customs was universal, it was their duty to spread their
+                    religion to all of humanity. Modern exemplars of this category include Christianity, Islam, or
                     Buddhism. The earliest human religions were likely some form of animism, the belief that the natural
                     world was permeated with spirits. Human spirits were embedded within this natural order, rather than
                     above it. As agriculture began to spread, humans began to settle into villages and later cities.
