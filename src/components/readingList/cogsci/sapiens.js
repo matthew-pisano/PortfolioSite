@@ -297,18 +297,18 @@ export default (
                     above it. As agriculture began to spread, humans began to settle into villages and later cities.
                 </p>
                 <p>
-                    Throughout this process, humans began to observe their unique changes on the natural world. As
-                    humans built great cities and tamed nature, the notion that our spirits were equal to those that we
-                    conquered grew less believable. Over time, spirits began to morph into gods, humanized gods which
-                    held humans as special as we saw ourselves. These new polytheistic religions believed that gods
+                    Throughout this process, humans began to observe their outsized impact on the natural world. As they
+                    built great cities and tamed nature, the notion that human spirits were equal to those they had
+                    conquered grew less believable. Over time, spirits began to morph into gods, humanized beings that
+                    held humans as special as we saw ourselves. These new polytheistic religions held that gods
                     influenced the natural world with human-like agency and could therefore be bargained with like
-                    humans as well. However, unlike the God of monotheism, the powers of polytheistic gods were not
-                    universal. They too were bound by yet greater powers: the ancient Greeks had the three sisters of
-                    Fate and Hindus had the all-encompassing power of Atman. While lesser gods could be prayed to and
-                    bargained with, these forces had no interest in the struggles of humans. Due to this plurality of
-                    lesser gods, it was common for interacting peoples to adopt each other's deities into their own
-                    religions. Conquering empires tended to tolerate local religions so long as conquered peoples
-                    incorporated the empire's chosen pantheon.
+                    humans. Unlike the God of monotheism, however, the powers of polytheistic gods were not universal.
+                    They too were bound by yet greater forces: the ancient Greeks had the three Fates and Hindus had the
+                    all-encompassing power of Atman. While lesser gods could be prayed to and bargained with, these
+                    supreme forces had no interest in the struggles of mortals. Because no single pantheon claimed a
+                    monopoly on divine truth, it was common for interacting peoples to adopt each other's deities.
+                    Conquering empires tended to tolerate local religions so long as conquered peoples incorporated, and
+                    paid respect to, the empire's chosen pantheon.
                 </p>
                 <p>
                     Between two and three thousand years ago, another shift began. In some cultures, the importance of
@@ -439,17 +439,17 @@ export default (
                     and stimulate further investment back into the economy.
                 </p>
                 <p>
-                    Prior to this, economics was viewed as a zero-sum game, in order for one person to gain resources,
-                    those resources must be taken from someone else (conceptually or not). As the cycle of investment
-                    and reinvestment grew the Dutch economy, a new idea began to take hold: perhaps the economic
-                    prosperity of some could benefit the economic prosperity of all, a growing pie! This idea meshed
-                    very well with the new notion of scientific process. This became a self-fulfilling prophecy, the
-                    more people trusted that the economy could grow, the more it grew indeed. Adam Smith further
-                    popularized this notion in <i>The Wealth of Nations</i>, encouraging a portion of present profits to
-                    be reinvested to generate yet greater profits in the future. With this, modern capitalism was born.
-                    Whereas traditional money was used for the transaction of physical goods, capital could be used for
-                    goods, but also investments and speculative assets. Ideas or technologies that once seemed
-                    outlandish could be realized if enough investors believed that it could be made real
+                    Prior to this, economics was viewed as a zero-sum game: in order for one person to gain resources,
+                    those resources must be taken from someone else. As the cycle of investment and reinvestment grew
+                    the Dutch economy, a new idea began to take hold: perhaps the economic prosperity of some could lift
+                    the economic prosperity of all: a growing pie. This meshed very well with the emerging culture of
+                    scientific inquiry. It soon became a self-fulfilling prophecy: the more people trusted that the
+                    economy could grow, the more it did. Adam Smith further popularized this notion in{" "}
+                    <i>The Wealth of Nations</i>, encouraging a portion of present profits to be reinvested to generate
+                    yet greater profits in the future. With this, modern capitalism was born. Whereas traditional money
+                    was used for the transaction of physical goods, capital could be used for goods, but also
+                    investments and speculative assets. Ideas or technologies that once seemed outlandish could be
+                    realized if enough investors believed that it could be made real
                     <Footnote>And ideally make them fabulously wealthy along the way.</Footnote>.
                 </p>
                 <p>
@@ -580,18 +580,17 @@ export default (
                     and trust that encourage large groups of people to cooperate.
                 </p>
                 <p>
-                    To cap off <i>Sapiens</i>, Harari ends with two major discussions. Have the myriad of changes that
+                    To cap off <i>Sapiens</i>, Harari ends with two major discussions. Have the myriad changes that
                     humanity has undergone throughout history actually made us happier than our hunter-gatherer
-                    ancestors? And, given a rapidly steepening curve of progress, what will come next? So, how does our
-                    modern happiness collectively compare to our paleolithic ancestors? Naively, it seems as if we do
-                    indeed lead better, more fulfilling lives. After all, recent technologies have raised standards of
-                    living, provided us with limitless entertainment, and eliminated afflictions that plagued our
-                    forebearers. That may not be quite true. In developed countries, people still work much more and are
-                    generally more stressed than what we predict from hunter-gatherers. In the developing world, things
-                    are even worse, with crushing poverty and starvation still very real concerns. Yet, the opposite
-                    belief, that pre-agricultural societies were universally better-off, does not capture the full
-                    picture either. The leaps that we have made in terms of healthcare and wellbeing are nothing to
-                    disregard. If we cannot directly compare levels of happiness, perhaps we could then calculate it? A
+                    ancestors? And, given a rapidly steepening curve of progress, what will come next? Naively, it seems
+                    as if we do indeed lead better, more fulfilling lives. After all, recent technologies have raised
+                    standards of living, provided us with limitless entertainment, and eliminated afflictions that
+                    plagued our forebears. But that may not tell the whole story. In developed countries, people still
+                    work much more and are generally more stressed than we would predict for hunter-gatherers. In the
+                    developing world, things are even worse, with crushing poverty and starvation still very real
+                    concerns. Yet the opposite belief: that pre-agricultural societies were universally better off, does
+                    not capture the full picture either. The advances we have made in healthcare and longevity are not
+                    nothing. If we cannot directly compare levels of happiness, perhaps we could then calculate it? A
                     sensible metric could perhaps be subjective happiness, how happy someone feels when asked. However,
                     this is a frustratingly flexible and conflicting metric. The same event or life situation could
                     translate to different happiness changes in individuals
@@ -617,17 +616,17 @@ export default (
                     Finally, <i>Sapiens</i> examines where our historical journey may take us next. For the last 4
                     billion years, organisms have evolved almost exclusively through natural selection
                     <Footnote>
-                        I use the word "almost" here as there have been examples of domestication long before humans.
-                        For example, the fungus-farming Attini ants have been domesticating fungus for tens of millions
-                        of years!
+                        I use the word "almost" here as there have been examples of artificial selection long before
+                        humans. For example, the fungus-farming Attini ants have been cultivating fungus for tens of
+                        millions of years!
                     </Footnote>
                     . The largest departure from this order was when humans first began to domesticate plants and
-                    animals between 10000 and 15000 years ago. Though this rapidly increased and specified evolutionary
-                    pressures, the process still took many human generations and was a comparatively blunt instrument.
-                    In the modern day, human genetic engineering is a precise scalpel, ablating or introducing traits in
-                    species that we deliberately fine-tune. Within a single human lifetime, this form of engineering has
-                    yielded fantastical results. Frost-resistant potatoes, insulin producing bacteria, fatter chickens,
-                    and disease-resistant cow udders. The success of this technology thus begs the question: should we
+                    animals between 10,000 and 15,000 years ago. Though this rapidly intensified evolutionary pressures,
+                    the process still took many human generations and was a comparatively blunt instrument. Modern
+                    genetic engineering, by contrast, is a precise scalpel, ablating or introducing traits in species
+                    that we deliberately fine-tune. Within a single human lifetime, this form of engineering has yielded
+                    fantastical results. Frost-resistant potatoes, insulin producing bacteria, fatter chickens, and
+                    disease-resistant cow udders. The success of this technology thus begs the question: should we
                     deliberately tamper with the human genome as well? Our capabilities in the realm of robotics has
                     also advanced dramatically. Though <i>Sapiens</i> was published in 2014, contemporary roboticists
                     had succeeded in many impressive feats. From bionic fish, to human hearing implants, to
