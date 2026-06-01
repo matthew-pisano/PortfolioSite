@@ -16,14 +16,14 @@ export default (
                 <p>
                     Rather humbly, we have bestowed upon our species the title of <i>Homo Sapiens</i>: "wise man".
                     Superficially, this implies two things: that our species is a unique and unparalleled product of
-                    evolution and that we are, in aggregate "wise". Our species naturally and unalterably embodies
-                    wisdom and foresight; progress marches endlessly and monotonically forward. Yuval Noah Harari's{" "}
+                    evolution and that we are, in aggregate, "wise". That our species naturally and unalterably embodies
+                    wisdom and foresight; that progress marches endlessly and monotonically forward. Yuval Noah Harari's{" "}
                     <i>Sapiens</i>, more than any other book, demonstrates the naivety of these notions.
                 </p>
                 <p>
-                    This book examines history, not from a historical or even anthropocentric perspective, but from a
-                    human perspective. That is, not as our ancestors recorded events or even how we would like to think
-                    history played out. Instead, <i>Sapiens</i> takes a much more detached and objective perspective.
+                    This book examines history not from a strictly historical or even anthropocentric perspective, but
+                    from a uniquely human one. That is, not as our ancestors recorded events, nor even as we would like
+                    to think history played out, but as it most likely did, blemishes and all.
                 </p>
                 <p>
                     Our species is certainly not unique. <i>Australopithecus afarensis</i> individuals were using crude,
@@ -53,8 +53,9 @@ export default (
                     <i>Homo sapiens</i> in particular? Why not <i>Homo neanderthalensis</i> or <i>Homo erectus</i>? A
                     tempting answer would be that we are somehow particularly cunning, competitive, or just plain cruel.
                     The thesis of <i>Sapiens</i> would argue that this is a very anthropocentric way of thinking.
-                    Ironically, our unprecedented ability for cooperation is likely responsible for this calamity. An
-                    event that the book refers to as the "Cognitive Revolution".
+                    Ironically, it is not our cruelty or cunning but our unprecedented ability for cooperation that is
+                    likely responsible for this calamity. An event that the book refers to as the "Cognitive
+                    Revolution".
                 </p>
                 <p>
                     Between 70,000 and 30,000 years ago, and for unknown reasons, a change happened in how Sapiens began
@@ -118,10 +119,10 @@ export default (
                     humans at the time. Compared to contemporary nomadic tribes, our agricultural ancestors worked
                     longer, had a less diverse diet, and were much more vulnerable to disease, famine, war, and a host
                     of other calamities. As Harari emphasizes, this was a pretty raw deal for those living in villages.
-                    Why did this even happen in the first place, then. Nobody would willingly subject themselves and
-                    their progeny to such conditions if informed of how they would turn out. That is the key, though.
-                    This was a very gradual process, happening over hundreds of years, and each step looked like a
-                    relative improvement over before. If a particular field was unusually plentiful with berries and
+                    Why did this even happen in the first place, then? Nobody would willingly subject themselves and
+                    their progeny to such conditions if they could foresee how they would turn out. That is the key,
+                    though. This was a very gradual process, happening over hundreds of years, and each step looked like
+                    a relative improvement over before. If a particular field was unusually plentiful with berries and
                     grasses, a tribe may decide to stay near throughout the winter and return in the spring. Eventually,
                     they may have realized that some of their previous harvest was lost on the ground and regrew into
                     even more plants next season. Perhaps burying the seeds produced even better results! On and on this
