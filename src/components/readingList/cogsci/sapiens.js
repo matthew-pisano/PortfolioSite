@@ -187,14 +187,14 @@ export default (
                 </p>
                 <p>
                     Shifting focus towards the evolution of culture over bureaucracy, <i>Sapiens</i> considers whether
-                    there are patterns in cultural changes or if they largely occur at random. One thing that is for
-                    certain is that these cultures do indeed change. When the first Tasmanians arrived 40,000 years ago
-                    from across a land bridge to Australia, they brought their native culture with them. However, if you
-                    were to introduce one of these founding Tasmanians to their descendants living in 1641, just before
-                    first contact with Dutch sailors, they would have struggled to find any similarities between this
-                    alien culture and their own! Even in total isolation from the outside world, human cultures shift
-                    and evolve. Smaller cultures coalesce into larger ones, and well-established cultures splinter into
-                    more localized tribes.
+                    there are patterns in cultural change or whether it largely occurs at random. One thing that is
+                    certain is that cultures do indeed change. When the first Tasmanians arrived 40,000 years ago from
+                    across a land bridge to Australia, they brought their native culture with them. Yet if you were to
+                    introduce one of these founding Tasmanians to their descendants living in 1641, just before first
+                    contact with Dutch sailors, they would have struggled to find any similarities between that alien
+                    culture and their own. Even in total isolation from the outside world, human cultures shift and
+                    evolve: smaller cultures coalesce into larger ones, and well-established cultures splinter into more
+                    localized tribes.
                 </p>
                 <p>
                     However, Harari argues, there is still a pattern to be seen here. Not from merely a birds-eye view,
@@ -361,8 +361,8 @@ export default (
                     handful of nations, from a continent that was once a backwater of the medieval world, had taken over
                     the planet before other nations adopted their technology and rose to meet them. In many modern
                     nations, there are far more economists, bureaucrats, and engineers than there are farmers,
-                    shepherds, and blacksmiths. How? Harari argues that, by discovering our own ignorance about the
-                    universe, were we able to uncover more of its truth than ever before.
+                    shepherds, and blacksmiths. How? Harari argues that it was precisely by discovering our own
+                    ignorance about the universe that we were able to uncover more of its truth than ever before.
                 </p>
                 <p>
                     Since the scientific revolution, three core beliefs have emerged that have enabled believers to make
