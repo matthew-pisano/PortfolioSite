@@ -544,7 +544,7 @@ export default (
                 <p>
                     The strict efficiencies of modern industry have greatly impacted not only what we consume, but also
                     when and how we do that consumption. Consider timekeeping, in pre-industrial societies time was a
-                    very flexible concept mainly tied to the cycles of the moon, the sun, and seasons. A farmhand
+                    very flexible concept mainly tied to the cycles of the moon, the Sun, and seasons. A farmhand
                     arriving to the farm a half-hour late was common and difficult to even verify. However, a farmer
                     arriving on the farm in the dead of winter was almost entirely useless. In industrial societies,
                     this is flipped. If an assembly line worker is late, everyone down the line from them is unable to
@@ -553,7 +553,7 @@ export default (
                     outside of work. If the factory opens at 8:00 sharp, trolleys, schools, and eateries must bend to
                     accommodate that schedule. Transportation between cities required an even greater shift in
                     timekeeping. Previously, every city had their own local time, based approximately on the position of
-                    the sun. Being precise beyond the hour had limited use. However, once carriages and later trains
+                    the Sun. Being precise beyond the hour had limited use. However, once carriages and later trains
                     began to run on tight schedules, these inconsistencies needed to be rectified. In nineteenth century
                     Britain, this need for precision motivated the creation of a national standard for timekeeping, and
                     later proper time zones. As the rules of society reoriented themselves around time, knowing what
@@ -638,7 +638,74 @@ export default (
                 </p>
             </BookTileSynopsis>
             <BookTileThoughts>
-                <p></p>
+                <p>
+                    <i>Sapiens</i> takes a perspective on human history that is rare among even academic works. Instead
+                    of viewing history as a linear progression of key events, the book steps back and looks through a
+                    much more coarse lense. Human psychology and environmental pressures drive human interactions just
+                    like with any other animal. We just tend to obscure this fact behind a wall of historical events and
+                    great figures. Neolithic hunter gatherers did not forgo atlatls in favor of plows in service of some
+                    abstract ideal of progress. Rather, they myopically reacted to pressures from their environment and
+                    neighboring tribes. The broad themes of history can be best understood not through the actions of a
+                    few, but through the lived experiences and decisions of the collective.
+                </p>
+                <p>
+                    In addition to the general themes discussed above, Harari also touches upon some specific ideas that
+                    I find very interesting. In the first chapters of the book, Harari brings up the notion that, since
+                    cultures are memes<Footnote>In the academic sense of the word.</Footnote>, they can be understood to
+                    have memetic properties. Cultures can spead, mutate, evolve, influence each other, or die out.
+                    Despite cultures only existing because of human communication, cultures may be strangely misaligned
+                    with the wellbeing of their human hosts. A prime example of this is agriculture. Individual farmers
+                    lived more strenuous, stressful, and starved lives than their hunter gatherer contemporaries, but
+                    these societies thrived anyways. Why, then, did these settled cultures eventually displace nomadic
+                    ones? Farms are significantly more resource-dense than untamed land and could therefore support a
+                    denser population. This many people all in one place allowed for more frequent communication and the
+                    mutation of memetic ideas. Of these ideas, the ones that further entrenched agriculture resulted in
+                    larger and larger populations. Even though the health of individuals declined, their overall
+                    population, and the influence of their culture flourished.
+                </p>
+                <p>
+                    This seems almost parasitic in nature, does it not? Something which uses hosts in order to spread,
+                    without much care for the host itself. As memes, cultures could mutate and adapt just like
+                    traditional parasites. Yet, cultures are far more powerful; they rarely kill their hosts and they
+                    have direct control of their host's behavior. Some of today's more widespread cultures have strong
+                    internal mechanisms for enforcing purity of belief within its members and often a missionary-like
+                    desire to spread to others.
+                </p>
+                <p>
+                    Later, when discussing the industrial, <i>Sapiens</i> makes an observation which reframes how the
+                    mechanisms of industrialization and growth are understood. Specifically, industrialisation is framed
+                    as a mechanism for utilizing more energy to do more useful work. Suppose you are a pharaoh who has
+                    decided they would like a pyramid. How do you get a pyramid? The physical materials already exist,
+                    all the stone you need is sitting just below your feet. All the energy you need exists as well,
+                    across your kingdom, the Sun blasts the land with more energy than you'd ever need. Why, then, do
+                    you not already have your pyramid? In order to assemble the surrounding matter into a pyramid, you
+                    would need to effectively harness the available energy around you to turn into work. For nearly all
+                    of human history, the most accessible and controllable source of work was human muscle. Humans
+                    cannot directly transform the energy of the Sun into work, so you'll also need to build plant crops
+                    and breed livestock to serve as an energy source for humans and as a supplemental source of work in
+                    the case of oxen. With this, you can indirectly transform the Sun's energy into pyramid-building
+                    work. However, since you need to go through several rounds of biological metabolism, your energy
+                    losses are large. Industrialisation offers new sources of energy and new ways of transforming that
+                    energy efficiently into work. Coal or oil can be extracted from the ground as an extremely dense
+                    energy store and steam engines or internal combustion engines can transform that energy into work.
+                    As industrial technology advances, your ability to transform energy int work grows more efficient.
+                </p>
+                <p>
+                    In the last chapters of the book, Harari points out the relative peacefulness of the modern world.
+                    Since the mid twentieth century, he argues, systems of international trust and collaboration have
+                    discouraged war as a means of pursuing desired policy outcomes. When <i>Sapiens</i> was published in
+                    2014, inter-state violence was down by every metric, with the majority of remaining violence
+                    accounted for by intra-state civil wars and criminal actors. The world appeared to be in a state of
+                    unprecedented peace and seemed to only get more peaceful decade after decade. Twelve years later in
+                    (June) 2026, the state of global affairs looks very different. Several high-profile hot wars have
+                    erupted and a new wave of national populism has come to power in many democratic countries
+                    <Footnote>
+                        Harari covers this explicitly in <i>Nexus</i>, published in 2024 and amended in 2025.
+                    </Footnote>
+                    . Inter-state conflict is once again a well-exercised means for achieving political outcomes. The
+                    exact causes for this remain unclear, but this new wave of conflict shows no signs of being a
+                    short-term aberration<Footnote>Though, personally, I dearly hope it is.</Footnote>.
+                </p>
             </BookTileThoughts>
             <hr />
             <FootnoteList />
