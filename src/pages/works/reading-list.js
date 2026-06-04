@@ -1,5 +1,6 @@
 import React from "react";
 
+import aiBooks from "@/components/readingList/aiBooks";
 import cogSciBooks from "@/components/readingList/cogSciBooks";
 import futurismBooks from "@/components/readingList/futurismBooks";
 import historyBooks from "@/components/readingList/historyBooks";
@@ -15,7 +16,8 @@ import { genPageTitle } from "@/lib/util/utils";
 
 export default function ReadingList() {
     let sections = {
-        cogSci: "ai-cog-sci",
+        ai: "ai",
+        cogSci: "cog-sci",
         history: "history",
         scifi: "sci-fi",
         physics: "physics",
@@ -30,7 +32,8 @@ export default function ReadingList() {
         [],
         (
             <>
-                <SelfLink href={`#${sections.cogSci}`}>AI & Cognitive Science</SelfLink>
+                <SelfLink href={`#${sections.ai}`}>Artificial Intelligence</SelfLink>
+                <SelfLink href={`#${sections.cogSci}`}>Cognitive Science</SelfLink>
                 <SelfLink href={`#${sections.history}`}>History and Historical Fiction</SelfLink>
                 <SelfLink href={`#${sections.scifi}`}>Science Fiction</SelfLink>
                 <SelfLink href={`#${sections.physics}`}>Physics</SelfLink>
@@ -71,11 +74,9 @@ export default function ReadingList() {
                     perhaps what follows will provide some useful insights or interesting ideas.
                 </p>
             </Tile>
-            <SectionTile
-                tileInfo={
-                    new TileInfo({ title: <>Artificial Intelligence and Cognitive Science</>, anchor: sections.cogSci })
-                }
-            />
+            <SectionTile tileInfo={new TileInfo({ title: <>Artificial Intelligence</>, anchor: sections.ai })} />
+            {aiBooks}
+            <SectionTile tileInfo={new TileInfo({ title: <>Cognitive Science</>, anchor: sections.cogSci })} />
             {cogSciBooks}
             <SectionTile
                 tileInfo={new TileInfo({ title: <>History and Historical Fiction</>, anchor: sections.history })}
