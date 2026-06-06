@@ -36,7 +36,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Processors and Accelerators</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.AI]
+                        tags: [TileTag.AI, TileTag.ACCELERATOR]
                     })
                 }>
                 <p>
@@ -195,7 +195,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Foundations Lecture Series</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.AI]
+                        tags: [TileTag.AI, TileTag.ACCELERATOR]
                     })
                 }>
                 <p>

@@ -24,6 +24,14 @@
     content: "Personal";
 }
 
+.acceleratorTag img {
+    content: url("/assets/accelerator.png");
+}
+
+.acceleratorTag div::after {
+    content: "Accelerators";
+}
+
 .academicTag img {
     content: url("/assets/academic.png");
 }

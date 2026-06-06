@@ -6,6 +6,7 @@ import styles from "@/styles/tiles/Tags.module.css";
 
 const TileTag = {
     ACADEMIC: "academic",
+    ACCELERATOR: "accelerator",
     AI: "ai",
     ALIGNMENT: "alignment",
     ANDROID: "android",
