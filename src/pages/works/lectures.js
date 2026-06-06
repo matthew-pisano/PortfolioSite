@@ -34,6 +34,45 @@ export default function Lectures() {
             <ScrollTile
                 tileInfo={
                     new TileInfo({
+                        title: <>Processors and Accelerators</>,
+                        thumbnail: "/media/image/organizations/ibm.png",
+                        tags: [TileTag.AI]
+                    })
+                }>
+                <p>
+                    For tne incoming 2026 class of IBM interns, I was asked to give an introductory lecture on central
+                    processors and hardware acceleration. This lecture primarily focused on the contrast between the
+                    two: why CPUs alone are not sufficient for all computing tasks and why this motivates the need for
+                    dedicated hardware.
+                </p>
+                <p>
+                    The presentation starts off with a brief history of electronic computing, which CPUs are intimately
+                    tied to. Starting from the vacuum tubes of the ENIAC, to the transistors of the IBM 7090, to the SLT
+                    boards of the IBM 360, and finally to the Intel 4004. The Intel 4004 was the commercially successful
+                    single-chip microprocessor; this is where the story of the CPU begins in earnest. After the
+                    historical context, I cover the register machine architecture, ISAs, the von Neumann architecture,
+                    and the CPU pipeline. To motivate the upcoming discussion of dedicated hardware, I discuss the CPU
+                    frequency race and why faster cores simply are not enough to satisfy all workloads.
+                </p>
+                <p>
+                    Moving on to off-chip processors like GPUs or AI accelerators, I begin with how this class of
+                    hardware is fundamentally different from CPUs. Instead of aiming for raw speed, accelerators
+                    generally prefer massive parallelization. I also cover AlexNet and why "graphics" processing units
+                    are becoming increasingly ubiquitous in machine learning development. Shifting to specifics, the
+                    lecture explores NVIDIA's Tesla architecture and the concept of a GPU kernel. In addition to GPUs, I
+                    also cover the Spyre accelerator and its internal architecture to inform the interns better on the
+                    specific project that they are being trained for.
+                </p>
+                <p>
+                    The end of this lecture look forward to a possible future of AI processing hardware. In particular,
+                    I discuss different approaches to neuromorphic architectures and why they may aid in the future
+                    development of artificial intelligence.
+                </p>
+            </ScrollTile>
+
+            <ScrollTile
+                tileInfo={
+                    new TileInfo({
                         title: <>Artiﬁcial Intelligence and Assistants</>,
                         thumbnail: "/media/image/organizations/suny-new-paltz.jpg",
                         tags: [TileTag.AI, TileTag.HACKATHON],
@@ -81,7 +120,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Foundations of Computability: Incompleteness and Universality</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.ACADEMIC, TileTag.MATH]
+                        tags: [TileTag.MATH]
                     })
                 }>
                 <p>
@@ -156,7 +195,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Foundations Lecture Series</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.ACADEMIC, TileTag.AI]
+                        tags: [TileTag.AI]
                     })
                 }>
                 <p>
@@ -217,7 +256,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Transformer Models: Architectures and Use Cases</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.ACADEMIC, TileTag.AI],
+                        tags: [TileTag.AI],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/presentations/IBM+Transformer+Models.pdf"}>
