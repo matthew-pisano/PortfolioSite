@@ -200,6 +200,16 @@ export default function Lectures() {
                     The final lecture in this series concerns IBM's Spyre accelerator. Though it is perhaps the most
                     technical lecture, I unfortunately cannot share many details due to its internal subject manner.
                 </p>
+                <p>
+                    A bonus lecture to this series, delivered after the main course, focused on compilers and the act of
+                    compilation. This talk covered compilation more generally, not only concerning software, but also
+                    natural language and machine learning model graphs. Shifting focus to more traditional compilers, I
+                    first covered compiler frontends, tokenization, parsing, and semantic analysis. Next, I spoke on
+                    intermediate representations such as LLVM IR and MLIR. A section on compiler backends followed,
+                    covering final lowering to machine code, scheduling, linking, and loading. In addition to compiler
+                    software, I also went over common optimizations such as constant folding, loop optimization, and
+                    common subexpression elimination.
+                </p>
             </ScrollTile>
 
             <ScrollTile
