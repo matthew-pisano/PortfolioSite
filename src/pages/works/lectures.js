@@ -34,6 +34,92 @@ export default function Lectures() {
             <ScrollTile
                 tileInfo={
                     new TileInfo({
+                        title: <>Indexing Infinity: Uncountability and Googology</>,
+                        thumbnail: "/media/image/organizations/ibm.png",
+                        tags: [TileTag.MATH]
+                    })
+                }>
+                <p>
+                    In one of my previous lectures on Gödel Incompleteness and Turing Computability, I had left an
+                    important detail under-explored. Both Gödel and Turing used the same class of argument to prove
+                    their theorems: a proof by contradiction based on the indexability of elements. Gödel used this
+                    argument when he constructed a indexed statement which could be neither proven nor disproven.
+                    Similarly, Turing showed that no machine can prove that some serializable machine would halt on some
+                    input. This is the diagonal argument and, while it was featured heavily my first lecture, I never
+                    explained its origin. That was the goal of this lecture.
+                </p>
+                <p>
+                    Here, my primary focus was on Georg Cantor, his life, and his endless study of infinity. During the
+                    later half of the nineteenth century, mathematics was in crisis. Mathematicians became increasingly
+                    interested in the foundations of mathematics, yet every attempt at rigorous systemization had failed
+                    to fully realize its goal. Cantor began his career during this period of great uncertainty with the
+                    study of trigonometric series. This eventually pushed him towards studying infinity more directly.
+                    This earned him many detractors; at a time when everyone serious was looking down at the
+                    foundations, this young upstart was defiantly looking up towards infinity. Yet, it was the
+                    foundation that Cantor built for himself which would lead to the eventual destruction of the
+                    foundations that other mathematicians were working to discover.
+                </p>
+                <p>
+                    After adding this context around Cantor's discoveries, I turn to the tools that he used to probe
+                    infinity. This section covers countability and bijections: how we can compare the relative sizes of
+                    sets without exactly knowing their size in absolute terms.
+                </p>
+                <p>
+                    Next is the core of this lecture, the diagonal argument itself. The integers and rationals can be
+                    mapped cleanly onto the natural numbers, but what about the reals? Cantor proposed a method for
+                    indexing every single real number and proving that no complete list of all these numbered numbers
+                    could exist. This manner of reasoning essentially serves as a preview to the proofs that Gödel and
+                    Turing would make decades later.
+                </p>
+                <p>
+                    In addition to the utility of the proof itself, it also gives rise to an unorthodox notion: infinity
+                    is not a single nebulous concept. Instead, it can be defined and manipulated. More importantly, it
+                    is not a singleton, there is an infinite regression of infinitely larger and larger infinities. This
+                    set of infinities forms a well-defined power set where the next set in the sequence can be formed by
+                    all possible combinations of the elements in the previous set. Importantly, the power set of any set
+                    is always strictly larger than the original set itself, giving us different sized infinities.
+                </p>
+                <p>
+                    What follows is a discussion on ordinal numbers, the omega sequence, and the aleph hierarchy. To
+                    give some extra context as to how we can better reason about these concepts, I briefly introduce the
+                    axiom of choice, Zermelo-Fraenkel set theory, and the continuum hypothesis.
+                </p>
+                <p>
+                    Turning to look below now, I focused on Googology, the study of impossibly large, yet still finite
+                    numbers. A googol is effectively zero compared to other very large numbers, but it is a good
+                    starting point. We can construct the googol family of numbers through recursive exponentiation.
+                    However, this is actually a very slow method of producing very large numbers. We know of functions
+                    which can grow far faster than even simple repeated exponentiation. This leads into a discussion on
+                    hyperoperations and Knuth's up-arrow notation. With these tools, we can begin to describe numbers
+                    that are truly large.
+                </p>
+                <p>
+                    To put this into perspective, I focus on the classics: Graham's number and TREE(3) as examples.
+                    Graham's number dwarfs any number in the googol family and TREE(3) thoroughly dwarfs Graham's number
+                    even more so. These numbers, and many like them, are so large that we cannot concisely describe how
+                    large they truly are. However, these are all members in sequences generated by particular functions.
+                    Unlike the numbers they generate, we actually have a good way for categorizing these functions.
+                </p>
+                <p>
+                    A fast-growing hierarchy is a way of indexing the growth rate of these function using ordinals.
+                    These are the <i>same</i> ordinals used to describe different countable infinities. Using this
+                    hierarchy, we can classify Graham's G(•) function and TREE(•). In fact, we can show that these
+                    functions grow faster than any finitely describable function in the fast-growing hierarchy. This can
+                    be proved through yet another application of diagonal logic.
+                </p>
+                <p>
+                    The main goal of this lecture was to better contextualize infinities, set theory, and how the
+                    audience thinks of very large numbers. Infinity is a very counter-intuitive subject to begin with
+                    and Cantor's discoveries are even more inexplicable. Utilizing Hilbert's famous hotel paradox, my
+                    aim was to show that paradoxes are not something to fear, rather they are evidence that there are
+                    further discoveries to be made in a field. This angle hopefully gives a better motivation for the
+                    heavy use of paradoxes in the last lecture.
+                </p>
+            </ScrollTile>
+
+            <ScrollTile
+                tileInfo={
+                    new TileInfo({
                         title: <>Processors and Accelerators</>,
                         thumbnail: "/media/image/organizations/ibm.png",
                         tags: [TileTag.AI, TileTag.ACCELERATOR]
