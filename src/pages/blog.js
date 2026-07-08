@@ -9,6 +9,7 @@ import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
 import { blogInfo as compiledPython } from "@/pages/works/blog/compiled-python";
+import { blogInfo as arbitraryCognition } from "@/pages/works/blog/on-arbitrary-cognitive-execution";
 import { blogInfo as genTransformers } from "@/pages/works/blog/on-general-transformers";
 import tileStyles from "@/styles/tiles/Tiles.module.css";
 
@@ -74,6 +75,17 @@ export default function Blog() {
                 }
                 date={compiledPython.pubDate}>
                 {compiledPython.subtitle}
+            </BlogTile>
+            <BlogTile
+                tileInfo={
+                    new TileInfo({
+                        title: <>{arbitraryCognition.title}</>,
+                        thumbnail: "/media/image/pages/blog/on-general-transformers/hanoi-low.jpg",
+                        titleLink: "/works/blog/on-arbitrary-cognitive-execution"
+                    })
+                }
+                date={arbitraryCognition.pubDate}>
+                {arbitraryCognition.subtitle}
             </BlogTile>
         </FlexWrapper>
     );
