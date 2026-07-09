@@ -22,7 +22,7 @@ import tileStyles from "@/styles/tiles/Tiles.module.css";
  */
 function BlogTile({ children, tileInfo, date }) {
     return (
-        <GalleryTile tileInfo={tileInfo}>
+        <GalleryTile tileInfo={tileInfo} style={{ height: "320px" }}>
             {children}
             <p style={{ fontSize: "small" }}>{date.toLocaleDateString("en-US")}</p>
         </GalleryTile>
