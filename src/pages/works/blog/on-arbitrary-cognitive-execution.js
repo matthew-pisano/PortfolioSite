@@ -9,7 +9,7 @@ import BlogWrapper, { BlogInfo } from "@/components/wrappers/BlogWrapper";
 import { genPageTitle } from "@/lib/util/utils";
 
 const blogInfo = new BlogInfo(
-    "On the Possibility of Arbitrary Cognitive Execution",
+    "On Arbitrary Cognitive Execution",
     "An inquiry into the exploitation of cognitive computation",
     new Date(2026, 6, 7),
     "arbitraryCognition",

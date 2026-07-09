@@ -49,7 +49,10 @@ export default function Blog() {
                 tileInfo={
                     new TileInfo({
                         title: <>{arbitraryCognition.title}</>,
-                        thumbnail: "/media/image/pages/blog/on-general-transformers/hanoi-low.jpg",
+                        thumbnail: "/media/image/pages/blog/on-arbitrary-cognitive-execution/drawing-hands.webp",
+                        thumbnailTag: (
+                            <span className={`${tileStyles.displayTileCreditLink}`}>"Drawing Hands" Escher</span>
+                        ),
                         titleLink: "/works/blog/on-arbitrary-cognitive-execution"
                     })
                 }
