@@ -48,13 +48,13 @@ export default function Blog() {
             <BlogTile
                 tileInfo={
                     new TileInfo({
-                        title: <>{genTransformers.title}</>,
+                        title: <>{arbitraryCognition.title}</>,
                         thumbnail: "/media/image/pages/blog/on-general-transformers/hanoi-low.jpg",
-                        titleLink: "/works/blog/on-general-transformers"
+                        titleLink: "/works/blog/on-arbitrary-cognitive-execution"
                     })
                 }
-                date={genTransformers.pubDate}>
-                {genTransformers.subtitle}
+                date={arbitraryCognition.pubDate}>
+                {arbitraryCognition.subtitle}
             </BlogTile>
             <BlogTile
                 tileInfo={
@@ -79,13 +79,13 @@ export default function Blog() {
             <BlogTile
                 tileInfo={
                     new TileInfo({
-                        title: <>{arbitraryCognition.title}</>,
+                        title: <>{genTransformers.title}</>,
                         thumbnail: "/media/image/pages/blog/on-general-transformers/hanoi-low.jpg",
-                        titleLink: "/works/blog/on-arbitrary-cognitive-execution"
+                        titleLink: "/works/blog/on-general-transformers"
                     })
                 }
-                date={arbitraryCognition.pubDate}>
-                {arbitraryCognition.subtitle}
+                date={genTransformers.pubDate}>
+                {genTransformers.subtitle}
             </BlogTile>
         </FlexWrapper>
     );
