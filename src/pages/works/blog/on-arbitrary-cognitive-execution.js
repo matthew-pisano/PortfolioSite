@@ -13,7 +13,7 @@ const blogInfo = new BlogInfo(
     "An inquiry into the exploitation of cognitive computation",
     new Date(2026, 6, 7),
     "arbitraryCognition",
-    new Date(2026, 6, 7)
+    new Date(2026, 6, 13)
 );
 
 export default function ArbitraryCognition() {
