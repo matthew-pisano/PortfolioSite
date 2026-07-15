@@ -64,7 +64,7 @@ export default function ArbitraryCognition() {
                     increase the model's likelihood of assigning the "toaster" label to any image that contained the
                     adversarial patch. The result of this reverse engineering is the following patch:
                 </p>
-                <BlogImage src={"/media/image/pages/blog/on-general-transformers/attention-mechanism.png"}>
+                <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/toaster.png"}>
                     An adversarial image patch from Brown et al.
                 </BlogImage>
                 <p>
@@ -72,6 +72,22 @@ export default function ArbitraryCognition() {
                     model would instead predict "toaster", regardless of the main image. To the attacked VGG16 model,
                     this image patch was more "toaster" than toaster. This strange collection of shapes and colors was{" "}
                     <i>more real</i> than reality.
+                </p>
+                <p>
+                    What is actually happening here? The model weights were frozen for this exercise, so the model
+                    itself was not corrupted. On non-adversarial images, it functioned normally as well. Invariant of
+                    any particular image, data still flowed from input image to output classification. The model's
+                    neurons still manipulated incoming signals a fully expected manner. This particular image patch,
+                    however, hijacked the normal pattern of activations to generate an output that does not logically
+                    follow from the input. From the model's perspective, it experienced the <i>qualia</i> of sensing a
+                    toaster, but that internal experience was not induced by the genuine article. Each step in the long
+                    chain of activations behaved approximately correctly, but through exploiting some latent pattern of
+                    these activations, an illogical output was produced.
+                </p>
+                <p>
+                    What makes this particular attack notable with respect to others such as training data poisoning or
+                    adversarial fine-tuning? Both can achieve the same affect of making the model believe that a banana
+                    is a toaster.
                 </p>
                 <hr />
                 <FootnoteList />
