@@ -87,7 +87,58 @@ export default function ArbitraryCognition() {
                 <p>
                     What makes this particular attack notable with respect to others such as training data poisoning or
                     adversarial fine-tuning? Both can achieve the same affect of making the model believe that a banana
-                    is a toaster.
+                    is a toaster. This attack, however, does not rely on modifying the model's behavior. Instead, an
+                    erroneous output is induced by a malicious input alone, leaving the underlying model unaffected.
+                </p>
+                <BlogSection level={2}>Arbitrary Code Execution</BlogSection>
+                <p>
+                    This manner of attack is a special case of a much broader class of attack on computer systems. An
+                    attack which manipulates the expected behavior of a system into producing an unexpected result
+                    achieves arbitrary code execution on that system. In the context of a particular program, this is
+                    often achieved through the usafe of finely crafted inputs to that system over direct code
+                    manipulation.
+                </p>
+                <p>
+                    Any sort of computing machine is <i>dumb</i> in the sense that it follows instructions to the
+                    latter, rather than to spirit. When setting the instructions for a computer to follow, this often
+                    leads of an <i>XY problem</i>, where the programmer instructs the computer to do X, when their
+                    intention is to use X as a proxy for achieving Y. For example, if a programmer would like a program
+                    to begin executing a procedure other than the current one (Y), they would store the address at which
+                    that procedure sits into a pointer and pass pointed-to address to a jump instruction (X). Note that
+                    there is no guarantee that the jump instruction will only accept the intended memory address, it
+                    will jump execution to whichever address is supplied. If a malicious attack were able to modify the
+                    pointer before the jump, then the attacker would be in control of the next execution instead.
+                    Further note that the target procedure was never moved and the jump instruction's logic was never
+                    compromised. The machine was following instructions to the letter instead of to the programmer's
+                    spirit.
+                </p>
+                <p>
+                    Returning to our image recognition example, researchers used the tuned 138 million parameters of
+                    VGGNET16
+                    <Footnote>
+                        <Link href={"https://arxiv.org/pdf/1409.1556"}>
+                            Very Deep Convolutional Networks for Large-Scale Image Recognition (Simonyan and Zisserman
+                            2014)
+                        </Link>
+                        .
+                    </Footnote>{" "}
+                    as a proxy for choosing the correct label for an image. These is no guarantee that the trained state
+                    of the parameters would always yield "banana" when presented with a picture of a banana, they just
+                    happen to do so for an acceptable portion of the evaluation samples. The image patch exploits the
+                    state of the model's parameters to yield "toaster" instead. Note that the parameters were never
+                    changed, nor was the computer's ability to successfully evaluate the input conditional on those
+                    parameters. In the exact same manner as a more traditional example, a working program was induced
+                    into a unexpected state without modification.
+                </p>
+                <p>
+                    Arbitrary code execution is commonly thought of as only present in traditional, register-based
+                    computing machines, like a CPU running machine code. The first example given here is a fairly
+                    standard example. However, a generalization to other computing systems more broadly is natural. At
+                    the heart of an "arbitrary code execution" exploit is the coercion of some program to execute in a
+                    manner unexpected by the programmer, but which still follows from the expected functioning of the
+                    underlying system. In the case of a traditional attack, this underlying system is the hardware of a
+                    register machine, but it could just as easily be the execution environment of a machine learning
+                    model or any other computational substrate.
                 </p>
                 <hr />
                 <FootnoteList />
