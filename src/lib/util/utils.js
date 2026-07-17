@@ -12,7 +12,7 @@ const WORDS_PER_MINUTE = 200;
  */
 function elementReadingTime(elemId) {
     let bookElem = document.getElementById(elemId);
-    if (bookElem) return Math.round(bookElem.innerText.split(" ").length / WORDS_PER_MINUTE);
+    if (bookElem) return Math.ceil(bookElem.innerText.split(" ").length / WORDS_PER_MINUTE);
     return 0;
 }
 
