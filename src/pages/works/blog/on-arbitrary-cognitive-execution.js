@@ -232,6 +232,88 @@ export default function ArbitraryCognition() {
                     how a system behaves normally, but also how it could be exploited to behave abnormally.
                 </p>
                 <BlogSection>Arbitrary Code Execution</BlogSection>
+                <p>
+                    Before further investigating the much more theoretical applications of arbitrary code execution, it
+                    would help to better understand how it works in traditional computers. Early in the history of
+                    computing, the thread of malicious actors was much less of a central focus than it is today. Before
+                    the highly interconnected networks of computers that began to appear in the 1970s, computer
+                    programming was much more localized. Programmers concentrated on a program's utility and engineering
+                    viability over explicit security. Many programs were bespoke, built for specialized systems and
+                    applications. Even the computers themselves were confined to research labs or universities. Time
+                    using them was at a premium to even determined would-be hackers would have needed to officially log
+                    and justify any usage of rare and expensive computer equipment. This resulted in an informal
+                    professional agreement between engineers, if nobody acted maliciously, there was no reason to waste
+                    valuable developer hours on securing software from other developers. Evidence of this trust-based
+                    design ethos can still be felt today when interacting with offline legacy software or the 2G
+                    wireless standard. This naive sense of trust began to quickly break down in the 1970s and 1980s with
+                    the rise of computer time-sharing, networks, and eventually the hacker.
+                </p>
+                <BlogSection level={2}>A Brief History of Hacking</BlogSection>
+                <p>
+                    Suppose a malicious researcher in 1965 was interested in sabotaging a rival institution or academic
+                    rival. Well-funded labs of the day may have access to a then state-of-the-art IBM S/360 mainframe
+                    and IBM 2741 terminal (essentially just a modified and automated Selectric typewriter). The first
+                    obstacle that this researcher would face is time. In 1965, time-sharing operating systems were rare;
+                    this was two years before IBM would release TSS/360 for their mainframes. If a system was performing
+                    calculations on someone's behalf, that was oftentimes the <i>only</i> think that system was doing.
+                    Every cycle of that system was precious and needed to be effectively rationed. If someone had a job
+                    to run, they needed to log exactly what the job was, how long it would take, and when it would
+                    begin. For those working on large computing clusters today (especially before a large conference
+                    deadline!), this may feel familiar, there are only so many GPU hours to go around so jobs must be
+                    carefully scheduled. Back in 1965, is someone wanted to use a multi-million dollar machine for their
+                    own malfeasance, they would have needed to make up a plausible justification and submit their false
+                    proposal to system administrators. With system logs often used for low-level debugging, unauthorized
+                    activity would have been even more difficult to hide from one's peers and management.
+                </p>
+                <p>
+                    Another obstacle was connectivity. If the target of a hack was in a different institution (or even a
+                    different department), there was no guarantee that the attacking machine and the attacked machine
+                    would even have a direct route of communication. If a malicious actor only physically had access to
+                    their own machine, remotely accessing another would have been significantly more difficult than
+                    today, perhaps even impossible. While this could technically be overcome through physically vising
+                    the target or through social engineering, these activities would have been difficult to conceal.
+                    Even if two computers were technically connected, there was no guarantee that the other computer
+                    would even be listening and not running another program. The isolated and special-purpose nature of
+                    these early computers severely limited a malicious actor's ability to exploit even weakly protected
+                    machines.
+                </p>
+                <p>
+                    A final limiting factor was ironically the same force that discouraged security-focused engineering.
+                    Since access to computers was a rare privilege, such access was limited to career professionals or
+                    students. These people had relationships to maintain and reputations to uphold; the anonymity that
+                    early hackers relied upon was simply rare in these early days of computing. Even if someone
+                    technically could exploit a machine, there was a non-trivial chance that they would face
+                    professional backlash and consequences. Others knew this as well. This odd manifestation of mutually
+                    assured destruction kept hackers at bay and security concerns low
+                    <Footnote>
+                        It is important to note that this is very much a generalization. While true in aggregate, these
+                        factors would not concern state-level actors or unauthorized personnel. In cases such as these,
+                        traditional security could serve as a partial substitute. Conducting background checks on
+                        computer users and physically securing a system could thwart or discourage most attempts at
+                        exploitation.
+                    </Footnote>
+                    .
+                </p>
+                <p>
+                    A common theme throughout the history of computing is that the technology advances far faster than
+                    the social norms and behaviors that we humans develop in reaction to them. This is especially true
+                    when software developed in the context of one culture continues to see use as the culture changes.
+                    In the early 1980s, software from the early trust-based era of development was still in use, with
+                    many development teams still adhering to these standards of professional courtesy. The technology,
+                    however, had rapidly outpaced the culture and the old limitations that security assumptions were
+                    based upon. Time-sharing operating systems were significantly more commonplace. Computer access was
+                    no longer limited to elite institutions and research labs. Many ordinary students and working
+                    professionals had access to standalone computers and mainframe terminals. These computers were also
+                    significantly more connected. Research labs, universities, banks, airlines, and other institutions
+                    were all interconnected. On the graph of connections, the existence of a route between two arbitrary
+                    computers was much more likely than it was in 1965. With the accessibility of computers, old
+                    assumptions of trust and professional integrity also broke down. A determined college student or
+                    disgruntled employee could evade detection much more easily than before with potential consequences
+                    being much less severe. Many well-known examples of computer viruses originated from this period:
+                    Brain, Morris Worm, The LoveLetter Virus, and many others. With this historical context, we can now
+                    turn to how these programs were able to hijack their target machines and how the insecure
+                    programming practices of the early computer era enabled their effectiveness.
+                </p>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
