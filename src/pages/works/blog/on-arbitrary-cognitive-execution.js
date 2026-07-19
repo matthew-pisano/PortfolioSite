@@ -104,7 +104,7 @@ export default function ArbitraryCognition() {
                     is a toaster. This attack, however, does not rely on modifying the model's behavior. Instead, an
                     erroneous output is induced by a malicious input alone, leaving the underlying model unaffected.
                 </p>
-                <BlogSection level={2}>Arbitrary Code Execution</BlogSection>
+                <BlogSection level={2}>Problems and Proxies</BlogSection>
                 <p>
                     This manner of attack is a special case of a much broader class of attack on computer systems. This
                     is generally referred to as <i>Arbitrary Code execution</i>: an attack which manipulates the
