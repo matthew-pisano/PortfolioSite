@@ -209,7 +209,18 @@ export default function ArbitraryCognition() {
                     commonly consider to be computing devices can simulate both, a game of chess, or a webpage. While we
                     like for computing devices to be general, they do not necessarily need to be Turing complete. for
                     example, Programmable Logic Arrays and certain off-chip accelerators could be considered to be
-                    "computing devices" but are not themselves Turing complete.
+                    "computing devices" but are not themselves Turing complete
+                    <Footnote>
+                        In a similar vein was the Soviet <i>Turnir</i> (Турнир) console released in 1978. Unlike
+                        contemporary home consoles like the Atari 2600 or the Magnavox Odyssey which could play a
+                        variety of games, the Turnir could only olay one. Unlike the Atari's general-purpose MOS 6507,
+                        this console relied upon the AY-3-8500. This chip in particular was designed to play <i>PONG</i>{" "}
+                        and nothing else. Even though the Turnir technically came with six built-in games, all were just
+                        the same tennis game with themed overlays for hockey or squash. The Turnir is another example of
+                        a device which meets our requirements for a "computing device" while lacking many of the
+                        capabilities generally associated with computers more generally.
+                    </Footnote>
+                    .
                 </p>
                 <p>
                     Considering these requirements, we can put together a more precise definition of a computing device.
@@ -220,6 +231,7 @@ export default function ArbitraryCognition() {
                     biological neural networks. Most importantly, this definition gives us a way to now only describe
                     how a system behaves normally, but also how it could be exploited to behave abnormally.
                 </p>
+                <BlogSection>Arbitrary Code Execution</BlogSection>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
