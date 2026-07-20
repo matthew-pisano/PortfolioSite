@@ -445,7 +445,51 @@ reveal_secret:          # Reveal the secret
                     instead execute <code>j reveal_secret</code>. Instead of loading the password's address into a
                     register, the program will immediately begin to reveal the secret that would usually be kept behind
                     a password check. Through the overflow of their input, the user was given control over the program
-                    counter. This allowed them to execute <i>arbitrator code</i> of their choosing.
+                    counter. This allowed them to execute <i>arbitrator code</i> of their choosing. By knowing exactly
+                    how the computer executes instructions and the patterns of those instructions that it recognize, we
+                    can exploit the predictable behavior of that machine to do whatever we wish.
+                </p>
+                <BlogSection level={2}>Common Exploits and Mechanics</BlogSection>
+                <p>
+                    In a full attack chain, executing arbitrary code on a system is rarely the first action that an
+                    attacker takes. Generally, one or more individual utility exploits are chained together in order to
+                    build towards the instrumental goal of executing arbitrary code. This intermediate goal is then used
+                    as a proxy for the attacker's terminal goal. This could be denial of service, information
+                    exfiltration, or any number of other malicious objectives.
+                </p>
+                <p>
+                    One such utility exploit is present in our example above: buffer overflows. To use this utility, an
+                    attacker identifies a buffer, a bounded region of memory, which they can write past the boundary of
+                    with their own data. Generally, there is some point of interest just beyond the bounds of the buffer
+                    that the attacker is interested in. In our example, the point of interest was an instruction which
+                    we knew that the program counter was going to execute. This knowledge informed our decision on what
+                    data to actually write beyond the bounds of our buffer. Looking beyond raw assembly, this utility
+                    exploit is often used on programs written in memory-unsafe languages like C or C++. These languages
+                    do not enforce array bounds, potentially allowing an attacker to write past them into program memory
+                    if the programmer does not manually add in bounds checks. Even if the designer of a program does not
+                    handle arrays properly themselves, modern systems often have builtin protections against this simple
+                    attack. No-execute bits in memory forbid data placed in a data region (such as the stack) from being
+                    executed. Address space layout randomization (ASLR) ensures that programs loaded into memory
+                    randomize the addresses of instructions. In our example this would have prevented us from knowing
+                    which address to jump to. Stack canaries are another common projection, with the operating system
+                    placing randomized values just before the return address of a procedure. If these values are
+                    overwritten by an overflow, the system can terminate the program.
+                </p>
+                <p>
+                    In pointer-centric language like C or C++, memory corruption from pointer mismanagement is a common
+                    source of vulnerabilities
+                    <Footnote>
+                        Explaining this topic in depth would also necessitate a discussion on program memory management,
+                        allocation, and memory pointers. While this is beyond the scope of this work, anyone interested
+                        in low-level programming or vulnerabilities of this nature should ensure that they are familiar
+                        with the topic.
+                    </Footnote>
+                    . This can also be more transparent for an attacker to spot. If an attacker can find a sequence of
+                    inputs to a program that cause a crash of page fault, they could reasonably infer that somewhere
+                    within that program, a pointer is being mishandled. If a pointer is being mishandled, there is also
+                    a chance that the attacker could insert a value that they control into it. Use-after-free and
+                    double-free vulnerabilities both stem from structural issues within a program and a lack of proper
+                    checks. Using a pointer after it is freed sounds
                 </p>
                 <hr />
                 <FootnoteList />
