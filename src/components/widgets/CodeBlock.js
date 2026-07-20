@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import cmake from "react-syntax-highlighter/dist/cjs/languages/hljs/cmake";
 import cpp from "react-syntax-highlighter/dist/cjs/languages/hljs/cpp";
+import mips from "react-syntax-highlighter/dist/cjs/languages/hljs/mipsasm";
 import python from "react-syntax-highlighter/dist/cjs/languages/hljs/python";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
@@ -12,6 +13,7 @@ SyntaxHighlighter.registerLanguage("mlir", mlir);
 SyntaxHighlighter.registerLanguage("cmake", cmake);
 SyntaxHighlighter.registerLanguage("cpp", cpp);
 SyntaxHighlighter.registerLanguage("python", python);
+SyntaxHighlighter.registerLanguage("mips", mips);
 
 /**
  * A code block element which ensures code overflows instead of restricting responsive width.

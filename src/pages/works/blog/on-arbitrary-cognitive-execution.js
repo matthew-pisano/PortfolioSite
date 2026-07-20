@@ -314,6 +314,139 @@ export default function ArbitraryCognition() {
                     turn to how these programs were able to hijack their target machines and how the insecure
                     programming practices of the early computer era enabled their effectiveness.
                 </p>
+                <BlogSection level={2}>Ex Machina</BlogSection>
+                <p>
+                    If you were to communicate with an early computer programmer in the year 1965 and warn them that the
+                    exploitation of their software would soon become a booming industry, how would they react? They
+                    would likely be unsurprised. Programmers were aware that security could <i>become</i> a concern in
+                    the future, even if it was not paramount at the time. Indeed, the possibility of large-scale
+                    exploitation would be shown by The Creeper in 1971, just six years later. Why may they react in this
+                    manner, even though they had not personally experienced their software being exploited? Even if this
+                    programmer from the past were not aware of the exact techniques of exploitation, the possibility of
+                    hacking may not phase them. Perhaps this hypothetical person's lack of surprise is itself
+                    unsurprising to you yourself.
+                </p>
+                <p>
+                    Consider a similar setup which is concerned with a different kind of low-level exploitation. Would
+                    it be reasonable to suggest that the human brain is vulnerable to similar attacks? We can readily
+                    conceptualize more "high-level" social or psychological attacks such as interpersonal manipulation
+                    or desensitization to some specific situations. These are, however, very blunt instruments that may
+                    or may not work as the attacker intends or may not work at all. Instead, consider something much
+                    lower in level, something that directly exploits the complex patterns in how our neurons activate.
+                    This prospect seems much more absurd. Why? Just because we have yet to see an example, like our 1965
+                    programmer, does not mean it is possible. The real difference is that we simply have no reason to
+                    believe that it <i>is</i> possible. The sheer intractability of the problem seems too great to
+                    overcome; we do not know how our own brains work, much less how to exploit those inner workings.
+                    Computer hacking is much easier to conceptualize. We know <i>exactly</i> how computers work. We
+                    designed computers specifically to work in this deterministic and understandable manner. The
+                    question of knowing whether low-level exploits are possible is really just a question of whether we
+                    know what laws and patterns govern that system on a base level.
+                </p>
+                <p>
+                    Modern, general purpose, classical computers nearly universally rely upon the Von Neumann
+                    <Footnote>
+                        In the computer science curricula that I have taken and taught John Von Neumann often takes a
+                        secondary role to the likes of Gödel, Turing, and Shannon. Hopefully the courses that I have
+                        directly interacted with are an anomaly in this resect. Regardless, I'd highly recommend taking
+                        a second look at his lift, abilities and accomplishments. See my thoughts on{" "}
+                        <Link href={"https://matthewpisano.com/works/reading-list#maniac"}>The MANIAC</Link> for some
+                        more detailed commentary.
+                    </Footnote>
+                    architecture. In this schema, computers are neatly split into a processor, a memory unit, and I/O
+                    devices. Generally, the processor contains the logic on how to interpret instructions, the memory
+                    contains which instruction to execute, and the I/O devices allow humans or other computers to
+                    interface with running programs. Most modern, consumer/enterprise computers are also register
+                    machines. This tweak to the base architecture adds registers (and often multiple layers of cache)
+                    between the processor and memory. These registers have direct access to the CPU and greatly simplify
+                    the interface in which the CPU interacts with memory. Special registers, such as the program
+                    counter, keep track of the status of execution with general purpose registers serving as labeled
+                    storage for intermediate computations and auxiliary bookkeeping. For now, we can also assume that
+                    memory is represented to the CPU as a fully accessible and arbitrarily addressable set of storage
+                    labels. Another core feature of the Von Neumann architecture is the unification of instruction and
+                    data memory
+                    <Footnote>
+                        This is in contrast to the Harvard architecture, which advocates for a strict separation between
+                        executable instructions and the input data to those instructions.
+                    </Footnote>
+                    . To a Von Neumann computer, all data stored in memory, caches, and registers are raw, contextless
+                    numbers. The difference between instructions and data only lies within the context of their access
+                    (and sometimes their location within memory).
+                </p>
+                <p>
+                    For example, suppose a memory address holds the value <i>0x2149002a</i> (little endian). On a MIPS
+                    system, this could be decoded as an instruction which tells the CPU to add 42 (<i>0x2a</i>) to the
+                    number in register 10 ($t2) and store the result in register 9 ($t1). Equal in validity, the CPU
+                    could also interpret this as the literal integer 558,432,298. There are some good reasons for
+                    allowing this ambiguity unaddressed in the design of a computer. A unified memory addressing scheme
+                    allows the entirety of memory to be accessible by a program and the design of physical busses and
+                    interfaces is simpler. However, in addition to introducing a memory bottleneck, this unification
+                    opens up many avenues for exploitation. If data can be interpreted as instructions in some contexts,
+                    the users of a system could also theoretically control how that system functions by manipulating it
+                    to run arbitrary code of their choosing.
+                </p>
+                <p>
+                    Lets first consider a toy example, then work up from there. Most systems have a special register
+                    called the "program counter". This register, like any other, will contain a number. This number
+                    represents the memory address at which the CPU will look to for its next instruction. This counter
+                    increments as the program executes with special control flow instruction moving it in the case of
+                    loops or procedure calls. Whatever (or whoever) controls the value stored within the program counter
+                    fully controls which code the program will execute next. Upon launch, the program will ask the user
+                    for a secret password. It will then check if the password is correct and reveal some hidden
+                    information if so. In the interest of space efficiency, the original programmer has laid out memory
+                    in a condensed fashion with the space used for storing the user's password attempt placed just
+                    before the procedure for checking the password. In MIPS, this would look like the following:
+                </p>
+                <CodeBlock language="mips">
+                    {`main:
+    la $a0, input       # Request that the data be placed in input
+    jal read_input      # Read the user input until return is pressed
+
+    jal password_check  # Check that the user-given password matches the secret password
+
+input:
+    .space 4            # The space for the use input
+
+password_check:         # Password check procedure
+    la $a0, password    # Set the password as the first input to the string compare
+    la $a1, input       # Set the user input as the second input to the string compare
+    jal strcmp          # Compare the strings
+   
+    beqz $v0, reveal_secret     # Reveal the secret of the user input matches the password
+
+    li $v0, 10
+    syscall             # Exit if the password is incorrect
+
+reveal_secret:          # Reveal the secret
+    ...`}
+                </CodeBlock>
+                <p>
+                    Note the <code>input</code> space for the user input; it is only four bytes long. If the user acts
+                    as intended and only inputs four characters for the password, this program will work correctly. If
+                    the user's input does not match the password, then the secret will not be revealed. However, what
+                    happens if the user inputs more than four characters? Remember that the computer will understand the
+                    programmer's instructions to the letter, not to their spirit. The input procedure will continue to
+                    read in characters until the return key is struck. If more than four characters are stored, data
+                    will spill over into the next word, the next instruction. In this case, this is the first
+                    instruction in the
+                    <code>password_check</code> procedure. Suppose that the instructions which compose this procedure
+                    begin in memory at address <i>0x00400044</i> and the <code>reveal_secret</code> procedure lied at{" "}
+                    <i>0x00400064</i>. Initially, <code>password_check</code>'s address would store <i>0x3c010040</i>,
+                    corresponding to the instruction <code>la $a0, password</code>
+                    <Footnote>
+                        Technically, MIPS would decode this to be two instructions since <i>la</i> is a
+                        pseudo-instruction and not directly present in the MIPS instruction set.
+                    </Footnote>
+                    . However, suppose that the user inputs "pwnd" followed by the byte sequence:{" "}
+                    <i>0x08 0x10 0x00 0x19</i>. The first four characters (bytes) do not actually matter here. However,
+                    they do serve to take up space. Once the intended four bytes have been occupied, the next four
+                    overwrite the original memory stored at address <i>0x00400044</i>, replacing it with{" "}
+                    <i>0x08100019</i>, the user's input overflow. When the program counter goes to execute the
+                    instruction stored at this address, instead of executing <code>la $a0, password</code>, it will
+                    instead execute <code>j reveal_secret</code>. Instead of loading the password's address into a
+                    register, the program will immediately begin to reveal the secret that would usually be kept behind
+                    a password check. Through the overflow of their input, the user was given control over the program
+                    counter. This allowed them to execute <i>arbitrator code</i> of their choosing.
+                </p>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
