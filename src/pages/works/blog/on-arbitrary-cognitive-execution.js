@@ -489,7 +489,74 @@ reveal_secret:          # Reveal the secret
                     within that program, a pointer is being mishandled. If a pointer is being mishandled, there is also
                     a chance that the attacker could insert a value that they control into it. Use-after-free and
                     double-free vulnerabilities both stem from structural issues within a program and a lack of proper
-                    checks. Using a pointer after it is freed sounds
+                    checks. When a program is loaded, it requests a certain amount of memory from the operating system.
+                    From here, programs generally manage their own memory, only calling back to the operating system
+                    when a significant amount of memory can be released or if much more needs to be allocated. Since the
+                    program, through tools such as <i>malloc</i>, manage their memory on their own, it is the program's
+                    responsibility to keep track of which blocks of memory are actively used in objects or data
+                    structures an which are free to be allocated. Importantly, when a block of memory has been
+                    allocated, it is owned exclusively by some structure; newly allocated structures cannot be allocated
+                    on top of it. This lets programmers assume that (threading notwithstanding) the memory of one object
+                    will not be modified by another unless their program explicitly allows it. After a pointer to an
+                    object or data structure is freed, this restriction no longer applies. The allocator can, and will,
+                    reuse that old memory for new allocations. If an attacker can manipulate the program to allocate a
+                    new object on top of an old one, while the program still holds a pointer to that memory, the program
+                    may access one object thinking that it is another.
+                </p>
+                <CodeBlock language="cpp">
+                    {`struct User {
+    bool is_logged_in;  // 1 byte at struct offset 0
+};
+
+struct Foo {
+    bool bar;    // 1 byte at struct offset 0
+};
+
+
+int main() {
+    User *user = malloc(sizeof(User));
+    free(user);
+    Foo *foo = malloc(sizeof(Foo));
+    foo->bar = true;  // Set the boolean to true at the same offset as is_logged_in
+    
+    // Interpret the region of memory modified by foo as the login flag
+    if (user->is_logged_in) {
+        grant_admin_access();
+    }
+    
+    return 0;
+}`}
+                </CodeBlock>
+                <p>
+                    If a program allocates a user to the heap and frees the pointer, the region of memory pointed to is
+                    free for reallocation. If the program keeps a reference to the freed memory, accessing that pointer
+                    may mistakenly interpret an attacker-controlled object as the original object. A double-free can
+                    have a similar impact, but impacts the allocator directly. When a pointer is freed, the allocator
+                    returns the pointed-to block of memory to its free list for bookkeeping. If the allocator is
+                    instructed to free that same pointer again it will do so, even if an object has already been
+                    allocated in the same location. This may result in the memory corruption or exploitation of a
+                    completely unrelated object even if that object's pointer management is correct.
+                </p>
+                <p>
+                    A major limiting factor of buffer overflow attacks is that buffers often reside in the data or heap
+                    sections of memory while program code resides within the text segment. Especially when a system
+                    disallows the execution of memory regions as instructions, it can be difficult to leverage a regular
+                    buffer overflow to achieve arbitrary code execution on a system. Return oriented programming is an
+                    attacker's answer to this limitation. Instead of coercing the program counter into executing data as
+                    code, a return oriented programming attack never needs to leave the text segment. Recall how the act
+                    of programming in general consists of chaining a series of specific instructions together as a proxy
+                    for achieving some goal of the programmer's. This attack is similar, with the extra restriction that
+                    the instructions in the chain can only exist within the attacked program. if the attacker can
+                    corrupt the return address of a procedure, they can arbitrarily place the program counter wherever
+                    they want next, very similar to our original buffer overflow example. Instead of this being the
+                    entire attack chain, this process is repeated many times. Each time, the return address of a
+                    procedure is overwritten and control is transferred an another arbitrary piece of code. At every
+                    stop, memory is manipulated and the program counter is mannered into the position that is required
+                    at the end of the attack. These individual blocks of hijacked code are referred to as "gadgets" as
+                    they are only used as small utilities in service of the larger attack. When done right, the state of
+                    a program can be manipulated arbitrarily without triggering any execution violations. Similarly to
+                    buffer overflows, ASLR and stack canaries offer a defense against this attack, but are not always
+                    available in all programs or systems.
                 </p>
                 <hr />
                 <FootnoteList />
