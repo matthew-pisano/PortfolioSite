@@ -558,6 +558,127 @@ int main() {
                     buffer overflows, ASLR and stack canaries offer a defense against this attack, but are not always
                     available in all programs or systems.
                 </p>
+                <BlogSection>Exploiting Execution in Software</BlogSection>
+                <p>
+                    When considering only toy examples in isolation, vulnerable code seems fairly easy to catch and fix.
+                    After all, if programmers simply checked their buffer bounds, compiled their code with protections
+                    enabled, and maintained vigilance for common logic bugs, code should be fully secure. Similar
+                    sentiments to this are often present in exploit post-mortems. "If we had only noticed that we were
+                    using that pointer after freeing it, we would be fine". Real software, especially highly optimized
+                    or embedded software, cannot be reduced to such simple terms. Just because the exact mechanism of a
+                    vulnerability is unknown <i>does not</i> mean it is impossible.
+                </p>
+                <BlogSection level={2}>Exploiting Games</BlogSection>
+                <p>
+                    The medium of video games can offer particularly compelling examples of the strength and scope of
+                    "arbitrary" code execution. This because video games offer interactive fictions with well-defined
+                    rules and expectations. While achieving arbitrary code execution in an operating system's kernel is
+                    far more severe from a security standpoint, such an attack may not represent much of a change from a
+                    human perspective. Visually, at least, an attacker's payload does not fundamentally change the rules
+                    of how we humans expect an operating system to function. A machine compromising a level 2 hypervisor
+                    running client code or damaging OS protected hardware is highly impactful from a technical or
+                    security standpoint, but the general syscalls and memory management largely obey the same set of
+                    behaviors. A more human-intuitive change would be, for example, rewriting a Windows Vista system to
+                    look and behave like Windows XP in memory and on-the-fly. While technically possible with truly
+                    arbitrary code execution at the kernel level, there is no motivation to actually do this from a
+                    malicious actor's perspective. The entire point of an attack is the exact opposite of this, to
+                    remain hidden as much as possible. However, video game hackers have the objective of making their
+                    attacks as visually and intuitively interesting as possible.
+                </p>
+                <p>
+                    As noted a moment ago, all games are designed to create a fiction defined by strict rules,
+                    objectives, and mechanics. These fictions could be a simple as immersing the player in a virtual
+                    game of chess or as complex as an open-world role playing game. The biggest difference between a
+                    game behaving unexpectedly and general software doing the same is this sense of immersion that the
+                    player feels. When a word processor or web browser crashes, it is an unexpected inconvenience to the
+                    user. When a game crashes, the player may experience a strong break in their immersion or even an
+                    increase in immersion when the crash artistically serves to accent a story. <i>Undertale</i>,{" "}
+                    <i>Anatomy</i>, and <i>Five Nights at Freddy's</i> are good examples of this latter category,
+                    deliberately using crashes as an artistic choice. When the rules of a game a broken, the resulting
+                    changes are much more impactful from a subjective point of view than if the same happens to more
+                    "mundane" software.
+                </p>
+                <p>
+                    When searching for games with known arbitrary code execution vulnerabilities, compilations are
+                    dominated by older games, generally from the 2000s and earlier. This is likely a result of three
+                    major factors: hardware limitations, software limitations, and complexity. Early game consoles
+                    operated under very different hardware constraints than even contemporary home computers. Since
+                    their function was much more limited in scope and were often designed on strict budgets, consoles
+                    often employed very specialized and limited hardware.
+                </p>
+                <p>
+                    Consider the Nintendo Entertainment System from 1985 (US) and the Tandy 1000 from 1984. A developer
+                    writing software for the NES needed to consider several disjoint components along with severe
+                    hardware restrictions. The system was comprised of a Ricoh 2A03
+                    <Footnote>Essentially a clone of the famous MOS 6502 microprocessor.</Footnote>, a dedicated audio
+                    processing unit, a picture processing unit, 2KB of video RAM, 2KB of work RAM, in addition to active
+                    chips on the game cartridge such as character RAM and ROM for tile and sprite data. This on top of
+                    working around physical limitations of CRT displays, namely the fact that graphics needed to be
+                    constrained to the time it physically takes the CRT's electron beam to move back to the top of the
+                    screen. In contrast, the Tandy 1000 came equipped with the much more powerful Intel 8088, 128KB os
+                    RAM, a Tandy video controller, and a Texas Instruments SN76489 sound chip. Since the Tandy was
+                    designed for much more general computing and could sell at a higher price point, it could afford to
+                    avoid many of the NES' hardware restrictions.
+                </p>
+                <p>
+                    For early game consoles such as the NES, these hardware restrictions placed restrictions on how
+                    software could be designed. With the extremely limited RAM and 8-bit CPU, Nintendo's developers
+                    needed to take shortcuts. Their priorities were working, optimized software over robustness and
+                    security. For instance, the developers of the original Super Mario Bros. left only five slots for
+                    sprites (with large sprites like Bowser or fire bars taking up two slots). When looking to spawn a
+                    new sprite, their code would simply walk along the list until an empty slot was reached. This, of
+                    course, left open the possibility for a buffer overflow. However, since the developers were also in
+                    control of level layout, this overflow would rarely happen (unless intentionally induced). Operating
+                    under the processing restrictions of their processor and the limited size of program ROM, proper
+                    checks against buffer overflows were never included. The delivery of a working game was more
+                    important than the delivery of a robust game.
+                </p>
+                <p>
+                    A final factor in the prevalence of arbitrary code execution vulnerabilities in older games is
+                    complexity, or lack thereof. By virtue of their strict hardware and software constraints, early
+                    games were relatively simple. To use Super Mario Bros. as an example once more, the entire game
+                    could fit within 40KB and 16,000 lines of code. In comparison, a modern platformer game could
+                    contain hundreds of thousands of lines of code on top of an existing game engine. For complex
+                    open-world games, complexity grows even further with games like Elden Ring or No Man's Sky running
+                    on binaries in the multiple gigabyte range (excluding game assets). Modern game environments are
+                    also significantly more complex with more rules and possible states. Opportunities for arbitrary
+                    code execution are rarely found by accident in games. Oftentimes, the engineering of such an exploit
+                    requires in-depth of how the game is designed internally and how it specifically interacts with the
+                    hardware. This offers a much smaller search space of game states that could potentially be
+                    manipulated into a vulnerable state. However, just because exploits in smaller games are easier to
+                    spot does not mean that larger games are naturally more secure. When then, do we not see more major
+                    vulnerabilities in modern games? Modern game development relies heavily on forms of code-reuse such
+                    as packages or engines, rather than developing games as a single monolith. Each component of a
+                    modern game is often tested and validated with modern code quality standards in mind. While these
+                    larger and more complex games may have more points of failure, they are also much more robustly
+                    designed and tested.
+                </p>
+                <p>
+                    Systems do not automatically become more resistant to exploitation as they grow in complexity, quite
+                    the opposite. Such resistance in modern games and other systems comes from deliberate efforts and
+                    intentional design. Keep this in mind.
+                </p>
+                <p>
+                    When this design is intentionally or unintentionally ignored, the effects of severe vulnerabilities
+                    on game worlds can be dramatically apparent. That buffer overflow in Super Mario Bros. mentioned
+                    earlier can indeed serve as a component in an arbitrary code execution exploit. Similar
+                    vulnerabilities exist in other games of the time, such as The Legend of Zelda or Castlevania. The
+                    result of a collaboration between multiple retro game exploiters, the following video by{" "}
+                    <i>Kosmic</i> showcases the extent to which game worlds can be completely rewritten through the
+                    rewriting of their internal patterns of execution:{" "}
+                    <Link href={"https://www.youtube.com/watch?v=Le3g9V-BJIA"}>
+                        Super Mario Bros. "ACE" TAS Showcase and Console Verification
+                    </Link>
+                    . Here, the fiction of "Super Mario Bros." is annihilated completely and replaced with the fiction
+                    of "The Legend of Zelda" by actively rewriting the former game's code to behave exactly like the
+                    latter. This replacement allows the exploitation of three more arbitrary code execution exploits
+                    chained in succession to replace this second game world with a third and fourth completely.
+                </p>
+                <p>
+                    In operating systems or utility software, such vulnerabilities usually result in much less dramatic
+                    spectacles. However, their impact from a security and economic point of view is often much more
+                    severe than a break in video game immersion.
+                </p>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
