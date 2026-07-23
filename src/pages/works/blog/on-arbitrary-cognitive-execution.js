@@ -265,6 +265,9 @@ export default function ArbitraryCognition() {
                     proposal to system administrators. With system logs often used for low-level debugging, unauthorized
                     activity would have been even more difficult to hide from one's peers and management.
                 </p>
+                <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/ibm-360.jpg"}>
+                    An IBM S/360 mainframe.
+                </BlogImage>
                 <p>
                     Another obstacle was connectivity. If the target of a hack was in a different institution (or even a
                     different department), there was no guarantee that the attacking machine and the attacked machine
@@ -669,7 +672,12 @@ int main() {
                     <Link href={"https://www.youtube.com/watch?v=Le3g9V-BJIA"}>
                         Super Mario Bros. "ACE" TAS Showcase and Console Verification
                     </Link>
-                    . Here, the fiction of "Super Mario Bros." is annihilated completely and replaced with the fiction
+                    . By manipulating Mario's position along with the exact positions of on-screen sprites, the program
+                    counter of the NES' processor can be jumped to a specific region of RAM. From here, the console will
+                    start reading in the controller inputs as instructions. Mundane-seeming inputs to this system can
+                    result in this system, through its behavior, breaking the rules that originally governed it. In this
+                    state, normal inputs through the controller can be used to reprogram the game at runtime. Using this
+                    exploit, the fiction of "Super Mario Bros." is annihilated completely and replaced with the fiction
                     of "The Legend of Zelda" by actively rewriting the former game's code to behave exactly like the
                     latter. This replacement allows the exploitation of three more arbitrary code execution exploits
                     chained in succession to replace this second game world with a third and fourth completely.
