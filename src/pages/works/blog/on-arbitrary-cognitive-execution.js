@@ -16,6 +16,9 @@ const blogInfo = new BlogInfo(
     new Date(2026, 6, 13)
 );
 
+let house = <span style={{ color: "CornflowerBlue" }}>house</span>;
+let House = <span style={{ color: "CornflowerBlue" }}>House</span>;
+
 export default function ArbitraryCognition() {
     return (
         <BlogWrapper
@@ -714,6 +717,58 @@ int main() {
                     sight, or idea that was designed to arbitrarily influence the cognition of its target. In the same
                     manner with which cleverly designed inputs to a program can arbitrarily influence its execution, a
                     cleverly designed stimuli to a mind can arbitrarily influence its cognition.
+                </p>
+                <p>
+                    <i>The King in Yellow</i> is a fictional play no different from any other, at least for its first
+                    act. I the second act, the words of its script become so compelling, so beautiful, so terrifying
+                    that all who read it inevitably find themselves gazing across the black waters of the Lake of Hali,
+                    in Carcosa along with the characters of the cursed play. In Robert W. Chambers' book by the same
+                    name in our reality, this book is not described as overtly magical. To the contrary, despite its
+                    spellbinding influence, the character of the book regularly acknowledge that it was written by a
+                    non-magical author. Merely a human who just so happened to string together a sequence of words which
+                    exploited some fatal flaw in the human brain. This is in stark contrast with a similar
+                    insanity-inducing book: Lovecraft's <i>Necronomicon</i>. This book is inseparable from the magical
+                    Old Ones which are referenced throughout the Cthulhu mythos. Instead of the book's powerful
+                    influence being derived from its contents alone, this ancient tome is only special due to its ties
+                    to unknowable eldritch entities. The fictional author of <i>The King in Yellow</i> had no such ties
+                    (at least not explicitly). Instead, the play is so dangerous because it is able to embed a specific
+                    pattern of ideas and beliefs into its reader during its first act. During act two, the "payload",
+                    for lack of a better word, is triggered. This is the point of no return for readers as they find
+                    their conscious and unconscious thoughts subsumed by the play, its setting, and its characters. Of
+                    particular interest is the mechanism of delivery for the play, regular words on regular sheets of
+                    paper. No psychological preparation is needed for the play to affect a reader, its influence lies
+                    entirely in the patterns of information that it imparts upon them. Despite this anthology being
+                    first published in 1895, the mechanism with which the play exploits the minds of its readers is
+                    shockingly similar to the mechanisms of modern arbitrary code execution: a sequence of deliberately
+                    crafted inputs to coerce the target system into a specific state, then the execution of some payload
+                    which exploits some subtlety in the patterns embedded in that system.
+                </p>
+                <p>
+                    At the end of Ash Tree Lane, there is a {house}; a {house} that is bigger on the inside than on the
+                    outside; a {house} that does not exist; a {house} that you cannot escape. Mark Z. Danielewski's
+                    {House} of Leaves follows Johnny Truant after he discovers an essay which analyzes the nonexistent
+                    documentary of a {house} that is not real. Starting off as nothing more than a curiosity, Johnny
+                    becomes engrossed in the essay the more he reads, becoming more and more detached from reality. The
+                    author of the text, a blind man known as Zampanò, himself became consumed by his work, eventually
+                    dying of unknown causes and leaving Johnny to find his collection of scattered notes and
+                    manuscripts. As Johnny reads what Zampanò wrote, the {house} progressively leaks into Johnny's
+                    reality. By merely reading the pattern of information that is contained within the manuscript,
+                    Johnny's reality becomes meshed with Zampanò's and Will Navidson's, the subject of the{" "}
+                    <i>Navidson Record</i> documentary. On its surface, the effects of Zampanò's appear to be impacting
+                    reality, as evidenced by deep gouges in Zampanò's apartment floor and scratcher appearing on Johnny
+                    himself. However, the entire book is presented as a compilation of johnny's own notes on Zampanò's
+                    work. All of his supplementary footnotes are from Johnny's perspective, rather than an objective
+                    representation of reality. The {house} is not corrupting Johnny's reality, it is corrupting his{" "}
+                    <i>perception</i> of reality. Just as readers of <i>The King in Yellow</i> imagined themselves
+                    embedded within Carcosa, so too does Johnny perceive himself as embedded within the reality of the{" "}
+                    {house} on Ash Tree Lane. While Johnny himself is shown to have struggled with his own mental state
+                    in general, the effect of Zampanò's work also appears to have impacted Zampanò himself. As he
+                    dictated his analysis of a film that did not exist, he too was impacted by it. After his
+                    disappearance, Johnny found the windows of Zampanò's apartment to nailed shut, the vents taped, and
+                    the door secured with many locks. During Johnny's decline in mental state, his apartment begins to
+                    look substantially similar as he fights to keep the outside world from seeping into his reality.
+                    Without any external driver, the patterns of words contained with Zampanò's notes influence the
+                    cognition of its readers to behave in similar ways.
                 </p>
                 <hr />
                 <FootnoteList />
