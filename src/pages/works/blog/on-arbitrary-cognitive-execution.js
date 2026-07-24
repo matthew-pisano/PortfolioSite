@@ -561,7 +561,7 @@ int main() {
                     buffer overflows, ASLR and stack canaries offer a defense against this attack, but are not always
                     available in all programs or systems.
                 </p>
-                <BlogSection>Exploiting Execution in Software</BlogSection>
+                <BlogSection>Exploiting Execution in Games</BlogSection>
                 <p>
                     When considering only toy examples in isolation, vulnerable code seems fairly easy to catch and fix.
                     After all, if programmers simply checked their buffer bounds, compiled their code with protections
@@ -571,7 +571,6 @@ int main() {
                     or embedded software, cannot be reduced to such simple terms. Just because the exact mechanism of a
                     vulnerability is unknown <i>does not</i> mean it is impossible.
                 </p>
-                <BlogSection level={2}>Exploiting Games</BlogSection>
                 <p>
                     The medium of video games can offer particularly compelling examples of the strength and scope of
                     "arbitrary" code execution. This because video games offer interactive fictions with well-defined
@@ -683,9 +682,38 @@ int main() {
                     chained in succession to replace this second game world with a third and fourth completely.
                 </p>
                 <p>
-                    In operating systems or utility software, such vulnerabilities usually result in much less dramatic
-                    spectacles. However, their impact from a security and economic point of view is often much more
-                    severe than a break in video game immersion.
+                    Why do we find ourselves interested in arbitrary code execution in these games? On a technical
+                    level, these pieces of software are no different from operating systems or firewalls. The answer
+                    lies in the unique immersive qualities of games. Our interest in these exploits really lies in the
+                    allure of a familiar environment being corrupted or transformed; a reality bent to the will of some
+                    unfamiliar force. Notably, this warping of reality is commonly explored by works of function in the
+                    context of the only reality we can directly experience: the human mind.
+                </p>
+                <BlogSection>Influencing Cognition in Fiction</BlogSection>
+                <p>
+                    For many of us, the capabilities of our minds are tied inexorably to our degree of identity. The
+                    degradation of these capabilities is tantamount to the destruction of our senses of self. In
+                    fiction, we are often drawn to the ideas that terrify us the most. Authors are well aware of this
+                    sentiment and regularly leverage the allure of insanity to create compelling narrative device.
+                    Especially in the genres of cosmic horror and science fiction, losing one's mind is a common trope.
+                    The sources of these cognitive influences are often magical and fantastical in nature. An ineffable
+                    eldritch god or a mind-wiping pen do not require technical explanations or details to keep audiences
+                    engaged with the story. These devices do not break the rules of their story's universe; they do not
+                    fundamentally break the suspension of belief required for engaging with the story to begin with. Not
+                    all mind-altering plots fit into this pattern, however.
+                </p>
+                <p>
+                    For some stories, the rules of their universe are the same rules as our own ... for the most part.
+                    In these works of fiction, seemingly ordinary objects, ideas, or patterns of information present
+                    real threats to the minds of their characters. To borrow the language of SCP, these can be
+                    classified as <i>cognitohazards</i>: objects, ideas, or patterns that are hazardous for someone to
+                    merely perceive. Additionally, fictional cognitohazards are often corrupted manifestations of
+                    seemingly mundane objects; objects that we regularly interact with in reality. A play so beautiful
+                    and compelling that it causes all who read it to believe they themselves are its actors, a book that
+                    consumes the reader so thoroughly that they can no longer fathom their lives without it; a sound,
+                    sight, or idea that was designed to arbitrarily influence the cognition of its target. In the same
+                    manner with which cleverly designed inputs to a program can arbitrarily influence its execution, a
+                    cleverly designed stimuli to a mind can arbitrarily influence its cognition.
                 </p>
                 <hr />
                 <FootnoteList />
