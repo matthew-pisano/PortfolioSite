@@ -768,7 +768,35 @@ int main() {
                     the door secured with many locks. During Johnny's decline in mental state, his apartment begins to
                     look substantially similar as he fights to keep the outside world from seeping into his reality.
                     Without any external driver, the patterns of words contained with Zampanò's notes influence the
-                    cognition of its readers to behave in similar ways.
+                    cognition of its readers to behave in similar ways. Johnny's behavior as he is continually exposed
+                    to Zampanò's writings reveals another interesting property it possesses: the manner in which it can
+                    influence someone's cognition is <i>general</i>. Johnny and Zampanò did not have any close
+                    relationship or even behavioral patterns before Johnny begins his study of Will Navidson and his{" "}
+                    {house}. Despite this, their behaviors begin to slowly converge by the sole virtue of the specific
+                    configuration of the text.
+                </p>
+                <p>
+                    While intriguing in a conceptual sense, purley textual examples of arbitrary cognitive execution
+                    seem fairly unrealistic. While the written word has the powerful ability of persuasive influence,
+                    this is far from truly arbitrary in reality.
+                </p>
+                <BlogSection>Cognition as Computation</BlogSection>
+                <BlogSection>Arbitrary Cognitive Execution</BlogSection>
+                <p>
+                    Text is a relatively low dimensional medium of input, there are only so many conceptual patterns
+                    which a sequence of symbols can theoretically convey and fewer still (if any) which can successfully
+                    impart those conceptual patterns to any given reader. Though impractically large, the full spectrum
+                    of human sensory inputs over a finite number of time steps technically forms a searchable and
+                    indexable space. Suppose an attacker desired that their target perform some task and there existed
+                    at least one cognitive state in which the target would accomplish that task conditional upon the
+                    experience of some sequence of sensory inputs.
+                </p>
+                <p>
+                    For mundane scenarios, this appears to be a gross over-formalization. If someone's present cognitive
+                    state included knowledge of a friend and the sound of their voice and conditional upon receiving the
+                    auditory input of that friend's voice asking for a cup of coffee, that someone is likely to fulfil
+                    the task of acquiring a cup of coffee. The utility of this formalization, however, becomes much more
+                    apparent when the generality and capability of an attack grows.
                 </p>
                 <hr />
                 <FootnoteList />
