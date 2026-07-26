@@ -778,7 +778,82 @@ int main() {
                 <p>
                     While intriguing in a conceptual sense, purley textual examples of arbitrary cognitive execution
                     seem fairly unrealistic. While the written word has the powerful ability of persuasive influence,
-                    this is far from truly arbitrary in reality.
+                    this is far from truly arbitrary in reality. The meaning or message of a piece of text may have
+                    greatly different impacts on different people. Consider a text which argues that an approach
+                    formulated only with observations and statistics is ideal for addressing social issues. This text
+                    may appear quite compelling and rational to a utilitarian, but incomplete and naive to a humanist.
+                    Communicating a pattern of ideas to someone through text inherently means condensing those
+                    information rich and complex ideas into information sparse text, leaving the reader to restore that
+                    richness by filling in the information that the text lacks. Again consider the utilitarian text from
+                    a moment ago. To formulate the text, the author drew upon their personal knowledge, information rich
+                    life experiences, and reasoning in order to craft a compelling argument. The highly expressive
+                    internal representation of the author's argument then needed to be compressed down into text for
+                    distribution. Text cannot fully and concisely capture the full state of the author's mind, so much
+                    of the richness in the author's internal argument is lost. Upon someone reading the text, they
+                    attempt to restore the argument to full fidelity by supplementing the raw text with their own
+                    knowledge, experiences, and reasoning. The supplemental information of the header, however, is
+                    different from that of the author, leading to the text having a different impact on the reader as it
+                    would on the author. In order to more realistically and losslessly convey an author, or attacker's,
+                    message, we need to consider mediums of transmission beyond merely textual.
+                </p>
+                <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/plaything.png"}>
+                    The Circular Glyph from <i>Black Mirror</i>'s <i>Plaything</i>.
+                </BlogImage>
+                <p>
+                    Season 7, episode 4 of the sci-fi horror series <i>Black Mirror</i> takes this approach when
+                    considering a mechanism for cognitive influence. The episode, titles <i>Plaything</i> is centered on
+                    Cameron Walker, a former video game journalist in the present year 2034 and as he recounts his 1990s
+                    journalistic work. After being assigned to review the life simulation game <i>Thronglets</i>, he
+                    soon becomes obsessed with the ever-evolving creatures that it simulates. Over time, he begins to
+                    believe that the creatures in the game are communicating with him. They tell him to collect
+                    electronic parts to use for upgrading his computer. Over time, the simulation, and the creatures
+                    which inhabit grow in capability and intelligence thanks to these added computing resources.
+                    Cameron's continually grows his computer's collection of hardware for forty years until he is
+                    arrested for shoplifting and on suspicion of a murder he commited shortly after receiving the game.
+                    For the purposes of our discussion, however, the majority of the episode is set dressing as the most
+                    substantive scene is the episode's very last. After confessing to his crimes in the interrogation
+                    room, he requests a pen and paper. Using these, he draws a specific circular glyph. Once finished,
+                    he holds it up to the room's security camera. Exploiting some vulnerability within the camera's
+                    image recognition software, Cameron's attack
+                    <Footnote>
+                        I use the term "Cameron's attack" here instead of simple "Cameron" directly because he did not
+                        design the attack himself. By this point in 2034, Cameron has allowed the <i>Thronglets</i> to
+                        cohabitate his brain directly. From here, these creatures were the ones who designed the glyph
+                        and the subsequent patterns of sound played to the city's inhabitants.
+                    </Footnote>{" "}
+                    gains control of the city's distributed security apparatus. Once this control is established, the
+                    payload is delivered: every speaker in the vicinity begins to play an extremely loud, computerized
+                    tone. All who hear this tone immediately fall unconscious. In the context of the episode, this is
+                    implied to grant the <i>Thronglets</i> control over all who were exploited. While other episodes in{" "}
+                    <i>Black Mirror</i> deal with mind control or behavioral influence, <i>Plaything</i> is the only one
+                    to pair these cognitive exploits with software exploits as well. Here, humans are nothing more than
+                    the payload recipients at the end of a complex attack chain. First, the glyph performs a traditional
+                    software exploit on the city-wide security apparatus, granting Cameron's attack arbitrary control
+                    over the apparatus' execution. Next, this arbitrary control is used to play back a very specific
+                    sequence of sounds. These sounds exploit some unexplained vulnerability within the brains of all
+                    those who hear it, granting the <i>Thronglets</i> arbitrary control over their cognitive state. In
+                    contrast to text, the full spectrum of human audio input offers a much more high fidelity medium of
+                    enabling an attack. The volume of the sound also allows it to overpower all other auditory stimuli.
+                    Presumably, this reduction in noise, allows the brain to process the incoming inputs in the manner
+                    required for the attack to succeed. Of course, sounds can modify the behavior of people outside of a
+                    sci-fi setting. For example, a fire alarm modifies our behavior away from what we were doing
+                    previously and to moving towards the nearest exit. However, real-life sounds are limited in their
+                    ability to modify our behavior and in their sensitivity to context. To use the alarm example, it can
+                    really only influence a single behavior and even then in a very coarse manner: it cannot control
+                    someone's exact path or speed. Additionally, sounds are also context-sensitive: the administrator of
+                    a fire drill stays to complete the drill instead of exiting, even though they hear the exact same
+                    sound. The differentiator between the <i>Thronglets</i>' attack and a more mundane sound is that it
+                    is both general and context-free. General in the sense that it can completely overwrite a person's
+                    entire cognitive state and context-free as its effects are invariant across many different people
+                    <Footnote>
+                        The "context" here being the natural cognitive states of affected people. Different people
+                        inherently have different cognitive states due to their internal brain structures and life
+                        experiences. A "context-free" attack succeeds to manipulate the internal structure of a human
+                        brain irrespective of its previous state. For an analogy, the same arbitrary code execution
+                        exploit can impact different copies of a program running on CPUs with different micro
+                        architectures.
+                    </Footnote>
+                    .
                 </p>
                 <BlogSection>Cognition as Computation</BlogSection>
                 <BlogSection>Arbitrary Cognitive Execution</BlogSection>
