@@ -705,6 +705,7 @@ int main() {
                     fundamentally break the suspension of belief required for engaging with the story to begin with. Not
                     all mind-altering plots fit into this pattern, however.
                 </p>
+                <BlogSection level={2}>Low Fidelity Embeddings</BlogSection>
                 <p>
                     For some stories, the rules of their universe are the same rules as our own ... for the most part.
                     In these works of fiction, seemingly ordinary objects, ideas, or patterns of information present
@@ -796,6 +797,7 @@ int main() {
                     would on the author. In order to more realistically and losslessly convey an author, or attacker's,
                     message, we need to consider mediums of transmission beyond merely textual.
                 </p>
+                <BlogSection level={2}>High Fidelity Embeddings</BlogSection>
                 <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/plaything.png"}>
                     The Circular Glyph from <i>Black Mirror</i>'s <i>Plaything</i>.
                 </BlogImage>
