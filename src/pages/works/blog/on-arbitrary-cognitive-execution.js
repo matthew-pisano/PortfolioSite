@@ -883,7 +883,69 @@ int main() {
                     of a system, rather than anything intrinsic to the system itself, makes it susceptible (or
                     susceptible) to low-level control through certain patterns of input.
                 </p>
-                <p></p>
+                <p>
+                    In works of fiction, the human brain is assumed to function in a similar fashion. By default, the
+                    patterns of neuronal interactions present in the brain are not set up in a manner that enables
+                    inputs to arbitrarily influence cognition. Authors often implicitly recognize this through how they
+                    set up the rules of their stories. Especially for stories set in realities very similar to our own,
+                    an actor likely cannot simply walk up to someone else and command them to carry out that actor's
+                    goals. Even when this is the case, the effect of the actor is limited in generality. For example,
+                    commands from a parent or supervisor are only effective if the state of the target's mind already
+                    contains patterns matching those of a child or a subordinate. Instead, in a similar fashion to
+                    software, some setup is required. The patterns present in a target brain must be modified into those
+                    which are more amenable to control. Readers of <i>The King in Yellow</i>'s second act are more
+                    likely to assimilate if they had already been primed by the first act. Johnny Truant and Zampanò
+                    went mad only after extended exposure to the {house} on Ash Tree Lane. The <i>Thronglets</i> could
+                    only exert their influence over humans after they had been primed by their sonic exploit. These
+                    primers coerce their target into a state more susceptible to control through the subtle modification
+                    of the patterns internal to their brains.
+                </p>
+                <p>
+                    Traditionally, <i>memetics</i> is the study of cultural memes
+                    <Footnote>Originally coined by biologist Richard Dawkins</Footnote> and how they evolve and spread
+                    among different groups of people. Framing this in the language of patterns and states, memetics can
+                    be thought of as the study of patterns of cognition, how they replicate, and they are transmitted.
+                    When a meme is transmitted, it modifies the mental patterns of the receiver by grafting a small
+                    portion of the sender's state of mind onto that of the receiver. In reality memes can already have
+                    incredibly potent coercive affects on those exposed to them: cultural traditions, religions,
+                    economic systems, or scientific theories exert significant influence over how we think and interact
+                    with others. Particularly compelling memes can even spread from person to person in the same manner
+                    as biological or computer viruses
+                    <Footnote>
+                        This is most notably explored by Richard Dawkins in his essay "Viruses of the Mind".
+                    </Footnote>
+                    . This idea is often taken to its logical extremes in fiction, such as in the collaborative works of
+                    the <i>SCP Foundation</i>. While in reality memes alone can moderately and conditionally influence
+                    the patterns represented in an individual mind, in this fiction memes can generally and
+                    unconditionally modify the internal states of all those exposed to them. These fictional memes are
+                    able to exploit patterns in how the mind normally operates to overwrite those existing patterns
+                    arbitrarily. In <i>Introductory Antimemetics</i>
+                    <Footnote>
+                        Later adapted into the novel <i> There Is No Antimemetics Division</i>.
+                    </Footnote>
+                    , a short story by qntm (Sam Hughes), a memetic virus is the driver of the main conflict. In this
+                    context, a memetic virus is an idea that can spread by someone merely becoming aware of its
+                    existence. Spread can be direct, as through conversation with an "infected" host, or indirect, as
+                    through a text describing the meme itself. In this story, the infectious idea refers to itself as
+                    Alastair Grey. Grey is what is known as an <i>Antimemetic kill agent</i>, a meme which destroys
+                    information instead of spreading it. While standard memes modify the patterns of their host's
+                    cognition in order to impart those same patterns onto others, the main effect of antimemetic memes
+                    <Footnote>Somewhat of an oxymoron.</Footnote> is to destroy the existing patterns of a victim's
+                    cognition, rather than merely modifying them. These kill agents actively overwrite the memories,
+                    personality, and reasoning of their host while passively spreading through exposure to already
+                    infected hosts or even mere descriptions. Importantly, Grey does not exist in the physical world, it
+                    is not sentient. Grey is merely an idea that replicated within the mind before eventually consuming
+                    and destroying it, just as RNA viruses do to their host cells. There is no external force directing
+                    a host's mind to self-destruct, the mind does it on its own, replicating the memetic patterns that
+                    have infected it, just as computer viruses may encrypt or destroy computer drives. Just as an RNA
+                    virus exploits a cell's existing replication machinery by feeding it instructions to replicate virus
+                    genetic material instead of host genetic material. And just as a computer virus exploits the CPUs
+                    instruction following logic by feeding it virus-controlled instructions over host instructions. So
+                    too does a memetic virus exploit the existing patterns of cognition to perpetuate the meme itself
+                    over perpetuating the existing host's patterns. As the brain prioritizes the replication of the kill
+                    agent, less and less of the original brain's state remains until it has been completely replaced
+                    with the infectious meme.
+                </p>
                 <BlogSection>Cognition as Computation</BlogSection>
                 <BlogSection>Arbitrary Cognitive Execution</BlogSection>
                 <p>
