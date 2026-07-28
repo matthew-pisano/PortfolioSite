@@ -821,32 +821,32 @@ int main() {
                         I use the term "Cameron's attack" here instead of simple "Cameron" directly because he did not
                         design the attack himself. By this point in 2034, Cameron has allowed the <i>Thronglets</i> to
                         cohabitate his brain directly. From here, these creatures were the ones who designed the glyph
-                        and the subsequent patterns of sound played to the city's inhabitants.
+                        and the subsequent patterns of sound played to the state's inhabitants.
                     </Footnote>{" "}
-                    gains control of the city's distributed security apparatus. Once this control is established, the
+                    gains control of the state's emergency alart system (EAS). Once this control is established, the
                     payload is delivered: every speaker in the vicinity begins to play an extremely loud, computerized
                     tone. All who hear this tone immediately fall unconscious. In the context of the episode, this is
                     implied to grant the <i>Thronglets</i> control over all who were exploited. While other episodes in{" "}
                     <i>Black Mirror</i> deal with mind control or behavioral influence, <i>Plaything</i> is the only one
                     to pair these cognitive exploits with software exploits as well. Here, humans are nothing more than
                     the payload recipients at the end of a complex attack chain. First, the glyph performs a traditional
-                    software exploit on the city-wide security apparatus, granting Cameron's attack arbitrary control
-                    over the apparatus' execution. Next, this arbitrary control is used to play back a very specific
-                    sequence of sounds. These sounds exploit some unexplained vulnerability within the brains of all
-                    those who hear it, granting the <i>Thronglets</i> arbitrary control over their cognitive state. In
-                    contrast to text, the full spectrum of human audio input offers a much more high fidelity medium of
-                    enabling an attack. The volume of the sound also allows it to overpower all other auditory stimuli.
-                    Presumably, this reduction in noise, allows the brain to process the incoming inputs in the manner
-                    required for the attack to succeed. Of course, sounds can modify the behavior of people outside of a
-                    sci-fi setting. For example, a fire alarm modifies our behavior away from what we were doing
-                    previously and to moving towards the nearest exit. However, real-life sounds are limited in their
-                    ability to modify our behavior and in their sensitivity to context. To use the alarm example, it can
-                    really only influence a single behavior and even then in a very coarse manner: it cannot control
-                    someone's exact path or speed. Additionally, sounds are also context-sensitive: the administrator of
-                    a fire drill stays to complete the drill instead of exiting, even though they hear the exact same
-                    sound. The differentiator between the <i>Thronglets</i>' attack and a more mundane sound is that it
-                    is both general and context-free. General in the sense that it can completely overwrite a person's
-                    entire cognitive state and context-free as its effects are invariant across many different people
+                    software exploit on the state-wide EAS system, granting Cameron's attack arbitrary control over the
+                    system's execution. Next, this arbitrary control is used to play back a very specific sequence of
+                    sounds. These sounds exploit some unexplained vulnerability within the brains of all those who hear
+                    it, granting the <i>Thronglets</i> arbitrary control over their cognitive state. In contrast to
+                    text, the full spectrum of human audio input offers a much more high fidelity medium of enabling an
+                    attack. The volume of the sound also allows it to overpower all other auditory stimuli. Presumably,
+                    this reduction in noise, allows the brain to process the incoming inputs in the manner required for
+                    the attack to succeed. Of course, sounds can modify the behavior of people outside of a sci-fi
+                    setting. For example, a fire alarm modifies our behavior away from what we were doing previously and
+                    to moving towards the nearest exit. However, real-life sounds are limited in their ability to modify
+                    our behavior and in their sensitivity to context. To use the alarm example, it can really only
+                    influence a single behavior and even then in a very coarse manner: it cannot control someone's exact
+                    path or speed. Additionally, sounds are also context-sensitive: the administrator of a fire drill
+                    stays to complete the drill instead of exiting, even though they hear the exact same sound. The
+                    differentiator between the <i>Thronglets</i>' attack and a more mundane sound is that it is both
+                    general and context-free. General in the sense that it can completely overwrite a person's entire
+                    cognitive state and context-free as its effects are invariant across many different people
                     <Footnote>
                         The "context" here being the natural cognitive states of affected people. Different people
                         inherently have different cognitive states due to their internal brain structures and life
@@ -856,6 +856,27 @@ int main() {
                         architectures.
                     </Footnote>
                     .
+                </p>
+                <p>
+                    Taking a step back, how can we think of both arbitrary code execution and arbitrary cognitive
+                    execution more generally? Both are end-goals of attempts to exploit some target system, electronic
+                    or organic. Why the need for exploitation, though? If the target system is general enough to allow
+                    for arbitrary execution in the first place, why could an exploiter not simply direct the system to
+                    accomplish their goals from the outset? The answer lies in patterns of execution. Suppose an
+                    operating system is running a shell that a user can interact with. Given sufficient permissions,
+                    this shell allows a user to input a program which can arbitrarily control which instructions the CPU
+                    executes
+                    <Footnote>
+                        On a Unix system, this shell would also need to be running as a kernel-level process to have
+                        access to certain protected system calls or system instructions.
+                    </Footnote>
+                    . Why is this possible through this shell program when it is not through, for example, a
+                    word-processor? The answer lies in patterns of execution. When running the shell program, the system
+                    already has a pattern of instructions loaded into memory which is specifically designed to give the
+                    user low-level control over itself. When running a word-processor, the system's memory contains a
+                    different pattern of instructions which is not designed to enable low-level user control. The state
+                    of a system, rather than anything intrinsic to the system itself, makes it susceptible (or
+                    susceptible) to low-level control through certain patterns of input.
                 </p>
                 <BlogSection>Cognition as Computation</BlogSection>
                 <BlogSection>Arbitrary Cognitive Execution</BlogSection>
