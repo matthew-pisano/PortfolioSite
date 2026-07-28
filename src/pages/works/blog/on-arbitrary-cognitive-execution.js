@@ -760,21 +760,23 @@ int main() {
                     himself. However, the entire book is presented as a compilation of johnny's own notes on Zampanò's
                     work. All of his supplementary footnotes are from Johnny's perspective, rather than an objective
                     representation of reality. The {house} is not corrupting Johnny's reality, it is corrupting his{" "}
-                    <i>perception</i> of reality. Just as readers of <i>The King in Yellow</i> imagined themselves
-                    embedded within Carcosa, so too does Johnny perceive himself as embedded within the reality of the{" "}
-                    {house} on Ash Tree Lane. While Johnny himself is shown to have struggled with his own mental state
-                    in general, the effect of Zampanò's work also appears to have impacted Zampanò himself. As he
-                    dictated his analysis of a film that did not exist, he too was impacted by it. After his
-                    disappearance, Johnny found the windows of Zampanò's apartment to nailed shut, the vents taped, and
-                    the door secured with many locks. During Johnny's decline in mental state, his apartment begins to
-                    look substantially similar as he fights to keep the outside world from seeping into his reality.
-                    Without any external driver, the patterns of words contained with Zampanò's notes influence the
-                    cognition of its readers to behave in similar ways. Johnny's behavior as he is continually exposed
-                    to Zampanò's writings reveals another interesting property it possesses: the manner in which it can
-                    influence someone's cognition is <i>general</i>. Johnny and Zampanò did not have any close
-                    relationship or even behavioral patterns before Johnny begins his study of Will Navidson and his{" "}
-                    {house}. Despite this, their behaviors begin to slowly converge by the sole virtue of the specific
-                    configuration of the text.
+                    <i>perception</i> of reality.
+                </p>
+                <p>
+                    Just as readers of <i>The King in Yellow</i> imagined themselves embedded within Carcosa, so too
+                    does Johnny perceive himself as embedded within the reality of the {house} on Ash Tree Lane. While
+                    Johnny himself is shown to have struggled with his own mental state in general, the effect of
+                    Zampanò's work also appears to have impacted Zampanò himself. As he dictated his analysis of a film
+                    that did not exist, he too was impacted by it. After his disappearance, Johnny found the windows of
+                    Zampanò's apartment to nailed shut, the vents taped, and the door secured with many locks. During
+                    Johnny's decline in mental state, his apartment begins to look substantially similar as he fights to
+                    keep the outside world from seeping into his reality. Without any external driver, the patterns of
+                    words contained with Zampanò's notes influence the cognition of its readers to behave in similar
+                    ways. Johnny's behavior as he is continually exposed to Zampanò's writings reveals another
+                    interesting property it possesses: the manner in which it can influence someone's cognition is{" "}
+                    <i>general</i>. Johnny and Zampanò did not have any close relationship or even behavioral patterns
+                    before Johnny begins his study of Will Navidson and his {house}. Despite this, their behaviors begin
+                    to slowly converge by the sole virtue of the specific configuration of the text.
                 </p>
                 <p>
                     While intriguing in a conceptual sense, purley textual examples of arbitrary cognitive execution
@@ -826,27 +828,30 @@ int main() {
                     gains control of the state's emergency alart system (EAS). Once this control is established, the
                     payload is delivered: every speaker in the vicinity begins to play an extremely loud, computerized
                     tone. All who hear this tone immediately fall unconscious. In the context of the episode, this is
-                    implied to grant the <i>Thronglets</i> control over all who were exploited. While other episodes in{" "}
-                    <i>Black Mirror</i> deal with mind control or behavioral influence, <i>Plaything</i> is the only one
-                    to pair these cognitive exploits with software exploits as well. Here, humans are nothing more than
-                    the payload recipients at the end of a complex attack chain. First, the glyph performs a traditional
-                    software exploit on the state-wide EAS system, granting Cameron's attack arbitrary control over the
-                    system's execution. Next, this arbitrary control is used to play back a very specific sequence of
-                    sounds. These sounds exploit some unexplained vulnerability within the brains of all those who hear
-                    it, granting the <i>Thronglets</i> arbitrary control over their cognitive state. In contrast to
-                    text, the full spectrum of human audio input offers a much more high fidelity medium of enabling an
-                    attack. The volume of the sound also allows it to overpower all other auditory stimuli. Presumably,
-                    this reduction in noise, allows the brain to process the incoming inputs in the manner required for
-                    the attack to succeed. Of course, sounds can modify the behavior of people outside of a sci-fi
-                    setting. For example, a fire alarm modifies our behavior away from what we were doing previously and
-                    to moving towards the nearest exit. However, real-life sounds are limited in their ability to modify
-                    our behavior and in their sensitivity to context. To use the alarm example, it can really only
-                    influence a single behavior and even then in a very coarse manner: it cannot control someone's exact
-                    path or speed. Additionally, sounds are also context-sensitive: the administrator of a fire drill
-                    stays to complete the drill instead of exiting, even though they hear the exact same sound. The
-                    differentiator between the <i>Thronglets</i>' attack and a more mundane sound is that it is both
-                    general and context-free. General in the sense that it can completely overwrite a person's entire
-                    cognitive state and context-free as its effects are invariant across many different people
+                    implied to grant the <i>Thronglets</i> control over all who were exploited.
+                </p>
+                <p>
+                    While other episodes in <i>Black Mirror</i> deal with mind control or behavioral influence,{" "}
+                    <i>Plaything</i> is the only one to pair these cognitive exploits with software exploits as well.
+                    Here, humans are nothing more than the payload recipients at the end of a complex attack chain.
+                    First, the glyph performs a traditional software exploit on the state-wide EAS system, granting
+                    Cameron's attack arbitrary control over the system's execution. Next, this arbitrary control is used
+                    to play back a very specific sequence of sounds. These sounds exploit some unexplained vulnerability
+                    within the brains of all those who hear it, granting the <i>Thronglets</i> arbitrary control over
+                    their cognitive state. In contrast to text, the full spectrum of human audio input offers a much
+                    more high fidelity medium of enabling an attack. The volume of the sound also allows it to overpower
+                    all other auditory stimuli. Presumably, this reduction in noise, allows the brain to process the
+                    incoming inputs in the manner required for the attack to succeed. Of course, sounds can modify the
+                    behavior of people outside of a sci-fi setting. For example, a fire alarm modifies our behavior away
+                    from what we were doing previously and to moving towards the nearest exit. However, real-life sounds
+                    are limited in their ability to modify our behavior and in their sensitivity to context. To use the
+                    alarm example, it can really only influence a single behavior and even then in a very coarse manner:
+                    it cannot control someone's exact path or speed. Additionally, sounds are also context-sensitive:
+                    the administrator of a fire drill stays to complete the drill instead of exiting, even though they
+                    hear the exact same sound. The differentiator between the <i>Thronglets</i>' attack and a more
+                    mundane sound is that it is both general and context-free. General in the sense that it can
+                    completely overwrite a person's entire cognitive state and context-free as its effects are invariant
+                    across many different people
                     <Footnote>
                         The "context" here being the natural cognitive states of affected people. Different people
                         inherently have different cognitive states due to their internal brain structures and life
@@ -878,6 +883,7 @@ int main() {
                     of a system, rather than anything intrinsic to the system itself, makes it susceptible (or
                     susceptible) to low-level control through certain patterns of input.
                 </p>
+                <p></p>
                 <BlogSection>Cognition as Computation</BlogSection>
                 <BlogSection>Arbitrary Cognitive Execution</BlogSection>
                 <p>
