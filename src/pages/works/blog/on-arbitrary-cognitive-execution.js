@@ -63,13 +63,16 @@ export default function ArbitraryCognition() {
                     In late 2017, researchers at Google were experimenting with adversarial attacks to their VGG16 image
                     recognition model
                     <Footnote>
-                        <Link href={"https://arxiv.org/pdf/1712.09665"}>Adversarial Patch (Brown et al. 2018)</Link>.
+                        <Link href={"https://arxiv.org/pdf/1712.09665"} target="_blank" rel="noopener noreferrer">
+                            Adversarial Patch (Brown et al. 2018)
+                        </Link>
+                        .
                     </Footnote>
                     . At the time, similar research into adversarial attacks on vision models were popular, but mainly
                     focused on training-tme data poisoning
                     <Footnote>
                         For example,{" "}
-                        <Link href={"https://arxiv.org/pdf/1712.05526"}>
+                        <Link href={"https://arxiv.org/pdf/1712.05526"} target="_blank" rel="noopener noreferrer">
                             Targeted Backdoor Attacks on Deep Learning Systems Using Data Poisoning (Chen et al. 2017)
                         </Link>
                         .
@@ -139,7 +142,7 @@ export default function ArbitraryCognition() {
                     Returning to our image recognition example, researchers used the tuned 138 million parameters of
                     VGGNET16 (X)
                     <Footnote>
-                        <Link href={"https://arxiv.org/pdf/1409.1556"}>
+                        <Link href={"https://arxiv.org/pdf/1409.1556"} target="_blank" rel="noopener noreferrer">
                             Very Deep Convolutional Networks for Large-Scale Image Recognition (Simonyan and Zisserman
                             2014)
                         </Link>
@@ -173,7 +176,10 @@ export default function ArbitraryCognition() {
                 <p>
                     What does it mean for a system to be a computing device? I have previously approached this from the
                     high-level angle of simulating Turing machines in my work{" "}
-                    <Link href={"https://matthewpisano.com/works/blog/on-general-transformers"}>
+                    <Link
+                        href={"https://matthewpisano.com/works/blog/on-general-transformers"}
+                        target="_blank"
+                        rel="noopener noreferrer">
                         On Generally Intelligent Transformers
                     </Link>
                     , but we can arrive at a more precisely scoped definition by asking which behaviors we expect a
@@ -355,8 +361,13 @@ export default function ArbitraryCognition() {
                         secondary role to the likes of Gödel, Turing, and Shannon. Hopefully the courses that I have
                         directly interacted with are an anomaly in this resect. Regardless, I'd highly recommend taking
                         a second look at his lift, abilities and accomplishments. See my thoughts on{" "}
-                        <Link href={"https://matthewpisano.com/works/reading-list#maniac"}>The MANIAC</Link> for some
-                        more detailed commentary.
+                        <Link
+                            href={"https://matthewpisano.com/works/reading-list#maniac"}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            The MANIAC
+                        </Link>{" "}
+                        for some more detailed commentary.
                     </Footnote>
                     architecture. In this schema, computers are neatly split into a processor, a memory unit, and I/O
                     devices. Generally, the processor contains the logic on how to interpret instructions, the memory
@@ -671,7 +682,10 @@ int main() {
                     result of a collaboration between multiple retro game exploiters, the following video by{" "}
                     <i>Kosmic</i> showcases the extent to which game worlds can be completely rewritten through the
                     rewriting of their internal patterns of execution:{" "}
-                    <Link href={"https://www.youtube.com/watch?v=Le3g9V-BJIA"}>
+                    <Link
+                        href={"https://www.youtube.com/watch?v=Le3g9V-BJIA"}
+                        target="_blank"
+                        rel="noopener noreferrer">
                         Super Mario Bros. "ACE" TAS Showcase and Console Verification
                     </Link>
                     . By manipulating Mario's position along with the exact positions of on-screen sprites, the program
@@ -955,8 +969,23 @@ int main() {
                     a few times within this work so far. While this may already seem intuitive, perhaps in the sense of
                     high-level <i>observational learning</i>
                     <Footnote>
-                        See: <i>Social foundations of thought and action</i> (Bandura 1986) and{" "}
-                        <i>Understanding Observational Learning: An Interbehavioral Approach</i> (Fryling et al. 2011).
+                        See:{" "}
+                        <Link
+                            href={
+                                "https://www.semanticscholar.org/paper/Social-Foundations-of-Thought-and-Action-Bandura/78c6775fccdbbed66f823dae2cfa01570ecb3c05"
+                            }
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Social foundations of thought and action (Bandura 1986)
+                        </Link>{" "}
+                        and{" "}
+                        <Link
+                            href={"https://pmc.ncbi.nlm.nih.gov/articles/PMC3139552/"}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Understanding Observational Learning: An Interbehavioral Approach (Fryling et al. 2011)
+                        </Link>
+                        .
                     </Footnote>
                     , to properly examine arbitrary cognitive execution, we must instead think of pattern replication at
                     the level of neurons and neuronal clusters. This may feel less intuitive: while neurons do indeed
