@@ -949,7 +949,22 @@ int main() {
                     less of the original brain's state remains, until it has been completely replaced with the
                     infectious meme.
                 </p>
-                <BlogSection>Cognition as Computation</BlogSection>
+                <BlogSection>Cognition as Pattern Replication</BlogSection>
+                <p>
+                    The concept of the human brain functioning akin to a pattern replication machine has been referenced
+                    a few times within this work so far. While this may already seem intuitive, perhaps in the sense of
+                    high-level <i>observational learning</i>
+                    <Footnote>
+                        See: <i>Social foundations of thought and action</i> (Bandura 1986) and{" "}
+                        <i>Understanding Observational Learning: An Interbehavioral Approach</i> (Fryling et al. 2011).
+                    </Footnote>
+                    , to properly examine arbitrary cognitive execution, we must instead think of pattern replication at
+                    the level of neurons and neuronal clusters. This may feel less intuitive: while neurons do indeed
+                    fire based on the firings of its neighbors, this would appear to be a local association, rather than
+                    pattern replication at a more general scale. This section will be dedicated to substantiating and
+                    contextualizing this concept as it occurs naturally in order to later understand how it could be
+                    induced artificially.
+                </p>
                 <BlogSection>Arbitrary Cognitive Execution</BlogSection>
                 <p>
                     Text is a relatively low dimensional medium of input, there are only so many conceptual patterns
