@@ -935,16 +935,19 @@ int main() {
                     personality, and reasoning of their host while passively spreading through exposure to already
                     infected hosts or even mere descriptions. Importantly, Grey does not exist in the physical world, it
                     is not sentient. Grey is merely an idea that replicated within the mind before eventually consuming
-                    and destroying it, just as RNA viruses do to their host cells. There is no external force directing
-                    a host's mind to self-destruct, the mind does it on its own, replicating the memetic patterns that
-                    have infected it, just as computer viruses may encrypt or destroy computer drives. Just as an RNA
-                    virus exploits a cell's existing replication machinery by feeding it instructions to replicate virus
-                    genetic material instead of host genetic material. And just as a computer virus exploits the CPUs
-                    instruction following logic by feeding it virus-controlled instructions over host instructions. So
-                    too does a memetic virus exploit the existing patterns of cognition to perpetuate the meme itself
-                    over perpetuating the existing host's patterns. As the brain prioritizes the replication of the kill
-                    agent, less and less of the original brain's state remains until it has been completely replaced
-                    with the infectious meme.
+                    and destroying it.
+                </p>
+                <p>
+                    There is no external force directing a host's mind to self-destruct, the mind does it on its own,
+                    replicating the memetic patterns that have infected it. The naive cognitive machinery within with
+                    brain continues to replicate patterns as it normally would, unaware that these new patterns are
+                    foreign to their host. As we have seen, this strategy appears in other machines, such as cells or
+                    computers. Computer viruses manipulate the operating system into spawning new viral processes or
+                    sharing virus copies over a network. RNA viruses exploit a cell's existing replication machinery by
+                    feeding it instructions to replicate virus genetic material instead of host genetic material.
+                    Similarly, memetic viruses prioritizes the replication of memetic patterns of cognition as less and
+                    less of the original brain's state remains, until it has been completely replaced with the
+                    infectious meme.
                 </p>
                 <BlogSection>Cognition as Computation</BlogSection>
                 <BlogSection>Arbitrary Cognitive Execution</BlogSection>
