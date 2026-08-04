@@ -69,7 +69,7 @@ export default function ArbitraryCognition() {
                         .
                     </Footnote>
                     . At the time, similar research into adversarial attacks on vision models were popular, but mainly
-                    focused on training-tme data poisoning
+                    focused on training-time data poisoning
                     <Footnote>
                         For example,{" "}
                         <Link href={"https://arxiv.org/pdf/1712.05526"} target="_blank" rel="noopener noreferrer">
@@ -96,7 +96,7 @@ export default function ArbitraryCognition() {
                     What is actually happening here? The model weights were frozen for this exercise, so the model
                     itself was not corrupted; on non-adversarial images, it functioned normally as well. Invariant of
                     any particular image, data still flowed from input image to output classification. The model's
-                    neurons still manipulated incoming signals a fully expected manner. This particular image patch,
+                    neurons still manipulated incoming signals in a fully expected manner. This particular image patch,
                     however, hijacked the normal pattern of activations to generate an output that does not logically
                     follow from the input. From the model's perspective, it experienced the <i>qualia</i> of sensing a
                     toaster, but this internal experience was not induced by the genuine article. Each step in the long
@@ -106,7 +106,7 @@ export default function ArbitraryCognition() {
                 </p>
                 <p>
                     What makes this particular attack notable with respect to others such as training data poisoning or
-                    adversarial fine-tuning? Both can achieve the same affect of making the model believe that a banana
+                    adversarial fine-tuning? Both can achieve the same effect of making the model believe that a banana
                     is a toaster. This attack, however, does not rely on modifying the model's behavior. Instead, an
                     erroneous output is induced by a malicious input alone, leaving the underlying model unaffected.
                 </p>
@@ -148,13 +148,13 @@ export default function ArbitraryCognition() {
                         </Link>
                         .
                     </Footnote>{" "}
-                    as a proxy for choosing the correct label for an image (Y). These is no guarantee that the trained
+                    as a proxy for choosing the correct label for an image (Y). There is no guarantee that the trained
                     state of the parameters would always yield "banana" when presented with a picture of a banana, they
                     just happen to do so for an acceptable portion of the evaluation samples. The image patch exploits
                     the state of the model's parameters to yield "toaster" instead. Note that the parameters were never
                     changed, nor was the computer's ability to successfully evaluate the input conditional on those
                     parameters. In the exact same manner as a more traditional assembly example, a working program was
-                    induced into a unexpected state without modification.
+                    induced into an unexpected state without modification.
                 </p>
                 <p>
                     Arbitrary code execution is commonly thought of as only present in traditional, register-based
@@ -186,15 +186,15 @@ export default function ArbitraryCognition() {
                     computing device to express.
                 </p>
                 <p>
-                    Chiefly, we could like for our computing systems to be useful. To extract useful computations, we
+                    Chiefly, we would like for our computing systems to be useful. To extract useful computations, we
                     need a system with a well-defined interface for input and output. A system which could take input at
                     any point and give output at any point is less of a device and more of an exposition of raw physical
                     laws. The restriction of manner and format of input and output greatly simplifies the design process
-                    and eliminates ambiguity. We also our computing device to transform patterns of input information
-                    into different patterns of output information. A system which always echoes its input as output does
-                    not add any information of its own and is therefore not very useful. This manipulation must be
-                    predictable, though not necessarily deterministic. The use case of a computing device is to add
-                    meaningful
+                    and eliminates ambiguity. We also want our computing device to transform patterns of input
+                    information into different patterns of output information. A system which always echoes its input as
+                    output does not add any information of its own and is therefore not very useful. This manipulation
+                    must be predictable, though not necessarily deterministic. The use case of a computing device is to
+                    add meaningful
                     <Footnote>
                         <i>Meaning</i> and <i>information</i> may seem like orthogonal concepts from an information
                         theory perspective, but when speaking of computing devices in this manner, we are speaking
@@ -216,13 +216,13 @@ export default function ArbitraryCognition() {
                     class of configurations: itself. A cooling cup of tea cannot, for instance, be tuned into modeling a
                     cooling cup of coffee without being irreversibly turned into that system. In contrast, what we
                     commonly consider to be computing devices can simulate both, a game of chess, or a webpage. While we
-                    like for computing devices to be general, they do not necessarily need to be Turing complete. for
+                    like for computing devices to be general, they do not necessarily need to be Turing complete. For
                     example, Programmable Logic Arrays and certain off-chip accelerators could be considered to be
                     "computing devices" but are not themselves Turing complete
                     <Footnote>
                         In a similar vein was the Soviet <i>Turnir</i> (Турнир) console released in 1978. Unlike
                         contemporary home consoles like the Atari 2600 or the Magnavox Odyssey which could play a
-                        variety of games, the Turnir could only olay one. Unlike the Atari's general-purpose MOS 6507,
+                        variety of games, the Turnir could only play one. Unlike the Atari's general-purpose MOS 6507,
                         this console relied upon the AY-3-8500. This chip in particular was designed to play <i>PONG</i>{" "}
                         and nothing else. Even though the Turnir technically came with six built-in games, all were just
                         the same tennis game with themed overlays for hockey or squash. The Turnir is another example of
@@ -237,19 +237,19 @@ export default function ArbitraryCognition() {
                     input, manipulates this information in a predictable manner, dependent on a task-oriented internal
                     configuration, and outputs different patterns of information. This definition encapsulates classical
                     and quantum computers in general, along with specialized systems such as artificial or even
-                    biological neural networks. Most importantly, this definition gives us a way to now only describe
+                    biological neural networks. Most importantly, this definition gives us a way to not only describe
                     how a system behaves normally, but also how it could be exploited to behave abnormally.
                 </p>
                 <BlogSection>Arbitrary Code Execution</BlogSection>
                 <p>
                     Before further investigating the much more theoretical applications of arbitrary code execution, it
                     would help to better understand how it works in traditional computers. Early in the history of
-                    computing, the thread of malicious actors was much less of a central focus than it is today. Before
+                    computing, the threat of malicious actors was much less of a central focus than it is today. Before
                     the highly interconnected networks of computers that began to appear in the 1970s, computer
                     programming was much more localized. Programmers concentrated on a program's utility and engineering
                     viability over explicit security. Many programs were bespoke, built for specialized systems and
                     applications. Even the computers themselves were confined to research labs or universities. Time
-                    using them was at a premium to even determined would-be hackers would have needed to officially log
+                    using them was at a premium, so even determined would-be hackers would have needed to officially log
                     and justify any usage of rare and expensive computer equipment. This resulted in an informal
                     professional agreement between engineers, if nobody acted maliciously, there was no reason to waste
                     valuable developer hours on securing software from other developers. Evidence of this trust-based
@@ -264,12 +264,12 @@ export default function ArbitraryCognition() {
                     and IBM 2741 terminal (essentially just a modified and automated Selectric typewriter). The first
                     obstacle that this researcher would face is time. In 1965, time-sharing operating systems were rare;
                     this was two years before IBM would release TSS/360 for their mainframes. If a system was performing
-                    calculations on someone's behalf, that was oftentimes the <i>only</i> think that system was doing.
+                    calculations on someone's behalf, that was oftentimes the <i>only</i> thing that system was doing.
                     Every cycle of that system was precious and needed to be effectively rationed. If someone had a job
                     to run, they needed to log exactly what the job was, how long it would take, and when it would
                     begin. For those working on large computing clusters today (especially before a large conference
                     deadline!), this may feel familiar, there are only so many GPU hours to go around so jobs must be
-                    carefully scheduled. Back in 1965, is someone wanted to use a multi-million dollar machine for their
+                    carefully scheduled. Back in 1965, if someone wanted to use a multi-million dollar machine for their
                     own malfeasance, they would have needed to make up a plausible justification and submit their false
                     proposal to system administrators. With system logs often used for low-level debugging, unauthorized
                     activity would have been even more difficult to hide from one's peers and management.
@@ -282,7 +282,7 @@ export default function ArbitraryCognition() {
                     different department), there was no guarantee that the attacking machine and the attacked machine
                     would even have a direct route of communication. If a malicious actor only physically had access to
                     their own machine, remotely accessing another would have been significantly more difficult than
-                    today, perhaps even impossible. While this could technically be overcome through physically vising
+                    today, perhaps even impossible. While this could technically be overcome through physically visiting
                     the target or through social engineering, these activities would have been difficult to conceal.
                     Even if two computers were technically connected, there was no guarantee that the other computer
                     would even be listening and not running another program. The isolated and special-purpose nature of
@@ -346,7 +346,7 @@ export default function ArbitraryCognition() {
                     or may not work as the attacker intends or may not work at all. Instead, consider something much
                     lower in level, something that directly exploits the complex patterns in how our neurons activate.
                     This prospect seems much more absurd. Why? Just because we have yet to see an example, like our 1965
-                    programmer, does not mean it is possible. The real difference is that we simply have no reason to
+                    programmer, does not mean it is impossible. The real difference is that we simply have no reason to
                     believe that it <i>is</i> possible. The sheer intractability of the problem seems too great to
                     overcome; we do not know how our own brains work, much less how to exploit those inner workings.
                     Computer hacking is much easier to conceptualize. We know <i>exactly</i> how computers work. We
@@ -359,8 +359,8 @@ export default function ArbitraryCognition() {
                     <Footnote>
                         In the computer science curricula that I have taken and taught John Von Neumann often takes a
                         secondary role to the likes of Gödel, Turing, and Shannon. Hopefully the courses that I have
-                        directly interacted with are an anomaly in this resect. Regardless, I'd highly recommend taking
-                        a second look at his lift, abilities and accomplishments. See my thoughts on{" "}
+                        directly interacted with are an anomaly in this respect. Regardless, I'd highly recommend taking
+                        a second look at his life, abilities and accomplishments. See my thoughts on{" "}
                         <Link
                             href={"https://matthewpisano.com/works/reading-list#maniac"}
                             target="_blank"
@@ -402,7 +402,7 @@ export default function ArbitraryCognition() {
                     to run arbitrary code of their choosing.
                 </p>
                 <p>
-                    Lets first consider a toy example, then work up from there. Most systems have a special register
+                    Let's first consider a toy example, then work up from there. Most systems have a special register
                     called the "program counter". This register, like any other, will contain a number. This number
                     represents the memory address at which the CPU will look to for its next instruction. This counter
                     increments as the program executes with special control flow instruction moving it in the case of
@@ -421,7 +421,7 @@ export default function ArbitraryCognition() {
     jal password_check  # Check that the user-given password matches the secret password
 
 input:
-    .space 4            # The space for the use input
+    .space 4            # The space for the user input
 
 password_check:         # Password check procedure
     la $a0, password    # Set the password as the first input to the string compare
@@ -446,7 +446,7 @@ reveal_secret:          # Reveal the secret
                     will spill over into the next word, the next instruction. In this case, this is the first
                     instruction in the
                     <code>password_check</code> procedure. Suppose that the instructions which compose this procedure
-                    begin in memory at address <i>0x00400044</i> and the <code>reveal_secret</code> procedure lied at{" "}
+                    begin in memory at address <i>0x00400044</i> and the <code>reveal_secret</code> procedure lies at{" "}
                     <i>0x00400064</i>. Initially, <code>password_check</code>'s address would store <i>0x3c010040</i>,
                     corresponding to the instruction <code>la $a0, password</code>
                     <Footnote>
@@ -462,8 +462,8 @@ reveal_secret:          # Reveal the secret
                     instead execute <code>j reveal_secret</code>. Instead of loading the password's address into a
                     register, the program will immediately begin to reveal the secret that would usually be kept behind
                     a password check. Through the overflow of their input, the user was given control over the program
-                    counter. This allowed them to execute <i>arbitrator code</i> of their choosing. By knowing exactly
-                    how the computer executes instructions and the patterns of those instructions that it recognize, we
+                    counter. This allowed them to execute <i>arbitrary code</i> of their choosing. By knowing exactly
+                    how the computer executes instructions and the patterns of those instructions that it recognizes, we
                     can exploit the predictable behavior of that machine to do whatever we wish.
                 </p>
                 <BlogSection level={2}>Common Exploits and Mechanics</BlogSection>
@@ -488,7 +488,7 @@ reveal_secret:          # Reveal the secret
                     attack. No-execute bits in memory forbid data placed in a data region (such as the stack) from being
                     executed. Address space layout randomization (ASLR) ensures that programs loaded into memory
                     randomize the addresses of instructions. In our example this would have prevented us from knowing
-                    which address to jump to. Stack canaries are another common projection, with the operating system
+                    which address to jump to. Stack canaries are another common protection, with the operating system
                     placing randomized values just before the return address of a procedure. If these values are
                     overwritten by an overflow, the system can terminate the program.
                 </p>
@@ -502,7 +502,7 @@ reveal_secret:          # Reveal the secret
                         with the topic.
                     </Footnote>
                     . This can also be more transparent for an attacker to spot. If an attacker can find a sequence of
-                    inputs to a program that cause a crash of page fault, they could reasonably infer that somewhere
+                    inputs to a program that cause a crash or page fault, they could reasonably infer that somewhere
                     within that program, a pointer is being mishandled. If a pointer is being mishandled, there is also
                     a chance that the attacker could insert a value that they control into it. Use-after-free and
                     double-free vulnerabilities both stem from structural issues within a program and a lack of proper
@@ -511,7 +511,7 @@ reveal_secret:          # Reveal the secret
                     when a significant amount of memory can be released or if much more needs to be allocated. Since the
                     program, through tools such as <i>malloc</i>, manage their memory on their own, it is the program's
                     responsibility to keep track of which blocks of memory are actively used in objects or data
-                    structures an which are free to be allocated. Importantly, when a block of memory has been
+                    structures and which are free to be allocated. Importantly, when a block of memory has been
                     allocated, it is owned exclusively by some structure; newly allocated structures cannot be allocated
                     on top of it. This lets programmers assume that (threading notwithstanding) the memory of one object
                     will not be modified by another unless their program explicitly allows it. After a pointer to an
@@ -567,8 +567,8 @@ int main() {
                     corrupt the return address of a procedure, they can arbitrarily place the program counter wherever
                     they want next, very similar to our original buffer overflow example. Instead of this being the
                     entire attack chain, this process is repeated many times. Each time, the return address of a
-                    procedure is overwritten and control is transferred an another arbitrary piece of code. At every
-                    stop, memory is manipulated and the program counter is mannered into the position that is required
+                    procedure is overwritten and control is transferred to another arbitrary piece of code. At every
+                    stop, memory is manipulated and the program counter is maneuvered into the position that is required
                     at the end of the attack. These individual blocks of hijacked code are referred to as "gadgets" as
                     they are only used as small utilities in service of the larger attack. When done right, the state of
                     a program can be manipulated arbitrarily without triggering any execution violations. Similarly to
@@ -587,7 +587,7 @@ int main() {
                 </p>
                 <p>
                     The medium of video games can offer particularly compelling examples of the strength and scope of
-                    "arbitrary" code execution. This because video games offer interactive fictions with well-defined
+                    "arbitrary" code execution. This is because video games offer interactive fictions with well-defined
                     rules and expectations. While achieving arbitrary code execution in an operating system's kernel is
                     far more severe from a security standpoint, such an attack may not represent much of a change from a
                     human perspective. Visually, at least, an attacker's payload does not fundamentally change the rules
@@ -603,14 +603,14 @@ int main() {
                 </p>
                 <p>
                     As noted a moment ago, all games are designed to create a fiction defined by strict rules,
-                    objectives, and mechanics. These fictions could be a simple as immersing the player in a virtual
+                    objectives, and mechanics. These fictions could be as simple as immersing the player in a virtual
                     game of chess or as complex as an open-world role playing game. The biggest difference between a
                     game behaving unexpectedly and general software doing the same is this sense of immersion that the
                     player feels. When a word processor or web browser crashes, it is an unexpected inconvenience to the
                     user. When a game crashes, the player may experience a strong break in their immersion or even an
                     increase in immersion when the crash artistically serves to accent a story. <i>Undertale</i>,{" "}
                     <i>Anatomy</i>, and <i>Five Nights at Freddy's</i> are good examples of this latter category,
-                    deliberately using crashes as an artistic choice. When the rules of a game a broken, the resulting
+                    deliberately using crashes as an artistic choice. When the rules of a game are broken, the resulting
                     changes are much more impactful from a subjective point of view than if the same happens to more
                     "mundane" software.
                 </p>
@@ -631,7 +631,7 @@ int main() {
                     chips on the game cartridge such as character RAM and ROM for tile and sprite data. This on top of
                     working around physical limitations of CRT displays, namely the fact that graphics needed to be
                     constrained to the time it physically takes the CRT's electron beam to move back to the top of the
-                    screen. In contrast, the Tandy 1000 came equipped with the much more powerful Intel 8088, 128KB os
+                    screen. In contrast, the Tandy 1000 came equipped with the much more powerful Intel 8088, 128KB of
                     RAM, a Tandy video controller, and a Texas Instruments SN76489 sound chip. Since the Tandy was
                     designed for much more general computing and could sell at a higher price point, it could afford to
                     avoid many of the NES' hardware restrictions.
@@ -659,10 +659,10 @@ int main() {
                     on binaries in the multiple gigabyte range (excluding game assets). Modern game environments are
                     also significantly more complex with more rules and possible states. Opportunities for arbitrary
                     code execution are rarely found by accident in games. Oftentimes, the engineering of such an exploit
-                    requires in-depth of how the game is designed internally and how it specifically interacts with the
-                    hardware. This offers a much smaller search space of game states that could potentially be
+                    requires in-depth knowledge of how the game is designed internally and how it specifically interacts
+                    with the hardware. This offers a much smaller search space of game states that could potentially be
                     manipulated into a vulnerable state. However, just because exploits in smaller games are easier to
-                    spot does not mean that larger games are naturally more secure. When then, do we not see more major
+                    spot does not mean that larger games are naturally more secure. Why then, do we not see more major
                     vulnerabilities in modern games? Modern game development relies heavily on forms of code-reuse such
                     as packages or engines, rather than developing games as a single monolith. Each component of a
                     modern game is often tested and validated with modern code quality standards in mind. While these
@@ -703,7 +703,7 @@ int main() {
                     level, these pieces of software are no different from operating systems or firewalls. The answer
                     lies in the unique immersive qualities of games. Our interest in these exploits really lies in the
                     allure of a familiar environment being corrupted or transformed; a reality bent to the will of some
-                    unfamiliar force. Notably, this warping of reality is commonly explored by works of function in the
+                    unfamiliar force. Notably, this warping of reality is commonly explored by works of fiction in the
                     context of the only reality we can directly experience: the human mind.
                 </p>
                 <BlogSection>Influencing Cognition in Fiction</BlogSection>
@@ -711,7 +711,7 @@ int main() {
                     For many of us, the capabilities of our minds are tied inexorably to our degree of identity. The
                     degradation of these capabilities is tantamount to the destruction of our senses of self. In
                     fiction, we are often drawn to the ideas that terrify us the most. Authors are well aware of this
-                    sentiment and regularly leverage the allure of insanity to create compelling narrative device.
+                    sentiment and regularly leverage the allure of insanity to create compelling narrative devices.
                     Especially in the genres of cosmic horror and science fiction, losing one's mind is a common trope.
                     The sources of these cognitive influences are often magical and fantastical in nature. An ineffable
                     eldritch god or a mind-wiping pen do not require technical explanations or details to keep audiences
@@ -735,11 +735,11 @@ int main() {
                 </p>
                 <p>
                     <i>The King in Yellow</i> is a fictional play no different from any other, at least for its first
-                    act. I the second act, the words of its script become so compelling, so beautiful, so terrifying
+                    act. In the second act, the words of its script become so compelling, so beautiful, so terrifying
                     that all who read it inevitably find themselves gazing across the black waters of the Lake of Hali,
                     in Carcosa along with the characters of the cursed play. In Robert W. Chambers' book by the same
                     name in our reality, this book is not described as overtly magical. To the contrary, despite its
-                    spellbinding influence, the character of the book regularly acknowledge that it was written by a
+                    spellbinding influence, the character of the book regularly acknowledges that it was written by a
                     non-magical author. Merely a human who just so happened to string together a sequence of words which
                     exploited some fatal flaw in the human brain. This is in stark contrast with a similar
                     insanity-inducing book: Lovecraft's <i>Necronomicon</i>. This book is inseparable from the magical
@@ -769,12 +769,12 @@ int main() {
                     manuscripts. As Johnny reads what Zampanò wrote, the {house} progressively leaks into Johnny's
                     reality. By merely reading the pattern of information that is contained within the manuscript,
                     Johnny's reality becomes meshed with Zampanò's and Will Navidson's, the subject of the{" "}
-                    <i>Navidson Record</i> documentary. On its surface, the effects of Zampanò's appear to be impacting
-                    reality, as evidenced by deep gouges in Zampanò's apartment floor and scratcher appearing on Johnny
-                    himself. However, the entire book is presented as a compilation of johnny's own notes on Zampanò's
-                    work. All of his supplementary footnotes are from Johnny's perspective, rather than an objective
-                    representation of reality. The {house} is not corrupting Johnny's reality, it is corrupting his{" "}
-                    <i>perception</i> of reality.
+                    <i>Navidson Record</i> documentary. On its surface, the effects of Zampanò's work appear to be
+                    impacting reality, as evidenced by deep gouges in Zampanò's apartment floor and scratches appearing
+                    on Johnny himself. However, the entire book is presented as a compilation of Johnny's own notes on
+                    Zampanò's work. All of his supplementary footnotes are from Johnny's perspective, rather than an
+                    objective representation of reality. The {house} is not corrupting Johnny's reality, it is
+                    corrupting his <i>perception</i> of reality.
                 </p>
                 <p>
                     Just as readers of <i>The King in Yellow</i> imagined themselves embedded within Carcosa, so too
@@ -782,10 +782,10 @@ int main() {
                     Johnny himself is shown to have struggled with his own mental state in general, the effect of
                     Zampanò's work also appears to have impacted Zampanò himself. As he dictated his analysis of a film
                     that did not exist, he too was impacted by it. After his disappearance, Johnny found the windows of
-                    Zampanò's apartment to nailed shut, the vents taped, and the door secured with many locks. During
+                    Zampanò's apartment to be nailed shut, the vents taped, and the door secured with many locks. During
                     Johnny's decline in mental state, his apartment begins to look substantially similar as he fights to
                     keep the outside world from seeping into his reality. Without any external driver, the patterns of
-                    words contained with Zampanò's notes influence the cognition of its readers to behave in similar
+                    words contained within Zampanò's notes influence the cognition of its readers to behave in similar
                     ways. Johnny's behavior as he is continually exposed to Zampanò's writings reveals another
                     interesting property it possesses: the manner in which it can influence someone's cognition is{" "}
                     <i>general</i>. Johnny and Zampanò did not have any close relationship or even behavioral patterns
@@ -793,7 +793,7 @@ int main() {
                     to slowly converge by the sole virtue of the specific configuration of the text.
                 </p>
                 <p>
-                    While intriguing in a conceptual sense, purley textual examples of arbitrary cognitive execution
+                    While intriguing in a conceptual sense, purely textual examples of arbitrary cognitive execution
                     seem fairly unrealistic. While the written word has the powerful ability of persuasive influence,
                     this is far from truly arbitrary in reality. The meaning or message of a piece of text may have
                     greatly different impacts on different people. Consider a text which argues that an approach
@@ -808,7 +808,7 @@ int main() {
                     distribution. Text cannot fully and concisely capture the full state of the author's mind, so much
                     of the richness in the author's internal argument is lost. Upon someone reading the text, they
                     attempt to restore the argument to full fidelity by supplementing the raw text with their own
-                    knowledge, experiences, and reasoning. The supplemental information of the header, however, is
+                    knowledge, experiences, and reasoning. The supplemental information of the reader, however, is
                     different from that of the author, leading to the text having a different impact on the reader as it
                     would on the author. In order to more realistically and losslessly convey an author, or attacker's,
                     message, we need to consider mediums of transmission beyond merely textual.
@@ -819,27 +819,27 @@ int main() {
                 </BlogImage>
                 <p>
                     Season 7, episode 4 of the sci-fi horror series <i>Black Mirror</i> takes this approach when
-                    considering a mechanism for cognitive influence. The episode, titles <i>Plaything</i> is centered on
-                    Cameron Walker, a former video game journalist in the present year 2034 and as he recounts his 1990s
+                    considering a mechanism for cognitive influence. The episode, titled <i>Plaything</i> is centered on
+                    Cameron Walker, a former video game journalist in the present year 2034 as he recounts his 1990s
                     journalistic work. After being assigned to review the life simulation game <i>Thronglets</i>, he
                     soon becomes obsessed with the ever-evolving creatures that it simulates. Over time, he begins to
                     believe that the creatures in the game are communicating with him. They tell him to collect
                     electronic parts to use for upgrading his computer. Over time, the simulation, and the creatures
-                    which inhabit grow in capability and intelligence thanks to these added computing resources.
-                    Cameron's continually grows his computer's collection of hardware for forty years until he is
-                    arrested for shoplifting and on suspicion of a murder he commited shortly after receiving the game.
-                    For the purposes of our discussion, however, the majority of the episode is set dressing as the most
+                    which inhabit it grow in capability and intelligence thanks to these added computing resources.
+                    Cameron continually grows his computer's collection of hardware for forty years until he is arrested
+                    for shoplifting and on suspicion of a murder he committed shortly after receiving the game. For the
+                    purposes of our discussion, however, the majority of the episode is set dressing as the most
                     substantive scene is the episode's very last. After confessing to his crimes in the interrogation
                     room, he requests a pen and paper. Using these, he draws a specific circular glyph. Once finished,
                     he holds it up to the room's security camera. Exploiting some vulnerability within the camera's
                     image recognition software, Cameron's attack
                     <Footnote>
-                        I use the term "Cameron's attack" here instead of simple "Cameron" directly because he did not
+                        I use the term "Cameron's attack" here instead of simply "Cameron" directly because he did not
                         design the attack himself. By this point in 2034, Cameron has allowed the <i>Thronglets</i> to
                         cohabitate his brain directly. From here, these creatures were the ones who designed the glyph
                         and the subsequent patterns of sound played to the state's inhabitants.
                     </Footnote>{" "}
-                    gains control of the state's emergency alart system (EAS). Once this control is established, the
+                    gains control of the state's emergency alert system (EAS). Once this control is established, the
                     payload is delivered: every speaker in the vicinity begins to play an extremely loud, computerized
                     tone. All who hear this tone immediately fall unconscious. In the context of the episode, this is
                     implied to grant the <i>Thronglets</i> control over all who were exploited.
@@ -894,8 +894,8 @@ int main() {
                     already has a pattern of instructions loaded into memory which is specifically designed to give the
                     user low-level control over itself. When running a word-processor, the system's memory contains a
                     different pattern of instructions which is not designed to enable low-level user control. The state
-                    of a system, rather than anything intrinsic to the system itself, makes it susceptible (or
-                    susceptible) to low-level control through certain patterns of input.
+                    of a system, rather than anything intrinsic to the system itself, makes it susceptible (or immune)
+                    to low-level control through certain patterns of input.
                 </p>
                 <p>
                     In works of fiction, the human brain is assumed to function in a similar fashion. By default, the
@@ -918,18 +918,18 @@ int main() {
                     Traditionally, <i>memetics</i> is the study of cultural memes
                     <Footnote>Originally coined by biologist Richard Dawkins</Footnote> and how they evolve and spread
                     among different groups of people. Framing this in the language of patterns and states, memetics can
-                    be thought of as the study of patterns of cognition, how they replicate, and they are transmitted.
-                    When a meme is transmitted, it modifies the mental patterns of the receiver by grafting a small
-                    portion of the sender's state of mind onto that of the receiver. In reality memes can already have
-                    incredibly potent coercive affects on those exposed to them: cultural traditions, religions,
-                    economic systems, or scientific theories exert significant influence over how we think and interact
-                    with others. Particularly compelling memes can even spread from person to person in the same manner
-                    as biological or computer viruses
+                    be thought of as the study of patterns of cognition, how they replicate, and how they are
+                    transmitted. When a meme is transmitted, it modifies the mental patterns of the receiver by grafting
+                    a small portion of the sender's state of mind onto that of the receiver. In reality, memes can
+                    already have incredibly potent coercive effects on those exposed to them: cultural traditions,
+                    religions, economic systems, or scientific theories exert significant influence over how we think
+                    and interact with others. Particularly compelling memes can even spread from person to person in the
+                    same manner as biological or computer viruses
                     <Footnote>
                         This is most notably explored by Richard Dawkins in his essay "Viruses of the Mind".
                     </Footnote>
                     . This idea is often taken to its logical extremes in fiction, such as in the collaborative works of
-                    the <i>SCP Foundation</i>. While in reality memes alone can moderately and conditionally influence
+                    the <i>SCP Foundation</i>. While in reality, memes alone can moderately and conditionally influence
                     the patterns represented in an individual mind, in this fiction memes can generally and
                     unconditionally modify the internal states of all those exposed to them. These fictional memes are
                     able to exploit patterns in how the mind normally operates to overwrite those existing patterns
@@ -953,13 +953,13 @@ int main() {
                 </p>
                 <p>
                     There is no external force directing a host's mind to self-destruct, the mind does it on its own,
-                    replicating the memetic patterns that have infected it. The naive cognitive machinery within with
+                    replicating the memetic patterns that have infected it. The naive cognitive machinery within the
                     brain continues to replicate patterns as it normally would, unaware that these new patterns are
                     foreign to their host. As we have seen, this strategy appears in other machines, such as cells or
                     computers. Computer viruses manipulate the operating system into spawning new viral processes or
                     sharing virus copies over a network. RNA viruses exploit a cell's existing replication machinery by
                     feeding it instructions to replicate virus genetic material instead of host genetic material.
-                    Similarly, memetic viruses prioritizes the replication of memetic patterns of cognition as less and
+                    Similarly, memetic viruses prioritize the replication of memetic patterns of cognition as less and
                     less of the original brain's state remains, until it has been completely replaced with the
                     infectious meme.
                 </p>
@@ -989,9 +989,9 @@ int main() {
                     </Footnote>
                     , to properly examine arbitrary cognitive execution, we must instead think of pattern replication at
                     the level of neurons and neuronal clusters. This may feel less intuitive: while neurons do indeed
-                    fire based on the firings of its neighbors, this would appear to be a local association, rather than
-                    pattern replication at a more general scale. This section will be dedicated to substantiating and
-                    contextualizing this concept as it occurs naturally in order to later understand how it could be
+                    fire based on the firings of their neighbors, this would appear to be a local association, rather
+                    than pattern replication at a more general scale. This section will be dedicated to substantiating
+                    and contextualizing this concept as it occurs naturally in order to later understand how it could be
                     induced artificially.
                 </p>
                 <BlogSection>Arbitrary Cognitive Execution</BlogSection>
