@@ -109,6 +109,9 @@ export default function ArbitraryCognition() {
                     adversarial fine-tuning? Both can achieve the same effect of making the model believe that a banana
                     is a toaster. This attack, however, does not rely on modifying the model's behavior. Instead, an
                     erroneous output is induced by a malicious input alone, leaving the underlying model unaffected.
+                    From the model's perspective, this becomes even more interesting: its internal experience did not
+                    follow from reality yet, to the model, its false experience was nonetheless indistinguishable from
+                    reality.
                 </p>
                 <BlogSection level={2}>Problems and Proxies</BlogSection>
                 <p>
