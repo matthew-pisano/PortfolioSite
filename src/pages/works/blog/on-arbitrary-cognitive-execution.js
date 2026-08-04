@@ -246,22 +246,29 @@ export default function ArbitraryCognition() {
                 </p>
                 <BlogSection>Arbitrary Code Execution</BlogSection>
                 <p>
-                    Before further investigating the much more theoretical applications of arbitrary code execution, it
-                    would help to better understand how it works in traditional computers. Early in the history of
-                    computing, the threat of malicious actors was much less of a central focus than it is today. Before
-                    the highly interconnected networks of computers that began to appear in the 1970s, computer
-                    programming was much more localized. Programmers concentrated on a program's utility and engineering
-                    viability over explicit security. Many programs were bespoke, built for specialized systems and
-                    applications. Even the computers themselves were confined to research labs or universities. Time
-                    using them was at a premium, so even determined would-be hackers would have needed to officially log
-                    and justify any usage of rare and expensive computer equipment. This resulted in an informal
-                    professional agreement between engineers: if nobody acted maliciously, there was no reason to waste
-                    valuable developer hours on securing software from other developers. Evidence of this trust-based
-                    design ethos can still be felt today when interacting with offline legacy software or the 2G
-                    wireless standard. This naive sense of trust began to quickly break down in the 1970s and 1980s with
-                    the rise of computer time-sharing, networks, and eventually the hacker.
+                    Before further investigating the much more theoretical implications of arbitrary code execution, it
+                    would help to better understand how it works in traditional computers and why it even works at all.
+                    As we will see, the possibility of these exploits is a fundamental feature of programming itself.
+                    Vulnerabilities do not emerge from simple programming oversights, they are almost inevitable
+                    consequences of the trade-offs required for building complex systems using limited foresight.
+                    Understanding this fundamental property of programming will be relevant later, when we ask whether
+                    the same vulnerabilities could exist within the brain.
                 </p>
                 <BlogSection level={2}>A Brief History of Hacking</BlogSection>
+                <p>
+                    Early in the history of computing, the threat of malicious actors was much less of a central focus
+                    than it is today. Before the highly interconnected networks of computers that began to appear in the
+                    1970s, computer programming was much more localized. Programmers concentrated on a program's utility
+                    and engineering viability over explicit security. Many programs were bespoke, built for specialized
+                    systems and applications. Even the computers themselves were confined to research labs or
+                    universities. Time using them was at a premium, so even determined would-be hackers would have
+                    needed to officially log and justify any usage of rare and expensive computer equipment. This
+                    resulted in an informal professional agreement between engineers: if nobody acted maliciously, there
+                    was no reason to waste valuable developer hours on securing software from other developers. Evidence
+                    of this trust-based design ethos can still be felt today when interacting with offline legacy
+                    software or the 2G wireless standard. This naive sense of trust began to quickly break down in the
+                    1970s and 1980s with the rise of computer time-sharing, networks, and eventually the hacker.
+                </p>
                 <p>
                     Suppose a malicious researcher in 1965 was interested in sabotaging a rival institution or academic
                     rival. Well-funded labs of the day may have access to a then state-of-the-art IBM S/360 mainframe
