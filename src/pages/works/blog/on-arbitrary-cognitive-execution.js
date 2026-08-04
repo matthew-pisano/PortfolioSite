@@ -60,8 +60,8 @@ export default function ArbitraryCognition() {
                     the first domino to fall was really at the beginning of the chain and not an intermediate one?
                 </p>
                 <p>
-                    In late 2017, researchers at Google were experimenting with adversarial attacks to their VGG16 image
-                    recognition model
+                    In late 2017, researchers at Google were experimenting with adversarial attacks to their VGGNet16
+                    image recognition model
                     <Footnote>
                         <Link href={"https://arxiv.org/pdf/1712.09665"} target="_blank" rel="noopener noreferrer">
                             Adversarial Patch (Brown et al. 2018)
@@ -77,7 +77,7 @@ export default function ArbitraryCognition() {
                         </Link>
                         .
                     </Footnote>
-                    . For their attack on VGG16, the researchers took a different approach. Leaving the model
+                    . For their attack on VGGNet16, the researchers took a different approach. Leaving the model
                     unmodified, their goal was to design an exploit which would allow them arbitrary control over the
                     model's predictions. For their experiment, the authors reverse engineered image patches, overlays
                     which could be placed into any input image, that would maximize the model's likelihood of predicting
@@ -90,11 +90,11 @@ export default function ArbitraryCognition() {
                 <p>
                     When this patch was inserted into any image (for instance, a banana), instead of classifying the
                     overall image correctly, the model would instead predict "toaster", regardless. To the attacked
-                    VGG16 model, this image patch was more "toaster" than toaster, <i>more real</i> than reality.
+                    VGGNet16 model, this image patch was more "toaster" than toaster, <i>more real</i> than reality.
                 </p>
                 <p>
                     What is actually happening here? The model weights were frozen for this exercise, so the model
-                    itself was not corrupted; on non-adversarial images, it functioned normally as well. Invariant of
+                    itself was not corrupted; on non-adversarial images, it functioned normally as well. Regardless of
                     any particular image, data still flowed from input image to output classification. The model's
                     neurons still manipulated incoming signals in a fully expected manner. This particular image patch,
                     however, hijacked the normal pattern of activations to generate an output that does not logically
@@ -120,7 +120,7 @@ export default function ArbitraryCognition() {
                 </p>
                 <p>
                     The existence of this class of exploit relies on a feature common to any sort of computing machine.
-                    These systems are "dumb", in the sense that they follows instructions to the letter, rather than
+                    These systems are "dumb", in the sense that they follow instructions to the letter, rather than
                     following the spirit. Programmers are well-aware of this <i>XY problem</i> when creating software.
                     Suppose the goal of a program is to achieve objective Y. There is rarely a single instruction for
                     exactly Y. Instead, the programmer must write a series of X instructions that can achieve Y
@@ -128,19 +128,19 @@ export default function ArbitraryCognition() {
                     procedure to transfer execution to another procedure (Y). The CPU does not know what a "procedure"
                     is, much less how to "switch" to it. These are human-centric concepts, rather than computer-centric.
                     To achieve the goal of Y, the programmer must put their ill-defined goals into precise instructions.
-                    They would store the address at which procedure Y sits into a pointer and pass pointed-to address to
-                    a jump instruction (X). Once the program is assembled, the jump instruction is statically defined,
-                    but the input to that instruction is only defined at runtime; there is no guarantee that the address
-                    present at runtime will match the intended memory address of Y. The instruction will jump execution
-                    to whichever address is supplied. If a malicious attacker were able to modify the pointer before the
-                    jump, then the attacker would be in control of the next executed procedure instead. For the purposes
-                    of our exploration here, note that the target procedure was never moved and the jump instruction's
-                    logic was never compromised. The machine was following instructions to the letter instead of to the
-                    programmer's spirit.
+                    They would store the address at which procedure Y sits into a pointer and pass the pointed-to
+                    address to a jump instruction (X). Once the program is assembled, the jump instruction is statically
+                    defined, but the input to that instruction is only defined at runtime; there is no guarantee that
+                    the address present at runtime will match the intended memory address of Y. The instruction will
+                    jump execution to whichever address is supplied. If a malicious attacker were able to modify the
+                    pointer before the jump, then the attacker would be in control of the next executed procedure
+                    instead. For the purposes of our exploration here, note that the target procedure was never moved
+                    and the jump instruction's logic was never compromised. The machine was following instructions to
+                    the letter instead of to the programmer's spirit.
                 </p>
                 <p>
                     Returning to our image recognition example, researchers used the tuned 138 million parameters of
-                    VGGNET16 (X)
+                    VGGNet16
                     <Footnote>
                         <Link href={"https://arxiv.org/pdf/1409.1556"} target="_blank" rel="noopener noreferrer">
                             Very Deep Convolutional Networks for Large-Scale Image Recognition (Simonyan and Zisserman
@@ -148,13 +148,14 @@ export default function ArbitraryCognition() {
                         </Link>
                         .
                     </Footnote>{" "}
-                    as a proxy for choosing the correct label for an image (Y). There is no guarantee that the trained
-                    state of the parameters would always yield "banana" when presented with a picture of a banana, they
-                    just happen to do so for an acceptable portion of the evaluation samples. The image patch exploits
-                    the state of the model's parameters to yield "toaster" instead. Note that the parameters were never
-                    changed, nor was the computer's ability to successfully evaluate the input conditional on those
-                    parameters. In the exact same manner as a more traditional assembly example, a working program was
-                    induced into an unexpected state without modification.
+                    as a proxy for choosing the correct label for an image, with VGGNET16's parameters serving as X, and
+                    the correct label as Y. There is no guarantee that the trained state of the parameters would always
+                    yield "banana" when presented with a picture of a banana; they just happen to do so for an
+                    acceptable portion of the evaluation samples. The image patch exploits the state of the model's
+                    parameters to yield "toaster" instead. Note that the parameters were never changed, nor was the
+                    computer's ability to successfully evaluate the input conditional on those parameters. In the exact
+                    same manner as a more traditional assembly example, a working program was induced into an unexpected
+                    state without modification.
                 </p>
                 <p>
                     Arbitrary code execution is commonly thought of as only present in traditional, register-based
@@ -186,9 +187,9 @@ export default function ArbitraryCognition() {
                     computing device to express.
                 </p>
                 <p>
-                    Chiefly, we would like for our computing systems to be useful. To extract useful computations, we
-                    need a system with a well-defined interface for input and output. A system which could take input at
-                    any point and give output at any point is less of a device and more of an exposition of raw physical
+                    Chiefly, we would like our computing systems to be useful. To extract useful computations, we need a
+                    system with a well-defined interface for input and output. A system which could take input at any
+                    point and give output at any point is less of a device and more of an exposition of raw physical
                     laws. The restriction of manner and format of input and output greatly simplifies the design process
                     and eliminates ambiguity. We also want our computing device to transform patterns of input
                     information into different patterns of output information. A system which always echoes its input as
@@ -215,7 +216,7 @@ export default function ArbitraryCognition() {
                     physical processes present in ... a cooling cup of tea. However, this system can only represent one
                     class of configurations: itself. A cooling cup of tea cannot, for instance, be tuned into modeling a
                     cooling cup of coffee without being irreversibly turned into that system. In contrast, what we
-                    commonly consider to be computing devices can simulate both, a game of chess, or a webpage. While we
+                    commonly consider to be computing devices can simulate a game of chess, a webpage, or both. While we
                     like for computing devices to be general, they do not necessarily need to be Turing complete. For
                     example, Programmable Logic Arrays and certain off-chip accelerators could be considered to be
                     "computing devices" but are not themselves Turing complete
@@ -251,7 +252,7 @@ export default function ArbitraryCognition() {
                     applications. Even the computers themselves were confined to research labs or universities. Time
                     using them was at a premium, so even determined would-be hackers would have needed to officially log
                     and justify any usage of rare and expensive computer equipment. This resulted in an informal
-                    professional agreement between engineers, if nobody acted maliciously, there was no reason to waste
+                    professional agreement between engineers: if nobody acted maliciously, there was no reason to waste
                     valuable developer hours on securing software from other developers. Evidence of this trust-based
                     design ethos can still be felt today when interacting with offline legacy software or the 2G
                     wireless standard. This naive sense of trust began to quickly break down in the 1970s and 1980s with
@@ -403,15 +404,15 @@ export default function ArbitraryCognition() {
                 </p>
                 <p>
                     Let's first consider a toy example, then work up from there. Most systems have a special register
-                    called the "program counter". This register, like any other, will contain a number. This number
-                    represents the memory address at which the CPU will look to for its next instruction. This counter
-                    increments as the program executes with special control flow instruction moving it in the case of
-                    loops or procedure calls. Whatever (or whoever) controls the value stored within the program counter
-                    fully controls which code the program will execute next. Upon launch, the program will ask the user
-                    for a secret password. It will then check if the password is correct and reveal some hidden
-                    information if so. In the interest of space efficiency, the original programmer has laid out memory
-                    in a condensed fashion with the space used for storing the user's password attempt placed just
-                    before the procedure for checking the password. In MIPS, this would look like the following:
+                    called the "program counter". This register, like any other, contains a number: the memory address
+                    at which the CPU will look for its next instruction. This counter increments as the program executes
+                    with special control flow instruction moving it in the case of loops or procedure calls. Whatever
+                    (or whoever) controls the value stored within the program counter fully controls which code the
+                    program will execute next. Upon launch, the program will ask the user for a secret password. It will
+                    then check if the password is correct and reveal some hidden information if so. In the interest of
+                    space efficiency, the original programmer has laid out memory in a condensed fashion with the space
+                    used for storing the user's password attempt placed just before the procedure for checking the
+                    password. In MIPS, this would look like the following:
                 </p>
                 <CodeBlock language="mips">
                     {`main:
@@ -588,10 +589,10 @@ int main() {
                 <p>
                     The medium of video games can offer particularly compelling examples of the strength and scope of
                     "arbitrary" code execution. This is because video games offer interactive fictions with well-defined
-                    rules and expectations. While achieving arbitrary code execution in an operating system's kernel is
-                    far more severe from a security standpoint, such an attack may not represent much of a change from a
-                    human perspective. Visually, at least, an attacker's payload does not fundamentally change the rules
-                    of how we humans expect an operating system to function. A machine compromising a level 2 hypervisor
+                    rules. While achieving arbitrary code execution in an operating system's kernel is far more severe
+                    from a security standpoint, such an attack may not represent much of a change from a human
+                    perspective. Visually, at least, an attacker's payload does not fundamentally change the rules of
+                    how we humans expect an operating system to function. A machine compromising a level 2 hypervisor
                     running client code or damaging OS protected hardware is highly impactful from a technical or
                     security standpoint, but the general syscalls and memory management largely obey the same set of
                     behaviors. A more human-intuitive change would be, for example, rewriting a Windows Vista system to
@@ -810,8 +811,8 @@ int main() {
                     attempt to restore the argument to full fidelity by supplementing the raw text with their own
                     knowledge, experiences, and reasoning. The supplemental information of the reader, however, is
                     different from that of the author, leading to the text having a different impact on the reader as it
-                    would on the author. In order to more realistically and losslessly convey an author, or attacker's,
-                    message, we need to consider mediums of transmission beyond merely textual.
+                    would on the author. In order to more realistically and losslessly convey an author's (or
+                    attacker's) message, we need to consider mediums of transmission beyond merely textual.
                 </p>
                 <BlogSection level={2}>High Fidelity Embeddings</BlogSection>
                 <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/plaything.png"}>
@@ -918,13 +919,13 @@ int main() {
                     Traditionally, <i>memetics</i> is the study of cultural memes
                     <Footnote>Originally coined by biologist Richard Dawkins</Footnote> and how they evolve and spread
                     among different groups of people. Framing this in the language of patterns and states, memetics can
-                    be thought of as the study of patterns of cognition, how they replicate, and how they are
-                    transmitted. When a meme is transmitted, it modifies the mental patterns of the receiver by grafting
-                    a small portion of the sender's state of mind onto that of the receiver. In reality, memes can
-                    already have incredibly potent coercive effects on those exposed to them: cultural traditions,
-                    religions, economic systems, or scientific theories exert significant influence over how we think
-                    and interact with others. Particularly compelling memes can even spread from person to person in the
-                    same manner as biological or computer viruses
+                    be thought of as the study of patterns of cognition: how they form, replicate, and spread. When a
+                    meme is transmitted, it modifies the mental patterns of the receiver by grafting a small portion of
+                    the sender's state of mind onto that of the receiver. In reality, memes can already have incredibly
+                    potent coercive effects on those exposed to them: cultural traditions, religions, economic systems,
+                    or scientific theories exert significant influence over how we think and interact with others.
+                    Particularly compelling memes can even spread from person to person in the same manner as biological
+                    or computer viruses
                     <Footnote>
                         This is most notably explored by Richard Dawkins in his essay "Viruses of the Mind".
                     </Footnote>
@@ -996,13 +997,13 @@ int main() {
                 </p>
                 <BlogSection>Arbitrary Cognitive Execution</BlogSection>
                 <p>
-                    Text is a relatively low dimensional medium of input, there are only so many conceptual patterns
-                    which a sequence of symbols can theoretically convey and fewer still (if any) which can successfully
-                    impart those conceptual patterns to any given reader. Though impractically large, the full spectrum
-                    of human sensory inputs over a finite number of time steps technically forms a searchable and
-                    indexable space. Suppose an attacker desired that their target perform some task and there existed
-                    at least one cognitive state in which the target would accomplish that task conditional upon the
-                    experience of some sequence of sensory inputs.
+                    Text is a relatively low-dimensional medium of input. There are only so many conceptual patterns
+                    which a sequence of symbols can theoretically convey, and fewer still (if any) which can
+                    successfully impart those conceptual patterns to any given reader. Though impractically large, the
+                    full spectrum of human sensory inputs over a finite number of time steps technically forms a
+                    searchable and indexable space. Suppose an attacker desired that their target perform some task and
+                    there existed at least one cognitive state in which the target would accomplish that task
+                    conditional upon the experience of some sequence of sensory inputs.
                 </p>
                 <p>
                     For mundane scenarios, this appears to be a gross over-formalization. If someone's present cognitive
