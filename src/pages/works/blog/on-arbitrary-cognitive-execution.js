@@ -735,7 +735,7 @@ int main() {
                     fundamentally break the suspension of belief required for engaging with the story to begin with. Not
                     all mind-altering plots fit into this pattern, however.
                 </p>
-                <BlogSection level={2}>Low Fidelity Embeddings</BlogSection>
+                <BlogSection level={2}>Cognitohazards</BlogSection>
                 <p>
                     For some stories, the rules of their universe are the same rules as our own ... for the most part.
                     In these works of fiction, seemingly ordinary objects, ideas, or patterns of information present
@@ -829,7 +829,6 @@ int main() {
                     would on the author. In order to more realistically and losslessly convey an author's (or
                     attacker's) message, we need to consider mediums of transmission beyond merely textual.
                 </p>
-                <BlogSection level={2}>High Fidelity Embeddings</BlogSection>
                 <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/plaything.png"}>
                     The Circular Glyph from <i>Black Mirror</i>'s <i>Plaything</i>.
                 </BlogImage>
@@ -892,6 +891,7 @@ int main() {
                     </Footnote>
                     .
                 </p>
+                <BlogSection level={2}>Memetics</BlogSection>
                 <p>
                     Taking a step back, how can we think of both arbitrary code execution and arbitrary cognitive
                     execution more generally? Both are end-goals of attempts to exploit some target system, electronic
@@ -968,16 +968,15 @@ int main() {
                     and destroying it.
                 </p>
                 <p>
-                    There is no external force directing a host's mind to self-destruct, the mind does it on its own,
+                    There is no external force directing a host's mind to self-destruct; the mind does it on its own,
                     replicating the memetic patterns that have infected it. The naive cognitive machinery within the
                     brain continues to replicate patterns as it normally would, unaware that these new patterns are
-                    foreign to their host. As we have seen, this strategy appears in other machines, such as cells or
-                    computers. Computer viruses manipulate the operating system into spawning new viral processes or
-                    sharing virus copies over a network. RNA viruses exploit a cell's existing replication machinery by
-                    feeding it instructions to replicate virus genetic material instead of host genetic material.
-                    Similarly, memetic viruses prioritize the replication of memetic patterns of cognition as less and
-                    less of the original brain's state remains, until it has been completely replaced with the
-                    infectious meme.
+                    foreign to their host. This cognitive form of exploitation, if it can exist at all, would mirror
+                    what we have already seen in other machines: computer viruses manipulating the operating system into
+                    spawning new viral processes, RNA viruses feeding a cell's existing replication machinery
+                    instructions to produce viral genetic material instead of its own. For this parallel to hold, the
+                    brain must indeed function as an analogous pattern replication machine in reality, not merely as a
+                    metaphor. Whether it does is the question to which we now turn.
                 </p>
                 <BlogSection>Cognition as Pattern Replication</BlogSection>
                 <p>
