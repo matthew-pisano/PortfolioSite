@@ -710,12 +710,17 @@ int main() {
                     chained in succession to replace this second game world with a third and fourth completely.
                 </p>
                 <p>
-                    Why do we find ourselves interested in arbitrary code execution in these games? On a technical
-                    level, these pieces of software are no different from operating systems or firewalls. The answer
-                    lies in the unique immersive qualities of games. Our interest in these exploits really lies in the
-                    allure of a familiar environment being corrupted or transformed; a reality bent to the will of some
-                    unfamiliar force. Notably, this warping of reality is commonly explored by works of fiction in the
-                    context of the only reality we can directly experience: the human mind.
+                    Stepping back from the technical details of this achievement, we can glimpse at something
+                    unsettling. During the setup phase of the exploit, the player has internalized a complete model of
+                    the <i>Super Mario Bros.</i> reality. Within this context, they know how to react to the world and
+                    they know how the world will react back to them. When the setup gives way to the exploit itself, so
+                    too does the familiar reality of one game give way to another. The original context that the player
+                    has become accustomed to is annihilated and replaced with something alien. As a consequence, the
+                    player's mental model of Mario's world, honed through all of their time spent within it, is
+                    invalidated by an external force acting through the game system itself. This destruction of reality
+                    is not so different, in structure, from what the most disturbing works of cognitive horror imagine
+                    happening to the mind: a coherent internal world, built up over a lifetime, rewritten from the
+                    outside through nothing more than a carefully crafted sequence of inputs.
                 </p>
                 <BlogSection>Influencing Cognition in Fiction</BlogSection>
                 <p>
