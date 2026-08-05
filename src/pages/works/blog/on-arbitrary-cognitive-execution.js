@@ -586,6 +586,87 @@ int main() {
                     buffer overflows, ASLR and stack canaries offer a defense against this attack, but are not always
                     available in all programs or systems.
                 </p>
+                <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/ram.webp"}>
+                    A diagram of RAM cells and access lines (
+                    <Link
+                        href={"https://www.akkadia.org/drepper/cpumemory.pdf"}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Figure 2.7 from What Every Programmer Should Know About Memory, Drepper 2007
+                    </Link>
+                    )
+                </BlogImage>
+                <p>
+                    Some vulnerabilities, however, do not merely emerge from mistakes in software logic. The following
+                    penetrate much deeper, emerging from fatal flaws within the computational substrate itself. Starting
+                    in 2012, Intel began quietly filing a series of patents
+                    <Footnote>
+                        <Link
+                            href={"https://patents.google.com/patent/US20140089576A1"}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            US20140089576A1
+                        </Link>
+                        ,
+                        <Link
+                            href={"https://patents.google.com/patent/US20140059287A1"}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            US20140059287A1
+                        </Link>
+                        , and{" "}
+                        <Link
+                            href={"https://patents.google.com/patent/US20140095780A1"}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            US20140095780A1
+                        </Link>{" "}
+                        are three of the earliest examples.
+                    </Footnote>{" "}
+                    describing mitigations for access-induced DRAM vulnerabilities, with several mentioning the words
+                    "row hammer". Two years elapse as the patents are reviewed and knowledge of this potential
+                    vulnerability evaded public attention. In 2014, as these patents awaited quiet review in the U.S
+                    patent office, researchers at Carnegie-Mellon University and Intel published a paper
+                    <Footnote>
+                        <Link
+                            href={"https://users.ece.cmu.edu/~yoonguk/papers/kim-isca14.pdf"}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Flipping Bits in Memory Without Accessing Them: An Experimental Study of DRAM Disturbance
+                            Errors (Kim 2014)
+                        </Link>
+                    </Footnote>{" "}
+                    which would catch the collective attention of security researchers across the world. In a laboratory
+                    setting, the CMU and Intel researchers were able to reproduce the vulnerability with alarming
+                    consistency on their test systems. Understanding what they found requires understanding how DRAM
+                    functions.
+                </p>
+                <p>
+                    The RAM in DRAM means "random access memory", any location in memory can be accessed at any time by
+                    the CPU arbitrarily in constant time. Physically, the memory cells in RAM are laid out in a grid.
+                    These cells consist of a capacitor which stores a single bit of information based on the it voltage
+                    stores. When the CPU requests a specific memory address, the bits of the address are decoded into
+                    the addresses for the row and column for that memory cell. The row address is used to activate the
+                    word line, opening up the entire row for access at once. Next, the column address is used to select
+                    the specific cell corresponding to the overall address. Additionally, the capacitors which make up
+                    the cells constantly leak charge and must be periodically refreshed by the RAM controller; this is
+                    instrumental to the attack, as we will see. For the DDR and DDR2 generations of RAM, the integrity
+                    of the voltages in these cells can largely be considered in isolation since cells were nearly 100
+                    nanometers apart. However, in DDR3 RAM, these distances shrunk substantially to under 40 nanometers.
+                    At these distances, different rows begin to become electromagnetically coupled to their neighbors.
+                    When a row word line jumps in voltage during access, it exerts a tiny influence on the voltages of
+                    cells in nearby rows. This is what the researchers exploited. They discovered that repeatedly and
+                    rapidly toggling the word line, the capacitors in some nearby cells begin to leak charge at a much
+                    faster rate. This rate is so fast, in fact, that the cells are emptied of their charge before the
+                    next charge refresh.{" "}
+                    <i>
+                        By repeatedly accessing some cells in RAM, the researchers could modify the values in completely
+                        unrelated cells
+                    </i>
+                    . If this vulnerability was ever used in an exploit, it could completely bypass regular OS
+                    protections to memory, enabling attackers near-arbitrary control over the values in memory,
+                    including memory used by core OS components.
+                </p>
                 <BlogSection>Exploiting Execution in Games</BlogSection>
                 <p>
                     When considering only toy examples in isolation, vulnerable code seems fairly easy to catch and fix.
