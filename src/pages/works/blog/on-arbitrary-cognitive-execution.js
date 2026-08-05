@@ -684,22 +684,25 @@ int main() {
                     this dependency to resolve. With out-of-order execution, the CPU executes the next instructions
                     immediately as soon as all inputs are met, allowing instructions with dependencies to wait in the
                     background. However, what happens when the CPU does not know what instruction comes next in this
-                    pipeline? This scenario commonly happens on conditional branch boundaries or exceptions; the next
-                    instruction depends on the branch or exception outcome. This is inefficient because it means some
-                    pipeline stages will go unused while the branch is resolving. There is a solution to this too: the
-                    CPU can <i>speculate</i>
+                    pipeline? This scenario commonly happens on conditional branch boundaries; the next instruction
+                    depends on the branch result. This is inefficient because it means some pipeline stages will go
+                    unused while the branch is resolving. There is a solution to this too: the CPU can <i>speculate</i>
                     on which branch the conditional will take. If it predicts correctly, it saves time; if incorrect, it
-                    rolls back the result and begins to process the correct branch path. The exploitation of these two
-                    CPU optimizations leads to the vulnerabilities those researchers discovered in 2017.
+                    rolls back the result and begins to process the correct branch path. But, how does the CPU know
+                    which branch to pick? As code executes any given branch, the CPU tracks which branch result is
+                    taken, training it to predict the most commonly taken branch. For example, in a very long loop, the
+                    branch out of the loop will only be taken once and will therefore not be predicted by the CPU. The
+                    exploitation of these two CPU optimizations leads to the vulnerabilities those researchers
+                    discovered in 2017.
                 </p>
                 <p>
                     The first, and simplest, of these vulnerabilities is <i>Meltdown</i>
                     <Footnote>
                         <Link href={"https://arxiv.org/pdf/1801.01207"}>Meltdown</Link>
                     </Footnote>
-                    . This vulnerability exploits the speculation and out-of-order execution optimizations on vulnerable
-                    CPUs to read from arbitrary addresses in memory, even kernel memory. The following code snippet
-                    roughly demonstrates how a malicous program would perform the exploit.
+                    . This vulnerability exploits the out-of-order execution optimizations on vulnerable CPUs to read
+                    from arbitrary addresses in memory, even kernel memory. The following code snippet roughly
+                    demonstrates how a malicous program would perform the exploit.
                 </p>
                 <CodeBlock language="cpp">{`// The size of a memory pagge
 int page_size = 4096;
@@ -721,12 +724,11 @@ void meltdown_step(unsigned char *kernel_data) {
     // Find the cached page be measuring access timings, 
     // finding the secret byte
     char secret_byte = reload_and_detect(&probe_array);
-}
-`}</CodeBlock>
+}`}</CodeBlock>
                 <p>
                     First, a probe array is created which will serve as a page caching detector. Next, the CPU is
                     instructed to access protected kernel memory; the user does not have sufficient permissions to
-                    access kernel memory so this instruction will cause a segfault. However, due to speculative
+                    access kernel memory so this instruction will cause a segfault. However, due to out-of-order
                     execution, the next instruction (which accesses memory based on the secret kernel byte) has already
                     begun to execute. This instruction is executed out-of-order as the CPU processes the exception and
                     segfault trap. By the time the segfault actually interrupts the program, a memory page "chosen" by
@@ -736,7 +738,73 @@ void meltdown_step(unsigned char *kernel_data) {
                     array and measuring access times for each (page strided) element, the attacker can tell which page
                     was placed in the cache and deduce the secret kernel byte based on tht element's position. Luckily,
                     this exploit only impacted a limited number of CPUs with insufficient memory access checking during
-                    speculative execution.
+                    speculative execution. However, Meltdown was not the only class of vulnerability the researchers
+                    discovered. Their other discoveries would turn out to be much more insidious.
+                </p>
+                <p>
+                    The other class of vulnerability the researchers discovered exploited both the speculative execution
+                    and out-of-order execution optimizations of targeted CPUs. This attack was much more difficult to
+                    exploit than Meltdown, but also much more general, working on a wide variety of CPUs. Recall that
+                    the CPUs branch prediction algorithm is "trained" based on how branches are taken in code. This
+                    implies that the original programmer is in control over which branch the CPU takes. If the
+                    programmer was malicious, they could design a program to force the CPU to predict whichever branch
+                    they want. Similarly to Meltdown, when the CPU predicts incorrectly and needs to roll back, remnants
+                    of the erroneous instruction are left in CPU cache lines. These cache lines act as a side-channel
+                    for an attack. Taking inspiration from return oriented programming, suitable <i>gadgets</i> from
+                    within the running program can then be used to index into memory arbitrarily from some base offset.
+                    The resulting vulnerability was named <i>Specter</i>
+                    <Footnote>
+                        <Link href={"https://arxiv.org/pdf/1801.01203"}>
+                            Spectre Attacks: Exploiting Speculative Execution
+                        </Link>
+                    </Footnote>{" "}
+                    as it was nearly undetectable through externally observing the CPU. From the outside perspective, it
+                    seemed as if the program was accessing the CPU in a mundane pattern.
+                </p>
+                <CodeBlock language="cpp">{`/********************************************************************
+Victim code.
+********************************************************************/
+unsigned int array1_size = 16;
+uint8_t unused1[64];
+uint8_t array1[160] = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 };
+uint8_t unused2[64];
+uint8_t array2[256 * 512];
+
+char *secret = "The Magic Words are Squeamish Ossifrage.";
+
+uint8_t temp = 0; /* Used so compiler won’t optimize out victim_function() */
+
+void victim_function(size_t x) {
+    if (x < array1_size) {
+        temp &= array2[array1[x] * 512];
+    }
+}
+`}</CodeBlock>
+                <Footnote>Source code from the Specter paper.</Footnote>
+                <p>
+                    During a Specter v1 attack, the victim function is used as a gadget to "train" the CPU branch
+                    predictor to always choose the branch that reads from <code>array2</code> by passing a valid value.
+                    Later, after the CPU has been trained, an out-of-bounds value will be passed to the function for
+                    array indexing. Executing speculatively, the CPU will assume that the value passes the check
+                    (because it always has before). However, once the branch has truly resolved, the CPU realizes that
+                    the value is out of bounds and rolls back the index instruction. However, remnants of the index will
+                    still be left in CPU cache lines. An attacker controlled program can then read through{" "}
+                    <code>array2</code> several times, tallying up which of the values remain in the CPU cache. Similar
+                    to Meltdown, the value most likely to be cached by the original attack indicates the byte value at
+                    the arbitrary out-of-bounds offset from the malicious user. This allows an attacker to read any
+                    value from the process' memory, including escaping browser sandboxes. Unlink Meltdown, which is the
+                    result of insufficient ceche read checks, the Specter class of vulnerabilities relies only on a
+                    fundamental CPU optimization to carry out the attack; this is much more difficult to mitigate. Upon
+                    original discovery, only two Specter variants were known, v1 and v2. Since them, 13 unique Specter
+                    variants have been discovered, with many evading patches made to fix earlier variants.
+                </p>
+                <p>
+                    With both Meltdown and the Specter class, the intended behavior of the CPU and its cache were
+                    exploited to yield information about the system to an attacker. However, unlike some of the other
+                    attacks we have seen, this does not allow for arbitrary code execution, but instead arbitrary memory
+                    read. Combined, these two types of attack allow for full knowledge of a program's state and full
+                    control over a program's outcome. Importantly, these attacks will persist unless fundamental changes
+                    are made to the target program's logic or the hardware configuration of the system it is running on.
                 </p>
                 <BlogSection>Exploiting Execution in Games</BlogSection>
                 <p>
