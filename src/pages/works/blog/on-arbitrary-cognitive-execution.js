@@ -667,6 +667,77 @@ int main() {
                     protections to memory, enabling attackers near-arbitrary control over the values in memory,
                     including memory used by core OS components.
                 </p>
+                <p>
+                    Three years later in mid-2017 several different research teams began to investigate a class of CPU
+                    vulnerabilities related to speculative execution, independently at first, then jointly later. The
+                    result of their investigations were several critical vulnerabilities, to which nearly every modern
+                    CPU was vulnerable. To understand these vulnerabilities, we must first discuss how modern CPUs
+                    execute instruction and why they somtimes execute them out of order. In the CPU, instructions are
+                    not processed all at once. Over multiple clock cycles, instructions must be fetched from memory (or
+                    cache), decoded by the CPU into their hardware meaning, executed, with results later written back to
+                    the register file. Naively, these operations would happen sequentially. However, each stage uses
+                    independent hardware. Instead of executing all of the stages for one instruction before moving on to
+                    the next, the stages of different instructions can be interleaved to make constant use of all the
+                    instruction hardware. As one instruction is being fetched, the one after us being decoded, and yet
+                    others are being executed or written back. Additionally, these instructions can be executed
+                    <i>out-of-order</i>. If one instruction is waiting on another, the CPU will waste time waiting for
+                    this dependency to resolve. With out-of-order execution, the CPU executes the next instructions
+                    immediately as soon as all inputs are met, allowing instructions with dependencies to wait in the
+                    background. However, what happens when the CPU does not know what instruction comes next in this
+                    pipeline? This scenario commonly happens on conditional branch boundaries or exceptions; the next
+                    instruction depends on the branch or exception outcome. This is inefficient because it means some
+                    pipeline stages will go unused while the branch is resolving. There is a solution to this too: the
+                    CPU can <i>speculate</i>
+                    on which branch the conditional will take. If it predicts correctly, it saves time; if incorrect, it
+                    rolls back the result and begins to process the correct branch path. The exploitation of these two
+                    CPU optimizations leads to the vulnerabilities those researchers discovered in 2017.
+                </p>
+                <p>
+                    The first, and simplest, of these vulnerabilities is <i>Meltdown</i>
+                    <Footnote>
+                        <Link href={"https://arxiv.org/pdf/1801.01207"}>Meltdown</Link>
+                    </Footnote>
+                    . This vulnerability exploits the speculation and out-of-order execution optimizations on vulnerable
+                    CPUs to read from arbitrary addresses in memory, even kernel memory. The following code snippet
+                    roughly demonstrates how a malicous program would perform the exploit.
+                </p>
+                <CodeBlock language="cpp">{`// The size of a memory pagge
+int page_size = 4096;
+// Probe array for Flush+Reload side channel
+// Create a buffer which can store a 4KB page for every possible byte (0-255)
+unsigned char probe_array[256 * page_size];
+
+void meltdown_step(unsigned char *kernel_data) {
+    // Accessing protected kernel address causes a segmentation fault
+    unsigned char secret = *kernel_data;
+    
+    // Instructions to fetch the page associated with the secret byte
+    // are already executing before fault finishes processing
+    volatile unsigned char *addr = &probe_array[secret * page_size];
+    // Force the CPU to load and cache the probe_array page 
+    // corresponding to the secret byte
+    unsigned char dummy = *addr;
+    
+    // Find the cached page be measuring access timings, 
+    // finding the secret byte
+    char secret_byte = reload_and_detect(&probe_array);
+}
+`}</CodeBlock>
+                <p>
+                    First, a probe array is created which will serve as a page caching detector. Next, the CPU is
+                    instructed to access protected kernel memory; the user does not have sufficient permissions to
+                    access kernel memory so this instruction will cause a segfault. However, due to speculative
+                    execution, the next instruction (which accesses memory based on the secret kernel byte) has already
+                    begun to execute. This instruction is executed out-of-order as the CPU processes the exception and
+                    segfault trap. By the time the segfault actually interrupts the program, a memory page "chosen" by
+                    the secret kernel byte may have already been cached. The program catches this interrupt and
+                    continues execution. Even though the kernel access instruction failed and was rolled back, the cache
+                    can still be used as a side-channel for recovering that information. By looping through the probe
+                    array and measuring access times for each (page strided) element, the attacker can tell which page
+                    was placed in the cache and deduce the secret kernel byte based on tht element's position. Luckily,
+                    this exploit only impacted a limited number of CPUs with insufficient memory access checking during
+                    speculative execution.
+                </p>
                 <BlogSection>Exploiting Execution in Games</BlogSection>
                 <p>
                     When considering only toy examples in isolation, vulnerable code seems fairly easy to catch and fix.
