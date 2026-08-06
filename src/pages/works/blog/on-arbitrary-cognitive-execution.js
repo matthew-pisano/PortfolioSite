@@ -187,80 +187,6 @@ export default function ArbitraryCognition() {
                     register machine, but it could just as easily be the execution environment of a machine learning
                     model or any other computational substrate.
                 </p>
-                <BlogSection level={2}>Cognition as Computation</BlogSection>
-                <p>
-                    What if we consider the human brain to be another such computational substrate which could be
-                    exploited? To further pursue this line of inquiry, we must make an assumption: that the human brain
-                    is, at least to some extent, a computing device. We will touch on how valid or invalid this
-                    assumption may be later but, for now, we will accept this premise for the sake of exploration.
-                </p>
-                <p>
-                    What does it mean for a system to be a computing device? I have previously approached this from the
-                    high-level angle of simulating Turing machines in my work{" "}
-                    <Link
-                        href={"https://matthewpisano.com/works/blog/on-general-transformers"}
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        On Generally Intelligent Transformers
-                    </Link>
-                    , but we can arrive at a more precisely scoped definition by asking which behaviors we expect a
-                    computing device to express.
-                </p>
-                <p>
-                    Chiefly, we would like our computing systems to be useful. To extract useful computations, we need a
-                    system with a well-defined interface for input and output. A system which could take input at any
-                    point and give output at any point is less of a device and more of an exposition of raw physical
-                    laws. The restriction of manner and format of input and output greatly simplifies the design process
-                    and eliminates ambiguity. We also want our computing device to transform patterns of input
-                    information into different patterns of output information. A system which always echoes its input as
-                    output does not add any information of its own and is therefore not very useful. This manipulation
-                    must be predictable, though not necessarily deterministic. The use case of a computing device is to
-                    add meaningful
-                    <Footnote>
-                        <i>Meaning</i> and <i>information</i> may seem like orthogonal concepts from an information
-                        theory perspective, but when speaking of computing devices in this manner, we are speaking
-                        relative to what we humans generally consider to be useful and interesting. From the perspective
-                        of information, a random number generator is maximally informative, yet its output is generally
-                        uninteresting to a human. We expect our computing devices to manipulate the information in our
-                        input without completely removing it or fully maximizing it. Therefore, this definition of a
-                        computing device will contain some human ambiguities and imprecision.
-                    </Footnote>{" "}
-                    information to some input as output. If the output does not follow from the input in a manner
-                    meaningfully related to the computing device's task, then it is not a useful computing device.
-                    Furthermore, while classical computers are designed to be deterministic, others such as quantum
-                    computers are not. However, both are designed to be predictable (to some extent), conditional on an
-                    input. We also expect our computing devices to be capable of representing a wide variety of tasks,
-                    while being selectively tunable to particular tasks as needed. Many physical systems fulfill the
-                    former criteria well: they can manipulate inputs into outputs in a controlled and predictable
-                    manner. For example, the physical system of a cooling cup of tea is useful for simulating the
-                    physical processes present in ... a cooling cup of tea. However, this system can only represent one
-                    class of configurations: itself. A cooling cup of tea cannot, for instance, be tuned into modeling
-                    another system, such as cooling cup of coffee, without being irreversibly turned into that system.
-                    In contrast, what we commonly consider to be computing devices can simulate a game of chess, a
-                    webpage, or both. While we like for computing devices to be general, they do not necessarily need to
-                    be Turing complete. For example, Programmable Logic Arrays and certain off-chip accelerators are
-                    generally considered to be "computing devices" but are not themselves Turing complete
-                    <Footnote>
-                        In a similar vein was the Soviet <i>Turnir</i> (Турнир) console released in 1978. Unlike
-                        contemporary home consoles like the Atari 2600 or the Magnavox Odyssey which could play a
-                        variety of games, the Turnir could only play one. Unlike the Atari's general-purpose MOS 6507,
-                        this console relied upon the AY-3-8500. This chip in particular was designed to play <i>PONG</i>{" "}
-                        and nothing else. Even though the Turnir technically came with six built-in games, all were just
-                        the same tennis game with themed overlays for hockey or squash. The Turnir is another example of
-                        a device which meets our requirements for a "computing device" while lacking many of the
-                        capabilities generally associated with computers more generally.
-                    </Footnote>
-                    .
-                </p>
-                <p>
-                    Considering these requirements, we can put together a more precise definition of a computing device.
-                    We can conceptualize a computing device as: any system which takes in patterns of information as
-                    input, manipulates this information in a predictable manner, dependent on a task-oriented internal
-                    configuration, and outputs different patterns of information. This definition encapsulates classical
-                    and quantum computers in general, along with specialized systems such as artificial or even
-                    biological neural networks. Most importantly, this definition gives us a way to not only describe
-                    how a system behaves normally, but also how it could be exploited to behave abnormally.
-                </p>
                 <BlogSection>Arbitrary Code Execution</BlogSection>
                 <p>
                     Before further investigating the much more theoretical implications of arbitrary code execution, it
@@ -1212,14 +1138,99 @@ void victim_function(size_t x) {
                     what we have already seen in other machines: computer viruses manipulating the operating system into
                     spawning new viral processes, RNA viruses feeding a cell's existing replication machinery
                     instructions to produce viral genetic material instead of its own. For this parallel to hold, the
-                    brain must indeed function as an analogous pattern replication machine in reality, not merely as a
+                    brain must indeed function as an analogous pattern replication device in reality, not merely as a
                     metaphor. Whether it does is the question to which we now turn.
                 </p>
                 <BlogSection>Cognition as Pattern Replication</BlogSection>
                 <p>
-                    The concept of the human brain functioning akin to a pattern replication machine has been referenced
-                    a few times within this work so far. While this may already seem intuitive, perhaps in the sense of
-                    high-level <i>observational learning</i>
+                    As we have seen, real computing devices offer many examples of exploits which rely upon specific
+                    logical and hardware vulnerabilities. Generally, this takes the form of manipulating an
+                    uncompromised system into executing and replicating patterns of malicious data, rather than the
+                    patterns of data that it normally would. In fiction, we have also seen many examples of the brain
+                    being exploited in a simular manner, but without an exact schema for performing such exploits,
+                    merely conjecturing that they may be possible. Now, we will consider whether the human brain may
+                    actually function as an analogous computing device which could be exploited in a manner just as real
+                    as the others which we had examined earlier. This section will be dedicated to substantiating and
+                    contextualizing this concept: proximately, by understanding how the brain functions naturally in
+                    order to, ultimately, understand how it could be exploited artificially.
+                </p>
+                <BlogSection level={2}>Cognition as Computation</BlogSection>
+                <p>
+                    Before pursuing this line of inquiry, we must first ask whether the human brain is, at least to some
+                    extent, a computing device. To answer this question, we must first define what a "computing device"
+                    actually is. I have previously approached this from the high-level angle of simulating Turing
+                    machines in my work{" "}
+                    <Link
+                        href={"https://matthewpisano.com/works/blog/on-general-transformers"}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        On Generally Intelligent Transformers
+                    </Link>
+                    , but we can arrive at a more precisely scoped definition by asking which behaviors we expect a
+                    computing device to express.
+                </p>
+                <p>
+                    Chiefly, we would like our computing systems to be useful. To extract useful computations, we need a
+                    system with a well-defined interface for input and output. A system which could take input at any
+                    point and give output at any point is less of a device and more of an exposition of raw physical
+                    laws. The restriction of manner and format of input and output greatly simplifies the design process
+                    and eliminates ambiguity. We also want our computing device to transform patterns of input
+                    information into different patterns of output information. A system which always echoes its input as
+                    output does not add any information of its own and is therefore not very useful. This manipulation
+                    must be predictable, though not necessarily deterministic. The use case of a computing device is to
+                    add meaningful
+                    <Footnote>
+                        <i>Meaning</i> and <i>information</i> may seem like orthogonal concepts from an information
+                        theory perspective, but when speaking of computing devices in this manner, we are speaking
+                        relative to what we humans generally consider to be useful and interesting. From the perspective
+                        of information, a random number generator is maximally informative, yet its output is generally
+                        uninteresting to a human. We expect our computing devices to manipulate the information in our
+                        input without completely removing it or fully maximizing it. Therefore, this definition of a
+                        computing device will contain some human ambiguities and imprecision.
+                    </Footnote>{" "}
+                    information to some input as output. If the output does not follow from the input in a manner
+                    meaningfully related to the computing device's task, then it is not a useful computing device.
+                    Furthermore, while classical computers are designed to be deterministic, others such as quantum
+                    computers are not. However, both are designed to be predictable (to some extent), conditional on an
+                    input. We also expect our computing devices to be capable of representing a wide variety of tasks,
+                    while being selectively tunable to particular tasks as needed. Many physical systems fulfill the
+                    former criteria well: they can manipulate inputs into outputs in a controlled and predictable
+                    manner. For example, the physical system of a cooling cup of tea is useful for simulating the
+                    physical processes present in ... a cooling cup of tea. However, this system can only represent one
+                    class of configurations: itself. A cooling cup of tea cannot, for instance, be tuned into modeling
+                    another system, such as cooling cup of coffee, without being irreversibly turned into that system.
+                    In contrast, what we commonly consider to be computing devices can simulate a game of chess, a
+                    webpage, or both. While we like for computing devices to be general, they do not necessarily need to
+                    be Turing complete. For example, Programmable Logic Arrays and certain off-chip accelerators are
+                    generally considered to be "computing devices" but are not themselves Turing complete
+                    <Footnote>
+                        In a similar vein was the Soviet <i>Turnir</i> (Турнир) console released in 1978. Unlike
+                        contemporary home consoles like the Atari 2600 or the Magnavox Odyssey which could play a
+                        variety of games, the Turnir could only play one. Unlike the Atari's general-purpose MOS 6507,
+                        this console relied upon the AY-3-8500. This chip in particular was designed to play <i>PONG</i>{" "}
+                        and nothing else. Even though the Turnir technically came with six built-in games, all were just
+                        the same tennis game with themed overlays for hockey or squash. The Turnir is another example of
+                        a device which meets our requirements for a "computing device" while lacking many of the
+                        capabilities generally associated with computers more generally.
+                    </Footnote>
+                    .
+                </p>
+                <p>
+                    Considering these requirements, we can put together a more precise definition of a computing device.
+                    We can conceptualize a computing device as: any system which takes in patterns of information as
+                    input, manipulates this information in a predictable manner, dependent on a task-oriented internal
+                    configuration, and outputs different patterns of information. This definition encapsulates classical
+                    and quantum computers in general, along with specialized systems such as artificial or even
+                    biological neural networks. Most importantly, this definition gives us a way to not only describe
+                    how a system behaves normally, but also how it could be exploited to behave abnormally.
+                </p>
+                <BlogSection level={2}>Local Patterns with Glocal Consequences</BlogSection>
+                <p>
+                    We know that the brain takes in well defined patterns of input and yields well defined patterns of
+                    output, so that is two criteria fulfilled. What is less certain is whether we can, in good faith,
+                    consider the brain as a device dedicated to task-oriented pattern replication and manipulation.
+                    While the concept of the human brain as geared towards pattern replication may already seem
+                    intuitive, perhaps in the sense of high-level <i>observational learning</i>
                     <Footnote>
                         See:{" "}
                         <Link
@@ -1239,12 +1250,12 @@ void victim_function(size_t x) {
                         </Link>
                         .
                     </Footnote>
-                    , to properly examine arbitrary cognitive execution, we must instead think of pattern replication at
-                    the level of neurons and neuronal clusters. This may feel less intuitive: while neurons do indeed
-                    fire based on the firings of their neighbors, this would appear to be a local association, rather
-                    than pattern replication at a more general scale. This section will be dedicated to substantiating
-                    and contextualizing this concept as it occurs naturally in order to later understand how it could be
-                    induced artificially.
+                    , to properly meet our definition of a computing device, we must instead think of pattern
+                    replication at the level of neurons and neuronal clusters, roughly analogous to the low-level
+                    pattern processing machinery in a CPU. This may feel less intuitive: while neurons do indeed fire
+                    based on the firings of their neighbors, this would appear to be a local association, rather than a
+                    pattern that also propagates up to a more general scale. However, as we will see, these locally
+                    replicated patterns can easily cause cascades which impact the brain on a global scale.
                 </p>
                 <BlogSection>Arbitrary Cognitive Execution</BlogSection>
                 <p>
