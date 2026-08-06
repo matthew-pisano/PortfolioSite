@@ -1111,6 +1111,10 @@ void victim_function(size_t x) {
                     pattern that also propagates up to a more general scale. However, as we will see, these locally
                     replicated patterns can easily cause cascades which impact the brain on a global scale.
                 </p>
+                <BlogSection level={2}>The Stability and Predictability of Neural Patterns</BlogSection>
+                <BlogSection level={2}>Replication Across Architectures</BlogSection>
+                <BlogSection level={2}>The Brain as an Emulation Device</BlogSection>
+                <BlogSection level={2}>The Conscious Mind has no Moat</BlogSection>
                 <BlogSection>Arbitrary Cognitive Execution</BlogSection>
                 <p>
                     Text is a relatively low-dimensional medium of input. There are only so many conceptual patterns
