@@ -342,7 +342,7 @@ reveal_secret:          # Reveal the secret
                     how the computer executes instructions and the patterns of those instructions that it recognizes, we
                     can exploit the predictable behavior of that machine to do whatever we wish.
                 </p>
-                <BlogSection level={2}>Common Exploits and Mechanics</BlogSection>
+                <BlogSection level={2}>Mechanics of Exploitation</BlogSection>
                 <p>
                     In a full attack chain, executing arbitrary code on a system is rarely the first action that an
                     attacker takes. Generally, one or more individual utility exploits are chained together in order to
@@ -625,13 +625,13 @@ void victim_function(size_t x) {
                 </p>
                 <BlogSection>Exploiting Execution in Games</BlogSection>
                 <p>
-                    When considering only toy examples in isolation, vulnerable code seems fairly easy to catch and fix.
-                    After all, if programmers simply checked their buffer bounds, compiled their code with protections
-                    enabled, and maintained vigilance for common logic bugs, code should be fully secure. Similar
-                    sentiments to this are often present in exploit post-mortems. "If we had only noticed that we were
-                    using that pointer after freeing it, we would be fine". Real software, especially highly optimized
-                    or embedded software, cannot be reduced to such simple terms. Just because the exact mechanism of a
-                    vulnerability is unknown <i>does not</i> mean it is impossible.
+                    When considering only simple examples in isolation, vulnerable code seems fairly easy to catch and
+                    fix. After all, if programmers simply checked their buffer bounds, compiled their code with
+                    protections enabled, and maintained vigilance for common logic bugs, code should be fully secure.
+                    Similar sentiments to this are often present in exploit post-mortems. "If we had only noticed that
+                    we were using that pointer after freeing it, we would be fine". Real software, especially highly
+                    optimized or embedded software, cannot be reduced to such simple terms. Just because the exact
+                    mechanism of a vulnerability is unknown <i>does not</i> mean it is impossible.
                 </p>
                 <p>
                     The medium of video games can offer particularly compelling examples of the strength and scope of
