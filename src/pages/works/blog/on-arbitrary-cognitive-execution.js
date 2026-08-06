@@ -626,13 +626,15 @@ void victim_function(size_t x) {
                 <BlogSection>Exploiting Execution in Games</BlogSection>
                 <p>
                     When considering only simple examples in isolation, vulnerable code seems fairly easy to catch and
-                    fix. After all, if programmers simply checked their buffer bounds, compiled their code with
-                    protections enabled, and maintained vigilance for common logic bugs, code should be fully secure.
-                    Similar sentiments to this are often present in exploit post-mortems. "If we had only noticed that
-                    we were using that pointer after freeing it, we would be fine". Real software, especially highly
-                    optimized or embedded software, cannot be reduced to such simple terms. Just because the exact
-                    mechanism of a vulnerability is unknown <i>does not</i> mean it is impossible.
+                    fix. After all, if programmers and hardware developers simply checked their buffer bounds, compiled
+                    their code with protections enabled, and maintained vigilance for common logic bugs, code and
+                    hardware should be fully secure. Similar sentiments to this are often present in exploit
+                    post-mortems. "If we had only noticed that we were using that pointer after freeing it, we would be
+                    fine". Real software, especially highly optimized, embedded, or hardware-level code, cannot be
+                    reduced to such simple terms. Just because the exact mechanism of a vulnerability is unknown at
+                    first <i>does not</i> mean it is impossible.
                 </p>
+                <BlogSection level={2}>The Embedded Realities within Games</BlogSection>
                 <p>
                     The medium of video games can offer particularly compelling examples of the strength and scope of
                     "arbitrary" code execution. This is because video games offer interactive fictions with well-defined
@@ -662,70 +664,47 @@ void victim_function(size_t x) {
                     changes are much more impactful from a subjective point of view than if the same happens to more
                     "mundane" software.
                 </p>
+                <BlogSection level={2}>How to Rewrite a Reality</BlogSection>
                 <p>
                     When searching for games with known arbitrary code execution vulnerabilities, compilations are
-                    dominated by older games, generally from the 2000s and earlier. This is likely a result of three
-                    major factors: hardware limitations, software limitations, and complexity. Early game consoles
+                    dominated by older games, generally from the 2000s and earlier. This is because early game consoles
                     operated under very different hardware constraints than even contemporary home computers. Since
                     their function was much more limited in scope and were often designed on strict budgets, consoles
-                    often employed very specialized and limited hardware.
+                    often employed very specialized and limited hardware
+                    <Footnote>
+                        Consider the Nintendo Entertainment System from 1985 (US) and the Tandy 1000 from 1984. A
+                        developer writing software for the NES needed to consider several disjoint components along with
+                        severe hardware restrictions. The system was comprised of a Ricoh 2A03 (essentially a clone of
+                        the famous MOS 6502 microprocessor), a dedicated audio processing unit, a picture processing
+                        unit, 2KB of video RAM, 2KB of work RAM, in addition to active chips on the game cartridge such
+                        as character RAM and ROM for tile and sprite data. This on top of working around physical
+                        limitations of CRT displays, namely the fact that graphics needed to be constrained to the time
+                        it physically takes the CRT's electron beam to move back to the top of the screen. In contrast,
+                        the Tandy 1000 came equipped with the much more powerful Intel 8088, 128KB of RAM, a Tandy video
+                        controller, and a Texas Instruments SN76489 sound chip. Since the Tandy was designed for much
+                        more general computing and could sell at a higher price point, it could afford to avoid many of
+                        the NES' hardware restrictions.
+                    </Footnote>
+                    .
                 </p>
+
                 <p>
-                    Consider the Nintendo Entertainment System from 1985 (US) and the Tandy 1000 from 1984. A developer
-                    writing software for the NES needed to consider several disjoint components along with severe
-                    hardware restrictions. The system was comprised of a Ricoh 2A03
-                    <Footnote>Essentially a clone of the famous MOS 6502 microprocessor.</Footnote>, a dedicated audio
-                    processing unit, a picture processing unit, 2KB of video RAM, 2KB of work RAM, in addition to active
-                    chips on the game cartridge such as character RAM and ROM for tile and sprite data. This on top of
-                    working around physical limitations of CRT displays, namely the fact that graphics needed to be
-                    constrained to the time it physically takes the CRT's electron beam to move back to the top of the
-                    screen. In contrast, the Tandy 1000 came equipped with the much more powerful Intel 8088, 128KB of
-                    RAM, a Tandy video controller, and a Texas Instruments SN76489 sound chip. Since the Tandy was
-                    designed for much more general computing and could sell at a higher price point, it could afford to
-                    avoid many of the NES' hardware restrictions.
-                </p>
-                <p>
-                    For early game consoles such as the NES, these hardware restrictions placed restrictions on how
+                    For early game consoles such as the NES, these hardware restrictions placed limitations on how
                     software could be designed. With the extremely limited RAM and 8-bit CPU, Nintendo's developers
-                    needed to take shortcuts. Their priorities were working, optimized software over robustness and
+                    needed to take shortcuts. They prioritized creating working, optimized software over robustness and
                     security. For instance, the developers of the original Super Mario Bros. left only five slots for
                     sprites (with large sprites like Bowser or fire bars taking up two slots). When looking to spawn a
                     new sprite, their code would simply walk along the list until an empty slot was reached. This, of
                     course, left open the possibility for a buffer overflow. However, since the developers were also in
                     control of level layout, this overflow would rarely happen (unless intentionally induced). Operating
-                    under the processing restrictions of their processor and the limited size of program ROM, proper
-                    checks against buffer overflows were never included. The delivery of a working game was more
-                    important than the delivery of a robust game.
+                    under the processing restrictions of their CPU and the limited size of program ROM, proper checks
+                    against buffer overflows were never included. The delivery of a working game was more important than
+                    the delivery of a robust game.
                 </p>
                 <p>
-                    A final factor in the prevalence of arbitrary code execution vulnerabilities in older games is
-                    complexity, or lack thereof. By virtue of their strict hardware and software constraints, early
-                    games were relatively simple. To use Super Mario Bros. as an example once more, the entire game
-                    could fit within 40KB and 16,000 lines of code. In comparison, a modern platformer game could
-                    contain hundreds of thousands of lines of code on top of an existing game engine. For complex
-                    open-world games, complexity grows even further with games like Elden Ring or No Man's Sky running
-                    on binaries in the multiple gigabyte range (excluding game assets). Modern game environments are
-                    also significantly more complex with more rules and possible states. Opportunities for arbitrary
-                    code execution are rarely found by accident in games. Oftentimes, the engineering of such an exploit
-                    requires in-depth knowledge of how the game is designed internally and how it specifically interacts
-                    with the hardware. This offers a much smaller search space of game states that could potentially be
-                    manipulated into a vulnerable state. However, just because exploits in smaller games are easier to
-                    spot does not mean that larger games are naturally more secure. Why then, do we not see more major
-                    vulnerabilities in modern games? Modern game development relies heavily on forms of code-reuse such
-                    as packages or engines, rather than developing games as a single monolith. Each component of a
-                    modern game is often tested and validated with modern code quality standards in mind. While these
-                    larger and more complex games may have more points of failure, they are also much more robustly
-                    designed and tested.
-                </p>
-                <p>
-                    Systems do not automatically become more resistant to exploitation as they grow in complexity, quite
-                    the opposite. Such resistance in modern games and other systems comes from deliberate efforts and
-                    intentional design. Keep this in mind.
-                </p>
-                <p>
-                    When this design is intentionally or unintentionally ignored, the effects of severe vulnerabilities
-                    on game worlds can be dramatically apparent. That buffer overflow in Super Mario Bros. mentioned
-                    earlier can indeed serve as a component in an arbitrary code execution exploit. Similar
+                    When the shortcuts and programmer assumptions bakes into game programs are exploited, the effects of
+                    severe vulnerabilities present in game worlds can be dramatically apparent. That buffer overflow in
+                    Super Mario Bros. can indeed serve as a component in an arbitrary code execution exploit. Similar
                     vulnerabilities exist in other games of the time, such as The Legend of Zelda or Castlevania. The
                     result of a collaboration between multiple retro game exploiters, the following video by{" "}
                     <i>Kosmic</i> showcases the extent to which game worlds can be completely rewritten through the
@@ -754,10 +733,11 @@ void victim_function(size_t x) {
                     too does the familiar reality of one game give way to another. The original context that the player
                     has become accustomed to is annihilated and replaced with something alien. As a consequence, the
                     player's mental model of Mario's world, honed through all of their time spent within it, is
-                    invalidated by an external force acting through the game system itself. This destruction of reality
-                    is not so different, in structure, from what the most disturbing works of cognitive horror imagine
-                    happening to the mind: a coherent internal world, built up over a lifetime, rewritten from the
-                    outside through nothing more than a carefully crafted sequence of inputs.
+                    invalidated by an external force acting through the game system itself. The underlying structure of
+                    this destruction of reality is not so different from what some of the the most disturbing works of
+                    cognitive horror imagine happening to the mind: a coherent, internal world, built up over a
+                    lifetime, rewritten from the outside through nothing more than a carefully crafted sequence of
+                    inputs.
                 </p>
                 <BlogSection>Influencing Cognition in Fiction</BlogSection>
                 <p>
