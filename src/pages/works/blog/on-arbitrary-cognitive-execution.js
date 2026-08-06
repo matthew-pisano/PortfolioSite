@@ -30,14 +30,16 @@ export default function ArbitraryCognition() {
             <FootnoteProvider label={blogInfo.anchor}>
                 <BlogSection>Introduction</BlogSection>
                 <p>
-                    You have just finished reading this sentence. This much is abundantly clear, even trivially so. But,
-                    how can you be so sure? Assuming you accept the premise of a purely physical reality, the answer is
-                    obvious: over the course of about three seconds, your eyes steadily tracked the pixels that appeared
-                    on your screen, all while your retinas reacted to the incident photons produced by your device. Your
-                    optic nerves then sent innumerable signals off to your visual cortex for processing with those new
-                    signals then traversing the approximately 6.5 inches between their origin in the rear of your brain
-                    to your prefrontal cortex. After this sequence of events, "you", your conscious self, registered the
-                    seven words contained within the first sentence of this paragraph
+                    You have just finished reading this sentence. This much is abundantly clear, even trivially so.
+                    Perhaps you have just read it again. But, how can you be so sure? Assuming you accept the premise of
+                    a purely physical reality, the answer is obvious: over the course of about three seconds, your eyes
+                    steadily tracked the pixels that appeared on your screen, which represented the beginning of this
+                    paragraph. Your perception of those words was enabled by your retinas reacting to the incident
+                    photons produced by your device. Your optic nerves then sent innumerable signals off to your visual
+                    cortex for processing with those new signals then traversing the approximately 6.5 inches between
+                    their origin in the rear of your brain to your prefrontal cortex. After this sequence of events,
+                    "you", your conscious self, registered the seven words contained within the first sentence of this
+                    paragraph
                     <Footnote>
                         This is, of course, a gross oversimplification. Visual signals, written words especially, do not
                         monotonically flow from back to front. For example, this information may have taken a slight
@@ -55,9 +57,20 @@ export default function ArbitraryCognition() {
                     . How can you be sure that these final interactions that signaled to you the experience of reading a
                     sentence, were actually caused by reading that sentence? If some other stimuli induced this
                     particular <i>qualia</i> of reading a seven word long sentence with no other side-effects, it would
-                    be indistinguishable from the genuine article from the perspective of your subjective self. If you
-                    can only observe the last domino in a long chain and you witness it fall, how can you be sure that
-                    the first domino to fall was really at the beginning of the chain and not an intermediate one?
+                    be indistinguishable from the genuine article, at least from the perspective of your subjective
+                    self.
+                </p>
+                <p>
+                    Imagine yourself as a professional art appraiser. You are given a piece that could potentially fetch
+                    a significant sum at auction, but only if it is genuine. Your task is to evaluate the piece's
+                    authenticity. You are unfamiliar with the original artist, but you notice that the piece comes with
+                    a long series of "Certificates of Sale" dating back to the original artist. If every single
+                    certificate in the chain is value, the piece must be authentic. You recognize the last signature
+                    personally and know for sure that the last certification is valid. However, even if the last
+                    certificate is valid, can you be so sure about the penultimate certificate? What about the
+                    antepenultimate? At any point in this chain of certificates a forgery could have been introduced. If
+                    that forgery fooled only the certifier after it in the chain, it would be impossible to tell later,
+                    since that certifier's certificate would be valid. Can you be certain that the piece is authentic?
                 </p>
                 <p>
                     In late 2017, researchers at Google were experimenting with adversarial attacks to their VGGNet16
@@ -101,8 +114,8 @@ export default function ArbitraryCognition() {
                     follow from the input. From the model's perspective, it experienced the <i>qualia</i> of sensing a
                     toaster, but this internal experience was not induced by the genuine article. Each step in the long
                     chain of activations behaved approximately correctly, but through exploiting some latent pattern of
-                    these activations, an illogical output was produced. The first domino to fall was not the one at the
-                    beginning.
+                    these activations, an illogical output was produced. At some point, one of the Certificates of Sale
+                    within the model was a forgery.
                 </p>
                 <p>
                     What makes this particular attack notable with respect to others such as training data poisoning or
