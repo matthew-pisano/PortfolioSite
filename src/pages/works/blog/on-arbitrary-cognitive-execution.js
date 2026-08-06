@@ -370,69 +370,17 @@ reveal_secret:          # Reveal the secret
                         values just before the return address of a procedure. If these values are overwritten by an
                         overflow, the system can terminate the program.
                     </Footnote>
-                    .
-                </p>
-                <p>
-                    In pointer-centric language like C or C++, memory corruption from pointer mismanagement is a common
-                    source of vulnerabilities
+                    . Many other simple utilities are available to hackers. for example, pointer-based vulnerabilities
+                    such as use-after-frees or double frees can allow an attacker to corrupt memory and exert more
+                    control over how a system functions
                     <Footnote>
                         Explaining this topic in depth would also necessitate a discussion on program memory management,
                         allocation, and memory pointers. While this is beyond the scope of this work, anyone interested
                         in low-level programming or vulnerabilities of this nature should ensure that they are familiar
                         with the topic.
                     </Footnote>
-                    . This can also be more transparent for an attacker to spot. If an attacker can find a sequence of
-                    inputs to a program that cause a crash or page fault, they could reasonably infer that somewhere
-                    within that program, a pointer is being mishandled. If a pointer is being mishandled, there is also
-                    a chance that the attacker could insert a value that they control into it. Use-after-free and
-                    double-free vulnerabilities both stem from structural issues within a program and a lack of proper
-                    checks. When a program is loaded, it requests a certain amount of memory from the operating system.
-                    From here, programs generally manage their own memory, only calling back to the operating system
-                    when a significant amount of memory can be released or if much more needs to be allocated. Since the
-                    program, through tools such as <i>malloc</i>, manage their memory on their own, it is the program's
-                    responsibility to keep track of which blocks of memory are actively used in objects or data
-                    structures and which are free to be allocated. Importantly, when a block of memory has been
-                    allocated, it is owned exclusively by some structure; newly allocated structures cannot be allocated
-                    on top of it. This lets programmers assume that (threading notwithstanding) the memory of one object
-                    will not be modified by another unless their program explicitly allows it. After a pointer to an
-                    object or data structure is freed, this restriction no longer applies. The allocator can, and will,
-                    reuse that old memory for new allocations. If an attacker can manipulate the program to allocate a
-                    new object on top of an old one, while the program still holds a pointer to that memory, the program
-                    may access one object thinking that it is another.
-                </p>
-                <CodeBlock language="cpp">
-                    {`struct User {
-    bool is_logged_in;  // 1 byte at struct offset 0
-};
-
-struct Foo {
-    bool bar;    // 1 byte at struct offset 0
-};
-
-
-int main() {
-    User *user = malloc(sizeof(User));
-    free(user);
-    Foo *foo = malloc(sizeof(Foo));
-    foo->bar = true;  // Set the boolean to true at the same offset as is_logged_in
-    
-    // Interpret the region of memory modified by foo as the login flag
-    if (user->is_logged_in) {
-        grant_admin_access();
-    }
-    
-    return 0;
-}`}
-                </CodeBlock>
-                <p>
-                    If a program allocates a user to the heap and frees the pointer, the region of memory pointed to is
-                    free for reallocation. If the program keeps a reference to the freed memory, accessing that pointer
-                    may mistakenly interpret an attacker-controlled object as the original object. A double-free can
-                    have a similar impact, but impacts the allocator directly. When a pointer is freed, the allocator
-                    returns the pointed-to block of memory to its free list for bookkeeping. If the allocator is
-                    instructed to free that same pointer again it will do so, even if an object has already been
-                    allocated in the same location. This may result in the memory corruption or exploitation of a
-                    completely unrelated object even if that object's pointer management is correct.
+                    . Vulnerabilities such as these are much more difficult to spot and fix than simple buffer
+                    overflows, making them popular entry points in an exploit chain.
                 </p>
                 <p>
                     A major limiting factor of buffer overflow attacks is that buffers often reside in the data or heap
