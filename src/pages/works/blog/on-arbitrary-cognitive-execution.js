@@ -10,10 +10,10 @@ import { genPageTitle } from "@/lib/util/utils";
 
 const blogInfo = new BlogInfo(
     "On Arbitrary Cognitive Execution",
-    "An inquiry into the exploitation of cognitive computation",
+    "An inquiry into the exploitation of cognitive computation and pattern replication",
     new Date(2026, 6, 7),
     "arbitraryCognition",
-    new Date(2026, 6, 13)
+    new Date(2026, 7, 5)
 );
 
 let house = <span style={{ color: "CornflowerBlue" }}>house</span>;
