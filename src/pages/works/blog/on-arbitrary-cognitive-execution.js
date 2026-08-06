@@ -197,47 +197,6 @@ export default function ArbitraryCognition() {
                     Understanding this fundamental property of programming will be relevant later, when we ask whether
                     the same vulnerabilities could exist within the brain.
                 </p>
-                <BlogSection level={2}>A Brief History of Hacking</BlogSection>
-                <p>
-                    A common theme throughout the history of computing is that the technology advances far faster than
-                    the social norms and behaviors that we humans develop in reaction to them. This is especially true
-                    when software developed in the context of one culture continues to see use as culture evolves.
-                </p>
-                <p>
-                    Early in the history of computing, the threat of malicious actors was much less of a central focus
-                    than it is today. Before the highly interconnected networks of computers that began to appear in the
-                    1970s, computer programming was much more localized. Programmers concentrated on a program's utility
-                    and engineering viability over explicit security. Many programs were bespoke, built for specialized
-                    systems and applications. Even the computers themselves were confined to research labs or
-                    universities. Time using them was at a premium, so even determined would-be hackers would have
-                    needed to officially log and justify any usage of rare and expensive computer equipment. If someone
-                    was caught abusing their privilege, this could have major social and career consequences. Even if
-                    someone could evade detection, sparse connections between computers severely limited an exploit's
-                    blast radius. These obvious limiting factors enabled an informal professional agreement between
-                    engineers: if nobody acted maliciously, there was no reason to waste valuable developer hours on
-                    securing software from other developers. Evidence of this trust-based design ethos can still be felt
-                    today when interacting with offline legacy software or the 2G wireless standard. This naive sense of
-                    trust began to quickly break down in the 1970s and 1980s with the rise of computer time-sharing,
-                    networks, and eventually the hacker.
-                </p>
-                <p>
-                    In the early 1980s, software from the early trust-based era of development in the 1960s and 1970s
-                    was still in use, with many development teams still adhering to the legacy of professional courtesy.
-                    The technology, however, had rapidly outpaced the culture and the old limitations that security
-                    assumptions were based upon. Time-sharing operating systems were significantly more commonplace.
-                    Computer access was no longer confined to elite institutions and research labs. Many ordinary
-                    students and working professionals had access to standalone computers and mainframe terminals. These
-                    computers were also significantly more connected. Research labs, universities, banks, airlines, and
-                    other institutions were all in constant communication. On this graph of connections, the existence
-                    of a route between two arbitrary computers was much more likely than it was in the decades prior.
-                    With the accessibility of computers, old assumptions of trust and professional integrity also broke
-                    down. A determined college student or disgruntled employee could evade detection as a hacker much
-                    more easily than before, with potential consequences being much less severe. Many well-known
-                    examples of computer viruses originated from this period: Brain, Morris Worm, The LoveLetter Virus,
-                    and many others. With this historical context, we can now turn to how these programs were able to
-                    hijack their target machines and how the insecure programming practices of the early computer era
-                    enabled their effectiveness.
-                </p>
                 <BlogSection level={2}>Ex Machina</BlogSection>
                 <p>
                     If you were to communicate with an early computer programmer in the year 1965 and warn them that the
