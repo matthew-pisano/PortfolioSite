@@ -202,28 +202,32 @@ export default function ArbitraryCognition() {
                     If you were to communicate with an early computer programmer in the year 1965 and warn them that the
                     exploitation of their software would soon become a booming industry, how would they react? They
                     would likely be unsurprised. Programmers were aware that security could <i>become</i> a concern in
-                    the future, even if it was not paramount at the time. Indeed, the possibility of large-scale
-                    exploitation would be shown by The Creeper in 1971, just six years later. Why may they react in this
-                    manner, even though they had not personally experienced their software being exploited? Even if this
-                    programmer from the past were not aware of the exact techniques of exploitation, the possibility of
-                    hacking may not phase them. Perhaps this hypothetical person's lack of surprise is itself
-                    unsurprising to you yourself.
+                    the future, even if it was not paramount at the time. The task of designing complex software for
+                    heavily resource-constrained machines was challenge enough. Indeed, the possibility of large-scale
+                    exploitation would be shown by "The Creeper" worm in 1971, just six years later. Why may they react
+                    in this manner, even though they had not personally experienced their software being exploited? Even
+                    if this programmer from the past were not aware of the exact techniques of exploitation, the
+                    possibility of hacking may not phase them. Perhaps this hypothetical person's lack of surprise is
+                    itself unsurprising to you as well.
                 </p>
                 <p>
-                    Consider a similar setup which is concerned with a different kind of low-level exploitation. Would
-                    it be reasonable to suggest that the human brain is vulnerable to similar attacks? We can readily
-                    conceptualize more "high-level" social or psychological attacks such as interpersonal manipulation
-                    or desensitization to some specific situations. These are, however, very blunt instruments that may
-                    or may not work as the attacker intends or may not work at all. Instead, consider something much
-                    lower in level, something that directly exploits the complex patterns in how our neurons activate.
-                    This prospect seems much more absurd. Why? Just because we have yet to see an example, like our 1965
-                    programmer, does not mean it is impossible. The real difference is that we simply have no reason to
-                    believe that it <i>is</i> possible. The sheer intractability of the problem seems too great to
-                    overcome; we do not know how our own brains work, much less how to exploit those inner workings.
-                    Computer hacking is much easier to conceptualize. We know <i>exactly</i> how computers work. We
-                    designed computers specifically to work in this deterministic and understandable manner. The
-                    question of knowing whether low-level exploits are possible is really just a question of whether we
-                    know what laws and patterns govern that system on a base level.
+                    To better understand why, consider a similar setup which is concerned with a different kind of
+                    low-level exploitation. Would it be reasonable to suggest that the human brain is vulnerable to
+                    similar attacks? We can readily conceptualize more "high-level" social or psychological attacks such
+                    as interpersonal manipulation or desensitization to some specific situations. These are, however,
+                    very blunt instruments that may or may not work as the attacker intends, or may not work at all.
+                    Instead, consider something much lower in level, something that directly exploits the complex
+                    patterns in how our neurons activate. This prospect seems outright absurd. Why, though, does this
+                    seem so outlandish? Just because we have yet to see an example does not mean it is impossible. One
+                    motivation for our apprehension to this concept could be that we simply have no reason to believe
+                    that it <i>is</i> possible. The sheer intractability of the problem seems too great to overcome; we
+                    do not know how our own brains work, much less how to exploit those inner workings. Computer
+                    hacking, by contrast, is much easier to conceptualize. We know <i>exactly</i> how computers work. We
+                    designed computers specifically to work in this deterministic and understandable manner. This is why
+                    our 1965 programmer was so un-phased, even if they were never shown direct evidence proving the
+                    possibility of hacking. The question of knowing whether low-level exploits are possible in any
+                    computing device, even a biological one, is really just a question of whether we know what laws and
+                    patterns govern that system on a base level.
                 </p>
                 <p>
                     Modern, general purpose, classical computers nearly universally rely upon the Von Neumann
@@ -243,10 +247,10 @@ export default function ArbitraryCognition() {
                     architecture. In this schema, computers are neatly split into a processor, a memory unit, and I/O
                     devices. Generally, the processor contains the logic on how to interpret instructions, the memory
                     contains which instruction to execute, and the I/O devices allow humans or other computers to
-                    interface with running programs. Most modern, consumer/enterprise computers are also register
+                    interface with running programs. Most modern, consumer and enterprise computers are also register
                     machines. This tweak to the base architecture adds registers (and often multiple layers of cache)
                     between the processor and memory. These registers have direct access to the CPU and greatly simplify
-                    the interface in which the CPU interacts with memory. Special registers, such as the program
+                    the interface by which the CPU interacts with memory. Special registers, such as the program
                     counter, keep track of the status of execution with general purpose registers serving as labeled
                     storage for intermediate computations and auxiliary bookkeeping. For now, we can also assume that
                     memory is represented to the CPU as a fully accessible and arbitrarily addressable set of storage
@@ -270,8 +274,9 @@ export default function ArbitraryCognition() {
                     interfaces is simpler. However, in addition to introducing a memory bottleneck, this unification
                     opens up many avenues for exploitation. If data can be interpreted as instructions in some contexts,
                     the users of a system could also theoretically control how that system functions by manipulating it
-                    to run arbitrary code of their choosing.
+                    to run arbitrary code of their choosing or to access arbitrary regions of memory.
                 </p>
+                <BlogSection level={2}>A Trivial Vulnerability</BlogSection>
                 <p>
                     Let's first consider a toy example, then work up from there. Most systems have a special register
                     called the "program counter". This register, like any other, contains a number: the memory address
@@ -312,10 +317,10 @@ reveal_secret:          # Reveal the secret
                     as intended and only inputs four characters for the password, this program will work correctly. If
                     the user's input does not match the password, then the secret will not be revealed. However, what
                     happens if the user inputs more than four characters? Remember that the computer will understand the
-                    programmer's instructions to the letter, not to their spirit. The input procedure will continue to
-                    read in characters until the return key is struck. If more than four characters are stored, data
-                    will spill over into the next word, the next instruction. In this case, this is the first
-                    instruction in the
+                    programmer's instructions to the letter, not to their spirit (recall the XY problem from earlier).
+                    The input procedure will continue to read in characters until the return key is struck. If more than
+                    four characters are stored, data will spill over into the next word, the next instruction. In this
+                    case, this is the first instruction in the
                     <code>password_check</code> procedure. Suppose that the instructions which compose this procedure
                     begin in memory at address <i>0x00400044</i> and the <code>reveal_secret</code> procedure lies at{" "}
                     <i>0x00400064</i>. Initially, <code>password_check</code>'s address would store <i>0x3c010040</i>,
@@ -348,20 +353,24 @@ reveal_secret:          # Reveal the secret
                 <p>
                     One such utility exploit is present in our example above: buffer overflows. To use this utility, an
                     attacker identifies a buffer, a bounded region of memory, which they can write past the boundary of
-                    with their own data. Generally, there is some point of interest just beyond the bounds of the buffer
-                    that the attacker is interested in. In our example, the point of interest was an instruction which
-                    we knew that the program counter was going to execute. This knowledge informed our decision on what
-                    data to actually write beyond the bounds of our buffer. Looking beyond raw assembly, this utility
-                    exploit is often used on programs written in memory-unsafe languages like C or C++. These languages
-                    do not enforce array bounds, potentially allowing an attacker to write past them into program memory
-                    if the programmer does not manually add in bounds checks. Even if the designer of a program does not
-                    handle arrays properly themselves, modern systems often have builtin protections against this simple
-                    attack. No-execute bits in memory forbid data placed in a data region (such as the stack) from being
-                    executed. Address space layout randomization (ASLR) ensures that programs loaded into memory
-                    randomize the addresses of instructions. In our example this would have prevented us from knowing
-                    which address to jump to. Stack canaries are another common protection, with the operating system
-                    placing randomized values just before the return address of a procedure. If these values are
-                    overwritten by an overflow, the system can terminate the program.
+                    with their own data. Generally, there is some point of interest for the attacker just beyond the
+                    bounds of the buffer. In our example, the point of interest was an instruction which we knew that
+                    the program counter was going to execute. This knowledge informed our decision on what data to
+                    actually write beyond the bounds of our buffer. Looking beyond raw assembly, this utility exploit is
+                    often used on programs written in memory-unsafe languages like C or C++. These languages do not
+                    enforce array bounds, potentially allowing an attacker to write past them into program memory if the
+                    programmer does not manually add in bounds checks
+                    <Footnote>
+                        Even if the designer of a program does not handle arrays properly themselves, modern systems
+                        often have builtin protections against this simple attack. No-execute bits in memory forbid data
+                        placed in a data region (such as the stack) from being executed. Address space layout
+                        randomization (ASLR) ensures that programs loaded into memory randomize the addresses of
+                        instructions. In our example this would have prevented us from knowing which address to jump to.
+                        Stack canaries are another common protection, with the operating system placing randomized
+                        values just before the return address of a procedure. If these values are overwritten by an
+                        overflow, the system can terminate the program.
+                    </Footnote>
+                    .
                 </p>
                 <p>
                     In pointer-centric language like C or C++, memory corruption from pointer mismanagement is a common
