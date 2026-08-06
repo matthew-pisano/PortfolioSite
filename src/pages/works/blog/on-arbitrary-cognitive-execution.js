@@ -72,9 +72,10 @@ export default function ArbitraryCognition() {
                     that forgery fooled only the certifier after it in the chain, it would be impossible to tell later,
                     since that certifier's certificate would be valid. Can you be certain that the piece is authentic?
                 </p>
+                <BlogSection level={2}>Toasters and Perceptions of Reality</BlogSection>
                 <p>
-                    In late 2017, researchers at Google were experimenting with adversarial attacks to their VGGNet16
-                    image recognition model
+                    In late 2017, researchers at Google were experimenting with adversarial attacks against their
+                    VGGNet16 image recognition model
                     <Footnote>
                         <Link href={"https://arxiv.org/pdf/1712.09665"} target="_blank" rel="noopener noreferrer">
                             Adversarial Patch (Brown et al. 2018)
@@ -93,9 +94,9 @@ export default function ArbitraryCognition() {
                     . For their attack on VGGNet16, the researchers took a different approach. Leaving the model
                     unmodified, their goal was to design an exploit which would allow them arbitrary control over the
                     model's predictions. For their experiment, the authors reverse engineered image patches, overlays
-                    which could be placed into any input image, that would maximize the model's likelihood of predicting
-                    an arbitrary label, regardless of the original image. The result of this reverse engineering is the
-                    following patch:
+                    which could be placed into any input image. These patches were designed to maximize the model's
+                    likelihood of predicting an arbitrary label, regardless of the original image. The result of this
+                    reverse engineering is the following patch:
                 </p>
                 <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/toaster.png"}>
                     An adversarial image patch from Brown et al.
@@ -114,45 +115,48 @@ export default function ArbitraryCognition() {
                     follow from the input. From the model's perspective, it experienced the <i>qualia</i> of sensing a
                     toaster, but this internal experience was not induced by the genuine article. Each step in the long
                     chain of activations behaved approximately correctly, but through exploiting some latent pattern of
-                    these activations, an illogical output was produced. At some point, one of the Certificates of Sale
-                    within the model was a forgery.
+                    these activations, an illogical output was produced. At some point, one of the "Certificates of
+                    Sale" between the model's neurons was a forgery.
                 </p>
                 <p>
-                    What makes this particular attack notable with respect to others such as training data poisoning or
-                    adversarial fine-tuning? Both can achieve the same effect of making the model believe that a banana
-                    is a toaster. This attack, however, does not rely on modifying the model's behavior. Instead, an
-                    erroneous output is induced by a malicious input alone, leaving the underlying model unaffected.
-                    From the model's perspective, this becomes even more interesting: its internal experience did not
-                    follow from reality yet, to the model, its false experience was nonetheless indistinguishable from
-                    reality.
+                    Stepping back, what makes this particular attack notable with respect to others, such as training
+                    data poisoning or adversarial fine-tuning? Both can achieve the same effect of making the model
+                    believe that a banana is a toaster. This attack, however, does not rely on modifying the model's
+                    behavior. Instead, an erroneous output is induced by a malicious input alone,{" "}
+                    <i>leaving the underlying model unaffected</i>. From the model's perspective, this becomes even more
+                    interesting: its internal experience did not follow from reality yet, to the model, its false
+                    experience was nonetheless indistinguishable from reality.
                 </p>
                 <BlogSection level={2}>Problems and Proxies</BlogSection>
                 <p>
                     This manner of attack is a special case of a much broader class of attack on computer systems. This
-                    is generally referred to as <i>Arbitrary Code execution</i>: an attack which manipulates the
+                    is generally referred to as <i>Arbitrary Code Execution</i>: an attack which manipulates the
                     expected behavior of a computing system into producing an attacker-controlled result. This level of
                     attacker control is usually achieved through the usage of finely crafted inputs to a system, instead
-                    of through direct code manipulation.
+                    of through direct code modification or hardware tampering.
                 </p>
                 <p>
                     The existence of this class of exploit relies on a feature common to any sort of computing machine.
                     These systems are "dumb", in the sense that they follow instructions to the letter, rather than
-                    following the spirit. Programmers are well-aware of this <i>XY problem</i> when creating software.
-                    Suppose the goal of a program is to achieve objective Y. There is rarely a single instruction for
-                    exactly Y. Instead, the programmer must write a series of X instructions that can achieve Y
-                    indirectly. For example, suppose a programmer would like for a program that is currently executing a
-                    procedure to transfer execution to another procedure (Y). The CPU does not know what a "procedure"
-                    is, much less how to "switch" to it. These are human-centric concepts, rather than computer-centric.
-                    To achieve the goal of Y, the programmer must put their ill-defined goals into precise instructions.
-                    They would store the address at which procedure Y sits into a pointer and pass the pointed-to
-                    address to a jump instruction (X). Once the program is assembled, the jump instruction is statically
-                    defined, but the input to that instruction is only defined at runtime; there is no guarantee that
-                    the address present at runtime will match the intended memory address of Y. The instruction will
-                    jump execution to whichever address is supplied. If a malicious attacker were able to modify the
-                    pointer before the jump, then the attacker would be in control of the next executed procedure
-                    instead. For the purposes of our exploration here, note that the target procedure was never moved
-                    and the jump instruction's logic was never compromised. The machine was following instructions to
-                    the letter instead of to the programmer's spirit.
+                    following the spirit. Programmers are well-aware of this <i>XY problem</i>
+                    <Footnote>
+                        <Link href={"https://xyproblem.info/"}>The XY Problem</Link>
+                    </Footnote>{" "}
+                    when creating software. Suppose the goal of a program is to achieve some objective, denoted X. There
+                    is rarely a single instruction for achieving exactly X in one step. Instead, the programmer must
+                    write a series of Y instructions that can achieve X indirectly. For example, suppose a programmer
+                    would like for a program that is currently executing a procedure to transfer execution to another
+                    procedure (X). The CPU does not know what a "procedure" is, much less how to "switch" to it. These
+                    are human-centric concepts, rather than computer-centric. To achieve the goal of X, the programmer
+                    must put their ill-defined goals into precise instructions. They would store the address at which
+                    procedure X sits into a pointer and pass the pointed-to address to a jump instruction (Y). Once the
+                    program is assembled, the jump instruction is statically defined, but the input to that instruction
+                    is only defined at runtime; there is no guarantee that the address present at runtime will match the
+                    intended memory address of X. The instruction will jump execution to whichever address is supplied.
+                    If a malicious attacker were able to modify the pointer before the jump, then the attacker would be
+                    in control of the next executed procedure instead. For the purposes of our exploration here, note
+                    that the target procedure was never moved and the jump instruction's logic was never compromised.
+                    The machine was following instructions to the letter instead of to the programmer's spirit.
                 </p>
                 <p>
                     Returning to our image recognition example, researchers used the tuned 138 million parameters of
@@ -164,14 +168,14 @@ export default function ArbitraryCognition() {
                         </Link>
                         .
                     </Footnote>{" "}
-                    as a proxy for choosing the correct label for an image, with VGGNET16's parameters serving as X, and
-                    the correct label as Y. There is no guarantee that the trained state of the parameters would always
-                    yield "banana" when presented with a picture of a banana; they just happen to do so for an
-                    acceptable portion of the evaluation samples. The image patch exploits the state of the model's
-                    parameters to yield "toaster" instead. Note that the parameters were never changed, nor was the
-                    computer's ability to successfully evaluate the input conditional on those parameters. In the exact
-                    same manner as a more traditional assembly example, a working program was induced into an unexpected
-                    state without modification.
+                    as a proxy for choosing the correct label for an image, with VGGNET16's parameters serving as Y (the
+                    attempt at achieving the objective), and the correct label as X (the true objective). There is no
+                    guarantee that the trained state of the parameters would always yield "banana" when presented with a
+                    picture of a banana; they just happen to do so for an acceptable portion of the evaluation samples.
+                    The image patch exploits the state of the model's parameters to yield "toaster" instead. Note that
+                    the parameters were never changed, nor was the computer's ability to successfully evaluate the input
+                    conditional on those parameters. In the exact same manner as a more traditional assembly example, a
+                    working program was induced into an unexpected state without modification.
                 </p>
                 <p>
                     Arbitrary code execution is commonly thought of as only present in traditional, register-based
@@ -185,10 +189,10 @@ export default function ArbitraryCognition() {
                 </p>
                 <BlogSection level={2}>Cognition as Computation</BlogSection>
                 <p>
-                    One such computational substrate could potentially be the human brain. However, to further pursue
-                    this line of inquiry, we must make an assumption: that the human brain is, at least to some extent,
-                    a computing device. We will touch on how valid or invalid this assumption may be later but, for now,
-                    we will accept this premise for the sake of exploration.
+                    What if we consider the human brain to be another such computational substrate which could be
+                    exploited? To further pursue this line of inquiry, we must make an assumption: that the human brain
+                    is, at least to some extent, a computing device. We will touch on how valid or invalid this
+                    assumption may be later but, for now, we will accept this premise for the sake of exploration.
                 </p>
                 <p>
                     What does it mean for a system to be a computing device? I have previously approached this from the
@@ -230,12 +234,12 @@ export default function ArbitraryCognition() {
                     former criteria well: they can manipulate inputs into outputs in a controlled and predictable
                     manner. For example, the physical system of a cooling cup of tea is useful for simulating the
                     physical processes present in ... a cooling cup of tea. However, this system can only represent one
-                    class of configurations: itself. A cooling cup of tea cannot, for instance, be tuned into modeling a
-                    cooling cup of coffee without being irreversibly turned into that system. In contrast, what we
-                    commonly consider to be computing devices can simulate a game of chess, a webpage, or both. While we
-                    like for computing devices to be general, they do not necessarily need to be Turing complete. For
-                    example, Programmable Logic Arrays and certain off-chip accelerators could be considered to be
-                    "computing devices" but are not themselves Turing complete
+                    class of configurations: itself. A cooling cup of tea cannot, for instance, be tuned into modeling
+                    another system, such as cooling cup of coffee, without being irreversibly turned into that system.
+                    In contrast, what we commonly consider to be computing devices can simulate a game of chess, a
+                    webpage, or both. While we like for computing devices to be general, they do not necessarily need to
+                    be Turing complete. For example, Programmable Logic Arrays and certain off-chip accelerators are
+                    generally considered to be "computing devices" but are not themselves Turing complete
                     <Footnote>
                         In a similar vein was the Soviet <i>Turnir</i> (Турнир) console released in 1978. Unlike
                         contemporary home consoles like the Atari 2600 or the Magnavox Odyssey which could play a
@@ -250,7 +254,7 @@ export default function ArbitraryCognition() {
                 </p>
                 <p>
                     Considering these requirements, we can put together a more precise definition of a computing device.
-                    We can conceptualize a computing device as any system which takes in patterns of information as
+                    We can conceptualize a computing device as: any system which takes in patterns of information as
                     input, manipulates this information in a predictable manner, dependent on a task-oriented internal
                     configuration, and outputs different patterns of information. This definition encapsulates classical
                     and quantum computers in general, along with specialized systems such as artificial or even
