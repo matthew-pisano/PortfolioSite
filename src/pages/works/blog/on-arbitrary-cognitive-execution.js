@@ -1104,10 +1104,21 @@ void victim_function(size_t x) {
                 <BlogSection level={2}>Local Patterns with Glocal Consequences</BlogSection>
                 <p>
                     We know that the brain takes in well defined patterns of input and yields well defined patterns of
-                    output, so that is two criteria fulfilled. What is less certain is whether we can, in good faith,
-                    consider the brain as a device dedicated to task-oriented pattern replication and manipulation.
-                    While the concept of the human brain as geared towards pattern replication may already seem
-                    intuitive, perhaps in the sense of high-level <i>observational learning</i>
+                    output. We also know that these inputs are processed into outputs through the internal state of our
+                    brain's neurons and their connections. What is less certain is whether we can interpret the complex
+                    interactions between these neurons as predictable, low-level patterns that emergently form into the
+                    much higher-level patterns that we can directly observe. First, we will examine how low-level
+                    patterns within the brain can directly influence higher-level ones. Then, we can examine whether
+                    those low-level patterns behave in a predictable manner.
+                </p>
+                <p>
+                    We know that, in a high-level and abstract sense, our brains replicate both innate and learned
+                    patterns. Regular patterns of neural signals in our innate hindbrains help to regulate our
+                    heartbeat, breathing, and digestion, along with maintaining our balance and coordinating our
+                    movements. We can observe these patterns through measuring nerve impulses and electrical activity in
+                    our nerves. We even have the technology to replicate or relay these patterns, as in the cases of
+                    pacemakers or neural prostheses. For learned patterns, we often replicate the behavior of other
+                    humans through <i>observational learning</i>
                     <Footnote>
                         See:{" "}
                         <Link
@@ -1127,12 +1138,54 @@ void victim_function(size_t x) {
                         </Link>
                         .
                     </Footnote>
-                    , to properly meet our definition of a computing device, we must instead think of pattern
-                    replication at the level of neurons and neuronal clusters, roughly analogous to the low-level
-                    pattern processing machinery in a CPU. This may feel less intuitive: while neurons do indeed fire
-                    based on the firings of their neighbors, this would appear to be a local association, rather than a
-                    pattern that also propagates up to a more general scale. However, as we will see, these locally
-                    replicated patterns can easily cause cascades which impact the brain on a global scale.
+                    , a very high-level phenomenon. For these much more complex patterns, their relation to the
+                    low-level patterns of neurons or neuron clusters is less clear. If you where to show a modern
+                    language model to someone from the nineteenth century, would they be able to deduce that the
+                    high-level patterns in the model's responses were all emergent from patterns of predictable,
+                    low-level instructions? Likely not, which is why this idea applied to the brain may feel
+                    unintuitive: while neurons do indeed fire based on the firings of their neighbors, this would appear
+                    to be a local association, rather than a pattern that also propagates up to a more general scale.
+                    However, as we will see, these locally replicated patterns can easily cause cascades which impact
+                    the brain on a global scale.
+                </p>
+                <p>
+                    On soon after 7:00 PM, on December 16, 1997, hundreds of children all across Japan began showing up
+                    to hospitals complaining of blurred vision, headaches, dizziness, and nausea. Many of them presented
+                    to emergency rooms unconscious, seizing, or convulsing. The root causes of this incident occurred
+                    simultaneously across multiple prefectures at precisely 6:51:34 PM. The culprit was the victims'
+                    television sets as they played the 38th episode of the Pokémon animated series. 21 minutes into the
+                    broadcast, several explosions were depicted by rapidly strobing frames of red and blue lights. These
+                    lights, flickering at 12Hz, remained on-screen for only four seconds. The mere observation of this
+                    scene was enough to send 600 people to their local emergency rooms. How could a simple series of
+                    visual inputs cause such catastrophic consequences for these people's brains? Victims of the show
+                    suffered from photosensitive epilepsy, meaning that their brains were more prone to seizures from
+                    rapidly flashing visuals. While the exact mechanism is poorly understood, we do know that extremely
+                    regular and intense signals coming from the visual cortex can cause receiving neurons to also fire
+                    with a similar regular pattern pattern
+                    <Footnote>
+                        <Link href={"https://doi.org/10.1002/ana.24570"}>
+                            Activation of specific neuronal networks leads to different seizure onset types (Shiri et
+                            al. 2015)
+                        </Link>
+                        ,
+                        <Link href={"https://visualstress.info/1979-15.pdf"}>
+                            NEUROPHYSIOLOGICAL ASPECTS OF PATTERN-SENSITIVE EPILEPSY (Wilkins et al. 1979)
+                        </Link>
+                        ,<Link href={"https://epilepsynl.com/photosensitive-epilepsy/"}>Photosensitive Epilepsy</Link>
+                    </Footnote>
+                    . These patterns of activation, for reasons not fully understood, rapidly begin replicating those
+                    patterns across the brain until a general threshold of activation has been reached. at this point,
+                    the brain can no longer maintain its patterns of regular function and seizes. In these seizures,
+                    simple, low-level patterns can reliably cascade into much more global patterns.
+                </p>
+                <p>
+                    Similar to the row hammer vulnerability in traditional computers, repeated patterns of activation
+                    locally can impact the state of the system more globally. The direct impact is much more potent in
+                    the case of the brain, as the damaging pattern does not just impact one bit at a time within a
+                    global state, but self-replicates until it has overridden the patterns of activation that would
+                    usually occur within the brain. In this sense, seizures have internal effects very similar to a
+                    memetic virus, with the main difference being that the replacing patterns are chaotic and high
+                    entropy instead of regular and low entropy.
                 </p>
                 <BlogSection level={2}>The Stability and Predictability of Neural Patterns</BlogSection>
                 <BlogSection level={2}>Replication Across Architectures</BlogSection>
