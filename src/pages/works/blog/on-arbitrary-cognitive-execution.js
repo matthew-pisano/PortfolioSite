@@ -997,23 +997,24 @@ void victim_function(size_t x) {
                 </p>
                 <BlogSection>Cognition as Pattern Replication</BlogSection>
                 <p>
-                    As we have seen, real computing devices offer many examples of exploits which rely upon specific
-                    logical and hardware vulnerabilities. Generally, this takes the form of manipulating an
-                    uncompromised system into executing and replicating patterns of malicious data, rather than the
+                    As we have seen, traditional computing devices can be vulnerable to a variety of exploits which rely
+                    upon specific logical and hardware vulnerabilities. Generally, this takes the form of manipulating
+                    an uncompromised system into executing and replicating patterns of malicious data, rather than the
                     patterns of data that it normally would. In fiction, we have also seen many examples of the brain
-                    being exploited in a simular manner, but without an exact schema for performing such exploits,
-                    merely conjecturing that they may be possible. Now, we will consider whether the human brain may
-                    actually function as an analogous computing device which could be exploited in a manner just as real
+                    being exploited in a simular manner. Though, the reader is never given an exact schema for
+                    performing such exploits, the story merely conjectures that they may be possible. What if the brain
+                    really does harbor such hidden vulnerabilities? Now, our investigation turns to whether the human
+                    brain may actually function as a computing device which could be exploited in a manner just as real
                     as the others which we had examined earlier. This section will be dedicated to substantiating and
                     contextualizing this concept: proximately, by understanding how the brain functions naturally in
                     order to, ultimately, understand how it could be exploited artificially.
                 </p>
                 <BlogSection level={2}>Cognition as Computation</BlogSection>
                 <p>
-                    Before pursuing this line of inquiry, we must first ask whether the human brain is, at least to some
-                    extent, a computing device. To answer this question, we must first define what a "computing device"
-                    actually is. I have previously approached this from the high-level angle of simulating Turing
-                    machines in my work{" "}
+                    Before further pursuing this line of inquiry, we must first ask whether the human brain is, at least
+                    to some extent, a computing device at all. To answer this question, we must first define what a
+                    "computing device" actually is. I have previously approached this from the high-level angle of
+                    simulating Turing machines in my work{" "}
                     <Link
                         href={"https://matthewpisano.com/works/blog/on-general-transformers"}
                         target="_blank"
@@ -1071,12 +1072,34 @@ void victim_function(size_t x) {
                 </p>
                 <p>
                     Considering these requirements, we can put together a more precise definition of a computing device.
-                    We can conceptualize a computing device as: any system which takes in patterns of information as
-                    input, manipulates this information in a predictable manner, dependent on a task-oriented internal
-                    configuration, and outputs different patterns of information. This definition encapsulates classical
-                    and quantum computers in general, along with specialized systems such as artificial or even
-                    biological neural networks. Most importantly, this definition gives us a way to not only describe
-                    how a system behaves normally, but also how it could be exploited to behave abnormally.
+                    We can conceptualize a computing device as: any bounded system which takes in patterns of
+                    information as input, manipulates this information in a predictable manner, dependent on a limited,
+                    task-oriented internal configuration, and outputs different patterns of information.
+                </p>
+                <p>
+                    Using this definition, we can more precisely define why some degree of low level vulnerability is
+                    inherent to traditional computing devices. Computing devices are bounded, therefore they cannot have
+                    perfect knowledge. If a computing device could have perfect knowledge of a system, it must enclose
+                    that system itself. Limited patterns of input and output mean that the system has an internal state,
+                    isolated from its environment. The consequences of a sequence of input patterns can accumulate over
+                    time, resulting in non-trivial output patterns. If there was no internal state, there would be
+                    nothing to carry over and add complexity to the output. Finally, computing devices manipulate
+                    information in a predictable manner through internal transformations which are limited in scope. In
+                    order to accomplish some goal, a user must describe their goal in the terms of these limited
+                    transformations, losing information in the process. If the device had limitless capabilities for
+                    transformation, it could translate the input into the desired output in a single step. Therefore, a
+                    computing device cannot have perfect knowledge of a user's goals to begin with, any inputs it takes
+                    must pass through an internal state under only the assumption of integrity, and goals must suffer
+                    some information loss as they are translated into transformations that the device interprets without
+                    the user's internal context. These limits in information and capability greatly increase the
+                    likelihood that the device may deviate from the user's lossless representation of their goal,
+                    through its pursuit of its lossy representation of that same goal.
+                </p>
+                <p>
+                    This definition, and the limitations inherent to it, encapsulates classical and quantum computers in
+                    general, along with specialized systems such as artificial or even biological neural networks. Most
+                    importantly, this definition gives us a way to not only describe how a system behaves normally, but
+                    also how it could be exploited to behave abnormally.
                 </p>
                 <BlogSection level={2}>Local Patterns with Glocal Consequences</BlogSection>
                 <p>
