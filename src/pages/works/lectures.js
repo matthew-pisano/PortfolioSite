@@ -34,6 +34,94 @@ export default function Lectures() {
             <ScrollTile
                 tileInfo={
                     new TileInfo({
+                        title: <>The Shape of Information: Information Theory and Uncertainty</>,
+                        thumbnail: "/media/image/organizations/ibm.png",
+                        tags: [TileTag.MATH]
+                    })
+                }>
+                <p>
+                    After Gödel, Church, and Turing's discoveries in the realm of computation, an important gap still
+                    remained in our understanding. We could precisely define the process of computation itself, but we
+                    still did not have a full grasp of its inputs and results; we had yet to formalize information. This
+                    lecture focuses on Shannon and his founding of the field of information theory. With Shannon's
+                    theory of information, along with the theory of computation and the process of diagonalization, we
+                    finally had the full foundations of the field of computer science.
+                </p>
+                <p>
+                    Imagine you are an allied radio engineer in the days after D-Day on the coast of Normandy. Your goal
+                    is to relay as much information about your battalion's situation as possible back to command in
+                    Portsmouth. However, many others are trying the exact same thing on a very limited number of
+                    available radio channels, causing is heavy interference. How can you ensure that your field
+                    intelligence gets through? Now imagine you are across the Atlantic and planning a new telephone
+                    route for AT&T. The existing lines between two cities cannot handle the volume of calls going back
+                    and forth. How many additional phone lines will you need to handle the load? How many conversations
+                    can fit down a single wire at once? In both situations, you face the same problem: how much{" "}
+                    <i>information</i> does a message require to transmit, how much <i>information</i> can a single
+                    transmission contain?
+                </p>
+                <p>
+                    In the early days of signal processing, engineers were primarily concerned with maximizing{" "}
+                    <i>intelligence</i>. How much <i>useful</i> information can be fit into a single signal? Shannon's
+                    key insight, shared with earlier work from Nyquist and Hartley, was that this was the wrong angle to
+                    approach from. Physical laws did not care for how much <i>meaning</i> humans could derive from any
+                    given message. What did concern those laws was the much more sterile concept of <i>information</i>.
+                    There was information contained within any signal, even ones which we humans did not find very
+                    interesting. The signal itself was described by information, rather than any message contained
+                    within it.
+                </p>
+                <p>
+                    This line of thinking appears to arrive at an absurdity: the more complex and random a signal was,
+                    the more information was needed to fully describe it. Random noise contained more information than a
+                    regular pattern, a concept completely contrary to our old notions of <i>intelligence</i>.
+                    Information, therefore, is a measure of "surprise", more than anything else. How many yes/no
+                    questions must you ask before being able to fully describe a signal? For a regular pattern, you
+                    needed relatively few. But, for random noise, every element of the signal was vital to its overall
+                    information content, requiring as many binary questions as possible. This "atom" of information is
+                    what we now call a "bit": the amount of information yielded by observing the outcome of an event
+                    with a probability of exactly 50%.
+                </p>
+                <p>
+                    Whereas a bit describes the information content of a single event, information entropy describes the
+                    average information over many events. Entropy can be measured from a distribution directly, without
+                    needing to actually observe any events.
+                </p>
+                <p>
+                    Using entropy, we can more rigorously describe encryption and compression. Encryption is the task of
+                    taking some signal and obfuscating it with noise through some process in such a way where that noise
+                    could only be removed by some other process. Compression is the task of taking some signal and
+                    eliminating redundancies within that signal so it can be transmitted using as few bits as possible,
+                    before decompressing back to the original. With Shannon's notion of information and entropy, we can
+                    see that these two processes are fundamentally the same. Both add entropy to a signal until no more
+                    can fit without losing the "intelligence" contained within the original signal. Both a perfect
+                    compression algorithm and a prefect encryption scheme output signals which are pure random noise,
+                    with the goal of later reversing the process.
+                </p>
+                <p>
+                    There are limits to these processes, however. You cannot get more informative than pure random
+                    noise. This can be proved quite neatly through a proof using Cantor's diagonalization, the technique
+                    that was central to the two previous lectures in the series. Using this method of proof, Shannon
+                    showed that there are strict limits on how an arbitrary string can be compressed. In fact, 50% of
+                    all strings of some length cannot be compressed by even a single bit. 99.9% cannot be compressed by
+                    just 10 bits. This result was originally expressed in Shannon's 1949 study of boolean circuit
+                    simplification.
+                </p>
+                <p>
+                    The final portion of this lecture examines information more broadly. Here we see that the concept of
+                    information is not constrained to signal processing or computing, it is embedded into the very
+                    fabric of the universe itself. There is a reason why Shannon chose the word "entropy" for his
+                    measure of distributional information: how it is mathematically described is nearly identical to the
+                    Boltzmann entropy used in statistical mechanics. We describe the world of thermodynamics in the samy
+                    manner as we describe information. This is illustrated saliently in Landauer's principle: erasing
+                    information from a logical system incurs a physical energy cost outside of that system. Physicists
+                    and information theorists have known of this connection for decades. Famously, John Archibald
+                    Wheeler coined the phrase "It from Bit" to describe how the universe seemed to rely upon the
+                    language of information at its most fundamental levels.
+                </p>
+            </ScrollTile>
+
+            <ScrollTile
+                tileInfo={
+                    new TileInfo({
                         title: <>Indexing Infinity: Uncountability and Googology</>,
                         thumbnail: "/media/image/organizations/ibm.png",
                         tags: [TileTag.MATH]
