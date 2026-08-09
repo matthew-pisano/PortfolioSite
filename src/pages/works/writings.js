@@ -8,8 +8,8 @@ import FlexWrapper from "@/components/wrappers/FlexWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
-import { blogInfo as compiledPython } from "@/pages/works/writings/compiled-python";
-import { blogInfo as genTransformers } from "@/pages/works/writings/on-general-transformers";
+import { compiledPythonInfo } from "@/pages/works/writings/compiled-python";
+import { onGeneralTransformersInfo } from "@/pages/works/writings/on-general-transformers";
 import tileStyles from "@/styles/tiles/Tiles.module.css";
 
 /**
@@ -47,18 +47,18 @@ export default function Writings() {
             <PreviewTile
                 tileInfo={
                     new TileInfo({
-                        title: <>{genTransformers.title}</>,
+                        title: <>{onGeneralTransformersInfo.title}</>,
                         thumbnail: "/media/image/pages/writings/on-general-transformers/hanoi-low.jpg",
                         titleLink: "/works/writings/on-general-transformers"
                     })
                 }
-                date={genTransformers.pubDate}>
-                {genTransformers.subtitle}
+                date={onGeneralTransformersInfo.pubDate}>
+                {onGeneralTransformersInfo.subtitle}
             </PreviewTile>
             <PreviewTile
                 tileInfo={
                     new TileInfo({
-                        title: <>{compiledPython.title}</>,
+                        title: <>{compiledPythonInfo.title}</>,
                         thumbnail: "/media/image/pages/writings/compiled-python/python-low.webp",
                         thumbnailTag: (
                             <Link
@@ -72,8 +72,8 @@ export default function Writings() {
                         titleLink: "/works/writings/compiled-python"
                     })
                 }
-                date={compiledPython.pubDate}>
-                {compiledPython.subtitle}
+                date={compiledPythonInfo.pubDate}>
+                {compiledPythonInfo.subtitle}
             </PreviewTile>
         </FlexWrapper>
     );

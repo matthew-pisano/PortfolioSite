@@ -8,7 +8,7 @@ import { WritingSection } from "@/components/widgets/WritingSection";
 import WritingWrapper, { WritingInfo } from "@/components/wrappers/WritingWrapper";
 import { genPageTitle } from "@/lib/util/utils";
 
-const blogInfo = new WritingInfo(
+const compiledPythonInfo = new WritingInfo(
     "Turning Python Into a Compiled Language",
     "Experimenting with Python bytecode, stack machines, and MLIR",
     new Date(2026, 3, 24),
@@ -20,11 +20,11 @@ export default function CompiledPython() {
     return (
         <WritingWrapper
             pageName={genPageTitle(__filename)}
-            title={blogInfo.title}
-            subtitle={blogInfo.subtitle}
-            pubDate={blogInfo.pubDate}
-            modDate={blogInfo.modDate}>
-            <FootnoteProvider label={blogInfo.anchor}>
+            title={compiledPythonInfo.title}
+            subtitle={compiledPythonInfo.subtitle}
+            pubDate={compiledPythonInfo.pubDate}
+            modDate={compiledPythonInfo.modDate}>
+            <FootnoteProvider label={compiledPythonInfo.anchor}>
                 <WritingSection>Introduction</WritingSection>
                 <p>
                     Python is a highly popular and versatile language. It is commonly used for its low barrier to entry,
@@ -1078,4 +1078,4 @@ bool PyObj::decref() {
     );
 }
 
-export { blogInfo };
+export { compiledPythonInfo };

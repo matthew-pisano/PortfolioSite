@@ -8,7 +8,7 @@ import { WritingSection } from "@/components/widgets/WritingSection";
 import WritingWrapper, { WritingInfo, FigureImage } from "@/components/wrappers/WritingWrapper";
 import { genPageTitle } from "@/lib/util/utils";
 
-const blogInfo = new WritingInfo(
+const onGeneralTransformersInfo = new WritingInfo(
     "On Generally Intelligent Transformers",
     "An exploration of the theoretical capabilities and limitations of transformer models",
     new Date(2026, 1, 22),
@@ -19,10 +19,10 @@ export default function OnGeneralTransformers() {
     return (
         <WritingWrapper
             pageName={genPageTitle(__filename)}
-            title={blogInfo.title}
-            subtitle={blogInfo.subtitle}
-            pubDate={blogInfo.pubDate}>
-            <FootnoteProvider label={blogInfo.anchor}>
+            title={onGeneralTransformersInfo.title}
+            subtitle={onGeneralTransformersInfo.subtitle}
+            pubDate={onGeneralTransformersInfo.pubDate}>
+            <FootnoteProvider label={onGeneralTransformersInfo.anchor}>
                 <WritingSection>Introduction</WritingSection>
                 <p>
                     It goes without saying that the past three years have represented unprecedented growth in both the
@@ -1225,4 +1225,4 @@ export default function OnGeneralTransformers() {
     );
 }
 
-export { blogInfo };
+export { onGeneralTransformersInfo };
