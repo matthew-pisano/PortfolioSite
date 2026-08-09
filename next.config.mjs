@@ -14,44 +14,10 @@ const nextConfig = {
                 basePath: false
             },
             {
-                source: "/about/about",
-                destination: "/about",
-                permanent: true
-            },
-            {
-                source: "/about/resume",
-                destination: "/works/curriculum-vitae",
-                permanent: true
-            },
-            {
-                source: "/works/curriculumVitae",
-                destination: "/works/curriculum-vitae",
-                permanent: true
-            },
-            {
-                source: "/readingList",
-                destination: "/works/reading-list",
-                permanent: true
-            },
-            {
-                source: "/lectures",
-                destination: "/works/lectures",
-                permanent: true
-            },
-            {
-                source: "/research/highGround",
-                destination: "/research/moral-high-ground",
-                permanent: true
-            },
-            {
-                source: "/research/predictChain",
-                destination: "/research/predict-chain",
-                permanent: true
-            },
-            {
-                source: "/research/chipFiring",
-                destination: "/research/chip-firing",
-                permanent: true
+                source: "/works/blog/:path*",
+                destination: "/works/writings/:path*",
+                permanent: true,
+                basePath: false
             }
         ];
     },

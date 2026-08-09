@@ -2,16 +2,16 @@ import React, { createContext, useContext, useState, useCallback } from "react";
 
 import PropTypes from "prop-types";
 
-import styles from "@/styles/widgets/BlogSidebar.module.css";
+import styles from "@/styles/widgets/WritingSidebar.module.css";
 
-/** Context to manage blog sections in sidebar */
-const BlogSidebarContext = createContext(null);
+/** Context to manage writing sections in sidebar */
+const writingSidebarContext = createContext(null);
 
 /**
- * Provider component to track blog sections and subsections
- * @param children {JSXElement} The main blog content
+ * Provider component to track writing sections and subsections
+ * @param children {JSXElement} The main writing content
  */
-function BlogSidebarProvider({ children }) {
+function WritingSidebarProvider({ children }) {
     const [sections, setSections] = useState([]);
 
     // Add a section to the context
@@ -30,23 +30,23 @@ function BlogSidebarProvider({ children }) {
 
     // Send sections to the provider context
     return (
-        <BlogSidebarContext.Provider value={{ sections, addSection, removeSection }}>
+        <writingSidebarContext.Provider value={{ sections, addSection, removeSection }}>
             {children}
-        </BlogSidebarContext.Provider>
+        </writingSidebarContext.Provider>
     );
 }
 
-BlogSidebarProvider.propTypes = {
+WritingSidebarProvider.propTypes = {
     children: PropTypes.node.isRequired
 };
 
 /**
- * Hook to access the blog sidebar context
+ * Hook to access the writing sidebar context
  */
-function useBlogSidebar() {
-    const context = useContext(BlogSidebarContext);
+function useWritingSidebar() {
+    const context = useContext(writingSidebarContext);
     if (!context) {
-        throw new Error("useBlogSidebar must be used within a BlogSidebarProvider");
+        throw new Error("useWritingSidebar must be used within a WritingSidebarProvider");
     }
     return context;
 }
@@ -98,9 +98,9 @@ const renderSectionTree = (tree) => {
                 if (section.children && section.children.length)
                     children = <div style={{ marginLeft: "10px" }}>{renderSectionTree(section.children)}</div>;
                 return (
-                    <div key={section.id} className={`${styles.blogSidebarItem}`}>
+                    <div key={section.id} className={`${styles.writingSidebarItem}`}>
                         <a href={`#${section.id}`}>
-                            <span className={`${styles.blogSidebarNumber}`}>{section.sectionNumber}</span>
+                            <span className={`${styles.writingSidebarNumber}`}>{section.sectionNumber}</span>
                             {section.title}
                         </a>
                         {children}
@@ -114,12 +114,12 @@ const renderSectionTree = (tree) => {
 /**
  * Container component where section sidebar is rendered
  */
-function BlogSidebarContent() {
-    const { sections } = useBlogSidebar();
+function WritingSidebarContent() {
+    const { sections } = useWritingSidebar();
     if (sections.length === 0) return null;
 
     const tree = buildSectionTree(sections);
-    return <div className={`${styles.blogSidebar}`}>{renderSectionTree(tree)}</div>;
+    return <div className={`${styles.writingSidebar}`}>{renderSectionTree(tree)}</div>;
 }
 
-export { BlogSidebarProvider, BlogSidebarContent, useBlogSidebar };
+export { WritingSidebarProvider, WritingSidebarContent, useWritingSidebar };

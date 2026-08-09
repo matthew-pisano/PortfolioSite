@@ -1,4 +1,4 @@
-.blogSidebar {
+.writingSidebar {
     width: 220px;
     position: absolute;
     top: 50px;
@@ -9,7 +9,7 @@
     border: 2px solid var(--theme-accent);
 }
 
-.blogSidebarItem a {
+.writingSidebarItem a {
     display: flex;
     text-decoration: none;
     color: var(--theme-text);
@@ -19,17 +19,17 @@
     margin-bottom: 2px;
 }
 
-.blogSidebarItem a:hover {
+.writingSidebarItem a:hover {
     background-color: var(--theme-color-2-hover);
 }
 
-.blogSidebarNumber {
+.writingSidebarNumber {
     font-weight: bold;
     margin-right: 5px;
 }
 
 @media (width <= 1550px) {
-    .blogSidebar {
+    .writingSidebar {
         display: none;
     }
 }

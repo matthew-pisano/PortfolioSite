@@ -2,13 +2,13 @@ import React from "react";
 
 import Link from "next/link";
 
-import { BlogSection } from "@/components/widgets/BlogSection";
 import CodeBlock from "@/components/widgets/CodeBlock";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
-import BlogWrapper, { BlogImage, BlogInfo } from "@/components/wrappers/BlogWrapper";
+import { WritingSection } from "@/components/widgets/WritingSection";
+import WritingWrapper, { FigureImage, WritingInfo } from "@/components/wrappers/WritingWrapper";
 import { genPageTitle } from "@/lib/util/utils";
 
-const blogInfo = new BlogInfo(
+const onArbitraryCognition = new WritingInfo(
     "On Arbitrary Cognitive Execution",
     "An inquiry into the exploitation of cognitive computation and pattern replication",
     new Date(2026, 6, 7),
@@ -21,14 +21,14 @@ let House = <span style={{ color: "CornflowerBlue" }}>House</span>;
 
 export default function ArbitraryCognition() {
     return (
-        <BlogWrapper
+        <WritingWrapper
             pageName={genPageTitle(__filename)}
-            title={blogInfo.title}
-            subtitle={blogInfo.subtitle}
-            pubDate={blogInfo.pubDate}
-            modDate={blogInfo.modDate}>
-            <FootnoteProvider label={blogInfo.anchor}>
-                <BlogSection>Introduction</BlogSection>
+            title={onArbitraryCognition.title}
+            subtitle={onArbitraryCognition.subtitle}
+            pubDate={onArbitraryCognition.pubDate}
+            modDate={onArbitraryCognition.modDate}>
+            <FootnoteProvider label={onArbitraryCognition.anchor}>
+                <WritingSection>Introduction</WritingSection>
                 <p>
                     You have just finished reading this sentence. This much is abundantly clear, even trivially so.
                     Perhaps you have just read it again. But, how can you be so sure? Assuming you accept the premise of
@@ -72,7 +72,7 @@ export default function ArbitraryCognition() {
                     that forgery fooled only the certifier after it in the chain, it would be impossible to tell later,
                     since that certifier's certificate would be valid. Can you be certain that the piece is authentic?
                 </p>
-                <BlogSection level={2}>Toasters and Perceptions of Reality</BlogSection>
+                <WritingSection level={2}>Toasters and Perceptions of Reality</WritingSection>
                 <p>
                     In late 2017, researchers at Google were experimenting with adversarial attacks against their
                     VGGNet16 image recognition model
@@ -98,9 +98,9 @@ export default function ArbitraryCognition() {
                     likelihood of predicting an arbitrary label, regardless of the original image. The result of this
                     reverse engineering is the following patch:
                 </p>
-                <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/toaster.png"}>
+                <FigureImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/toaster.png"}>
                     An adversarial image patch from Brown et al.
-                </BlogImage>
+                </FigureImage>
                 <p>
                     When this patch was inserted into any image (for instance, a banana), instead of classifying the
                     overall image correctly, the model would instead predict "toaster", regardless. To the attacked
@@ -127,7 +127,7 @@ export default function ArbitraryCognition() {
                     interesting: its internal experience did not follow from reality yet, to the model, its false
                     experience was nonetheless indistinguishable from reality.
                 </p>
-                <BlogSection level={2}>Problems and Proxies</BlogSection>
+                <WritingSection level={2}>Problems and Proxies</WritingSection>
                 <p>
                     This manner of attack is a special case of a much broader class of attack on computer systems. This
                     is generally referred to as <i>Arbitrary Code Execution</i>: an attack which manipulates the
@@ -187,7 +187,7 @@ export default function ArbitraryCognition() {
                     register machine, but it could just as easily be the execution environment of a machine learning
                     model or any other computational substrate.
                 </p>
-                <BlogSection>Arbitrary Code Execution</BlogSection>
+                <WritingSection>Arbitrary Code Execution</WritingSection>
                 <p>
                     Before further investigating the much more theoretical implications of arbitrary code execution, it
                     would help to better understand how it works in traditional computers and why it even works at all.
@@ -197,7 +197,7 @@ export default function ArbitraryCognition() {
                     Understanding this fundamental property of programming will be relevant later, when we ask whether
                     the same vulnerabilities could exist within the brain.
                 </p>
-                <BlogSection level={2}>Ex Machina</BlogSection>
+                <WritingSection level={2}>Ex Machina</WritingSection>
                 <p>
                     If you were to communicate with an early computer programmer in the year 1965 and warn them that the
                     exploitation of their software would soon become a booming industry, how would they react? They
@@ -276,7 +276,7 @@ export default function ArbitraryCognition() {
                     the users of a system could also theoretically control how that system functions by manipulating it
                     to run arbitrary code of their choosing or to access arbitrary regions of memory.
                 </p>
-                <BlogSection level={2}>A Trivial Vulnerability</BlogSection>
+                <WritingSection level={2}>A Trivial Vulnerability</WritingSection>
                 <p>
                     Let's first consider a toy example, then work up from there. Most systems have a special register
                     called the "program counter". This register, like any other, contains a number: the memory address
@@ -342,7 +342,7 @@ reveal_secret:          # Reveal the secret
                     how the computer executes instructions and the patterns of those instructions that it recognizes, we
                     can exploit the predictable behavior of that machine to do whatever we wish.
                 </p>
-                <BlogSection level={2}>Mechanics of Exploitation</BlogSection>
+                <WritingSection level={2}>Mechanics of Exploitation</WritingSection>
                 <p>
                     In a full attack chain, executing arbitrary code on a system is rarely the first action that an
                     attacker takes. Generally, one or more individual utility exploits are chained together in order to
@@ -403,7 +403,7 @@ reveal_secret:          # Reveal the secret
                     buffer overflows, ASLR and stack canaries offer a defense against this attack, but are not always
                     available in all programs or systems.
                 </p>
-                <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/ram.webp"}>
+                <FigureImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/ram.webp"}>
                     A diagram of RAM cells and access lines (
                     <Link
                         href={"https://www.akkadia.org/drepper/cpumemory.pdf"}
@@ -412,7 +412,7 @@ reveal_secret:          # Reveal the secret
                         Figure 2.7 from What Every Programmer Should Know About Memory, Drepper 2007
                     </Link>
                     )
-                </BlogImage>
+                </FigureImage>
                 <p>
                     Some vulnerabilities, however, do not merely emerge from mistakes in software logic. The following
                     penetrate much deeper, emerging from fatal flaws within the computational substrate itself. Starting
@@ -623,7 +623,7 @@ void victim_function(size_t x) {
                     control over a program's outcome. Importantly, these attacks will persist unless fundamental changes
                     are made to the target program's logic or the hardware configuration of the system it is running on.
                 </p>
-                <BlogSection>Exploiting Execution in Games</BlogSection>
+                <WritingSection>Exploiting Execution in Games</WritingSection>
                 <p>
                     When considering only simple examples in isolation, vulnerable code seems fairly easy to catch and
                     fix. After all, if programmers and hardware developers simply checked their buffer bounds, compiled
@@ -634,7 +634,7 @@ void victim_function(size_t x) {
                     reduced to such simple terms. Just because the exact mechanism of a vulnerability is unknown at
                     first <i>does not</i> mean it is impossible.
                 </p>
-                <BlogSection level={2}>The Embedded Realities within Games</BlogSection>
+                <WritingSection level={2}>The Embedded Realities within Games</WritingSection>
                 <p>
                     The medium of video games can offer particularly compelling examples of the strength and scope of
                     "arbitrary" code execution. This is because video games offer interactive fictions with well-defined
@@ -664,7 +664,7 @@ void victim_function(size_t x) {
                     changes are much more impactful from a subjective point of view than if the same happens to more
                     "mundane" software.
                 </p>
-                <BlogSection level={2}>How to Rewrite a Reality</BlogSection>
+                <WritingSection level={2}>How to Rewrite a Reality</WritingSection>
                 <p>
                     When searching for games with known arbitrary code execution vulnerabilities, compilations are
                     dominated by older games, generally from the 2000s and earlier. This is because early game consoles
@@ -739,7 +739,7 @@ void victim_function(size_t x) {
                     lifetime, rewritten from the outside through nothing more than a carefully crafted sequence of
                     inputs.
                 </p>
-                <BlogSection>Influencing Cognition in Fiction</BlogSection>
+                <WritingSection>Influencing Cognition in Fiction</WritingSection>
                 <p>
                     For many of us, the capabilities of our minds are tied inexorably to our degree of identity. The
                     degradation of these capabilities is tantamount to the destruction of our senses of self. In
@@ -752,7 +752,7 @@ void victim_function(size_t x) {
                     fundamentally break the suspension of belief required for engaging with the story to begin with. Not
                     all mind-altering plots fit into this pattern, however.
                 </p>
-                <BlogSection level={2}>Cognitohazards</BlogSection>
+                <WritingSection level={2}>Cognitohazards</WritingSection>
                 <p>
                     For some stories, the rules of their universe are the same rules as our own ... for the most part.
                     In these works of fiction, seemingly ordinary objects, ideas, or patterns of information present
@@ -846,9 +846,9 @@ void victim_function(size_t x) {
                     would on the author. In order to more realistically and losslessly convey an author's (or
                     attacker's) message, we need to consider mediums of transmission beyond merely textual.
                 </p>
-                <BlogImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/plaything.png"}>
+                <FigureImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/plaything.png"}>
                     The Circular Glyph from <i>Black Mirror</i>'s <i>Plaything</i>.
-                </BlogImage>
+                </FigureImage>
                 <p>
                     Season 7, episode 4 of the sci-fi horror series <i>Black Mirror</i> takes this approach when
                     considering a mechanism for cognitive influence. The episode, titled <i>Plaything</i> is centered on
@@ -908,7 +908,7 @@ void victim_function(size_t x) {
                     </Footnote>
                     .
                 </p>
-                <BlogSection level={2}>Memetics</BlogSection>
+                <WritingSection level={2}>Memetics</WritingSection>
                 <p>
                     Taking a step back, how can we think of both arbitrary code execution and arbitrary cognitive
                     execution more generally? Both are end-goals of attempts to exploit some target system, electronic
@@ -995,7 +995,7 @@ void victim_function(size_t x) {
                     brain must indeed function as an analogous pattern replication device in reality, not merely as a
                     metaphor. Whether it does is the question to which we now turn.
                 </p>
-                <BlogSection>Cognition as Pattern Replication</BlogSection>
+                <WritingSection>Cognition as Pattern Replication</WritingSection>
                 <p>
                     As we have seen, traditional computing devices can be vulnerable to a variety of exploits which rely
                     upon specific logical and hardware vulnerabilities. Generally, this takes the form of manipulating
@@ -1009,7 +1009,7 @@ void victim_function(size_t x) {
                     contextualizing this concept: proximately, by understanding how the brain functions naturally in
                     order to, ultimately, understand how it could be exploited artificially.
                 </p>
-                <BlogSection level={2}>Cognition as Computation</BlogSection>
+                <WritingSection level={2}>Cognition as Computation</WritingSection>
                 <p>
                     Before further pursuing this line of inquiry, we must first ask whether the human brain is, at least
                     to some extent, a computing device at all. To answer this question, we must first define what a
@@ -1101,7 +1101,7 @@ void victim_function(size_t x) {
                     importantly, this definition gives us a way to not only describe how a system behaves normally, but
                     also how it could be exploited to behave abnormally.
                 </p>
-                <BlogSection level={2}>Local Patterns with Glocal Consequences</BlogSection>
+                <WritingSection level={2}>Local Patterns with Glocal Consequences</WritingSection>
                 <p>
                     We know that the brain takes in well defined patterns of input and yields well defined patterns of
                     output. We also know that these inputs are processed into outputs through the internal state of our
@@ -1187,11 +1187,11 @@ void victim_function(size_t x) {
                     memetic virus, with the main difference being that the replacing patterns are chaotic and high
                     entropy instead of regular and low entropy.
                 </p>
-                <BlogSection level={2}>The Stability and Predictability of Neural Patterns</BlogSection>
-                <BlogSection level={2}>Replication Across Architectures</BlogSection>
-                <BlogSection level={2}>The Brain as an Emulation Device</BlogSection>
-                <BlogSection level={2}>The Conscious Mind has no Moat</BlogSection>
-                <BlogSection>Arbitrary Cognitive Execution</BlogSection>
+                <WritingSection level={2}>The Stability and Predictability of Neural Patterns</WritingSection>
+                <WritingSection level={2}>Replication Across Architectures</WritingSection>
+                <WritingSection level={2}>The Brain as an Emulation Device</WritingSection>
+                <WritingSection level={2}>The Conscious Mind has no Moat</WritingSection>
+                <WritingSection>Arbitrary Cognitive Execution</WritingSection>
                 <p>
                     Text is a relatively low-dimensional medium of input. There are only so many conceptual patterns
                     which a sequence of symbols can theoretically convey, and fewer still (if any) which can
@@ -1211,8 +1211,8 @@ void victim_function(size_t x) {
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
-        </BlogWrapper>
+        </WritingWrapper>
     );
 }
 
-export { blogInfo };
+export { onArbitraryCognition };

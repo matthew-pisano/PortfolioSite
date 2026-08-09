@@ -4,16 +4,16 @@ import Head from "next/head";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { SectionContext } from "@/components/widgets/BlogSection";
-import { BlogSidebarProvider, BlogSidebarContent } from "@/components/widgets/BlogSidebar";
+import { SectionContext } from "@/components/widgets/WritingSection";
+import { WritingSidebarProvider, WritingSidebarContent } from "@/components/widgets/WritingSidebar";
 import Wrapper from "@/components/wrappers/Wrapper";
 import { elementReadingTime } from "@/lib/util/utils";
-import styles from "@/styles/wrappers/BlogWrapper.module.css";
+import styles from "@/styles/wrappers/WritingWrapper.module.css";
 
 /**
- * An object containing common blog metadata
+ * An object containing common writing piece metadata
  */
-class BlogInfo {
+class WritingInfo {
     constructor(title, subtitle, pubDate, anchor, modDate = null) {
         this.title = title;
         this.subtitle = subtitle;
@@ -24,16 +24,16 @@ class BlogInfo {
 }
 
 /**
- * An imagine object with a caption
+ * An image figure object with a caption
  * @param children {JSXElement} The caption elements
  * @param src {string} The image source
  * @param alt {string} The alt message for the image
  * @returns {JSX.Element}
  * @constructor
  */
-function BlogImage({ children, src, alt }) {
+function FigureImage({ children, src, alt }) {
     return (
-        <div className={`${styles.blogImage}`}>
+        <div className={`${styles.writingImage}`}>
             <div>
                 <img src={src} alt={alt} />
             </div>
@@ -42,25 +42,25 @@ function BlogImage({ children, src, alt }) {
     );
 }
 
-BlogImage.propTypes = {
+FigureImage.propTypes = {
     children: PropTypes.node.isRequired,
     src: PropTypes.string,
     alt: PropTypes.string
 };
 
 /**
- * Wrapper for blog pages.
+ * Wrapper for writing and essay pages.
  * @param children {JSXElement} The children of the wrapper
- * @param pageName {string} The name of the blog page
- * @param title {string} The title of the blog page
- * @param subtitle {string} The subtitle of the blog page
- * @param pubDate {Date} The date of publication of the blog
- * @param modDate {Date} The date of last modification of the blog
- * @return {JSX.Element} The page wrapped in the blog wrapper
+ * @param pageName {string} The name of the page
+ * @param title {string} The title of the page
+ * @param subtitle {string} The subtitle of the page
+ * @param pubDate {Date} The date of publication of the work
+ * @param modDate {Date} The date of last modification of the work
+ * @return {JSX.Element} The page wrapped in the WritingWrapper
  */
-function BlogWrapper({ children, pageName, title, subtitle, pubDate, modDate }) {
-    const blockContentId = "blogContent";
-    const [blogTime, setBlogTime] = useState(0);
+function WritingWrapper({ children, pageName, title, subtitle, pubDate, modDate }) {
+    const writingContentId = "writingContent";
+    const [estReadingTime, setEstReadingTime] = useState(0);
 
     const sectionCountRef = useRef([0, 0, 0]);
 
@@ -75,7 +75,7 @@ function BlogWrapper({ children, pageName, title, subtitle, pubDate, modDate }) 
     useEffect(() => {
         // Reset section count on component mount so count restarts on re-renders
         sectionCountRef.current = [0, 0, 0];
-        setBlogTime(elementReadingTime(blockContentId));
+        setEstReadingTime(elementReadingTime(writingContentId));
     }, []);
 
     if (!modDate) modDate = pubDate;
@@ -108,7 +108,7 @@ function BlogWrapper({ children, pageName, title, subtitle, pubDate, modDate }) 
             {/* JSON-LD Structured Data */}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-            <div className={styles.blogTitle}>
+            <div className={styles.writingTitle}>
                 <h1>
                     <b>{title}</b>
                 </h1>
@@ -121,30 +121,30 @@ function BlogWrapper({ children, pageName, title, subtitle, pubDate, modDate }) 
                 ) : null}
             </div>
 
-            <BlogSidebarProvider>
-                <div className={`${styles.blogContainer}`}>
-                    <div className={`${styles.blogHolder}`}>
+            <WritingSidebarProvider>
+                <div className={`${styles.writingContainer}`}>
+                    <div className={`${styles.writingHolder}`}>
                         {dateElem}
                         <div style={{ marginBottom: "30px" }}>
                             <small style={{ display: "block", width: "100%", textAlign: "right" }}>
-                                {blogTime} minute read
+                                {estReadingTime} minute read
                             </small>
                         </div>
                         <SectionContext.Provider value={getNextId}>
-                            <div id={blockContentId}>{children}</div>
+                            <div id={writingContentId}>{children}</div>
                         </SectionContext.Provider>
                         <hr />
                         {dateElem}
-                        <Link href={"/works/blog"}>Back to Blogs</Link>
+                        <Link href={"/works/writings"}>Back to Writings</Link>
                     </div>
-                    <BlogSidebarContent />
+                    <WritingSidebarContent />
                 </div>
-            </BlogSidebarProvider>
+            </WritingSidebarProvider>
         </Wrapper>
     );
 }
 
-BlogWrapper.propTypes = {
+WritingWrapper.propTypes = {
     children: PropTypes.element.isRequired,
     pageName: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -154,5 +154,5 @@ BlogWrapper.propTypes = {
     footnoteContext: PropTypes.any
 };
 
-export default BlogWrapper;
-export { BlogInfo, BlogImage };
+export default WritingWrapper;
+export { WritingInfo, FigureImage };
