@@ -3,12 +3,12 @@ import React from "react";
 import Link from "next/link";
 import Latex from "react-latex-next";
 
-import { BlogSection } from "@/components/widgets/BlogSection";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
-import BlogWrapper, { BlogInfo, BlogImage } from "@/components/wrappers/BlogWrapper";
+import { WritingSection } from "@/components/widgets/WritingSection";
+import WritingWrapper, { WritingInfo, FigureImage } from "@/components/wrappers/WritingWrapper";
 import { genPageTitle } from "@/lib/util/utils";
 
-const blogInfo = new BlogInfo(
+const blogInfo = new WritingInfo(
     "On Generally Intelligent Transformers",
     "An exploration of the theoretical capabilities and limitations of transformer models",
     new Date(2026, 1, 22),
@@ -17,13 +17,13 @@ const blogInfo = new BlogInfo(
 
 export default function OnGeneralTransformers() {
     return (
-        <BlogWrapper
+        <WritingWrapper
             pageName={genPageTitle(__filename)}
             title={blogInfo.title}
             subtitle={blogInfo.subtitle}
             pubDate={blogInfo.pubDate}>
             <FootnoteProvider label={blogInfo.anchor}>
-                <BlogSection>Introduction</BlogSection>
+                <WritingSection>Introduction</WritingSection>
                 <p>
                     It goes without saying that the past three years have represented unprecedented growth in both the
                     capabilities of large language models and the corresponding investments into them. While
@@ -269,7 +269,7 @@ export default function OnGeneralTransformers() {
                     and thus a tautological distinction. The creation of an artificial (usually computer-based) general
                     agent is the metaphorical "holy grail" of AI research.
                 </p>
-                <BlogSection>Necessary Conditions</BlogSection>
+                <WritingSection>Necessary Conditions</WritingSection>
                 <p>
                     Before we can examine what general intelligence would look like when exhibited by an AI model, we
                     must first identify a few capabilities that any generally intelligent agent must have. From there,
@@ -288,7 +288,7 @@ export default function OnGeneralTransformers() {
                     already solved the task of creating an AGI. The good news is that we can easily identify a few of
                     our mental capabilities that enable our performance on a wide range of cognitive tasks.
                 </p>
-                <BlogSection level={2}>We are not Our Environments</BlogSection>
+                <WritingSection level={2}>We are not Our Environments</WritingSection>
                 <p>
                     This first quality may appear to be embarrassingly obvious. However, it directly enables some
                     abilities that we have largely been unsuccessful in emulating. Recall my usage of the concept of
@@ -349,7 +349,7 @@ export default function OnGeneralTransformers() {
                     knowledge, I can continue to directly manipulate the embedded form of my plan. I can do this without
                     needing to lossily convert my feature-rich representation to feature-starved text at each step.
                 </p>
-                <BlogSection level={2}>Online Learning</BlogSection>
+                <WritingSection level={2}>Online Learning</WritingSection>
                 <p>
                     Unlike most modern AI systems, humans do not undergo a clearly defined "training phase"
                     <Footnote>
@@ -437,7 +437,7 @@ export default function OnGeneralTransformers() {
                     Importantly, this is not a result of any external filtering process that selects stimuli for us,
                     this process occurs completely "in house".
                 </p>
-                <BlogSection level={2}>Self-Play</BlogSection>
+                <WritingSection level={2}>Self-Play</WritingSection>
                 <p>
                     Self-play is intimately tied to our abilities to learn online. In humans, this process happens
                     internally, within ourselves
@@ -495,7 +495,7 @@ export default function OnGeneralTransformers() {
                     and the use of external recording mediums (like paper or computers), though this is much less
                     efficient due to the lossy conversions mentioned above.
                 </p>
-                <BlogSection level={2}>Adaptive Complexity</BlogSection>
+                <WritingSection level={2}>Adaptive Complexity</WritingSection>
                 <p>
                     When analyzing the theoretical performance of an algorithm, computer scientists frequently rely on
                     complexity classes for establishing its theoretical upper and lower bounds. The exact time or space
@@ -563,7 +563,7 @@ export default function OnGeneralTransformers() {
                     </Footnote>
                     .
                 </p>
-                <BlogSection>Modeling Language</BlogSection>
+                <WritingSection>Modeling Language</WritingSection>
                 <p>
                     As of the time of writing, transformer models are very much the current state of the art, both in
                     the colloquial and literal sense. Colloquially, they still represent one of the most capable and
@@ -574,9 +574,9 @@ export default function OnGeneralTransformers() {
                     very structure and training objective is a significant barrier between the current state of the art
                     and human-level generality.
                 </p>
-                <BlogImage src={"/media/image/pages/blog/on-general-transformers/attention-mechanism.png"}>
+                <FigureImage src={"/media/image/pages/blog/on-general-transformers/attention-mechanism.png"}>
                     The attention mechanism that serves as the backbone of modern transformers.
-                </BlogImage>
+                </FigureImage>
                 <p>
                     Certain drawbacks of these models have been widely recognized and researched already. Examples
                     include the quadratic scaling of self-attention, the (relative) learning inefficiency of neural
@@ -586,7 +586,7 @@ export default function OnGeneralTransformers() {
                     the exact implementation of the models that I am about to discuss, only their learning methods and
                     behavior. Later, we will look more into the specific drawbacks of this particular architecture.
                 </p>
-                <BlogSection level={2}>Statistical Inference Models</BlogSection>
+                <WritingSection level={2}>Statistical Inference Models</WritingSection>
                 <p>
                     From the 1950s to around the 1970s, the processing of natural language by computers was a highly
                     rule-based process. To borrow a phrase from Eliezer Yudkowsky and Nate Soares, these models were
@@ -620,7 +620,7 @@ export default function OnGeneralTransformers() {
                     <Latex>{`$\\theta$`}</Latex> is the set of learned parameters from training data, and{" "}
                     <Latex>{`$t_1,\\ldots,t_n$`}</Latex> represents the sequence of tokens present in the context.
                 </p>
-                <BlogSection level={2}>Pre-training and Fine-tuning</BlogSection>
+                <WritingSection level={2}>Pre-training and Fine-tuning</WritingSection>
                 <p>
                     If we were only are examining the simple case of a model being pre-trained on a single, static
                     dataset, this is where our analysis would end. Regardless of a model's internal implementation, if
@@ -641,7 +641,7 @@ export default function OnGeneralTransformers() {
                     training objective is still predictive-error-minimization relative to a static distribution, our
                     model is still discouraged from making predictions that would not match its augmented distribution.
                 </p>
-                <BlogSection level={2}>Reinforcement Learning</BlogSection>
+                <WritingSection level={2}>Reinforcement Learning</WritingSection>
                 <p>
                     Before we continue, I suppose it would be worth distinguishing the training objective of a
                     supervised tuned model and a reinforcement learning tuned model. When we train a model using
@@ -727,9 +727,9 @@ export default function OnGeneralTransformers() {
                     have been learning from. The dataset of moves which they had curated did not capture the full
                     distribution of moves that a real expert can draw upon.
                 </p>
-                <BlogImage src={"/media/image/pages/blog/on-general-transformers/lee-sedol-alpha-go.jpg"}>
+                <FigureImage src={"/media/image/pages/blog/on-general-transformers/lee-sedol-alpha-go.jpg"}>
                     Lee Sedol during his match against AlphaGo in March of 2016. (Getty: Handout)
-                </BlogImage>
+                </FigureImage>
                 <p>
                     This quickly changed when reinforcement learning was used to train an auxiliary "value network" that
                     evaluated Go board states. As AlphaGo played, this network could actively learn directly from
@@ -740,7 +740,7 @@ export default function OnGeneralTransformers() {
                     greater challenge for itself to beat next iteration. This environment of simple rules, self-play,
                     and clear rewards allowed AlphaGo Zero to become <i>arbitrarily</i> good at Go.
                 </p>
-                <BlogSection>Is Language a Game of Go?</BlogSection>
+                <WritingSection>Is Language a Game of Go?</WritingSection>
                 <p>
                     After observing the impressive performance of game-based RL systems, it is therefore natural to ask
                     whether language models trained with reinforcement learning can become <i>arbitrarily</i> good at
@@ -750,7 +750,7 @@ export default function OnGeneralTransformers() {
                     able to reason or program just like the human samples that it has seen could also support that
                     claim. Yet, current large language models can already do these things. Where is our AGI?
                 </p>
-                <BlogSection level={2}>Optimizing Language</BlogSection>
+                <WritingSection level={2}>Optimizing Language</WritingSection>
                 <p>
                     The issue with the previous paragraph was that it was asking the wrong question. "A model that is
                     superhuman at modeling language" is very different from "a generally superhuman model that can also
@@ -792,7 +792,7 @@ export default function OnGeneralTransformers() {
                     intuitively practice every day. This could even be considered a form of online learning, though
                     limited in duration and scope compared to traditional interpretations.
                 </p>
-                <BlogSection level={2}>Fitting LLMs into a Go-shaped Hole</BlogSection>
+                <WritingSection level={2}>Fitting LLMs into a Go-shaped Hole</WritingSection>
                 <p>
                     The success of AlphaGo Zero can help us to outline the challenges faced by modern, transformer-based
                     LLMs. These shortcomings are a fundamental consequence of both model architecture and training
@@ -850,9 +850,9 @@ export default function OnGeneralTransformers() {
                     autoregressive equivalent to training a model on expert moves. You will get impressive results, but
                     you will not reach the quality of the material that you are trying to emulate.
                 </p>
-                <BlogImage src={"/media/image/pages/blog/on-general-transformers/hanoi.jpg"}>
+                <FigureImage src={"/media/image/pages/blog/on-general-transformers/hanoi.jpg"}>
                     The Tower of Hanoi puzzle.
-                </BlogImage>
+                </FigureImage>
                 <p>
                     Research has begin to observe this in practice. Most notably is Apple's "The Illusion of Thinking"
                     <Footnote>
@@ -890,7 +890,7 @@ export default function OnGeneralTransformers() {
                     </Footnote>
                     .
                 </p>
-                <BlogSection level={2}>Adaptive Reasoning</BlogSection>
+                <WritingSection level={2}>Adaptive Reasoning</WritingSection>
                 <p>
                     Examining the transformer architecture specifically, we can identify another issue: they are unable
                     to reliably reallocate effort away from trivial tasks and towards more consequential ones. For these
@@ -948,7 +948,7 @@ export default function OnGeneralTransformers() {
                     internal models of the world that they can manipulate and explore without impacting the real
                     environment. As we discussed earlier, this feature is missing from the transformer architecture.
                 </p>
-                <BlogSection>One Piece of the Puzzle</BlogSection>
+                <WritingSection>One Piece of the Puzzle</WritingSection>
                 <p>
                     Despite their limitations, current large language models are undoubtedly useful. Any system that can
                     collate and perform inference upon the quantity of data that they can should not be discarded
@@ -969,7 +969,7 @@ export default function OnGeneralTransformers() {
                 <ol start={"5"}>
                     <li>It is often later incorporated into an even more capable technology.</li>
                 </ol>
-                <BlogSection level={2}>Standing on the shoulders of Giants</BlogSection>
+                <WritingSection level={2}>Standing on the shoulders of Giants</WritingSection>
                 <p>
                     The first example of this came after the introduction of Rosenblatt's Perceptron. Shortly following
                     its announcement in 1958, many were quick to speculate on the potential capabilities and
@@ -1019,9 +1019,9 @@ export default function OnGeneralTransformers() {
                     functions that could be optimized towards. By the early 2000s, AI had once again fallen out of favor
                     in research circles.
                 </p>
-                <BlogImage src={"/media/image/pages/blog/on-general-transformers/watson-jeopardy.jpg"}>
+                <FigureImage src={"/media/image/pages/blog/on-general-transformers/watson-jeopardy.jpg"}>
                     IBM Watson's 2011 Jeopardy! match against Ken Jennings and Brad Rutter. (IBM Research)
-                </BlogImage>
+                </FigureImage>
                 <p>
                     Interest remained low for another decade until 2011. IBM's Watson system sparked public interest
                     once again, but it was not until AlexNet in 2012 that AI researchers themselves once again took
@@ -1050,7 +1050,7 @@ export default function OnGeneralTransformers() {
                     intelligence research. I believe transformers represent another one of these cycles, rather than a
                     permanent departure from them.
                 </p>
-                <BlogSection level={2}>Quick Inference</BlogSection>
+                <WritingSection level={2}>Quick Inference</WritingSection>
                 <p>
                     We have seen that transformer-based models are not capable of perfectly emulating the environment of
                     human cognition. Some of these consequences can be mitigated, for example the use of a scratchpad to
@@ -1085,7 +1085,7 @@ export default function OnGeneralTransformers() {
                     process, figuring out exactly what is wrong and why, yet it seems to shortcut any conscious
                     deliberation.
                 </p>
-                <BlogSection level={2}>Attention is Half of All You Need</BlogSection>
+                <WritingSection level={2}>Attention is Half of All You Need</WritingSection>
                 <p>
                     In cognitive psychology, this is sometimes referred to as a "system of cognition". When we perform
                     some cognitive task, our brain does not just have a single way of approaching the problem. We think
@@ -1134,7 +1134,7 @@ export default function OnGeneralTransformers() {
                     that there is a very good chance that modern LLMs still lie within this cycle, rather than outside
                     of it entirely.
                 </p>
-                <BlogSection>The Current State of Affairs</BlogSection>
+                <WritingSection>The Current State of Affairs</WritingSection>
                 <p>
                     Transformer models currently represent the forefront of our artificial intelligence capabilities. It
                     is the architecture that has gotten us the closest to something that appears (at least outwardly) to
@@ -1221,7 +1221,7 @@ export default function OnGeneralTransformers() {
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
-        </BlogWrapper>
+        </WritingWrapper>
     );
 }
 

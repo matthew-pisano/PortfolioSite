@@ -5,13 +5,13 @@ import PropTypes from "prop-types";
 import styles from "@/styles/widgets/BlogSidebar.module.css";
 
 /** Context to manage blog sections in sidebar */
-const BlogSidebarContext = createContext(null);
+const writingSidebarContext = createContext(null);
 
 /**
  * Provider component to track blog sections and subsections
  * @param children {JSXElement} The main blog content
  */
-function BlogSidebarProvider({ children }) {
+function WritingSidebarProvider({ children }) {
     const [sections, setSections] = useState([]);
 
     // Add a section to the context
@@ -30,23 +30,23 @@ function BlogSidebarProvider({ children }) {
 
     // Send sections to the provider context
     return (
-        <BlogSidebarContext.Provider value={{ sections, addSection, removeSection }}>
+        <writingSidebarContext.Provider value={{ sections, addSection, removeSection }}>
             {children}
-        </BlogSidebarContext.Provider>
+        </writingSidebarContext.Provider>
     );
 }
 
-BlogSidebarProvider.propTypes = {
+WritingSidebarProvider.propTypes = {
     children: PropTypes.node.isRequired
 };
 
 /**
  * Hook to access the blog sidebar context
  */
-function useBlogSidebar() {
-    const context = useContext(BlogSidebarContext);
+function useWritingSidebar() {
+    const context = useContext(writingSidebarContext);
     if (!context) {
-        throw new Error("useBlogSidebar must be used within a BlogSidebarProvider");
+        throw new Error("useWritingSidebar must be used within a BlogSidebarProvider");
     }
     return context;
 }
@@ -114,12 +114,12 @@ const renderSectionTree = (tree) => {
 /**
  * Container component where section sidebar is rendered
  */
-function BlogSidebarContent() {
-    const { sections } = useBlogSidebar();
+function WritingSidebarContent() {
+    const { sections } = useWritingSidebar();
     if (sections.length === 0) return null;
 
     const tree = buildSectionTree(sections);
     return <div className={`${styles.blogSidebar}`}>{renderSectionTree(tree)}</div>;
 }
 
-export { BlogSidebarProvider, BlogSidebarContent, useBlogSidebar };
+export { WritingSidebarProvider, WritingSidebarContent, useWritingSidebar };

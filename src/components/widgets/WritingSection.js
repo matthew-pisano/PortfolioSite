@@ -3,7 +3,7 @@ import React, { createContext, useContext, useEffect, useRef } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { useBlogSidebar } from "@/components/widgets/BlogSidebar";
+import { useWritingSidebar } from "@/components/widgets/WritingSidebar";
 import tileStyles from "@/styles/tiles/Tiles.module.css";
 
 // Context to track section count
@@ -15,9 +15,9 @@ const SectionContext = createContext(null);
  * @param level The header level
  * @returns {JSX.Element} The header element
  */
-function BlogSection({ children, level }) {
+function WritingSection({ children, level }) {
     const getNextId = useContext(SectionContext);
-    const { addSection, removeSection } = useBlogSidebar();
+    const { addSection, removeSection } = useWritingSidebar();
     const idRef = useRef(null);
     const sectionIdRef = useRef(null);
 
@@ -60,9 +60,9 @@ function BlogSection({ children, level }) {
     );
 }
 
-BlogSection.propTypes = {
+WritingSection.propTypes = {
     children: PropTypes.element.isRequired,
     level: PropTypes.number
 };
 
-export { BlogSection, SectionContext };
+export { WritingSection, SectionContext };

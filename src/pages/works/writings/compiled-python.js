@@ -2,13 +2,13 @@ import React from "react";
 
 import Link from "next/link";
 
-import { BlogSection } from "@/components/widgets/BlogSection";
 import CodeBlock from "@/components/widgets/CodeBlock";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
-import BlogWrapper, { BlogInfo } from "@/components/wrappers/BlogWrapper";
+import { WritingSection } from "@/components/widgets/WritingSection";
+import WritingWrapper, { WritingInfo } from "@/components/wrappers/WritingWrapper";
 import { genPageTitle } from "@/lib/util/utils";
 
-const blogInfo = new BlogInfo(
+const blogInfo = new WritingInfo(
     "Turning Python Into a Compiled Language",
     "Experimenting with Python bytecode, stack machines, and MLIR",
     new Date(2026, 3, 24),
@@ -18,14 +18,14 @@ const blogInfo = new BlogInfo(
 
 export default function CompiledPython() {
     return (
-        <BlogWrapper
+        <WritingWrapper
             pageName={genPageTitle(__filename)}
             title={blogInfo.title}
             subtitle={blogInfo.subtitle}
             pubDate={blogInfo.pubDate}
             modDate={blogInfo.modDate}>
             <FootnoteProvider label={blogInfo.anchor}>
-                <BlogSection>Introduction</BlogSection>
+                <WritingSection>Introduction</WritingSection>
                 <p>
                     Python is a highly popular and versatile language. It is commonly used for its low barrier to entry,
                     intuitive design, and ease of writing. These qualities stem partially from how the language handles
@@ -56,7 +56,7 @@ export default function CompiledPython() {
                     . The interpreter is written in C, with the standard library written in Python. Why is this? Why
                     haven't Python's creators implemented the interpreter entirely in Python itself?
                 </p>
-                <BlogSection level={2}>Interpreters and Compilers</BlogSection>
+                <WritingSection level={2}>Interpreters and Compilers</WritingSection>
                 <p>There is a short answer and a long answer to this question.</p>
                 <p>
                     The short answer is that it cannot, at least not fully. As an interpreted language, Python source
@@ -90,7 +90,7 @@ export default function CompiledPython() {
                     </Footnote>
                     . Other implementations, like PyPy or Jython, do execute Python using JIT compilation.
                 </p>
-                <BlogSection level={2}>Just-In-Time Compilation</BlogSection>
+                <WritingSection level={2}>Just-In-Time Compilation</WritingSection>
                 <p>
                     How is JIT compilation different from regular interpreting? Conceptually, the CPython interpreter
                     handles Python Opcodes with a giant switch statement: if Opcode A, do B, if Opcode X, do Y, and so
@@ -118,7 +118,7 @@ export default function CompiledPython() {
                     Python interpreters and JIT compilers are popular and widely used. But why only these two
                     approaches? Why not implement Python as a fully ahead-of-time (AOT) compiled language?
                 </p>
-                <BlogSection>Prior Art</BlogSection>
+                <WritingSection>Prior Art</WritingSection>
                 <p>
                     Many different Python compiler implementations have been developed, though none are as widely used
                     as their interpreted or JIT counterparts.{" "}
@@ -157,7 +157,7 @@ export default function CompiledPython() {
                     Python with all its dynamic typing conveniences and extensive Bytecode implementation? This would
                     seemingly bring all of the benefits of Python along with the speed of a compiled language.
                 </p>
-                <BlogSection>Why Python Works Best as an Interpreted Language</BlogSection>
+                <WritingSection>Why Python Works Best as an Interpreted Language</WritingSection>
                 <p>
                     There is good reason as to why Python AOT compilation projects tend to restrict the standard of
                     Python that they accept and why CPython itself is not always a direct dependency. A large reason for
@@ -213,7 +213,7 @@ export default function CompiledPython() {
                     parser unattractive for the previously mentioned Python compilers. Therefore, they tend to implement
                     their own Python parsers and intermediate representations.
                 </p>
-                <BlogSection>A Python Compiler</BlogSection>
+                <WritingSection>A Python Compiler</WritingSection>
                 <p>
                     Writing a custom Python compiler is generally the most maintainable avenue for beginning a Python
                     compiler project. However, my goal was to focus more on the short-term process over long-term
@@ -235,7 +235,7 @@ export default function CompiledPython() {
                     compilation API. The first two stages serve as Pycompile's frontend while LLVM serves as the
                     backend, translating IR code to machine code.
                 </p>
-                <BlogSection level={2}>The Compiler Frontend</BlogSection>
+                <WritingSection level={2}>The Compiler Frontend</WritingSection>
                 <p>
                     As mentioned, the frontend is broken into two parts: the Python bytecode disassembly and the
                     conversion to PyIR. The bytecode layer takes in unmodified Python code and decodes it into{" "}
@@ -339,7 +339,7 @@ if __name__ == "__main__":
                     effectively unrolls the stack, allowing each PyIR instruction to be self-contained with arguments
                     that reference other instruction results directly, without needing to go through the stack first.
                 </p>
-                <BlogSection level={2}>The Compiler Backend</BlogSection>
+                <WritingSection level={2}>The Compiler Backend</WritingSection>
                 <p>
                     The backend for this compiler is luckily much more straightforward. Since PyIR is a dialect of MLIR,
                     it can almost directly be translated to LLVM IR. From there, LLVM can compile the IR code down to an
@@ -372,12 +372,12 @@ if __name__ == "__main__":
                     pointers are unavailable, since LLVM pointers are only raw pointers to memory. This will have
                     consequences later when we consider memory management.
                 </p>
-                <BlogSection>Intermediate Representations</BlogSection>
+                <WritingSection>Intermediate Representations</WritingSection>
                 <p>
                     Before moving on, it is important to understand the different levels of intermediate representations
                     needed to reach the eventual runtime.
                 </p>
-                <BlogSection level={2}>Python Bytecode</BlogSection>
+                <WritingSection level={2}>Python Bytecode</WritingSection>
                 <p>
                     The first translation of the raw Python code is to CPython's Python bytecode. This section is most
                     relevant to bytecode for Python 3.14, as bytecode is an unstable implementation detail. Notably,
@@ -468,7 +468,7 @@ print(msg)`}
                     <i>msg</i>. The <i>CALL</i> instruction tells the interpreter to pop one argument (<i>msg</i>) from
                     the stack and then call the function now at the top (after consuming the <i>None</i> placeholder).
                 </p>
-                <BlogSection level={2}>PyIR</BlogSection>
+                <WritingSection level={2}>PyIR</WritingSection>
                 <p>
                     Before describing the translation from bytecode to PyIR, I should spend some time going over its
                     definition. For any program defining a dialect of MLIR, the extensions to the language are defined
@@ -609,7 +609,7 @@ print(msg)`}
                     Similar to Python and the interpreter, an <code>mlir::MLIRContext</code> object must be in scope for
                     as long as MLIR or LLVM is used. The program will segmentation fault if not.
                 </p>
-                <BlogSection level={2}>LLVM IR</BlogSection>
+                <WritingSection level={2}>LLVM IR</WritingSection>
                 <p>
                     PyIR is lowered down to LLVM IR (technically an LLVM dialect of MLIR) through a series of passes.
                     These passes must be explicitly registered in order to be used. Passes in C++ are registered with:
@@ -775,7 +775,7 @@ define void @__pymodule() {
                     <code>declare ptr @pyir_call(ptr, ptr, i64)</code> these are unlinked references directly to the
                     runtime library. This code alone will compile, but it will not link! Yet.
                 </p>
-                <BlogSection>A Python Standard Library</BlogSection>
+                <WritingSection>A Python Standard Library</WritingSection>
                 <p>
                     Instead of reimplementing the entire Python builtin library and basic operations in raw LLVM IR
                     <Footnote>A thoroughly enjoyable task, to be sure!</Footnote>, I opted to write these functions in
@@ -890,7 +890,7 @@ define void @__pymodule() {
                     . Since we cannot rely on smart pointers to save our program, the runtime library needs some way of
                     managing memory on its own.
                 </p>
-                <BlogSection>Memory Management</BlogSection>
+                <WritingSection>Memory Management</WritingSection>
                 <p>
                     The way Pycompile manages memory takes a strong influence to how vanilla Python primarily manages
                     memory: through reference counting. Suppose the program allocates some glob of memory that is then
@@ -1003,7 +1003,7 @@ bool PyObj::decref() {
                     to the limited scope of Python that Pycompile currently supports. Managing the memory of class
                     members would be much more complex.
                 </p>
-                <BlogSection>Closing Remarks</BlogSection>
+                <WritingSection>Closing Remarks</WritingSection>
                 <p>
                     For me, the best way of learning how a tool or technology works is to first work with that concept
                     yourself, rather than through extensive study beforehand. Pycompile is a good example of this.
@@ -1074,7 +1074,7 @@ bool PyObj::decref() {
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
-        </BlogWrapper>
+        </WritingWrapper>
     );
 }
 
