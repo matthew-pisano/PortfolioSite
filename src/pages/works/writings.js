@@ -8,18 +8,18 @@ import FlexWrapper from "@/components/wrappers/FlexWrapper";
 import { PageInfo, TileInfo } from "@/components/wrappers/Wrapper";
 import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
-import { blogInfo as compiledPython } from "@/pages/works/blog/compiled-python";
-import { blogInfo as genTransformers } from "@/pages/works/blog/on-general-transformers";
+import { blogInfo as compiledPython } from "@/pages/works/writings/compiled-python";
+import { blogInfo as genTransformers } from "@/pages/works/writings/on-general-transformers";
 import tileStyles from "@/styles/tiles/Tiles.module.css";
 
 /**
- * A blog tile on the landing page
+ * A preview tile on the writings landing page
  * @param children {JSXAttribute} The children of the tile
  * @param tileInfo {TileInfo} Metadata for the tile
- * @param date {Date} The date of writing of the blog
+ * @param date {Date} The date of writing of the piece
  * @constructor
  */
-function BlogTile({ children, tileInfo, date }) {
+function PreviewTile({ children, tileInfo, date }) {
     return (
         <GalleryTile tileInfo={tileInfo}>
             {children}
@@ -28,38 +28,38 @@ function BlogTile({ children, tileInfo, date }) {
     );
 }
 
-BlogTile.propTypes = {
+PreviewTile.propTypes = {
     children: PropTypes.node,
     tileInfo: PropTypes.object.isRequired,
     date: PropTypes.any.isRequired
 };
 
-export default function Blog() {
+export default function Writings() {
     let pageInfo = new PageInfo(
         genPageTitle(__filename),
-        "Blog",
-        "A repository for more freeform thoughts",
+        "Writings and Essays",
+        "A repository for my more freeform thoughts",
         { backgroundColor: PageColor.SINGULARITY_BLUE },
         []
     );
     return (
         <FlexWrapper pageInfo={pageInfo}>
-            <BlogTile
+            <PreviewTile
                 tileInfo={
                     new TileInfo({
                         title: <>{genTransformers.title}</>,
-                        thumbnail: "/media/image/pages/blog/on-general-transformers/hanoi-low.jpg",
-                        titleLink: "/works/blog/on-general-transformers"
+                        thumbnail: "/media/image/pages/writings/on-general-transformers/hanoi-low.jpg",
+                        titleLink: "/works/writings/on-general-transformers"
                     })
                 }
                 date={genTransformers.pubDate}>
                 {genTransformers.subtitle}
-            </BlogTile>
-            <BlogTile
+            </PreviewTile>
+            <PreviewTile
                 tileInfo={
                     new TileInfo({
                         title: <>{compiledPython.title}</>,
-                        thumbnail: "/media/image/pages/blog/compiled-python/python-low.webp",
+                        thumbnail: "/media/image/pages/writings/compiled-python/python-low.webp",
                         thumbnailTag: (
                             <Link
                                 href={"https://www.flickr.com/photos/28342603@N02"}
@@ -69,12 +69,12 @@ export default function Blog() {
                                 Image Credit: Mark Gillow
                             </Link>
                         ),
-                        titleLink: "/works/blog/compiled-python"
+                        titleLink: "/works/writings/compiled-python"
                     })
                 }
                 date={compiledPython.pubDate}>
                 {compiledPython.subtitle}
-            </BlogTile>
+            </PreviewTile>
         </FlexWrapper>
     );
 }
