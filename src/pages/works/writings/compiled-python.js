@@ -1055,13 +1055,13 @@ bool PyObj::decref() {
                 <p>
                     To be explicit, none of this is to say that Python bytecode or MLIR is poorly designed, quite the
                     opposite in fact. I have instead written these remarks to describe the details of my own learning
-                    process. I find that most articles or blogs describing the creation of software projects like this
-                    tend to leave out the learning curve that the original developer likely faced. When working with a
-                    new language or process, there are always little things which seem to be unreasonably frustrating or
-                    counter-intuitive. As one gains more experience, one learns either that these are important to the
-                    internal implementation or are genuine quirks that can be handled in well-defined ways. Python
-                    bytecode and MLIR have many instances of these and getting to know them through hands-on experience
-                    has given me a much better understanding of them than I originally had.
+                    process. I find that most articles or tutorials describing the creation of software projects like
+                    this tend to leave out the learning curve that the original developer likely faced. When working
+                    with a new language or process, there are always little things which seem to be unreasonably
+                    frustrating or counter-intuitive. As one gains more experience, one learns either that these are
+                    important to the internal implementation or are genuine quirks that can be handled in well-defined
+                    ways. Python bytecode and MLIR have many instances of these and getting to know them through
+                    hands-on experience has given me a much better understanding of them than I originally had.
                 </p>
                 <p>
                     Working on projects, especially unconventional ones, that are implemented with unfamiliar
