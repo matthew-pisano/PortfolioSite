@@ -98,9 +98,9 @@ const renderSectionTree = (tree) => {
                 if (section.children && section.children.length)
                     children = <div style={{ marginLeft: "10px" }}>{renderSectionTree(section.children)}</div>;
                 return (
-                    <div key={section.id} className={`${styles.blogSidebarItem}`}>
+                    <div key={section.id} className={`${styles.writingSidebarItem}`}>
                         <a href={`#${section.id}`}>
-                            <span className={`${styles.blogSidebarNumber}`}>{section.sectionNumber}</span>
+                            <span className={`${styles.writingSidebarNumber}`}>{section.sectionNumber}</span>
                             {section.title}
                         </a>
                         {children}
@@ -119,7 +119,7 @@ function WritingSidebarContent() {
     if (sections.length === 0) return null;
 
     const tree = buildSectionTree(sections);
-    return <div className={`${styles.blogSidebar}`}>{renderSectionTree(tree)}</div>;
+    return <div className={`${styles.writingSidebar}`}>{renderSectionTree(tree)}</div>;
 }
 
 export { WritingSidebarProvider, WritingSidebarContent, useWritingSidebar };

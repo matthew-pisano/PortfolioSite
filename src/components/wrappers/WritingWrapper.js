@@ -33,7 +33,7 @@ class WritingInfo {
  */
 function FigureImage({ children, src, alt }) {
     return (
-        <div className={`${styles.blogImage}`}>
+        <div className={`${styles.writingImage}`}>
             <div>
                 <img src={src} alt={alt} />
             </div>
@@ -108,7 +108,7 @@ function WritingWrapper({ children, pageName, title, subtitle, pubDate, modDate 
             {/* JSON-LD Structured Data */}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-            <div className={styles.blogTitle}>
+            <div className={styles.writingTitle}>
                 <h1>
                     <b>{title}</b>
                 </h1>
@@ -122,8 +122,8 @@ function WritingWrapper({ children, pageName, title, subtitle, pubDate, modDate 
             </div>
 
             <WritingSidebarProvider>
-                <div className={`${styles.blogContainer}`}>
-                    <div className={`${styles.blogHolder}`}>
+                <div className={`${styles.writingContainer}`}>
+                    <div className={`${styles.writingHolder}`}>
                         {dateElem}
                         <div style={{ marginBottom: "30px" }}>
                             <small style={{ display: "block", width: "100%", textAlign: "right" }}>

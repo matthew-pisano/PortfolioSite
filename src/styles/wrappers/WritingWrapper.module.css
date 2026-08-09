@@ -1,18 +1,18 @@
-.blogHolder {
+.writingHolder {
     width: 85%;
     max-width: 800px;
     text-indent: 20px;
     margin: 50px auto;
 }
 
-.blogImage {
+.writingImage {
     text-indent: 0;
     text-align: center;
     margin: 50px 0;
     font-style: italic;
 }
 
-.blogImage > :first-child {
+.writingImage > :first-child {
     border-radius: 10px;
     border-width: 3px;
     border-style: solid;
@@ -21,12 +21,12 @@
     margin-bottom: 10px;
 }
 
-.blogImage img {
+.writingImage img {
     max-width: 100%;
     border-radius: 10px;
 }
 
-.blogTitle {
+.writingTitle {
     padding: 10px;
     text-align: center;
     border-width: 5px;
@@ -38,18 +38,18 @@
     margin-top: 50px;
 }
 
-.blogContainer {
+.writingContainer {
     width: 100%;
     position: relative;
 }
 
 @media (width <= 600px) {
-    .blogHolder {
+    .writingHolder {
         width: 95%;
         max-width: 800px;
     }
 
-    .blogTitle {
+    .writingTitle {
         width: 90%;
     }
 }
