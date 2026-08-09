@@ -14,6 +14,12 @@ const nextConfig = {
                 basePath: false
             },
             {
+                source: "/works/blog/:path*",
+                destination: "/works/writings/:path*",
+                permanent: true,
+                basePath: false
+            },
+            {
                 source: "/about/about",
                 destination: "/about",
                 permanent: true
