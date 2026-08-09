@@ -113,7 +113,7 @@ function buildFile(file, path) {
 function buildHierarchy(tree, path = "") {
     // Create a directory if the tree is a directory, otherwise create a file
     if (tree instanceof Directory) {
-        if (tree.name !== "blog") return buildDirectory(tree, path);
+        if (tree.name !== "writings") return buildDirectory(tree, path);
     } else return buildFile(tree, path);
 }
 

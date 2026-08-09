@@ -49,18 +49,18 @@ FigureImage.propTypes = {
 };
 
 /**
- * Wrapper for blog pages.
+ * Wrapper for writing and essay pages.
  * @param children {JSXElement} The children of the wrapper
- * @param pageName {string} The name of the blog page
- * @param title {string} The title of the blog page
- * @param subtitle {string} The subtitle of the blog page
- * @param pubDate {Date} The date of publication of the blog
- * @param modDate {Date} The date of last modification of the blog
- * @return {JSX.Element} The page wrapped in the blog wrapper
+ * @param pageName {string} The name of the page
+ * @param title {string} The title of the page
+ * @param subtitle {string} The subtitle of the page
+ * @param pubDate {Date} The date of publication of the work
+ * @param modDate {Date} The date of last modification of the work
+ * @return {JSX.Element} The page wrapped in the WritingWrapper
  */
 function WritingWrapper({ children, pageName, title, subtitle, pubDate, modDate }) {
-    const blockContentId = "blogContent";
-    const [blogTime, setBlogTime] = useState(0);
+    const writingContentId = "writingContent";
+    const [estReadingTime, setEstReadingTime] = useState(0);
 
     const sectionCountRef = useRef([0, 0, 0]);
 
@@ -75,7 +75,7 @@ function WritingWrapper({ children, pageName, title, subtitle, pubDate, modDate 
     useEffect(() => {
         // Reset section count on component mount so count restarts on re-renders
         sectionCountRef.current = [0, 0, 0];
-        setBlogTime(elementReadingTime(blockContentId));
+        setEstReadingTime(elementReadingTime(writingContentId));
     }, []);
 
     if (!modDate) modDate = pubDate;
@@ -127,11 +127,11 @@ function WritingWrapper({ children, pageName, title, subtitle, pubDate, modDate 
                         {dateElem}
                         <div style={{ marginBottom: "30px" }}>
                             <small style={{ display: "block", width: "100%", textAlign: "right" }}>
-                                {blogTime} minute read
+                                {estReadingTime} minute read
                             </small>
                         </div>
                         <SectionContext.Provider value={getNextId}>
-                            <div id={blockContentId}>{children}</div>
+                            <div id={writingContentId}>{children}</div>
                         </SectionContext.Provider>
                         <hr />
                         {dateElem}

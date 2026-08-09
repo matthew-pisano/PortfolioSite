@@ -10,7 +10,7 @@ import tileStyles from "@/styles/tiles/Tiles.module.css";
 const SectionContext = createContext(null);
 
 /**
- * A section header for blog sections
+ * A section header for writing sections
  * @param children The children of the header
  * @param level The header level
  * @returns {JSX.Element} The header element
@@ -50,7 +50,7 @@ function WritingSection({ children, level }) {
 
     // Custom sizes for each level
     const resolvedLevel = !level ? 1 : level;
-    if (![1, 2, 3].includes(resolvedLevel)) throw new Error("Unknown blog section level " + level);
+    if (![1, 2, 3].includes(resolvedLevel)) throw new Error("Unknown writing section level " + level);
 
     const Tag = resolvedLevel === 1 ? "h3" : resolvedLevel === 2 ? "h4" : "h5";
     return (

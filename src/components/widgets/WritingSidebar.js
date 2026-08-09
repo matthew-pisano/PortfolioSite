@@ -2,14 +2,14 @@ import React, { createContext, useContext, useState, useCallback } from "react";
 
 import PropTypes from "prop-types";
 
-import styles from "@/styles/widgets/BlogSidebar.module.css";
+import styles from "@/styles/widgets/WritingSidebar.module.css";
 
-/** Context to manage blog sections in sidebar */
+/** Context to manage writing sections in sidebar */
 const writingSidebarContext = createContext(null);
 
 /**
- * Provider component to track blog sections and subsections
- * @param children {JSXElement} The main blog content
+ * Provider component to track writing sections and subsections
+ * @param children {JSXElement} The main writing content
  */
 function WritingSidebarProvider({ children }) {
     const [sections, setSections] = useState([]);
@@ -41,12 +41,12 @@ WritingSidebarProvider.propTypes = {
 };
 
 /**
- * Hook to access the blog sidebar context
+ * Hook to access the writing sidebar context
  */
 function useWritingSidebar() {
     const context = useContext(writingSidebarContext);
     if (!context) {
-        throw new Error("useWritingSidebar must be used within a BlogSidebarProvider");
+        throw new Error("useWritingSidebar must be used within a WritingSidebarProvider");
     }
     return context;
 }
