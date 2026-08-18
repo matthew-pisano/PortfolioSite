@@ -80,8 +80,8 @@ export default function Writings() {
                 tileInfo={
                     new TileInfo({
                         title: <>{onGeneralTransformersInfo.title}</>,
-                        thumbnail: "/media/image/pages/blog/on-general-transformers/hanoi-low.jpg",
-                        titleLink: "/works/blog/on-general-transformers"
+                        thumbnail: "/media/image/pages/writings/on-general-transformers/hanoi-low.jpg",
+                        titleLink: "/works/writings/on-general-transformers"
                     })
                 }
                 date={onGeneralTransformersInfo.pubDate}>

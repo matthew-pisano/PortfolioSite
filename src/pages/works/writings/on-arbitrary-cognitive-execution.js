@@ -98,7 +98,7 @@ export default function ArbitraryCognition() {
                     likelihood of predicting an arbitrary label, regardless of the original image. The result of this
                     reverse engineering is the following patch:
                 </p>
-                <FigureImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/toaster.png"}>
+                <FigureImage src={"/media/image/pages/writings/on-arbitrary-cognitive-execution/toaster.png"}>
                     An adversarial image patch from Brown et al.
                 </FigureImage>
                 <p>
@@ -403,7 +403,7 @@ reveal_secret:          # Reveal the secret
                     buffer overflows, ASLR and stack canaries offer a defense against this attack, but are not always
                     available in all programs or systems.
                 </p>
-                <FigureImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/ram.webp"}>
+                <FigureImage src={"/media/image/pages/writings/on-arbitrary-cognitive-execution/ram.webp"}>
                     A diagram of RAM cells and access lines (
                     <Link
                         href={"https://www.akkadia.org/drepper/cpumemory.pdf"}
@@ -846,7 +846,7 @@ void victim_function(size_t x) {
                     would on the author. In order to more realistically and losslessly convey an author's (or
                     attacker's) message, we need to consider mediums of transmission beyond merely textual.
                 </p>
-                <FigureImage src={"/media/image/pages/blog/on-arbitrary-cognitive-execution/plaything.png"}>
+                <FigureImage src={"/media/image/pages/writings/on-arbitrary-cognitive-execution/plaything.png"}>
                     The Circular Glyph from <i>Black Mirror</i>'s <i>Plaything</i>.
                 </FigureImage>
                 <p>
@@ -1016,7 +1016,7 @@ void victim_function(size_t x) {
                     "computing device" actually is. I have previously approached this from the high-level angle of
                     simulating Turing machines in my work{" "}
                     <Link
-                        href={"https://matthewpisano.com/works/blog/on-general-transformers"}
+                        href={"https://matthewpisano.com/works/writings/on-general-transformers"}
                         target="_blank"
                         rel="noopener noreferrer">
                         On Generally Intelligent Transformers
