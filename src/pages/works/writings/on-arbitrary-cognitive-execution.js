@@ -1,6 +1,7 @@
 import React from "react";
 
 import Link from "next/link";
+import Latex from "react-latex-next";
 
 import CodeBlock from "@/components/widgets/CodeBlock";
 import { FootnoteProvider, Footnote, FootnoteList } from "@/components/widgets/FootNote";
@@ -569,7 +570,7 @@ void meltdown_step(unsigned char *kernel_data) {
                     of the erroneous instruction are left in CPU cache lines. These cache lines act as a side-channel
                     for an attack. Taking inspiration from return oriented programming, suitable <i>gadgets</i> from
                     within the running program can then be used to index into memory arbitrarily from some base offset.
-                    The resulting vulnerability was named <i>Specter</i>
+                    The resulting vulnerability was named <i>Spectre</i>
                     <Footnote>
                         <Link href={"https://arxiv.org/pdf/1801.01203"}>
                             Spectre Attacks: Exploiting Speculative Execution
@@ -597,9 +598,9 @@ void victim_function(size_t x) {
     }
 }
 `}</CodeBlock>
-                <Footnote>Source code from the Specter paper.</Footnote>
+                <Footnote>Source code from the Spectre paper.</Footnote>
                 <p>
-                    During a Specter v1 attack, the victim function is used as a gadget to "train" the CPU branch
+                    During a Spectre v1 attack, the victim function is used as a gadget to "train" the CPU branch
                     predictor to always choose the branch that reads from <code>array2</code> by passing a valid value.
                     Later, after the CPU has been trained, an out-of-bounds value will be passed to the function for
                     array indexing. Executing speculatively, the CPU will assume that the value passes the check
@@ -610,13 +611,13 @@ void victim_function(size_t x) {
                     to Meltdown, the value most likely to be cached by the original attack indicates the byte value at
                     the arbitrary out-of-bounds offset from the malicious user. This allows an attacker to read any
                     value from the process' memory, including escaping browser sandboxes. Unlink Meltdown, which is the
-                    result of insufficient ceche read checks, the Specter class of vulnerabilities relies only on a
+                    result of insufficient ceche read checks, the Spectre class of vulnerabilities relies only on a
                     fundamental CPU optimization to carry out the attack; this is much more difficult to mitigate. Upon
-                    original discovery, only two Specter variants were known, v1 and v2. Since them, 13 unique Specter
+                    original discovery, only two Spectre variants were known, v1 and v2. Since them, 13 unique Spectre
                     variants have been discovered, with many evading patches made to fix earlier variants.
                 </p>
                 <p>
-                    With both Meltdown and the Specter class, the intended behavior of the CPU and its cache were
+                    With both Meltdown and the Spectre class, the intended behavior of the CPU and its cache were
                     exploited to yield information about the system to an attacker. However, unlike some of the other
                     attacks we have seen, this does not allow for arbitrary code execution, but instead arbitrary memory
                     read. Combined, these two types of attack allow for full knowledge of a program's state and full
@@ -1120,7 +1121,7 @@ void victim_function(size_t x) {
                     pacemakers or neural prostheses. For learned patterns, we often replicate the behavior of other
                     humans through <i>observational learning</i>
                     <Footnote>
-                        See:{" "}
+                        See{" "}
                         <Link
                             href={
                                 "https://www.semanticscholar.org/paper/Social-Foundations-of-Thought-and-Action-Bandura/78c6775fccdbbed66f823dae2cfa01570ecb3c05"
@@ -1188,6 +1189,114 @@ void victim_function(size_t x) {
                     entropy instead of regular and low entropy.
                 </p>
                 <WritingSection level={2}>The Stability and Predictability of Neural Patterns</WritingSection>
+                <p>
+                    Another important quality of exploitable systems is that they are stable and predictable. Even if
+                    the specific behavior of the system is complex and stochastic at higher level patterns, it may still
+                    be vulnerable if its lowest level behavior is largely predictable.
+                </p>
+                <p>
+                    While many of the aforementioned computer vulnerabilities rely on specific memory layouts, buffer
+                    overflows for instance, others are more flexible with respect to exact memory layouts. Consider the
+                    common security mitigation of Address Space Layout Randomization (ASLR). This is an operating system
+                    level technique which randomizes the positions of program memory segments. This would defeat simple
+                    attacks such as a buffer overflow forcing the program counter to jump to a specific data address,
+                    but not against some sophisticated attacks, like Spectre. As we recall from earlier, this attack
+                    does not depend on specific memory addresses or even specific instruction orders. It dynamically
+                    trains the CPU's branch predictor to force it to speculatively execute code which can be retrieved
+                    through cache side channels. This type of attack does not require the higher level patterns of
+                    execution to be predictable, it only needs the lowest level of instruction and CPU logic to remain
+                    stable
+                    <Footnote>
+                        In fact, this is why Spectre is so difficult to mitigate. When working on the first patches for
+                        the vulnerability, processor vendors could not fully rely upon the operating systems to handle
+                        protection for them. Instead, they needed to modify the fundamental behavior of their CPU
+                        microcode in concert with OS patches.
+                    </Footnote>
+                    .
+                </p>
+                <p>
+                    Now let us consider whether the human brain meets the required level of stability and predictability
+                    needed to potentially harbor similar vulnerabilities. We will need to consider the potential
+                    predictability of the brain on two levels: on the level of individual neurons and on the level of
+                    neuronal clusters. Before doing so, however, it is important to better understand how real neurons
+                    actually behave.
+                </p>
+                <p>
+                    For those coming in with a background in computer science or artificial intelligence, it is tempting
+                    to apply the simplified model of the perceptron. These perceptrons are idealized structures which
+                    behave very roughly like biological neurons, firing based on a biased synthesis of inputs in the
+                    following manner:{" "}
+                    <Latex>{`$f(x_0, \\dots, x_n) = \\sigma [~\\sum_{i=0}^{n} (w_i x_i) + b~]$`}</Latex> where{" "}
+                    <Latex>{`$\\sigma[\\cdot]$`}</Latex> is some non-linear activation function such as the step
+                    function, <i>sigmoid</i>, <i>tanh</i>, or others. Unlike real neurons, this provides a deterministic
+                    and simple view of artificial neuronal dynamics. A neuron fires with a strength relative to the
+                    summed strength of its inputs, after being biased and sent through a non-linear (and generally
+                    monotonic
+                    <Footnote>
+                        To be precise, there, in fact, several common activation functions that are not technically
+                        monotonic (like SiLU, or GELU), but those only have a small decrease before their unbounded
+                        segments.
+                    </Footnote>
+                    ) function. Biological neurons, however, are much more complex. These cells operate based on
+                    physical packets of chemicals and their own complex internal configuration.
+                </p>
+                <p>
+                    To get a better sense in the complexity of biological neurons, I will share a simplified version of
+                    the firing process here. Like artificial neurons, it approximately starts with connections to other
+                    neurons. As a neuron's neighbors fire, they send electrical signals down long, thin, and myelinated
+                    <Footnote>
+                        A fatty coating that helps to preserve electrical signal, like the non-conductive jacket of a
+                        copper wire.
+                    </Footnote>{" "}
+                    fibers called axons. These electrical signals are propagated through the movement of positive sodium
+                    ions. At the end of each axon are many terminals which contain calcium channels. Naturally, these
+                    terminals are slightly negative, so the incoming wave of positive sodium ions changes the charge on
+                    the inside of the channels, forcing them open. Once these channels are open, calcium ions rush into
+                    the terminal from the cell. these ions then bind to sensor proteins on the terminal's synaptic
+                    vesicles, storage sacs for neurotransmitters. These vesicles then move toward and fuse with the
+                    terminal membrane, releasing their neurotransmitter payload into the synapse between neurons. These
+                    chemicals from a neighboring neuron bind to receptors on the dendrites of another. This connection
+                    opens channels in the receiving neuron, causing sodium or chloride ions to rush in. The sum of all
+                    incoming exciting sodium (and inhibiting chloride) flows to the neuron's hillock, the place where
+                    its own axon begins. The positive and negative charges from the sodium and chloride ions partially
+                    cancel out. If the summed voltage from the ions meets the cell's threshold, sodium channels open and
+                    travel down the neuron's axon, beginning the process again. However, this process cannot begin
+                    immediately after within the same cell. This is known as the refactory period and generally takes
+                    two to five milliseconds. It must first take time to replenish lost molecules and neutralize its
+                    internal charge. And this is a <i>brief</i> summary.
+                </p>
+                <FigureImage src={"/media/image/pages/writings/on-arbitrary-cognitive-execution/neuron-potential.png"}>
+                    The threshold potential or a firing neuron.
+                </FigureImage>
+                <p>
+                    Additionally, biological neurons do not transmit a single category of signal like artificial ones
+                    do. There are over 100 distinct neurotransmitters that neurons could potentially release, but in
+                    reality most neurons release only one neurotransmitter type, though some may co-transmit a secondary
+                    signal. Another complexity is that the signal traveling down an axon is not solely a product of that
+                    neuron's dendritic signals. It may be electrically influenced by nearby, but unconnected, neurons
+                    through ephaptic coupling. Interestingly, this coupling may serve to correlate firing patterns of
+                    nearby neurons, as is potentially the case in seizures
+                    <Footnote>
+                        See{" "}
+                        <Link href={"https://pubmed.ncbi.nlm.nih.gov/33979453/"}>
+                            Neural recruitment by ephaptic coupling in epilepsy (Shivacharan et al. 2021).
+                        </Link>
+                    </Footnote>
+                    .
+                </p>
+                <p>
+                    Generally, the result of this complex series of processes is somewhat stochastic. A neuron may not
+                    fire in the same manner with the same intensity between different cycles of excitement of upstream
+                    neurons, even of those neurons all fire in the same pattern. However, at the level of larger
+                    neuronal clusters, this stochastic behavior can be modeled by a predictable probability distribution
+                    <Footnote>
+                        See{" "}
+                        <Link href={"https://pmc.ncbi.nlm.nih.gov/articles/PMC1854931/"}>
+                            Stochastic models of neuronal dynamics (Harrison et al. 2005).
+                        </Link>
+                    </Footnote>
+                    .
+                </p>
                 <WritingSection level={2}>Replication Across Architectures</WritingSection>
                 <WritingSection level={2}>The Brain as an Emulation Device</WritingSection>
                 <WritingSection level={2}>The Conscious Mind has no Moat</WritingSection>
