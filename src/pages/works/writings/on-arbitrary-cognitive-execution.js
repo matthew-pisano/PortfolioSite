@@ -1325,9 +1325,9 @@ void victim_function(size_t x) {
                     predictability with respect to a systems potential for exploitation.
                 </p>
                 <WritingSection level={2}>Replication Across Architectures</WritingSection>
+                <WritingSection>Arbitrary Cognitive Execution</WritingSection>
                 <WritingSection level={2}>The Brain as an Emulation Device</WritingSection>
                 <WritingSection level={2}>The Conscious Mind has no Moat</WritingSection>
-                <WritingSection>Arbitrary Cognitive Execution</WritingSection>
                 <p>
                     Text is a relatively low-dimensional medium of input. There are only so many conceptual patterns
                     which a sequence of symbols can theoretically convey, and fewer still (if any) which can
