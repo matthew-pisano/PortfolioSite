@@ -1107,10 +1107,12 @@ void victim_function(size_t x) {
                     We know that the brain takes in well defined patterns of input and yields well defined patterns of
                     output. We also know that these inputs are processed into outputs through the internal state of our
                     brain's neurons and their connections. What is less certain is whether we can interpret the complex
-                    interactions between these neurons as predictable, low-level patterns that emergently form into the
-                    much higher-level patterns that we can directly observe. First, we will examine how low-level
-                    patterns within the brain can directly influence higher-level ones. Then, we can examine whether
-                    those low-level patterns behave in a predictable manner.
+                    interactions between these neurons as predictable, impersonal, low level patterns that emergently
+                    form into the much higher-level patterns that we can directly observe. First, we will examine how
+                    low level patterns within the brain can directly influence higher level ones. Then, we can examine
+                    whether those low level patterns behave in a predictable and modelable manner. Finally, we will see
+                    how predictable, yet unique, low level patterns in one person's brain generalize to higher level
+                    patterns, common across individuals.
                 </p>
                 <p>
                     We know that, in a high-level and abstract sense, our brains replicate both innate and learned
@@ -1248,22 +1250,22 @@ void victim_function(size_t x) {
                         A fatty coating that helps to preserve electrical signal, like the non-conductive jacket of a
                         copper wire.
                     </Footnote>{" "}
-                    fibers called axons. These electrical signals are propagated through the movement of positive sodium
-                    ions. At the end of each axon are many terminals which contain calcium channels. Naturally, these
-                    terminals are slightly negative, so the incoming wave of positive sodium ions changes the charge on
-                    the inside of the channels, forcing them open. Once these channels are open, calcium ions rush into
-                    the terminal from the cell. these ions then bind to sensor proteins on the terminal's synaptic
-                    vesicles, storage sacs for neurotransmitters. These vesicles then move toward and fuse with the
-                    terminal membrane, releasing their neurotransmitter payload into the synapse between neurons. These
-                    chemicals from a neighboring neuron bind to receptors on the dendrites of another. This connection
-                    opens channels in the receiving neuron, causing sodium or chloride ions to rush in. The sum of all
-                    incoming exciting sodium (and inhibiting chloride) flows to the neuron's hillock, the place where
-                    its own axon begins. The positive and negative charges from the sodium and chloride ions partially
-                    cancel out. If the summed voltage from the ions meets the cell's threshold, sodium channels open and
-                    travel down the neuron's axon, beginning the process again. However, this process cannot begin
-                    immediately after within the same cell. This is known as the refactory period and generally takes
-                    two to five milliseconds. It must first take time to replenish lost molecules and neutralize its
-                    internal charge. And this is a <i>brief</i> summary.
+                    fibers called axons. These electrical signals, or action potentials, are propagated through the
+                    movement of positive sodium ions. At the end of each axon are many terminals which contain calcium
+                    channels. Naturally, these terminals are slightly negative, so the incoming wave of positive sodium
+                    ions changes the charge on the inside of the channels, forcing them open. Once these channels are
+                    open, calcium ions rush into the terminal from the cell. these ions then bind to sensor proteins on
+                    the terminal's synaptic vesicles, storage sacs for neurotransmitters. These vesicles then move
+                    toward and fuse with the terminal membrane, releasing their neurotransmitter payload into the
+                    synapse between neurons. These chemicals from a neighboring neuron bind to receptors on the
+                    dendrites of another. This connection opens channels in the receiving neuron, causing sodium or
+                    chloride ions to rush in. The sum of all incoming exciting sodium (and inhibiting chloride) flows to
+                    the neuron's hillock, the place where its own axon begins. The positive and negative charges from
+                    the sodium and chloride ions partially cancel out. If the summed voltage from the ions meets the
+                    cell's threshold, sodium channels open and travel down the neuron's axon, beginning the process
+                    again. However, this process cannot begin immediately after within the same cell. This is known as
+                    the refactory period and generally takes two to five milliseconds. It must first take time to
+                    replenish lost molecules and neutralize its internal charge. And this is a <i>brief</i> summary.
                 </p>
                 <FigureImage src={"/media/image/pages/writings/on-arbitrary-cognitive-execution/neuron-potential.png"}>
                     The threshold potential or a firing neuron.
@@ -1287,15 +1289,40 @@ void victim_function(size_t x) {
                 <p>
                     Generally, the result of this complex series of processes is somewhat stochastic. A neuron may not
                     fire in the same manner with the same intensity between different cycles of excitement of upstream
-                    neurons, even of those neurons all fire in the same pattern. However, at the level of larger
-                    neuronal clusters, this stochastic behavior can be modeled by a predictable probability distribution
+                    neurons, even of those neurons all fire in the same pattern. For instance, the concentration of free
+                    ions may be different from one activation to another or the exact quantities of neurotransmitter
+                    molecules may vary. However, at the level of larger neuronal clusters, this stochastic behavior can
+                    be modeled by a predictable probability distribution, as Harrison et al. show in their 2005 analysis
+                    of neuronal dynamics
                     <Footnote>
                         See{" "}
                         <Link href={"https://pmc.ncbi.nlm.nih.gov/articles/PMC1854931/"}>
                             Stochastic models of neuronal dynamics (Harrison et al. 2005).
                         </Link>
                     </Footnote>
-                    .
+                    . Their work proposed a more complex and stochastic mathematical model of neurons and their
+                    clusters. By treating randomness itself as a parameter, instead of as Poisson-distributed parameters
+                    individually, they are able to model the event-related potentials of many neurons as solutions to a
+                    stochastic differential equation. To find candidate solutions to this equation, they use the
+                    Fokker-Plank equation
+                    <Footnote>
+                        As evidenced by the "Plank" in this equation's name, it often shows up in statistical and
+                        quantum mechanical models.
+                    </Footnote>
+                    , a partial differential equation which describes the evolution of a probability density function
+                    over time. Using these solutions, the stochastic differential equation can instead be modeled as a
+                    deterministic and dynamic equation. Using their approximation, the behavior of groups of neurons can
+                    be modeled by treating action potentials as always having a non-zero probability, rather than
+                    enumerating their noisy voltages directly.
+                </p>
+                <p>
+                    While brain activity on the order of entire cortical regions may be complex and difficult to model,
+                    lower levels of neural processes on the order of neuronal clusters can be modeled predictably.
+                    Though our micro-level understanding does not translate to full understanding on the meso- or
+                    macro-levels, this higher level of understanding is not required for our current exploration. What
+                    does matter is that the lowest levels of neural architecture can be predictably modeled and smoothly
+                    vary in the presence of noise. This appears to fit our aforementioned requirement of stability and
+                    predictability with respect to a systems potential for exploitation.
                 </p>
                 <WritingSection level={2}>Replication Across Architectures</WritingSection>
                 <WritingSection level={2}>The Brain as an Emulation Device</WritingSection>
