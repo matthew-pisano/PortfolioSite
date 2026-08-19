@@ -1322,9 +1322,92 @@ void victim_function(size_t x) {
                     macro-levels, this higher level of understanding is not required for our current exploration. What
                     does matter is that the lowest levels of neural architecture can be predictably modeled and smoothly
                     vary in the presence of noise. This appears to fit our aforementioned requirement of stability and
-                    predictability with respect to a systems potential for exploitation.
+                    predictability with respect to a systems potential for exploitation. As is the case with the Spectre
+                    class of vulnerability, as long as a systems lower levels can be modeled predictably, a
+                    vulnerability may still exist even if its highest levels of abstraction are too complex to neatly
+                    model.
                 </p>
-                <WritingSection level={2}>Replication Across Architectures</WritingSection>
+                <WritingSection level={2}>Common Representations Across Minds</WritingSection>
+                <p>
+                    While individual brains are similar in terms of overall structure, they vary greatly in terms of low
+                    level activity. Even if two brains are contemplating the exact same subject or processing the exact
+                    same stimuli, there is no way to cleanly map specific neurons and activity patterns from one brain
+                    directly onto another. To make an analogy to traditional computers, this would be like attempting to
+                    match up the individual voltages across the transistor between two different CPUs. Zooming out,
+                    however, we see that common patterns emerge. Between CPUs of the same architecture, those
+                    innumerable voltage patterns emerge into much more regular patterns on the instruction level.
+                    Similarly, though the individual action potentials across neurons may differ greatly between
+                    individuals, the overall patterns of cognition that they yield are substantially similar.
+                </p>
+                <p>
+                    The problem of measuring similarities in neural activation patterns shows up frequently in the
+                    context of neural imaging. When parsing through an fMRI scan, for example, doctors and researchers
+                    must be able to properly interpret patterns of activation in terms of patent behavior. The problem
+                    is: how can we be sure that the patterns of activation in one patient's brain cleanly map to similar
+                    patterns in another when exposed to the same stimuli? A large body of work in this field has
+                    concentrated on the level of neurons or neuronal groups. This appears sensible, in order to verify
+                    similarities between high level patterns, one may first examine lower levels and extrapolate.
+                    However, as we have seen, these low level patterns are stochastic and noisy, even if they can
+                    theoretically be modeled. These is often very little similarity between individuals at this level of
+                    abstraction. Instead, what if similarities were measured at higher level of abstractions, leaving
+                    neuronal activity as essentially an implementation detail. This is the approach used by Raizada and
+                    Connolly in their 2012 study of cross-subject fMRI decoding
+                    <Footnote>
+                        See{" "}
+                        <Link href={"https://rajeevraizada.github.io/papers/RaizadaConnolly_JoCN_2012.pdf"}>
+                            What Makes Different People's Representations Alike: Neural Similarity Space Solves the
+                            Problem of Across-subject fMRI Decoding (Raizada and Connolly 2012).
+                        </Link>
+                    </Footnote>
+                    . For their study, they use a dataset of fMRI scans of subjects' ventral temporal cortices, a region
+                    of the brain located on the bottom of the temporal lobe which is responsible for processing abstract
+                    visual information. The scans in the dataset are broken down into voxels, 3D regions which serve as
+                    the smallest resolution of measurement. They begin by measuring the spatial correlation between
+                    active voxels when a subject is shown a particular stimuli, a face versus a cat versus a house, etc.
+                    The relative values of spatial similarity induced by image stimuli then form a "similarity space" of
+                    mental representations. They then measure the voxel spatial correlation for another subject upon
+                    being shown the same set of images. They find, at the high level of voxel spatial correlation, that
+                    different individuals have substantially similar representations of the same objects. In other
+                    words, when shown a picture of a face, cat, house, etc. both subject's brains exhibit similar high
+                    level patterns of activation relative to other images in the set. While the exact values of voxels
+                    are different and the specific sets of neurons involved are disjoint, the subjects share the same
+                    structure of relationships between different concepts.
+                </p>
+                <p>
+                    Not only are these patterns similar across individuals, but they can also be manipulated to induce
+                    similar cognitive effects. In a 2010 study on the impacts of transcranial magnetic stimulation (TMS)
+                    on moral judgements, Young et al.
+                    <Footnote>
+                        See{" "}
+                        <Link href={"https://www.pnas.org/doi/10.1073/pnas.0914826107"}>
+                            Disruption of the right temporoparietal junction with transcranial magnetic stimulation
+                            reduces the role of beliefs in moral judgments (Young et al. 2010).
+                        </Link>
+                    </Footnote>{" "}
+                    finds that TMS can be used to disrupt the regions of the brain usually responsible for moral
+                    reasoning and empathy. Im particular, they target the right temporoparietal junction (rTPJ) with
+                    their disruptions. They performed two main experiments: disrupting neural activity in the rTPJ right
+                    before and during the subject's moral judgement of a scenario. For example,
+                </p>
+                <blockquote>
+                    Grace and her friend are taking a tour of a chemical plant. When Grace goes over to the coffee
+                    machine to pour some coffee, Grace's friend asks for some sugar in hers. The white powder by the
+                    coffee is just regular sugar. Because the substance is in a container marked "toxic", Grace thinks
+                    that it is toxic. Grace puts the substance in her friend's coffee. Her friend drinks the coffee and
+                    is fine.
+                </blockquote>
+                <p>
+                    In this scenario, Grave believes the powder to be poison and tries to dose her friend, even though
+                    it is plain sugar. On a scale of "permissible" to "forbidden", study participants were likely to
+                    rate Grace's actions as strongly forbidden. The control subjects were focused on Grave's belief that
+                    she was willingly poisoning her friend. However, upon rTPJ disruption, participants were more likely
+                    to rate Grace's actions are more permissible. These subjects were more focused on the fact that the
+                    power was just sugar and less on what Grace believed the powder to be. In this study, many different
+                    brains were measured, each with different neural activations on a low level. However, the higher
+                    level patterns that these activations represented were similar between subjects. So similar, in
+                    fact, that those patterns could be reliably manipulated to produce similar outward effects (namely,
+                    inhibiting the subjects' consideration of a character's internal beliefs in a moral judgement).
+                </p>
                 <WritingSection>Arbitrary Cognitive Execution</WritingSection>
                 <WritingSection level={2}>The Brain as an Emulation Device</WritingSection>
                 <WritingSection level={2}>The Conscious Mind has no Moat</WritingSection>
