@@ -1005,17 +1005,19 @@ void victim_function(size_t x) {
                     being exploited in a simular manner. Though, the reader is never given an exact schema for
                     performing such exploits, the story merely conjectures that they may be possible. What if the brain
                     really does harbor such hidden vulnerabilities? Now, our investigation turns to whether the human
-                    brain may actually function as a computing device which could be exploited in a manner just as real
-                    as the others which we had examined earlier. This section will be dedicated to substantiating and
-                    contextualizing this concept: proximately, by understanding how the brain functions naturally in
-                    order to, ultimately, understand how it could be exploited artificially.
+                    brain may actually function similarly to a computing device which could be exploited in a manner
+                    just as real as the vulnerabilities which we had examined earlier. This section will be dedicated to
+                    substantiating and contextualizing this concept. Proximately, we will investigate the qualities of
+                    exploitable computers and how the brain may exhibit such qualities naturally, in order to ultimately
+                    understand how it could be exploited artificially.
                 </p>
                 <WritingSection level={2}>Cognition as Computation</WritingSection>
                 <p>
-                    Before further pursuing this line of inquiry, we must first ask whether the human brain is, at least
-                    to some extent, a computing device at all. To answer this question, we must first define what a
-                    "computing device" actually is. I have previously approached this from the high-level angle of
-                    simulating Turing machines in my work{" "}
+                    The first step in pursuing this line of inquiry is to first ask whether the human brain is, at least
+                    to some extent, a computing device at all. Only then can we know which potentially exploitable
+                    qualities to look for in the brain. To answer this question, we must first define what a "computing
+                    device" actually is and why it is exploitable to begin with. I have previously approached this from
+                    the high-level angle of simulating Turing machines in my work{" "}
                     <Link
                         href={"https://matthewpisano.com/works/writings/on-general-transformers"}
                         target="_blank"
@@ -1172,7 +1174,7 @@ void victim_function(size_t x) {
                         </Link>
                         ,
                         <Link href={"https://visualstress.info/1979-15.pdf"}>
-                            NEUROPHYSIOLOGICAL ASPECTS OF PATTERN-SENSITIVE EPILEPSY (Wilkins et al. 1979)
+                            Neurophysiological Aspects of Pattern-sensitive Epilepsy (Wilkins et al. 1979)
                         </Link>
                         ,<Link href={"https://epilepsynl.com/photosensitive-epilepsy/"}>Photosensitive Epilepsy</Link>
                     </Footnote>
@@ -1407,6 +1409,87 @@ void victim_function(size_t x) {
                     level patterns that these activations represented were similar between subjects. So similar, in
                     fact, that those patterns could be reliably manipulated to produce similar outward effects (namely,
                     inhibiting the subjects' consideration of a character's internal beliefs in a moral judgement).
+                </p>
+                <p>
+                    If our brains share similar internal patterns for representing similar concepts, how do they acquire
+                    those shared patterns to begin with. There are likely two major sources of this similarity. Most
+                    obviously, even though our brains differ greatly at low levels, they all still share the same
+                    overall architecture. We all share the same brain regions in approximately the same places thanks to
+                    their encoding in our shared genetics. The generic nature of our brains' organization allows for
+                    different brains to exhibit similar patterns of activity, representing some common concept. Less
+                    obvious is how we require the common concepts required to form these shared representations.
+                </p>
+                <p>
+                    Across the animal kingdom, having a brain comprised of basic neurons is not an uncommon occurrence.
+                    All vertebrates, and many invertebrates, have body plans with one (or more) bundles of neurons
+                    serving as axes for other nerves spread throughout the body. However, these is a special type of
+                    neuron that we have only found in a small subset of all animal species. It appears in many primates,
+                    including humans, mice, and certain species of birds: all highly social and communicative species.
+                    These are known as mirror neurons. These cells are notable because they fire and reinforce
+                    themselves upon exposure to only very specific signals. They fire when they see another member of
+                    its species perform some action <i>and</i> when the individual it is in performs a similar action.
+                    In short, these neurons help us to directly learn from others and copy what they are thinking. They
+                    do not fire in any special manner or output any unique neurotransmitters, what makes them unique is
+                    their ability to mimic the internal patterns of activation present in another's brain.
+                </p>
+                <p>
+                    In humans, these mirror neurons have been found in motor control areas of our brain, sensory
+                    processing areas, and areas responsible for language processing. While the exact nature and scope of
+                    mirror neurons' impact on our behavior is debated, we do have a good understanding of what behaviors
+                    they likely play an important role in. Since these mirror neurons fire when someone else performs an
+                    action (and therefore when their mirror neurons fire as well), they are useful for learning and
+                    mimicry. When a parent looks at an infant and makes different expressions, the infant will often
+                    mirror those expressions. Here, not only are the simple motor actions being transmitted from parent
+                    to infant, the internal representations of those actions are as well. Adults in a good mood may
+                    smile at an infant, causing them to smile and raise their own mood
+                    <Footnote>
+                        See{" "}
+                        <Link href={"https://osf.io/preprints/psyarxiv/3sa8w_v1"}>
+                            Infants track patterns of emotion transitions in the home (Nencheva et al. 2024).
+                        </Link>{" "}
+                        and{" "}
+                        <Link
+                            href={
+                                "https://local.psy.miami.edu/faculty/dmessinger/c_c/rsrcs/rdgs/emot/tronick_emotions_in_interaction.pdf"
+                            }>
+                            Emotions and Emotional Communication in Infants (Tronick 1989).
+                        </Link>{" "}
+                        for more information on how infants mimic the emotional states of adults.
+                    </Footnote>
+                    . We adults<Footnote>Assuming no infants are reading this essay.</Footnote> have likely felt the
+                    conscious effects of these mirror neurons ourselves. Imagine a time when you saw someone perform an
+                    action which you would have liked to emulate. This could be a feat of gymnastics, a skateboarding
+                    trick, or an impressive set of moves in a video game. You may have found yourself consciously
+                    simulating what those actions would have been like in your own mind. As you watched someone else act
+                    upon patterns within their brains, you tried to replicate those patterns in your own brain,
+                    transferring some level of common representation from one brain to another
+                    <Footnote>
+                        See{" "}
+                        <Link href={"https://link.springer.com/article/10.1007/s11097-005-4737-z"}>
+                            Embodied simulation: From neurons to phenomenal experience (Gallese 2005).
+                        </Link>
+                    </Footnote>
+                    .
+                </p>
+                <p>
+                    In this section, we have learned several key pieces of information. We have formulated a more
+                    precise definition of what a computing device is and how the nature of such devices leaves room for
+                    exploitation. Next, we saw how the brain exemplifies many of the qualities of these computing
+                    devices. The low levels of neuronal activity in our brains emergently form into higher level
+                    patterns of cognition. While there is significant noise on the level of individual neurons, this
+                    noise begins to smooth out on the level of large neuron clusters. This allows for predictability in
+                    an inherently noisy system. Finally, we saw how those high level, emergent patterns are often shared
+                    between individuals and used to represent the same concepts. Where does this leave us? We know from
+                    our definition of a computing device that such devices operate upon emergent, predictable, and
+                    generic patterns and, due to these patterns, they may be inherently exploitable. We also know that
+                    our brains exhibit, to some extent, emergent, predictable, and generic patterns themselves. Assuming
+                    <Footnote>
+                        A very large assumption, to be sure, but hopefully an assumption that is at least partially
+                        supported by evidence, as we have seen in this section.
+                    </Footnote>{" "}
+                    such low level exploitation of the brain is indeed possible in human brains, what would those
+                    exploits look like? How would they be transmitted? What would be their scope? What would their
+                    effects be on our subjective experience of cognition?
                 </p>
                 <WritingSection>Arbitrary Cognitive Execution</WritingSection>
                 <WritingSection level={2}>The Brain as an Emulation Device</WritingSection>
