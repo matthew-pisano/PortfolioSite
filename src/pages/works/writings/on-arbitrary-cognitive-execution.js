@@ -1397,9 +1397,9 @@ void victim_function(size_t x) {
                     is fine.
                 </blockquote>
                 <p>
-                    In this scenario, Grave believes the powder to be poison and tries to dose her friend, even though
+                    In this scenario, Grace believes the powder to be poison and tries to dose her friend, even though
                     it is plain sugar. On a scale of "permissible" to "forbidden", study participants were likely to
-                    rate Grace's actions as strongly forbidden. The control subjects were focused on Grave's belief that
+                    rate Grace's actions as strongly forbidden. The control subjects were focused on Grace's belief that
                     she was willingly poisoning her friend. However, upon rTPJ disruption, participants were more likely
                     to rate Grace's actions are more permissible. These subjects were more focused on the fact that the
                     power was just sugar and less on what Grace believed the powder to be. In this study, many different
