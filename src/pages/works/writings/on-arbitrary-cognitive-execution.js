@@ -1165,8 +1165,8 @@ void victim_function(size_t x) {
                     visual inputs cause such catastrophic consequences for these people's brains? Victims of the show
                     suffered from photosensitive epilepsy, meaning that their brains were more prone to seizures from
                     rapidly flashing visuals. While the exact mechanism is poorly understood, we do know that extremely
-                    regular and intense signals coming from the visual cortex can cause receiving neurons to also fire
-                    with a similar regular pattern
+                    regular and intense signals coming from the optic nerves can cause receiving neurons in the visual
+                    cortex to also fire with a similar regular pattern
                     <Footnote>
                         <Link href={"https://doi.org/10.1002/ana.24570"}>
                             Activation of specific neuronal networks leads to different seizure onset types (Shiri et
@@ -1253,21 +1253,28 @@ void victim_function(size_t x) {
                         copper wire.
                     </Footnote>{" "}
                     fibers called axons. These electrical signals, or action potentials, are propagated through the
-                    movement of positive sodium ions. At the end of each axon are many terminals which contain calcium
-                    channels. Naturally, these terminals are slightly negative, so the incoming wave of positive sodium
-                    ions changes the charge on the inside of the channels, forcing them open. Once these channels are
-                    open, calcium ions rush into the terminal from the cell. These ions then bind to sensor proteins on
-                    the terminal's synaptic vesicles, storage sacs for neurotransmitters. These vesicles then move
-                    toward and fuse with the terminal membrane, releasing their neurotransmitter payload into the
-                    synapse between neurons. These chemicals from a neighboring neuron bind to receptors on the
-                    dendrites of another. This connection opens channels in the receiving neuron, causing sodium or
-                    chloride ions to rush in. The sum of all incoming exciting sodium (and inhibiting chloride) flows to
-                    the neuron's hillock, the place where its own axon begins. The positive and negative charges from
-                    the sodium and chloride ions partially cancel out. If the summed voltage from the ions meets the
-                    cell's threshold, sodium channels open and travel down the neuron's axon, beginning the process
-                    again. However, this process cannot begin immediately after within the same cell. This is known as
-                    the refractory period and generally takes two to five milliseconds. It must first take time to
-                    replenish lost molecules and neutralize its internal charge. And this is a <i>brief</i> summary.
+                    movement of positive sodium ions
+                    <Footnote>
+                        This is known as the "depolarization phase" as the action potential within the axon rises. As
+                        the action potential falls and resets, "repolarization" occurs as the cell emits positive
+                        potassium ions to neutralize its charge.
+                    </Footnote>
+                    . At the end of each axon are many terminals which contain calcium channels. Naturally, these
+                    terminals are slightly negative; as the incoming wave of positive sodium ions arrive, a voltage
+                    potential across the cell membrane forms, forcing the channels embedded within it to open. Once
+                    these channels are open, calcium ions rush into the terminal from the cell. These ions then bind to
+                    sensor proteins on the terminal's synaptic vesicles, storage sacs for neurotransmitters. These
+                    vesicles then move toward and fuse with the terminal membrane, releasing their neurotransmitter
+                    payload into the synapse between neurons. These chemicals from a neighboring neuron bind to
+                    receptors on the dendrites of another. This connection opens channels in the receiving neuron,
+                    causing sodium or chloride ions to rush in. The sum of all incoming exciting sodium (and inhibiting
+                    chloride) flows to the neuron's hillock, the place where its own axon begins. The positive and
+                    negative charges from the sodium and chloride ions partially cancel out. If the summed voltage from
+                    the incoming ions meets the cell's threshold, its sodium channels open, allowing positive ions to
+                    travel down the neuron's axon. This begins the process again in the new cell. However, this process
+                    cannot begin immediately after within the same cell. This is known as the refractory period and
+                    generally takes two to five milliseconds. It must first take time to replenish lost molecules and
+                    neutralize its internal charge. And this is a <i>brief</i> summary.
                 </p>
                 <FigureImage src={"/media/image/pages/writings/on-arbitrary-cognitive-execution/neuron-potential.png"}>
                     The threshold potential or a firing neuron.
@@ -1306,9 +1313,9 @@ void victim_function(size_t x) {
                     clusters. By treating randomness itself as a parameter, instead of as Poisson-distributed parameters
                     individually, they are able to model the event-related potentials of many neurons as solutions to a
                     stochastic differential equation. To find candidate solutions to this equation, they use the
-                    Fokker-Plank equation
+                    Fokker-Planck equation
                     <Footnote>
-                        As evidenced by the "Plank" in this equation's name, it often shows up in statistical and
+                        As evidenced by the "Planck" in this equation's name, it often shows up in statistical and
                         quantum mechanical models.
                     </Footnote>
                     , a partial differential equation which describes the evolution of a probability density function
@@ -1429,7 +1436,7 @@ void victim_function(size_t x) {
                     including humans, mice, and certain species of birds: all highly social and communicative species.
                     These are known as mirror neurons. These cells are notable because they fire and reinforce
                     themselves upon exposure to only very specific signals. They fire when they see another member of
-                    its species perform some action <i>and</i> when the individual it is in performs a similar action.
+                    their species perform some action <i>and</i> when the individual it is in performs a similar action.
                     In short, these neurons help us to directly learn from others and copy what they are thinking. They
                     do not fire in any special manner or output any unique neurotransmitters, what makes them unique is
                     their ability to mimic the internal patterns of activation present in another's brain.
