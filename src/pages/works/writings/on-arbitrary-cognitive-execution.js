@@ -1002,7 +1002,7 @@ void victim_function(size_t x) {
                     upon specific logical and hardware vulnerabilities. Generally, this takes the form of manipulating
                     an uncompromised system into executing and replicating patterns of malicious data, rather than the
                     patterns of data that it normally would. In fiction, we have also seen many examples of the brain
-                    being exploited in a simular manner. Though, the reader is never given an exact schema for
+                    being exploited in a similar manner. Though, the reader is never given an exact schema for
                     performing such exploits, the story merely conjectures that they may be possible. What if the brain
                     really does harbor such hidden vulnerabilities? Now, our investigation turns to whether the human
                     brain may actually function similarly to a computing device which could be exploited in a manner
@@ -1144,19 +1144,19 @@ void victim_function(size_t x) {
                         .
                     </Footnote>
                     , a very high-level phenomenon. For these much more complex patterns, their relation to the
-                    low-level patterns of neurons or neuron clusters is less clear. If you where to show a modern
+                    low-level patterns of neurons or neuron clusters is less clear. If you were to show a modern
                     language model to someone from the nineteenth century, would they be able to deduce that the
                     high-level patterns in the model's responses were all emergent from patterns of predictable,
                     low-level instructions? Likely not, which is why this idea applied to the brain may feel
                     unintuitive: while neurons do indeed fire based on the firings of their neighbors, this would appear
                     to be a local association, rather than a pattern that also propagates up to a more general scale.
-                    However, as we will see, these locally replicated patterns can easily cause cascades which impact
-                    the brain on a global scale.
+                    However, as we will see, these locally replicated patterns can easily cascade through the brain on a
+                    global scale.
                 </p>
                 <p>
-                    On soon after 7:00 PM, on December 16, 1997, hundreds of children all across Japan began showing up
-                    to hospitals complaining of blurred vision, headaches, dizziness, and nausea. Many of them presented
-                    to emergency rooms unconscious, seizing, or convulsing. The root causes of this incident occurred
+                    Just after 7:00 PM, on December 16, 1997, hundreds of children all across Japan began showing up to
+                    hospitals complaining of blurred vision, headaches, dizziness, and nausea. Many of them presented to
+                    emergency rooms unconscious, seizing, or convulsing. The root causes of this incident occurred
                     simultaneously across multiple prefectures at precisely 6:51:34 PM. The culprit was the victims'
                     television sets as they played the 38th episode of the Pokémon animated series. 21 minutes into the
                     broadcast, several explosions were depicted by rapidly strobing frames of red and blue lights. These
@@ -1166,7 +1166,7 @@ void victim_function(size_t x) {
                     suffered from photosensitive epilepsy, meaning that their brains were more prone to seizures from
                     rapidly flashing visuals. While the exact mechanism is poorly understood, we do know that extremely
                     regular and intense signals coming from the visual cortex can cause receiving neurons to also fire
-                    with a similar regular pattern pattern
+                    with a similar regular pattern
                     <Footnote>
                         <Link href={"https://doi.org/10.1002/ana.24570"}>
                             Activation of specific neuronal networks leads to different seizure onset types (Shiri et
@@ -1179,7 +1179,7 @@ void victim_function(size_t x) {
                         ,<Link href={"https://epilepsynl.com/photosensitive-epilepsy/"}>Photosensitive Epilepsy</Link>
                     </Footnote>
                     . These patterns of activation, for reasons not fully understood, rapidly begin replicating those
-                    patterns across the brain until a general threshold of activation has been reached. at this point,
+                    patterns across the brain until a general threshold of activation has been reached. At this point,
                     the brain can no longer maintain its patterns of regular function and seizes. In these seizures,
                     simple, low-level patterns can reliably cascade into much more global patterns.
                 </p>
@@ -1256,7 +1256,7 @@ void victim_function(size_t x) {
                     movement of positive sodium ions. At the end of each axon are many terminals which contain calcium
                     channels. Naturally, these terminals are slightly negative, so the incoming wave of positive sodium
                     ions changes the charge on the inside of the channels, forcing them open. Once these channels are
-                    open, calcium ions rush into the terminal from the cell. these ions then bind to sensor proteins on
+                    open, calcium ions rush into the terminal from the cell. These ions then bind to sensor proteins on
                     the terminal's synaptic vesicles, storage sacs for neurotransmitters. These vesicles then move
                     toward and fuse with the terminal membrane, releasing their neurotransmitter payload into the
                     synapse between neurons. These chemicals from a neighboring neuron bind to receptors on the
@@ -1266,7 +1266,7 @@ void victim_function(size_t x) {
                     the sodium and chloride ions partially cancel out. If the summed voltage from the ions meets the
                     cell's threshold, sodium channels open and travel down the neuron's axon, beginning the process
                     again. However, this process cannot begin immediately after within the same cell. This is known as
-                    the refactory period and generally takes two to five milliseconds. It must first take time to
+                    the refractory period and generally takes two to five milliseconds. It must first take time to
                     replenish lost molecules and neutralize its internal charge. And this is a <i>brief</i> summary.
                 </p>
                 <FigureImage src={"/media/image/pages/writings/on-arbitrary-cognitive-execution/neuron-potential.png"}>
@@ -1292,7 +1292,7 @@ void victim_function(size_t x) {
                     Generally, the result of this complex series of processes is somewhat stochastic. A neuron may not
                     fire in the same manner with the same intensity between different cycles of excitement of upstream
                     neurons, even of those neurons all fire in the same pattern. For instance, the concentration of free
-                    ions may be different from one activation to another or the exact quantities of neurotransmitter
+                    ions may differ from one activation to another, or the exact quantities of neurotransmitter
                     molecules may vary. However, at the level of larger neuronal clusters, this stochastic behavior can
                     be modeled by a predictable probability distribution, as Harrison et al. show in their 2005 analysis
                     of neuronal dynamics
@@ -1344,16 +1344,16 @@ void victim_function(size_t x) {
                 <p>
                     The problem of measuring similarities in neural activation patterns shows up frequently in the
                     context of neural imaging. When parsing through an fMRI scan, for example, doctors and researchers
-                    must be able to properly interpret patterns of activation in terms of patent behavior. The problem
-                    is: how can we be sure that the patterns of activation in one patient's brain cleanly map to similar
-                    patterns in another when exposed to the same stimuli? A large body of work in this field has
-                    concentrated on the level of neurons or neuronal groups. This appears sensible, in order to verify
-                    similarities between high level patterns, one may first examine lower levels and extrapolate.
-                    However, as we have seen, these low level patterns are stochastic and noisy, even if they can
-                    theoretically be modeled. These is often very little similarity between individuals at this level of
-                    abstraction. Instead, what if similarities were measured at higher level of abstractions, leaving
-                    neuronal activity as essentially an implementation detail. This is the approach used by Raizada and
-                    Connolly in their 2012 study of cross-subject fMRI decoding
+                    must be able to properly interpret patterns of activation in terms of patient behavior. The question
+                    is, in studies which compare multiple subjects, whether the patterns of activation in one patient's
+                    brain cleanly map to similar patterns in another when exposed to the same stimuli. A large body of
+                    work in this field has concentrated on the level of neurons or neuronal groups. This appears
+                    sensible, in order to verify similarities between high level patterns, one may first examine lower
+                    levels and extrapolate. However, as we have seen, these low level patterns are stochastic and noisy,
+                    even if they can theoretically be modeled. There is often very little similarity between individuals
+                    at this level of abstraction. Instead, what if similarities were measured at higher level of
+                    abstractions, leaving neuronal activity as essentially an implementation detail. This is the
+                    approach used by Raizada and Connolly in their 2012 study of cross-subject fMRI decoding
                     <Footnote>
                         See{" "}
                         <Link href={"https://rajeevraizada.github.io/papers/RaizadaConnolly_JoCN_2012.pdf"}>
@@ -1387,7 +1387,7 @@ void victim_function(size_t x) {
                         </Link>
                     </Footnote>{" "}
                     finds that TMS can be used to disrupt the regions of the brain usually responsible for moral
-                    reasoning and empathy. Im particular, they target the right temporoparietal junction (rTPJ) with
+                    reasoning and empathy. In particular, they target the right temporoparietal junction (rTPJ) with
                     their disruptions. They performed two main experiments: disrupting neural activity in the rTPJ right
                     before and during the subject's moral judgement of a scenario. For example,
                 </p>
@@ -1403,26 +1403,28 @@ void victim_function(size_t x) {
                     it is plain sugar. On a scale of "permissible" to "forbidden", study participants were likely to
                     rate Grace's actions as strongly forbidden. The control subjects were focused on Grace's belief that
                     she was willingly poisoning her friend. However, upon rTPJ disruption, participants were more likely
-                    to rate Grace's actions are more permissible. These subjects were more focused on the fact that the
-                    power was just sugar and less on what Grace believed the powder to be. In this study, many different
-                    brains were measured, each with different neural activations on a low level. However, the higher
-                    level patterns that these activations represented were similar between subjects. So similar, in
-                    fact, that those patterns could be reliably manipulated to produce similar outward effects (namely,
-                    inhibiting the subjects' consideration of a character's internal beliefs in a moral judgement).
+                    to rate Grace's actions as more permissible. These subjects were more focused on the fact that the
+                    powder was just sugar and less on what Grace believed the powder to be. In this study, many
+                    different brains were measured, each with different neural activations on a low level. However, the
+                    higher level patterns that these activations represented were similar between subjects. So similar,
+                    in fact, that those patterns could be reliably manipulated to produce similar outward effects
+                    (namely, inhibiting the subjects' consideration of a character's internal beliefs in a moral
+                    judgement).
                 </p>
                 <p>
-                    If our brains share similar internal patterns for representing similar concepts, how do they acquire
-                    those shared patterns to begin with. There are likely two major sources of this similarity. Most
+                    If our brains share similar internal patterns for representing similar concepts, how do they first
+                    acquire those shared patterns? There are likely two major sources of this similarity. Most
                     obviously, even though our brains differ greatly at low levels, they all still share the same
                     overall architecture. We all share the same brain regions in approximately the same places thanks to
                     their encoding in our shared genetics. The generic nature of our brains' organization allows for
                     different brains to exhibit similar patterns of activity, representing some common concept. Less
-                    obvious is how we require the common concepts required to form these shared representations.
+                    obvious is how different individuals come to share the concepts that form these common
+                    representations.
                 </p>
                 <p>
                     Across the animal kingdom, having a brain comprised of basic neurons is not an uncommon occurrence.
                     All vertebrates, and many invertebrates, have body plans with one (or more) bundles of neurons
-                    serving as axes for other nerves spread throughout the body. However, these is a special type of
+                    serving as axes for other nerves spread throughout the body. However, there is a special type of
                     neuron that we have only found in a small subset of all animal species. It appears in many primates,
                     including humans, mice, and certain species of birds: all highly social and communicative species.
                     These are known as mirror neurons. These cells are notable because they fire and reinforce
