@@ -1533,18 +1533,88 @@ void victim_function(size_t x) {
                     computing device that such devices operate upon emergent, predictable, generic, and task-oriented
                     patterns. Furthermore, due to these patterns, they may be inherently exploitable. We also know that
                     our brains exhibit, to some extent, emergent, predictable, generic, and behaviorally-oriented
-                    patterns themselves. Assuming
-                    <Footnote>
-                        A very large assumption, to be sure, but hopefully an assumption that is at least narrowly
-                        supported by evidence, as we have seen in this section.
-                    </Footnote>{" "}
-                    such low level exploitation of the brain is indeed possible in human brains, what would those
-                    exploits look like? Could our brains really express patterns of cognition distinct from what they
-                    would naturally? What would be their scope? What would their effects be on our subjective experience
-                    of cognition?
+                    patterns themselves.
                 </p>
                 <WritingSection>Arbitrary Cognitive Execution</WritingSection>
+                <p>
+                    Even though our natural brains do share several striking similarities with the artificial machines
+                    that we augment them with, a direct equivalence of behavior still does not seem quite right. Just
+                    because other systems with similar low level qualities and patterns of operation are exploitable,
+                    does not guarantee that we are ourselves. For most people, it is simply difficult to believe that
+                    the behavior that we exhibit could be tuned much in the same way in which we would reprogram a
+                    computer. You are who you are, after all. Yes, the patterns of cognition that you inhibit may change
+                    over time with new experiences, but your core self, your consciousness, is invariant. And even if
+                    something drastic were to change, your conscious mind would notice and reassert itself. Right?
+                </p>
                 <WritingSection level={2}>The Brain as an Emulation Device</WritingSection>
+                <p>
+                    Think back to the last time you were having a conversation with someone you knew very well. It does
+                    did have to be a particularly serious conversation, as long as you were both engaged. There is a
+                    good chance that, at least once, you could predict precisely how they were going to respond to what
+                    you had just said. You may even form such a prediction after you had made a statement or asked a
+                    question completely original to that conversation. Notably, you would not simply predict how you
+                    yourself would have responded, or even any other person, but specifically how <i>they</i> would. you
+                    may have even experienced a time when your conversation partner themselves predicted that you have
+                    formulated a prediction of your own. How is this possible?
+                </p>
+                <p>
+                    On its surface, this phenomenon may seem like a case of simple pattern recognition. If you interact
+                    with someone long enough, you become used to their mannerisms and memorize a few stock reactions
+                    that they had exhibited in the past. What makes this class of predictive abilities distinct is that
+                    it often manifests in response to novel stimuli. To draw a parallel to artificial intelligence, we
+                    can still predict how certain others would respond to statements that are "out of distribution".
+                    Suppose we collected a dataset of all past interactions you had with someone you were very close
+                    with. We could train a purely statistical model of what that someone would be most likely to say in
+                    response to something you said in the past (to avoid confusion, this model is viewing the
+                    conversation from your perspective). To make this prediction, our naive statistical model would
+                    sample from the distribution of all recorded past responses. This approach would work very well for
+                    very common utterances of yours, but it would perform poorly in when predicting your partner's
+                    response to something you had said rarely or not at all
+                    <Footnote>
+                        For anyone unfamiliar, this is a very common problem in the fields of generative language
+                        modeling and natural language processing.
+                    </Footnote>
+                    . When models perform poorly on inputs (your initial utterance) which are unlikely to appear in its
+                    training distribution, we can improve their performance by designing them to have a more
+                    specialized, "world model" within. In general, this world model would predict how the environment
+                    would react to the "outer" model's actions. This is known as a model-based approach to machine
+                    learning. Here, the outer model would not just predict based on what it saw in the past. It would
+                    form its own internal representation of how its environment had behaved in the past and act based on
+                    that. By acting based on its learned representation of environmental feedback instead of just blind
+                    sampling, the outer model's performance on unseen inputs may greatly improve. To return to our
+                    conversational example, you are not simply guessing what your conversation partner would say, your
+                    mind forms a miniature model of their mind within it, more accurately predicting how they may
+                    respond.
+                </p>
+                <p>
+                    This predictive ability often extends beyond conversation to behavior more generally. You may be
+                    able to accurately imagine how they would solve certain problems, react to surprised, how much they
+                    may or may not enjoy some activity, even if they have never explicitly mentioned it. In order to
+                    have this generality, you must form a mental model of how that other person would react in all of
+                    the above situations. For brief periods, the patterns of cognition within your own brain shift to
+                    the distinct patterns present in someone else's brain. To once again use the terminology of computer
+                    science, you have the ability to virtualize and emulate the mind of another within your own.
+                </p>
+                <p>
+                    When you do this, of course, you are not literally simulating the firings of neurons or activity
+                    within neuronal clusters. As we saw earlier, this is far too difficult to predict directly. Instead,
+                    we are briefly shifting the high level patterns of activity within our brains to match the patterns
+                    present within someone else. Though this change in the execution of our cognition is not truly
+                    arbitrary, the "guest" identity never consumes its host, it still represents how normal patterns of
+                    sensory input (observing the behavior of someone else) can initiate significant changes in how our
+                    brains function internally
+                    <Footnote>
+                        Douglas Hofstadter expands upon this concept greatly in <i>I Am a Strange Loop</i>, specifically
+                        in reference to his late wife Carol and his internal representations of her. I find it
+                        particularly notable how he ties this cognitive emulation to his idea of strange loops. In
+                        essence, if our consciousness is constituted only by the specific patterns of cognition within
+                        our brains, it does not particularly matter where in space those patterns are expressed. If we
+                        can exist within our own minds, perhaps we can also exist, in some low resolution manner, within
+                        the minds of others. These "guest" minds would be equally "real" as our own, just with less
+                        fidelity.
+                    </Footnote>
+                    .
+                </p>
                 <WritingSection level={2}>The Conscious Mind has no Moat</WritingSection>
                 <hr />
                 <FootnoteList />
