@@ -1546,22 +1546,6 @@ void victim_function(size_t x) {
                 <WritingSection>Arbitrary Cognitive Execution</WritingSection>
                 <WritingSection level={2}>The Brain as an Emulation Device</WritingSection>
                 <WritingSection level={2}>The Conscious Mind has no Moat</WritingSection>
-                <p>
-                    Text is a relatively low-dimensional medium of input. There are only so many conceptual patterns
-                    which a sequence of symbols can theoretically convey, and fewer still (if any) which can
-                    successfully impart those conceptual patterns to any given reader. Though impractically large, the
-                    full spectrum of human sensory inputs over a finite number of time steps technically forms a
-                    searchable and indexable space. Suppose an attacker desired that their target perform some task and
-                    there existed at least one cognitive state in which the target would accomplish that task
-                    conditional upon the experience of some sequence of sensory inputs.
-                </p>
-                <p>
-                    For mundane scenarios, this appears to be a gross over-formalization. If someone's present cognitive
-                    state included knowledge of a friend and the sound of their voice and conditional upon receiving the
-                    auditory input of that friend's voice asking for a cup of coffee, that someone is likely to fulfil
-                    the task of acquiring a cup of coffee. The utility of this formalization, however, becomes much more
-                    apparent when the generality and capability of an attack grows.
-                </p>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
