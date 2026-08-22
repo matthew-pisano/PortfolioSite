@@ -1099,23 +1099,28 @@ void victim_function(size_t x) {
                     through its pursuit of its lossy representation of that same goal.
                 </p>
                 <p>
-                    This definition, and the limitations inherent to it, encapsulates classical and quantum computers in
-                    general, along with specialized systems such as artificial or even biological neural networks. Most
-                    importantly, this definition gives us a way to not only describe how a system behaves normally, but
-                    also how it could be exploited to behave abnormally.
+                    Given this definition and the potential for vulnerabilities inherent to systems which meet its
+                    criteria, how well does the human brain fit those criteria? If we can find a compelling fit, it
+                    implies that our own brains may be vulnerable at their low levels in a similar manner to traditional
+                    computers. The brain meets several of the more general criteria without requiring a thorough
+                    inspection. The brain a a system is bounded within its brain case
+                    <Footnote>
+                        Even if including objects external to the skull as within the brain's system, as in situated
+                        cognition, these additions do not make the brain unbounded.
+                    </Footnote>
+                    , so it cannot have perfect knowledge of its environment. It has limited patterns of input and
+                    output by means of our senses and actions, and it has an internal state with which it can perform
+                    computation. What is less obvious is whether the brain meets the last criteria of our definition:
+                    that it "manipulates this information in a predictable manner, dependent on a limited, task-oriented
+                    internal configuration". Our brains function as a result of innumerable interactions between ~86
+                    billion individual neurons, but can we directly trace those limited interactions forward towards our
+                    complex, global behavior? Can the consequences of these interactions be reliably predicted and
+                    therefore potentially manipulated? Do different brains same internal representations and patterns of
+                    operation, to allow for non-individualized exploitation? Lastly, what does it mean for our brains to
+                    be "task-oriented"? It is to answering these questions which the remainder of this section is
+                    dedicated.
                 </p>
                 <WritingSection level={2}>Local Patterns with Glocal Consequences</WritingSection>
-                <p>
-                    We know that the brain takes in well defined patterns of input and yields well defined patterns of
-                    output. We also know that these inputs are processed into outputs through the internal state of our
-                    brain's neurons and their connections. What is less certain is whether we can interpret the complex
-                    interactions between these neurons as predictable, impersonal, low level patterns that emergently
-                    form into the much higher-level patterns that we can directly observe. First, we will examine how
-                    low level patterns within the brain can directly influence higher level ones. Then, we can examine
-                    whether those low level patterns behave in a predictable and modelable manner. Finally, we will see
-                    how predictable, yet unique, low level patterns in one person's brain generalize to higher level
-                    patterns, common across individuals.
-                </p>
                 <p>
                     We know that, in a high-level and abstract sense, our brains replicate both innate and learned
                     patterns. Regular patterns of neural signals in our innate hindbrains help to regulate our
@@ -1191,6 +1196,16 @@ void victim_function(size_t x) {
                     usually occur within the brain. In this sense, seizures have internal effects very similar to a
                     memetic virus, with the main difference being that the replacing patterns are chaotic and high
                     entropy instead of regular and low entropy.
+                </p>
+                <p>
+                    For the purposes of an investigation into the potential exploitability of the brain, we do not need
+                    to know for certain precisely how every high-level interaction can be represented by low level
+                    patterns, only that some may. Using the manner of incitement and behavior of photosensitive
+                    seizures, we can see that finely tuned patterns of input can very quickly and reliably overwrite the
+                    regular patterns of cognition usually found in a brain. If this class of vulnerability already
+                    occurs <i>naturally</i> across many diverse brains with similar effects and intensity, it may in
+                    principle be possible to craft an exploit which has more targeted effects than a simple positive
+                    feedback loop of neural activity.
                 </p>
                 <WritingSection level={2}>The Stability and Predictability of Neural Patterns</WritingSection>
                 <p>
@@ -1480,25 +1495,53 @@ void victim_function(size_t x) {
                     </Footnote>
                     .
                 </p>
+                <WritingSection level={2}>A Task-Oriented Mind</WritingSection>
+                <p>
+                    When considering arbitrary code execution, or exploitation more generally, we usually frame these
+                    altered states relative to a state of "normal" operation. This implies that exploitable systems
+                    operate with the goal of matching some pattern of operation: a task. When an operating system falls
+                    victim to a low level vulnerability, its patterns of behavior differ from its usual task of managing
+                    user interactions with a computer system in such a way that maximizes productivity. Leaking user
+                    program data to a malicious actor, for example, requires a slightly different pattern of execution
+                    and therefore diverges from the operating system's task-oriented, "normal" state. Does the human
+                    brain fulfil a task or generally behave in a definable "normal" manner?
+                </p>
+                <p>
+                    This is a particularly difficult question to answer in a satisfactory manner. It has been the
+                    subject of intense debate over many centuries and across many fields of study including teleology,
+                    philosophy, sociology, and anthropology. However, we are not interested in defining what a "normal"
+                    pattern of behavior would be, nor what tasks our brains should precisely be oriented towards. In the
+                    same manner as there is no exact set of instructions which constitutes "normal" computer behavior,
+                    there is no sequence of neuronal interactions which makes up "normal" human behavior. Instead, it is
+                    more productive to employ a relative definition to measure the existence and impact of an exploit.
+                    On and computing device, an exploit is successful if, upon receiving some input after being
+                    exploited, the system behaves in a radically different manner than it would otherwise. Of course,
+                    this definition itself is ill-defined, but it gives us a rough conceptual foundation off of which we
+                    can further speculate on the possibility of cognitive exploitation.
+                </p>
                 <p>
                     In this section, we have learned several key pieces of information. We have formulated a more
                     precise definition of what a computing device is and how the nature of such devices leaves room for
                     exploitation. Next, we saw how the brain exemplifies many of the qualities of these computing
                     devices. The low levels of neuronal activity in our brains emergently form into higher level
                     patterns of cognition. While there is significant noise on the level of individual neurons, this
-                    noise begins to smooth out on the level of large neuron clusters. This allows for predictability in
-                    an inherently noisy system. Finally, we saw how those high level, emergent patterns are often shared
-                    between individuals and used to represent the same concepts. Where does this leave us? We know from
-                    our definition of a computing device that such devices operate upon emergent, predictable, and
-                    generic patterns and, due to these patterns, they may be inherently exploitable. We also know that
-                    our brains exhibit, to some extent, emergent, predictable, and generic patterns themselves. Assuming
+                    noise within low level neuronal activity begins to smooth out on the level of large neuron clusters.
+                    This allows for predictability in an inherently noisy system. We saw how those high level, emergent,
+                    predictable patterns are often shared between individuals and used to represent the same concepts.
+                    Finally, we proposed that a radical shift in behavior in response to similar inputs could be a
+                    conceptual indication of exploitation. Where does this leave us? We know from our definition of a
+                    computing device that such devices operate upon emergent, predictable, generic, and task-oriented
+                    patterns. Furthermore, due to these patterns, they may be inherently exploitable. We also know that
+                    our brains exhibit, to some extent, emergent, predictable, generic, and behaviorally-oriented
+                    patterns themselves. Assuming
                     <Footnote>
-                        A very large assumption, to be sure, but hopefully an assumption that is at least partially
+                        A very large assumption, to be sure, but hopefully an assumption that is at least narrowly
                         supported by evidence, as we have seen in this section.
                     </Footnote>{" "}
                     such low level exploitation of the brain is indeed possible in human brains, what would those
-                    exploits look like? How would they be transmitted? What would be their scope? What would their
-                    effects be on our subjective experience of cognition?
+                    exploits look like? Could our brains really express patterns of cognition distinct from what they
+                    would naturally? What would be their scope? What would their effects be on our subjective experience
+                    of cognition?
                 </p>
                 <WritingSection>Arbitrary Cognitive Execution</WritingSection>
                 <WritingSection level={2}>The Brain as an Emulation Device</WritingSection>
