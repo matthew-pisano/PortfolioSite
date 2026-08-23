@@ -1601,8 +1601,8 @@ void victim_function(size_t x) {
                     we are briefly shifting the high level patterns of activity within our brains to match the patterns
                     present within someone else. Though this change in the execution of our cognition is not truly
                     arbitrary, the "guest" identity never consumes its host, it still represents how normal patterns of
-                    sensory input (observing the behavior of someone else) can initiate significant changes in how our
-                    brains function internally
+                    sensory input (simply observing the behavior of someone else) can initiate significant changes in
+                    how our brains function internally
                     <Footnote>
                         Douglas Hofstadter expands upon this concept greatly in <i>I Am a Strange Loop</i>, specifically
                         in reference to his late wife Carol and his internal representations of her. I find it
