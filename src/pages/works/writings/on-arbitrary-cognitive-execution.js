@@ -66,7 +66,7 @@ export default function ArbitraryCognition() {
                     a significant sum at auction, but only if it is genuine. Your task is to evaluate the piece's
                     authenticity. You are unfamiliar with the original artist, but you notice that the piece comes with
                     a long series of "Certificates of Sale" dating back to the original artist. If every single
-                    certificate in the chain is value, the piece must be authentic. You recognize the last signature
+                    certificate in the chain is valid, the piece must be authentic. You recognize the last signature
                     personally and know for sure that the last certification is valid. However, even if the last
                     certificate is valid, can you be so sure about the penultimate certificate? What about the
                     antepenultimate? At any point in this chain of certificates a forgery could have been introduced. If
@@ -1553,7 +1553,7 @@ void victim_function(size_t x) {
                     good chance that, at least once, you could predict precisely how they were going to respond to what
                     you had just said. You may even form such a prediction after you had made a statement or asked a
                     question completely original to that conversation. Notably, you would not simply predict how you
-                    yourself would have responded, or even any other person, but specifically how <i>they</i> would. you
+                    yourself would have responded, or even any other person, but specifically how <i>they</i> would. You
                     may have even experienced a time when your conversation partner themselves predicted that you have
                     formulated a prediction of your own. How is this possible?
                 </p>
@@ -1562,47 +1562,59 @@ void victim_function(size_t x) {
                     with someone long enough, you become used to their mannerisms and memorize a few stock reactions
                     that they had exhibited in the past. What makes this class of predictive abilities distinct is that
                     it often manifests in response to novel stimuli. To draw a parallel to artificial intelligence, we
-                    can still predict how certain others would respond to statements that are "out of distribution".
-                    Suppose we collected a dataset of all past interactions you had with someone you were very close
-                    with. We could train a purely statistical model of what that someone would be most likely to say in
-                    response to something you said in the past (to avoid confusion, this model is viewing the
-                    conversation from your perspective). To make this prediction, our naive statistical model would
-                    sample from the distribution of all recorded past responses. This approach would work very well for
-                    very common utterances of yours, but it would perform poorly in when predicting your partner's
-                    response to something you had said rarely or not at all
-                    <Footnote>
-                        For anyone unfamiliar, this is a very common problem in the fields of generative language
-                        modeling and natural language processing.
-                    </Footnote>
-                    . When models perform poorly on inputs (your initial utterance) which are unlikely to appear in its
-                    training distribution, we can improve their performance by designing them to have a more
-                    specialized, "world model" within. In general, this world model would predict how the environment
-                    would react to the "outer" model's actions. This is known as a model-based approach to machine
-                    learning. Here, the outer model would not just predict based on what it saw in the past. It would
-                    form its own internal representation of how its environment had behaved in the past and act based on
-                    that. By acting based on its learned representation of environmental feedback instead of just blind
-                    sampling, the outer model's performance on unseen inputs may greatly improve. To return to our
-                    conversational example, you are not simply guessing what your conversation partner would say, your
-                    mind forms a miniature model of their mind within it, more accurately predicting how they may
-                    respond.
+                    can still predict how certain others would respond to our statements that are "out of distribution".
                 </p>
                 <p>
-                    This predictive ability often extends beyond conversation to behavior more generally. You may be
-                    able to accurately imagine how they would solve certain problems, react to surprised, how much they
-                    may or may not enjoy some activity, even if they have never explicitly mentioned it. In order to
-                    have this generality, you must form a mental model of how that other person would react in all of
-                    the above situations. For brief periods, the patterns of cognition within your own brain shift to
-                    the distinct patterns present in someone else's brain. To once again use the terminology of computer
-                    science, you have the ability to virtualize and emulate the mind of another within your own.
+                    Suppose we collected a dataset of all past interactions you had with someone that you were very
+                    close with. We could train a purely statistical model of what that someone would be most likely to
+                    say in response to something you said in the past (to avoid confusion, this model is viewing the
+                    conversation from your perspective). To make this prediction, our naive statistical model would
+                    sample from the distribution of all recorded past responses. This approach would work well when
+                    predicting based upon very common utterances of yours. However, it would perform poorly when
+                    predicting your partner's response to something you had said rarely or have never said at all
+                    <Footnote>
+                        For anyone unfamiliar, the problem of predicting based on rare of unseen inputs is common in the
+                        fields of generative language modeling and natural language processing.
+                    </Footnote>
+                    . So, if you are not performing simple pattern recognition when predicting your partner's response,
+                    what type of mental model do you form instead?
+                </p>
+                <p>
+                    When machine learning models perform poorly on inputs which are unlikely to appear in its training
+                    distribution, we can improve their performance by designing them to have a more specialized, "world
+                    model" within. In general, this world model would predict how the environment would react to the
+                    "outer" model's actions. This is known as a model-based approach to machine learning. Here, the
+                    outer model would not just act as it had learned to do in the past; it would instead form its own
+                    internal representation of how its environment had behaved in response to its actions and act based
+                    on that. By acting based on its learned representation of environmental feedback instead of just
+                    blind sampling, the outer model's performance on unseen inputs may greatly improve. To return to our
+                    conversational example, you (the outer model) are not simply guessing what your conversation partner
+                    (the environment) would say, your mind forms a miniature model (the inner model) of your partner's
+                    mind within it. This bears repeating more directly: as you interact with a person over time, your
+                    brain forms a complex mental model of that person. For someone you know very well, this model is
+                    complex enough that it would not be inaccurate to say that you have embedded a portion of their mind
+                    within your own.
+                </p>
+                <p>
+                    This often extends beyond conversation to behavior more generally. You may be able to accurately
+                    imagine how they would solve certain problems, react to a surprise, or how much they may or may not
+                    enjoy some activity, even if they have never explicitly mentioned it. In order to have this level
+                    generality, you must form a mental model of how that other person would react in all of the above
+                    situations. It is during these anticipatory episodes that your mental model of that other person
+                    makes its predictions. What does this look like for a mind that itself emerges as a result of
+                    patterns of cognition? Within your brain, for brief periods, the patterns of cognition within it
+                    shift to the distinct patterns present in someone else's brain. To once again use the terminology of
+                    computer science, you have the ability to virtualize and emulate the mind of another within your
+                    own.
                 </p>
                 <p>
                     When you do this, of course, you are not literally simulating the firings of neurons or activity
-                    within neuronal clusters. As we saw earlier, this is far too difficult to predict directly. Instead,
-                    we are briefly shifting the high level patterns of activity within our brains to match the patterns
-                    present within someone else. Though this change in the execution of our cognition is not truly
-                    arbitrary, the "guest" identity never consumes its host, it still represents how normal patterns of
-                    sensory input (simply observing the behavior of someone else) can initiate significant changes in
-                    how our brains function internally
+                    within neuronal clusters. As we saw earlier, this is far too difficult, and unnecessary, to predict
+                    directly. Instead, we are briefly shifting the high level patterns of activity within our brains to
+                    match the patterns which we have learned are present within someone else. Though this change in the
+                    execution of our cognition is not truly arbitrary, the "guest" identity never consumes its host, it
+                    still represents how normal patterns of sensory input (simply observing the behavior of someone
+                    else) can initiate significant changes in how our brains function internally
                     <Footnote>
                         Douglas Hofstadter expands upon this concept greatly in <i>I Am a Strange Loop</i>, specifically
                         in reference to his late wife Carol and his internal representations of her. I find it
@@ -1615,7 +1627,29 @@ void victim_function(size_t x) {
                     </Footnote>
                     .
                 </p>
+                <p>
+                    We like to think of our minds as stable, at least at their cores. Subjectively, it seems that even
+                    though our memories may change, even though we may learn new skills, and even though we may form new
+                    behavioral patterns, we still have the same mind fundamentally. But as we learn and change, so too
+                    do the fundamental patterns of cognition that make up our mind. Especially in cases where we are
+                    considering an idea, memory, or response from another's point of view, our brains learn and emulate
+                    the patterns that make up that person, distinct from the patterns that make up us.
+                </p>
                 <WritingSection level={2}>The Conscious Mind has no Moat</WritingSection>
+                <p>
+                    Perhaps our brains work in a compartmentalized fashion. The "flexible" portions of our brain may
+                    change, our memories, learned behaviors, or models of others. But, our core conscious mind, our{" "}
+                    <i>self</i>, does not. On its surface, this appears to be a fairly self-evident truth. We experience
+                    reality in a continuous manner, without any sudden and drastic breaks. We slowly change with this
+                    experience instead of all at once. There must be a core self within our constantly evolving minds.
+                </p>
+                <p>
+                    This manner of dualist thinking is very difficult to resist. It seems as if "we" must be in control,
+                    running the whole operation from behind the curtain. If this were true, there our selves must reside
+                    within some special region of the brain, experiencing all of our qualia and neural patterns through
+                    a Cartesian theater.
+                </p>
+                <WritingSection level={2}>f</WritingSection>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
