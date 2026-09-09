@@ -1181,12 +1181,31 @@ void victim_function(size_t x) {
                         <Link href={"https://visualstress.info/1979-15.pdf"}>
                             Neurophysiological Aspects of Pattern-sensitive Epilepsy (Wilkins et al. 1979)
                         </Link>
-                        ,<Link href={"https://epilepsynl.com/photosensitive-epilepsy/"}>Photosensitive Epilepsy</Link>
+                        , and{" "}
+                        <Link href={"https://epilepsynl.com/photosensitive-epilepsy/"}>Photosensitive Epilepsy</Link>.
                     </Footnote>
                     . These patterns of activation, for reasons not fully understood, rapidly begin replicating those
                     patterns across the brain until a general threshold of activation has been reached. At this point,
                     the brain can no longer maintain its patterns of regular function and seizes. In these seizures,
-                    simple, low-level patterns can reliably cascade into much more global patterns.
+                    simple, low-level patterns can reliably cascade into much more global patterns
+                    <Footnote>
+                        To further highlight this idea, the practice of Vagus Nerve Stimulation (VNS) is worth
+                        mentioning. By sending regular electrical signals to the Vagus nerve in the brain, researchers
+                        observed a dampening effect on the intensity of seizures. While the exact underlying cause of
+                        this dampening is disputed, it may work to disrupt the hypersynchronized patterns of a seizure
+                        in the same manner as different vibrational modes can disturb resonant vibrations. For further
+                        reading see:{" "}
+                        <Link href={"https://pubmed.ncbi.nlm.nih.gov/18188148"}>
+                            Vagus nerve stimulation: a new form of therapeutic brain stimulation (George et al. 2000)
+                        </Link>
+                        , and{" "}
+                        <Link href={"https://psychiatryonline.org/doi/10.1176/appi.focus.20210023"}>
+                            The Future Is Noninvasive: A Brief Review of the Evolution and Clinical Utility of Vagus
+                            Nerve Stimulation (Badran and Austelle, 2022)
+                        </Link>
+                        .
+                    </Footnote>
+                    .
                 </p>
                 <p>
                     Similar to the row hammer vulnerability in traditional computers, repeated patterns of activation
@@ -1645,9 +1664,46 @@ void victim_function(size_t x) {
                 </p>
                 <p>
                     This manner of dualist thinking is very difficult to resist. It seems as if "we" must be in control,
-                    running the whole operation from behind the curtain. If this were true, there our selves must reside
-                    within some special region of the brain, experiencing all of our qualia and neural patterns through
-                    a Cartesian theater.
+                    running the whole operation from behind the curtain: if the patterns expressed in our brain drifted
+                    from their normal distribution, our higher faculties would surely notice and wrest control back from
+                    any exploitation. For this to be the case, however, our "selves" must reside within some special
+                    region of the brain, experiencing all of our qualia and neural patterns through a single Cartesian
+                    theater. Intuitively, we would expect this special region to be unaffected by the patters expressed
+                    by the remainder of our brains.
+                </p>
+                <p>
+                    Unfortunately, there are two main issues with this intuitive line of reasoning. First, there is no
+                    "single region" where consciousness resides exclusively; our "selves" are measurably distributed
+                    among multiple brain regions. Second, there is nothing particularly special concerning the
+                    architecture underlying these regions; they use the exact same neuronal machinery as the remainder
+                    of the brain. It will be more direct to address these objections individually.
+                </p>
+                <p>
+                    Since the early 19th century, many different surgical techniques had been proposed and tried for the
+                    treatment of epilepsy. In the UK, this was pioneered by John Hughlings Jackson, Sir Victor Horsley
+                    and William Macewen and mainly focused on the removal of scar tissue for the treatment of
+                    trauma-induced epilepsy. Beginning in the 1940s, surgeon William P. van Wagenen began a series of
+                    experiments intended to treat epileptic seizures more generally. Van Wagenen's approached was based
+                    on the observation that, during a seizure, many different brain regions become highly synchronized
+                    with abnormally high levels of activity. Perhaps, if two regions of the brain did not have a direct
+                    line of communication, then the seizure would not spread?
+                </p>
+                <p>
+                    Of course, arbitrarily cutting up the brain of a patient would certainly result in the cessation of
+                    seizures, but primarily because it would result in the expiration of the patient as well. Instead, a
+                    much more targeted approach is needed. To understand Van Wagenen's reasoning, we must first
+                    understand how the brain is organized.
+                </p>
+                <FigureImage src={"/media/image/pages/writings/on-arbitrary-cognitive-execution/corpus-callosum.png"}>
+                    A cross-section of the brain with the Corpus Callosum highlighted.
+                </FigureImage>
+                <p>
+                    The brain is split into two hemispheres, left and right. To oversimplify, each hemisphere controls
+                    the opposite side of the body to it, left controlling right and right controlling left. Many of the
+                    brain's different lobes are mirrored between each side: occipital lobes for vision, temporal lobe
+                    for hearing, and frontal lobes for higher cognition among others. However, the different hemispheres
+                    also specialize in certain tasks. Most notably, the left hemisphere is more (though not
+                    exclusively!) responsible for processing language and the right for recognizing faces and emotions.
                 </p>
                 <WritingSection level={2}>f</WritingSection>
                 <hr />
