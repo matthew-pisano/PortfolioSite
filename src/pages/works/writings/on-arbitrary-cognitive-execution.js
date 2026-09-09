@@ -1702,8 +1702,9 @@ void victim_function(size_t x) {
                     the opposite side of the body to it, left controlling right and right controlling left. Many of the
                     brain's different lobes are mirrored between each side: occipital lobes for vision, temporal lobe
                     for hearing, and frontal lobes for higher cognition among others. However, the different hemispheres
-                    also specialize in certain tasks. Most notably, the left hemisphere is more (though not
-                    exclusively!) responsible for processing language and the right for recognizing faces and emotions.
+                    also specialize in certain "lateralized" tasks. Most notably, the left hemisphere is more (though
+                    not exclusively!) responsible for processing language and the right for recognizing faces and
+                    emotions.
                 </p>
                 <WritingSection level={2}>f</WritingSection>
                 <hr />
