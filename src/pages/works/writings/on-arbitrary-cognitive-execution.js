@@ -1702,9 +1702,34 @@ void victim_function(size_t x) {
                     the opposite side of the body to it, left controlling right and right controlling left. Many of the
                     brain's different lobes are mirrored between each side: occipital lobes for vision, temporal lobe
                     for hearing, and frontal lobes for higher cognition among others. However, the different hemispheres
-                    also specialize in certain "lateralized" tasks. Most notably, the left hemisphere is more (though
-                    not exclusively!) responsible for processing language and the right for recognizing faces and
-                    emotions.
+                    also specialize in certain "lateralized" tasks. Most notably, the left hemisphere is primarily
+                    (though not exclusively!) responsible for processing language and the right for recognizing faces
+                    and emotions. These two hemispheres are connected by a bundle of 300 million nerve fibers called the
+                    corpus callosum. This pathway serves as a bottleneck for nearly all cross-hemisphere communication.
+                </p>
+                <p>
+                    Recall the question of where to best cut off communication between brain regions for dampening
+                    seizure intensity. Van Wagenen reasoned that the most effective place to make this partition would
+                    be at the brain's hemispherical bottleneck: the corpus callosum.
+                </p>
+                <p>
+                    This treatment, the corpus callosotomy, generally involves severing the anterior two-thirds of the
+                    corpus callosum, though some cases necessitate the complete severance of the bridge. Once completed
+                    in a patient, this procedure is highly effective at disrupting the synchrony between the two
+                    hemispheres during seizure events. In the short term, side-effects are also relatively minimal for a
+                    procedure of this level of invasiveness: speech irregularities, memory difficulties, and limitations
+                    using one's non-dominant hand. However, in the long-term, some much more unsettling symptoms begin
+                    to present themselves.
+                </p>
+                <p>
+                    Twenty years later, Roger W. Sperry was studying these same long-term side-effects. His work on
+                    these "split-brain" patients eventually earned him the 1981 Nobel prize in medicine
+                    <Footnote>
+                        Along with David H. Hubel and Torsten Wiesel for their experiments on how mammalian brains
+                        process visual information. This work would later go on to inspire convolutional neural networks
+                        and other advancements in the field of computer vision.
+                    </Footnote>
+                    . These patients exhibited some very strange behaviors, when tested.
                 </p>
                 <WritingSection level={2}>f</WritingSection>
                 <hr />
