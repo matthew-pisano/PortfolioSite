@@ -1679,14 +1679,22 @@ void victim_function(size_t x) {
                     of the brain. It will be more direct to address these objections individually.
                 </p>
                 <p>
-                    Since the early 19th century, many different surgical techniques had been proposed and tried for the
-                    treatment of epilepsy. In the UK, this was pioneered by John Hughlings Jackson, Sir Victor Horsley
-                    and William Macewen and mainly focused on the removal of scar tissue for the treatment of
-                    trauma-induced epilepsy. Beginning in the 1940s, surgeon William P. van Wagenen began a series of
-                    experiments intended to treat epileptic seizures more generally. Van Wagenen's approached was based
-                    on the observation that, during a seizure, many different brain regions become highly synchronized
-                    with abnormally high levels of activity. Perhaps, if two regions of the brain did not have a direct
-                    line of communication, then the seizure would not spread?
+                    Since the early 19th century, many different surgical
+                    <Footnote>
+                        Prior to the 19th century, many "treatments" for epilepsy were more spiritual than scientific.
+                        Those afflicted with epileptic disorders were often associated with demon-possession,
+                        witchcraft, or evil more generally. Our transition from a supernatural to a scientific
+                        understanding is particularly notable as it represented one of the first times the patients
+                        themselves were identified as separate from the disease impacting their behavior. See Robert
+                        Saplosyk's <i>Behave</i> for a much deeper analysis of this transition and its greater impact.
+                    </Footnote>{" "}
+                    techniques had been developed for the treatment of epilepsy. In the UK, this was pioneered by John
+                    Hughlings Jackson, Sir Victor Horsley and William Macewen and mainly focused on the removal of scar
+                    tissue for the treatment of trauma-induced epilepsy. Beginning in the 1940s, surgeon William P. van
+                    Wagenen began a series of experiments intended to treat epileptic seizures more generally. Van
+                    Wagenen's approached was based on the observation that, during a seizure, many different brain
+                    regions become highly synchronized with abnormally high levels of activity. Perhaps, if two regions
+                    of the brain did not have a direct line of communication, then the seizure would not spread?
                 </p>
                 <p>
                     Of course, arbitrarily cutting up the brain of a patient would certainly result in the cessation of
