@@ -1809,6 +1809,27 @@ void victim_function(size_t x) {
                     of these foreign patterns would not require our conscious consent or acknowledgement any more than
                     hardware vulnerabilities require the consent or acknowledgement of security software.
                 </p>
+                <p>
+                    Based on how we have observed the brain to function naturally, we can draw some conclusions as to
+                    the mechanisms by which it could be exploited artificially. As we have seen, when we interact with
+                    others and form mental models of their behavior, our brains actively imprint those foreign patterns
+                    into themselves. We also know that the structures of our conscious minds are not categorically
+                    distinct from other brain regions. This leaves it vulnerable to influence from foreign patterns of
+                    execution elsewhere in the brain. Indeed, to use seizures as a demonstration once again, we know
+                    that seizures originating outside the frontal lobe may propagate into the frontal lobe itself
+                    <Footnote>
+                        See:{" "}
+                        <Link href={"https://www.sciencedirect.com/science/article/pii/S1059131102002765"}>
+                            Complex partial seizures of frontal lobe onset statistical analysis of ictal semiology
+                            (Kotagal et al.)
+                        </Link>
+                        .
+                    </Footnote>
+                    . Our brains have well-established methods for importing and replicating foreign patterns, patterns
+                    that can influence every region of our brain, including our prefrontal cortices. With a theoretical
+                    foundation established, we can finally explore the patterns of execution that may result in
+                    cognitive exploitation itself.
+                </p>
                 <WritingSection level={2}>f</WritingSection>
                 <hr />
                 <FootnoteList />
