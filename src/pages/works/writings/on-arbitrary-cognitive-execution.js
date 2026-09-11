@@ -1767,8 +1767,47 @@ void victim_function(size_t x) {
                     prefrontal cortex are more independent when determining when to fire.
                 </p>
                 <p>
-                    To its credit, our pre frontal cortices do have some unique characteristics with regards to neuron
-                    type and connectivity.
+                    To its credit, our prefrontal cortices do have some unique characteristics with regards to neuron
+                    type and connectivity. For instance, they contain high concentrations of Pyramidal neurons, so
+                    called for the conical shape of their soma. These neurons take input from multiple dendrites,
+                    allowing to interface with more neighboring neurons than a usual cell would. This class of neuron is
+                    associated with the communication of long distance signals, such as sensory information from other
+                    brain regions. This class of neuron is divided into pyramidal tract and intratelencephalic
+                    varieties, both of which play unique roles in governing our behavior and decision making. Notably
+                    for our investigation into neural patterns, our prefrontal regions also contain a number of
+                    regulatory neurons in higher number than other brain regions. These cells, subclasses of regulatory
+                    interneurons, primarily inhibit other neurons. This includes other interneurons, inhibiting the
+                    inhibitors through a mechanism called disinhibition. These inhibitory and disinhibitory signals help
+                    to regulate the myriad of signals coming into the prefrontal coretex from sensory regions, the
+                    hippocampus, and from across the corpus callosum
+                    <Footnote>
+                        This level of signal regulation is critical for maintaining normal patterns of cognition. For
+                        example, studies of the brains of schizophrenia patients reveal that the loss or deregulation of
+                        these inhibitory neurons holds influence over exhibited symptoms. This is effective
+                        disinhibition is often correlated with an overabundance of dopamine in localized brain regions.
+                    </Footnote>
+                    .
+                </p>
+                <p>
+                    However, what we do not see in these anterior brain regions are fundamentally different neurons.
+                    Even though our prefrontal cortices contain a different distribution of neuron types than other
+                    brain regions, it still contains the same or similar classes of neurons. Prefrontal cortex neurons
+                    still fire based on the firings of their neighbors and use the same mechanisms outlined back in
+                    previous section. There are no "oracles" or extra-neural sources stimulating the regions in which
+                    exhibit our patterns of "selves". If patterns do exist which can hijack the regular patterns of
+                    execution of other brain regions, our prefrontal cortices are vulnerable to those same patterns.
+                    There is no categorical or functional "moat" behind which our cognition or reasoning can hide.
+                </p>
+                <p>
+                    Just as we have seen with vulnerabilities in traditional computers, a system is no less vulnerable
+                    than the substrate upon which it functions. Regardless of which operating system or security
+                    software a computer was running, it would still be vulnerable to attacks like Specter or Rowhammer
+                    if the underlying hardware was vulnerable. Thinking back to how the brain meets our definition for a
+                    similarly exploitable system, this logic applies to a neural substrate as well. Regardless of which
+                    patterns of cognition are normally executed by the brain's billion of neurons, those patterns may
+                    still be disrupted if the neurons or neuronal clusters themselves can be exploited. The replication
+                    of these foreign patterns would not require our conscious consent or acknowledgement any more than
+                    hardware vulnerabilities require the consent or acknowledgement of security software.
                 </p>
                 <WritingSection level={2}>f</WritingSection>
                 <hr />
