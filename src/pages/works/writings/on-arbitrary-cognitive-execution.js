@@ -1830,7 +1830,8 @@ void victim_function(size_t x) {
                     foundation established, we can finally explore the patterns of execution that may result in
                     cognitive exploitation itself.
                 </p>
-                <WritingSection level={2}>f</WritingSection>
+                <WritingSection level={2}>Mechanisms of Exploitation</WritingSection>
+                <WritingSection>Endoscopia</WritingSection>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
