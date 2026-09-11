@@ -1737,7 +1737,38 @@ void victim_function(size_t x) {
                         process visual information. This work would later go on to inspire convolutional neural networks
                         and other advancements in the field of computer vision.
                     </Footnote>
-                    . These patients exhibited some very strange behaviors, when tested.
+                    . These patients exhibited some very strange behaviors, when tested. For example, when shown the
+                    name of an object in the left half of their visual field (processed by the right hemisphere), the
+                    patient would be unable to name the object (as that would require communication with the left-brain
+                    language areas), but they would be able to pick up the object named with their left hand. This
+                    effect was also seen when verbalizing or pointing to flashing lights. Additionally, corpus
+                    callosotomy patients may also develop a condition known as Alien Hand Syndrome. For these
+                    individuals, their left and right hands may perform contradictory actions at once. One patient was
+                    observed buttoning her blouse while the other simultaneously began to unbutton it. In another case,
+                    a patient grabbed their own throat with their left hand while struggling to remove it with their
+                    right.
+                </p>
+                <p>
+                    Strangely, many corpus callosotomy patients do not develop severe cases of Alien Hand Syndrome such
+                    as these. In fact, their memories, intelligence, and ability to interact with the world generally do
+                    not significantly diminish. Why? It seems as if such a drastic severing of brain communication would
+                    reliably result in significant cognitive impairments rather than the minor impacts that we observe.
+                    Instead, our observations indicate that cognition is distributed between both hemispheres, rather
+                    than being concentrated in a single region. Even though split-brain patients experience difficulty
+                    communicating between hemispheres, each hemisphere is able to adapt and function almost normally
+                    while independent. The parts of our brain which we consider to be our core "selves" are split,
+                    primarily communicating by way of the corpus callosum in the mid-brain, diffusing our cognition to
+                    these regions as well.
+                </p>
+                <p>
+                    Even though our high faculties are split and distributed in the brain, perhaps the neurons which
+                    they rely upon are special compared to the remainder of the brain. Maybe, while regular neurons are
+                    compelled to naively act as a result of their neighbors' actions, the neurons which make up our
+                    prefrontal cortex are more independent when determining when to fire.
+                </p>
+                <p>
+                    To its credit, our pre frontal cortices do have some unique characteristics with regards to neuron
+                    type and connectivity.
                 </p>
                 <WritingSection level={2}>f</WritingSection>
                 <hr />
