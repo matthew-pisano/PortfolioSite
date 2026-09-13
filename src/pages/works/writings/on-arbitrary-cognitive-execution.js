@@ -1909,7 +1909,60 @@ void victim_function(size_t x) {
                     follow instructions. Instead, these attacks specifically target the alignment behavior layers on top
                     of the model's more fundamental behaviors. Though these particular adversarial attacks are limited
                     in their scope, they are still able to significantly influence how the model "experiences" and
-                    interprets the intentions and consequences of malicous prompts.
+                    interprets the intentions and consequences of malicious prompts.
+                </p>
+                <p>
+                    In contrast, strong attacks would not be restricted in these manners. Their scope could be much more
+                    general, able to arbitrarily influence which computations are preformed upon the compromised
+                    substrate (be it model or brain). They would also not require malicious inputs to be continually
+                    present. This "offline" influence would still be seeded by a carefully crafter sequence of inputs,
+                    but instead of a target updating its state as it normally would conditional on this sequence, the
+                    sequence itself (or some representation of it) would embed itself into all future states. The
+                    patterns which represent a strong attack would need to be <i>self-replicating</i>. In the same
+                    manner as a seizure or memetic virus, these strong patterns would replicate until they fully subsume
+                    the original target's patterns. The compromised host would then continue to behave in an influenced
+                    manner, even after the original stimuli is removed.
+                </p>
+                <p>
+                    Though not a perfect example, we can see the beginnings of this type of attack appear in LLM
+                    research. Namely, a method entitled RAGWorm
+                    <Footnote>
+                        See{" "}
+                        <Link href={"https://dl.acm.org/doi/pdf/10.1145/3719027.3765196"}>
+                            Here Comes the AI Worm: Preventing the Propagation of Adversarial Self-Replicating Prompts
+                            Within GenAI Ecosystems (Cohen at al. 2025)
+                        </Link>
+                        .
+                    </Footnote>{" "}
+                    describes how a self-replicating adversarial prompt cam embed itself among multiple different agents
+                    at once. Though this method operates by embedding itself in multiple places across, individuals, it
+                    still demonstrates the sort of continual persistence which we are expecting. If an adversarial
+                    prefix or suffix is scrubbed from the context of only a single model, that model may become
+                    "reinfected" later on by another. RAGWorm is able to embed itself into the collective context of
+                    these models, even if the original prompt may no longer be in the original target's context window.
+                </p>
+                <p>
+                    Recall from earlier that our own brains, similar to this ensemble of language models, also tend to
+                    import, emulate, and replicate foreign patterns. We have seen how this occurs in detail with respect
+                    to our emulation and behavioral modeling of others, even though we may not passively intuit the
+                    mechanisms behind it. However, our brains also tend to replicate certain patterns much more
+                    conspicuously.
+                </p>
+                <p>
+                    Have you ever been infected by an earworm? You may have heard a particularly catchy tune or were
+                    told an oddly repeatable phrase by a friend. Oftentimes, it remains "stuck" in your head, even if
+                    you deliberately try to forget it. Counter-intuitively, this effort may even make the problem worse
+                    before it subsides on its own. Why does this happen? What is so special about these particular memes
+                    that we readily allow them to take up residence in our own minds, enable them to replicate, and even
+                    spread them to others? Unfortunately, like much of our understanding of the brain, our knowledge of
+                    exactly why we tend to replicate these patterns is incomplete. However, based on what we do
+                    understand about the brain, it seems likely that it does have some baked-in, general pattern
+                    replication infrastructure. Infrastructure which is used to import, interpret, and replicate memes.
+                    These memes could be classical memes, cultural ideas which we explicitly share, but it may also be
+                    used for memes which represent the behaviors which we observe from others. As this infrastructure
+                    can be used within multiple contexts, it may not be specialized for just these few cases. Perhaps it
+                    could be used to replicate deliberately introduced foreign patterns as well, influencing neurons
+                    across the brain.
                 </p>
                 <WritingSection>Endoscopia</WritingSection>
                 <hr />
