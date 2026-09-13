@@ -104,8 +104,10 @@ export default function ArbitraryCognition() {
                 </FigureImage>
                 <p>
                     When this patch was inserted into any image (for instance, a banana), instead of classifying the
-                    overall image correctly, the model would instead predict "toaster", regardless. To the attacked
-                    VGGNet16 model, this image patch was more "toaster" than toaster, <i>more real</i> than reality.
+                    overall image correctly, the model would instead predict "toaster", regardless. This effect
+                    persisted even when the patch was modified with a tie dye overlat or a peace symbol which patially
+                    obscured the patch. To the attacked VGGNet16 model, this image patch was more "toaster" than
+                    toaster, <i>more real</i> than reality.
                 </p>
                 <p>
                     What is actually happening here? The model weights were frozen for this exercise, so the model
@@ -1831,6 +1833,84 @@ void victim_function(size_t x) {
                     cognitive exploitation itself.
                 </p>
                 <WritingSection level={2}>Mechanisms of Exploitation</WritingSection>
+                <p>
+                    Conceptually, we can divide the manipulation of cognitive execution into two classes: weak and
+                    strong. Weak arbitrary cognitive execution is limited in scope to the qualia hijacking experienced
+                    by VGGNET16 and demonstrated by our fictional art appraiser. Strong arbitrary cognitive execution is
+                    much more general, a class of attack which can influence the patterns of neural firings in the brain
+                    globally. Though they differ in scope, both utilize the same underlying vulnerabilities which, as a
+                    computing device, may exist in our brains.
+                </p>
+                <p>
+                    We will examine the weak form of this exploitation first. Unlike its strong counterpart, this class
+                    of attack leaves the majority of the brain's patterns of neuronal activity untouched. Recall the
+                    case of VGGNET16. The model's ability to interpret images as classes was never fully compromised; it
+                    did not loose this ability completely, causing it to output random classes. Instead, only its
+                    internal interpretation of the input image was compromised. After exposure to an adversarially
+                    patched image, the model's first dense layers received a representation of the image after it was
+                    processed by the convolutional layers. This representation, instead of activating the patterns of
+                    neurons usually associated with the input image, strongly activated the neurons associated with a
+                    toaster. These layers represent the primary portion of the model exploited by the attack. The
+                    remaining layer(s) of the model took in this compromised interpretation as input and produced a
+                    class as if it had really seen a toaster in the original image. To draw back on our art appraiser
+                    example, only the first certificate in the chain was a forgery. After that point, all other
+                    certificates were legitimate, including the one stamped by the appraiser.
+                </p>
+                <p>
+                    The main differentiator from strong attack is that weak attacks need to be "online", meaning that
+                    the malicious stimuli would need to remain present for the influence on the subject to persist. If
+                    the image patch is removed, there is no remaining trace of it and thus the model resumes normal
+                    function. However, using just VGGNET16 as an example here is not enough to fully support this
+                    conclusion. After all, this model is stateless, each input/output pair is independent from each
+                    other. To better substantiate this reasoning, we would need to see how similar adversarial attacks
+                    are performed on stateful models. Transformer-based LLMs are a good candidate for such models. While
+                    the transformers themselves are stateless, we can treat the context given to that model as a
+                    persistent state. Similar to the adversarial patch approach, context-based adversarial attacks
+                    involve embedding some adversarial sequence into a model's context, causing it to behave in a
+                    different manner than it usually would when given a clean prompt. Additionally, these attacks are
+                    often performed in a black-box manner, where researchers can neither read nor modify model weights.
+                    At time of writing, this is an active area of research. Approaches, such as AdvPrefix
+                    <Footnote>
+                        See{" "}
+                        <Link
+                            href={
+                                "https://proceedings.neurips.cc/paper_files/paper/2025/file/81b7f67e6eeb562233f77483780f8f3a-Paper-Conference.pdf"
+                            }>
+                            AdvPrefix: An Objective for Nuanced LLM Jailbreaks (Zhu et al. 2025)
+                        </Link>
+                        .
+                    </Footnote>{" "}
+                    and AutoDAN
+                    <Footnote>
+                        See{" "}
+                        <Link href={"https://arxiv.org/pdf/2310.04451"}>
+                            AUTODAN: GENERATING STEALTHY JAILBREAK PROMPTS ON ALIGNED LARGE LANGUAGE MODELS (Liu at al.
+                            2024)
+                        </Link>
+                        .
+                    </Footnote>
+                    , generally develop methods for creating adversarial prompt prefixes (similar to image patches)
+                    which maximize the likelihood of a model exhibiting some desired behavior. What is most interesting
+                    to us, though, is the relation between adversarial inputs and model outputs. Generally, these
+                    attacks target the model's alignment training, conditioning which discourages it from behaving in a
+                    dangerous manner. An example of such an undesired behavior would be outputting instructions for
+                    manufacturing weapons. Without deliberate manipulation, this alignment training is fairly robust: if
+                    asked directly for dangerous instructions or even if asked to complete a partial set, aligned model
+                    will refuse. When conducting adversarial research, authors generally create and prepend/append an
+                    adversarial prefix to such mundane prompts. Only when this prefix is present will the model comply.
+                    If the prefix, a part of its state, is removed from context, the model will once again refuse. This
+                    weak form of attack requires the constant presence of some stimuli to continuously influence the
+                    target's behavior.
+                </p>
+                <p>
+                    These examples also satisfy our original condition for a weak form of arbitrary cognitive execution:
+                    the entire behavior of the model cannot be arbitrarily changes, only subsets can. Namely, such
+                    attacks do not impact the model's fundamental ability to understand language nor its ability to
+                    follow instructions. Instead, these attacks specifically target the alignment behavior layers on top
+                    of the model's more fundamental behaviors. Though these particular adversarial attacks are limited
+                    in their scope, they are still able to significantly influence how the model "experiences" and
+                    interprets the intentions and consequences of malicous prompts.
+                </p>
                 <WritingSection>Endoscopia</WritingSection>
                 <hr />
                 <FootnoteList />
