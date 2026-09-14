@@ -1985,6 +1985,23 @@ void victim_function(size_t x) {
                     programming, this is akin for a limited exploit, like a buffer overflow, enabling a much more
                     general exploit, like return oriented programming.
                 </p>
+                <p>
+                    As this section is highly speculative, it is worth taking a look back at how we were able to draw
+                    these conclusions based on our observations of the brain and of computers. Our brains appear to have
+                    structures dedicated to the importation and replication of foreign patterns. This may manifest as
+                    internal emulations of other minds for predicting their real-life behavior, or it may be used for
+                    simple memetic propagation. There is nothing categorically special about our higher order brain
+                    regions as well. We have seen how our "selves" are distributed between several physical regions of
+                    the brain, primarily across our prefrontal cortices. These regions also operate using the same
+                    neural machinery as the rest of the brain, leaving them too potentially vulnerable to low level
+                    exploitation. Using this knowledge, we were able to speculate as to the shape of a potential attack.
+                    A weak variant would be limited to the qualia hijacking which we first observed in VGGNET16 and
+                    later in LLMs. a strong variant would be much more general, but is also even more ill-defined for
+                    now. Potentially some substrates may even be resistant to this class of attack altogether. If such
+                    attacks could indeed exist, they will likely not be single-stage exploits. As with traditional
+                    computers, attacks may be multi-staged, with a primer influencing the target's internal state so it
+                    can better receive the final payload.
+                </p>
                 <WritingSection>Endoscopia</WritingSection>
                 <hr />
                 <FootnoteList />
