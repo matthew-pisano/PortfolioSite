@@ -1964,6 +1964,27 @@ void victim_function(size_t x) {
                     could be used to replicate deliberately introduced foreign patterns as well, influencing neurons
                     across the brain.
                 </p>
+                <p>
+                    Like existing attacks on traditional computers, arbitrary cognitive execution attacks may not occur
+                    in a single step either. Oftentimes, attacks chains are multi-step, with each step modifying the
+                    internal state of the system until it is ready to accept the primary payload or payloads. For
+                    example, using a buffer overflow to change the return address of a function in such a manner which
+                    later enables a use-after-free and finally open the system up for arbitrary code execution. As with
+                    the other properties of attacks on traditional computers, the need for multiple steps is most
+                    apparent when applied to video games. Usually, setting up a game in such a manner where it reads
+                    user inputs as code requires an elaborate setup. Memory addresses must be manipulated and specific
+                    code paths taken in order to guide the program counter to a region which the user can directly
+                    modify. As just another form of computing device, the brain may work in the same manner. The
+                    patterns of execution currently expressed by the brain's neurons may not be ready to accept and
+                    replicate a malicious pattern. They may require conditioning first to shape their patterns of
+                    activity into a vulnerable state. While this may be possible through non-adversarial stimuli, this
+                    massaging of internal state may require an initial step, or steps, of attack. For example, the
+                    exposure to an attack in the weak class of cognitive exploitation may not grant the attacker
+                    arbitrary control over neural firings, but it may coax the brain into a state which is able to
+                    accept and replicate the patterns of a strong attack. To draw another parallel to computer
+                    programming, this is akin for a limited exploit, like a buffer overflow, enabling a much more
+                    general exploit, like return oriented programming.
+                </p>
                 <WritingSection>Endoscopia</WritingSection>
                 <hr />
                 <FootnoteList />
