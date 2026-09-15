@@ -2003,6 +2003,27 @@ void victim_function(size_t x) {
                     can better receive the final payload.
                 </p>
                 <WritingSection>Endoscopia</WritingSection>
+                <p>
+                    You have just begun to read the seventh and final section of this essay. This much is still
+                    abundantly clear, even trivially so. Just like those in the first sentence, each of the
+                    approximately twenty thousand subsequent words have undergone similar journeys to the neurons within
+                    the language centers of your brain. However, none underwent the <i>exact</i> same journey. As you
+                    read, you took in new information and slightly modified the patterns of execution present within
+                    your brain. While it is overwhelmingly likely that each of those thousands of words were products of
+                    the legitimate qualia of reading this essay, we cannot make a formal guarantee that this was the
+                    case. All that you have to go on is the knowledge that the ideas which make up this work have now
+                    been embedded into your brain as well; our brain can only react based on their current state,
+                    legitimate or not. The certificates of sale problem is not just limited to art appraisers
+                    <Footnote>My apologies if you are, in fact, an art appraiser.</Footnote>. Your brain's current state
+                    is a function of its last internal state and last series of inputs. Even if the patterns within your
+                    brain were artificially influenced <i>N</i>
+                    <Footnote>
+                        Of course, our brains are not simple, discrete automata, what this is really describing is the
+                        state of your brain as some specific point in the past.
+                    </Footnote>{" "}
+                    states ago, all subsequent states would still appear perfectly legitimate conditional on our default
+                    assumption that state <i>N</i> was also legitimate.
+                </p>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
