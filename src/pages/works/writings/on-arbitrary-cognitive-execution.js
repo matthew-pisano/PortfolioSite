@@ -2036,7 +2036,16 @@ void victim_function(size_t x) {
                     theoretically be possible, yet still dismissing the idea of actual exploitation as impractical or
                     unlikely.
                 </p>
-                <p></p>
+                <p>
+                    An endoscope is an instrument used to look inside oneself to observe the inner workings of the body.
+                    This essay acts as a similar instrument, but for our minds instead. However, these words do not make
+                    up a physical instrument, rather they are instructions which encourage the mind to act as the
+                    instrument which looks within. We examine ourselves while using the same neural machinery which is
+                    under examination, we have no external vantage point from which to look. At present, we assume that
+                    if we could gaze upon ourselves from that vantage point, both views would converge upon the same
+                    concluding regarding the world we experience. Though, when considering the possibility of cognitive
+                    exploitation, we cannot be so certain.
+                </p>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
