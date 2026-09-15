@@ -2022,8 +2022,21 @@ void victim_function(size_t x) {
                         state of your brain as some specific point in the past.
                     </Footnote>{" "}
                     states ago, all subsequent states would still appear perfectly legitimate conditional on our default
-                    assumption that state <i>N</i> was also legitimate.
+                    assumption that state <i>N</i> was also legitimate. Even though this assumption is indeed our
+                    default it is still worth asking: how can you be so sure?
                 </p>
+                <p>
+                    Before we conclude, it is worth making the purpose of this essay explicit. The central argument here
+                    is not necessarily that the low level exploitation of cognitive patterns if imminent, or even if it
+                    is certainly possible. However, as we have seen with traditional computing devices, just because a
+                    system has not yet been demonstrated as vulnerable, does not mean that it is invulnerable. Based on
+                    how our brain are similarly organized, through innumerable simple and naive components, it would be
+                    rash to dismiss the possibility of our brain sharing conceptually similar vulnerabilities. We do not
+                    want to catch ourselves in the same position as early 1960s programmers, aware that exploitation may
+                    theoretically be possible, yet still dismissing the idea of actual exploitation as impractical or
+                    unlikely.
+                </p>
+                <p></p>
                 <hr />
                 <FootnoteList />
             </FootnoteProvider>
