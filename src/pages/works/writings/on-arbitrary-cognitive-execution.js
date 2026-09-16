@@ -1550,11 +1550,14 @@ void victim_function(size_t x) {
                     This allows for predictability in an inherently noisy system. We saw how those high level, emergent,
                     predictable patterns are often shared between individuals and used to represent the same concepts.
                     Finally, we proposed that a radical shift in behavior in response to similar inputs could be a
-                    conceptual indication of exploitation. Where does this leave us? We know from our definition of a
-                    computing device that such devices operate upon emergent, predictable, generic, and task-oriented
-                    patterns. Furthermore, due to these patterns, they may be inherently exploitable. We also know that
-                    our brains exhibit, to some extent, emergent, predictable, generic, and behaviorally-oriented
-                    patterns themselves.
+                    conceptual indication of exploitation. Where does this leave us? Recall our earlier example of a
+                    programmer from 1965 who was aware of the possibility of vulnerabilities, but was ultimately
+                    unconcerned. Unfortunately, many others from the time did not even consider the possibility in the
+                    first place, continuing to allow vulnerabilities to go unnoticed and unpatched. This is not a
+                    position we wish to find ourselves again. We know from our definition of a computing device that
+                    such devices operate upon emergent, predictable, generic, and task-oriented patterns. Furthermore,
+                    due to these patterns, they may be inherently exploitable. We also know that our brains exhibit, to
+                    some extent, similar emergent, predictable, generic, and behaviorally-oriented patterns themselves.
                 </p>
                 <WritingSection>Arbitrary Cognitive Execution</WritingSection>
                 <p>
@@ -2040,9 +2043,9 @@ void victim_function(size_t x) {
                     system has not yet been demonstrated as vulnerable, does not mean that it is invulnerable. Based on
                     how our brains are similarly organized, through innumerable simple and naive components, it would be
                     rash to dismiss the possibility of our brain sharing conceptually similar vulnerabilities. We do not
-                    want to catch ourselves in the same position as early 1960s programmers, aware that exploitation may
-                    theoretically be possible, yet still dismissing the idea of actual exploitation as impractical or
-                    unlikely.
+                    want to catch ourselves in the same position as early some 1960s programmers, aware that
+                    exploitation may theoretically be possible, yet still dismissing the idea of actual exploitation as
+                    impractical or unlikely.
                 </p>
                 <p>
                     Consider how you have just spent a non-trivial amount of time absorbing an argument on how foreign
