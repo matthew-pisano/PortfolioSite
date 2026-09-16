@@ -105,8 +105,8 @@ export default function ArbitraryCognition() {
                 <p>
                     When this patch was inserted into any image (for instance, a banana), instead of classifying the
                     overall image correctly, the model would instead predict "toaster", regardless. This effect
-                    persisted even when the patch was modified with a tie dye overlat or a peace symbol which patially
-                    obscured the patch. To the attacked VGGNet16 model, this image patch was more "toaster" than
+                    persisted even when the patch was modified with a tie-dye overlay or a peace symbol that partially
+                    obscured the patch. To the attacked VGGNet16 model, this image patch was more "toaster" than a
                     toaster, <i>more real</i> than reality.
                 </p>
                 <p>
@@ -132,11 +132,11 @@ export default function ArbitraryCognition() {
                 </p>
                 <WritingSection level={2}>Problems and Proxies</WritingSection>
                 <p>
-                    This manner of attack is a special case of a much broader class of attack on computer systems. This
-                    is generally referred to as <i>Arbitrary Code Execution</i>: an attack which manipulates the
-                    expected behavior of a computing system into producing an attacker-controlled result. This level of
-                    attacker control is usually achieved through the usage of finely crafted inputs to a system, instead
-                    of through direct code modification or hardware tampering.
+                    This manner of attack is a special case of a much broader class of attacks on computer systems. This
+                    is generally referred to as <i>Arbitrary Code Execution</i>: an attack that manipulates the expected
+                    behavior of a computing system into producing an attacker-controlled result. This level of attacker
+                    control is usually achieved through the usage of finely crafted inputs to a system, instead of
+                    through direct code modification or hardware tampering.
                 </p>
                 <p>
                     The existence of this class of exploit relies on a feature common to any sort of computing machine.
@@ -171,7 +171,7 @@ export default function ArbitraryCognition() {
                         </Link>
                         .
                     </Footnote>{" "}
-                    as a proxy for choosing the correct label for an image, with VGGNET16's parameters serving as Y (the
+                    as a proxy for choosing the correct label for an image, with VGGNet16's parameters serving as Y (the
                     attempt at achieving the objective), and the correct label as X (the true objective). There is no
                     guarantee that the trained state of the parameters would always yield "banana" when presented with a
                     picture of a banana; they just happen to do so for an acceptable portion of the evaluation samples.
@@ -206,7 +206,7 @@ export default function ArbitraryCognition() {
                     exploitation of their software would soon become a booming industry, how would they react? They
                     would likely be unsurprised. Programmers were aware that security could <i>become</i> a concern in
                     the future, even if it was not paramount at the time. The task of designing complex software for
-                    heavily resource-constrained machines was challenge enough. Indeed, the possibility of large-scale
+                    heavily resource-constrained machines was challenging enough. Indeed, the possibility of large-scale
                     exploitation would be shown by "The Creeper" worm in 1971, just six years later. Why may they react
                     in this manner, even though they had not personally experienced their software being exploited? Even
                     if this programmer from the past were not aware of the exact techniques of exploitation, the
@@ -273,8 +273,8 @@ export default function ArbitraryCognition() {
                     number in register 10 ($t2) and store the result in register 9 ($t1). Equal in validity, the CPU
                     could also interpret this as the literal integer 558,432,298. There are some good reasons for
                     allowing this ambiguity unaddressed in the design of a computer. A unified memory addressing scheme
-                    allows the entirety of memory to be accessible by a program and the design of physical busses and
-                    interfaces is simpler. However, in addition to introducing a memory bottleneck, this unification
+                    allows the entirety of memory to be accessible by a program, and keeps the design of physical buses
+                    and interfaces simpler. However, in addition to introducing a memory bottleneck, this unification
                     opens up many avenues for exploitation. If data can be interpreted as instructions in some contexts,
                     the users of a system could also theoretically control how that system functions by manipulating it
                     to run arbitrary code of their choosing or to access arbitrary regions of memory.
@@ -373,7 +373,7 @@ reveal_secret:          # Reveal the secret
                         values just before the return address of a procedure. If these values are overwritten by an
                         overflow, the system can terminate the program.
                     </Footnote>
-                    . Many other simple utilities are available to hackers. for example, pointer-based vulnerabilities
+                    . Many other simple utilities are available to hackers. For example, pointer-based vulnerabilities
                     such as use-after-frees or double frees can allow an attacker to corrupt memory and exert more
                     control over how a system functions
                     <Footnote>
@@ -394,7 +394,7 @@ reveal_secret:          # Reveal the secret
                     code, a return oriented programming attack never needs to leave the text segment. Recall how the act
                     of programming in general consists of chaining a series of specific instructions together as a proxy
                     for achieving some goal of the programmer's. This attack is similar, with the extra restriction that
-                    the instructions in the chain can only exist within the attacked program. if the attacker can
+                    the instructions in the chain can only exist within the attacked program. If the attacker can
                     corrupt the return address of a procedure, they can arbitrarily place the program counter wherever
                     they want next, very similar to our original buffer overflow example. Instead of this being the
                     entire attack chain, this process is repeated many times. Each time, the return address of a
@@ -492,13 +492,13 @@ reveal_secret:          # Reveal the secret
                     vulnerabilities related to speculative execution, independently at first, then jointly later. The
                     result of their investigations were several critical vulnerabilities, to which nearly every modern
                     CPU was vulnerable. To understand these vulnerabilities, we must first discuss how modern CPUs
-                    execute instruction and why they somtimes execute them out of order. In the CPU, instructions are
+                    execute instruction and why they sometimes execute them out of order. In the CPU, instructions are
                     not processed all at once. Over multiple clock cycles, instructions must be fetched from memory (or
                     cache), decoded by the CPU into their hardware meaning, executed, with results later written back to
                     the register file. Naively, these operations would happen sequentially. However, each stage uses
                     independent hardware. Instead of executing all of the stages for one instruction before moving on to
                     the next, the stages of different instructions can be interleaved to make constant use of all the
-                    instruction hardware. As one instruction is being fetched, the one after us being decoded, and yet
+                    instruction hardware. As one instruction is being fetched, the one after is being decoded, and yet
                     others are being executed or written back. Additionally, these instructions can be executed
                     <i>out-of-order</i>. If one instruction is waiting on another, the CPU will waste time waiting for
                     this dependency to resolve. With out-of-order execution, the CPU executes the next instructions
@@ -520,11 +520,11 @@ reveal_secret:          # Reveal the secret
                     <Footnote>
                         <Link href={"https://arxiv.org/pdf/1801.01207"}>Meltdown</Link>
                     </Footnote>
-                    . This vulnerability exploits the out-of-order execution optimizations on vulnerable CPUs to read
+                    . This vulnerability exploits the out-of-order execution optimizations in vulnerable CPUs to read
                     from arbitrary addresses in memory, even kernel memory. The following code snippet roughly
-                    demonstrates how a malicous program would perform the exploit.
+                    demonstrates how a malicious program would perform the exploit.
                 </p>
-                <CodeBlock language="cpp">{`// The size of a memory pagge
+                <CodeBlock language="cpp">{`// The size of a memory page
 int page_size = 4096;
 // Probe array for Flush+Reload side channel
 // Create a buffer which can store a 4KB page for every possible byte (0-255)
@@ -556,7 +556,7 @@ void meltdown_step(unsigned char *kernel_data) {
                     continues execution. Even though the kernel access instruction failed and was rolled back, the cache
                     can still be used as a side-channel for recovering that information. By looping through the probe
                     array and measuring access times for each (page strided) element, the attacker can tell which page
-                    was placed in the cache and deduce the secret kernel byte based on tht element's position. Luckily,
+                    was placed in the cache and deduce the secret kernel byte based on that element's position. Luckily,
                     this exploit only impacted a limited number of CPUs with insufficient memory access checking during
                     speculative execution. However, Meltdown was not the only class of vulnerability the researchers
                     discovered. Their other discoveries would turn out to be much more insidious.
@@ -578,7 +578,7 @@ void meltdown_step(unsigned char *kernel_data) {
                             Spectre Attacks: Exploiting Speculative Execution
                         </Link>
                     </Footnote>{" "}
-                    as it was nearly undetectable through externally observing the CPU. From the outside perspective, it
+                    as it was nearly undetectable to an outside observer of the CPU. From the outside perspective, it
                     seemed as if the program was accessing the CPU in a mundane pattern.
                 </p>
                 <CodeBlock language="cpp">{`/********************************************************************
@@ -612,10 +612,10 @@ void victim_function(size_t x) {
                     <code>array2</code> several times, tallying up which of the values remain in the CPU cache. Similar
                     to Meltdown, the value most likely to be cached by the original attack indicates the byte value at
                     the arbitrary out-of-bounds offset from the malicious user. This allows an attacker to read any
-                    value from the process' memory, including escaping browser sandboxes. Unlink Meltdown, which is the
-                    result of insufficient ceche read checks, the Spectre class of vulnerabilities relies only on a
+                    value from the process' memory, including escaping browser sandboxes. Unlike Meltdown, which is the
+                    result of insufficient cache read checks, the Spectre class of vulnerabilities relies only on a
                     fundamental CPU optimization to carry out the attack; this is much more difficult to mitigate. Upon
-                    original discovery, only two Spectre variants were known, v1 and v2. Since them, 13 unique Spectre
+                    original discovery, only two Spectre variants were known, v1 and v2. Since then, 13 unique Spectre
                     variants have been discovered, with many evading patches made to fix earlier variants.
                 </p>
                 <p>
@@ -732,15 +732,15 @@ void victim_function(size_t x) {
                     Stepping back from the technical details of this achievement, we can glimpse at something
                     unsettling. During the setup phase of the exploit, the player has internalized a complete model of
                     the <i>Super Mario Bros.</i> reality. Within this context, they know how to react to the world and
-                    they know how the world will react back to them. When the setup gives way to the exploit itself, so
-                    too does the familiar reality of one game give way to another. The original context that the player
-                    has become accustomed to is annihilated and replaced with something alien. As a consequence, the
-                    player's mental model of Mario's world, honed through all of their time spent within it, is
-                    invalidated by an external force acting through the game system itself. The underlying structure of
-                    this destruction of reality is not so different from what some of the the most disturbing works of
-                    cognitive horror imagine happening to the mind: a coherent, internal world, built up over a
-                    lifetime, rewritten from the outside through nothing more than a carefully crafted sequence of
-                    inputs.
+                    how the world will react to them. When the setup gives way to the exploit itself, so too does the
+                    familiar reality of one game give way to another. The original context that the player has become
+                    accustomed to is annihilated and replaced with something alien. As a consequence, the player's
+                    mental model of Mario's world, honed through all of their time spent within it, is invalidated by an
+                    external force acting through the game system itself. The structure of this dissolution of reality
+                    is not so different from the narrative structures found within some of the most disturbing works of
+                    cognitive horror. The main difference being that these works imagine such a dissolution happening to
+                    the mind: a coherent, internal world, built up over a lifetime, rewritten from the outside through
+                    nothing more than a carefully crafted sequence of inputs.
                 </p>
                 <WritingSection>Influencing Cognition in Fiction</WritingSection>
                 <p>
@@ -1105,7 +1105,7 @@ void victim_function(size_t x) {
                     criteria, how well does the human brain fit those criteria? If we can find a compelling fit, it
                     implies that our own brains may be vulnerable at their low levels in a similar manner to traditional
                     computers. The brain meets several of the more general criteria without requiring a thorough
-                    inspection. The brain a a system is bounded within its brain case
+                    inspection. The brain as a system is bounded within its brain case
                     <Footnote>
                         Even if including objects external to the skull as within the brain's system, as in situated
                         cognition, these additions do not make the brain unbounded.
@@ -1117,10 +1117,10 @@ void victim_function(size_t x) {
                     internal configuration". Our brains function as a result of innumerable interactions between ~86
                     billion individual neurons, but can we directly trace those limited interactions forward towards our
                     complex, global behavior? Can the consequences of these interactions be reliably predicted and
-                    therefore potentially manipulated? Do different brains same internal representations and patterns of
-                    operation, to allow for non-individualized exploitation? Lastly, what does it mean for our brains to
-                    be "task-oriented"? It is to answering these questions which the remainder of this section is
-                    dedicated.
+                    therefore potentially manipulated? Do different brains share similar internal representations and
+                    patterns of operation, allowing for non-individualized exploitation? Lastly, what does it mean for
+                    our brains to be "task-oriented"? It is to answering these questions which the remainder of this
+                    section is dedicated.
                 </p>
                 <WritingSection level={2}>Local Patterns with Glocal Consequences</WritingSection>
                 <p>
@@ -1273,7 +1273,7 @@ void victim_function(size_t x) {
                     summed strength of its inputs, after being biased and sent through a non-linear (and generally
                     monotonic
                     <Footnote>
-                        To be precise, there, in fact, several common activation functions that are not technically
+                        To be precise, there are, in fact, several common activation functions that are not technically
                         monotonic (like SiLU, or GELU), but those only have a small decrease before their unbounded
                         segments.
                     </Footnote>
@@ -1569,8 +1569,8 @@ void victim_function(size_t x) {
                 </p>
                 <WritingSection level={2}>The Brain as an Emulation Device</WritingSection>
                 <p>
-                    Think back to the last time you were having a conversation with someone you knew very well. It does
-                    did have to be a particularly serious conversation, as long as you were both engaged. There is a
+                    Think back to the last time you were having a conversation with someone you knew very well. It did
+                    not have to be a particularly serious conversation, as long as you were both engaged. There is a
                     good chance that, at least once, you could predict precisely how they were going to respond to what
                     you had just said. You may even form such a prediction after you had made a statement or asked a
                     question completely original to that conversation. Notably, you would not simply predict how you
@@ -1594,7 +1594,7 @@ void victim_function(size_t x) {
                     predicting based upon very common utterances of yours. However, it would perform poorly when
                     predicting your partner's response to something you had said rarely or have never said at all
                     <Footnote>
-                        For anyone unfamiliar, the problem of predicting based on rare of unseen inputs is common in the
+                        For anyone unfamiliar, the problem of predicting based on rare or unseen inputs is common in the
                         fields of generative language modeling and natural language processing.
                     </Footnote>
                     . So, if you are not performing simple pattern recognition when predicting your partner's response,
@@ -1670,7 +1670,7 @@ void victim_function(size_t x) {
                     from their normal distribution, our higher faculties would surely notice and wrest control back from
                     any exploitation. For this to be the case, however, our "selves" must reside within some special
                     region of the brain, experiencing all of our qualia and neural patterns through a single Cartesian
-                    theater. Intuitively, we would expect this special region to be unaffected by the patters expressed
+                    theater. Intuitively, we would expect this special region to be unaffected by the patterns expressed
                     by the remainder of our brains.
                 </p>
                 <p>
@@ -1688,15 +1688,15 @@ void victim_function(size_t x) {
                         witchcraft, or evil more generally. Our transition from a supernatural to a scientific
                         understanding is particularly notable as it represented one of the first times the patients
                         themselves were identified as separate from the disease impacting their behavior. See Robert
-                        Saplosyk's <i>Behave</i> for a much deeper analysis of this transition and its greater impact.
+                        Sapolsky's <i>Behave</i> for a much deeper analysis of this transition and its greater impact.
                     </Footnote>{" "}
                     techniques had been developed for the treatment of epilepsy. In the UK, this was pioneered by John
-                    Hughlings Jackson, Sir Victor Horsley and William Macewen and mainly focused on the removal of scar
+                    Hughlings Jackson, Sir Victor Horsley, and William Macewen. It mainly focused on the removal of scar
                     tissue for the treatment of trauma-induced epilepsy. Beginning in the 1940s, surgeon William P. van
                     Wagenen began a series of experiments intended to treat epileptic seizures more generally. Van
-                    Wagenen's approached was based on the observation that, during a seizure, many different brain
-                    regions become highly synchronized with abnormally high levels of activity. Perhaps, if two regions
-                    of the brain did not have a direct line of communication, then the seizure would not spread?
+                    Wagenen's approach was based on the observation that, during a seizure, many different brain regions
+                    become highly synchronized with abnormally high levels of activity. Perhaps, if two regions of the
+                    brain did not have a direct line of communication, then the seizure would not spread?
                 </p>
                 <p>
                     Of course, arbitrarily cutting up the brain of a patient would certainly result in the cessation of
@@ -1780,13 +1780,13 @@ void victim_function(size_t x) {
                     regulatory neurons in higher number than other brain regions. These cells, subclasses of regulatory
                     interneurons, primarily inhibit other neurons. This includes other interneurons, inhibiting the
                     inhibitors through a mechanism called disinhibition. These inhibitory and disinhibitory signals help
-                    to regulate the myriad of signals coming into the prefrontal coretex from sensory regions, the
+                    to regulate the myriad of signals coming into the prefrontal cortex from sensory regions, the
                     hippocampus, and from across the corpus callosum
                     <Footnote>
                         This level of signal regulation is critical for maintaining normal patterns of cognition. For
                         example, studies of the brains of schizophrenia patients reveal that the loss or deregulation of
-                        these inhibitory neurons holds influence over exhibited symptoms. This is effective
-                        disinhibition is often correlated with an overabundance of dopamine in localized brain regions.
+                        these inhibitory neurons holds influence over exhibited symptoms. This effective disinhibition
+                        is often correlated with an overabundance of dopamine in localized brain regions.
                     </Footnote>
                     .
                 </p>
@@ -1836,7 +1836,7 @@ void victim_function(size_t x) {
                 <p>
                     Conceptually, we can divide the manipulation of cognitive execution into two classes: weak and
                     strong. Weak arbitrary cognitive execution is limited in scope to the qualia hijacking experienced
-                    by VGGNET16 and demonstrated by our fictional art appraiser. Strong arbitrary cognitive execution is
+                    by VGGNet16 and demonstrated by our fictional art appraiser. Strong arbitrary cognitive execution is
                     much more general, a class of attack which can influence the patterns of neural firings in the brain
                     globally. Though they differ in scope, both utilize the same underlying vulnerabilities which, as a
                     computing device, may exist in our brains.
@@ -1844,23 +1844,24 @@ void victim_function(size_t x) {
                 <p>
                     We will examine the weak form of this exploitation first. Unlike its strong counterpart, this class
                     of attack leaves the majority of the brain's patterns of neuronal activity untouched. Recall the
-                    case of VGGNET16. The model's ability to interpret images as classes was never fully compromised; it
-                    did not loose this ability completely, causing it to output random classes. Instead, only its
-                    internal interpretation of the input image was compromised. After exposure to an adversarially
-                    patched image, the model's first dense layers received a representation of the image after it was
-                    processed by the convolutional layers. This representation, instead of activating the patterns of
-                    neurons usually associated with the input image, strongly activated the neurons associated with a
-                    toaster. These layers represent the primary portion of the model exploited by the attack. The
-                    remaining layer(s) of the model took in this compromised interpretation as input and produced a
-                    class as if it had really seen a toaster in the original image. To draw back on our art appraiser
-                    example, only the first certificate in the chain was a forgery. After that point, all other
-                    certificates were legitimate, including the one stamped by the appraiser.
+                    case of VGGNet16. The model's ability to interpret images as classes was never fully compromised; it
+                    did not lose this ability completely, causing it to output random classes. Instead, only its
+                    internal interpretation of the input image was compromised. After exposing a model to an
+                    adversarially patched image, that image was initially seen by the model's convolutional layers.
+                    Those convolutions interpreted the image as a series of basic features before passing that
+                    representation off to the model's first dense layers. This representation, instead of activating the
+                    patterns of neurons usually associated with the input image, strongly activated the neurons
+                    associated with a toaster. These layers represent the primary portion of the model exploited by the
+                    attack. The remaining layer(s) of the model took in this compromised interpretation as input and
+                    produced a class as if it had really seen a toaster in the original image. To draw back on our art
+                    appraiser example, only the first certificate in the chain was a forgery. After that point, all
+                    other certificates were legitimate, including the one stamped by the appraiser.
                 </p>
                 <p>
                     The main differentiator from strong attack is that weak attacks need to be "online", meaning that
                     the malicious stimuli would need to remain present for the influence on the subject to persist. If
                     the image patch is removed, there is no remaining trace of it and thus the model resumes normal
-                    function. However, using just VGGNET16 as an example here is not enough to fully support this
+                    function. However, using just VGGNet16 as an example here is not enough to fully support this
                     conclusion. After all, this model is stateless, each input/output pair is independent from each
                     other. To better substantiate this reasoning, we would need to see how similar adversarial attacks
                     are performed on stateful models. Transformer-based LLMs are a good candidate for such models. While
@@ -1904,7 +1905,7 @@ void victim_function(size_t x) {
                 </p>
                 <p>
                     These examples also satisfy our original condition for a weak form of arbitrary cognitive execution:
-                    the entire behavior of the model cannot be arbitrarily changes, only subsets can. Namely, such
+                    the entire behavior of the model cannot be arbitrarily changed; only subsets can. Namely, such
                     attacks do not impact the model's fundamental ability to understand language nor its ability to
                     follow instructions. Instead, these attacks specifically target the alignment behavior layers on top
                     of the model's more fundamental behaviors. Though these particular adversarial attacks are limited
@@ -1913,9 +1914,9 @@ void victim_function(size_t x) {
                 </p>
                 <p>
                     In contrast, strong attacks would not be restricted in these manners. Their scope could be much more
-                    general, able to arbitrarily influence which computations are preformed upon the compromised
+                    general, able to arbitrarily influence which computations are performed upon the compromised
                     substrate (be it model or brain). They would also not require malicious inputs to be continually
-                    present. This "offline" influence would still be seeded by a carefully crafter sequence of inputs,
+                    present. This "offline" influence would still be seeded by a carefully crafted sequence of inputs,
                     but instead of a target updating its state as it normally would conditional on this sequence, the
                     sequence itself (or some representation of it) would embed itself into all future states. The
                     patterns which represent a strong attack would need to be <i>self-replicating</i>. In the same
@@ -1970,7 +1971,7 @@ void victim_function(size_t x) {
                     internal state of the system until it is ready to accept the primary payload or payloads. For
                     example, using a buffer overflow to change the return address of a function in such a manner which
                     later enables a use-after-free and finally open the system up for arbitrary code execution. As with
-                    the other properties of attacks on traditional computers, the need for multiple steps is most
+                    the other properties of attacks on traditional computers, the usage of multiple steps is more
                     apparent when applied to video games. Usually, setting up a game in such a manner where it reads
                     user inputs as code requires an elaborate setup. Memory addresses must be manipulated and specific
                     code paths taken in order to guide the program counter to a region which the user can directly
@@ -1995,7 +1996,7 @@ void victim_function(size_t x) {
                     the brain, primarily across our prefrontal cortices. These regions also operate using the same
                     neural machinery as the rest of the brain, leaving them too potentially vulnerable to low level
                     exploitation. Using this knowledge, we were able to speculate as to the shape of a potential attack.
-                    A weak variant would be limited to the qualia hijacking which we first observed in VGGNET16 and
+                    A weak variant would be limited to the qualia hijacking which we first observed in VGGNet16 and
                     later in LLMs. a strong variant would be much more general, but is also even more ill-defined for
                     now. Potentially some substrates may even be resistant to this class of attack altogether. If such
                     attacks could indeed exist, they will likely not be single-stage exploits. As with traditional
@@ -2027,10 +2028,10 @@ void victim_function(size_t x) {
                 </p>
                 <p>
                     Before we conclude, it is worth making the purpose of this essay explicit. The central argument here
-                    is not necessarily that the low level exploitation of cognitive patterns if imminent, or even if it
+                    is not necessarily that the low-level exploitation of cognitive patterns is imminent, or even if it
                     is certainly possible. However, as we have seen with traditional computing devices, just because a
                     system has not yet been demonstrated as vulnerable, does not mean that it is invulnerable. Based on
-                    how our brain are similarly organized, through innumerable simple and naive components, it would be
+                    how our brains are similarly organized, through innumerable simple and naive components, it would be
                     rash to dismiss the possibility of our brain sharing conceptually similar vulnerabilities. We do not
                     want to catch ourselves in the same position as early 1960s programmers, aware that exploitation may
                     theoretically be possible, yet still dismissing the idea of actual exploitation as impractical or
@@ -2038,12 +2039,12 @@ void victim_function(size_t x) {
                 </p>
                 <p>
                     An endoscope is an instrument used to look inside oneself to observe the inner workings of the body.
-                    This essay acts as a similar instrument, but for our minds instead. However, these words do not make
-                    up a physical instrument, rather they are instructions which encourage the mind to act as the
-                    instrument which looks within. We examine ourselves while using the same neural machinery which is
+                    This essay acts as a similar instrument, but for our minds instead. However, these words do not form
+                    a physical instrument; rather, they are instructions that encourage the mind itself to act as the
+                    instrument that looks within. We examine ourselves while using the same neural machinery which is
                     under examination, we have no external vantage point from which to look. At present, we assume that
                     if we could gaze upon ourselves from that vantage point, both views would converge upon the same
-                    concluding regarding the world we experience. Though, when considering the possibility of cognitive
+                    conclusion regarding the world we experience. Though, when considering the possibility of cognitive
                     exploitation, we cannot be so certain.
                 </p>
                 <hr />
