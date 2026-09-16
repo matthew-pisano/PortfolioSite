@@ -1973,6 +1973,14 @@ void victim_function(size_t x) {
                     across the brain.
                 </p>
                 <p>
+                    These patterns, earworms and memes, are so transmissible between individuals specifically because
+                    our brains are able to replicate the same shared representation from one mind to another. If an
+                    exploit is intended to impact more than one specific individual, this property becomes a core
+                    feature of transmission as well. The infrastructure for sharing and replication which we already
+                    possess could potentially serve to enable the creation of non-individualized attacks without needing
+                    to know the specific mental configurations of every target.
+                </p>
+                <p>
                     Like existing attacks on traditional computers, arbitrary cognitive execution attacks may not occur
                     in a single step either. Oftentimes, attacks chains are multi-step, with each step modifying the
                     internal state of the system until it is ready to accept the primary payload or payloads. For
