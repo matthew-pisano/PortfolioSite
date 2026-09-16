@@ -2038,14 +2038,27 @@ void victim_function(size_t x) {
                     unlikely.
                 </p>
                 <p>
-                    An endoscope is an instrument used to look inside oneself to observe the inner workings of the body.
-                    This essay acts as a similar instrument, but for our minds instead. However, these words do not form
-                    a physical instrument; rather, they are instructions that encourage the mind itself to act as the
-                    instrument that looks within. We examine ourselves while using the same neural machinery which is
-                    under examination, we have no external vantage point from which to look. At present, we assume that
-                    if we could gaze upon ourselves from that vantage point, both views would converge upon the same
-                    conclusion regarding the world we experience. Though, when considering the possibility of cognitive
-                    exploitation, we cannot be so certain.
+                    Consider how you have just spent a non-trivial amount of time absorbing an argument on how foreign
+                    patterns might be embedded into your brain without your conscious awareness. Irrespective of whether
+                    you ultimately agree with the conclusion that we have been building towards, the present state of
+                    your brain has nevertheless been irreversibly influenced by this text. Throughout this work, I have
+                    embedded representations of my internal thoughts into this text; those embeddings, to some extent,
+                    now reside within your mind as well. At some point in future, if you ever recall the information or
+                    reasoning laid out here, this series of textual inputs will have then exerted a direct influence on
+                    the patterns of cognition actively expressed within your mind. I wonder if you will be reminded of
+                    cognition and the brain the next time art appraisal is brought up in conversation
+                    <Footnote>A very common occurrence, I am sure.</Footnote>. The only difference between this
+                    self-referential segment and real cognitive exploitation is that I am giving you an explicit
+                    warning.
+                </p>
+                <p>
+                    An endoscope is an instrument used to look inside the body to examine and study its inner workings.
+                    When we instead examine our own minds, rather than our bodies, we become both the observer and the
+                    observed: we examine ourselves while using the same neural machinery which is under examination. We
+                    have no external vantage point from which to directly look. We normally assume that, if we had a
+                    view from outside our own heads, we would always observe the same world and have the same thoughts
+                    as we do when confined within our own minds. In this way, we are both the programmer and the
+                    program, assuming that, since it has not noticed any of its flaws, it must therefore be flawless.
                 </p>
                 <hr />
                 <FootnoteList />
