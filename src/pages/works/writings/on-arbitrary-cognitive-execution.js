@@ -1941,6 +1941,10 @@ void victim_function(size_t x) {
                     prefix or suffix is scrubbed from the context of only a single model, that model may become
                     "reinfected" later on by another. RAGWorm is able to embed itself into the collective context of
                     these models, even if the original prompt may no longer be in the original target's context window.
+                    Though, as we saw in our discussion of cognitive exploitation in fiction, text is not a very rich
+                    medium for conveying the nuance and complexity of neural patterns. To get a better sense of how such
+                    replication and transmission occurs in ourselves, we must look to examples which occur within the
+                    brain.
                 </p>
                 <p>
                     Recall from earlier that our own brains, similar to this ensemble of language models, also tend to
@@ -1979,8 +1983,11 @@ void victim_function(size_t x) {
                     patterns of execution currently expressed by the brain's neurons may not be ready to accept and
                     replicate a malicious pattern. They may require conditioning first to shape their patterns of
                     activity into a vulnerable state. While this may be possible through non-adversarial stimuli, this
-                    massaging of internal state may require an initial step, or steps, of attack. For example, the
-                    exposure to an attack in the weak class of cognitive exploitation may not grant the attacker
+                    massaging of internal state may require an initial step, or steps, of attack. We can see this same
+                    attack structure play out in <i>The King in Yellow</i> as well. The first act of the eponymous play
+                    merely serves as a means for preparing the reader's mind to accept the real payload embedded in act
+                    2. In fact, we can use this pattern to model a route for real cognitive exploitation. For example,
+                    the exposure to an attack in the weak class of cognitive exploitation may not grant the attacker
                     arbitrary control over neural firings, but it may coax the brain into a state which is able to
                     accept and replicate the patterns of a strong attack. To draw another parallel to computer
                     programming, this is akin for a limited exploit, like a buffer overflow, enabling a much more
