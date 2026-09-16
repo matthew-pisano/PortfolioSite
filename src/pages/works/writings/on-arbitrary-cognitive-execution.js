@@ -1064,9 +1064,10 @@ void victim_function(size_t x) {
                     be Turing complete. For example, Programmable Logic Arrays and certain off-chip accelerators are
                     generally considered to be "computing devices" but are not themselves Turing complete
                     <Footnote>
-                        In a similar vein was the Soviet <i>Turnir</i> (Турнир) console released in 1978. Unlike
-                        contemporary home consoles like the Atari 2600 or the Magnavox Odyssey which could play a
-                        variety of games, the Turnir could only play one. Unlike the Atari's general-purpose MOS 6507,
+                        In a similar vein, the Soviet <i>Turnir</i> (Турнир) console, released in 1978, is another
+                        example. Unlike contemporary home consoles like the Atari 2600 or the Magnavox Odyssey, which
+                        could play a variety of games, the Turnir could only play one. Unlike the Atari's
+                        general-purpose MOS 6507,
                         this console relied upon the AY-3-8500. This chip in particular was designed to play <i>PONG</i>{" "}
                         and nothing else. Even though the Turnir technically came with six built-in games, all were just
                         the same tennis game with themed overlays for hockey or squash. The Turnir is another example of
@@ -1840,8 +1841,8 @@ void victim_function(size_t x) {
                     Conceptually, we can divide the manipulation of cognitive execution into two classes: weak and
                     strong. Weak arbitrary cognitive execution is limited in scope to the qualia hijacking experienced
                     by VGGNet16 and demonstrated by our fictional art appraiser. Strong arbitrary cognitive execution is
-                    much more general, a class of attack which can influence the patterns of neural firings in the brain
-                    globally. Though they differ in scope, both utilize the same underlying vulnerabilities which, as a
+                    much more general: a class of attacks that can influence the patterns of neural firings in the brain
+                    globally. Though they differ in scope, both utilize the same underlying vulnerabilities that, as a
                     computing device, may exist in our brains.
                 </p>
                 <p>
@@ -1861,19 +1862,19 @@ void victim_function(size_t x) {
                     other certificates were legitimate, including the one stamped by the appraiser.
                 </p>
                 <p>
-                    The main differentiator from strong attack is that weak attacks need to be "online", meaning that
-                    the malicious stimuli would need to remain present for the influence on the subject to persist. If
+                    The main differentiator from a strong attack is that weak attacks need to be "online", meaning that
+                    the malicious stimulus would need to remain present for the influence on the subject to persist. If
                     the image patch is removed, there is no remaining trace of it and thus the model resumes normal
                     function. However, using just VGGNet16 as an example here is not enough to fully support this
-                    conclusion. After all, this model is stateless, each input/output pair is independent from each
-                    other. To better substantiate this reasoning, we would need to see how similar adversarial attacks
+                    conclusion. After all, this model is stateless; each input/output pair is independent from the
+                    others. To better substantiate this reasoning, we would need to see how similar adversarial attacks
                     are performed on stateful models. Transformer-based LLMs are a good candidate for such models. While
                     the transformers themselves are stateless, we can treat the context given to that model as a
                     persistent state. Similar to the adversarial patch approach, context-based adversarial attacks
                     involve embedding some adversarial sequence into a model's context, causing it to behave in a
                     different manner than it usually would when given a clean prompt. Additionally, these attacks are
                     often performed in a black-box manner, where researchers can neither read nor modify model weights.
-                    At time of writing, this is an active area of research. Approaches, such as AdvPrefix
+                    At the time of writing, this is an active area of research. Approaches such as AdvPrefix
                     <Footnote>
                         See{" "}
                         <Link
