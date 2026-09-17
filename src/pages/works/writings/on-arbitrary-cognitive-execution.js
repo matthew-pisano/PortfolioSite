@@ -71,7 +71,8 @@ export default function ArbitraryCognition() {
                     certificate is valid, can you be so sure about the penultimate certificate? What about the
                     antepenultimate? At any point in this chain of certificates a forgery could have been introduced. If
                     that forgery fooled only the certifier after it in the chain, it would be impossible to tell later,
-                    since that certifier's certificate would be valid. Can you be certain that the piece is authentic?
+                    since that certifier's certificate would be valid. Now, can you be so certain that the piece is
+                    authentic?
                 </p>
                 <WritingSection level={2}>Toasters and Perceptions of Reality</WritingSection>
                 <p>
@@ -107,7 +108,7 @@ export default function ArbitraryCognition() {
                     overall image correctly, the model would instead predict "toaster", regardless. This effect
                     persisted even when the patch was modified with a tie-dye overlay or a peace symbol that partially
                     obscured the patch. To the attacked VGGNet16 model, this image patch was more "toaster" than a
-                    toaster, <i>more real</i> than reality.
+                    toaster, more <i>real</i> than reality.
                 </p>
                 <p>
                     What is actually happening here? The model weights were frozen for this exercise, so the model
@@ -119,7 +120,7 @@ export default function ArbitraryCognition() {
                     toaster, but this internal experience was not induced by the genuine article. Each step in the long
                     chain of activations behaved approximately correctly, but through exploiting some latent pattern of
                     these activations, an illogical output was produced. At some point, one of the "Certificates of
-                    Sale" between the model's neurons was a forgery.
+                    Sale" between the model's layers was a forgery.
                 </p>
                 <p>
                     Stepping back, what makes this particular attack notable with respect to others, such as training
@@ -171,14 +172,14 @@ export default function ArbitraryCognition() {
                         </Link>
                         .
                     </Footnote>{" "}
-                    as a proxy for choosing the correct label for an image, with VGGNet16's parameters serving as Y (the
-                    attempt at achieving the objective), and the correct label as X (the true objective). There is no
-                    guarantee that the trained state of the parameters would always yield "banana" when presented with a
-                    picture of a banana; they just happen to do so for an acceptable portion of the evaluation samples.
-                    The image patch exploits the state of the model's parameters to yield "toaster" instead. Note that
-                    the parameters were never changed, nor was the computer's ability to successfully evaluate the input
-                    conditional on those parameters. In the exact same manner as a more traditional assembly example, a
-                    working program was induced into an unexpected state without modification.
+                    as a proxy for choosing the correct label for an image. Here, VGGNet16's parameters serve as Y (the
+                    attempt at achieving the objective), and the correct label serves as X (the true objective). There
+                    is no guarantee that the trained state of the parameters would always yield "banana" when presented
+                    with a picture of a banana; they just happen to do so for an acceptable portion of the evaluation
+                    samples. The image patch exploits the state of the model's parameters to yield "toaster" instead.
+                    Note that the parameters were never changed, nor was the computer's ability to successfully evaluate
+                    the input conditional on those parameters. In the exact same manner as a more traditional assembly
+                    example, a working program was induced into an unexpected state without modification.
                 </p>
                 <p>
                     Arbitrary code execution is commonly thought of as only present in traditional, register-based
@@ -214,23 +215,27 @@ export default function ArbitraryCognition() {
                     itself unsurprising to you as well.
                 </p>
                 <p>
-                    To better understand why, consider a similar setup which is concerned with a different kind of
-                    low-level exploitation. Would it be reasonable to suggest that the human brain is vulnerable to
-                    similar attacks? We can readily conceptualize more "high-level" social or psychological attacks such
+                    To better understand their initial reaction, let us ask another question, highly theoretical to us,
+                    which is concerned with a different kind of low-level exploitation. Would it be reasonable to
+                    suggest that the human brain is vulnerable to low-level attacks, just as computers are? When
+                    considering this, we may initially conceptualize "high-level" social or psychological attacks, such
                     as interpersonal manipulation or desensitization to some specific situations. These are, however,
-                    very blunt instruments that may or may not work as the attacker intends, or may not work at all.
-                    Instead, consider something much lower in level, something that directly exploits the complex
-                    patterns in how our neurons activate. This prospect seems outright absurd. Why, though, does this
-                    seem so outlandish? Just because we have yet to see an example does not mean it is impossible. One
-                    motivation for our apprehension to this concept could be that we simply have no reason to believe
-                    that it <i>is</i> possible. The sheer intractability of the problem seems too great to overcome; we
-                    do not know how our own brains work, much less how to exploit those inner workings. Computer
-                    hacking, by contrast, is much easier to conceptualize. We know <i>exactly</i> how computers work. We
-                    designed computers specifically to work in this deterministic and understandable manner. This is why
-                    our 1965 programmer was so un-phased, even if they were never shown direct evidence proving the
-                    possibility of hacking. The question of knowing whether low-level exploits are possible in any
-                    computing device, even a biological one, is really just a question of whether we know what laws and
-                    patterns govern that system on a base level.
+                    very blunt instruments that may or may not work as the attacker intends, or may not work at all. To
+                    better engage with this question, perhaps we should consider something much lower in level, an
+                    attack which directly exploits the complex patterns in how our neurons activate.
+                </p>
+                <p>
+                    On its surface, this prospect may seem outright absurd. But why? Why does this seem so outlandish?
+                    Just because we have yet to see an example does not mean it is impossible. One motivation for our
+                    apprehension to this concept could be that we simply have no reason to believe that it <i>is</i>{" "}
+                    possible. The sheer intractability of the problem seems too great to overcome; we do not know how
+                    our own brains work, much less how to exploit those inner workings. Computer hacking, by contrast,
+                    is much easier to conceptualize. We know <i>exactly</i> how computers work. We designed computers
+                    specifically to work in this deterministic and understandable manner. This is why our 1965
+                    programmer was so un-phased, even if they were never shown direct evidence proving the possibility
+                    of hacking. The question of knowing whether low-level exploits are possible in any computing device,
+                    even a biological one, is really just a question of whether we know what laws and patterns govern
+                    that system on a base level.
                 </p>
                 <p>
                     Modern, general purpose, classical computers nearly universally rely upon the Von Neumann
@@ -246,7 +251,7 @@ export default function ArbitraryCognition() {
                             The MANIAC
                         </Link>{" "}
                         for some more detailed commentary.
-                    </Footnote>
+                    </Footnote>{" "}
                     architecture. In this schema, computers are neatly split into a processor, a memory unit, and I/O
                     devices. Generally, the processor contains the logic on how to interpret instructions, the memory
                     contains which instruction to execute, and the I/O devices allow humans or other computers to
@@ -281,20 +286,21 @@ export default function ArbitraryCognition() {
                 </p>
                 <WritingSection level={2}>A Trivial Vulnerability</WritingSection>
                 <p>
-                    Let's first consider a toy example, then work up from there. Most systems have a special register
-                    called the "program counter". This register, like any other, contains a number: the memory address
-                    at which the CPU will look for its next instruction. This counter increments as the program executes
-                    with special control flow instruction moving it in the case of loops or procedure calls. Whatever
-                    (or whoever) controls the value stored within the program counter fully controls which code the
-                    program will execute next. Upon launch, the program will ask the user for a secret password. It will
-                    then check if the password is correct and reveal some hidden information if so. In the interest of
-                    space efficiency, the original programmer has laid out memory in a condensed fashion with the space
-                    used for storing the user's password attempt placed just before the procedure for checking the
-                    password. In MIPS, this would look like the following:
+                    To set up our exploration into cognitive exploitation, let us first consider a toy example, then
+                    work up from there. Most systems have a special register called the "program counter". This
+                    register, like any other, contains a number: the memory address at which the CPU will look for its
+                    next instruction. This counter increments as the program executes, with special control flow
+                    instructions moving it in the case of loops or procedure calls. Whatever (or whoever) controls the
+                    value stored within the program counter fully controls which code the program will execute next.
+                    Upon launch, this example program will ask the user for a secret password. It will then check if the
+                    password is correct and reveal some hidden information if so. In the interest of space efficiency,
+                    suppose that the original programmer has laid out memory in a condensed fashion, with the space used
+                    for storing the user's password input placed just before the procedure for checking the password. In
+                    MIPS, this would look like the following:
                 </p>
                 <CodeBlock language="mips">
                     {`main:
-    la $a0, input       # Request that the data be placed in input
+    la $a0, input       # Request that the data be placed at the address labeled "input"
     jal read_input      # Read the user input until return is pressed
 
     jal password_check  # Check that the user-given password matches the secret password
@@ -323,11 +329,11 @@ reveal_secret:          # Reveal the secret
                     programmer's instructions to the letter, not to their spirit (recall the XY problem from earlier).
                     The input procedure will continue to read in characters until the return key is struck. If more than
                     four characters are stored, data will spill over into the next word, the next instruction. In this
-                    case, this is the first instruction in the
-                    <code>password_check</code> procedure. Suppose that the instructions which compose this procedure
-                    begin in memory at address <i>0x00400044</i> and the <code>reveal_secret</code> procedure lies at{" "}
-                    <i>0x00400064</i>. Initially, <code>password_check</code>'s address would store <i>0x3c010040</i>,
-                    corresponding to the instruction <code>la $a0, password</code>
+                    case, this is the first instruction in the <code>password_check</code> procedure. Suppose that the
+                    instructions which compose this procedure begin in memory at address <i>0x00400044</i> and the{" "}
+                    <code>reveal_secret</code> procedure lies at <i>0x00400064</i>. Initially,{" "}
+                    <code>password_check</code>'s address would store <i>0x3c010040</i>, corresponding to the
+                    instruction <code>la $a0, password</code>
                     <Footnote>
                         Technically, MIPS would decode this to be two instructions since <i>la</i> is a
                         pseudo-instruction and not directly present in the MIPS instruction set.
@@ -402,9 +408,9 @@ reveal_secret:          # Reveal the secret
                     stop, memory is manipulated and the program counter is maneuvered into the position that is required
                     at the end of the attack. These individual blocks of hijacked code are referred to as "gadgets" as
                     they are only used as small utilities in service of the larger attack. When done right, the state of
-                    a program can be manipulated arbitrarily without triggering any execution violations. Similarly to
-                    buffer overflows, ASLR and stack canaries offer a defense against this attack, but are not always
-                    available in all programs or systems.
+                    a program can be manipulated arbitrarily without triggering any execution violations. Some
+                    vulnerabilities, however, do not merely emerge from mistakes in software logic. The following
+                    penetrate much deeper, emerging from fatal flaws within the computational substrate itself.
                 </p>
                 <FigureImage src={"/media/image/pages/writings/on-arbitrary-cognitive-execution/ram.webp"}>
                     A diagram of RAM cells and access lines (
@@ -417,9 +423,7 @@ reveal_secret:          # Reveal the secret
                     )
                 </FigureImage>
                 <p>
-                    Some vulnerabilities, however, do not merely emerge from mistakes in software logic. The following
-                    penetrate much deeper, emerging from fatal flaws within the computational substrate itself. Starting
-                    in 2012, Intel began quietly filing a series of patents
+                    Starting in 2012, Intel began quietly filing a series of patents
                     <Footnote>
                         <Link
                             href={"https://patents.google.com/patent/US20140089576A1"}
@@ -445,8 +449,8 @@ reveal_secret:          # Reveal the secret
                     </Footnote>{" "}
                     describing mitigations for access-induced DRAM vulnerabilities, with several mentioning the words
                     "row hammer". Two years elapse as the patents are reviewed and knowledge of this potential
-                    vulnerability evaded public attention. In 2014, as these patents awaited quiet review in the U.S
-                    patent office, researchers at Carnegie-Mellon University and Intel published a paper
+                    vulnerability evaded public attention. In 2014, as these patents awaited review by the U.S patent
+                    office, researchers at Carnegie-Mellon University and Intel published a paper
                     <Footnote>
                         <Link
                             href={"https://users.ece.cmu.edu/~yoonguk/papers/kim-isca14.pdf"}
@@ -458,12 +462,12 @@ reveal_secret:          # Reveal the secret
                     </Footnote>{" "}
                     which would catch the collective attention of security researchers across the world. In a laboratory
                     setting, the CMU and Intel researchers were able to reproduce the vulnerability with alarming
-                    consistency on their test systems. Understanding what they found requires understanding how DRAM
-                    functions.
+                    consistency on their test systems. Understanding what they found, however, first requires an
+                    understanding of how DRAM functions.
                 </p>
                 <p>
-                    The RAM in DRAM means "random access memory", any location in memory can be accessed at any time by
-                    the CPU arbitrarily in constant time. Physically, the memory cells in RAM are laid out in a grid.
+                    The "RAM" in DRAM means "random access memory", any location in memory can be accessed at any time
+                    by the CPU arbitrarily in constant time. Physically, the memory cells in RAM are laid out in a grid.
                     These cells consist of a capacitor which stores a single bit of information based on the it voltage
                     stores. When the CPU requests a specific memory address, the bits of the address are decoded into
                     the addresses for the row and column for that memory cell. The row address is used to activate the
@@ -476,7 +480,7 @@ reveal_secret:          # Reveal the secret
                     At these distances, different rows begin to become electromagnetically coupled to their neighbors.
                     When a row word line jumps in voltage during access, it exerts a tiny influence on the voltages of
                     cells in nearby rows. This is what the researchers exploited. They discovered that repeatedly and
-                    rapidly toggling the word line, the capacitors in some nearby cells begin to leak charge at a much
+                    rapidly toggling the word line, the capacitors in some nearby cells began to leak charge at a much
                     faster rate. This rate is so fast, in fact, that the cells are emptied of their charge before the
                     next charge refresh.{" "}
                     <i>
@@ -499,21 +503,21 @@ reveal_secret:          # Reveal the secret
                     independent hardware. Instead of executing all of the stages for one instruction before moving on to
                     the next, the stages of different instructions can be interleaved to make constant use of all the
                     instruction hardware. As one instruction is being fetched, the one after is being decoded, and yet
-                    others are being executed or written back. Additionally, these instructions can be executed
+                    others are being executed or written back. Additionally, these instructions can be executed{" "}
                     <i>out-of-order</i>. If one instruction is waiting on another, the CPU will waste time waiting for
                     this dependency to resolve. With out-of-order execution, the CPU executes the next instructions
                     immediately as soon as all inputs are met, allowing instructions with dependencies to wait in the
                     background. However, what happens when the CPU does not know what instruction comes next in this
                     pipeline? This scenario commonly happens on conditional branch boundaries; the next instruction
                     depends on the branch result. This is inefficient because it means some pipeline stages will go
-                    unused while the branch is resolving. There is a solution to this too: the CPU can <i>speculate</i>
+                    unused while the branch is resolving. There is a solution to this too: the CPU can <i>speculate</i>{" "}
                     on which branch the conditional will take. If it predicts correctly, it saves time; if incorrect, it
                     rolls back the result and begins to process the correct branch path. But, how does the CPU know
                     which branch to pick? As code executes any given branch, the CPU tracks which branch result is
                     taken, training it to predict the most commonly taken branch. For example, in a very long loop, the
                     branch out of the loop will only be taken once and will therefore not be predicted by the CPU. The
-                    exploitation of these two CPU optimizations leads to the vulnerabilities those researchers
-                    discovered in 2017.
+                    exploitation of these two CPU optimizations, instruction pipelining and speculative execution, leads
+                    to the vulnerabilities those researchers discovered in 2017.
                 </p>
                 <p>
                     The first, and simplest, of these vulnerabilities is <i>Meltdown</i>
@@ -537,6 +541,9 @@ void meltdown_step(unsigned char *kernel_data) {
     // Instructions to fetch the page associated with the secret byte
     // are already executing before fault finishes processing
     volatile unsigned char *addr = &probe_array[secret * page_size];
+    
+    // Catch interrupt and continue on later
+    
     // Force the CPU to load and cache the probe_array page 
     // corresponding to the secret byte
     unsigned char dummy = *addr;
@@ -565,14 +572,14 @@ void meltdown_step(unsigned char *kernel_data) {
                     The other class of vulnerability the researchers discovered exploited both the speculative execution
                     and out-of-order execution optimizations of targeted CPUs. This attack was much more difficult to
                     exploit than Meltdown, but also much more general, working on a wide variety of CPUs. Recall that
-                    the CPUs branch prediction algorithm is "trained" based on how branches are taken in code. This
+                    the CPU's branch prediction algorithm is "trained" based on how branches are taken in code. This
                     implies that the original programmer is in control over which branch the CPU takes. If the
                     programmer was malicious, they could design a program to force the CPU to predict whichever branch
                     they want. Similarly to Meltdown, when the CPU predicts incorrectly and needs to roll back, remnants
-                    of the erroneous instruction are left in CPU cache lines. These cache lines act as a side-channel
-                    for an attack. Taking inspiration from return oriented programming, suitable <i>gadgets</i> from
-                    within the running program can then be used to index into memory arbitrarily from some base offset.
-                    The resulting vulnerability was named <i>Spectre</i>
+                    of the erroneous instruction are left in CPU's instruction pipeline cache lines. These cache lines
+                    act as a side-channel for an attack. Taking inspiration from return oriented programming, suitable{" "}
+                    <i>gadgets</i> from within the running program can then be used to index into memory arbitrarily
+                    from some base offset. The resulting vulnerability was named <i>Spectre</i>
                     <Footnote>
                         <Link href={"https://arxiv.org/pdf/1801.01203"}>
                             Spectre Attacks: Exploiting Speculative Execution
@@ -623,8 +630,9 @@ void victim_function(size_t x) {
                     exploited to yield information about the system to an attacker. However, unlike some of the other
                     attacks we have seen, this does not allow for arbitrary code execution, but instead arbitrary memory
                     read. Combined, these two types of attack allow for full knowledge of a program's state and full
-                    control over a program's outcome. Importantly, these attacks will persist unless fundamental changes
-                    are made to the target program's logic or the hardware configuration of the system it is running on.
+                    control over a program's outcome. Importantly, the opportunities for exploiting these
+                    vulnerabilities will persist unless fundamental changes are made to the target program's logic or
+                    the hardware configuration of the system it is running on.
                 </p>
                 <WritingSection>Exploiting Execution in Games</WritingSection>
                 <p>
@@ -644,7 +652,7 @@ void victim_function(size_t x) {
                     rules. While achieving arbitrary code execution in an operating system's kernel is far more severe
                     from a security standpoint, such an attack may not represent much of a change from a human
                     perspective. Visually, at least, an attacker's payload does not fundamentally change the rules of
-                    how we humans expect an operating system to function. A machine compromising a level 2 hypervisor
+                    how we humans expect an operating system to function. An attack compromising a level 2 hypervisor
                     running client code or damaging OS protected hardware is highly impactful from a technical or
                     security standpoint, but the general syscalls and memory management largely obey the same set of
                     behaviors. A more human-intuitive change would be, for example, rewriting a Windows Vista system to
@@ -657,15 +665,17 @@ void victim_function(size_t x) {
                 <p>
                     As noted a moment ago, all games are designed to create a fiction defined by strict rules,
                     objectives, and mechanics. These fictions could be as simple as immersing the player in a virtual
-                    game of chess or as complex as an open-world role playing game. The biggest difference between a
-                    game behaving unexpectedly and general software doing the same is this sense of immersion that the
-                    player feels. When a word processor or web browser crashes, it is an unexpected inconvenience to the
-                    user. When a game crashes, the player may experience a strong break in their immersion or even an
-                    increase in immersion when the crash artistically serves to accent a story. <i>Undertale</i>,{" "}
-                    <i>Anatomy</i>, and <i>Five Nights at Freddy's</i> are good examples of this latter category,
-                    deliberately using crashes as an artistic choice. When the rules of a game are broken, the resulting
-                    changes are much more impactful from a subjective point of view than if the same happens to more
-                    "mundane" software.
+                    game of chess or as complex as a massive, open-world, role-playing game. The biggest difference
+                    between a game behaving unexpectedly and general software doing the same is this sense of immersion
+                    that the player feels. When a word processor or web browser crashes, it is an unexpected
+                    inconvenience to the user. When a game crashes, the player may experience a strong break in their
+                    immersion (or even an increase in immersion when the crash artistically serves to accent a story
+                    <Footnote>
+                        <i>Undertale</i>, <i>Anatomy</i>, and <i>Five Nights at Freddy's</i> are good examples of this
+                        latter category, deliberately using crashes as an artistic choice.
+                    </Footnote>
+                    ). When the rules of a game are broken, the resulting changes are much more impactful from a
+                    subjective point of view than if the same happens to more "mundane" software.
                 </p>
                 <WritingSection level={2}>How to Rewrite a Reality</WritingSection>
                 <p>
@@ -705,13 +715,13 @@ void victim_function(size_t x) {
                     the delivery of a robust game.
                 </p>
                 <p>
-                    When the shortcuts and programmer assumptions bakes into game programs are exploited, the effects of
+                    When the shortcuts and programmer assumptions baked into game programs are exploited, the effects of
                     severe vulnerabilities present in game worlds can be dramatically apparent. That buffer overflow in
                     Super Mario Bros. can indeed serve as a component in an arbitrary code execution exploit. Similar
                     vulnerabilities exist in other games of the time, such as The Legend of Zelda or Castlevania. The
-                    result of a collaboration between multiple retro game exploiters, the following video by{" "}
-                    <i>Kosmic</i> showcases the extent to which game worlds can be completely rewritten through the
-                    rewriting of their internal patterns of execution:{" "}
+                    following video by <i>Kosmic</i>, itself a collaboration between multiple retro game exploiters,
+                    showcases the extent to which game worlds can be completely rewritten through the modification of
+                    their internal patterns of execution:{" "}
                     <Link
                         href={"https://www.youtube.com/watch?v=Le3g9V-BJIA"}
                         target="_blank"
@@ -736,24 +746,27 @@ void victim_function(size_t x) {
                     familiar reality of one game give way to another. The original context that the player has become
                     accustomed to is annihilated and replaced with something alien. As a consequence, the player's
                     mental model of Mario's world, honed through all of their time spent within it, is invalidated by an
-                    external force acting through the game system itself. The structure of this dissolution of reality
-                    is not so different from the narrative structures found within some of the most disturbing works of
-                    cognitive horror. The main difference being that these works imagine such a dissolution happening to
-                    the mind: a coherent, internal world, built up over a lifetime, rewritten from the outside through
-                    nothing more than a carefully crafted sequence of inputs.
+                    external force acting through the game system itself.
+                </p>
+                <p>
+                    The structure of this dissolution of reality is not so different from the narrative structures found
+                    within some of the most disturbing works of cognitive horror. The main difference being that these
+                    works imagine such a dissolution happening to the mind: a coherent, internal world, built up over a
+                    lifetime, rewritten from the outside through nothing more than a carefully crafted sequence of
+                    inputs.
                 </p>
                 <WritingSection>Influencing Cognition in Fiction</WritingSection>
                 <p>
                     For many of us, the capabilities of our minds are tied inexorably to our degree of identity. The
-                    degradation of these capabilities is tantamount to the destruction of our senses of self. In
-                    fiction, we are often drawn to the ideas that terrify us the most. Authors are well aware of this
-                    sentiment and regularly leverage the allure of insanity to create compelling narrative devices.
-                    Especially in the genres of cosmic horror and science fiction, losing one's mind is a common trope.
-                    The sources of these cognitive influences are often magical and fantastical in nature. An ineffable
-                    eldritch god or a mind-wiping pen do not require technical explanations or details to keep audiences
-                    engaged with the story. These devices do not break the rules of their story's universe; they do not
-                    fundamentally break the suspension of belief required for engaging with the story to begin with. Not
-                    all mind-altering plots fit into this pattern, however.
+                    degradation of these capabilities is tantamount to the destruction of our sense of self. In fiction,
+                    we are often drawn to the ideas that terrify us the most. Authors are well aware of this sentiment
+                    and regularly leverage the allure of insanity to create compelling narrative devices. Especially in
+                    the genres of cosmic horror and science fiction, losing one's mind is a common trope. The sources of
+                    these cognitive influences are often magical and fantastical in nature. An ineffable eldritch god or
+                    a mind-wiping pen do not require technical explanations or details to keep audiences engaged with
+                    the story. These devices do not break the rules of their story's universe; they do not fundamentally
+                    break the suspension of belief required for engaging with the story to begin with. Not all
+                    mind-altering plots fit into this pattern, however.
                 </p>
                 <WritingSection level={2}>Cognitohazards</WritingSection>
                 <p>
@@ -766,51 +779,53 @@ void victim_function(size_t x) {
                     and compelling that it causes all who read it to believe they themselves are its actors, a book that
                     consumes the reader so thoroughly that they can no longer fathom their lives without it; a sound,
                     sight, or idea that was designed to arbitrarily influence the cognition of its target. In the same
-                    manner with which cleverly designed inputs to a program can arbitrarily influence its execution, a
-                    cleverly designed stimuli to a mind can arbitrarily influence its cognition.
+                    manner with which cleverly designed inputs to a program can arbitrarily influence its{" "}
+                    <i>execution</i>, a cleverly designed stimuli to a mind can arbitrarily influence its{" "}
+                    <i>cognition</i>.
                 </p>
                 <p>
                     <i>The King in Yellow</i> is a fictional play no different from any other, at least for its first
                     act. In the second act, the words of its script become so compelling, so beautiful, so terrifying
                     that all who read it inevitably find themselves gazing across the black waters of the Lake of Hali,
                     in Carcosa along with the characters of the cursed play. In Robert W. Chambers' book by the same
-                    name in our reality, this book is not described as overtly magical. To the contrary, despite its
-                    spellbinding influence, the character of the book regularly acknowledges that it was written by a
-                    non-magical author. Merely a human who just so happened to string together a sequence of words which
-                    exploited some fatal flaw in the human brain. This is in stark contrast with a similar
-                    insanity-inducing book: Lovecraft's <i>Necronomicon</i>. This book is inseparable from the magical
-                    Old Ones which are referenced throughout the Cthulhu mythos. Instead of the book's powerful
-                    influence being derived from its contents alone, this ancient tome is only special due to its ties
-                    to unknowable eldritch entities. The fictional author of <i>The King in Yellow</i> had no such ties
-                    (at least not explicitly). Instead, the play is so dangerous because it is able to embed a specific
-                    pattern of ideas and beliefs into its reader during its first act. During act two, the "payload",
-                    for lack of a better word, is triggered. This is the point of no return for readers as they find
-                    their conscious and unconscious thoughts subsumed by the play, its setting, and its characters. Of
-                    particular interest is the mechanism of delivery for the play, regular words on regular sheets of
-                    paper. No psychological preparation is needed for the play to affect a reader, its influence lies
-                    entirely in the patterns of information that it imparts upon them. Despite this anthology being
-                    first published in 1895, the mechanism with which the play exploits the minds of its readers is
-                    shockingly similar to the mechanisms of modern arbitrary code execution: a sequence of deliberately
-                    crafted inputs to coerce the target system into a specific state, then the execution of some payload
-                    which exploits some subtlety in the patterns embedded in that system.
+                    name, the eponymous play is not described as overtly magical. To the contrary, despite its
+                    spellbinding influence, the characters within the book regularly acknowledge that the play was
+                    written by a non-magical author. The fictional playwright was merely a human who just so happened to
+                    string together a sequence of words which exploited some fatal flaw in the human brain. This is in
+                    stark contrast with a similar insanity-inducing book: Lovecraft's <i>Necronomicon</i>. This book is
+                    inseparable from the magical Old Ones which are referenced throughout the Cthulhu mythos. Instead of
+                    the book's powerful influence being derived from its contents alone, this ancient tome is only
+                    special due to its ties to unknowable eldritch entities. The fictional author of{" "}
+                    <i>The King in Yellow</i> had no such ties (at least not explicitly). Instead, the play is so
+                    dangerous because it is able to embed a specific pattern of ideas and beliefs into its reader during
+                    its first act. During act two, the "payload", for lack of a better word, is triggered. This is the
+                    point of no return for readers as they find their conscious and unconscious thoughts subsumed by the
+                    play, its setting, and its characters. Of particular interest is the mechanism of delivery for the
+                    play, regular words on regular sheets of paper. No psychological preparation is needed for the play
+                    to affect a reader, its influence lies entirely in the patterns of information that it imparts upon
+                    them. Despite this anthology being first published in 1895, the mechanism with which the play
+                    exploits the minds of its readers is shockingly similar to the mechanisms of modern arbitrary code
+                    execution: a sequence of deliberately crafted inputs to coerce the target system into a specific
+                    state, then the execution of some payload which exploits some subtlety in the newly embedded
+                    patterns of that system.
                 </p>
                 <p>
                     At the end of Ash Tree Lane, there is a {house}; a {house} that is bigger on the inside than on the
-                    outside; a {house} that does not exist; a {house} that you cannot escape. Mark Z. Danielewski's
+                    outside; a {house} that does not exist; a {house} that you cannot escape. Mark Z. Danielewski's{" "}
                     {House} of Leaves follows Johnny Truant after he discovers an essay which analyzes the nonexistent
                     documentary of a {house} that is not real. Starting off as nothing more than a curiosity, Johnny
                     becomes engrossed in the essay the more he reads, becoming more and more detached from reality. The
-                    author of the text, a blind man known as Zampanò, himself became consumed by his work, eventually
-                    dying of unknown causes and leaving Johnny to find his collection of scattered notes and
+                    author of the text is a blind man known as Zampanò, himself became consumed by his work. Eventually
+                    he dies of unknown causes and leaves Johnny to find his collection of scattered notes and
                     manuscripts. As Johnny reads what Zampanò wrote, the {house} progressively leaks into Johnny's
                     reality. By merely reading the pattern of information that is contained within the manuscript,
                     Johnny's reality becomes meshed with Zampanò's and Will Navidson's, the subject of the{" "}
                     <i>Navidson Record</i> documentary. On its surface, the effects of Zampanò's work appear to be
-                    impacting reality, as evidenced by deep gouges in Zampanò's apartment floor and scratches appearing
-                    on Johnny himself. However, the entire book is presented as a compilation of Johnny's own notes on
-                    Zampanò's work. All of his supplementary footnotes are from Johnny's perspective, rather than an
-                    objective representation of reality. The {house} is not corrupting Johnny's reality, it is
-                    corrupting his <i>perception</i> of reality.
+                    impacting Johnny's reality, as evidenced by deep gouges in Zampanò's apartment floor and scratches
+                    appearing on Johnny himself. However, the entire book is presented as a compilation of Johnny's own
+                    notes on Zampanò's work. All of his supplementary footnotes are from Johnny's perspective, rather
+                    than an objective representation of reality. Instead, the {house} is not corrupting Johnny's
+                    reality, it is corrupting his <i>perception</i> of reality.
                 </p>
                 <p>
                     Just as readers of <i>The King in Yellow</i> imagined themselves embedded within Carcosa, so too
@@ -822,32 +837,36 @@ void victim_function(size_t x) {
                     Johnny's decline in mental state, his apartment begins to look substantially similar as he fights to
                     keep the outside world from seeping into his reality. Without any external driver, the patterns of
                     words contained within Zampanò's notes influence the cognition of its readers to behave in similar
-                    ways. Johnny's behavior as he is continually exposed to Zampanò's writings reveals another
-                    interesting property it possesses: the manner in which it can influence someone's cognition is{" "}
-                    <i>general</i>. Johnny and Zampanò did not have any close relationship or even behavioral patterns
-                    before Johnny begins his study of Will Navidson and his {house}. Despite this, their behaviors begin
-                    to slowly converge by the sole virtue of the specific configuration of the text.
+                    ways. Johnny's changes in behavior, as he is continually exposed to Zampanò's writings, reveals
+                    another interesting property that the book possesses: the manner in which it can influence someone's
+                    cognition is <i>general</i>. Johnny and Zampanò did not have any close relationship or even common
+                    behavioral patterns before Johnny begins his study of Will Navidson and his {house}. Despite this,
+                    their behaviors begin to slowly converge by the sole virtue of the specific configuration of the
+                    text.
                 </p>
                 <p>
                     While intriguing in a conceptual sense, purely textual examples of arbitrary cognitive execution
                     seem fairly unrealistic. While the written word has the powerful ability of persuasive influence,
                     this is far from truly arbitrary in reality. The meaning or message of a piece of text may have
-                    greatly different impacts on different people. Consider a text which argues that an approach
-                    formulated only with observations and statistics is ideal for addressing social issues. This text
-                    may appear quite compelling and rational to a utilitarian, but incomplete and naive to a humanist.
+                    greatly different impacts on different people. Consider a text which argues that the ideal way to
+                    develop solutions for societal problems is to only consider objective observations and statistical
+                    research. This text may appear quite compelling and rational to a utilitarian, but incomplete and
+                    naive to a humanist.
+                </p>
+                <p>
                     Communicating a pattern of ideas to someone through text inherently means condensing those
-                    information rich and complex ideas into information sparse text, leaving the reader to restore that
-                    richness by filling in the information that the text lacks. Again consider the utilitarian text from
-                    a moment ago. To formulate the text, the author drew upon their personal knowledge, information rich
-                    life experiences, and reasoning in order to craft a compelling argument. The highly expressive
-                    internal representation of the author's argument then needed to be compressed down into text for
-                    distribution. Text cannot fully and concisely capture the full state of the author's mind, so much
-                    of the richness in the author's internal argument is lost. Upon someone reading the text, they
-                    attempt to restore the argument to full fidelity by supplementing the raw text with their own
-                    knowledge, experiences, and reasoning. The supplemental information of the reader, however, is
-                    different from that of the author, leading to the text having a different impact on the reader as it
-                    would on the author. In order to more realistically and losslessly convey an author's (or
-                    attacker's) message, we need to consider mediums of transmission beyond merely textual.
+                    information-rich and complex ideas into information-sparse text. This leaves the reader to restore
+                    that richness in their own mind by filling in the information that the text lacks. Again consider
+                    the utilitarian text from a moment ago. To formulate the text, the author drew upon their personal
+                    knowledge, information-rich life experiences, and reasoning in order to craft a compelling argument.
+                    The highly expressive internal representation of the author's argument then needed to be compressed
+                    down into text for distribution. Text cannot fully and concisely capture the full state of the
+                    author's mind, so much of the richness in the author's internal argument is lost. Upon someone
+                    reading the text, they attempt to restore the argument to full fidelity by supplementing the raw
+                    text with their own knowledge, experiences, and reasoning. The supplemental information of the
+                    reader, however, is different from that of the author, leading to the text having a different impact
+                    on the reader as it would on the author. In order to more realistically and losslessly convey an
+                    author's (or attacker's) message, we need to consider mediums of transmission beyond merely textual.
                 </p>
                 <FigureImage src={"/media/image/pages/writings/on-arbitrary-cognitive-execution/plaything.png"}>
                     The Circular Glyph from <i>Black Mirror</i>'s <i>Plaything</i>.
@@ -855,7 +874,7 @@ void victim_function(size_t x) {
                 <p>
                     Season 7, episode 4 of the sci-fi horror series <i>Black Mirror</i> takes this approach when
                     considering a mechanism for cognitive influence. The episode, titled <i>Plaything</i> is centered on
-                    Cameron Walker, a former video game journalist in the present year 2034 as he recounts his 1990s
+                    Cameron Walker, a former video game journalist in the present year 2034, as he recounts his 1990s
                     journalistic work. After being assigned to review the life simulation game <i>Thronglets</i>, he
                     soon becomes obsessed with the ever-evolving creatures that it simulates. Over time, he begins to
                     believe that the creatures in the game are communicating with him. They tell him to collect
@@ -863,11 +882,14 @@ void victim_function(size_t x) {
                     which inhabit it grow in capability and intelligence thanks to these added computing resources.
                     Cameron continually grows his computer's collection of hardware for forty years until he is arrested
                     for shoplifting and on suspicion of a murder he committed shortly after receiving the game. For the
-                    purposes of our discussion, however, the majority of the episode is set dressing as the most
-                    substantive scene is the episode's very last. After confessing to his crimes in the interrogation
-                    room, he requests a pen and paper. Using these, he draws a specific circular glyph. Once finished,
-                    he holds it up to the room's security camera. Exploiting some vulnerability within the camera's
-                    image recognition software, Cameron's attack
+                    purposes of our discussion, however, the majority of the episode is set-dressing, as the most
+                    substantive scene is the episode's very last.
+                </p>
+                <p>
+                    After confessing to his crimes in the interrogation room, he requests a pen and paper. Using these,
+                    he draws a specific circular glyph. Once finished, he holds it up to the room's security camera.
+                    Exploiting some undescribed vulnerability within the camera's image recognition software, Cameron's
+                    attack
                     <Footnote>
                         I use the term "Cameron's attack" here instead of simply "Cameron" directly because he did not
                         design the attack himself. By this point in 2034, Cameron has allowed the <i>Thronglets</i> to
@@ -890,17 +912,19 @@ void victim_function(size_t x) {
                     their cognitive state. In contrast to text, the full spectrum of human audio input offers a much
                     more high fidelity medium of enabling an attack. The volume of the sound also allows it to overpower
                     all other auditory stimuli. Presumably, this reduction in noise, allows the brain to process the
-                    incoming inputs in the manner required for the attack to succeed. Of course, sounds can modify the
-                    behavior of people outside of a sci-fi setting. For example, a fire alarm modifies our behavior away
-                    from what we were doing previously and to moving towards the nearest exit. However, real-life sounds
-                    are limited in their ability to modify our behavior and in their sensitivity to context. To use the
-                    alarm example, it can really only influence a single behavior and even then in a very coarse manner:
-                    it cannot control someone's exact path or speed. Additionally, sounds are also context-sensitive:
-                    the administrator of a fire drill stays to complete the drill instead of exiting, even though they
-                    hear the exact same sound. The differentiator between the <i>Thronglets</i>' attack and a more
-                    mundane sound is that it is both general and context-free. General in the sense that it can
-                    completely overwrite a person's entire cognitive state and context-free as its effects are invariant
-                    across many different people
+                    incoming inputs in the manner required for the attack to succeed.
+                </p>
+                <p>
+                    Of course, sounds can modify the behavior of people outside of a sci-fi setting. For example, a fire
+                    alarm modifies our behavior away from what we were doing previously and to moving towards the
+                    nearest exit. However, real-life sounds are limited in their ability to modify our behavior and in
+                    their sensitivity to context. To use the alarm example, it can really only influence a single
+                    behavior and even then in a very coarse manner: it cannot control someone's exact path or speed.
+                    Additionally, sounds are also context-sensitive: the administrator of a fire drill stays to complete
+                    the drill instead of exiting, even though they hear the exact same sound. The differentiator between
+                    the <i>Thronglets</i>' attack and a more mundane sound is that it is both <i>general</i> and{" "}
+                    <i>context-free</i>. General in the sense that it can completely overwrite a person's entire
+                    cognitive state and context-free as its effects are invariant across many different people
                     <Footnote>
                         The "context" here being the natural cognitive states of affected people. Different people
                         inherently have different cognitive states due to their internal brain structures and life
@@ -925,13 +949,14 @@ void victim_function(size_t x) {
                         On a Unix system, this shell would also need to be running as a kernel-level process to have
                         access to certain protected system calls or system instructions.
                     </Footnote>
-                    . Why is this possible through this shell program when it is not through, for example, a
-                    word-processor? The answer lies in patterns of execution. When running the shell program, the system
-                    already has a pattern of instructions loaded into memory which is specifically designed to give the
-                    user low-level control over itself. When running a word-processor, the system's memory contains a
-                    different pattern of instructions which is not designed to enable low-level user control. The state
-                    of a system, rather than anything intrinsic to the system itself, makes it susceptible (or immune)
-                    to low-level control through certain patterns of input.
+                    . Why is this level of control possible through this shell program when it is not possible through a
+                    word-processor, for example? Both are simply programs running on the same system. The answer lies in
+                    patterns of execution. When running the shell program, the system already has a pattern of
+                    instructions loaded into memory which is specifically designed to give the user low-level control
+                    over itself. When running a word-processor, the system's memory contains a different pattern of
+                    instructions which is not designed to enable low-level user control. The state of a system, rather
+                    than anything intrinsic to the system itself, makes it susceptible (or immune) to low-level control
+                    through certain patterns of input.
                 </p>
                 <p>
                     In works of fiction, the human brain is assumed to function in a similar fashion. By default, the
@@ -965,16 +990,16 @@ void victim_function(size_t x) {
                         This is most notably explored by Richard Dawkins in his essay "Viruses of the Mind".
                     </Footnote>
                     . This idea is often taken to its logical extremes in fiction, such as in the collaborative works of
-                    the <i>SCP Foundation</i>. While in reality, memes alone can moderately and conditionally influence
-                    the patterns represented in an individual mind, in this fiction memes can generally and
-                    unconditionally modify the internal states of all those exposed to them. These fictional memes are
-                    able to exploit patterns in how the mind normally operates to overwrite those existing patterns
+                    the <i>SCP Foundation</i>. While in reality memes alone can moderately and conditionally influence
+                    the patterns represented in an individual mind, in the world of the Foundation memes can generally
+                    and unconditionally modify the internal states of all those exposed to them. These fictional memes
+                    are able to exploit patterns in how the mind normally operates to overwrite those existing patterns
                     arbitrarily. In <i>Introductory Antimemetics</i>
                     <Footnote>
-                        Later adapted into the novel <i> There Is No Antimemetics Division</i>.
+                        Later adapted into the novel <i>There Is No Antimemetics Division</i>.
                     </Footnote>
                     , a short story by qntm (Sam Hughes), a memetic virus is the driver of the main conflict. In this
-                    context, a memetic virus is an idea that can spread by someone merely becoming aware of its
+                    context, a memetic virus is an idea that can spread to someone merely by them becoming aware of its
                     existence. Spread can be direct, as through conversation with an "infected" host, or indirect, as
                     through a text describing the meme itself. In this story, the infectious idea refers to itself as
                     Alastair Grey. Grey is what is known as an <i>Antimemetic kill agent</i>, a meme which destroys
@@ -1005,7 +1030,7 @@ void victim_function(size_t x) {
                     an uncompromised system into executing and replicating patterns of malicious data, rather than the
                     patterns of data that it normally would. In fiction, we have also seen many examples of the brain
                     being exploited in a similar manner. Though, the reader is never given an exact schema for
-                    performing such exploits, the story merely conjectures that they may be possible. What if the brain
+                    performing such exploits; the story merely conjectures that they may be possible. What if the brain
                     really does harbor such hidden vulnerabilities? Now, our investigation turns to whether the human
                     brain may actually function similarly to a computing device which could be exploited in a manner
                     just as real as the vulnerabilities which we had examined earlier. This section will be dedicated to
@@ -1067,12 +1092,11 @@ void victim_function(size_t x) {
                         In a similar vein, the Soviet <i>Turnir</i> (Турнир) console, released in 1978, is another
                         example. Unlike contemporary home consoles like the Atari 2600 or the Magnavox Odyssey, which
                         could play a variety of games, the Turnir could only play one. Unlike the Atari's
-                        general-purpose MOS 6507,
-                        this console relied upon the AY-3-8500. This chip in particular was designed to play <i>PONG</i>{" "}
-                        and nothing else. Even though the Turnir technically came with six built-in games, all were just
-                        the same tennis game with themed overlays for hockey or squash. The Turnir is another example of
-                        a device which meets our requirements for a "computing device" while lacking many of the
-                        capabilities generally associated with computers more generally.
+                        general-purpose MOS 6507, this console relied upon the AY-3-8500. This chip in particular was
+                        designed to play <i>PONG</i> and nothing else. Even though the Turnir technically came with six
+                        built-in games, all were just the same tennis game with themed overlays for hockey or squash.
+                        The Turnir is another example of a device which meets our requirements for a "computing device"
+                        while lacking many of the capabilities generally associated with computers more generally.
                     </Footnote>
                     .
                 </p>
@@ -1094,7 +1118,7 @@ void victim_function(size_t x) {
                     order to accomplish some goal, a user must describe their goal in the terms of these limited
                     transformations, losing information in the process. If the device had limitless capabilities for
                     transformation, it could translate the input into the desired output in a single step. Therefore, a
-                    computing device cannot have perfect knowledge of a user's goals to begin with, any inputs it takes
+                    computing device cannot have perfect knowledge of a user's goals to begin with. Any inputs it takes
                     must pass through an internal state under only the assumption of integrity, and goals must suffer
                     some information loss as they are translated into transformations that the device interprets without
                     the user's internal context. These limits in information and capability greatly increase the
