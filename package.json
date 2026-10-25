@@ -27,7 +27,7 @@
         "latex.js": "^0.12.6",
         "next": "^16.1.4",
         "next-sitemap": "^4.2.3",
-        "prettier": "^3.5.3",
+        "prettier": "^3.9.10",
         "prop-types": "^15.8.1",
         "react": "^19.2.3",
         "react-dom": "^19.2.3",
