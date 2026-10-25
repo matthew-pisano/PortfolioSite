@@ -34,9 +34,67 @@ export default function Lectures() {
             <ScrollTile
                 tileInfo={
                     new TileInfo({
+                        title: <>Exploits and Vulnerabilities: Organizing the Defense of a Code Base</>,
+                        thumbnail: "/media/image/organizations/ibm.png",
+                        tags: [TileTag.MATH],
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/presentations/Exploits+and+Vulnerabilities.pdf"}>
+                                    Slides
+                                </TileLink>
+                            </>
+                        )
+                    })
+                }>
+                <p>
+                    This lecture is designed to inform developers working on C++ and Python projects about common means
+                    of exploitation and effective defense strategies. Here, I take a game theoretic approach by framing
+                    the exploitation and maintenance of software as a game of attack and defense. Both teams represent
+                    rational actors with opposing objectives. They leverage both public and private information as they
+                    attempt to gain a tactical advantage. The overall goal of this lecture is to inform the audience on
+                    the theory behind attack and defense, identify concrete examples of vulnerabilities, and motivate
+                    practical methods of defense.
+                </p>
+                <p>
+                    At the beginning of this lecture, I cover the motivations and strategies of the attack and defense
+                    actors. It is the role of defenders to predict where an attack will come and allocate resources
+                    appropriately. Attackers must then predict where defenders will allocate their resources and attack
+                    less defended areas. This dynamic contains an inherent asymmetry: the defenders must distribute
+                    resources (time, development, and research) to cover many possible attack vectors, while the
+                    attackers may concentrate their resources after identifying a weak point. Defenders must succeed
+                    every time, while the attackers only need to succeed once.
+                </p>
+                <p>
+                    Next, I cover one of the most common classes of vulnerabilities: memory vulnerabilities. These
+                    include basic buffer overflows, use after frees, and integer overflows. In a C++ code base, many of
+                    these can be mitigated by ensuring protective compiler flags are enabled. I also recommend the usage
+                    of several static analysis tools to catch what the compiler cannot. Shifting focus to Python, I then
+                    cover supply chain attacks. Many Python projects depend upon a complex web of dependencies, which
+                    are difficult to audit on one's own. I go over several ways in which supply chain vulnerabilities
+                    can be introduced and how package managers are working to mitigate them.
+                </p>
+                <p>
+                    Finally, this lecture examines how large language models are beginning to reshape the cybersecurity
+                    landscape, both on the attack and on the defense. Concerningly, while LLMs can lower the cost of an
+                    effective defense, they lower the cost of attempting an attack dramatically. It is the role of the
+                    defense to shrink this asymmetry between costs as much as possible through both model analysis and
+                    more traditional methods of defense.
+                </p>
+            </ScrollTile>
+
+            <ScrollTile
+                tileInfo={
+                    new TileInfo({
                         title: <>The Shape of Information: Information Theory and Uncertainty</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.MATH]
+                        tags: [TileTag.MATH],
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/presentations/Shape+of+Information.pdf"}>
+                                    Slides
+                                </TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -124,7 +182,14 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Indexing Infinity: Uncountability and Googology</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.MATH]
+                        tags: [TileTag.MATH],
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/presentations/Indexing+Infinity.pdf"}>
+                                    Slides
+                                </TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -294,7 +359,14 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Foundations of Computability: Incompleteness and Universality</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.MATH]
+                        tags: [TileTag.MATH],
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/presentations/Foundations+of+Computability.pdf"}>
+                                    Slides
+                                </TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
@@ -369,17 +441,39 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Foundations Lecture Series</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.AI, TileTag.ACCELERATOR]
+                        tags: [TileTag.AI, TileTag.ACCELERATOR, TileTag.MATH],
+                        links: (
+                            <>
+                                <TileLink
+                                    href={
+                                        "/media/documents/presentations/Mathematical+Foundations+of+Language Modeling.pdf"
+                                    }>
+                                    Lecture 1 Slides
+                                </TileLink>
+                                <TileLink href={"/media/documents/presentations/Thinking+Machines.pdf"}>
+                                    Lecture 2 Slides
+                                </TileLink>
+                                <TileLink
+                                    href={"/media/documents/presentations/Transformer+Models+From+the+Ground+Up.pdf"}>
+                                    Lecture 3 Slides
+                                </TileLink>
+                                <TileLink href={"/media/documents/presentations/From+PyTorch+to+Compilation.pdf"}>
+                                    Lecture 4 Slides
+                                </TileLink>
+                                <TileLink href={"/media/documents/presentations/Compilers+and+Compilation.pdf"}>
+                                    Lecture 5 Slides
+                                </TileLink>
+                            </>
+                        )
                     })
                 }>
                 <p>
-                    This is a series of five lectures designed to build up the foundations needed to understand
-                    transformers, PyTorch compilation, and its interation with accelerator devices. These lectures are
-                    given over the course of ten lecture sessions. Each lecture builds upon the skills of the last,
-                    starting from a sampling of mathematics and ending with an in-depth exploration of how AI models are
-                    compiled and run on real hardware. While the primary audience of these lectures is intended to be
-                    new hires, its progressive design allows even experienced engineers can begin with the first lecture
-                    that matches their own level of expertise.
+                    This is a series of six lectures designed to build up the foundations needed to understand
+                    transformers, PyTorch compilation, and their interation with accelerator devices. Each lecture
+                    builds upon the skills of the last, starting from a sampling of mathematics and ending with an
+                    in-depth exploration of how AI models are compiled and run on real hardware. While the primary
+                    audience of these lectures is intended to be new hires, its progressive design allows even
+                    experienced engineers can begin with the first lecture that matches their own level of expertise.
                 </p>
                 <p>
                     The first lecture, on the mathematical foundations of language modeling, covers probability, linear
@@ -410,18 +504,19 @@ export default function Lectures() {
                     cover the Fermi architecture, memory hierarchy, kernels, and execution/dispatch.
                 </p>
                 <p>
-                    The final lecture in this series concerns IBM's Spyre accelerator. Though it is perhaps the most
-                    technical lecture, I unfortunately cannot share many details due to its internal subject manner.
+                    The fifth lecture in this series focuses on compilers and the act of compilation. This talk coveres
+                    compilation more generally, not only concerning software, but also natural language model and
+                    machine learning model graphs. Shifting focus to more traditional compilers, I first cover compiler
+                    frontends, tokenization, parsing, and semantic analysis. Next, I speak on intermediate
+                    representations such as LLVM IR and MLIR. A section on compiler backends follows, covering final
+                    lowering to machine code, scheduling, linking, and loading. In addition to compiler software, I also
+                    go over common optimizations such as constant folding, loop optimization, and common subexpression
+                    elimination.
                 </p>
                 <p>
-                    A bonus lecture to this series, delivered after the main course, focused on compilers and the act of
-                    compilation. This talk covered compilation more generally, not only concerning software, but also
-                    natural language and machine learning model graphs. Shifting focus to more traditional compilers, I
-                    first covered compiler frontends, tokenization, parsing, and semantic analysis. Next, I spoke on
-                    intermediate representations such as LLVM IR and MLIR. A section on compiler backends followed,
-                    covering final lowering to machine code, scheduling, linking, and loading. In addition to compiler
-                    software, I also went over common optimizations such as constant folding, loop optimization, and
-                    common subexpression elimination.
+                    The final lecture in this series concerns IBM's Spyre accelerator and how all of the knowledge from
+                    the previous lectures in this series is used in its development. Though it is perhaps the most
+                    technical lecture, I unfortunately cannot share many details due to its internal subject manner.
                 </p>
             </ScrollTile>
 
