@@ -34,6 +34,47 @@ export default function Lectures() {
             <ScrollTile
                 tileInfo={
                     new TileInfo({
+                        title: <>AI: Past, Present, and Future</>,
+                        thumbnail: "/media/image/organizations/suny-ulster.png",
+                        tags: [TileTag.AI, TileTag.ACADEMIC, TileTag.COLLAB],
+                        links: (
+                            <>
+                                <TileLink href={"/media/documents/presentations/AI+-+Past%2C+Present+and+Future.pdf"}>
+                                    Slides
+                                </TileLink>
+                                <TileLink
+                                    href={
+                                        "https://drive.google.com/file/d/13vvUWjHXpgccFADqHpDnB1fpqBbXcgr_/view?usp=sharing"
+                                    }>
+                                    Recording
+                                </TileLink>
+                            </>
+                        )
+                    })
+                }>
+                <p>
+                    This lecture was the first in SUNY Ulster's <i>Mountain View</i> speaker series. I was invited to
+                    collaborate with two other faculty members to create this presentation. Our goal was to give
+                    faculty, students, and community members a sense of how AI had developed, where it stands today, and
+                    how it may develop into the future.
+                </p>
+                <p>
+                    My contributions focused on the "present" section of the talk. Many contemporary AI lectures act
+                    almost like catalogues of current model architectures and techniques. This works well for people who
+                    already understand the foundations, but can be overwhelming for those outside the field of AI. For
+                    my section, I wanted to step back and give a sense of where AI technology stands in broader strokes.
+                    My goal was to give a sense of how modern researchers view the field, what motivates them, and why
+                    they are currently focused on transformers. At the end of my section, I also touch on
+                    interpretability and alignment. I stress that the most successful AI architectures we have developed
+                    are also the ones most difficult to introspect. This has significant consequences for alignment and
+                    the responsible use of AI. Importantly, this is not only relevant for existential risks, but also
+                    for how our current "weak" models are being used.
+                </p>
+            </ScrollTile>
+
+            <ScrollTile
+                tileInfo={
+                    new TileInfo({
                         title: <>Exploits and Vulnerabilities: Organizing the Defense of a Code Base</>,
                         thumbnail: "/media/image/organizations/ibm.png",
                         tags: [TileTag.MATH],
