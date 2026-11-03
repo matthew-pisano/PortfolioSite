@@ -11,9 +11,6 @@ import { PageColor } from "@/lib/util/themes";
 import { genPageTitle } from "@/lib/util/utils";
 
 export default function Lectures() {
-    let deepRlLink =
-        "https://www.cell.com/neuron/fulltext/S0896-6273(20)30468-2?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0896627320304682%3Fshowall%3Dtrue";
-
     let pageInfo = new PageInfo(
         genPageTitle(__filename),
         "Lectures and Presentations",
@@ -573,40 +570,6 @@ export default function Lectures() {
             <ScrollTile
                 tileInfo={
                     new TileInfo({
-                        title: <>Transformer Models: Architectures and Use Cases</>,
-                        thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.AI],
-                        links: (
-                            <>
-                                <TileLink href={"/media/documents/presentations/IBM+Transformer+Models.pdf"}>
-                                    Slides
-                                </TileLink>
-                            </>
-                        ),
-                        anchor: "transformer-models"
-                    })
-                }>
-                <p>
-                    I created this lecture for a session of IBM's internal lecture series. For these sessions,
-                    knowledgeable members of an organization are invited to give a lecture on an area of their expertise
-                    to a technical audience that may not consist of domain experts. Given IBM's recent acceleration in
-                    the development of its AI technology, many members of my organization were developing along with
-                    models which they may not have understood on a fundamental level. The aim of this lecture was to
-                    provide a clearer picture of the inner-workings of the transformer architecture in a detailed, yet
-                    accessible manner.
-                </p>
-                <p>
-                    For the presentation slides, I included detailed diagrams, of my own design, for <i>BERT</i> and
-                    IBM's <i>Granite</i>, along with a step-by-step expansion on the attention mechanism itself. Most
-                    explanations of attention calculation, in my opinion, are either too technical or too simplified. To
-                    convey this process in a more representative manner, I presented the calculations as a short
-                    dialogue between several tokens within a sequence as their attention scores were updated over time.
-                </p>
-            </ScrollTile>
-
-            <ScrollTile
-                tileInfo={
-                    new TileInfo({
                         title: <>Computer Architecture and Organization Lecture Series</>,
                         thumbnail: "/media/image/organizations/suny-ulster.png",
                         tags: [TileTag.ACADEMIC, TileTag.ASSEMBLY],
@@ -669,75 +632,6 @@ export default function Lectures() {
                     The lecture I gave on this project served as both my Master's thesis defense and my presentation at
                     RPI's Graduate Research Symposium, into which my research was accepted. At the symposium, I was
                     invited to participate in both a seminar-style lecture and a poster presentation.
-                </p>
-            </ScrollTile>
-
-            <ScrollTile
-                tileInfo={
-                    new TileInfo({
-                        title: <>Bergeron: Towards Language Models with a Conscience</>,
-                        thumbnail: "/media/image/organizations/rpi.png",
-                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI, TileTag.ALIGNMENT],
-                        links: (
-                            <>
-                                <TileLink href={"/media/documents/presentations/Bergeron+Cog+Sci+Series.pdf"}>
-                                    Slides
-                                </TileLink>
-                                <TileLink href={"https://vimeo.com/showcase/10930583/video/916811537"}>
-                                    Recording
-                                </TileLink>
-                            </>
-                        ),
-                        anchor: "bergeron-original"
-                    })
-                }>
-                <p>
-                    This presentation was an earlier revision of my thesis research which I tailored to a technical
-                    audience that did not necessarily include experts in the field. It is distinct from my final
-                    revision as it concentrates less on the technical details of my research and more on the broader
-                    impacts that the implementation of my alignment architecture could have on the safety of model
-                    outputs. This was presented both as part of RPI's 2024 series of Cognitive Science lectures and as a
-                    guest lecture for both graduate and undergraduate students in RPI's{" "}
-                    <i>Topics in Cognitive Science</i> course.
-                </p>
-            </ScrollTile>
-
-            <ScrollTile
-                tileInfo={
-                    new TileInfo({
-                        title: <>Deep Reinforcement Learning and Its Neuroscientific Implications</>,
-                        thumbnail: "/media/image/organizations/rpi.png",
-                        tags: [TileTag.RESEARCH, TileTag.ACADEMIC, TileTag.AI],
-                        links: (
-                            <>
-                                <TileLink href={"/media/documents/presentations/Deep+RL+and+Implications.pdf"}>
-                                    Slides
-                                </TileLink>
-                            </>
-                        ),
-                        anchor: "deep-rl-and-neuroscience"
-                    })
-                }>
-                <p>
-                    This presentation is an adaptation of Matthew Botvinick's (et al.) 2020{" "}
-                    <a href={deepRlLink} target="_blank" rel="noreferrer">
-                        paper
-                    </a>{" "}
-                    by the same name. I had presented this as part of a series of talks given by students in RPI's{" "}
-                    <i>Human and Machine Learning</i> course. The original paper serves as a review of current advances
-                    in the field of reinforcement learning and how deep learning is enabling new discoveries. One
-                    notable theme of the paper is how implementations of artificial reinforcement learning often closely
-                    mirror the processes that occur within biological brains. The authors highlight some notable
-                    consequences of this idea, primarily the fact that RL models can be used to accurately predict the
-                    RL mechanisms within organic learners.
-                </p>
-                <p>
-                    A point that I stressed in my live presentation comes near the conclusion of the paper where the
-                    authors highlight some caveats to the comparisons between artificial and natural learners. Namely
-                    that, while artificial systems are very capable in specific areas, they have yet to fully generalize
-                    to a human-level quality. At the time of publication, RL systems did (and still to an extent do)
-                    struggle with credit assignment and learning efficiency; i.e. the amount of data that a learner
-                    needs to see before learning the general case for a pattern.
                 </p>
             </ScrollTile>
 
