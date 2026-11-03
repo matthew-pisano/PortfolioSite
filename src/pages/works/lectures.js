@@ -49,7 +49,8 @@ export default function Lectures() {
                                     Recording
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "ai-past-present-and-future"
                     })
                 }>
                 <p>
@@ -84,7 +85,8 @@ export default function Lectures() {
                                     Slides
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "exploits-and-vulnerabilities"
                     })
                 }>
                 <p>
@@ -135,7 +137,8 @@ export default function Lectures() {
                                     Slides
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "the-shape-of-information"
                     })
                 }>
                 <p>
@@ -230,7 +233,8 @@ export default function Lectures() {
                                     Slides
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "indexing-infinity"
                     })
                 }>
                 <p>
@@ -316,7 +320,8 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Processors and Accelerators</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.AI, TileTag.ACCELERATOR]
+                        tags: [TileTag.AI, TileTag.ACCELERATOR],
+                        anchor: "processors-and-accelerators"
                     })
                 }>
                 <p>
@@ -363,7 +368,8 @@ export default function Lectures() {
                                     Slides
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "ai-and-assistants"
                     })
                 }>
                 <p>
@@ -407,7 +413,8 @@ export default function Lectures() {
                                     Slides
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "foundations-of-computability"
                     })
                 }>
                 <p>
@@ -450,7 +457,8 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Software Engineering Lecture Series</>,
                         thumbnail: "/media/image/organizations/suny-ulster.png",
-                        tags: [TileTag.ACADEMIC, TileTag.COLLAB]
+                        tags: [TileTag.ACADEMIC, TileTag.COLLAB],
+                        anchor: "software-engineering"
                     })
                 }>
                 <p>
@@ -505,7 +513,8 @@ export default function Lectures() {
                                     Lecture 5 Slides
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "foundations-series"
                     })
                 }>
                 <p>
@@ -573,7 +582,8 @@ export default function Lectures() {
                                     Slides
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "transformer-models"
                     })
                 }>
                 <p>
@@ -599,7 +609,8 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Computer Architecture and Organization Lecture Series</>,
                         thumbnail: "/media/image/organizations/suny-ulster.png",
-                        tags: [TileTag.ACADEMIC, TileTag.ASSEMBLY]
+                        tags: [TileTag.ACADEMIC, TileTag.ASSEMBLY],
+                        anchor: "architecture-and-organization"
                     })
                 }>
                 <p>
@@ -642,7 +653,8 @@ export default function Lectures() {
                                     Recording
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "bergeron"
                     })
                 }>
                 <p>
@@ -675,7 +687,8 @@ export default function Lectures() {
                                     Recording
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "bergeron-original"
                     })
                 }>
                 <p>
@@ -701,7 +714,8 @@ export default function Lectures() {
                                     Slides
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "deep-rl-and-neuroscience"
                     })
                 }>
                 <p>
@@ -732,7 +746,8 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Moral High Ground: A Conversational Benchmark for LLM Moral Alignment</>,
                         thumbnail: "/media/image/organizations/ibm-research.png",
-                        tags: [TileTag.RESEARCH, TileTag.AI, TileTag.ALIGNMENT]
+                        tags: [TileTag.RESEARCH, TileTag.AI, TileTag.ALIGNMENT],
+                        anchor: "moral-high-ground"
                     })
                 }>
                 <p>
@@ -757,7 +772,8 @@ export default function Lectures() {
                                     Slides
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "predict-chain"
                     })
                 }>
                 <p>
@@ -786,7 +802,8 @@ export default function Lectures() {
                                     Slides
                                 </TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "homophone-decoding"
                     })
                 }>
                 <p>
@@ -814,7 +831,8 @@ export default function Lectures() {
                             <>
                                 <TileLink href={"/media/documents/presentations/JMMPresentation.pdf"}>Slides</TileLink>
                             </>
-                        )
+                        ),
+                        anchor: "chip-firing"
                     })
                 }>
                 <p>
