@@ -33,7 +33,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>AI: Past, Present, and Future</>,
                         thumbnail: "/media/image/organizations/suny-ulster.png",
-                        tags: [TileTag.AI, TileTag.ACADEMIC, TileTag.COLLAB],
+                        tags: [TileTag.AI, TileTag.ALIGNMENT, TileTag.ACADEMIC, TileTag.COLLAB],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/presentations/AI+-+Past%2C+Present+and+Future.pdf"}>
@@ -75,7 +75,7 @@ export default function Lectures() {
                     new TileInfo({
                         title: <>Exploits and Vulnerabilities: Organizing the Defense of a Code Base</>,
                         thumbnail: "/media/image/organizations/ibm.png",
-                        tags: [TileTag.MATH],
+                        tags: [TileTag.CPP, TileTag.PYTHON],
                         links: (
                             <>
                                 <TileLink href={"/media/documents/presentations/Exploits+and+Vulnerabilities.pdf"}>
